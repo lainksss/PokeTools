@@ -1,4 +1,4 @@
-/* Variables globales */
+/* Global variables */
 :root {
   --gap: 16px;
   --bg: #0f1724;
@@ -10,7 +10,7 @@
   color-scheme: dark;
 }
 
-/* Reset et base */
+/* Reset and base */
 * {
   margin: 0;
   padding: 0;
@@ -25,7 +25,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Layout principal */
+/* Main layout */
 .app-root {
   min-height: 100vh;
   display: flex;
@@ -73,9 +73,9 @@ body {
   border-top: 1px solid var(--border);
 }
 
-/* Page Calculate - 100vh */
+/* Calculate page - 100vh */
 .calculate-page {
-  height: calc(100vh - 120px); /* Soustraire header + footer */
+  height: calc(100vh - 120px); /* Subtract header + footer */
   display: flex;
   flex-direction: column;
   padding: var(--gap);
@@ -87,7 +87,7 @@ body {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   gap: var(--gap);
-  min-height: 0; /* Important pour scroll */
+  min-height: 0; /* Important for scroll */
 }
 
 .panel-left,
@@ -161,7 +161,7 @@ body {
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* Input de recherche Pokémon */
+/* Pokemon search input */
 .pokemon-selector-wrapper {
   position: relative;
 }
@@ -175,7 +175,7 @@ body {
   opacity: 0.6;
 }
 
-/* Dropdown de sélection Pokémon (style comme l'image) */
+/* Pokemon selection dropdown (styled like screenshot) */
 .pokemon-dropdown-container {
   position: absolute;
   top: 100%;
@@ -207,7 +207,7 @@ body {
   background: rgba(59, 130, 246, 0.3);
 }
 
-/* Scrollbar pour le dropdown */
+/* Scrollbar for dropdown */
 .pokemon-dropdown-container::-webkit-scrollbar {
   width: 8px;
 }
@@ -225,7 +225,7 @@ body {
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* Types et Tera sur la même ligne */
+/* Types and Tera on same row */
 .types-tera-row {
   display: flex;
   gap: 12px;
@@ -248,7 +248,7 @@ body {
   font-size: 14px;
 }
 
-/* Tera section - bloc séparé */
+/* Tera section - separate block */
 .tera-section-block {
   flex: 1;
   display: flex;
@@ -284,7 +284,7 @@ body {
   font-size: 13px;
 }
 
-/* Stats et Sélecteurs côte à côte */
+/* Stats and Selectors side by side */
 .stats-and-selectors {
   display: flex;
   gap: 20px;
@@ -299,7 +299,7 @@ body {
   gap: 12px;
 }
 
-/* Stats Table - Alignement parfait */
+/* Stats Table - Perfect alignment */
 .stats-table {
   width: 100%;
   display: flex;
@@ -350,7 +350,7 @@ body {
   color: var(--text);
 }
 
-/* Coloration selon la nature */
+/* Color based on nature */
 .nature-boosted {
   color: #10b981 !important;
   font-weight: 700 !important;
@@ -384,7 +384,7 @@ body {
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* Conteneur des sélecteurs à droite */
+/* Selectors container on right */
 .selectors-container {
   flex: 1;
   display: flex;
@@ -409,7 +409,7 @@ body {
   color: var(--accent);
 }
 
-/* EVs restants */
+/* Remaining EVs */
 .evs-remaining {
   font-size: 14px;
   padding: 8px 12px;
