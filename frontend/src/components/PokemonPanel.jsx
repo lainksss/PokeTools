@@ -12,7 +12,7 @@ export default function PokemonPanel({ side, value, onChange }) {
   const [finalStats, setFinalStats] = useState(null)
   const [loading, setLoading] = useState(true)
 
-  // Charger la liste des pokémons au montage
+  // Load pokemon list on mount
   useEffect(() => {
     let mounted = true
     setLoading(true)
@@ -28,7 +28,7 @@ export default function PokemonPanel({ side, value, onChange }) {
       setAllTypes(typesData.types || [])
       setAllNatures(naturesData.natures || [])
       
-      // Initialiser avec le premier pokémon si aucun n'est sélectionné
+      // Initialize with first pokemon if none selected
       if (!value && pokemonData.results && pokemonData.results.length > 0) {
         const firstPoke = pokemonData.results[0]
         const initialData = {
@@ -47,7 +47,7 @@ export default function PokemonPanel({ side, value, onChange }) {
         onChange && onChange(initialData)
       }
     }).catch(err => {
-      console.error('Erreur chargement données:', err)
+      console.error('Error loading data:', err)
     }).finally(() => {
       if (mounted) setLoading(false)
     })
@@ -55,7 +55,7 @@ export default function PokemonPanel({ side, value, onChange }) {
     return () => { mounted = false }
   }, [])
 
-  // Filtrer les pokémons quand le texte de recherche change
+  // Filter pokemon when search text changes
   useEffect(() => {
     if (!searchText.trim()) {
       setFilteredPokemon(allPokemon)
@@ -68,7 +68,7 @@ export default function PokemonPanel({ side, value, onChange }) {
     }
   }, [searchText, allPokemon])
 
-  // Charger moves et abilities quand le pokémon change
+  // Load moves and abilities when pokemon changes
   useEffect(() => {
     if (!value || !value.id) return
     
@@ -82,13 +82,13 @@ export default function PokemonPanel({ side, value, onChange }) {
       setPokemonMoves(movesData.moves || [])
       setPokemonAbilities(abilitiesData.abilities || [])
     }).catch(err => {
-      console.error('Erreur chargement moves/abilities:', err)
+      console.error('Error loading moves/abilities:', err)
     })
 
     return () => { mounted = false }
   }, [value && value.id])
 
-  // Calculer les stats finales quand base_stats, evs ou nature changent
+  // Calculate final stats when base_stats, evs or nature change
   useEffect(() => {
     if (!value || !value.base_stats) return
     
@@ -108,7 +108,7 @@ export default function PokemonPanel({ side, value, onChange }) {
         if (mounted) setFinalStats(data.stats)
       })
       .catch(err => {
-        console.error('Erreur calcul stats:', err)
+        console.error('Error calculating stats:', err)
       })
 
     return () => { mounted = false }
@@ -145,13 +145,13 @@ export default function PokemonPanel({ side, value, onChange }) {
   const handleEVChange = (stat, val) => {
     const newVal = Math.max(0, Math.min(252, parseInt(val) || 0))
     
-    // Calculer le total des autres EVs
+    // Calculate total of other EVs
     const currentEvs = value?.evs || {}
     const otherEvsTotal = Object.entries(currentEvs)
       .filter(([key]) => key !== stat)
       .reduce((sum, [, value]) => sum + (parseInt(value) || 0), 0)
     
-    // Vérifier si on dépasse la limite totale de 510
+    // Check if exceeding total limit of 510
     const maxAllowed = 510 - otherEvsTotal
     const finalVal = Math.min(newVal, maxAllowed, 252)
     
@@ -200,7 +200,7 @@ export default function PokemonPanel({ side, value, onChange }) {
     'speed': 'Speed'
   }
 
-  // Calculer le total des EVs
+  // Calculate total EVs
   const totalEvs = value?.evs 
     ? Object.values(value.evs).reduce((sum, val) => sum + (parseInt(val) || 0), 0)
     : 0
@@ -210,7 +210,7 @@ export default function PokemonPanel({ side, value, onChange }) {
     <div className="pokemon-panel">
       <h3>{side === 'left' ? 'Attaquant' : 'Défenseur'}</h3>
       
-      {/* Sélection du Pokémon avec recherche */}
+      {/* Pokemon selection with search */}
       <div className="form-group pokemon-selector-wrapper">
         <label>Pokémon</label>
         <input
@@ -236,7 +236,7 @@ export default function PokemonPanel({ side, value, onChange }) {
         )}
       </div>
 
-      {/* Types et Tera sur la même ligne */}
+      {/* Types and Tera on same row */}
       <div className="types-tera-row">
         <div className="types-section">
           <div className="types-display">
@@ -267,9 +267,9 @@ export default function PokemonPanel({ side, value, onChange }) {
         </div>
       </div>
 
-      {/* Stats + Sélecteurs (Nature, Talent, Attaque) */}
+      {/* Stats + Selectors (Nature, Ability, Move) */}
       <div className="stats-and-selectors">
-        {/* Tableau des stats */}
+        {/* Stats table */}
         <div className="stats-container">
           <div className="stats-table">
             <div className="stats-header">
@@ -284,7 +284,7 @@ export default function PokemonPanel({ side, value, onChange }) {
               const evVal = value?.evs?.[statKey] || 0
               const finalVal = finalStats?.[statKey] || '—'
               
-              // Déterminer la couleur selon la nature
+              // Determine color based on nature
               const currentNature = allNatures.find(n => n.name === (value?.nature || 'hardy'))
               let statColor = ''
               if (currentNature && statKey !== 'hp') {
@@ -315,13 +315,13 @@ export default function PokemonPanel({ side, value, onChange }) {
             })}
           </div>
           
-          {/* EVs restants */}
+          {/* Remaining EVs */}
           <div className="evs-remaining">
             EVs restants: <strong style={{color: remainingEvs < 0 ? '#ef4444' : '#10b981'}}>{remainingEvs}</strong> / 510
           </div>
         </div>
 
-        {/* Sélecteurs à droite */}
+        {/* Selectors on the right */}
         <div className="selectors-container">
           {/* Nature */}
           <div className="form-group">
@@ -362,7 +362,7 @@ export default function PokemonPanel({ side, value, onChange }) {
             </select>
           </div>
 
-          {/* Move (seulement pour l'attaquant) */}
+          {/* Move (only for attacker) */}
           {side === 'left' && (
             <div className="form-group">
               <label>Attaque</label>

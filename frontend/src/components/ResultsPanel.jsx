@@ -4,23 +4,23 @@ export default function ResultsPanel({ result }) {
   if (!result) {
     return (
       <div className="results-panel">
-        <p className="no-results">Aucun résultat — cliquez sur Calculer</p>
+        <p className="no-results">No results — click Calculate</p>
       </div>
     )
   }
 
-  // Calculer les statistiques
+  // Calculate statistics
   const rolls = result.damage_all || []
   const defenderHP = result.defender_hp || 0
   
-  // OHKO: combien de rolls tuent en un coup
+  // OHKO: how many rolls kill in one hit
   const ohkoCount = rolls.filter(dmg => dmg >= defenderHP).length
   const ohkoChance = rolls.length > 0 ? (ohkoCount / rolls.length * 100) : 0
   
-  // Nombre de hits nécessaires pour garantir le KO
+  // Number of hits needed to guarantee KO
   let hitsToGuaranteedKO = 1
   if (ohkoCount < rolls.length) {
-    // Trouver le damage minimum
+    // Find minimum damage
     const minDamage = Math.min(...rolls)
     if (minDamage > 0) {
       hitsToGuaranteedKO = Math.ceil(defenderHP / minDamage)
@@ -33,7 +33,7 @@ export default function ResultsPanel({ result }) {
     <div className="results-panel">
       <h3>Résultats</h3>
       
-      {/* Statistiques principales */}
+      {/* Main statistics */}
       <div className="results-stats">
         {ohkoChance === 100 ? (
           <div className="ohko-guaranteed">
@@ -51,15 +51,15 @@ export default function ResultsPanel({ result }) {
         
         {ohkoChance < 100 && hitsToGuaranteedKO !== Infinity && (
           <div className="hits-to-ko">
-            Hits nécessaires pour KO à 100%: <strong>{hitsToGuaranteedKO}</strong>
+            Hits needed for 100% KO: <strong>{hitsToGuaranteedKO}</strong>
           </div>
         )}
       </div>
 
-      {/* Rolls affichés comme le tableau de stats */}
+      {/* Rolls displayed as stats table */}
       {rolls.length > 0 && (
         <div className="damage-rolls">
-          <h4>Dégâts possibles</h4>
+          <h4>Possible damage</h4>
           <div className="rolls-table">
             {rolls.map((dmg, i) => (
               <div key={i} className="roll-row">

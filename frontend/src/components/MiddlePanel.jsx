@@ -16,12 +16,12 @@ export default function MiddlePanel({ left, right, setResult }) {
 
   async function calculate() {
     if (!left || !right) {
-      alert('Veuillez sélectionner un pokémon attaquant et un pokémon défenseur')
+      alert('Please select an attacking pokemon and a defending pokemon')
       return
     }
 
     if (!left.move) {
-      alert('Veuillez sélectionner une attaque pour l\'attaquant')
+      alert('Please select a move for the attacker')
       return
     }
 
@@ -65,14 +65,14 @@ export default function MiddlePanel({ left, right, setResult }) {
       
       if (!res.ok) {
         const errorData = await res.json()
-        throw new Error(errorData.message || 'Erreur de calcul')
+        throw new Error(errorData.message || 'Calculation error')
       }
       
       const data = await res.json()
       setResult(data)
     } catch (e) {
-      console.error('Erreur:', e)
-      alert('Erreur lors du calcul: ' + e.message)
+      console.error('Error:', e)
+      alert('Calculation error: ' + e.message)
       setResult(null)
     } finally {
       setLoading(false)
@@ -92,7 +92,7 @@ export default function MiddlePanel({ left, right, setResult }) {
         >
           {ALL_WEATHERS.map(w => (
             <option key={w} value={w}>
-              {w === 'none' ? 'Aucune' : w.replace(/-/g, ' ')}
+              {w === 'none' ? 'None' : w.replace(/-/g, ' ')}
             </option>
           ))}
         </select>
@@ -107,7 +107,7 @@ export default function MiddlePanel({ left, right, setResult }) {
         >
           {ALL_TERRAINS.map(t => (
             <option key={t} value={t}>
-              {t === 'none' ? 'Aucun' : t.replace(/-/g, ' ')}
+              {t === 'none' ? 'None' : t.replace(/-/g, ' ')}
             </option>
           ))}
         </select>
@@ -129,7 +129,7 @@ export default function MiddlePanel({ left, right, setResult }) {
         disabled={loading || !left || !right || !left.move}
         className="calculate-button"
       >
-        {loading ? 'Calcul en cours...' : 'Calculer'}
+        {loading ? 'Calculating...' : 'Calculate'}
       </button>
     </div>
   )
