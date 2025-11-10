@@ -1,5 +1,32 @@
 # Fetches all Pokémon from PokeAPI and builds a dict:
-# { "bulbasaur": {"id":1, "types":["grass","poison"], "base_stats":{"hp":45,...}}, ... }
+#
+# Example export (sample structure saved to data/all_pokemon.json):
+# {
+#   "bulbasaur": {
+#     "id": 1,
+#     "types": ["grass", "poison"],
+#     "base_stats": {
+#       "hp": 45,
+#       "attack": 49,
+#       "defense": 49,
+#       "special-attack": 65,
+#       "special-defense": 65,
+#       "speed": 45
+#     }
+#   },
+#   "charmander": {
+#     "id": 4,
+#     "types": ["fire"],
+#     "base_stats": {
+#       "hp": 39,
+#       "attack": 52,
+#       "defense": 43,
+#       "special-attack": 60,
+#       "special-defense": 50,
+#       "speed": 65
+#     }
+#   }
+# }
 
 import requests
 import time
