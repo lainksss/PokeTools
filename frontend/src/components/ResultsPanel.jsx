@@ -41,7 +41,7 @@ export default function ResultsPanel({ result }) {
           </div>
         ) : ohkoChance > 0 ? (
           <div className="ohko-chance">
-            Chance de OHKO: <strong>{ohkoChance.toFixed(1)}%</strong> ({ohkoCount}/{rolls.length})
+            Chance de OHKO: <strong>{ohkoChance.toFixed(2)}%</strong> ({ohkoCount}/{rolls.length})
           </div>
         ) : (
           <div className="no-ohko">
@@ -60,14 +60,13 @@ export default function ResultsPanel({ result }) {
       {rolls.length > 0 && (
         <div className="damage-rolls">
           <h4>Possible damage</h4>
-          <div className="rolls-table">
+          <div className="rolls-inline">
             {rolls.map((dmg, i) => (
-              <div key={i} className="roll-row">
-                <div className="roll-number">Roll {i + 1}</div>
-                <div className="roll-damage">{dmg}</div>
-                <div className="roll-percent">
-                  {defenderHP > 0 ? `${(dmg / defenderHP * 100).toFixed(1)}%` : '—'}
-                </div>
+              <div key={i} className="roll-item">
+                <span className="roll-damage">{dmg}</span>
+                <span className="roll-percent">
+                  ({defenderHP > 0 ? `${(dmg / defenderHP * 100).toFixed(1)}%` : '—'})
+                </span>
               </div>
             ))}
           </div>
