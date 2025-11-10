@@ -13,6 +13,7 @@ export default function MiddlePanel({ left, right, setResult }) {
   const [weather, setWeather] = useState('none')
   const [terrain, setTerrain] = useState('none')
   const [isCritical, setIsCritical] = useState(false)
+  const [battleMode, setBattleMode] = useState('single') // 'single' or 'double'
 
   async function calculate() {
     if (!left || !right) {
@@ -53,7 +54,8 @@ export default function MiddlePanel({ left, right, setResult }) {
         weather: weather === 'none' ? null : weather,
         terrain: terrain === 'none' ? null : terrain
       },
-      is_critical: isCritical
+      is_critical: isCritical,
+      battle_mode: battleMode
     }
 
     try {
@@ -82,6 +84,26 @@ export default function MiddlePanel({ left, right, setResult }) {
   return (
     <div className="middle-panel">
       <h3>Conditions de combat</h3>
+      
+      <div className="form-group">
+        <label>Mode de combat</label>
+        <div className="battle-mode-toggle">
+          <button
+            type="button"
+            className={`mode-button ${battleMode === 'single' ? 'active' : ''}`}
+            onClick={() => setBattleMode('single')}
+          >
+            Single
+          </button>
+          <button
+            type="button"
+            className={`mode-button ${battleMode === 'double' ? 'active' : ''}`}
+            onClick={() => setBattleMode('double')}
+          >
+            Double
+          </button>
+        </div>
+      </div>
       
       <div className="form-group">
         <label>Météo</label>

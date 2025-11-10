@@ -442,6 +442,36 @@ body {
   font-size: 14px;
 }
 
+.battle-mode-toggle {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.mode-button {
+  flex: 1;
+  padding: 10px 16px;
+  background: var(--card);
+  color: var(--text);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mode-button:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent);
+}
+
+.mode-button.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
 .calculate-button {
   padding: 14px 32px;
   background: var(--accent);
