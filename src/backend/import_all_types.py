@@ -1,6 +1,24 @@
-# types_fetcher.py
 # Fetch all Pokémon type relations from the PokeAPI and save them to JSON
-
+#
+# Example export (sample structure saved to data/all_types.json):
+# {
+#   "fire": {
+#     "weak_to": ["water", "ground", "rock"],
+#     "resistant_to": ["fire", "grass", "ice", "bug", "steel", "fairy"],
+#     "immune_to": [],
+#     "strong_against": ["grass", "ice", "bug", "steel"],
+#     "weak_against": ["water", "ground", "rock"],
+#     "no_damage_to": []
+#   },
+#   "water": {
+#     "weak_to": ["electric", "grass"],
+#     "resistant_to": ["fire", "water", "ice", "steel"],
+#     "immune_to": [],
+#     "strong_against": ["fire", "ground", "rock"],
+#     "weak_against": ["electric", "grass"],
+#     "no_damage_to": []
+#   }
+# }
 import requests
 import json
 from pathlib import Path

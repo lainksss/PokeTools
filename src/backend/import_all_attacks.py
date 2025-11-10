@@ -1,5 +1,22 @@
 # Fetches all Pokémon moves from PokeAPI and builds a dict:
-# { "thunderbolt": {"type":"electric","power":90,"accuracy":100,"damage_class":"special","multi_hit":None}, ... }
+#
+# Example export (sample structure saved to data/all_moves.json):
+# {
+#   "thunderbolt": {
+#     "type": "electric",
+#     "power": 90,
+#     "accuracy": 100,
+#     "damage_class": "special",
+#     "multi_hit": null
+#   },
+#   "double-slap": {
+#     "type": "normal",
+#     "power": 15,
+#     "accuracy": 85,
+#     "damage_class": "physical",
+#     "multi_hit": {"min":2, "max":5}
+#   }
+# }
 
 import requests
 import time
