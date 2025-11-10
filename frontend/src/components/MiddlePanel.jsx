@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 const ALL_WEATHERS = [
-  'none', 'sun', 'harsh-sunlight', 'rain', 'heavy-rain', 'sandstorm', 'hail', 'snow', 'strong-winds'
+  'none', 'sun', 'rain', 'sandstorm', 'snow'
 ]
 
 const ALL_TERRAINS = [
