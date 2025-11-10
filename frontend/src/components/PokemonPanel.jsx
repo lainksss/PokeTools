@@ -1,54 +1,394 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-const SAMPLE_POKES = [
-  { name: 'Abomasnow', types: ['Grass','Ice'], bases: {hp:90, attack:92, defense:75, special_attack:92, special_defense:85, speed:60} },
-  { name: 'Charizard', types: ['Fire','Flying'], bases: {hp:78, attack:84, defense:78, special_attack:109, special_defense:85, speed:100} }
-]
+export default function PokemonPanel({ side, value, onChange }) {
+  const [allPokemon, setAllPokemon] = useState([])
+  const [filteredPokemon, setFilteredPokemon] = useState([])
+  const [searchText, setSearchText] = useState('')
+  const [showDropdown, setShowDropdown] = useState(false)
+  const [allTypes, setAllTypes] = useState([])
+  const [allNatures, setAllNatures] = useState([])
+  const [pokemonMoves, setPokemonMoves] = useState([])
+  const [pokemonAbilities, setPokemonAbilities] = useState([])
+  const [finalStats, setFinalStats] = useState(null)
+  const [loading, setLoading] = useState(true)
 
-export default function PokemonPanel({ side, value, onChange }){
-  const poke = value || SAMPLE_POKES[0]
+  // Charger la liste des pokémons au montage
+  useEffect(() => {
+    let mounted = true
+    setLoading(true)
+    
+    Promise.all([
+      fetch('/api/pokemon').then(r => r.json()),
+      fetch('/api/types').then(r => r.json()),
+      fetch('/api/natures').then(r => r.json())
+    ]).then(([pokemonData, typesData, naturesData]) => {
+      if (!mounted) return
+      setAllPokemon(pokemonData.results || [])
+      setFilteredPokemon(pokemonData.results || [])
+      setAllTypes(typesData.types || [])
+      setAllNatures(naturesData.natures || [])
+      
+      // Initialiser avec le premier pokémon si aucun n'est sélectionné
+      if (!value && pokemonData.results && pokemonData.results.length > 0) {
+        const firstPoke = pokemonData.results[0]
+        const initialData = {
+          id: firstPoke.id,
+          name: firstPoke.name,
+          types: firstPoke.types,
+          base_stats: firstPoke.base_stats,
+          evs: { hp: 0, attack: 0, defense: 0, special_attack: 0, special_defense: 0, speed: 0 },
+          nature: 'hardy',
+          ability: null,
+          move: null,
+          is_terastallized: false,
+          tera_type: null
+        }
+        setSearchText(firstPoke.name.charAt(0).toUpperCase() + firstPoke.name.slice(1))
+        onChange && onChange(initialData)
+      }
+    }).catch(err => {
+      console.error('Erreur chargement données:', err)
+    }).finally(() => {
+      if (mounted) setLoading(false)
+    })
 
-  function setEV(stat, v){
-    const evs = {...(value?.evs || {}) , [stat]: Number(v)}
-    onChange && onChange({...poke, evs})
+    return () => { mounted = false }
+  }, [])
+
+  // Filtrer les pokémons quand le texte de recherche change
+  useEffect(() => {
+    if (!searchText.trim()) {
+      setFilteredPokemon(allPokemon)
+    } else {
+      const search = searchText.toLowerCase()
+      const filtered = allPokemon.filter(p => 
+        p.name.toLowerCase().includes(search)
+      )
+      setFilteredPokemon(filtered)
+    }
+  }, [searchText, allPokemon])
+
+  // Charger moves et abilities quand le pokémon change
+  useEffect(() => {
+    if (!value || !value.id) return
+    
+    let mounted = true
+    
+    Promise.all([
+      fetch(`/api/pokemon/${value.id}/moves`).then(r => r.json()),
+      fetch(`/api/pokemon/${value.id}/abilities`).then(r => r.json())
+    ]).then(([movesData, abilitiesData]) => {
+      if (!mounted) return
+      setPokemonMoves(movesData.moves || [])
+      setPokemonAbilities(abilitiesData.abilities || [])
+    }).catch(err => {
+      console.error('Erreur chargement moves/abilities:', err)
+    })
+
+    return () => { mounted = false }
+  }, [value && value.id])
+
+  // Calculer les stats finales quand base_stats, evs ou nature changent
+  useEffect(() => {
+    if (!value || !value.base_stats) return
+    
+    let mounted = true
+    
+    fetch('/api/calc_stats', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        base_stats: value.base_stats,
+        evs: value.evs || {},
+        nature: value.nature || 'hardy'
+      })
+    })
+      .then(r => r.json())
+      .then(data => {
+        if (mounted) setFinalStats(data.stats)
+      })
+      .catch(err => {
+        console.error('Erreur calcul stats:', err)
+      })
+
+    return () => { mounted = false }
+  }, [value && value.base_stats, value && value.evs, value && value.nature])
+
+  const handlePokemonSearch = (searchValue) => {
+    setSearchText(searchValue)
+    setShowDropdown(true)
   }
 
-  function setNature(n){
-    onChange && onChange({...poke, nature: n})
+  const handlePokemonSelect = (pokemonName) => {
+    const pokemon = allPokemon.find(p => 
+      p.name.toLowerCase() === pokemonName.toLowerCase()
+    )
+    
+    if (pokemon) {
+      setSearchText(pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1))
+      setShowDropdown(false)
+      onChange && onChange({
+        id: pokemon.id,
+        name: pokemon.name,
+        types: pokemon.types,
+        base_stats: pokemon.base_stats,
+        evs: value?.evs || { hp: 0, attack: 0, defense: 0, special_attack: 0, special_defense: 0, speed: 0 },
+        nature: value?.nature || 'hardy',
+        ability: null,
+        move: null,
+        is_terastallized: false,
+        tera_type: null
+      })
+    }
   }
+
+  const handleEVChange = (stat, val) => {
+    const newVal = Math.max(0, Math.min(252, parseInt(val) || 0))
+    
+    // Calculer le total des autres EVs
+    const currentEvs = value?.evs || {}
+    const otherEvsTotal = Object.entries(currentEvs)
+      .filter(([key]) => key !== stat)
+      .reduce((sum, [, value]) => sum + (parseInt(value) || 0), 0)
+    
+    // Vérifier si on dépasse la limite totale de 510
+    const maxAllowed = 510 - otherEvsTotal
+    const finalVal = Math.min(newVal, maxAllowed, 252)
+    
+    onChange && onChange({
+      ...value,
+      evs: { ...(value.evs || {}), [stat]: finalVal }
+    })
+  }
+
+  const handleNatureChange = (natureName) => {
+    onChange && onChange({ ...value, nature: natureName })
+  }
+
+  const handleAbilityChange = (abilityName) => {
+    onChange && onChange({ ...value, ability: abilityName })
+  }
+
+  const handleMoveChange = (moveSlug) => {
+    const move = pokemonMoves.find(m => m.name === moveSlug)
+    onChange && onChange({ ...value, move: move || null })
+  }
+
+  const handleTeraChange = (checked) => {
+    onChange && onChange({
+      ...value,
+      is_terastallized: checked,
+      tera_type: checked ? (value.tera_type || allTypes[0]) : null
+    })
+  }
+
+  const handleTeraTypeChange = (type) => {
+    onChange && onChange({ ...value, tera_type: type })
+  }
+
+  if (loading) {
+    return <div className="pokemon-panel">Chargement...</div>
+  }
+
+  const statsOrder = ['hp', 'attack', 'defense', 'special-attack', 'special-defense', 'speed']
+  const statsLabels = {
+    'hp': 'HP',
+    'attack': 'Attack',
+    'defense': 'Defense',
+    'special-attack': 'Sp. Atk',
+    'special-defense': 'Sp. Def',
+    'speed': 'Speed'
+  }
+
+  // Calculer le total des EVs
+  const totalEvs = value?.evs 
+    ? Object.values(value.evs).reduce((sum, val) => sum + (parseInt(val) || 0), 0)
+    : 0
+  const remainingEvs = 510 - totalEvs
 
   return (
     <div className="pokemon-panel">
       <h3>{side === 'left' ? 'Attaquant' : 'Défenseur'}</h3>
-      <label>Choix du Pokémon
-        <select onChange={e=>onChange && onChange(SAMPLE_POKES.find(p=>p.name===e.target.value)||SAMPLE_POKES[0])}>
-          {SAMPLE_POKES.map(p => <option key={p.name} value={p.name}>{p.name}</option>)}
-        </select>
-      </label>
-      <div>Types: {poke.types.join(' / ')}</div>
-      <div className="bases">
-        <h4>Bases</h4>
-        {Object.entries(poke.bases).map(([k,v]) => (
-          <div key={k}>{k}: {v}</div>
-        ))}
-      </div>
-      <div className="evs">
-        <h4>EVs (modifiable)</h4>
-        {Object.keys(poke.bases).filter(k=>k!=='hp' || true).map((k)=> (
-          <div key={k} className="ev-row">
-            <label>{k}</label>
-            <input type="number" min="0" max="252" defaultValue={value?.evs?.[k]||0} onChange={e=>setEV(k,e.target.value)} />
+      
+      {/* Sélection du Pokémon avec recherche */}
+      <div className="form-group pokemon-selector-wrapper">
+        <label>Pokémon</label>
+        <input
+          type="text"
+          value={searchText}
+          onChange={e => handlePokemonSearch(e.target.value)}
+          onFocus={() => setShowDropdown(true)}
+          placeholder="Rechercher un pokémon..."
+          className="form-control pokemon-search-input"
+        />
+        {showDropdown && searchText && filteredPokemon.length > 0 && (
+          <div className="pokemon-dropdown-container">
+            {filteredPokemon.slice(0, 50).map(p => (
+              <div
+                key={p.id}
+                className="pokemon-dropdown-item"
+                onClick={() => handlePokemonSelect(p.name)}
+              >
+                {p.name.charAt(0).toUpperCase() + p.name.slice(1)}
+              </div>
+            ))}
           </div>
-        ))}
+        )}
       </div>
-      <div className="nature">
-        <label>Nature
-          <select onChange={e=>setNature(e.target.value)}>
-            <option value="neutral">Neutre</option>
-            <option value="atk-def">-Atk +Def</option>
-            <option value="atk-spa">-Atk +SpA</option>
-          </select>
-        </label>
+
+      {/* Types et Tera sur la même ligne */}
+      <div className="types-tera-row">
+        <div className="types-section">
+          <div className="types-display">
+            <strong>Types:</strong> {value?.types?.join(', ') || 'N/A'}
+          </div>
+        </div>
+
+        <div className="tera-section-block">
+          <label className="tera-checkbox">
+            <input 
+              type="checkbox" 
+              checked={value?.is_terastallized || false}
+              onChange={e => handleTeraChange(e.target.checked)}
+            />
+            Tera
+          </label>
+          {value?.is_terastallized && (
+            <select 
+              value={value?.tera_type || ''}
+              onChange={e => handleTeraTypeChange(e.target.value)}
+              className="tera-type-select"
+            >
+              {allTypes.map(t => (
+                <option key={t} value={t}>{t}</option>
+              ))}
+            </select>
+          )}
+        </div>
+      </div>
+
+      {/* Stats + Sélecteurs (Nature, Talent, Attaque) */}
+      <div className="stats-and-selectors">
+        {/* Tableau des stats */}
+        <div className="stats-container">
+          <div className="stats-table">
+            <div className="stats-header">
+              <div className="stat-label"></div>
+              <div className="stat-col">Base</div>
+              <div className="stat-col">EVs</div>
+              <div className="stat-col">Final</div>
+            </div>
+            {statsOrder.map(stat => {
+              const statKey = stat.replace('-', '_')
+              const baseVal = value?.base_stats?.[stat] || 0
+              const evVal = value?.evs?.[statKey] || 0
+              const finalVal = finalStats?.[statKey] || '—'
+              
+              // Déterminer la couleur selon la nature
+              const currentNature = allNatures.find(n => n.name === (value?.nature || 'hardy'))
+              let statColor = ''
+              if (currentNature && statKey !== 'hp') {
+                if (currentNature.increase === statKey.replace('_', '-')) {
+                  statColor = 'nature-boosted'
+                } else if (currentNature.decrease === statKey.replace('_', '-')) {
+                  statColor = 'nature-nerfed'
+                }
+              }
+              
+              return (
+                <div key={stat} className="stats-row">
+                  <div className={`stat-label ${statColor}`}>{statsLabels[stat]}</div>
+                  <div className="stat-col stat-base">{baseVal}</div>
+                  <div className="stat-col stat-ev">
+                    <input 
+                      type="number" 
+                      min="0" 
+                      max="252" 
+                      value={evVal}
+                      onChange={e => handleEVChange(statKey, e.target.value)}
+                      className="ev-input"
+                    />
+                  </div>
+                  <div className="stat-col stat-final">{finalVal}</div>
+                </div>
+              )
+            })}
+          </div>
+          
+          {/* EVs restants */}
+          <div className="evs-remaining">
+            EVs restants: <strong style={{color: remainingEvs < 0 ? '#ef4444' : '#10b981'}}>{remainingEvs}</strong> / 510
+          </div>
+        </div>
+
+        {/* Sélecteurs à droite */}
+        <div className="selectors-container">
+          {/* Nature */}
+          <div className="form-group">
+            <label>Nature</label>
+            <select 
+              value={value?.nature || 'hardy'}
+              onChange={e => handleNatureChange(e.target.value)}
+              className="form-control"
+            >
+              {allNatures.map(n => {
+                let display = n.name.charAt(0).toUpperCase() + n.name.slice(1)
+                if (n.increase && n.decrease) {
+                  display += ` (+${n.increase}, -${n.decrease})`
+                } else if (!n.increase && !n.decrease) {
+                  display += ' (neutral)'
+                }
+                return (
+                  <option key={n.name} value={n.name}>{display}</option>
+                )
+              })}
+            </select>
+          </div>
+
+          {/* Ability */}
+          <div className="form-group">
+            <label>Talent</label>
+            <select 
+              value={value?.ability || ''}
+              onChange={e => handleAbilityChange(e.target.value)}
+              className="form-control"
+            >
+              <option value="">-- Aucun --</option>
+              {pokemonAbilities.map(ability => (
+                <option key={ability} value={ability}>
+                  {ability.replace(/-/g, ' ')}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Move (seulement pour l'attaquant) */}
+          {side === 'left' && (
+            <div className="form-group">
+              <label>Attaque</label>
+              <select 
+                value={value?.move?.name || ''}
+                onChange={e => handleMoveChange(e.target.value)}
+                className="form-control"
+              >
+                <option value="">-- Aucune --</option>
+                {pokemonMoves.map(move => (
+                  <option key={move.name} value={move.name}>
+                    {move.name.replace(/-/g, ' ')} ({move.type}, {move.power || '—'})
+                  </option>
+                ))}
+              </select>
+              {value?.move && (
+                <div className="move-details">
+                  <div><strong>Type:</strong> {value.move.type}</div>
+                  <div><strong>Power:</strong> {value.move.power || '—'}</div>
+                  <div><strong>Accuracy:</strong> {value.move.accuracy || '—'}</div>
+                  <div><strong>Category:</strong> {value.move.damage_class}</div>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )
