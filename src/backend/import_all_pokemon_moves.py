@@ -40,7 +40,7 @@ SESSION = requests.Session()
 SESSION.headers.update({"User-Agent": "pokemon-moves-names-only/1.0"})
 
 def fetch_all_pokemon_urls():
-    """Récupère les URLs de tous les Pokémon."""
+    """Collect all pokemon's url."""
     url = POKEMON_ENDPOINT
     urls = []
     while url:
@@ -53,7 +53,7 @@ def fetch_all_pokemon_urls():
     return urls
 
 def fetch_pokemon_move_names(pokemon_url):
-    """Récupère uniquement les noms des attaques d'un Pokémon."""
+    """Collect only the move's name."""
     r = SESSION.get(pokemon_url, timeout=15)
     r.raise_for_status()
     data = r.json()
