@@ -21,12 +21,25 @@ try:
     from .calculate_weather import compute_weather_mult
     from .calculate_terrain import compute_terrain_multiplier
     from .calculate_types import get_type_breakdown, type_effectiveness
+    from .calculate_abilities import apply_ability_effects
 except Exception:
     # If relative imports fail (exec as script), fallback to local defs below
     compute_weather_mult = None  # type: ignore
     compute_terrain_multiplier = None  # type: ignore
     get_type_breakdown = None  # type: ignore
     type_effectiveness = None  # type: ignore
+    # Try to load calculate_abilities.py directly from the same directory as this file.
+    apply_ability_effects = None  # type: ignore
+    try:
+        import importlib.util
+        mod_path = Path(__file__).parent / "calculate_abilities.py"
+        if mod_path.exists():
+            spec = importlib.util.spec_from_file_location("calculate_abilities", str(mod_path))
+            mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(mod)  # type: ignore
+            apply_ability_effects = getattr(mod, "apply_ability_effects", None)
+    except Exception:
+        apply_ability_effects = None
 
 
 if get_type_breakdown is None:
@@ -399,6 +412,20 @@ def calculate_damage(
     if D == 0:
         D = 1.0
 
+    # --- Ability adjustments must run before base is computed so that
+    # abilities that change raw stats (Huge/Pure Power, Guts, etc.) affect base.
+    ability_effects = {}
+    ability_multipliers = {}
+    if 'apply_ability_effects' in globals() and apply_ability_effects:
+        try:
+            # Pass a temporary multipliers dict; we'll merge its results later.
+            ability_multipliers, A, D, _type_mult_tmp, ability_effects = apply_ability_effects(
+                attacker, defender, move, field, {}, A, D, 1.0, gen
+            )
+        except Exception:
+            ability_effects = {}
+            ability_multipliers = {}
+
     # simple multipliers
     targets, pb = compute_targets_and_pb(move, field, gen)
     weather_mult, weather_effects = compute_weather_mult(field, move.get("type"), move)
@@ -456,6 +483,14 @@ def calculate_damage(
         "type_mult": type_mult,
         "crit_mult": crit_mult,
     }
+    # Merge any multipliers returned by the early ability pass
+    # (e.g. Sheer Force, Tough Claws set other_mult)
+    if isinstance(ability_multipliers, dict):
+        for k, v in ability_multipliers.items():
+            multipliers[k] = float(multipliers.get(k, 1.0)) * float(v)
+    # If sniper was flagged earlier, keep that in ability_effects for debug
+    if attacker.get("ability") and str(attacker.get("ability")).lower().replace("_", "-").replace(" ", "-") == "sniper":
+        ability_effects.setdefault("sniper", True)
 
     damage_all, remaining_hp_all = compute_damage_rolls(base, rand_list, multipliers, defender_hp if defender_hp is not None else defender.get("hp"))
 
@@ -466,6 +501,9 @@ def calculate_damage(
         combined_effects.update(weather_effects)
     if isinstance(terrain_effects, dict):
         combined_effects.update(terrain_effects)
+    # ability effects (may have been set above)
+    if isinstance(ability_effects, dict):
+        combined_effects.update(ability_effects)
     if combined_effects:
         result["effects"] = combined_effects
     hp_val = defender_hp if defender_hp is not None else defender.get("hp")
@@ -484,6 +522,7 @@ def calculate_damage(
             "burn_mult": burn_mult,
             "terrain_mult": terrain_mult,
             "effects": combined_effects,
+            "ability_effects": ability_effects,
         }
 
     return result
