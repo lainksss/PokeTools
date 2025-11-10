@@ -1,0 +1,21 @@
+:root{
+  --gap:12px;
+  --bg:#0f1724;
+  --card:#0b1220;
+  --accent:#2ea8e5;
+  color-scheme: dark;
+}
+body{font-family:Inter,Segoe UI,Roboto,Helvetica,Arial; margin:0; background:linear-gradient(180deg,#071021,#081022); color:#e6eef6}
+.app-header{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(255,255,255,0.02)}
+.app-header h1{margin:0}
+.app-header nav a{margin-left:12px;color:var(--accent);text-decoration:none}
+.app-main{padding:18px}
+.app-footer{text-align:center;padding:8px;font-size:12px;opacity:0.8}
+.layout{display:grid;grid-template-columns:1fr 420px 1fr;gap:16px}
+.side{background:rgba(255,255,255,0.02);padding:12px;border-radius:8px}
+.center{background:rgba(255,255,255,0.01);padding:12px;border-radius:8px}
+.results-area{margin-top:16px}
+.pokemon-panel h3{margin-top:0}
+.ev-row{display:flex;gap:8px;align-items:center}
+.rolls{display:flex;flex-wrap:wrap;gap:8px}
+.roll{background:#081629;padding:6px;border-radius:6px}

@@ -1,0 +1,21 @@
+{
+  "name": "pokemon-calculator-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@remix-run/router": "1.23.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+  "react-router": "6.30.1",
+  "react-router-dom": "6.30.1",
+    "scheduler": "0.23.2"
+  },
+  "devDependencies": {
+    "vite": "7.2.2"
+  }
+}
