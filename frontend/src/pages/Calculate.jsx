@@ -6,22 +6,25 @@ import ResultsPanel from '../components/ResultsPanel'
 export default function Calculate() {
   const [left, setLeft] = useState(null)
   const [right, setRight] = useState(null)
-  const [params, setParams] = useState({ weather: 'none', terrain: 'none', targets: 2 })
   const [result, setResult] = useState(null)
 
   return (
-    <div className="calculate-page layout">
-      <div className="side left">
-        <PokemonPanel side="left" value={left} onChange={setLeft} />
-      </div>
-      <div className="center">
-        <MiddlePanel params={params} setParams={setParams} left={left} right={right} setResult={setResult} />
-      </div>
-      <div className="side right">
-        <PokemonPanel side="right" value={right} onChange={setRight} />
+    <div className="calculate-page">
+      <div className="panels-container">
+        <div className="panel-left">
+          <PokemonPanel side="left" value={left} onChange={setLeft} />
+        </div>
+        
+        <div className="panel-middle">
+          <MiddlePanel left={left} right={right} setResult={setResult} />
+        </div>
+        
+        <div className="panel-right">
+          <PokemonPanel side="right" value={right} onChange={setRight} />
+        </div>
       </div>
 
-      <div className="results-area">
+      <div className="results-section">
         <ResultsPanel result={result} />
       </div>
     </div>

@@ -1,21 +1,677 @@
-:root{
-  --gap:12px;
-  --bg:#0f1724;
-  --card:#0b1220;
-  --accent:#2ea8e5;
+/* Variables globales */
+:root {
+  --gap: 16px;
+  --bg: #0f1724;
+  --card: #1a2332;
+  --accent: #3b82f6;
+  --border: rgba(255, 255, 255, 0.2);
+  --text: #e6eef6;
+  --text-muted: #9ca3af;
   color-scheme: dark;
 }
-body{font-family:Inter,Segoe UI,Roboto,Helvetica,Arial; margin:0; background:linear-gradient(180deg,#071021,#081022); color:#e6eef6}
-.app-header{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(255,255,255,0.02)}
-.app-header h1{margin:0}
-.app-header nav a{margin-left:12px;color:var(--accent);text-decoration:none}
-.app-main{padding:18px}
-.app-footer{text-align:center;padding:8px;font-size:12px;opacity:0.8}
-.layout{display:grid;grid-template-columns:1fr 420px 1fr;gap:16px}
-.side{background:rgba(255,255,255,0.02);padding:12px;border-radius:8px}
-.center{background:rgba(255,255,255,0.01);padding:12px;border-radius:8px}
-.results-area{margin-top:16px}
-.pokemon-panel h3{margin-top:0}
-.ev-row{display:flex;gap:8px;align-items:center}
-.rolls{display:flex;flex-wrap:wrap;gap:8px}
-.roll{background:#081629;padding:6px;border-radius:6px}
+
+/* Reset et base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+  background: linear-gradient(180deg, #0a1120, #0f1724);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Layout principal */
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid var(--border);
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.app-header nav a {
+  margin-left: 16px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.app-header nav a:hover {
+  opacity: 0.8;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 12px;
+  font-size: 12px;
+  opacity: 0.6;
+  border-top: 1px solid var(--border);
+}
+
+/* Page Calculate - 100vh */
+.calculate-page {
+  height: calc(100vh - 120px); /* Soustraire header + footer */
+  display: flex;
+  flex-direction: column;
+  padding: var(--gap);
+  gap: var(--gap);
+}
+
+.panels-container {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--gap);
+  min-height: 0; /* Important pour scroll */
+}
+
+.panel-left,
+.panel-right {
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.panel-middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  min-width: 200px;
+}
+
+.results-section {
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 20px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* Pokemon Panel */
+.pokemon-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pokemon-panel h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--accent);
+}
+
+/* Form groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Input de recherche Pokémon */
+.pokemon-selector-wrapper {
+  position: relative;
+}
+
+.pokemon-search-input {
+  font-style: normal;
+}
+
+.pokemon-search-input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+/* Dropdown de sélection Pokémon (style comme l'image) */
+.pokemon-dropdown-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  margin-top: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.pokemon-dropdown-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  color: var(--text);
+  font-size: 14px;
+  transition: background 0.15s;
+}
+
+.pokemon-dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.pokemon-dropdown-item:active {
+  background: rgba(59, 130, 246, 0.3);
+}
+
+/* Scrollbar pour le dropdown */
+.pokemon-dropdown-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.pokemon-dropdown-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.pokemon-dropdown-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.pokemon-dropdown-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Types et Tera sur la même ligne */
+.types-tera-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+/* Types section */
+.types-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.types-display {
+  font-size: 14px;
+}
+
+/* Tera section - bloc séparé */
+.tera-section-block {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tera-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tera-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.tera-type-select {
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 13px;
+}
+
+/* Stats et Sélecteurs côte à côte */
+.stats-and-selectors {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* Stats Container */
+.stats-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Stats Table - Alignement parfait */
+.stats-table {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stats-header,
+.stats-row {
+  display: grid;
+  grid-template-columns: 100px 80px 100px 80px;
+  gap: 12px;
+  align-items: center;
+  padding: 8px;
+}
+
+.stats-header {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+}
+
+.stats-row {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.stats-row:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.stat-label {
+  font-weight: 500;
+  text-align: left;
+}
+
+.stat-col {
+  text-align: center;
+  font-size: 14px;
+}
+
+.stat-base,
+.stat-final {
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Coloration selon la nature */
+.nature-boosted {
+  color: #10b981 !important;
+  font-weight: 700 !important;
+}
+
+.nature-nerfed {
+  color: #ef4444 !important;
+  font-weight: 700 !important;
+}
+
+.stat-ev {
+  display: flex;
+  justify-content: center;
+}
+
+.ev-input {
+  width: 80px;
+  padding: 6px 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 14px;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.ev-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Conteneur des sélecteurs à droite */
+.selectors-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Move details */
+.move-details {
+  margin-top: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.move-details strong {
+  color: var(--accent);
+}
+
+/* EVs restants */
+.evs-remaining {
+  font-size: 14px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Middle Panel */
+.middle-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.middle-panel h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.calculate-button {
+  padding: 14px 32px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.calculate-button:hover:not(:disabled) {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.calculate-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Results Panel */
+.results-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.results-panel h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.no-results {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* Statistiques de résultats */
+.results-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.ohko-guaranteed {
+  padding: 12px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid #10b981;
+  border-radius: 6px;
+  color: #10b981;
+  font-weight: 600;
+  text-align: center;
+  font-size: 16px;
+}
+
+.ohko-chance {
+  padding: 10px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  color: var(--text);
+  text-align: center;
+  font-size: 14px;
+}
+
+.no-ohko {
+  padding: 10px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid #ef4444;
+  border-radius: 6px;
+  color: #ef4444;
+  text-align: center;
+  font-size: 14px;
+}
+
+.hits-to-ko {
+  padding: 10px;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid #fbbf24;
+  border-radius: 6px;
+  color: #fbbf24;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Damage rolls - format tableau comme stats */
+.damage-rolls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.damage-rolls h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.rolls-table {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.roll-row {
+  display: grid;
+  grid-template-columns: 100px 1fr 100px;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  transition: background 0.2s;
+}
+
+.roll-row:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.roll-number {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.roll-damage {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  text-align: center;
+}
+
+.roll-percent {
+  font-size: 13px;
+  color: var(--accent);
+  text-align: right;
+  font-weight: 600;
+}
+
+.result-note {
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.rolls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.roll {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  min-width: 60px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+
+/* Home page */
+.home-page {
+  height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 40px;
+}
+
+.home-page h2 {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.home-page p {
+  font-size: 18px;
+  color: var(--text-muted);
+  max-width: 600px;
+  text-align: center;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .panels-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+  
+  .panel-middle {
+    order: 2;
+  }
+}
