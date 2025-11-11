@@ -12,7 +12,17 @@ export const translations = {
     // Page Home
     home: {
       welcome: "Bienvenue",
-      description: "Utilisez le menu pour accéder au calculateur de dégâts ou à l'analyse des menaces."
+      description: "Utilisez le menu pour accéder au calculateur de dégâts ou à l'analyse des menaces.",
+      centerTitle: "PokeTools",
+      centerDesc: "PokeTools est dédié au Pokemon Compétitif et a pour but de simplifier des tâches, calculs et reflexion supplémentaires pour vos équipes. Certaines fonctionnalités sont encore en développement.",
+      block_calc_title: "Calculateur de dégât",
+      block_calc_desc: "Calculateur de dégâts. Certaines options manquent encore (ex : objets).",
+      block_threats_title: "Analyseur de menace",
+      block_threats_desc: "Trouvez rapidement quels Pokémon peuvent KO un défenseur donné.",
+      block_coverage_title: "Vérifier la couverture offensive",
+      block_coverage_desc: "Analysez quelles attaques couvrent le mieux vos menaces et comblent les faiblesses.",
+      block_type_title: "Vérifier la couverture de type",
+      block_type_desc: "Évaluez les résistances et vulnérabilités pour compléter votre équipe."
     },
     
     // Page Calculate
@@ -216,7 +226,17 @@ export const translations = {
     // Page Home
     home: {
       welcome: "Welcome",
-      description: "Use the menu to access the damage calculator or threat analysis."
+      description: "Use the menu to access the damage calculator or threat analysis.",
+      centerTitle: "PokeTools",
+      centerDesc: "PokeTools is dedicated to Competitive Pokémon and aims to simplify tasks, calculations and extra thinking for your teams. Some features are still in development.",
+      block_calc_title: "Damage calculator",
+      block_calc_desc: "Damage calculator. Some options are missing (e.g. items).",
+      block_threats_title: "Threat analyzer",
+      block_threats_desc: "Quickly find which Pokémon can KO a given defender.",
+      block_coverage_title: "Check offensive coverage",
+      block_coverage_desc: "Analyze which moves best cover your threats and patch weaknesses.",
+      block_type_title: "Check type coverage",
+      block_type_desc: "Evaluate resistances and vulnerabilities to round out your team."
     },
     
     // Page Calculate
