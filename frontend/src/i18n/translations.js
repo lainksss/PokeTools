@@ -96,7 +96,12 @@ export const translations = {
       found: "Trouvés",
       results: "Résultats",
       noCoverage: "Aucun Pokémon trouvé avec ces critères",
-      showAlive: "Afficher ceux qui survivent"
+      showAlive: "Afficher ceux qui survivent",
+      bulkMode: "Bulk des adversaires",
+      bulkNone: "Aucun bulk (0 EVs)",
+      bulkCustom: "Bulk personnalisé",
+      bulkMax: "Bulk maximum",
+      customEvs: "EVs personnalisés"
     },
     
     // Pokemon Panel
@@ -282,7 +287,12 @@ export const translations = {
       found: "Found",
       results: "Results",
       noCoverage: "No Pokémon found with these criteria",
-      showAlive: "Show survivors"
+      showAlive: "Show survivors",
+      bulkMode: "Opponents' bulk",
+      bulkNone: "No bulk (0 EVs)",
+      bulkCustom: "Custom bulk",
+      bulkMax: "Maximum bulk",
+      customEvs: "Custom EVs"
     },
     
     // Pokemon Panel

@@ -285,6 +285,13 @@ def api_types():
     return jsonify({"count": len(type_names), "types": type_names})
 
 
+@app.route("/api/pokemon-names", methods=["GET"])
+def api_pokemon_names():
+    """Retourne les traductions des noms de Pokémon."""
+    names_data = _load_json("all_pokemon_names_multilang.json") or {}
+    return jsonify(names_data)
+
+
 @app.route("/api/natures", methods=["GET"])
 def api_natures():
     """Retourne la liste de toutes les natures avec leurs effets."""
@@ -808,6 +815,8 @@ def api_analyze_coverage_stream():
     ko_mode = payload.get("ko_mode", "OHKO")
     include_no_ko = payload.get("include_no_ko", False)  # Inclure les Pokémon qui ne font PAS de KO
     field_data = payload.get("field", {})
+    bulk_mode = payload.get("bulk_mode", "none")  # 'none', 'custom', 'max'
+    custom_evs = payload.get("custom_evs", 0)  # EVs personnalisés pour le mode 'custom'
 
     if not attacker_data:
         return jsonify({"error": "attacker required"}), 400
@@ -839,18 +848,20 @@ def api_analyze_coverage_stream():
                 poke_id = poke.get("id")
                 poke_slug = poke.get("name", "unknown")
                 
-                # Construire le défenseur
-                defender_payload = {
-                    "pokemon_id": poke_id,
-                    "base_stats": poke.get("base_stats", {}),
-                    "evs": {"hp": 252, "defense": 252, "special_defense": 252},  # Max défensif
-                    "nature": "bold",  # Nature défensive
-                    "types": poke.get("types", []),
-                    "ability": None,
-                    "is_terastallized": False,
-                    "tera_type": None
-                }
-                defender = build_actor_from_payload(defender_payload)
+                # Déterminer les EVs et la nature selon le mode bulk
+                if bulk_mode == "none":
+                    # Aucun bulk : 0 EVs, nature neutre
+                    evs = {"hp": 0, "defense": 0, "special_defense": 0}
+                    nature = "hardy"
+                elif bulk_mode == "custom":
+                    # Bulk personnalisé : répartir les EVs en moitié-moitié
+                    ev_per_stat = custom_evs // 2
+                    evs = {"hp": ev_per_stat, "defense": ev_per_stat, "special_defense": ev_per_stat}
+                    nature = "hardy"
+                else:  # bulk_mode == "max"
+                    # Max bulk : 252 partout, nature sera adaptée par attaque
+                    evs = {"hp": 252, "defense": 252, "special_defense": 252}
+                    nature = "hardy"  # Sera changé pour chaque attaque
                 
                 # Tester chaque attaque et trouver la meilleure
                 best_result = None
@@ -867,6 +878,30 @@ def api_analyze_coverage_stream():
                             full_move_data = {**complete_move_data, **move_data}
                         else:
                             full_move_data = move_data
+                        
+                        # Si mode max, adapter la nature selon le type d'attaque
+                        defender_nature = nature
+                        if bulk_mode == "max":
+                            damage_class = full_move_data.get("damage_class", "physical")
+                            
+                            # Choisir la nature qui boost la défense appropriée
+                            if damage_class == "special":
+                                defender_nature = "calm"  # +Def Spé, -Attaque
+                            else:
+                                defender_nature = "bold"  # +Def, -Attaque
+                        
+                        # Construire le défenseur avec les paramètres appropriés
+                        defender_payload = {
+                            "pokemon_id": poke_id,
+                            "base_stats": poke.get("base_stats", {}),
+                            "evs": evs,
+                            "nature": defender_nature,
+                            "types": poke.get("types", []),
+                            "ability": None,
+                            "is_terastallized": False,
+                            "tera_type": None
+                        }
+                        defender = build_actor_from_payload(defender_payload)
 
                         # Calculer les dégâts
                         result = calculate_damage(

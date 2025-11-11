@@ -3,7 +3,7 @@ import PokemonPanel from '../components/PokemonPanel'
 import { useTranslation } from '../i18n/LanguageContext'
 
 export default function Threats() {
-  const { t } = useTranslation()
+  const { t, getPokemonName } = useTranslation()
   const [defender, setDefender] = useState(null)
   const [koMode, setKoMode] = useState('OHKO') // 'OHKO' or '2HKO'
   const [threats, setThreats] = useState([])
@@ -314,7 +314,7 @@ export default function Threats() {
                 .map((threat, idx) => (
                 <div key={idx} className="threat-card">
                   <div className="threat-header">
-                    <h4>{threat.attacker_name}</h4>
+                    <h4>{getPokemonName(threat.attacker_id, threat.attacker_name)}</h4>
                     <span className="threat-best-ko">{threat.best_ko_percent}% KO</span>
                   </div>
                   

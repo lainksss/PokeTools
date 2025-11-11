@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useTranslation } from '../i18n/LanguageContext'
 
 export default function PokemonPanel({ side, value, onChange, showMultipleMoves = false }) {
-  const { t } = useTranslation()
+  const { t, getPokemonName, matchesPokemonName, language } = useTranslation()
   const [allPokemon, setAllPokemon] = useState([])
   const [filteredPokemon, setFilteredPokemon] = useState([])
   const [searchText, setSearchText] = useState('')
@@ -46,7 +46,7 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
           is_terastallized: false,
           tera_type: null
         }
-        setSearchText(firstPoke.name.charAt(0).toUpperCase() + firstPoke.name.slice(1))
+        setSearchText(getPokemonName(firstPoke.id, firstPoke.name.charAt(0).toUpperCase() + firstPoke.name.slice(1)))
         onChange && onChange(initialData)
       }
     }).catch(err => {
@@ -64,12 +64,24 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
       setFilteredPokemon(allPokemon)
     } else {
       const search = searchText.toLowerCase()
-      const filtered = allPokemon.filter(p => 
-        p.name.toLowerCase().includes(search)
-      )
+      const filtered = allPokemon.filter(p => {
+        // Rechercher dans TOUTES les langues (anglais + traductions)
+        // Chercher d'abord dans le nom anglais
+        if (p.name.toLowerCase().includes(search)) return true
+        // Puis chercher dans toutes les traductions disponibles
+        if (matchesPokemonName(p.id, search)) return true
+        return false
+      })
       setFilteredPokemon(filtered)
     }
-  }, [searchText, allPokemon])
+  }, [searchText, allPokemon, matchesPokemonName, language])
+
+  // Update searchText when language changes and a Pokemon is selected
+  useEffect(() => {
+    if (value && value.id) {
+      setSearchText(getPokemonName(value.id, value.name.charAt(0).toUpperCase() + value.name.slice(1)))
+    }
+  }, [language, value?.id, getPokemonName])
 
   // Load moves and abilities when pokemon changes
   useEffect(() => {
@@ -128,7 +140,7 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
     )
     
     if (pokemon) {
-      setSearchText(pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1))
+      setSearchText(getPokemonName(pokemon.id, pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)))
       setShowDropdown(false)
       onChange && onChange({
         id: pokemon.id,
@@ -252,7 +264,7 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
                 className="pokemon-dropdown-item"
                 onClick={() => handlePokemonSelect(p.name)}
               >
-                {p.name.charAt(0).toUpperCase() + p.name.slice(1)}
+                {getPokemonName(p.id, p.name.charAt(0).toUpperCase() + p.name.slice(1))}
               </div>
             ))}
           </div>
