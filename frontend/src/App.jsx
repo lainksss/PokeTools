@@ -14,6 +14,7 @@ export default function App() {
           <Link to="/calculate">{t('nav.calculator')}</Link>
           <Link to="/threats">{t('nav.threats')}</Link>
           <Link to="/coverage">{t('nav.coverage') || 'Coverage'}</Link>
+          <Link to="/type-coverage">{t('nav.typeCoverage') || 'Type Coverage'}</Link>
         </nav>
         <div className="language-selector">
           <button 

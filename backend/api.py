@@ -1011,6 +1011,89 @@ def api_analyze_coverage_stream():
     )
 
 
+@app.route("/api/analyze_type_coverage", methods=["POST"])
+def api_analyze_type_coverage():
+    """Analyse la couverture de types : trouve les Pokémon qui ne sont PAS touchés en super efficace."""
+    payload = request.get_json() or {}
+    moves_data = payload.get("moves", [])
+
+    if not moves_data or len(moves_data) == 0:
+        return jsonify({"error": "at least one move required"}), 400
+
+    try:
+        # Charger les données nécessaires
+        all_pokemon_data = _load_json("all_pokemon.json") or {}
+        all_moves = _load_json("all_moves.json") or {}
+        type_chart = _load_json("all_types.json") or {}
+
+        # Récupérer les types des attaques (seulement les attaques physiques/spéciales)
+        move_types = []
+        for move_data in moves_data:
+            move_name = move_data.get("name")
+            if move_name and move_name in all_moves:
+                move_info = all_moves[move_name]
+                damage_class = move_info.get("damage_class", "status")
+                
+                # Ignorer les attaques de statut
+                if damage_class in ["physical", "special"]:
+                    move_type = move_info.get("type")
+                    if move_type:
+                        move_types.append({
+                            "name": move_name,
+                            "type": move_type,
+                            "damage_class": damage_class
+                        })
+
+        if not move_types:
+            return jsonify({"error": "No damaging moves found"}), 400
+
+        # Analyser chaque Pokémon
+        not_super_effective = []
+        
+        for poke_name, poke_data in all_pokemon_data.items():
+            poke_id = poke_data.get("id")
+            poke_types = poke_data.get("types", [])
+            
+            # Vérifier l'efficacité maximale contre ce Pokémon
+            best_effectiveness = 0.0
+            best_move = None
+            best_move_type = None
+            
+            for move in move_types:
+                from calculate_damages.calculate_types import type_effectiveness
+                effectiveness = type_effectiveness(move["type"], poke_types, type_chart)
+                
+                if effectiveness > best_effectiveness:
+                    best_effectiveness = effectiveness
+                    best_move = move["name"]
+                    best_move_type = move["type"]
+            
+            # Afficher uniquement les Pokémon résistants (×0.5 ou ×0.25 ou ×0.0)
+            # Exclure les neutres (×1.0)
+            if best_effectiveness < 1.0:
+                not_super_effective.append({
+                    "pokemon_id": poke_id,
+                    "pokemon_name": poke_name,
+                    "types": poke_types,
+                    "best_effectiveness": best_effectiveness,
+                    "best_move": best_move,
+                    "best_move_type": best_move_type
+                })
+        
+        # Trier par efficacité (les moins touchés en premier)
+        not_super_effective.sort(key=lambda x: x["best_effectiveness"])
+        
+        return jsonify({
+            "not_super_effective": not_super_effective,
+            "total_pokemon": len(all_pokemon_data),
+            "not_covered": len(not_super_effective),
+            "move_types_used": [m["type"] for m in move_types]
+        })
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
 if __name__ == "__main__":
     # Run the API locally; allow environment override for host/port
     import os

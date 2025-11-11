@@ -5,7 +5,8 @@ export const translations = {
     nav: {
       calculator: "Calculateur",
       threats: "Analyse des menaces",
-      coverage: "Couverture offensive"
+      coverage: "Couverture offensive",
+      typeCoverage: "Couverture de types"
     },
     
     // Page Home
@@ -103,6 +104,18 @@ export const translations = {
       bulkMax: "Bulk maximum",
       customEvs: "EVs personnalisés"
     },
+
+    // Page Type Coverage
+    typeCoverage: {
+      title: "Couverture de types",
+      description: "Analysez les Pokémon qui ne sont PAS touchés en super efficace par vos attaques",
+      analysisSettings: "Paramètres d'analyse",
+      analyze: "Analyser les types",
+      results: "Pokémon non couverts",
+      noResults: "Tous les Pokémon sont couverts ou cliquez sur \"Analyser les types\"",
+      foundCount: "Pokémon non couverts",
+      bestEffectiveness: "Meilleure efficacité"
+    },
     
     // Pokemon Panel
     pokemon: {
@@ -196,7 +209,8 @@ export const translations = {
     nav: {
       calculator: "Calculator",
       threats: "Threat Analysis",
-      coverage: "Offensive Coverage"
+      coverage: "Offensive Coverage",
+      typeCoverage: "Type Coverage"
     },
     
     // Page Home
@@ -293,6 +307,18 @@ export const translations = {
       bulkCustom: "Custom bulk",
       bulkMax: "Maximum bulk",
       customEvs: "Custom EVs"
+    },
+
+    // Page Type Coverage
+    typeCoverage: {
+      title: "Type Coverage",
+      description: "Analyze Pokémon that are NOT hit super effectively by your moves",
+      analysisSettings: "Analysis Settings",
+      analyze: "Analyze Types",
+      results: "Uncovered Pokémon",
+      noResults: "All Pokémon are covered or click \"Analyze Types\"",
+      foundCount: "Uncovered Pokémon",
+      bestEffectiveness: "Best effectiveness"
     },
     
     // Pokemon Panel

@@ -1323,3 +1323,54 @@ select.form-control option:checked {
   color: #7dd3fc;
   border: 1px solid rgba(104, 144, 240, 0.5);
 }
+
+/* Type Coverage specific styles */
+.type-coverage-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.best-effectiveness {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.best-effectiveness strong {
+  color: var(--text);
+  font-size: 15px;
+  margin-left: 4px;
+}
+
+.best-move-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.threat-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.2s;
+  margin-bottom: 8px;
+}
+
+.threat-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent);
+}
+
+.threat-pokemon {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.threat-pokemon strong {
+  font-size: 16px;
+  color: var(--text);
+}
