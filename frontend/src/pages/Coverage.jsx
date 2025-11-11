@@ -320,7 +320,9 @@ function CoverageItem({ item, koMode, t }) {
           <h4>{item.defender_name}</h4>
           <div className="threat-types">
             {item.defender_types?.map(type => (
-              <span key={type} className={`type-badge type-${type}`}>{type}</span>
+              <span key={type} className={`type-badge type-${type}`}>
+                {t(`types.${type}`)}
+              </span>
             ))}
           </div>
         </div>
@@ -331,7 +333,9 @@ function CoverageItem({ item, koMode, t }) {
         <div className="attack-info">
           <div className="attack-name">
             <strong>{item.best_move_name}</strong>
-            <span className={`attack-type type-${item.best_move_type}`}>{item.best_move_type}</span>
+            <span className={`type-badge type-${item.best_move_type}`}>
+              {t(`types.${item.best_move_type}`)}
+            </span>
           </div>
 
           <div className="attack-stats">
