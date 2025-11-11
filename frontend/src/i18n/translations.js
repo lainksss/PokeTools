@@ -1,0 +1,322 @@
+// Traductions pour l'application
+export const translations = {
+  fr: {
+    // Navigation
+    nav: {
+      calculator: "Calculateur",
+      threats: "Analyse des menaces"
+    },
+    
+    // Page Home
+    home: {
+      welcome: "Bienvenue",
+      description: "Utilisez le menu pour accéder au calculateur de dégâts ou à l'analyse des menaces."
+    },
+    
+    // Page Calculate
+    calculate: {
+      title: "Calculateur de dégâts Pokémon",
+      attacker: "Pokémon Attaquant",
+      defender: "Pokémon Défenseur",
+      selectPokemon: "Sélectionner un Pokémon",
+      search: "Rechercher...",
+      level: "Niveau",
+      nature: "Nature",
+      ability: "Talent",
+      evs: "EVs",
+      hp: "PV",
+      attack: "Attaque",
+      defense: "Défense",
+      spAttack: "Atq. Spé.",
+      spDefense: "Déf. Spé.",
+      speed: "Vitesse",
+      terastallized: "Téracristallisé",
+      teraType: "Type Téra",
+      move: "Attaque",
+      selectMove: "Sélectionner une attaque",
+      critical: "Coup critique",
+      battleMode: "Mode de combat",
+      battleConditions: "Conditions de combat",
+      single: "Simple",
+      double: "Double",
+      weather: "Météo",
+      terrain: "Terrain",
+      calculate: "Calculer",
+      results: "Résultats",
+      damage: "Dégâts",
+      minDamage: "Min",
+      maxDamage: "Max",
+      koChance: "% KO",
+      guaranteed: "Garanti",
+      selectPokemonError: "Veuillez sélectionner un Pokémon attaquant et défenseur",
+      selectMoveError: "Veuillez sélectionner une attaque pour l'attaquant"
+    },
+    
+    // Page Threats
+    threats: {
+      title: "Analyse des menaces",
+      subtitle: "Trouvez tous les Pokémon pouvant KO votre défenseur",
+      defender: "Défenseur",
+      conditions: "Conditions",
+      koMode: "Mode KO",
+      ohko: "OHKO",
+      twohko: "2HKO",
+      weather: "Météo",
+      terrain: "Terrain",
+      findThreats: "Trouver les menaces",
+      searching: "Recherche...",
+      results: "Résultats",
+      threats: "menaces",
+      analyzing: "Analyse en cours...",
+      noThreats: "Aucune menace trouvée ou cliquez sur \"Trouver les menaces\"",
+      pokemonAnalyzed: "Pokémon analysés",
+      threatsFound: "Menace(s) trouvée(s)",
+      guaranteedOnly: "KO garantis (100%)",
+      minRolls: "Min rolls",
+      attack: "Attaque",
+      type: "Type",
+      power: "Puissance",
+      damage: "Dégâts",
+      rolls: "rolls",
+      nature: "Nature",
+      guaranteedKO: "✓ KO Garanti"
+    },
+    
+    // Pokemon Panel
+    pokemon: {
+      types: "Types",
+      evsRemaining: "EVs restants",
+      neutral: "neutral",
+      none: "Aucun",
+      accuracy: "Précision",
+      category: "Catégorie"
+    },
+    
+    // Météos
+    weather: {
+      none: "Aucune",
+      sun: "Soleil",
+      rain: "Pluie",
+      sandstorm: "Tempête de sable",
+      snow: "Neige"
+    },
+    
+    // Terrains
+    terrain: {
+      none: "Aucun",
+      grassy: "Herbu",
+      electric: "Électrique",
+      misty: "Brumeux",
+      psychic: "Psychique"
+    },
+    
+    // Natures communes
+    natures: {
+      hardy: "Hardi",
+      lonely: "Solo",
+      brave: "Brave",
+      adamant: "Rigide",
+      naughty: "Mauvais",
+      bold: "Assuré",
+      relaxed: "Relax",
+      impish: "Malin",
+      lax: "Lâche",
+      timid: "Timide",
+      hasty: "Pressé",
+      serious: "Sérieux",
+      jolly: "Jovial",
+      naive: "Naïf",
+      modest: "Modeste",
+      mild: "Doux",
+      quiet: "Discret",
+      bashful: "Pudique",
+      rash: "Foufou",
+      calm: "Calme",
+      gentle: "Gentil",
+      sassy: "Malpoli",
+      careful: "Prudent",
+      quirky: "Bizarre"
+    },
+    
+    // Commun
+    common: {
+      loading: "Chargement...",
+      error: "Erreur",
+      close: "Fermer"
+    }
+  },
+  
+  en: {
+    // Navigation
+    nav: {
+      calculator: "Calculator",
+      threats: "Threat Analysis"
+    },
+    
+    // Page Home
+    home: {
+      welcome: "Welcome",
+      description: "Use the menu to access the damage calculator or threat analysis."
+    },
+    
+    // Page Calculate
+    calculate: {
+      title: "Pokémon Damage Calculator",
+      attacker: "Attacking Pokémon",
+      defender: "Defending Pokémon",
+      selectPokemon: "Select a Pokémon",
+      search: "Search...",
+      level: "Level",
+      nature: "Nature",
+      ability: "Ability",
+      evs: "EVs",
+      hp: "HP",
+      attack: "Attack",
+      defense: "Defense",
+      spAttack: "Sp. Atk",
+      spDefense: "Sp. Def",
+      speed: "Speed",
+      terastallized: "Terastallized",
+      teraType: "Tera Type",
+      move: "Move",
+      selectMove: "Select a move",
+      critical: "Critical hit",
+      battleMode: "Battle mode",
+      battleConditions: "Battle Conditions",
+      single: "Single",
+      double: "Double",
+      weather: "Weather",
+      terrain: "Terrain",
+      calculate: "Calculate",
+      results: "Results",
+      damage: "Damage",
+      minDamage: "Min",
+      maxDamage: "Max",
+      koChance: "KO%",
+      guaranteed: "Guaranteed",
+      selectPokemonError: "Please select an attacking and defending Pokémon",
+      selectMoveError: "Please select a move for the attacker"
+    },
+    
+    // Page Threats
+    threats: {
+      title: "Threat Analysis",
+      subtitle: "Find all Pokémon that can KO your defender",
+      defender: "Defender",
+      conditions: "Conditions",
+      koMode: "KO Mode",
+      ohko: "OHKO",
+      twohko: "2HKO",
+      weather: "Weather",
+      terrain: "Terrain",
+      findThreats: "Find Threats",
+      searching: "Searching...",
+      results: "Results",
+      threats: "threats",
+      analyzing: "Analyzing...",
+      noThreats: "No threats found or click \"Find Threats\"",
+      pokemonAnalyzed: "Pokémon analyzed",
+      threatsFound: "Threat(s) found",
+      guaranteedOnly: "Guaranteed KO (100%)",
+      minRolls: "Min rolls",
+      attack: "Attack",
+      type: "Type",
+      power: "Power",
+      damage: "Damage",
+      rolls: "rolls",
+      nature: "Nature",
+      guaranteedKO: "✓ Guaranteed KO"
+    },
+    
+    // Pokemon Panel
+    pokemon: {
+      types: "Types",
+      evsRemaining: "EVs remaining",
+      neutral: "neutral",
+      none: "None",
+      accuracy: "Accuracy",
+      category: "Category"
+    },
+    
+    // Weather
+    weather: {
+      none: "None",
+      sun: "Sun",
+      rain: "Rain",
+      sandstorm: "Sandstorm",
+      snow: "Snow"
+    },
+    
+    // Terrain
+    terrain: {
+      none: "None",
+      grassy: "Grassy",
+      electric: "Electric",
+      misty: "Misty",
+      psychic: "Psychic"
+    },
+    
+    // Common natures (keep English names)
+    natures: {
+      hardy: "Hardy",
+      lonely: "Lonely",
+      brave: "Brave",
+      adamant: "Adamant",
+      naughty: "Naughty",
+      bold: "Bold",
+      relaxed: "Relaxed",
+      impish: "Impish",
+      lax: "Lax",
+      timid: "Timid",
+      hasty: "Hasty",
+      serious: "Serious",
+      jolly: "Jolly",
+      naive: "Naive",
+      modest: "Modest",
+      mild: "Mild",
+      quiet: "Quiet",
+      bashful: "Bashful",
+      rash: "Rash",
+      calm: "Calm",
+      gentle: "Gentle",
+      sassy: "Sassy",
+      careful: "Careful",
+      quirky: "Quirky"
+    },
+    
+    // Common
+    common: {
+      loading: "Loading...",
+      error: "Error",
+      close: "Close"
+    }
+  }
+}
+
+// Hook pour utiliser les traductions
+export function useTranslation() {
+  const [language, setLanguage] = React.useState(
+    localStorage.getItem('language') || 'fr'
+  )
+  
+  const t = (key) => {
+    const keys = key.split('.')
+    let value = translations[language]
+    
+    for (const k of keys) {
+      value = value?.[k]
+    }
+    
+    return value || key
+  }
+  
+  const changeLanguage = (lang) => {
+    setLanguage(lang)
+    localStorage.setItem('language', lang)
+  }
+  
+  return { t, language, changeLanguage }
+}
+
+// Import React pour le hook
+import React from 'react'

@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import PokemonPanel from '../components/PokemonPanel'
+import { useTranslation } from '../i18n/LanguageContext'
 
 export default function Threats() {
+  const { t } = useTranslation()
   const [defender, setDefender] = useState(null)
   const [koMode, setKoMode] = useState('OHKO') // 'OHKO' or '2HKO'
   const [threats, setThreats] = useState([])
@@ -18,7 +20,7 @@ export default function Threats() {
 
   async function findThreatsStreaming() {
     if (!defender) {
-      alert('Veuillez sélectionner un Pokémon défenseur')
+      alert(t('threats.noThreats'))
       return
     }
 
@@ -166,13 +168,13 @@ export default function Threats() {
   return (
     <div className="threats-page">
       <div className="threats-header">
-        <h2>Analyse des menaces</h2>
-        <p>Trouvez tous les Pokémon pouvant KO votre défenseur</p>
+        <h2>{t('threats.title')}</h2>
+        <p>{t('threats.subtitle')}</p>
       </div>
 
       <div className="threats-container">
         <div className="threats-left">
-          <h3>Pokémon Défenseur</h3>
+          <h3>{t('threats.defender')}</h3>
           <PokemonPanel 
             side="defender" 
             value={defender} 
@@ -181,30 +183,30 @@ export default function Threats() {
         </div>
 
         <div className="threats-middle">
-          <h3>Conditions</h3>
+          <h3>{t('threats.conditions')}</h3>
           
           <div className="form-group">
-            <label>Mode KO</label>
+            <label>{t('threats.koMode')}</label>
             <div className="ko-mode-toggle">
               <button
                 type="button"
                 className={`mode-button ${koMode === 'OHKO' ? 'active' : ''}`}
                 onClick={() => setKoMode('OHKO')}
               >
-                OHKO
+                {t('threats.ohko')}
               </button>
               <button
                 type="button"
                 className={`mode-button ${koMode === '2HKO' ? 'active' : ''}`}
                 onClick={() => setKoMode('2HKO')}
               >
-                2HKO
+                {t('threats.twohko')}
               </button>
             </div>
           </div>
 
           <div className="form-group">
-            <label>Météo</label>
+            <label>{t('threats.weather')}</label>
             <select 
               value={weather}
               onChange={e => setWeather(e.target.value)}
@@ -212,22 +214,22 @@ export default function Threats() {
             >
               {ALL_WEATHERS.map(w => (
                 <option key={w} value={w}>
-                  {w === 'none' ? 'None' : w.charAt(0).toUpperCase() + w.slice(1)}
+                  {t(`weather.${w}`)}
                 </option>
               ))}
             </select>
           </div>
 
           <div className="form-group">
-            <label>Terrain</label>
+            <label>{t('threats.terrain')}</label>
             <select 
               value={terrain}
               onChange={e => setTerrain(e.target.value)}
               className="form-control"
             >
-              {ALL_TERRAINS.map(t => (
-                <option key={t} value={t}>
-                  {t === 'none' ? 'None' : t.charAt(0).toUpperCase() + t.slice(1)}
+              {ALL_TERRAINS.map(ter => (
+                <option key={ter} value={ter}>
+                  {t(`terrain.${ter}`)}
                 </option>
               ))}
             </select>
@@ -238,7 +240,7 @@ export default function Threats() {
             disabled={loading || !defender}
             className="calculate-button"
           >
-            {loading ? 'Recherche...' : 'Trouver les menaces'}
+            {loading ? t('threats.searching') : t('threats.findThreats')}
           </button>
 
           {loading && progress.total > 0 && (
@@ -250,9 +252,9 @@ export default function Threats() {
                 />
               </div>
               <div className="progress-text">
-                {progress.processed} / {progress.total} Pokémon analysés
+                {progress.processed} / {progress.total} {t('threats.pokemonAnalyzed')}
                 <br />
-                {progress.threats_found} menace{progress.threats_found > 1 ? 's' : ''} trouvée{progress.threats_found > 1 ? 's' : ''}
+                {progress.threats_found} {t('threats.threatsFound')}
               </div>
             </div>
           )}
@@ -260,7 +262,7 @@ export default function Threats() {
 
         <div className="threats-right">
           <div className="threats-right-header">
-            <h3>Résultats ({threats.length} menaces)</h3>
+            <h3>{t('threats.results')} ({threats.length} {t('threats.threats')})</h3>
             
             <div className="filters-group">
               <label className="guaranteed-filter">
@@ -269,11 +271,11 @@ export default function Threats() {
                   checked={showOnlyGuaranteed}
                   onChange={(e) => setShowOnlyGuaranteed(e.target.checked)}
                 />
-                <span>KO garantis (100%)</span>
+                <span>{t('threats.guaranteedOnly')}</span>
               </label>
               
               <label className="rolls-filter">
-                <span>Min rolls:</span>
+                <span>{t('threats.minRolls')}:</span>
                 <input 
                   type="number" 
                   min="1" 
@@ -286,10 +288,10 @@ export default function Threats() {
             </div>
           </div>
           
-          {loading && <p className="loading-text">Analyse en cours...</p>}
+          {loading && <p className="loading-text">{t('threats.analyzing')}</p>}
           
           {!loading && threats.length === 0 && (
-            <p className="no-threats">Aucune menace trouvée ou cliquez sur "Trouver les menaces"</p>
+            <p className="no-threats">{t('threats.noThreats')}</p>
           )}
 
           {!loading && threats.length > 0 && (
@@ -321,31 +323,31 @@ export default function Threats() {
                       <div key={attackIdx} className="attack-info">
                         <div className="attack-name">
                           <strong>{attack.move_name}</strong>
-                          <span className="attack-type type-{attack.move_type}">{attack.move_type}</span>
+                          <span className="attack-type type-{attack.move_type}">{t(`threats.type`)}</span>
                           {attack.move_power && <span className="attack-power">⚡{attack.move_power}</span>}
                         </div>
                         
                         <div className="attack-stats">
                           <div className="damage-range">
-                            <span className="damage-label">Dégâts:</span>
+                            <span className="damage-label">{t('threats.damage')}:</span>
                             <span className="damage-values">{attack.damage_min} - {attack.damage_max}</span>
                           </div>
                           
                           <div className="ko-info">
-                            <span className="ko-rolls">{attack.ko_rolls}/{attack.total_rolls} rolls</span>
+                            <span className="ko-rolls">{attack.ko_rolls}/{attack.total_rolls} {t('threats.rolls')}</span>
                             <span className={`ko-percent ${attack.ko_percent === 100 ? 'guaranteed' : ''}`}>
                               {attack.ko_percent}%
                             </span>
                           </div>
                           
                           <div className="nature-info">
-                            <span className="nature-label">Nature:</span>
+                            <span className="nature-label">{t('threats.nature')}:</span>
                             <span className="nature-value">{attack.nature_used}</span>
                           </div>
                         </div>
                         
                         {attack.ko_percent === 100 && (
-                          <div className="guaranteed-badge">✓ KO Garanti</div>
+                          <div className="guaranteed-badge">{t('threats.guaranteedKO')}</div>
                         )}
                       </div>
                     ))}

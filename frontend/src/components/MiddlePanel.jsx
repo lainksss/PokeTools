@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from '../i18n/LanguageContext'
 
 const ALL_WEATHERS = [
   'none', 'sun', 'rain', 'sandstorm', 'snow'
@@ -9,6 +10,7 @@ const ALL_TERRAINS = [
 ]
 
 export default function MiddlePanel({ left, right, setResult }) {
+  const { t } = useTranslation()
   const [loading, setLoading] = useState(false)
   const [weather, setWeather] = useState('none')
   const [terrain, setTerrain] = useState('none')
@@ -17,12 +19,12 @@ export default function MiddlePanel({ left, right, setResult }) {
 
   async function calculate() {
     if (!left || !right) {
-      alert('Please select an attacking pokemon and a defending pokemon')
+      alert(t('calculate.selectPokemonError'))
       return
     }
 
     if (!left.move) {
-      alert('Please select a move for the attacker')
+      alert(t('calculate.selectMoveError'))
       return
     }
 
@@ -83,30 +85,30 @@ export default function MiddlePanel({ left, right, setResult }) {
 
   return (
     <div className="middle-panel">
-      <h3>Conditions de combat</h3>
+      <h3>{t('calculate.battleConditions')}</h3>
       
       <div className="form-group">
-        <label>Mode de combat</label>
+        <label>{t('calculate.battleMode')}</label>
         <div className="battle-mode-toggle">
           <button
             type="button"
             className={`mode-button ${battleMode === 'single' ? 'active' : ''}`}
             onClick={() => setBattleMode('single')}
           >
-            Single
+            {t('calculate.single')}
           </button>
           <button
             type="button"
             className={`mode-button ${battleMode === 'double' ? 'active' : ''}`}
             onClick={() => setBattleMode('double')}
           >
-            Double
+            {t('calculate.double')}
           </button>
         </div>
       </div>
       
       <div className="form-group">
-        <label>Météo</label>
+        <label>{t('calculate.weather')}</label>
         <select 
           value={weather}
           onChange={e => setWeather(e.target.value)}
@@ -114,22 +116,22 @@ export default function MiddlePanel({ left, right, setResult }) {
         >
           {ALL_WEATHERS.map(w => (
             <option key={w} value={w}>
-              {w === 'none' ? 'None' : w.replace(/-/g, ' ')}
+              {t(`weather.${w}`)}
             </option>
           ))}
         </select>
       </div>
 
       <div className="form-group">
-        <label>Terrain</label>
+        <label>{t('calculate.terrain')}</label>
         <select 
           value={terrain}
           onChange={e => setTerrain(e.target.value)}
           className="form-control"
         >
-          {ALL_TERRAINS.map(t => (
-            <option key={t} value={t}>
-              {t === 'none' ? 'None' : t.replace(/-/g, ' ')}
+          {ALL_TERRAINS.map(ter => (
+            <option key={ter} value={ter}>
+              {t(`terrain.${ter}`)}
             </option>
           ))}
         </select>
@@ -142,7 +144,7 @@ export default function MiddlePanel({ left, right, setResult }) {
             checked={isCritical}
             onChange={e => setIsCritical(e.target.checked)}
           />
-          Coup critique
+          {t('calculate.critical')}
         </label>
       </div>
 
@@ -151,7 +153,7 @@ export default function MiddlePanel({ left, right, setResult }) {
         disabled={loading || !left || !right || !left.move}
         className="calculate-button"
       >
-        {loading ? 'Calculating...' : 'Calculate'}
+        {loading ? t('common.loading') : t('calculate.calculate')}
       </button>
     </div>
   )
