@@ -4,7 +4,8 @@ export const translations = {
     // Navigation
     nav: {
       calculator: "Calculateur",
-      threats: "Analyse des menaces"
+      threats: "Analyse des menaces",
+      coverage: "Couverture offensive"
     },
     
     // Page Home
@@ -72,7 +73,8 @@ export const translations = {
       pokemonAnalyzed: "Pokémon analysés",
       threatsFound: "Menace(s) trouvée(s)",
       guaranteedOnly: "KO garantis (100%)",
-      minRolls: "Min rolls",
+      showOnlyGuaranteed: "Afficher uniquement les KO garantis",
+      minRolls: "Minimum de rolls",
       attack: "Attaque",
       type: "Type",
       power: "Puissance",
@@ -80,6 +82,19 @@ export const translations = {
       rolls: "rolls",
       nature: "Nature",
       guaranteedKO: "✓ KO Garanti"
+    },
+
+    // Page Coverage
+    coverage: {
+      title: "Analyse de couverture offensive",
+      description: "Analysez quels Pokémon votre attaquant peut KO avec ses attaques",
+      analysisSettings: "Paramètres d'analyse",
+      analyze: "Analyser la couverture",
+      moves: "Attaques (max 4)",
+      found: "Trouvés",
+      results: "Résultats",
+      noCoverage: "Aucun Pokémon trouvé avec ces critères",
+      showAlive: "Afficher ceux qui survivent"
     },
     
     // Pokemon Panel
@@ -150,7 +165,8 @@ export const translations = {
     // Navigation
     nav: {
       calculator: "Calculator",
-      threats: "Threat Analysis"
+      threats: "Threat Analysis",
+      coverage: "Offensive Coverage"
     },
     
     // Page Home
@@ -218,7 +234,8 @@ export const translations = {
       pokemonAnalyzed: "Pokémon analyzed",
       threatsFound: "Threat(s) found",
       guaranteedOnly: "Guaranteed KO (100%)",
-      minRolls: "Min rolls",
+      showOnlyGuaranteed: "Show only guaranteed KOs",
+      minRolls: "Minimum rolls",
       attack: "Attack",
       type: "Type",
       power: "Power",
@@ -226,6 +243,19 @@ export const translations = {
       rolls: "rolls",
       nature: "Nature",
       guaranteedKO: "✓ Guaranteed KO"
+    },
+
+    // Page Coverage
+    coverage: {
+      title: "Offensive Coverage Analysis",
+      description: "Analyze which Pokémon your attacker can KO with its moves",
+      analysisSettings: "Analysis Settings",
+      analyze: "Analyze Coverage",
+      moves: "Moves (max 4)",
+      found: "Found",
+      results: "Results",
+      noCoverage: "No Pokémon found with these criteria",
+      showAlive: "Show survivors"
     },
     
     // Pokemon Panel
