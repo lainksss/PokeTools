@@ -2,10 +2,15 @@
 
 This README provides a detailed overview of the PokeTools codebase: backend (Flask), frontend (React + Vite), data files, all HTTP/SSE API endpoints, request/response formats, and how to run the project locally.
 
+**🌐 Live Demo:** [https://almeidaalexandro.github.io/PokeTools/](https://almeidaalexandro.github.io/PokeTools/)
+
+> **Note:** The live demo is a static frontend-only deployment. To use the full functionality with API features, you'll need to run the backend locally.
+
 ---
 
 ## Table of Contents
 - Quick Overview
+- GitHub Pages Deployment
 - Repository Structure
 - Backend
   - Main Modules
@@ -30,6 +35,32 @@ This README provides a detailed overview of the PokeTools codebase: backend (Fla
 
 ## Quick Overview
 PokeTools is a suite of tools for competitive Pokémon: damage calculator, threat analysis, offensive coverage, and type coverage. The backend is Python (Flask) exposing REST and SSE endpoints for long-running analyses. The frontend is a React (Vite) app consuming these endpoints.
+
+## GitHub Pages Deployment
+
+The frontend is automatically deployed to GitHub Pages on every push to the `main` branch. The deployment is handled by GitHub Actions.
+
+### How it works
+1. Changes are pushed to the `main` branch
+2. GitHub Actions workflow builds the frontend (`npm run build`)
+3. The built files from `frontend/dist` are deployed to GitHub Pages
+4. The site is available at https://almeidaalexandro.github.io/PokeTools/
+
+### Manual deployment
+You can also trigger a deployment manually:
+1. Go to the Actions tab in the GitHub repository
+2. Select "Deploy to GitHub Pages" workflow
+3. Click "Run workflow"
+
+### Local testing with GitHub Pages base path
+To test the frontend locally with the same base path as GitHub Pages:
+```bash
+cd frontend
+npm run build
+npm run preview
+```
+
+Then visit http://localhost:4173/PokeTools/
 
 ## Repository Structure
 
