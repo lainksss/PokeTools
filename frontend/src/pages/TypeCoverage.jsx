@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react'
 import PokemonPanel from '../components/PokemonPanel'
 import { useTranslation } from '../i18n/LanguageContext'
+import { API_URL } from '../apiConfig'
 
 export default function TypeCoverage() {
   const { t, getPokemonName } = useTranslation()
@@ -45,7 +47,7 @@ export default function TypeCoverage() {
     }
 
     try {
-      const response = await fetch('/api/analyze_type_coverage', {
+        const response = await fetch(`${API_URL}/api/analyze_type_coverage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

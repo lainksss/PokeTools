@@ -1,5 +1,7 @@
+
 import React, { createContext, useContext, useState, useEffect } from 'react'
 import { translations } from './translations'
+import { API_URL } from '../apiConfig'
 
 const LanguageContext = createContext()
 
@@ -11,7 +13,7 @@ export function LanguageProvider({ children }) {
   
   // Charger les noms de Pokémon au démarrage
   useEffect(() => {
-    fetch('/api/pokemon-names')
+      fetch(`${API_URL}/api/pokemon-names`)
       .then(r => r.json())
       .then(data => setPokemonNames(data))
       .catch(err => console.error('Failed to load Pokemon names:', err))

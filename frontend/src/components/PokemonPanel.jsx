@@ -1,5 +1,7 @@
+
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from '../i18n/LanguageContext'
+import { API_URL } from '../apiConfig'
 
 export default function PokemonPanel({ side, value, onChange, showMultipleMoves = false }) {
   const { t, getPokemonName, matchesPokemonName, language } = useTranslation()
@@ -20,9 +22,9 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
     setLoading(true)
     
     Promise.all([
-      fetch('/api/pokemon').then(r => r.json()),
-      fetch('/api/types').then(r => r.json()),
-      fetch('/api/natures').then(r => r.json())
+      fetch(`${API_URL}/api/pokemon`).then(r => r.json()),
+      fetch(`${API_URL}/api/types`).then(r => r.json()),
+      fetch(`${API_URL}/api/natures`).then(r => r.json())
     ]).then(([pokemonData, typesData, naturesData]) => {
       if (!mounted) return
       setAllPokemon(pokemonData.results || [])
@@ -90,8 +92,8 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
     let mounted = true
     
     Promise.all([
-      fetch(`/api/pokemon/${value.id}/moves`).then(r => r.json()),
-      fetch(`/api/pokemon/${value.id}/abilities`).then(r => r.json())
+      fetch(`${API_URL}/api/pokemon/${value.id}/moves`).then(r => r.json()),
+      fetch(`${API_URL}/api/pokemon/${value.id}/abilities`).then(r => r.json())
     ]).then(([movesData, abilitiesData]) => {
       if (!mounted) return
       setPokemonMoves(movesData.moves || [])
@@ -109,7 +111,7 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
     
     let mounted = true
     
-    fetch('/api/calc_stats', {
+      fetch(`${API_URL}/api/calc_stats`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

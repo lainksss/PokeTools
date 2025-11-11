@@ -1,5 +1,7 @@
+
 import React, { useState } from 'react'
 import { useTranslation } from '../i18n/LanguageContext'
+import { API_URL } from '../apiConfig'
 
 const ALL_WEATHERS = [
   'none', 'sun', 'rain', 'sandstorm', 'snow'
@@ -64,7 +66,7 @@ export default function MiddlePanel({ left, right, setResult }) {
     }
 
     try {
-      const res = await fetch('/api/calc_damage', {
+        const res = await fetch(`${API_URL}/api/calc_damage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

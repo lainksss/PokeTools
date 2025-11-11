@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react'
 import PokemonPanel from '../components/PokemonPanel'
 import { useTranslation } from '../i18n/LanguageContext'
+import { API_URL } from '../apiConfig'
 
 export default function Threats() {
   const { t, getPokemonName } = useTranslation()
@@ -47,7 +49,7 @@ export default function Threats() {
     }
 
     try {
-      const response = await fetch('/api/find_threats_stream', {
+        const response = await fetch(`${API_URL}/api/find_threats_stream`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -136,7 +138,7 @@ export default function Threats() {
     }
 
     try {
-      const res = await fetch('/api/find_threats', {
+  const res = await fetch(`${API_URL}/api/find_threats`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
