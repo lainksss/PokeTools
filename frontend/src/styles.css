@@ -393,7 +393,7 @@ select.form-control option:checked {
 .stats-header,
 .stats-row {
   display: grid;
-  grid-template-columns: 100px 80px 100px 80px;
+  grid-template-columns: 100px 80px 100px 90px 80px;
   gap: 12px;
   align-items: center;
   padding: 8px;
@@ -465,6 +465,42 @@ select.form-control option:checked {
   outline: none;
   border-color: var(--accent);
   background: rgba(255, 255, 255, 0.08);
+}
+
+/* Boost select */
+.stat-boost {
+  display: flex;
+  justify-content: center;
+}
+
+.boost-select {
+  width: 90px;
+  padding: 6px 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.boost-select:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.boost-select option {
+  background: #1a2332;
+  color: #ffffff;
+  padding: 8px;
+}
+
+.boost-select option:checked {
+  background: #2563eb;
+  color: #ffffff;
 }
 
 /* Selectors container on right */

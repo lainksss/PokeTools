@@ -39,7 +39,8 @@ export default function MiddlePanel({ left, right, setResult }) {
         types: left.types,
         ability: left.ability,
         is_terastallized: left.is_terastallized,
-        tera_type: left.tera_type
+        tera_type: left.tera_type,
+        stages: left.boosts || {}
       },
       defender: {
         pokemon_id: right.id,
@@ -49,7 +50,8 @@ export default function MiddlePanel({ left, right, setResult }) {
         types: right.types,
         ability: right.ability,
         is_terastallized: right.is_terastallized,
-        tera_type: right.tera_type
+        tera_type: right.tera_type,
+        stages: right.boosts || {}
       },
       move: left.move,
       field: {
@@ -74,10 +76,6 @@ export default function MiddlePanel({ left, right, setResult }) {
       }
       
       const data = await res.json()
-      console.log('=== DEBUG DAMAGE CALCULATION ===')
-      console.log('Payload sent:', payload)
-      console.log('Response:', data)
-      console.log('================================')
       setResult(data)
     } catch (e) {
       console.error('Error:', e)
