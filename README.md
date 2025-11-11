@@ -1,4 +1,4 @@
-# PokeTools — Complete Documentation (English)
+# [PokeTools](https://lainksss.github.io/PokeTools/) — Complete Documentation (English)
 
 This README provides a detailed overview of the PokeTools codebase: backend (Flask), frontend (React + Vite), data files, all HTTP/SSE API endpoints, request/response formats, and how to run the project locally.
 
