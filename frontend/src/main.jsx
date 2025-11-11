@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import Calculate from './pages/Calculate'
 import Threats from './pages/Threats'
 import Coverage from './pages/Coverage'
+import TypeCoverage from './pages/TypeCoverage'
 import './styles.css'
 
 function Root() {
@@ -19,6 +20,7 @@ function Root() {
             <Route path="calculate" element={<Calculate />} />
             <Route path="threats" element={<Threats />} />
             <Route path="coverage" element={<Coverage />} />
+            <Route path="type-coverage" element={<TypeCoverage />} />
           </Route>
         </Routes>
       </BrowserRouter>
