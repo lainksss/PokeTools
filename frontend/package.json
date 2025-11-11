@@ -1,7 +1,8 @@
 {
-  "name": "pokemon-calculator-frontend",
+  "name": "poketools-frontend",
   "version": "0.1.0",
   "private": true,
+  "description": "PokeTools — damage calculators and team analysis tools",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
