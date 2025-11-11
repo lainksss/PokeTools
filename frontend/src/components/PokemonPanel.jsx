@@ -39,6 +39,7 @@ export default function PokemonPanel({ side, value, onChange }) {
           types: firstPoke.types,
           base_stats: firstPoke.base_stats,
           evs: { hp: 0, attack: 0, defense: 0, special_attack: 0, special_defense: 0, speed: 0 },
+          boosts: { attack: 0, defense: 0, special_attack: 0, special_defense: 0, speed: 0 },
           nature: 'hardy',
           ability: null,
           move: null,
@@ -135,6 +136,7 @@ export default function PokemonPanel({ side, value, onChange }) {
         types: pokemon.types,
         base_stats: pokemon.base_stats,
         evs: value?.evs || { hp: 0, attack: 0, defense: 0, special_attack: 0, special_defense: 0, speed: 0 },
+        boosts: value?.boosts || { attack: 0, defense: 0, special_attack: 0, special_defense: 0, speed: 0 },
         nature: value?.nature || 'hardy',
         ability: null,
         move: null,
@@ -163,6 +165,14 @@ export default function PokemonPanel({ side, value, onChange }) {
     })
   }
 
+  const handleBoostChange = (stat, val) => {
+    const newVal = Math.max(-6, Math.min(6, parseInt(val) || 0))
+    onChange && onChange({
+      ...value,
+      boosts: { ...(value.boosts || {}), [stat]: newVal }
+    })
+  }
+
   const handleNatureChange = (natureName) => {
     onChange && onChange({ ...value, nature: natureName })
   }
@@ -186,6 +196,16 @@ export default function PokemonPanel({ side, value, onChange }) {
 
   const handleTeraTypeChange = (type) => {
     onChange && onChange({ ...value, tera_type: type })
+  }
+
+  // Calculate stat with boost applied (using Pokemon formula)
+  const calculateBoostedStat = (baseStat, boost) => {
+    if (!baseStat || baseStat === '—') return '—'
+    if (!boost || boost === 0) return baseStat
+    
+    // Pokemon boost formula: stat * (2 + boost) / 2 for positive, stat * 2 / (2 - boost) for negative
+    const multiplier = boost > 0 ? (2 + boost) / 2 : 2 / (2 - boost)
+    return Math.floor(baseStat * multiplier)
   }
 
   if (loading) {
@@ -278,13 +298,16 @@ export default function PokemonPanel({ side, value, onChange }) {
               <div className="stat-label"></div>
               <div className="stat-col">Base</div>
               <div className="stat-col">EVs</div>
+              <div className="stat-col">Boost</div>
               <div className="stat-col">Final</div>
             </div>
             {statsOrder.map(stat => {
               const statKey = stat.replace('-', '_')
               const baseVal = value?.base_stats?.[stat] || 0
               const evVal = value?.evs?.[statKey] || 0
+              const boostVal = value?.boosts?.[statKey] || 0
               const finalVal = finalStats?.[statKey] || '—'
+              const boostedVal = statKey !== 'hp' ? calculateBoostedStat(finalVal, boostVal) : finalVal
               
               // Determine color based on nature
               const currentNature = allNatures.find(n => n.name === (value?.nature || 'hardy'))
@@ -311,7 +334,32 @@ export default function PokemonPanel({ side, value, onChange }) {
                       className="ev-input"
                     />
                   </div>
-                  <div className="stat-col stat-final">{finalVal}</div>
+                  <div className="stat-col stat-boost">
+                    {statKey !== 'hp' ? (
+                      <select
+                        value={boostVal}
+                        onChange={e => handleBoostChange(statKey, e.target.value)}
+                        className="boost-select"
+                      >
+                        {[-6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6].map(b => (
+                          <option key={b} value={b}>
+                            {b > 0 ? `+${b}` : b}
+                          </option>
+                        ))}
+                      </select>
+                    ) : (
+                      <span>—</span>
+                    )}
+                  </div>
+                  <div className="stat-col stat-final">
+                    {boostVal !== 0 && statKey !== 'hp' ? (
+                      <span title={`Base: ${finalVal}`}>
+                        {boostedVal} <span style={{fontSize: '0.85em', opacity: 0.7}}>({finalVal})</span>
+                      </span>
+                    ) : (
+                      finalVal
+                    )}
+                  </div>
                 </div>
               )
             })}

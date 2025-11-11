@@ -100,15 +100,16 @@ def load_type_chart_if_missing(type_chart: Optional[Dict[str, Dict]]) -> Optiona
 
 def compute_effective_stat(pkm: Dict, key: str, stages_key: str, is_attack: bool, crit_ignore: bool) -> float:
     # Extracted from calculate_damage: supports several key name variants and stages
-    if key in pkm and isinstance(pkm[key], (int, float)):
-        return float(pkm[key])
-    alt_keys = [key + "_base", key, key.replace("_", "-"), key.replace("_", " ")]
+    # Look for the base stat value
+    alt_keys = [key, key + "_base", key.replace("_", "-"), key.replace("_", " ")]
     base_val = None
     for k in alt_keys:
         if k in pkm and isinstance(pkm[k], (int, float)):
             base_val = pkm[k]
             break
     base = float(base_val or 0)
+    
+    # Look for stages/boosts
     stages = None
     stages_container = pkm.get("stages", {})
     if isinstance(stages_container, dict):
@@ -118,15 +119,20 @@ def compute_effective_stat(pkm: Dict, key: str, stages_key: str, is_attack: bool
                 break
     if stages is None:
         stages = 0
+    
+    # Apply critical hit logic (ignore negative offensive boosts and positive defensive boosts)
     if crit_ignore:
         if is_attack and stages < 0:
             stages = 0
         if (not is_attack) and stages > 0:
             stages = 0
+    
+    # Apply boost multiplier
     if stages >= 0:
         mult = (2.0 + stages) / 2.0
     else:
         mult = 2.0 / (2.0 - stages)
+    
     return base * mult
 
 
