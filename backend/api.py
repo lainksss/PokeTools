@@ -97,6 +97,17 @@ def build_actor_from_payload(p):
     # Calculer les stats finales
     stats = calc_all_stats(bases_normalized, evs=evs, natures=natures_map)
 
+    # Gérer la téracristallisation pour les types
+    original_types = p.get("types", [])
+    is_terastallized = p.get("is_terastallized", False)
+    tera_type = p.get("tera_type")
+    
+    # Si téracristallisé, les types défensifs deviennent UNIQUEMENT le type Tera
+    if is_terastallized and tera_type:
+        defensive_types = [tera_type]
+    else:
+        defensive_types = original_types
+
     actor = {
         "attack": stats.get("attack"),
         "defense": stats.get("defense"),
@@ -105,13 +116,13 @@ def build_actor_from_payload(p):
         "speed": stats.get("speed"),
         "hp": stats.get("hp"),
         "max_hp": stats.get("hp"),
-        "types": p.get("types", []),
+        "types": defensive_types,  # Types défensifs (changent avec Tera)
         "ability": p.get("ability"),
         "status": p.get("status"),
         "stages": p.get("stages", {}),
-        "is_terastallized": p.get("is_terastallized", False),
-        "tera_type": p.get("tera_type"),
-        "orig_types": p.get("types", []),
+        "is_terastallized": is_terastallized,
+        "tera_type": tera_type,
+        "orig_types": original_types,  # Types d'origine (pour le STAB)
     }
     return actor
 
@@ -1016,6 +1027,7 @@ def api_analyze_type_coverage():
     """Analyse la couverture de types : trouve les Pokémon qui ne sont PAS touchés en super efficace."""
     payload = request.get_json() or {}
     moves_data = payload.get("moves", [])
+    attacker_data = payload.get("attacker", {})
 
     if not moves_data or len(moves_data) == 0:
         return jsonify({"error": "at least one move required"}), 400
@@ -1025,6 +1037,10 @@ def api_analyze_type_coverage():
         all_pokemon_data = _load_json("all_pokemon.json") or {}
         all_moves = _load_json("all_moves.json") or {}
         type_chart = _load_json("all_types.json") or {}
+        
+        # Informations sur la téracristallisation de l'attaquant
+        is_terastallized = attacker_data.get("is_terastallized", False)
+        tera_type = attacker_data.get("tera_type")
 
         # Récupérer les types des attaques (seulement les attaques physiques/spéciales)
         move_types = []
@@ -1037,6 +1053,11 @@ def api_analyze_type_coverage():
                 # Ignorer les attaques de statut
                 if damage_class in ["physical", "special"]:
                     move_type = move_info.get("type")
+                    
+                    # Tera Blast : prend le type de la téra si téracristallisé
+                    if move_name == "tera-blast" and is_terastallized and tera_type:
+                        move_type = tera_type
+                    
                     if move_type:
                         move_types.append({
                             "name": move_name,

@@ -241,8 +241,8 @@ def compute_rand_list(random_range: Optional[Iterable[int]], field: Dict) -> Lis
     return rl
 
 
-def compute_stab(att: Dict, mv: Dict) -> float:
-    mv_t = mv.get("type")
+def compute_stab(att: Dict, mv: Dict, move_type_override: Optional[str] = None) -> float:
+    mv_t = move_type_override if move_type_override else mv.get("type")
     if not mv_t:
         return 1.0
     att_types = att.get("types", [])
@@ -250,15 +250,24 @@ def compute_stab(att: Dict, mv: Dict) -> float:
     is_tera = att.get("is_terastallized", False)
     tera_type = att.get("tera_type")
     orig_types = att.get("orig_types", att_types)
-    if is_tera:
-        if mv_t in orig_types and tera_type == mv_t:
+    
+    if is_tera and tera_type:
+        # Vérifie si l'attaque correspond au type d'origine
+        in_orig = mv_t in orig_types
+        # Vérifie si l'attaque correspond au type Tera
+        is_tera_type = mv_t == tera_type
+        
+        if in_orig and is_tera_type:
+            # Double STAB : type d'origine ET type Tera identiques
             return 2.25 if adaptability else 2.0
-        if mv_t in orig_types or mv_t == tera_type:
-            if mv_t in orig_types and tera_type != mv_t and not adaptability:
-                return 1.5
+        elif in_orig or is_tera_type:
+            # STAB simple : type d'origine OU type Tera
             return 2.0 if adaptability else 1.5
-        return 1.0
+        else:
+            # Pas de STAB
+            return 1.0
     else:
+        # Sans Tera : STAB classique
         if mv_t in att_types:
             return 2.0 if adaptability else 1.5
         return 1.0
@@ -427,6 +436,26 @@ def calculate_damage(
 
     # Compute offensive/defensive stats
     category = move.get("damage_class", "physical")
+    
+    # Tera Blast : change de type et de catégorie selon la téracristallisation
+    move_type = move.get("type")
+    is_tera_blast = move.get("name") == "tera-blast"
+    
+    if is_tera_blast and attacker.get("is_terastallized"):
+        # Prend le type Tera
+        tera_type = attacker.get("tera_type")
+        if tera_type:
+            move_type = tera_type
+        
+        # Choisir la meilleure catégorie (physique vs spéciale)
+        atk_stat = compute_effective_stat(attacker, "attack", "attack", True, False)
+        spa_stat = compute_effective_stat(attacker, "special_attack", "special_attack", True, False)
+        
+        if atk_stat > spa_stat:
+            category = "physical"
+        else:
+            category = "special"
+    
     if category == "physical":
         A = compute_effective_stat(attacker, "attack", "attack", True, crit_effective)
         D = compute_effective_stat(defender, "defense", "defense", False, crit_effective)
@@ -454,14 +483,14 @@ def calculate_damage(
 
     # simple multipliers
     targets, pb = compute_targets_and_pb(move, field, gen)
-    weather_mult, weather_effects = compute_weather_mult(field, move.get("type"), move)
+    weather_mult, weather_effects = compute_weather_mult(field, move_type, move)
     glaive_rush = compute_glaive_rush(defender)
     crit_mult = compute_crit_mult(gen, crit_effective)
     rand_list = compute_rand_list(random_range, field)
 
     # STAB / type / burn / others
-    stab = compute_stab(attacker, move)
-    mv_type = move.get("type")
+    stab = compute_stab(attacker, move, move_type_override=move_type if is_tera_blast else None)
+    mv_type = move_type
     type_mult = type_effectiveness(mv_type, defender.get("types", []), type_chart)
     # Ring Target
     if defender.get("ring_target") and type_mult == 0.0:
