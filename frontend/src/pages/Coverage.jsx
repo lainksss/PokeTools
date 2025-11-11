@@ -3,7 +3,7 @@ import PokemonPanel from '../components/PokemonPanel'
 import { useTranslation } from '../i18n/LanguageContext'
 
 export default function Coverage() {
-  const { t } = useTranslation()
+  const { t, getPokemonName } = useTranslation()
   const [attacker, setAttacker] = useState(null)
   const [koMode, setKoMode] = useState('OHKO') // 'OHKO' or '2HKO'
   const [allResults, setAllResults] = useState([]) // TOUS les résultats (KO + non-KO)
@@ -14,6 +14,8 @@ export default function Coverage() {
   const [showOnlyGuaranteed, setShowOnlyGuaranteed] = useState(false)
   const [minRolls, setMinRolls] = useState(1)
   const [viewMode, setViewMode] = useState('ko') // 'ko' = afficher ceux qui sont KO, 'alive' = afficher ceux qui survivent
+  const [bulkMode, setBulkMode] = useState('none') // 'none', 'custom', 'max'
+  const [customEvs, setCustomEvs] = useState(252) // EVs personnalisés pour le mode custom
 
   const ALL_WEATHERS = ['none', 'sun', 'rain', 'sandstorm', 'snow']
   const ALL_TERRAINS = ['none', 'grassy', 'electric', 'misty', 'psychic']
@@ -62,6 +64,8 @@ export default function Coverage() {
       moves: moves,
       ko_mode: koMode,
       include_no_ko: true, // TOUJOURS récupérer tous les Pokémon
+      bulk_mode: bulkMode,
+      custom_evs: customEvs,
       field: {
         weather: weather === 'none' ? null : weather,
         terrain: terrain === 'none' ? null : terrain
@@ -195,6 +199,55 @@ export default function Coverage() {
           </div>
 
           <div className="form-group">
+            <label>{t('coverage.bulkMode')}</label>
+            <div className="ko-mode-toggle">
+              <button
+                type="button"
+                className={`mode-button ${bulkMode === 'none' ? 'active' : ''}`}
+                onClick={() => setBulkMode('none')}
+                style={{ fontSize: '0.85em' }}
+              >
+                {t('coverage.bulkNone')}
+              </button>
+              <button
+                type="button"
+                className={`mode-button ${bulkMode === 'custom' ? 'active' : ''}`}
+                onClick={() => setBulkMode('custom')}
+                style={{ fontSize: '0.85em' }}
+              >
+                {t('coverage.bulkCustom')}
+              </button>
+              <button
+                type="button"
+                className={`mode-button ${bulkMode === 'max' ? 'active' : ''}`}
+                onClick={() => setBulkMode('max')}
+                style={{ fontSize: '0.85em' }}
+              >
+                {t('coverage.bulkMax')}
+              </button>
+            </div>
+          </div>
+
+          {bulkMode === 'custom' && (
+            <div className="form-group">
+              <label>{t('coverage.customEvs')}</label>
+              <input 
+                type="number" 
+                min="0" 
+                max="504" 
+                step="4"
+                value={customEvs}
+                onChange={e => {
+                  const val = parseInt(e.target.value) || 0
+                  setCustomEvs(Math.min(504, Math.max(0, val)))
+                }}
+                className="form-control"
+                placeholder="0-504"
+              />
+            </div>
+          )}
+
+          <div className="form-group">
             <label>{t('calculate.weather')}</label>
             <select 
               value={weather}
@@ -299,7 +352,7 @@ export default function Coverage() {
           {!loading && filteredCoverage.length > 0 && (
             <div className="threats-list">
               {filteredCoverage.map((item, idx) => (
-                <CoverageItem key={idx} item={item} koMode={koMode} t={t} />
+                <CoverageItem key={idx} item={item} koMode={koMode} t={t} getPokemonName={getPokemonName} />
               ))}
             </div>
           )}
@@ -309,7 +362,7 @@ export default function Coverage() {
   )
 }
 
-function CoverageItem({ item, koMode, t }) {
+function CoverageItem({ item, koMode, t, getPokemonName }) {
   const maxChance = item.max_ko_chance || 0
   const isGuaranteed = item.max_rolls_that_ko === 16
 
@@ -317,7 +370,7 @@ function CoverageItem({ item, koMode, t }) {
     <div className="threat-card">
       <div className="threat-header">
         <div className="threat-name-types">
-          <h4>{item.defender_name}</h4>
+          <h4>{getPokemonName(item.defender_id, item.defender_name)}</h4>
           <div className="threat-types">
             {item.defender_types?.map(type => (
               <span key={type} className={`type-badge type-${type}`}>
