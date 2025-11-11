@@ -1,6 +1,6 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { LanguageProvider } from './i18n/LanguageContext'
 import App from './App'
 import Home from './pages/Home'
@@ -13,7 +13,7 @@ import './styles.css'
 function Root() {
   return (
     <LanguageProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<Home />} />
@@ -23,7 +23,7 @@ function Root() {
             <Route path="type-coverage" element={<TypeCoverage />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </LanguageProvider>
   )
 }
