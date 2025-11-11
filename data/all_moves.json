@@ -4,6558 +4,7495 @@
     "power": 40,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "karate-chop": {
     "type": "fighting",
     "power": 50,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "double-slap": {
     "type": "normal",
     "power": 15,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "comet-punch": {
     "type": "normal",
     "power": 18,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "mega-punch": {
     "type": "normal",
     "power": 80,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "pay-day": {
     "type": "normal",
     "power": 40,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "fire-punch": {
     "type": "fire",
     "power": 75,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "ice-punch": {
     "type": "ice",
     "power": 75,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "thunder-punch": {
     "type": "electric",
     "power": 75,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "scratch": {
     "type": "normal",
     "power": 40,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "vice-grip": {
     "type": "normal",
     "power": 55,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "guillotine": {
     "type": "normal",
     "power": null,
     "accuracy": 30,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "razor-wind": {
     "type": "normal",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "swords-dance": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "cut": {
     "type": "normal",
     "power": 50,
     "accuracy": 95,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "gust": {
     "type": "flying",
     "power": 40,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "wing-attack": {
     "type": "flying",
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "whirlwind": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "fly": {
     "type": "flying",
     "power": 90,
     "accuracy": 95,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "bind": {
     "type": "normal",
     "power": 15,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "slam": {
     "type": "normal",
     "power": 80,
     "accuracy": 75,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "vine-whip": {
     "type": "grass",
     "power": 45,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "stomp": {
     "type": "normal",
     "power": 65,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "double-kick": {
     "type": "fighting",
     "power": 30,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "mega-kick": {
     "type": "normal",
     "power": 120,
     "accuracy": 75,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "jump-kick": {
     "type": "fighting",
     "power": 100,
     "accuracy": 95,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "rolling-kick": {
     "type": "fighting",
     "power": 60,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sand-attack": {
     "type": "ground",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "headbutt": {
     "type": "normal",
     "power": 70,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "horn-attack": {
     "type": "normal",
     "power": 65,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "fury-attack": {
     "type": "normal",
     "power": 15,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "horn-drill": {
     "type": "normal",
     "power": null,
     "accuracy": 30,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "tackle": {
     "type": "normal",
     "power": 40,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "body-slam": {
     "type": "normal",
     "power": 85,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "wrap": {
     "type": "normal",
     "power": 15,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "take-down": {
     "type": "normal",
     "power": 90,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "thrash": {
     "type": "normal",
     "power": 120,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "double-edge": {
     "type": "normal",
     "power": 120,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "tail-whip": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "poison-sting": {
     "type": "poison",
     "power": 15,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "twineedle": {
     "type": "bug",
     "power": 25,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "pin-missile": {
     "type": "bug",
     "power": 25,
     "accuracy": 95,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "leer": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "bite": {
     "type": "dark",
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "growl": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "roar": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sing": {
     "type": "normal",
     "power": null,
     "accuracy": 55,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "supersonic": {
     "type": "normal",
     "power": null,
     "accuracy": 55,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sonic-boom": {
     "type": "normal",
     "power": null,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "disable": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "acid": {
     "type": "poison",
     "power": 40,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "ember": {
     "type": "fire",
     "power": 40,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "flamethrower": {
     "type": "fire",
     "power": 90,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "mist": {
     "type": "ice",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "water-gun": {
     "type": "water",
     "power": 40,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "hydro-pump": {
     "type": "water",
     "power": 110,
     "accuracy": 80,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "surf": {
     "type": "water",
     "power": 90,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "ice-beam": {
     "type": "ice",
     "power": 90,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "blizzard": {
     "type": "ice",
     "power": 110,
     "accuracy": 70,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "psybeam": {
     "type": "psychic",
     "power": 65,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "bubble-beam": {
     "type": "water",
     "power": 65,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "aurora-beam": {
     "type": "ice",
     "power": 65,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "hyper-beam": {
     "type": "normal",
     "power": 150,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "peck": {
     "type": "flying",
     "power": 35,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "drill-peck": {
     "type": "flying",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "submission": {
     "type": "fighting",
     "power": 80,
     "accuracy": 80,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "low-kick": {
     "type": "fighting",
     "power": null,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "counter": {
     "type": "fighting",
     "power": null,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "seismic-toss": {
     "type": "fighting",
     "power": null,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "strength": {
     "type": "normal",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "absorb": {
     "type": "grass",
     "power": 20,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "mega-drain": {
     "type": "grass",
     "power": 40,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "leech-seed": {
     "type": "grass",
     "power": null,
     "accuracy": 90,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "growth": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "razor-leaf": {
     "type": "grass",
     "power": 55,
     "accuracy": 95,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "solar-beam": {
     "type": "grass",
     "power": 120,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "poison-powder": {
     "type": "poison",
     "power": null,
     "accuracy": 75,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "stun-spore": {
     "type": "grass",
     "power": null,
     "accuracy": 75,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sleep-powder": {
     "type": "grass",
     "power": null,
     "accuracy": 75,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "petal-dance": {
     "type": "grass",
     "power": 120,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "string-shot": {
     "type": "bug",
     "power": null,
     "accuracy": 95,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "dragon-rage": {
     "type": "dragon",
     "power": null,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "fire-spin": {
     "type": "fire",
     "power": 35,
     "accuracy": 85,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "thunder-shock": {
     "type": "electric",
     "power": 40,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "thunderbolt": {
     "type": "electric",
     "power": 90,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "thunder-wave": {
     "type": "electric",
     "power": null,
     "accuracy": 90,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "thunder": {
     "type": "electric",
     "power": 110,
     "accuracy": 70,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "rock-throw": {
     "type": "rock",
     "power": 50,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "earthquake": {
     "type": "ground",
     "power": 100,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "fissure": {
     "type": "ground",
     "power": null,
     "accuracy": 30,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "dig": {
     "type": "ground",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "toxic": {
     "type": "poison",
     "power": null,
     "accuracy": 90,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "confusion": {
     "type": "psychic",
     "power": 50,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "psychic": {
     "type": "psychic",
     "power": 90,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "hypnosis": {
     "type": "psychic",
     "power": null,
     "accuracy": 60,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "meditate": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "agility": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "quick-attack": {
     "type": "normal",
     "power": 40,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "rage": {
     "type": "normal",
     "power": 20,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "teleport": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "night-shade": {
     "type": "ghost",
     "power": null,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "mimic": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "screech": {
     "type": "normal",
     "power": null,
     "accuracy": 85,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "double-team": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "recover": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "harden": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "minimize": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "smokescreen": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "confuse-ray": {
     "type": "ghost",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "withdraw": {
     "type": "water",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "defense-curl": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "barrier": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "light-screen": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "haze": {
     "type": "ice",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "reflect": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "focus-energy": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "bide": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "metronome": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "mirror-move": {
     "type": "flying",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "self-destruct": {
     "type": "normal",
     "power": 200,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "egg-bomb": {
     "type": "normal",
     "power": 100,
     "accuracy": 75,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "lick": {
     "type": "ghost",
     "power": 30,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "smog": {
     "type": "poison",
     "power": 30,
     "accuracy": 70,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sludge": {
     "type": "poison",
     "power": 65,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "bone-club": {
     "type": "ground",
     "power": 65,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "fire-blast": {
     "type": "fire",
     "power": 110,
     "accuracy": 85,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "waterfall": {
     "type": "water",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "clamp": {
     "type": "water",
     "power": 35,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "swift": {
     "type": "normal",
     "power": 60,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "skull-bash": {
     "type": "normal",
     "power": 130,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "spike-cannon": {
     "type": "normal",
     "power": 20,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "constrict": {
     "type": "normal",
     "power": 10,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "amnesia": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "kinesis": {
     "type": "psychic",
     "power": null,
     "accuracy": 80,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "soft-boiled": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "high-jump-kick": {
     "type": "fighting",
     "power": 130,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "glare": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "dream-eater": {
     "type": "psychic",
     "power": 100,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "poison-gas": {
     "type": "poison",
     "power": null,
     "accuracy": 90,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "barrage": {
     "type": "normal",
     "power": 15,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "leech-life": {
     "type": "bug",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "lovely-kiss": {
     "type": "normal",
     "power": null,
     "accuracy": 75,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sky-attack": {
     "type": "flying",
     "power": 140,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "transform": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "bubble": {
     "type": "water",
     "power": 40,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "dizzy-punch": {
     "type": "normal",
     "power": 70,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "spore": {
     "type": "grass",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "flash": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "psywave": {
     "type": "psychic",
     "power": null,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "splash": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "acid-armor": {
     "type": "poison",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "crabhammer": {
     "type": "water",
     "power": 100,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "explosion": {
     "type": "normal",
     "power": 250,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "fury-swipes": {
     "type": "normal",
     "power": 18,
     "accuracy": 80,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "bonemerang": {
     "type": "ground",
     "power": 50,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "rest": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "rock-slide": {
     "type": "rock",
     "power": 75,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "hyper-fang": {
     "type": "normal",
     "power": 80,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sharpen": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "conversion": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "tri-attack": {
     "type": "normal",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "super-fang": {
     "type": "normal",
     "power": null,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "slash": {
     "type": "normal",
     "power": 70,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "substitute": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "struggle": {
     "type": "normal",
     "power": 50,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sketch": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "triple-kick": {
     "type": "fighting",
     "power": 10,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "thief": {
     "type": "dark",
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "spider-web": {
     "type": "bug",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "mind-reader": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "nightmare": {
     "type": "ghost",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "flame-wheel": {
     "type": "fire",
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "snore": {
     "type": "normal",
     "power": 50,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "curse": {
     "type": "ghost",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "flail": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "conversion-2": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "aeroblast": {
     "type": "flying",
     "power": 100,
     "accuracy": 95,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "cotton-spore": {
     "type": "grass",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "reversal": {
     "type": "fighting",
     "power": null,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "spite": {
     "type": "ghost",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "powder-snow": {
     "type": "ice",
     "power": 40,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "protect": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "mach-punch": {
     "type": "fighting",
     "power": 40,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "scary-face": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "feint-attack": {
     "type": "dark",
     "power": 60,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sweet-kiss": {
     "type": "fairy",
     "power": null,
     "accuracy": 75,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "belly-drum": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sludge-bomb": {
     "type": "poison",
     "power": 90,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "mud-slap": {
     "type": "ground",
     "power": 20,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "octazooka": {
     "type": "water",
     "power": 65,
     "accuracy": 85,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "spikes": {
     "type": "ground",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "zap-cannon": {
     "type": "electric",
     "power": 120,
     "accuracy": 50,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "foresight": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "destiny-bond": {
     "type": "ghost",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "perish-song": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "icy-wind": {
     "type": "ice",
     "power": 55,
     "accuracy": 95,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "detect": {
     "type": "fighting",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "bone-rush": {
     "type": "ground",
     "power": 25,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "lock-on": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "outrage": {
     "type": "dragon",
     "power": 120,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sandstorm": {
     "type": "rock",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "giga-drain": {
     "type": "grass",
     "power": 75,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "endure": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "charm": {
     "type": "fairy",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "rollout": {
     "type": "rock",
     "power": 30,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "false-swipe": {
     "type": "normal",
     "power": 40,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "swagger": {
     "type": "normal",
     "power": null,
     "accuracy": 85,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "milk-drink": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "spark": {
     "type": "electric",
     "power": 65,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "fury-cutter": {
     "type": "bug",
     "power": 40,
     "accuracy": 95,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "steel-wing": {
     "type": "steel",
     "power": 70,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "mean-look": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "attract": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sleep-talk": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "heal-bell": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "return": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "present": {
     "type": "normal",
     "power": null,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "frustration": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "safeguard": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "pain-split": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sacred-fire": {
     "type": "fire",
     "power": 100,
     "accuracy": 95,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "magnitude": {
     "type": "ground",
     "power": null,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "dynamic-punch": {
     "type": "fighting",
     "power": 100,
     "accuracy": 50,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "megahorn": {
     "type": "bug",
     "power": 120,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "dragon-breath": {
     "type": "dragon",
     "power": 60,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "baton-pass": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "encore": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "pursuit": {
     "type": "dark",
     "power": 40,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "rapid-spin": {
     "type": "normal",
     "power": 50,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sweet-scent": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "iron-tail": {
     "type": "steel",
     "power": 100,
     "accuracy": 75,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "metal-claw": {
     "type": "steel",
     "power": 50,
     "accuracy": 95,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "vital-throw": {
     "type": "fighting",
     "power": 70,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "morning-sun": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "synthesis": {
     "type": "grass",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "moonlight": {
     "type": "fairy",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "hidden-power": {
     "type": "normal",
     "power": 60,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "cross-chop": {
     "type": "fighting",
     "power": 100,
     "accuracy": 80,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "twister": {
     "type": "dragon",
     "power": 40,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "rain-dance": {
     "type": "water",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "sunny-day": {
     "type": "fire",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "crunch": {
     "type": "dark",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "mirror-coat": {
     "type": "psychic",
     "power": null,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "psych-up": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "extreme-speed": {
     "type": "normal",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "ancient-power": {
     "type": "rock",
     "power": 60,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shadow-ball": {
     "type": "ghost",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "future-sight": {
     "type": "psychic",
     "power": 120,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "rock-smash": {
     "type": "fighting",
     "power": 40,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "whirlpool": {
     "type": "water",
     "power": 35,
     "accuracy": 85,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "beat-up": {
     "type": "dark",
     "power": null,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "fake-out": {
     "type": "normal",
     "power": 40,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "uproar": {
     "type": "normal",
     "power": 90,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "stockpile": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "spit-up": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "swallow": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "heat-wave": {
     "type": "fire",
     "power": 95,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "hail": {
     "type": "ice",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "torment": {
     "type": "dark",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "flatter": {
     "type": "dark",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "will-o-wisp": {
     "type": "fire",
     "power": null,
     "accuracy": 85,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "memento": {
     "type": "dark",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "facade": {
     "type": "normal",
     "power": 70,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "focus-punch": {
     "type": "fighting",
     "power": 150,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "smelling-salts": {
     "type": "normal",
     "power": 70,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "follow-me": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "nature-power": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "charge": {
     "type": "electric",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "taunt": {
     "type": "dark",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "helping-hand": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "trick": {
     "type": "psychic",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "role-play": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "wish": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "assist": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "ingrain": {
     "type": "grass",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "superpower": {
     "type": "fighting",
     "power": 120,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "magic-coat": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "recycle": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "revenge": {
     "type": "fighting",
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "brick-break": {
     "type": "fighting",
     "power": 75,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "yawn": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "knock-off": {
     "type": "dark",
     "power": 65,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "endeavor": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "eruption": {
     "type": "fire",
     "power": 150,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "skill-swap": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "imprison": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "refresh": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "grudge": {
     "type": "ghost",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "snatch": {
     "type": "dark",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "secret-power": {
     "type": "normal",
     "power": 70,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "dive": {
     "type": "water",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "arm-thrust": {
     "type": "fighting",
     "power": 15,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "camouflage": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "tail-glow": {
     "type": "bug",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "luster-purge": {
     "type": "psychic",
     "power": 95,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "mist-ball": {
     "type": "psychic",
     "power": 95,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "feather-dance": {
     "type": "flying",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "teeter-dance": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "blaze-kick": {
     "type": "fire",
     "power": 85,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "mud-sport": {
     "type": "ground",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "ice-ball": {
     "type": "ice",
     "power": 30,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "needle-arm": {
     "type": "grass",
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "slack-off": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "hyper-voice": {
     "type": "normal",
     "power": 90,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "poison-fang": {
     "type": "poison",
     "power": 50,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "crush-claw": {
     "type": "normal",
     "power": 75,
     "accuracy": 95,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "blast-burn": {
     "type": "fire",
     "power": 150,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "hydro-cannon": {
     "type": "water",
     "power": 150,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "meteor-mash": {
     "type": "steel",
     "power": 90,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "astonish": {
     "type": "ghost",
     "power": 30,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "weather-ball": {
     "type": "normal",
     "power": 50,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "aromatherapy": {
     "type": "grass",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "fake-tears": {
     "type": "dark",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "air-cutter": {
     "type": "flying",
     "power": 60,
     "accuracy": 95,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "overheat": {
     "type": "fire",
     "power": 130,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "odor-sleuth": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "rock-tomb": {
     "type": "rock",
     "power": 60,
     "accuracy": 95,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "silver-wind": {
     "type": "bug",
     "power": 60,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "metal-sound": {
     "type": "steel",
     "power": null,
     "accuracy": 85,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "grass-whistle": {
     "type": "grass",
     "power": null,
     "accuracy": 55,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "tickle": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "cosmic-power": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "water-spout": {
     "type": "water",
     "power": 150,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "signal-beam": {
     "type": "bug",
     "power": 75,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shadow-punch": {
     "type": "ghost",
     "power": 60,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "extrasensory": {
     "type": "psychic",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sky-uppercut": {
     "type": "fighting",
     "power": 85,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sand-tomb": {
     "type": "ground",
     "power": 35,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sheer-cold": {
     "type": "ice",
     "power": null,
     "accuracy": 30,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "muddy-water": {
     "type": "water",
     "power": 90,
     "accuracy": 85,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "bullet-seed": {
     "type": "grass",
     "power": 25,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "aerial-ace": {
     "type": "flying",
     "power": 60,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "icicle-spear": {
     "type": "ice",
     "power": 25,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "iron-defense": {
     "type": "steel",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "block": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "howl": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "dragon-claw": {
     "type": "dragon",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "frenzy-plant": {
     "type": "grass",
     "power": 150,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "bulk-up": {
     "type": "fighting",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "bounce": {
     "type": "flying",
     "power": 85,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "mud-shot": {
     "type": "ground",
     "power": 55,
     "accuracy": 95,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "poison-tail": {
     "type": "poison",
     "power": 50,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "covet": {
     "type": "normal",
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "volt-tackle": {
     "type": "electric",
     "power": 120,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "magical-leaf": {
     "type": "grass",
     "power": 60,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "water-sport": {
     "type": "water",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "calm-mind": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "leaf-blade": {
     "type": "grass",
     "power": 90,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "dragon-dance": {
     "type": "dragon",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "rock-blast": {
     "type": "rock",
     "power": 25,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shock-wave": {
     "type": "electric",
     "power": 60,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "water-pulse": {
     "type": "water",
     "power": 60,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "doom-desire": {
     "type": "steel",
     "power": 140,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "psycho-boost": {
     "type": "psychic",
     "power": 140,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "roost": {
     "type": "flying",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "gravity": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "miracle-eye": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "wake-up-slap": {
     "type": "fighting",
     "power": 70,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "hammer-arm": {
     "type": "fighting",
     "power": 100,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "gyro-ball": {
     "type": "steel",
     "power": null,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "healing-wish": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "brine": {
     "type": "water",
     "power": 65,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "natural-gift": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "feint": {
     "type": "normal",
     "power": 30,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "pluck": {
     "type": "flying",
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "tailwind": {
     "type": "flying",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "acupressure": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "metal-burst": {
     "type": "steel",
     "power": null,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "u-turn": {
     "type": "bug",
     "power": 70,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "close-combat": {
     "type": "fighting",
     "power": 120,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "payback": {
     "type": "dark",
     "power": 50,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "assurance": {
     "type": "dark",
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "embargo": {
     "type": "dark",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "fling": {
     "type": "dark",
     "power": null,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "psycho-shift": {
     "type": "psychic",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "trump-card": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "heal-block": {
     "type": "psychic",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "wring-out": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "power-trick": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "gastro-acid": {
     "type": "poison",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "lucky-chant": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "me-first": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "copycat": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "power-swap": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "guard-swap": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "punishment": {
     "type": "dark",
     "power": null,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "last-resort": {
     "type": "normal",
     "power": 140,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "worry-seed": {
     "type": "grass",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sucker-punch": {
     "type": "dark",
     "power": 70,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "toxic-spikes": {
     "type": "poison",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "heart-swap": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "aqua-ring": {
     "type": "water",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "magnet-rise": {
     "type": "electric",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "flare-blitz": {
     "type": "fire",
     "power": 120,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "force-palm": {
     "type": "fighting",
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "aura-sphere": {
     "type": "fighting",
     "power": 80,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "rock-polish": {
     "type": "rock",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "poison-jab": {
     "type": "poison",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "dark-pulse": {
     "type": "dark",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "night-slash": {
     "type": "dark",
     "power": 70,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "aqua-tail": {
     "type": "water",
     "power": 90,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "seed-bomb": {
     "type": "grass",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "air-slash": {
     "type": "flying",
     "power": 75,
     "accuracy": 95,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "x-scissor": {
     "type": "bug",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "bug-buzz": {
     "type": "bug",
     "power": 90,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "dragon-pulse": {
     "type": "dragon",
     "power": 85,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "dragon-rush": {
     "type": "dragon",
     "power": 100,
     "accuracy": 75,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "power-gem": {
     "type": "rock",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "drain-punch": {
     "type": "fighting",
     "power": 75,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "vacuum-wave": {
     "type": "fighting",
     "power": 40,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "focus-blast": {
     "type": "fighting",
     "power": 120,
     "accuracy": 70,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "energy-ball": {
     "type": "grass",
     "power": 90,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "brave-bird": {
     "type": "flying",
     "power": 120,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "earth-power": {
     "type": "ground",
     "power": 90,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "switcheroo": {
     "type": "dark",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "giga-impact": {
     "type": "normal",
     "power": 150,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "nasty-plot": {
     "type": "dark",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "bullet-punch": {
     "type": "steel",
     "power": 40,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "avalanche": {
     "type": "ice",
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "ice-shard": {
     "type": "ice",
     "power": 40,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shadow-claw": {
     "type": "ghost",
     "power": 70,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "thunder-fang": {
     "type": "electric",
     "power": 65,
     "accuracy": 95,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "ice-fang": {
     "type": "ice",
     "power": 65,
     "accuracy": 95,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "fire-fang": {
     "type": "fire",
     "power": 65,
     "accuracy": 95,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shadow-sneak": {
     "type": "ghost",
     "power": 40,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "mud-bomb": {
     "type": "ground",
     "power": 65,
     "accuracy": 85,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "psycho-cut": {
     "type": "psychic",
     "power": 70,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "zen-headbutt": {
     "type": "psychic",
     "power": 80,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "mirror-shot": {
     "type": "steel",
     "power": 65,
     "accuracy": 85,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "flash-cannon": {
     "type": "steel",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "rock-climb": {
     "type": "normal",
     "power": 90,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "defog": {
     "type": "flying",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "trick-room": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "draco-meteor": {
     "type": "dragon",
     "power": 130,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "discharge": {
     "type": "electric",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "lava-plume": {
     "type": "fire",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "leaf-storm": {
     "type": "grass",
     "power": 130,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "power-whip": {
     "type": "grass",
     "power": 120,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "rock-wrecker": {
     "type": "rock",
     "power": 150,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "cross-poison": {
     "type": "poison",
     "power": 70,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "gunk-shot": {
     "type": "poison",
     "power": 120,
     "accuracy": 80,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "iron-head": {
     "type": "steel",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "magnet-bomb": {
     "type": "steel",
     "power": 60,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "stone-edge": {
     "type": "rock",
     "power": 100,
     "accuracy": 80,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "captivate": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "stealth-rock": {
     "type": "rock",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "grass-knot": {
     "type": "grass",
     "power": null,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "chatter": {
     "type": "flying",
     "power": 65,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "judgment": {
     "type": "normal",
     "power": 100,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "bug-bite": {
     "type": "bug",
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "charge-beam": {
     "type": "electric",
     "power": 50,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "wood-hammer": {
     "type": "grass",
     "power": 120,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "aqua-jet": {
     "type": "water",
     "power": 40,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "attack-order": {
     "type": "bug",
     "power": 90,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "defend-order": {
     "type": "bug",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "heal-order": {
     "type": "bug",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "head-smash": {
     "type": "rock",
     "power": 150,
     "accuracy": 80,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "double-hit": {
     "type": "normal",
     "power": 35,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "roar-of-time": {
     "type": "dragon",
     "power": 150,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "spacial-rend": {
     "type": "dragon",
     "power": 100,
     "accuracy": 95,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "lunar-dance": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "crush-grip": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "magma-storm": {
     "type": "fire",
     "power": 100,
     "accuracy": 75,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "dark-void": {
     "type": "dark",
     "power": null,
     "accuracy": 50,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "seed-flare": {
     "type": "grass",
     "power": 120,
     "accuracy": 85,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "ominous-wind": {
     "type": "ghost",
     "power": 60,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shadow-force": {
     "type": "ghost",
     "power": 120,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "hone-claws": {
     "type": "dark",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "wide-guard": {
     "type": "rock",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "guard-split": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "power-split": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "wonder-room": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "psyshock": {
     "type": "psychic",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "venoshock": {
     "type": "poison",
     "power": 65,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "autotomize": {
     "type": "steel",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "rage-powder": {
     "type": "bug",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "telekinesis": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "magic-room": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "smack-down": {
     "type": "rock",
     "power": 50,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "storm-throw": {
     "type": "fighting",
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "flame-burst": {
     "type": "fire",
     "power": 70,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sludge-wave": {
     "type": "poison",
     "power": 95,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "quiver-dance": {
     "type": "bug",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "heavy-slam": {
     "type": "steel",
     "power": null,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "synchronoise": {
     "type": "psychic",
     "power": 120,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "electro-ball": {
     "type": "electric",
     "power": null,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "soak": {
     "type": "water",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "flame-charge": {
     "type": "fire",
     "power": 50,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "coil": {
     "type": "poison",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "low-sweep": {
     "type": "fighting",
     "power": 65,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "acid-spray": {
     "type": "poison",
     "power": 40,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "foul-play": {
     "type": "dark",
     "power": 95,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "simple-beam": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "entrainment": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "after-you": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "round": {
     "type": "normal",
     "power": 60,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "echoed-voice": {
     "type": "normal",
     "power": 40,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "chip-away": {
     "type": "normal",
     "power": 70,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "clear-smog": {
     "type": "poison",
     "power": 50,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "stored-power": {
     "type": "psychic",
     "power": 20,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "quick-guard": {
     "type": "fighting",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "ally-switch": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "scald": {
     "type": "water",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shell-smash": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "heal-pulse": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "hex": {
     "type": "ghost",
     "power": 65,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sky-drop": {
     "type": "flying",
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shift-gear": {
     "type": "steel",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "circle-throw": {
     "type": "fighting",
     "power": 60,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "incinerate": {
     "type": "fire",
     "power": 60,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "quash": {
     "type": "dark",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "acrobatics": {
     "type": "flying",
     "power": 55,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "reflect-type": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "retaliate": {
     "type": "normal",
     "power": 70,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "final-gambit": {
     "type": "fighting",
     "power": null,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "bestow": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "inferno": {
     "type": "fire",
     "power": 100,
     "accuracy": 50,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "water-pledge": {
     "type": "water",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "fire-pledge": {
     "type": "fire",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "grass-pledge": {
     "type": "grass",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "volt-switch": {
     "type": "electric",
     "power": 70,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "struggle-bug": {
     "type": "bug",
     "power": 50,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "bulldoze": {
     "type": "ground",
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "frost-breath": {
     "type": "ice",
     "power": 60,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "dragon-tail": {
     "type": "dragon",
     "power": 60,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "work-up": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "electroweb": {
     "type": "electric",
     "power": 55,
     "accuracy": 95,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "wild-charge": {
     "type": "electric",
     "power": 90,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "drill-run": {
     "type": "ground",
     "power": 80,
     "accuracy": 95,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "dual-chop": {
     "type": "dragon",
     "power": 40,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "heart-stamp": {
     "type": "psychic",
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "horn-leech": {
     "type": "grass",
     "power": 75,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sacred-sword": {
     "type": "fighting",
     "power": 90,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "razor-shell": {
     "type": "water",
     "power": 75,
     "accuracy": 95,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "heat-crash": {
     "type": "fire",
     "power": null,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "leaf-tornado": {
     "type": "grass",
     "power": 65,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "steamroller": {
     "type": "bug",
     "power": 65,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "cotton-guard": {
     "type": "grass",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "night-daze": {
     "type": "dark",
     "power": 85,
     "accuracy": 95,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "psystrike": {
     "type": "psychic",
     "power": 100,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "tail-slap": {
     "type": "normal",
     "power": 25,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "hurricane": {
     "type": "flying",
     "power": 110,
     "accuracy": 70,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "head-charge": {
     "type": "normal",
     "power": 120,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "gear-grind": {
     "type": "steel",
     "power": 50,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "searing-shot": {
     "type": "fire",
     "power": 100,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "techno-blast": {
     "type": "normal",
     "power": 120,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "relic-song": {
     "type": "normal",
     "power": 75,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "secret-sword": {
     "type": "fighting",
     "power": 85,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "glaciate": {
     "type": "ice",
     "power": 65,
     "accuracy": 95,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "bolt-strike": {
     "type": "electric",
     "power": 130,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "blue-flare": {
     "type": "fire",
     "power": 130,
     "accuracy": 85,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "fiery-dance": {
     "type": "fire",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "freeze-shock": {
     "type": "ice",
     "power": 140,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "ice-burn": {
     "type": "ice",
     "power": 140,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "snarl": {
     "type": "dark",
     "power": 55,
     "accuracy": 95,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "icicle-crash": {
     "type": "ice",
     "power": 85,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "v-create": {
     "type": "fire",
     "power": 180,
     "accuracy": 95,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "fusion-flare": {
     "type": "fire",
     "power": 100,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "fusion-bolt": {
     "type": "electric",
     "power": 100,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "flying-press": {
     "type": "fighting",
     "power": 100,
     "accuracy": 95,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "mat-block": {
     "type": "fighting",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "belch": {
     "type": "poison",
     "power": 120,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "rototiller": {
     "type": "ground",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "sticky-web": {
     "type": "bug",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "fell-stinger": {
     "type": "bug",
     "power": 50,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "phantom-force": {
     "type": "ghost",
     "power": 90,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "trick-or-treat": {
     "type": "ghost",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "noble-roar": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "ion-deluge": {
     "type": "electric",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "parabolic-charge": {
     "type": "electric",
     "power": 65,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "forests-curse": {
     "type": "grass",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "petal-blizzard": {
     "type": "grass",
     "power": 90,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "freeze-dry": {
     "type": "ice",
     "power": 70,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "disarming-voice": {
     "type": "fairy",
     "power": 40,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "parting-shot": {
     "type": "dark",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "topsy-turvy": {
     "type": "dark",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "draining-kiss": {
     "type": "fairy",
     "power": 50,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "crafty-shield": {
     "type": "fairy",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "flower-shield": {
     "type": "fairy",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "grassy-terrain": {
     "type": "grass",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "misty-terrain": {
     "type": "fairy",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "electrify": {
     "type": "electric",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "play-rough": {
     "type": "fairy",
     "power": 90,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "fairy-wind": {
     "type": "fairy",
     "power": 40,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "moonblast": {
     "type": "fairy",
     "power": 95,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "boomburst": {
     "type": "normal",
     "power": 140,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "fairy-lock": {
     "type": "fairy",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "kings-shield": {
     "type": "steel",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "play-nice": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "confide": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "diamond-storm": {
     "type": "rock",
     "power": 100,
     "accuracy": 95,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "steam-eruption": {
     "type": "water",
     "power": 110,
     "accuracy": 95,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "hyperspace-hole": {
     "type": "psychic",
     "power": 80,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "water-shuriken": {
     "type": "water",
     "power": 15,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "mystical-fire": {
     "type": "fire",
     "power": 75,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "spiky-shield": {
     "type": "grass",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "aromatic-mist": {
     "type": "fairy",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "eerie-impulse": {
     "type": "electric",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "venom-drench": {
     "type": "poison",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "powder": {
     "type": "bug",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "geomancy": {
     "type": "fairy",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "magnetic-flux": {
     "type": "electric",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "happy-hour": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "electric-terrain": {
     "type": "electric",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "dazzling-gleam": {
     "type": "fairy",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "celebrate": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "hold-hands": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "baby-doll-eyes": {
     "type": "fairy",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "nuzzle": {
     "type": "electric",
     "power": 20,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "hold-back": {
     "type": "normal",
     "power": 40,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "infestation": {
     "type": "bug",
     "power": 20,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "power-up-punch": {
     "type": "fighting",
     "power": 40,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "oblivion-wing": {
     "type": "flying",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "thousand-arrows": {
     "type": "ground",
     "power": 90,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "thousand-waves": {
     "type": "ground",
     "power": 90,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "lands-wrath": {
     "type": "ground",
     "power": 90,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "light-of-ruin": {
     "type": "fairy",
     "power": 140,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "origin-pulse": {
     "type": "water",
     "power": 110,
     "accuracy": 85,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "precipice-blades": {
     "type": "ground",
     "power": 120,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "dragon-ascent": {
     "type": "flying",
     "power": 120,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "hyperspace-fury": {
     "type": "dark",
     "power": 100,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "breakneck-blitz--physical": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "breakneck-blitz--special": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "all-out-pummeling--physical": {
     "type": "fighting",
     "power": null,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "all-out-pummeling--special": {
     "type": "fighting",
     "power": null,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "supersonic-skystrike--physical": {
     "type": "flying",
     "power": null,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "supersonic-skystrike--special": {
     "type": "flying",
     "power": null,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "acid-downpour--physical": {
     "type": "poison",
     "power": null,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "acid-downpour--special": {
     "type": "poison",
     "power": null,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "tectonic-rage--physical": {
     "type": "ground",
     "power": null,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "tectonic-rage--special": {
     "type": "ground",
     "power": null,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "continental-crush--physical": {
     "type": "rock",
     "power": null,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "continental-crush--special": {
     "type": "rock",
     "power": null,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "savage-spin-out--physical": {
     "type": "bug",
     "power": null,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "savage-spin-out--special": {
     "type": "bug",
     "power": null,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "never-ending-nightmare--physical": {
     "type": "ghost",
     "power": null,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "never-ending-nightmare--special": {
     "type": "ghost",
     "power": null,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "corkscrew-crash--physical": {
     "type": "steel",
     "power": null,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "corkscrew-crash--special": {
     "type": "steel",
     "power": null,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "inferno-overdrive--physical": {
     "type": "fire",
     "power": null,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "inferno-overdrive--special": {
     "type": "fire",
     "power": null,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "hydro-vortex--physical": {
     "type": "water",
     "power": null,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "hydro-vortex--special": {
     "type": "water",
     "power": null,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "bloom-doom--physical": {
     "type": "grass",
     "power": null,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "bloom-doom--special": {
     "type": "grass",
     "power": null,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "gigavolt-havoc--physical": {
     "type": "electric",
     "power": null,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "gigavolt-havoc--special": {
     "type": "electric",
     "power": null,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shattered-psyche--physical": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shattered-psyche--special": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "subzero-slammer--physical": {
     "type": "ice",
     "power": null,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "subzero-slammer--special": {
     "type": "ice",
     "power": null,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "devastating-drake--physical": {
     "type": "dragon",
     "power": null,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "devastating-drake--special": {
     "type": "dragon",
     "power": null,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "black-hole-eclipse--physical": {
     "type": "dark",
     "power": null,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "black-hole-eclipse--special": {
     "type": "dark",
     "power": null,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "twinkle-tackle--physical": {
     "type": "fairy",
     "power": null,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "twinkle-tackle--special": {
     "type": "fairy",
     "power": null,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "catastropika": {
     "type": "electric",
     "power": 210,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shore-up": {
     "type": "ground",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "first-impression": {
     "type": "bug",
     "power": 90,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "baneful-bunker": {
     "type": "poison",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "spirit-shackle": {
     "type": "ghost",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "darkest-lariat": {
     "type": "dark",
     "power": 85,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sparkling-aria": {
     "type": "water",
     "power": 90,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "ice-hammer": {
     "type": "ice",
     "power": 100,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "floral-healing": {
     "type": "fairy",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "high-horsepower": {
     "type": "ground",
     "power": 95,
     "accuracy": 95,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "strength-sap": {
     "type": "grass",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "solar-blade": {
     "type": "grass",
     "power": 125,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "leafage": {
     "type": "grass",
     "power": 40,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "spotlight": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "toxic-thread": {
     "type": "poison",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "laser-focus": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "gear-up": {
     "type": "steel",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "throat-chop": {
     "type": "dark",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "pollen-puff": {
     "type": "bug",
     "power": 90,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "anchor-shot": {
     "type": "steel",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "psychic-terrain": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "lunge": {
     "type": "bug",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "fire-lash": {
     "type": "fire",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "power-trip": {
     "type": "dark",
     "power": 20,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "burn-up": {
     "type": "fire",
     "power": 130,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "speed-swap": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "smart-strike": {
     "type": "steel",
     "power": 70,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "purify": {
     "type": "poison",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "revelation-dance": {
     "type": "normal",
     "power": 90,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "core-enforcer": {
     "type": "dragon",
     "power": 100,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "trop-kick": {
     "type": "grass",
     "power": 70,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "instruct": {
     "type": "psychic",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "beak-blast": {
     "type": "flying",
     "power": 100,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "clanging-scales": {
     "type": "dragon",
     "power": 110,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "dragon-hammer": {
     "type": "dragon",
     "power": 90,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "brutal-swing": {
     "type": "dark",
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "aurora-veil": {
     "type": "ice",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sinister-arrow-raid": {
     "type": "ghost",
     "power": 180,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "malicious-moonsault": {
     "type": "dark",
     "power": 180,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "oceanic-operetta": {
     "type": "water",
     "power": 195,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "guardian-of-alola": {
     "type": "fairy",
     "power": null,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "soul-stealing-7-star-strike": {
     "type": "ghost",
     "power": 195,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "stoked-sparksurfer": {
     "type": "electric",
     "power": 175,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "pulverizing-pancake": {
     "type": "normal",
     "power": 210,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "extreme-evoboost": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "genesis-supernova": {
     "type": "psychic",
     "power": 185,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shell-trap": {
     "type": "fire",
     "power": 150,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "fleur-cannon": {
     "type": "fairy",
     "power": 130,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "psychic-fangs": {
     "type": "psychic",
     "power": 85,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "stomping-tantrum": {
     "type": "ground",
     "power": 75,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shadow-bone": {
     "type": "ghost",
     "power": 85,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "accelerock": {
     "type": "rock",
     "power": 40,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "liquidation": {
     "type": "water",
     "power": 85,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "prismatic-laser": {
     "type": "psychic",
     "power": 160,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "spectral-thief": {
     "type": "ghost",
     "power": 90,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sunsteel-strike": {
     "type": "steel",
     "power": 100,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "moongeist-beam": {
     "type": "ghost",
     "power": 100,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "tearful-look": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "zing-zap": {
     "type": "electric",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "natures-madness": {
     "type": "fairy",
     "power": null,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "multi-attack": {
     "type": "normal",
     "power": 120,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "10-000-000-volt-thunderbolt": {
     "type": "electric",
     "power": 195,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "mind-blown": {
     "type": "fire",
     "power": 150,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "plasma-fists": {
     "type": "electric",
     "power": 100,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "photon-geyser": {
     "type": "psychic",
     "power": 100,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "light-that-burns-the-sky": {
     "type": "psychic",
     "power": 200,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "searing-sunraze-smash": {
     "type": "steel",
     "power": 200,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "menacing-moonraze-maelstrom": {
     "type": "ghost",
     "power": 200,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "lets-snuggle-forever": {
     "type": "fairy",
     "power": 190,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "splintered-stormshards": {
     "type": "rock",
     "power": 190,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "clangorous-soulblaze": {
     "type": "dragon",
     "power": 185,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "zippy-zap": {
     "type": "electric",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "splishy-splash": {
     "type": "water",
     "power": 90,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "floaty-fall": {
     "type": "flying",
     "power": 90,
     "accuracy": 95,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "pika-papow": {
     "type": "electric",
     "power": null,
     "accuracy": null,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "bouncy-bubble": {
     "type": "water",
     "power": 60,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "buzzy-buzz": {
     "type": "electric",
     "power": 60,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sizzly-slide": {
     "type": "fire",
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "glitzy-glow": {
     "type": "psychic",
     "power": 80,
     "accuracy": 95,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "baddy-bad": {
     "type": "dark",
     "power": 80,
     "accuracy": 95,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sappy-seed": {
     "type": "grass",
     "power": 100,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "freezy-frost": {
     "type": "ice",
     "power": 100,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "sparkly-swirl": {
     "type": "fairy",
     "power": 120,
     "accuracy": 85,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "veevee-volley": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "double-iron-bash": {
     "type": "steel",
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "max-guard": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "dynamax-cannon": {
     "type": "dragon",
     "power": 100,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "snipe-shot": {
     "type": "water",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "jaw-lock": {
     "type": "dark",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "stuff-cheeks": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "no-retreat": {
     "type": "fighting",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "tar-shot": {
     "type": "rock",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "magic-powder": {
     "type": "psychic",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "dragon-darts": {
     "type": "dragon",
     "power": 50,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "teatime": {
     "type": "normal",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "octolock": {
     "type": "fighting",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "bolt-beak": {
     "type": "electric",
     "power": 85,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "fishious-rend": {
     "type": "water",
     "power": 85,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "court-change": {
     "type": "normal",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "max-flare": {
     "type": "fire",
     "power": 100,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "max-flutterby": {
     "type": "bug",
     "power": 10,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "max-lightning": {
     "type": "electric",
     "power": 10,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "max-strike": {
     "type": "normal",
     "power": 10,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "max-knuckle": {
     "type": "fighting",
     "power": 10,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "max-phantasm": {
     "type": "ghost",
     "power": 10,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "max-hailstorm": {
     "type": "ice",
     "power": 10,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "max-ooze": {
     "type": "poison",
     "power": 10,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "max-geyser": {
     "type": "water",
     "power": 10,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "max-airstream": {
     "type": "flying",
     "power": 10,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "max-starfall": {
     "type": "fairy",
     "power": 10,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "max-wyrmwind": {
     "type": "dragon",
     "power": 10,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "max-mindstorm": {
     "type": "psychic",
     "power": 10,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "max-rockfall": {
     "type": "rock",
     "power": 10,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "max-quake": {
     "type": "ground",
     "power": 10,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "max-darkness": {
     "type": "dark",
     "power": 10,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "max-overgrowth": {
     "type": "grass",
     "power": 10,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "max-steelspike": {
     "type": "steel",
     "power": 10,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "clangorous-soul": {
     "type": "dragon",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "body-press": {
     "type": "fighting",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "decorate": {
     "type": "fairy",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "drum-beating": {
     "type": "grass",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "snap-trap": {
     "type": "grass",
     "power": 35,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "pyro-ball": {
     "type": "fire",
     "power": 120,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "behemoth-blade": {
     "type": "steel",
     "power": 100,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "behemoth-bash": {
     "type": "steel",
     "power": 100,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "aura-wheel": {
     "type": "electric",
     "power": 110,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "breaking-swipe": {
     "type": "dragon",
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "branch-poke": {
     "type": "grass",
     "power": 40,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "overdrive": {
     "type": "electric",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "apple-acid": {
     "type": "grass",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "grav-apple": {
     "type": "grass",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "spirit-break": {
     "type": "fairy",
     "power": 75,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "strange-steam": {
     "type": "fairy",
     "power": 90,
     "accuracy": 95,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "life-dew": {
     "type": "water",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "obstruct": {
     "type": "dark",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "false-surrender": {
     "type": "dark",
     "power": 80,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "meteor-assault": {
     "type": "fighting",
     "power": 150,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "eternabeam": {
     "type": "dragon",
     "power": 160,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "steel-beam": {
     "type": "steel",
     "power": 140,
     "accuracy": 95,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "expanding-force": {
     "type": "psychic",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "steel-roller": {
     "type": "steel",
     "power": 130,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "scale-shot": {
     "type": "dragon",
     "power": 25,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "meteor-beam": {
     "type": "rock",
     "power": 120,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shell-side-arm": {
     "type": "poison",
     "power": 90,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "misty-explosion": {
     "type": "fairy",
     "power": 100,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "grassy-glide": {
     "type": "grass",
     "power": 55,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "rising-voltage": {
     "type": "electric",
     "power": 70,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "terrain-pulse": {
     "type": "normal",
     "power": 50,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "skitter-smack": {
     "type": "bug",
     "power": 70,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "burning-jealousy": {
     "type": "fire",
     "power": 70,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "lash-out": {
     "type": "dark",
     "power": 75,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "poltergeist": {
     "type": "ghost",
     "power": 110,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "corrosive-gas": {
     "type": "poison",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "coaching": {
     "type": "fighting",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "flip-turn": {
     "type": "water",
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "triple-axel": {
     "type": "ice",
     "power": 20,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "dual-wingbeat": {
     "type": "flying",
     "power": 40,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "scorching-sands": {
     "type": "ground",
     "power": 70,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "jungle-healing": {
     "type": "grass",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "wicked-blow": {
     "type": "dark",
     "power": 75,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "surging-strikes": {
     "type": "water",
     "power": 25,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "thunder-cage": {
     "type": "electric",
     "power": 80,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "dragon-energy": {
     "type": "dragon",
     "power": 150,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "freezing-glare": {
     "type": "psychic",
     "power": 90,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "fiery-wrath": {
     "type": "dark",
     "power": 90,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "thunderous-kick": {
     "type": "fighting",
     "power": 90,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "glacial-lance": {
     "type": "ice",
     "power": 120,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "astral-barrage": {
     "type": "ghost",
     "power": 120,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "eerie-spell": {
     "type": "psychic",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "dire-claw": {
     "type": "poison",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "psyshield-bash": {
     "type": "psychic",
     "power": 70,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "power-shift": {
     "type": "normal",
     "power": 0,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "stone-axe": {
     "type": "rock",
     "power": 65,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "springtide-storm": {
     "type": "fairy",
     "power": 100,
     "accuracy": 80,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "mystical-power": {
     "type": "psychic",
     "power": 70,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "raging-fury": {
     "type": "fire",
     "power": 120,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "wave-crash": {
     "type": "water",
     "power": 120,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "chloroblast": {
     "type": "grass",
     "power": 150,
     "accuracy": 95,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "mountain-gale": {
     "type": "ice",
     "power": 100,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "victory-dance": {
     "type": "fighting",
     "power": 0,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "headlong-rush": {
     "type": "ground",
     "power": 120,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "barb-barrage": {
     "type": "poison",
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "esper-wing": {
     "type": "psychic",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "bitter-malice": {
     "type": "ghost",
     "power": 75,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shelter": {
     "type": "steel",
     "power": 0,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "triple-arrows": {
     "type": "fighting",
     "power": 90,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "infernal-parade": {
     "type": "ghost",
     "power": 60,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "ceaseless-edge": {
     "type": "dark",
     "power": 65,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "bleakwind-storm": {
     "type": "flying",
     "power": 100,
     "accuracy": 80,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "wildbolt-storm": {
     "type": "electric",
     "power": 100,
     "accuracy": 80,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "sandsear-storm": {
     "type": "ground",
     "power": 100,
     "accuracy": 80,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "lunar-blessing": {
     "type": "psychic",
     "power": 0,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "take-heart": {
     "type": "psychic",
     "power": 0,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "tera-blast": {
     "type": "normal",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "silk-trap": {
     "type": "bug",
     "power": 0,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "axe-kick": {
     "type": "fighting",
     "power": 120,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "last-respects": {
     "type": "ghost",
     "power": 50,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "lumina-crash": {
     "type": "psychic",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "order-up": {
     "type": "dragon",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "jet-punch": {
     "type": "water",
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "spicy-extract": {
     "type": "grass",
     "power": 0,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "spin-out": {
     "type": "steel",
     "power": 100,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "population-bomb": {
     "type": "normal",
     "power": 20,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "ice-spinner": {
     "type": "ice",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "glaive-rush": {
     "type": "dragon",
     "power": 120,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "revival-blessing": {
     "type": "normal",
     "power": 0,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "salt-cure": {
     "type": "rock",
     "power": 40,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "triple-dive": {
     "type": "water",
     "power": 30,
     "accuracy": 95,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "mortal-spin": {
     "type": "poison",
     "power": 30,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "doodle": {
     "type": "normal",
     "power": 0,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "fillet-away": {
     "type": "normal",
     "power": 0,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "kowtow-cleave": {
     "type": "dark",
     "power": 85,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "flower-trick": {
     "type": "grass",
     "power": 70,
     "accuracy": null,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "torch-song": {
     "type": "fire",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "aqua-step": {
     "type": "water",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "raging-bull": {
     "type": "normal",
     "power": 90,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "make-it-rain": {
     "type": "steel",
     "power": 120,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "psyblade": {
     "type": "psychic",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "hydro-steam": {
     "type": "water",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "ruination": {
     "type": "dark",
     "power": 1,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "collision-course": {
     "type": "fighting",
     "power": 100,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "electro-drift": {
     "type": "electric",
     "power": 100,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shed-tail": {
     "type": "normal",
     "power": 0,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "chilly-reception": {
     "type": "ice",
     "power": 0,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "tidy-up": {
     "type": "normal",
     "power": 0,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "snowscape": {
     "type": "ice",
     "power": 0,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "pounce": {
     "type": "bug",
     "power": 50,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "trailblaze": {
     "type": "grass",
     "power": 50,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "chilling-water": {
     "type": "water",
     "power": 50,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "hyper-drill": {
     "type": "normal",
     "power": 100,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "twin-beam": {
     "type": "psychic",
     "power": 40,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "rage-fist": {
     "type": "ghost",
     "power": 50,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "armor-cannon": {
     "type": "fire",
     "power": 120,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "bitter-blade": {
     "type": "fire",
     "power": 90,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "double-shock": {
     "type": "electric",
     "power": 120,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "gigaton-hammer": {
     "type": "steel",
     "power": 160,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "comeuppance": {
     "type": "dark",
     "power": 1,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "aqua-cutter": {
     "type": "water",
     "power": 70,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "blazing-torque": {
     "type": "fire",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "wicked-torque": {
     "type": "dark",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "noxious-torque": {
     "type": "poison",
     "power": 100,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "combat-torque": {
     "type": "fighting",
     "power": 100,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "magical-torque": {
     "type": "fairy",
     "power": 100,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "blood-moon": {
     "type": "normal",
     "power": 140,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "matcha-gotcha": {
     "type": "grass",
     "power": 80,
     "accuracy": 90,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "syrup-bomb": {
     "type": "grass",
     "power": 60,
     "accuracy": 85,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "ivy-cudgel": {
     "type": "grass",
     "power": 100,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "electro-shot": {
     "type": "electric",
     "power": 130,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "tera-starstorm": {
     "type": "normal",
     "power": 120,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 2
   },
   "fickle-beam": {
     "type": "dragon",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "burning-bulwark": {
     "type": "fire",
     "power": 0,
     "accuracy": 0,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "thunderclap": {
     "type": "electric",
     "power": 70,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "mighty-cleave": {
     "type": "rock",
     "power": 95,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "tachyon-cutter": {
     "type": "steel",
     "power": 50,
     "accuracy": 0,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "hard-press": {
     "type": "steel",
     "power": 0,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "dragon-cheer": {
     "type": "dragon",
     "power": 0,
     "accuracy": 0,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "alluring-voice": {
     "type": "fairy",
     "power": 80,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "temper-flare": {
     "type": "fire",
     "power": 75,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "supercell-slam": {
     "type": "electric",
     "power": 100,
     "accuracy": 95,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "psychic-noise": {
     "type": "psychic",
     "power": 75,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "upper-hand": {
     "type": "fighting",
     "power": 65,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "malignant-chain": {
     "type": "poison",
     "power": 100,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shadow-rush": {
     "type": "shadow",
     "power": 55,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shadow-blast": {
     "type": "shadow",
     "power": 80,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shadow-blitz": {
     "type": "shadow",
     "power": 40,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shadow-bolt": {
     "type": "shadow",
     "power": 75,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shadow-break": {
     "type": "shadow",
     "power": 75,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shadow-chill": {
     "type": "shadow",
     "power": 75,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shadow-end": {
     "type": "shadow",
     "power": 120,
     "accuracy": 60,
     "damage_class": "physical",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shadow-fire": {
     "type": "shadow",
     "power": 75,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shadow-rave": {
     "type": "shadow",
     "power": 70,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shadow-storm": {
     "type": "shadow",
     "power": 95,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shadow-wave": {
     "type": "shadow",
     "power": 50,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shadow-down": {
     "type": "shadow",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shadow-half": {
     "type": "shadow",
     "power": null,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "shadow-hold": {
     "type": "shadow",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shadow-mist": {
     "type": "shadow",
     "power": null,
     "accuracy": 100,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shadow-panic": {
     "type": "shadow",
     "power": null,
     "accuracy": 90,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 1
   },
   "shadow-shed": {
     "type": "shadow",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   },
   "shadow-sky": {
     "type": "shadow",
     "power": null,
     "accuracy": null,
     "damage_class": "status",
-    "multi_hit": null
+    "multi_hit": null,
+    "targets": 3
   }
 }

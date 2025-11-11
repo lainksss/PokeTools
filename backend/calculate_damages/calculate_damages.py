@@ -146,8 +146,23 @@ def determine_crit_effective(attacker: Dict, defender: Dict, is_critical: bool, 
 
 def compute_targets_and_pb(move: Dict, field: Dict, gen: int) -> Tuple[float, float]:
     targets = 1.0
-    if move.get("targets", 1) > 1:
-        targets = 0.5 if field.get("battle_royale") else 0.75
+    
+    # En mode double, les attaques qui touchent plusieurs adversaires ont une réduction de puissance
+    battle_mode = field.get("battle_mode", "single")
+    move_targets = move.get("targets", 1)
+    
+    # Réduction de puissance seulement si :
+    # - On est en mode double (2 adversaires sur le terrain)
+    # - ET l'attaque touche plusieurs cibles (targets >= 2)
+    if battle_mode == "double" and move_targets >= 2:
+        targets = 0.75
+    elif battle_mode == "single":
+        # En mode single, pas de réduction même si l'attaque est multi-target
+        targets = 1.0
+    elif field.get("battle_royale") and move_targets > 1:
+        # Battle Royale : 4 Pokémon sur le terrain
+        targets = 0.5
+    
     if move.get("parental_bond_second", False):
         pb = 0.25 if gen != 6 else 0.5
     else:
@@ -314,23 +329,26 @@ def compute_damage_rolls(
     damage_all: List[int] = []
     remaining_hp_all: List[Optional[int]] = []
     for r in rand_list:
-        t = math.floor(base * (r / 100.0))
-        # apply multipliers with integer truncation after each
-        for key in (
-            "targets",
-            "pb",
-            "weather_mult",
-            "glaive_rush",
-            "stab",
-            "burn_mult",
-            "terrain_mult",
-            "other_mult",
-            "zmove_mult",
-            "terashield_mult",
-            "type_mult",
-            "crit_mult",
-        ):
-            t = math.floor(t * (multipliers.get(key, 1.0)))
+        # Étape 1 : Multiplicateurs AVANT random (selon formule Pokémon Gen 5+)
+        t = float(base)
+        t = math.floor(t * multipliers.get("targets", 1.0))
+        t = math.floor(t * multipliers.get("pb", 1.0))
+        t = math.floor(t * multipliers.get("weather_mult", 1.0))
+        t = math.floor(t * multipliers.get("glaive_rush", 1.0))
+        
+        # Étape 2 : Application du random
+        t = math.floor(t * (r / 100.0))
+        
+        # Étape 3 : Multiplicateurs APRÈS random
+        t = math.floor(t * multipliers.get("stab", 1.0))
+        t = math.floor(t * multipliers.get("type_mult", 1.0))
+        t = math.floor(t * multipliers.get("burn_mult", 1.0))
+        t = math.floor(t * multipliers.get("terrain_mult", 1.0))
+        t = math.floor(t * multipliers.get("other_mult", 1.0))
+        t = math.floor(t * multipliers.get("zmove_mult", 1.0))
+        t = math.floor(t * multipliers.get("terashield_mult", 1.0))
+        t = math.floor(t * multipliers.get("crit_mult", 1.0))
+        
         dmg = max(1, int(t))
         damage_all.append(dmg)
         if defender_hp is not None:

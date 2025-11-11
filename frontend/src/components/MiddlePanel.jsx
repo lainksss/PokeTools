@@ -57,7 +57,8 @@ export default function MiddlePanel({ left, right, setResult }) {
         terrain: terrain === 'none' ? null : terrain
       },
       is_critical: isCritical,
-      battle_mode: battleMode
+      battle_mode: battleMode,
+      debug: true  // Activer le mode debug temporairement
     }
 
     try {
@@ -73,6 +74,10 @@ export default function MiddlePanel({ left, right, setResult }) {
       }
       
       const data = await res.json()
+      console.log('=== DEBUG DAMAGE CALCULATION ===')
+      console.log('Payload sent:', payload)
+      console.log('Response:', data)
+      console.log('================================')
       setResult(data)
     } catch (e) {
       console.error('Error:', e)
