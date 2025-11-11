@@ -47,8 +47,12 @@ body {
   font-weight: 700;
 }
 
+.app-header nav {
+  display: flex;
+  gap: 16px;
+}
+
 .app-header nav a {
-  margin-left: 16px;
   color: var(--accent);
   text-decoration: none;
   font-weight: 500;
@@ -57,6 +61,34 @@ body {
 
 .app-header nav a:hover {
   opacity: 0.8;
+}
+
+.language-selector {
+  display: flex;
+  gap: 8px;
+}
+
+.lang-button {
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lang-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent);
+}
+
+.lang-button.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
 }
 
 .app-main {

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { useTranslation } from '../i18n/LanguageContext'
 
 export default function PokemonPanel({ side, value, onChange }) {
+  const { t } = useTranslation()
   const [allPokemon, setAllPokemon] = useState([])
   const [filteredPokemon, setFilteredPokemon] = useState([])
   const [searchText, setSearchText] = useState('')
@@ -187,17 +189,17 @@ export default function PokemonPanel({ side, value, onChange }) {
   }
 
   if (loading) {
-    return <div className="pokemon-panel">Chargement...</div>
+    return <div className="pokemon-panel">{t('common.loading')}</div>
   }
 
   const statsOrder = ['hp', 'attack', 'defense', 'special-attack', 'special-defense', 'speed']
   const statsLabels = {
-    'hp': 'HP',
-    'attack': 'Attack',
-    'defense': 'Defense',
-    'special-attack': 'Sp. Atk',
-    'special-defense': 'Sp. Def',
-    'speed': 'Speed'
+    'hp': t('calculate.hp'),
+    'attack': t('calculate.attack'),
+    'defense': t('calculate.defense'),
+    'special-attack': t('calculate.spAttack'),
+    'special-defense': t('calculate.spDefense'),
+    'speed': t('calculate.speed')
   }
 
   // Calculate total EVs
@@ -208,17 +210,17 @@ export default function PokemonPanel({ side, value, onChange }) {
 
   return (
     <div className="pokemon-panel">
-      <h3>{side === 'left' ? 'Attaquant' : 'Défenseur'}</h3>
+      <h3>{side === 'left' ? t('calculate.attacker') : t('calculate.defender')}</h3>
       
       {/* Pokemon selection with search */}
       <div className="form-group pokemon-selector-wrapper">
-        <label>Pokémon</label>
+        <label>{t('calculate.selectPokemon')}</label>
         <input
           type="text"
           value={searchText}
           onChange={e => handlePokemonSearch(e.target.value)}
           onFocus={() => setShowDropdown(true)}
-          placeholder="Rechercher un pokémon..."
+          placeholder={t('calculate.search')}
           className="form-control pokemon-search-input"
         />
         {showDropdown && searchText && filteredPokemon.length > 0 && (
@@ -240,7 +242,7 @@ export default function PokemonPanel({ side, value, onChange }) {
       <div className="types-tera-row">
         <div className="types-section">
           <div className="types-display">
-            <strong>Types:</strong> {value?.types?.join(', ') || 'N/A'}
+            <strong>{t('pokemon.types')}:</strong> {value?.types?.join(', ') || 'N/A'}
           </div>
         </div>
 
@@ -251,7 +253,7 @@ export default function PokemonPanel({ side, value, onChange }) {
               checked={value?.is_terastallized || false}
               onChange={e => handleTeraChange(e.target.checked)}
             />
-            Tera
+            {t('calculate.terastallized')}
           </label>
           {value?.is_terastallized && (
             <select 
@@ -317,7 +319,7 @@ export default function PokemonPanel({ side, value, onChange }) {
           
           {/* Remaining EVs */}
           <div className="evs-remaining">
-            EVs restants: <strong style={{color: remainingEvs < 0 ? '#ef4444' : '#10b981'}}>{remainingEvs}</strong> / 510
+            {t('pokemon.evsRemaining')}: <strong style={{color: remainingEvs < 0 ? '#ef4444' : '#10b981'}}>{remainingEvs}</strong> / 510
           </div>
         </div>
 
@@ -325,18 +327,18 @@ export default function PokemonPanel({ side, value, onChange }) {
         <div className="selectors-container">
           {/* Nature */}
           <div className="form-group">
-            <label>Nature</label>
+            <label>{t('calculate.nature')}</label>
             <select 
               value={value?.nature || 'hardy'}
               onChange={e => handleNatureChange(e.target.value)}
               className="form-control"
             >
               {allNatures.map(n => {
-                let display = n.name.charAt(0).toUpperCase() + n.name.slice(1)
+                let display = t(`natures.${n.name}`)
                 if (n.increase && n.decrease) {
                   display += ` (+${n.increase}, -${n.decrease})`
                 } else if (!n.increase && !n.decrease) {
-                  display += ' (neutral)'
+                  display += ` (${t('pokemon.neutral')})`
                 }
                 return (
                   <option key={n.name} value={n.name}>{display}</option>
@@ -347,13 +349,13 @@ export default function PokemonPanel({ side, value, onChange }) {
 
           {/* Ability */}
           <div className="form-group">
-            <label>Talent</label>
+            <label>{t('calculate.ability')}</label>
             <select 
               value={value?.ability || ''}
               onChange={e => handleAbilityChange(e.target.value)}
               className="form-control"
             >
-              <option value="">-- Aucun --</option>
+              <option value="">-- {t('pokemon.none')} --</option>
               {pokemonAbilities.map(ability => (
                 <option key={ability} value={ability}>
                   {ability.replace(/-/g, ' ')}
@@ -365,13 +367,13 @@ export default function PokemonPanel({ side, value, onChange }) {
           {/* Move (only for attacker) */}
           {side === 'left' && (
             <div className="form-group">
-              <label>Attaque</label>
+              <label>{t('calculate.move')}</label>
               <select 
                 value={value?.move?.name || ''}
                 onChange={e => handleMoveChange(e.target.value)}
                 className="form-control"
               >
-                <option value="">-- Aucune --</option>
+                <option value="">-- {t('pokemon.none')} --</option>
                 {pokemonMoves.map(move => (
                   <option key={move.name} value={move.name}>
                     {move.name.replace(/-/g, ' ')} ({move.type}, {move.power || '—'})
@@ -380,10 +382,10 @@ export default function PokemonPanel({ side, value, onChange }) {
               </select>
               {value?.move && (
                 <div className="move-details">
-                  <div><strong>Type:</strong> {value.move.type}</div>
-                  <div><strong>Power:</strong> {value.move.power || '—'}</div>
-                  <div><strong>Accuracy:</strong> {value.move.accuracy || '—'}</div>
-                  <div><strong>Category:</strong> {value.move.damage_class}</div>
+                  <div><strong>{t('threats.type')}:</strong> {value.move.type}</div>
+                  <div><strong>{t('threats.power')}:</strong> {value.move.power || '—'}</div>
+                  <div><strong>{t('pokemon.accuracy')}:</strong> {value.move.accuracy || '—'}</div>
+                  <div><strong>{t('pokemon.category')}:</strong> {value.move.damage_class}</div>
                 </div>
               )}
             </div>
