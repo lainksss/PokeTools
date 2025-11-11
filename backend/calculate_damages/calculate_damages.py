@@ -416,15 +416,17 @@ def calculate_damage(
     # abilities that change raw stats (Huge/Pure Power, Guts, etc.) affect base.
     ability_effects = {}
     ability_multipliers = {}
+    ability_type_mult = 1.0  # Pour stocker le type_mult modifié par les talents
     if 'apply_ability_effects' in globals() and apply_ability_effects:
         try:
             # Pass a temporary multipliers dict; we'll merge its results later.
-            ability_multipliers, A, D, _type_mult_tmp, ability_effects = apply_ability_effects(
+            ability_multipliers, A, D, ability_type_mult, ability_effects = apply_ability_effects(
                 attacker, defender, move, field, {}, A, D, 1.0, gen
             )
         except Exception:
             ability_effects = {}
             ability_multipliers = {}
+            ability_type_mult = 1.0
 
     # simple multipliers
     targets, pb = compute_targets_and_pb(move, field, gen)
@@ -449,6 +451,15 @@ def calculate_damage(
     # Flying Press (both type and flying)
     if move.get("name") == "flying-press":
         type_mult = type_mult * type_effectiveness("flying", defender.get("types", []), type_chart)
+    
+    # Tera Shell: Force all damaging moves to be not very effective when at full HP
+    if ability_effects.get("tera_shell_active") and type_mult > 0:
+        type_mult = 0.5
+    
+    # Apply ability type mult modifications (Levitate immunity, etc.)
+    # If ability returned 0.0 (immunity), override type_mult
+    if ability_type_mult == 0.0:
+        type_mult = 0.0
 
     burn_mult = compute_burn_mult(attacker, category, move, gen)
     other_mult, zmove_mult, terashield_mult = compute_other_z_terashield(attacker, defender, field)
