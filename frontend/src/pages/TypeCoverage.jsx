@@ -37,7 +37,11 @@ export default function TypeCoverage() {
     }
 
     const payload = {
-      moves: moves
+      moves: moves,
+      attacker: {
+        is_terastallized: attacker.is_terastallized || false,
+        tera_type: attacker.tera_type || null
+      }
     }
 
     try {
