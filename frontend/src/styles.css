@@ -25,6 +25,30 @@ body {
   overflow-x: hidden;
 }
 
+/* Style global pour tous les selects et leurs options */
+select {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border: 1px solid var(--border);
+}
+
+select option {
+  background: #1a2332;
+  color: #ffffff;
+  padding: 8px;
+}
+
+select option:checked {
+  background: linear-gradient(#2563eb, #2563eb);
+  color: #ffffff;
+}
+
+/* Pour Firefox */
+select option:hover {
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+
 /* Main layout */
 .app-root {
   min-height: 100vh;
@@ -193,6 +217,20 @@ body {
   background: rgba(255, 255, 255, 0.08);
 }
 
+/* Style pour les options des select */
+select.form-control option {
+  background: #1a2332;
+  color: #ffffff;
+  padding: 10px;
+}
+
+select.form-control option:hover,
+select.form-control option:focus,
+select.form-control option:checked {
+  background: #2563eb;
+  color: #ffffff;
+}
+
 /* Pokemon search input */
 .pokemon-selector-wrapper {
   position: relative;
@@ -314,6 +352,19 @@ body {
   border-radius: 6px;
   color: var(--text);
   font-size: 13px;
+}
+
+.tera-type-select option {
+  background: #1a2332;
+  color: #ffffff;
+  padding: 10px;
+}
+
+.tera-type-select option:hover,
+.tera-type-select option:focus,
+.tera-type-select option:checked {
+  background: #2563eb;
+  color: #ffffff;
 }
 
 /* Stats and Selectors side by side */
@@ -483,8 +534,8 @@ body {
 .mode-button {
   flex: 1;
   padding: 10px 16px;
-  background: var(--card);
-  color: var(--text);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
   border: 2px solid var(--border);
   border-radius: 8px;
   font-size: 14px;
@@ -494,26 +545,28 @@ body {
 }
 
 .mode-button:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.15);
   border-color: var(--accent);
+  color: #ffffff;
 }
 
 .mode-button.active {
   background: var(--accent);
-  color: white;
+  color: #ffffff;
   border-color: var(--accent);
 }
 
 .calculate-button {
   padding: 14px 32px;
   background: var(--accent);
-  color: white;
+  color: #ffffff;
   border: none;
   border-radius: 8px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.2s;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .calculate-button:hover:not(:disabled) {
