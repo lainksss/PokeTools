@@ -29,6 +29,20 @@ This README provides a detailed overview of the PokeTools codebase: backend (Fla
 ---
 
 ## Quick Overview
+
+## Deployment
+
+### Frontend (GitHub Pages)
+- The React (Vite) frontend is automatically deployed to GitHub Pages using a GitHub Actions workflow.
+- The `frontend/` folder contains the source code, and the build output (`dist/`) is published to the `gh-pages` branch.
+- The workflow `.github/workflows/deploy.yml` builds and deploys the app on every push to `main`.
+- The app is available at: https://lainksss.github.io/PokeTools/
+
+### Backend (Render)
+- The Flask backend is deployed as a web service on [Render](https://dashboard.render.com/).
+- The `backend/` folder contains the source code and `requirements.txt`.
+- The Render start command is: `gunicorn api:app`
+- CORS is configured to allow requests from the GitHub Pages frontend and localhost.
 PokeTools is a suite of tools for competitive Pokémon: damage calculator, threat analysis, offensive coverage, and type coverage. The backend is Python (Flask) exposing REST and SSE endpoints for long-running analyses. The frontend is a React (Vite) app consuming these endpoints.
 
 ## Repository Structure
