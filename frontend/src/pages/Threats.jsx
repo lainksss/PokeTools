@@ -323,7 +323,13 @@ export default function Threats() {
                       <div key={attackIdx} className="attack-info">
                         <div className="attack-name">
                           <strong>{attack.move_name}</strong>
-                          <span className="attack-type type-{attack.move_type}">{t(`threats.type`)}</span>
+                          <span className={`type-badge type-${attack.move_type}`}>
+                            {t(`types.${attack.move_type}`)}
+                          </span>
+                          <span className={`damage-class ${attack.damage_class}`}>
+                            {attack.damage_class === 'physical' ? '💪 ' : '✨ '}
+                            {t(`threats.${attack.damage_class}`)}
+                          </span>
                           {attack.move_power && <span className="attack-power">⚡{attack.move_power}</span>}
                         </div>
                         

@@ -81,7 +81,9 @@ export const translations = {
       damage: "Dégâts",
       rolls: "rolls",
       nature: "Nature",
-      guaranteedKO: "✓ KO Garanti"
+      guaranteedKO: "✓ KO Garanti",
+      physical: "Physique",
+      special: "Spécial"
     },
 
     // Page Coverage
@@ -158,6 +160,29 @@ export const translations = {
       loading: "Chargement...",
       error: "Erreur",
       close: "Fermer"
+    },
+
+    // Types
+    types: {
+      normal: "Normal",
+      fighting: "Combat",
+      flying: "Vol",
+      poison: "Poison",
+      ground: "Sol",
+      rock: "Roche",
+      bug: "Insecte",
+      ghost: "Spectre",
+      steel: "Acier",
+      fire: "Feu",
+      water: "Eau",
+      grass: "Plante",
+      electric: "Électrik",
+      psychic: "Psy",
+      ice: "Glace",
+      dragon: "Dragon",
+      dark: "Ténèbres",
+      fairy: "Fée",
+      stellar: "Stellaire"
     }
   },
   
@@ -242,7 +267,9 @@ export const translations = {
       damage: "Damage",
       rolls: "rolls",
       nature: "Nature",
-      guaranteedKO: "✓ Guaranteed KO"
+      guaranteedKO: "✓ Guaranteed KO",
+      physical: "Physical",
+      special: "Special"
     },
 
     // Page Coverage
@@ -319,6 +346,29 @@ export const translations = {
       loading: "Loading...",
       error: "Error",
       close: "Close"
+    },
+
+    // Types
+    types: {
+      normal: "Normal",
+      fighting: "Fighting",
+      flying: "Flying",
+      poison: "Poison",
+      ground: "Ground",
+      rock: "Rock",
+      bug: "Bug",
+      ghost: "Ghost",
+      steel: "Steel",
+      fire: "Fire",
+      water: "Water",
+      grass: "Grass",
+      electric: "Electric",
+      psychic: "Psychic",
+      ice: "Ice",
+      dragon: "Dragon",
+      dark: "Dark",
+      fairy: "Fairy",
+      stellar: "Stellar"
     }
   }
 }

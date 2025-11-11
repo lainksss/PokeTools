@@ -263,7 +263,12 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
       <div className="types-tera-row">
         <div className="types-section">
           <div className="types-display">
-            <strong>{t('pokemon.types')}:</strong> {value?.types?.join(', ') || 'N/A'}
+            <strong>{t('pokemon.types')}:</strong>{' '}
+            {value?.types?.map((type, idx) => (
+              <span key={idx} className={`type-badge type-${type}`}>
+                {t(`types.${type}`)}
+              </span>
+            )) || 'N/A'}
           </div>
         </div>
 
@@ -282,8 +287,8 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
               onChange={e => handleTeraTypeChange(e.target.value)}
               className="tera-type-select"
             >
-              {allTypes.map(t => (
-                <option key={t} value={t}>{t}</option>
+              {allTypes.map(type => (
+                <option key={type} value={type}>{t(`types.${type}`)}</option>
               ))}
             </select>
           )}
