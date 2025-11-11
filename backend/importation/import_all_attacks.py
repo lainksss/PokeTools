@@ -49,11 +49,27 @@ def fetch_move_detail(url: str) -> Dict:
     data = r.json()
     move = {
         "type": data["type"]["name"],
-    "power": data["power"],  # base damage
-    "accuracy": data["accuracy"],  # accuracy
+        "power": data["power"],  # base damage
+        "accuracy": data["accuracy"],  # accuracy
         "damage_class": data["damage_class"]["name"],  # physical, special, status
-        "multi_hit": None
+        "multi_hit": None,
+        "targets": 1  # Par défaut, 1 cible
     }
+    
+    # Récupérer le nombre de cibles de l'attaque
+    # target peut être: specific-move, selected-pokemon, all-other-pokemon, all-opponents, etc.
+    target_info = data.get("target", {})
+    if target_info:
+        target_name = target_info.get("name", "")
+        # Les attaques qui touchent plusieurs adversaires en double bataille
+        if target_name in ["all-opponents", "all-other-pokemon"]:
+            move["targets"] = 2
+        # Les attaques qui touchent tout le terrain (ex: Earthquake)
+        elif target_name in ["entire-field", "all-pokemon"]:
+            move["targets"] = 3  # Touche tous les Pokémon sur le terrain
+        else:
+            move["targets"] = 1
+    
     # Check if the move is multi-hit (e.g. Double Slap, Fury Attack, Bullet Seed, etc.)
     # `meta` can be null in some responses => normalize to dict
     meta = data.get("meta") or {}

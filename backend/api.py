@@ -170,13 +170,26 @@ def api_calc_damage():
     attacker = build_actor_from_payload(attacker_data)
     defender = build_actor_from_payload(defender_data)
 
+    # Enrichir move_data avec les infos complètes depuis all_moves.json
+    move_name = move_data.get("name")
+    if move_name:
+        all_moves = _load_json("all_moves.json") or {}
+        complete_move_data = all_moves.get(move_name, {})
+        # Fusionner les données (priorité aux données du payload pour les valeurs déjà présentes)
+        move_data = {**complete_move_data, **move_data}
+
     # Calculer les dégâts
     try:
+        # Ajouter battle_mode au field si fourni
+        field_data = payload.get("field", {})
+        if payload.get("battle_mode"):
+            field_data["battle_mode"] = payload.get("battle_mode")
+        
         result = calculate_damage(
             move_data,
             attacker,
             defender,
-            field=payload.get("field", {}),
+            field=field_data,
             defender_hp=payload.get("defender_hp"),
             is_critical=payload.get("is_critical", False),
             random_range=payload.get("random_range"),
