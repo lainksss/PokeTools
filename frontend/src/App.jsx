@@ -1,5 +1,5 @@
 import React from 'react'
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet, NavLink } from 'react-router-dom'
 import { useTranslation } from './i18n/LanguageContext'
 
 export default function App() {
@@ -10,11 +10,11 @@ export default function App() {
       <header className="app-header">
         <h1>PokeTools</h1>
         <nav>
-          <Link to="/">Home</Link>
-          <Link to="/calculate">{t('nav.calculator')}</Link>
-          <Link to="/threats">{t('nav.threats')}</Link>
-          <Link to="/coverage">{t('nav.coverage') || 'Coverage'}</Link>
-          <Link to="/type-coverage">{t('nav.typeCoverage') || 'Type Coverage'}</Link>
+          <NavLink to="/" className={({isActive}) => isActive ? 'active' : ''}>Home</NavLink>
+          <NavLink to="/calculate" className={({isActive}) => isActive ? 'active' : ''}>{t('nav.calculator')}</NavLink>
+          <NavLink to="/threats" className={({isActive}) => isActive ? 'active' : ''}>{t('nav.threats')}</NavLink>
+          <NavLink to="/coverage" className={({isActive}) => isActive ? 'active' : ''}>{t('nav.coverage') || 'Coverage'}</NavLink>
+          <NavLink to="/type-coverage" className={({isActive}) => isActive ? 'active' : ''}>{t('nav.typeCoverage') || 'Type Coverage'}</NavLink>
         </nav>
         <div className="language-selector">
           <button 
