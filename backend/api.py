@@ -799,6 +799,183 @@ def api_find_threats_stream():
     )
 
 
+@app.route("/api/analyze_coverage_stream", methods=["POST"])
+def api_analyze_coverage_stream():
+    """Analyse la couverture offensive d'un attaquant avec plusieurs attaques (streaming)."""
+    payload = request.get_json() or {}
+    attacker_data = payload.get("attacker")
+    moves_data = payload.get("moves", [])
+    ko_mode = payload.get("ko_mode", "OHKO")
+    include_no_ko = payload.get("include_no_ko", False)  # Inclure les Pokémon qui ne font PAS de KO
+    field_data = payload.get("field", {})
+
+    if not attacker_data:
+        return jsonify({"error": "attacker required"}), 400
+    
+    if not moves_data or len(moves_data) == 0:
+        return jsonify({"error": "at least one move required"}), 400
+
+    def generate():
+        try:
+            # Charger tous les Pokémon
+            all_pokemon_data = _load_json("all_pokemon.json") or {}
+            # all_pokemon.json est un dict {nom: {id, types, base_stats...}}
+            all_pokemon = [
+                {"name": name, **data} 
+                for name, data in all_pokemon_data.items()
+            ]
+            total_pokemon = len(all_pokemon)
+
+            # Construire l'attaquant
+            attacker = build_actor_from_payload(attacker_data)
+
+            # Envoyer l'init
+            yield f"data: {json.dumps({'type': 'init', 'total': total_pokemon})}\n\n"
+
+            processed = 0
+            total_coverage = 0
+
+            for poke in all_pokemon:
+                poke_id = poke.get("id")
+                poke_slug = poke.get("name", "unknown")
+                
+                # Construire le défenseur
+                defender_payload = {
+                    "pokemon_id": poke_id,
+                    "base_stats": poke.get("base_stats", {}),
+                    "evs": {"hp": 252, "defense": 252, "special_defense": 252},  # Max défensif
+                    "nature": "bold",  # Nature défensive
+                    "types": poke.get("types", []),
+                    "ability": None,
+                    "is_terastallized": False,
+                    "tera_type": None
+                }
+                defender = build_actor_from_payload(defender_payload)
+                
+                # Tester chaque attaque et trouver la meilleure
+                best_result = None
+                best_move = None
+                max_ko_chance = 0
+
+                for move_data in moves_data:
+                    try:
+                        # Enrichir move_data
+                        move_name = move_data.get("name")
+                        if move_name:
+                            all_moves = _load_json("all_moves.json") or {}
+                            complete_move_data = all_moves.get(move_name, {})
+                            full_move_data = {**complete_move_data, **move_data}
+                        else:
+                            full_move_data = move_data
+
+                        # Calculer les dégâts
+                        result = calculate_damage(
+                            full_move_data,
+                            attacker,
+                            defender,
+                            field=field_data,
+                            gen=9,
+                            debug=False
+                        )
+
+                        # Vérifier si ça KO
+                        damage_all = result.get("damage_all", [])
+                        defender_hp = result.get("defender_hp", 1)
+                        
+                        if ko_mode == "OHKO":
+                            ko_count = sum(1 for dmg in damage_all if dmg >= defender_hp)
+                        else:  # 2HKO
+                            ko_count = sum(1 for dmg in damage_all if dmg * 2 >= defender_hp)
+                        
+                        ko_percent = (ko_count / len(damage_all) * 100) if damage_all else 0
+
+                        # Garder la meilleure attaque
+                        if ko_percent > max_ko_chance:
+                            max_ko_chance = ko_percent
+                            best_result = result
+                            best_move = full_move_data
+
+                    except Exception as e:
+                        continue
+
+                # Décider si on envoie ce résultat
+                # - Si include_no_ko est True : TOUJOURS envoyer (même si aucune attaque ne KO)
+                # - Si include_no_ko est False : envoyer seulement si max_ko_chance > 0
+                
+                if include_no_ko or (best_result and max_ko_chance > 0):
+                    # Si on n'a pas de meilleure attaque (aucun résultat), utiliser la première attaque testée
+                    if not best_result and include_no_ko:
+                        # Recalculer avec la première attaque pour avoir au moins des données
+                        try:
+                            move_data = moves_data[0]
+                            move_name = move_data.get("name")
+                            if move_name:
+                                all_moves = _load_json("all_moves.json") or {}
+                                complete_move_data = all_moves.get(move_name, {})
+                                full_move_data = {**complete_move_data, **move_data}
+                            else:
+                                full_move_data = move_data
+                            
+                            best_result = calculate_damage(
+                                full_move_data,
+                                attacker,
+                                defender,
+                                field=field_data,
+                                gen=9,
+                                debug=False
+                            )
+                            best_move = full_move_data
+                        except:
+                            continue
+                    
+                    if best_result:
+                        damage_all = best_result.get("damage_all", [])
+                        defender_hp = best_result.get("defender_hp", 1)
+                        
+                        if ko_mode == "OHKO":
+                            rolls_that_ko = sum(1 for dmg in damage_all if dmg >= defender_hp)
+                        else:
+                            rolls_that_ko = sum(1 for dmg in damage_all if dmg * 2 >= defender_hp)
+
+                        coverage_entry = {
+                            "defender_name": poke_slug.capitalize(),
+                            "defender_id": poke_id,
+                            "defender_types": poke.get("types", []),
+                            "defender_hp": defender_hp,
+                            "best_move_name": best_move.get("name", "").replace("-", " ").title(),
+                            "best_move_type": best_move.get("type", "normal"),
+                            "max_ko_chance": max_ko_chance,
+                            "max_rolls_that_ko": rolls_that_ko,
+                            "damage_range": damage_all
+                        }
+
+                        total_coverage += 1
+                        yield f"data: {json.dumps({'type': 'coverage', 'data': coverage_entry})}\n\n"
+
+                processed += 1
+
+                # Envoyer la progression tous les 10 Pokémon (ou 5 au début)
+                if processed <= 50 and processed % 5 == 0:
+                    yield f"data: {json.dumps({'type': 'progress', 'processed': processed, 'total': total_pokemon, 'coverage_found': total_coverage})}\n\n"
+                elif processed % 10 == 0:
+                    yield f"data: {json.dumps({'type': 'progress', 'processed': processed, 'total': total_pokemon, 'coverage_found': total_coverage})}\n\n"
+
+            # Envoyer la fin
+            yield f"data: {json.dumps({'type': 'complete', 'total_coverage': total_coverage, 'total_processed': processed})}\n\n"
+
+        except Exception as e:
+            yield f"data: {json.dumps({'type': 'error', 'message': str(e)})}\n\n"
+
+    return Response(
+        stream_with_context(generate()),
+        mimetype='text/event-stream',
+        headers={
+            'Cache-Control': 'no-cache',
+            'X-Accel-Buffering': 'no'
+        }
+    )
+
+
 if __name__ == "__main__":
     # Run the API locally; allow environment override for host/port
     import os

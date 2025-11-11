@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from '../i18n/LanguageContext'
 
-export default function PokemonPanel({ side, value, onChange }) {
+export default function PokemonPanel({ side, value, onChange, showMultipleMoves = false }) {
   const { t } = useTranslation()
   const [allPokemon, setAllPokemon] = useState([])
   const [filteredPokemon, setFilteredPokemon] = useState([])
@@ -181,9 +181,10 @@ export default function PokemonPanel({ side, value, onChange }) {
     onChange && onChange({ ...value, ability: abilityName })
   }
 
-  const handleMoveChange = (moveSlug) => {
+  const handleMoveChange = (moveSlug, moveNumber = 1) => {
     const move = pokemonMoves.find(m => m.name === moveSlug)
-    onChange && onChange({ ...value, move: move || null })
+    const moveKey = moveNumber === 1 ? 'move' : `move${moveNumber}`
+    onChange && onChange({ ...value, [moveKey]: move || null })
   }
 
   const handleTeraChange = (checked) => {
@@ -413,7 +414,7 @@ export default function PokemonPanel({ side, value, onChange }) {
           </div>
 
           {/* Move (only for attacker) */}
-          {side === 'left' && (
+          {side === 'left' && !showMultipleMoves && (
             <div className="form-group">
               <label>{t('calculate.move')}</label>
               <select 
@@ -436,6 +437,30 @@ export default function PokemonPanel({ side, value, onChange }) {
                   <div><strong>{t('pokemon.category')}:</strong> {value.move.damage_class}</div>
                 </div>
               )}
+            </div>
+          )}
+
+          {/* Multiple Moves (for coverage analysis) */}
+          {side === 'left' && showMultipleMoves && (
+            <div className="form-group">
+              <label>{t('coverage.moves') || 'Attaques (max 4)'}</label>
+              {[1, 2, 3, 4].map(num => (
+                <div key={num} className="move-select-row">
+                  <label className="move-number">{num}.</label>
+                  <select 
+                    value={value?.[`move${num === 1 ? '' : num}`]?.name || ''}
+                    onChange={e => handleMoveChange(e.target.value, num)}
+                    className="form-control move-select"
+                  >
+                    <option value="">-- {t('pokemon.none')} --</option>
+                    {pokemonMoves.map(move => (
+                      <option key={move.name} value={move.name}>
+                        {move.name.replace(/-/g, ' ')} ({move.type}, {move.power || '—'})
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              ))}
             </div>
           )}
         </div>

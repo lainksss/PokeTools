@@ -13,6 +13,7 @@ export default function App() {
           <Link to="/">Home</Link>
           <Link to="/calculate">{t('nav.calculator')}</Link>
           <Link to="/threats">{t('nav.threats')}</Link>
+          <Link to="/coverage">{t('nav.coverage') || 'Coverage'}</Link>
         </nav>
         <div className="language-selector">
           <button 
