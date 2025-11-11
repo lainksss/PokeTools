@@ -215,7 +215,7 @@ def api_calc_damage():
 
 @app.route("/api/health", methods=["GET"])
 def api_health():
-    return jsonify({"ok": True, "service": "pokemon-calculator-backend"})
+    return jsonify({"ok": True, "service": "PokeTools-backend"})
 
 
 # --- Data endpoints ---

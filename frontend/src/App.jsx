@@ -8,7 +8,7 @@ export default function App() {
   return (
     <div className="app-root">
       <header className="app-header">
-        <h1>Pokemon Tools</h1>
+        <h1>PokeTools</h1>
         <nav>
           <Link to="/">Home</Link>
           <Link to="/calculate">{t('nav.calculator')}</Link>
@@ -34,7 +34,7 @@ export default function App() {
       <main className="app-main">
         <Outlet />
       </main>
-      <footer className="app-footer">Made by Lainkss</footer>
+      <footer className="app-footer">Made by Lainkss (@lainkss on discord)</footer>
     </div>
   )
 }
