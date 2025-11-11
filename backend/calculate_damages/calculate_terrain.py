@@ -27,6 +27,11 @@ def compute_terrain_multiplier(field: Dict, mv_type: Optional[str], move: Dict, 
         effects["terrain_heal_fraction"] = 1/16
         if mv_type == "grass" and attacker.get("is_grounded", True):
             terrain_mult = 1.3
+        # Halve power of Earthquake, Bulldoze, and Magnitude
+        move_name = move.get("name", "").lower()
+        if move_name in ("earthquake", "bulldoze", "magnitude"):
+            terrain_mult *= 0.5
+            effects["halve_power"] = True
         effects["name"] = "grassy"
         return terrain_mult, effects
 
