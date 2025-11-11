@@ -11,6 +11,7 @@ export default function ResultsPanel({ result }) {
 
   // Calculate statistics
   const rolls = result.damage_all || []
+  const remainingHP = result.remaining_hp_all || []
   const defenderHP = result.defender_hp || 0
   
   // OHKO: how many rolls kill in one hit
@@ -61,14 +62,21 @@ export default function ResultsPanel({ result }) {
         <div className="damage-rolls">
           <h4>Possible damage</h4>
           <div className="rolls-inline">
-            {rolls.map((dmg, i) => (
-              <div key={i} className="roll-item">
-                <span className="roll-damage">{dmg}</span>
-                <span className="roll-percent">
-                  ({defenderHP > 0 ? `${(dmg / defenderHP * 100).toFixed(1)}%` : '—'})
-                </span>
-              </div>
-            ))}
+            {rolls.map((dmg, i) => {
+              const hpLeft = remainingHP[i] !== undefined ? remainingHP[i] : '?'
+              const isKO = hpLeft <= 0
+              return (
+                <div key={i} className={`roll-item ${isKO ? 'roll-ko' : ''}`}>
+                  <span className="roll-damage">{dmg}</span>
+                  <span className="roll-percent">
+                    ({defenderHP > 0 ? `${(dmg / defenderHP * 100).toFixed(1)}%` : '—'})
+                  </span>
+                  <span className="roll-remaining">
+                    → {hpLeft} HP
+                  </span>
+                </div>
+              )
+            })}
           </div>
         </div>
       )}
