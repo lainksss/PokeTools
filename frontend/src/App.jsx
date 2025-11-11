@@ -9,6 +9,7 @@ export default function App() {
         <nav>
           <Link to="/">Home</Link>
           <Link to="/calculate">Calculate damages</Link>
+          <Link to="/threats">Threats Analysis</Link>
         </nav>
       </header>
       <main className="app-main">

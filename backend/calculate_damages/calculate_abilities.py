@@ -157,6 +157,39 @@ def apply_ability_effects(
         type_mult = float(type_mult) * 0.75
         effects[def_ability] = True
 
+    # Tera Shell: when defender is at full HP, mark for special handling
+    # (will force type effectiveness to 0.5x in calculate_damages.py)
+    if def_ability == "tera-shell":
+        if defender.get("hp") is not None and defender.get("max_hp"):
+            hp = float(defender.get("hp"))
+            max_hp = float(defender.get("max_hp"))
+            if hp >= max_hp:  # Full HP
+                effects["tera_shell_active"] = True
+
+    # Multiscale: when defender is at full HP, halve damage taken
+    if def_ability == "multiscale":
+        if defender.get("hp") is not None and defender.get("max_hp"):
+            hp = float(defender.get("hp"))
+            max_hp = float(defender.get("max_hp"))
+            if hp >= max_hp:  # Full HP
+                mul("other_mult", 0.5)
+                effects["multiscale"] = True
+
+    # Shadow Shield: when defender is at full HP, halve damage taken
+    if def_ability == "shadow-shield":
+        if defender.get("hp") is not None and defender.get("max_hp"):
+            hp = float(defender.get("hp"))
+            max_hp = float(defender.get("max_hp"))
+            if hp >= max_hp:  # Full HP
+                mul("other_mult", 0.5)
+                effects["shadow_shield"] = True
+
+    # Thick Fat: halve damage from Fire and Ice type moves
+    if def_ability == "thick-fat":
+        if mv_type in ("fire", "ice"):
+            mul("other_mult", 0.5)
+            effects["thick_fat"] = True
+
     # Neuroforce / Beast Boost etc increase damage in particular circumstances (not implemented here)
 
     return multipliers, A, D, type_mult, effects
