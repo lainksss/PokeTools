@@ -30,7 +30,7 @@ if str(HERE) not in sys.path:
 
 app = Flask(__name__)
 # Autorise uniquement le frontend GitHub Pages et localhost (dev)
-CORS(app, origins=["https://lainksss.github.io/PokeTools/", "http://localhost:5173"])
+CORS(app, origins=["https://lainksss.github.io/PokeTools", "http://localhost:5173"])
 
 # import calculators (fall back to importlib if necessary)
 try:
