@@ -136,6 +136,38 @@ def compute_effective_stat(pkm: Dict, key: str, stages_key: str, is_attack: bool
     return base * mult
 
 
+def compute_stat_with_stages_only(pkm: Dict, key: str, stages_key: str) -> float:
+    """Calculate stat with only base stat and stage modifiers (for Tera Blast category determination).
+    
+    Ignores Abilities, items, and other effects - only considers stat stages.
+    """
+    # Look for the base stat value
+    alt_keys = [key, key + "_base", key.replace("_", "-"), key.replace("_", " ")]
+    base_val = None
+    for k in alt_keys:
+        if k in pkm and isinstance(pkm[k], (int, float)):
+            base_val = pkm[k]
+            break
+    base = float(base_val or 0)
+    
+    # Look for stages/boosts
+    stages = 0
+    stages_container = pkm.get("stages", {})
+    if isinstance(stages_container, dict):
+        for sk in (stages_key, stages_key.replace("_", "-"), stages_key.replace("_", " ")):
+            if sk in stages_container:
+                stages = stages_container.get(sk, 0)
+                break
+    
+    # Apply boost multiplier (stages only, no other modifiers)
+    if stages >= 0:
+        mult = (2.0 + stages) / 2.0
+    else:
+        mult = 2.0 / (2.0 - stages)
+    
+    return base * mult
+
+
 def determine_crit_effective(attacker: Dict, defender: Dict, is_critical: bool, move: Dict) -> bool:
     crit_effective = is_critical
     if defender.get("ability") in ("battle-armor", "shell-armor") or defender.get("lucky_chant"):
@@ -437,21 +469,29 @@ def calculate_damage(
     # Compute offensive/defensive stats
     category = move.get("damage_class", "physical")
     
-    # Tera Blast : change de type et de catégorie selon la téracristallisation
+    # Tera Blast : change de type, de catégorie et de puissance selon la téracristallisation
     move_type = move.get("type")
     is_tera_blast = move.get("name") == "tera-blast"
+    tera_blast_is_stellar = False
     
     if is_tera_blast and attacker.get("is_terastallized"):
         # Prend le type Tera
         tera_type = attacker.get("tera_type")
         if tera_type:
             move_type = tera_type
+            
+            # Cas spécial : Stellar type
+            if tera_type == "stellar":
+                tera_blast_is_stellar = True
+                # La puissance passe à 100 au lieu de 80
+                power = 100
         
-        # Choisir la meilleure catégorie (physique vs spéciale)
-        atk_stat = compute_effective_stat(attacker, "attack", "attack", True, False)
-        spa_stat = compute_effective_stat(attacker, "special_attack", "special_attack", True, False)
+        # Choisir la catégorie (physique vs spéciale) basé UNIQUEMENT sur les stats de base + stages
+        # Ignore les talents (Huge Power), objets (Choice Band), etc.
+        atk_with_stages = compute_stat_with_stages_only(attacker, "attack", "attack")
+        spa_with_stages = compute_stat_with_stages_only(attacker, "special_attack", "special_attack")
         
-        if atk_stat > spa_stat:
+        if atk_with_stages > spa_with_stages:
             category = "physical"
         else:
             category = "special"
@@ -492,6 +532,14 @@ def calculate_damage(
     stab = compute_stab(attacker, move, move_type_override=move_type if is_tera_blast else None)
     mv_type = move_type
     type_mult = type_effectiveness(mv_type, defender.get("types", []), type_chart)
+    
+    # Tera Blast Stellar : super efficace contre Pokémon téracristallisés, neutre sinon
+    if tera_blast_is_stellar:
+        if defender.get("is_terastallized"):
+            type_mult = 2.0  # Super efficace contre cibles téracristallisées
+        else:
+            type_mult = 1.0  # Neutre contre cibles non téracristallisées
+    
     # Ring Target
     if defender.get("ring_target") and type_mult == 0.0:
         type_mult = 1.0
