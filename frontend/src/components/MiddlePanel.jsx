@@ -40,6 +40,7 @@ export default function MiddlePanel({ left, right, setResult }) {
         nature: left.nature,
         types: left.types,
         ability: left.ability,
+        item: left.item || null,
         is_terastallized: left.is_terastallized,
         tera_type: left.tera_type,
         stages: left.boosts || {}
@@ -51,6 +52,7 @@ export default function MiddlePanel({ left, right, setResult }) {
         nature: right.nature,
         types: right.types,
         ability: right.ability,
+        item: right.item || null,
         is_terastallized: right.is_terastallized,
         tera_type: right.tera_type,
         stages: right.boosts || {}
@@ -62,7 +64,7 @@ export default function MiddlePanel({ left, right, setResult }) {
       },
       is_critical: isCritical,
       battle_mode: battleMode,
-      debug: true  // Activer le mode debug temporairement
+      debug: true
     }
 
     try {

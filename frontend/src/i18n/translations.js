@@ -46,6 +46,8 @@ export const translations = {
       teraType: "Type Téra",
       move: "Attaque",
       selectMove: "Sélectionner une attaque",
+      item: "Objet tenu",
+      searchItem: "Rechercher un objet...",
       critical: "Coup critique",
       battleMode: "Mode de combat",
       battleConditions: "Conditions de combat",
@@ -187,7 +189,9 @@ export const translations = {
     common: {
       loading: "Chargement...",
       error: "Erreur",
-      close: "Fermer"
+      close: "Fermer",
+      clear: "Effacer",
+      noResults: "Aucun résultat"
     },
 
     // Types
@@ -260,6 +264,8 @@ export const translations = {
       teraType: "Tera Type",
       move: "Move",
       selectMove: "Select a move",
+      item: "Held item",
+      searchItem: "Search item...",
       critical: "Critical hit",
       battleMode: "Battle mode",
       battleConditions: "Battle Conditions",
@@ -401,7 +407,9 @@ export const translations = {
     common: {
       loading: "Loading...",
       error: "Error",
-      close: "Close"
+      close: "Close",
+      clear: "Clear",
+      noResults: "No results"
     },
 
     // Types

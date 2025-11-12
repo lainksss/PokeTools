@@ -3,7 +3,7 @@
 This module contains all held items and their effects on damage calculation,
 including type-boosting items, berries, choice items, and special items.
 """
-from typing import Dict, Optional, Tuple
+from typing import Dict, Optional, Tuple, Iterable
 
 # Item registry - all held items with their effects
 ITEMS: Dict[str, Dict] = {
@@ -82,8 +82,8 @@ ITEMS: Dict[str, Dict] = {
     # Expert Belt (+20% super effective)
     "expert-belt": {"super_effective_boost": True},
     
-    # Life Orb (+30% power)
-    "life-orb": {"power_mult": 1.3},
+    # Life Orb (5324/4096 ≈ 1.2998046875, commonly rounded to 1.3)
+    "life-orb": {"power_mult": 5324/4096},
     
     # Eviolite (+50% defenses for non-fully evolved)
     "eviolite": {"unevolved_def_boost": True},
@@ -146,18 +146,22 @@ def apply_item_stat_modifiers(
     attacker: Dict,
     defender: Dict,
     move: Dict,
-) -> Tuple[Dict, Dict]:
+) -> Tuple[Dict, Dict, int]:
     """Apply stat modifications from held items BEFORE damage calculation.
     
-    Returns modified (attacker, defender) dicts.
+    Returns modified (attacker, defender, power) tuple.
+    Power is modified by items like Muscle Band/Wise Glasses and type-boosting items (Plates).
     """
     import copy
     attacker = copy.deepcopy(attacker)
     defender = copy.deepcopy(defender)
+    power = int(move.get("power", 0))
     
     attacker_item = get_item(attacker.get("item"))
     defender_item = get_item(defender.get("item"))
     category = move.get("damage_class", "physical")
+    move_type = move.get("type", "").lower()
+    attacker_species = attacker.get("species", "").lower()
     
     # Apply attacker item stat boosts
     if attacker_item:
@@ -200,7 +204,31 @@ def apply_item_stat_modifiers(
             defender["defense"] = int(defender.get("defense", 0) * 1.5)
             defender["special_defense"] = int(defender.get("special_defense", 0) * 1.5)
     
-    return attacker, defender
+    # Apply power modifications from items
+    attacker_item = get_item(attacker.get("item"))
+    if attacker_item:
+        # Type-boosting items (Plates, type-specific items) - modify POWER by ×1.2
+        if "type_boost" in attacker_item:
+            if move_type == attacker_item["type_boost"]:
+                power = int(power * 1.2)
+        
+        # Species-specific type boosts (Adamant/Lustrous/Griseous Orbs) - modify POWER by ×1.2
+        if "species" in attacker_item and "types" in attacker_item:
+            item_species = attacker_item["species"]
+            if isinstance(item_species, list):
+                is_match = attacker_species in item_species
+            else:
+                is_match = attacker_species == item_species
+            
+            if is_match and move_type in attacker_item["types"]:
+                power = int(power * 1.2)
+        
+        # Category boosts (Muscle Band, Wise Glasses) - modify POWER by ×1.1
+        if "category_boost" in attacker_item:
+            if category == attacker_item["category_boost"]:
+                power = int(power * 1.1)
+    
+    return attacker, defender, power
 
 
 def compute_item_damage_multiplier(
@@ -211,12 +239,17 @@ def compute_item_damage_multiplier(
     defender: Dict,
     type_effectiveness: float,
     category: str,
-) -> Tuple[float, Dict]:
+    attacker_consumed: Optional[Iterable[str]] = None,
+    defender_consumed: Optional[Iterable[str]] = None,
+) -> Tuple[float, float, Dict]:
     """Compute damage multiplier from held items.
     
-    Returns (multiplier, effects_dict).
+    Returns (item_mult, other_mult, effects_dict).
+    - item_mult: Applied after STAB but before Type (Life Orb)
+    - other_mult: Applied after Type (Expert Belt, berries, etc.)
     """
-    multiplier = 1.0
+    item_mult = 1.0  # Life Orb goes here (after STAB, before Type)
+    other_mult = 1.0  # Everything else goes here (after Type)
     effects = {}
     
     attacker_item = get_item(attacker_item_slug)
@@ -227,58 +260,66 @@ def compute_item_damage_multiplier(
     
     # Attacker item boosts
     if attacker_item:
-        # Type-boosting items (+20%)
-        if "type_boost" in attacker_item:
-            if move_type == attacker_item["type_boost"]:
-                multiplier *= 1.2
-                effects["item_type_boost"] = attacker_item_slug
-        
-        # Species-specific type boosts (Orbs for legendaries)
-        if "species" in attacker_item and "types" in attacker_item:
-            item_species = attacker_item["species"]
-            if isinstance(item_species, list):
-                is_match = attacker_species in item_species
-            else:
-                is_match = attacker_species == item_species
-            
-            if is_match and move_type in attacker_item["types"]:
-                multiplier *= 1.2
-                effects["species_item_boost"] = attacker_item_slug
-        
-        # Category boosts (Muscle Band +10%, Wise Glasses +10%)
-        if "category_boost" in attacker_item:
-            if category == attacker_item["category_boost"]:
-                multiplier *= 1.1
-                effects["category_boost"] = attacker_item_slug
+        # Type-boosting items are now handled in apply_item_stat_modifiers (modify power directly)
+        # So we DON'T apply them here anymore
         
         # Ogerpon Masks (check species + physical category)
         if attacker_item.get("type_boost_mult") and attacker_species == "ogerpon":
             if category == "physical":
-                multiplier *= attacker_item["type_boost_mult"]
+                other_mult *= attacker_item["type_boost_mult"]
                 effects["ogerpon_mask_boost"] = attacker_item_slug
         
         # Expert Belt (+20% on super effective)
         if attacker_item.get("super_effective_boost") and type_effectiveness > 1.0:
-            multiplier *= 1.2
+            other_mult *= 1.2
             effects["expert_belt"] = True
         
-        # Life Orb (+30%)
+        # Life Orb (+30%) - applied after STAB but before Type
         if "power_mult" in attacker_item:
-            multiplier *= attacker_item["power_mult"]
+            item_mult *= attacker_item["power_mult"]
             effects["life_orb"] = True
         
         # Normal Gem (one-use +50%)
         if "one_use_type_boost" in attacker_item:
-            if move_type == attacker_item["one_use_type_boost"]:
-                gem_mult = attacker_item.get("gem_mult", 1.5)
-                multiplier *= gem_mult
-                effects["gem_consumed"] = attacker_item_slug
+            # consider multi-hit moves: if move declares hits>1 or multi_hit flag, skip gem here
+            hits = int(move.get("hits") or 1)
+            is_multi = bool(move.get("multi_hit") or hits > 1)
+            already_consumed = False
+            try:
+                already_consumed = attacker_item_slug in (attacker_consumed or [])
+            except Exception:
+                already_consumed = False
+
+            if not is_multi and not already_consumed:
+                if move_type == attacker_item["one_use_type_boost"]:
+                    gem_mult = attacker_item.get("gem_mult", 1.5)
+                    other_mult *= gem_mult
+                    effects["gem_consumed"] = attacker_item_slug
+            else:
+                # signal that gem wasn't applied due to multi-hit or prior consumption
+                if is_multi:
+                    effects["gem_skipped_multi_hit"] = True
+                if already_consumed:
+                    effects["gem_already_consumed"] = True
     
     # Defender item (resist berries)
     if defender_item and "resist_type" in defender_item:
-        if move_type == defender_item["resist_type"] and type_effectiveness > 1.0:
-            multiplier *= 0.5
+        hits = int(move.get("hits") or 1)
+        is_multi = bool(move.get("multi_hit") or hits > 1)
+        already_consumed_def = False
+        try:
+            already_consumed_def = defender_item_slug in (defender_consumed or [])
+        except Exception:
+            already_consumed_def = False
+
+        if not is_multi and move_type == defender_item["resist_type"] and type_effectiveness > 1.0 and not already_consumed_def:
+            other_mult *= 0.5
             effects["berry_consumed"] = defender_item_slug
             effects["berry_halved_damage"] = True
+        else:
+            if is_multi:
+                effects["berry_skipped_multi_hit"] = True
+            if already_consumed_def:
+                effects["berry_already_consumed"] = True
     
-    return multiplier, effects
+    return item_mult, other_mult, effects

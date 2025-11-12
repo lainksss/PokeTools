@@ -129,6 +129,35 @@ def build_actor_from_payload(p):
         "tera_type": tera_type,
         "orig_types": original_types,  # Types d'origine (pour le STAB)
     }
+    # Include held item if provided
+    if p.get("item"):
+        actor["item"] = p.get("item")
+
+    # Try to determine species slug and evolution info from data files when possible
+    try:
+        all_pok = _load_json("all_pokemon.json") or {}
+        evo = _load_json("pokemon_evolution.json") or {}
+        # p may provide pokemon_id
+        poke_id = p.get("pokemon_id") or p.get("id") or None
+        if poke_id is not None:
+            for slug, dd in all_pok.items():
+                if dd and dd.get("id") == poke_id:
+                    actor["species"] = slug
+                    break
+        # can_evolve info
+        if actor.get("species"):
+            evo_info = evo.get(actor["species"], {})
+            actor["can_evolve"] = bool(evo_info.get("can_evolve", False))
+    except Exception:
+        # ignore any errors; these fields are optional
+        pass
+    # Include consumed items list if provided (used for one-use items like gems/berries)
+    consumed = p.get("consumed_items") or p.get("consumed")
+    if consumed:
+        try:
+            actor["consumed_items"] = list(consumed)
+        except Exception:
+            actor["consumed_items"] = []
     return actor
 
 
@@ -306,6 +335,24 @@ def api_pokemon_names():
     """Retourne les traductions des noms de Pokémon."""
     names_data = _load_json("all_pokemon_names_multilang.json") or {}
     return jsonify(names_data)
+
+
+@app.route("/api/items", methods=["GET"])
+def api_items():
+    """Return localized items registry for frontend consumption."""
+    items_data = _load_json("all_items.json") or {}
+    # Transform object to array with slugs
+    items_list = []
+    for slug, data in items_data.items():
+        item_obj = {
+            "slug": slug,
+            "en": data.get("en", slug),
+            "fr": data.get("fr", slug),
+            "description_en": data.get("description", {}).get("en", ""),
+            "description_fr": data.get("description", {}).get("fr", "")
+        }
+        items_list.append(item_obj)
+    return jsonify({"items": items_list, "count": len(items_list)})
 
 
 @app.route("/api/natures", methods=["GET"])

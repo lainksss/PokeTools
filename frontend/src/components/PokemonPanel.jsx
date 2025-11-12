@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
 
-export default function PokemonPanel({ side, value, onChange, showMultipleMoves = false, showTitle = true }) {
+export default function PokemonPanel({ side, value, onChange, showMultipleMoves = false, showTitle = true, showItem = true }) {
   const { t, getPokemonName, matchesPokemonName, language } = useTranslation()
   const [allPokemon, setAllPokemon] = useState([])
   const [filteredPokemon, setFilteredPokemon] = useState([])
@@ -15,6 +15,12 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
   const [pokemonAbilities, setPokemonAbilities] = useState([])
   const [finalStats, setFinalStats] = useState(null)
   const [loading, setLoading] = useState(true)
+  
+  // Items state
+  const [allItems, setAllItems] = useState([])
+  const [itemSearch, setItemSearch] = useState('')
+  const [showItemDropdown, setShowItemDropdown] = useState(false)
+  const [filteredItems, setFilteredItems] = useState([])
 
   // Load pokemon list on mount
   useEffect(() => {
@@ -24,13 +30,16 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
     Promise.all([
       fetch(`${API_URL}/api/pokemon`).then(r => r.json()),
       fetch(`${API_URL}/api/types`).then(r => r.json()),
-      fetch(`${API_URL}/api/natures`).then(r => r.json())
-    ]).then(([pokemonData, typesData, naturesData]) => {
+      fetch(`${API_URL}/api/natures`).then(r => r.json()),
+      fetch(`${API_URL}/api/items`).then(r => r.json())
+    ]).then(([pokemonData, typesData, naturesData, itemsData]) => {
       if (!mounted) return
       setAllPokemon(pokemonData.results || [])
       setFilteredPokemon(pokemonData.results || [])
       setAllTypes(typesData.types || [])
       setAllNatures(naturesData.natures || [])
+      setAllItems(itemsData.items || [])
+      setFilteredItems(itemsData.items || [])
       
       // Initialize with first pokemon if none selected
       if (!value && pokemonData.results && pokemonData.results.length > 0) {
@@ -45,6 +54,7 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
           nature: 'hardy',
           ability: null,
           move: null,
+          item: null,
           is_terastallized: false,
           tera_type: null
         }
@@ -59,6 +69,36 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
 
     return () => { mounted = false }
   }, [])
+
+  // Filter items when search changes
+  useEffect(() => {
+    if (!itemSearch.trim()) {
+      setFilteredItems(allItems)
+    } else {
+      const search = itemSearch.toLowerCase()
+      const filtered = allItems.filter(item => {
+        // Search in English name (slug)
+        if (item.slug && item.slug.toLowerCase().includes(search)) return true
+        // Search in French name
+        if (item.fr && item.fr.toLowerCase().includes(search)) return true
+        // Search in English name
+        if (item.en && item.en.toLowerCase().includes(search)) return true
+        return false
+      })
+      setFilteredItems(filtered)
+    }
+  }, [itemSearch, allItems])
+
+  // Update item search text when language changes and an item is selected
+  useEffect(() => {
+    if (value?.item && allItems.length > 0) {
+      const selectedItem = allItems.find(i => i.slug === value.item)
+      if (selectedItem) {
+        const displayName = language === 'fr' ? selectedItem.fr : selectedItem.en
+        setItemSearch(displayName || '')
+      }
+    }
+  }, [language, value?.item, allItems])
 
   // Filter pokemon when search text changes
   useEffect(() => {
@@ -105,7 +145,7 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
     return () => { mounted = false }
   }, [value && value.id])
 
-  // Calculate final stats when base_stats, evs or nature change
+  // Calculate final stats when base_stats, evs, nature, or item change
   useEffect(() => {
     if (!value || !value.base_stats) return
     
@@ -122,14 +162,60 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
     })
       .then(r => r.json())
       .then(data => {
-        if (mounted) setFinalStats(data.stats)
+        if (!mounted) return
+        
+        // Apply item stat multipliers
+        const stats = { ...data.stats }
+        const itemSlug = value?.item?.toLowerCase() || ''
+        const pokemonName = value?.name?.toLowerCase() || ''
+        
+        // Choice Band: Attack x1.5
+        if (itemSlug === 'choice-band') {
+          stats.attack = Math.floor(stats.attack * 1.5)
+        }
+        // Choice Specs: Special Attack x1.5
+        if (itemSlug === 'choice-specs') {
+          stats.special_attack = Math.floor(stats.special_attack * 1.5)
+        }
+        // Choice Scarf: Speed x1.5
+        if (itemSlug === 'choice-scarf') {
+          stats.speed = Math.floor(stats.speed * 1.5)
+        }
+        // Assault Vest: Special Defense x1.5
+        if (itemSlug === 'assault-vest') {
+          stats.special_defense = Math.floor(stats.special_defense * 1.5)
+        }
+        // Light Ball (Pikachu only): Attack x2, Special Attack x2
+        if (itemSlug === 'light-ball' && pokemonName === 'pikachu') {
+          stats.attack = Math.floor(stats.attack * 2.0)
+          stats.special_attack = Math.floor(stats.special_attack * 2.0)
+        }
+        // Thick Club (Cubone/Marowak only): Attack x2
+        if (itemSlug === 'thick-club' && (pokemonName === 'cubone' || pokemonName === 'marowak')) {
+          stats.attack = Math.floor(stats.attack * 2.0)
+        }
+        // Deep Sea Tooth (Clamperl only): Special Attack x2
+        if (itemSlug === 'deep-sea-tooth' && pokemonName === 'clamperl') {
+          stats.special_attack = Math.floor(stats.special_attack * 2.0)
+        }
+        // Deep Sea Scale (Clamperl only): Special Defense x2
+        if (itemSlug === 'deep-sea-scale' && pokemonName === 'clamperl') {
+          stats.special_defense = Math.floor(stats.special_defense * 2.0)
+        }
+        // Eviolite: Defense x1.5, Special Defense x1.5 (needs evolution check)
+        if (itemSlug === 'eviolite') {
+          stats.defense = Math.floor(stats.defense * 1.5)
+          stats.special_defense = Math.floor(stats.special_defense * 1.5)
+        }
+        
+        setFinalStats(stats)
       })
       .catch(err => {
         console.error('Error calculating stats:', err)
       })
 
     return () => { mounted = false }
-  }, [value && value.base_stats, value && value.evs, value && value.nature])
+  }, [value && value.base_stats, value && value.evs, value && value.nature, value && value.item, value && value.name])
 
   const handlePokemonSearch = (searchValue) => {
     setSearchText(searchValue)
@@ -192,11 +278,15 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
   }
 
   const handleAbilityChange = (abilityName) => {
-    onChange && onChange({ ...value, ability: abilityName })
+    onChange && onChange({ ...value, ability: abilityName || null })
   }
 
-  const handleMoveChange = (moveSlug, moveNumber = 1) => {
-    const move = pokemonMoves.find(m => m.name === moveSlug)
+  const handleItemChange = (itemSlug) => {
+    onChange && onChange({ ...value, item: itemSlug || null })
+  }
+
+  const handleMoveChange = (moveName, moveNumber = 1) => {
+    const move = pokemonMoves.find(m => m.name === moveName)
     const moveKey = moveNumber === 1 ? 'move' : `move${moveNumber}`
     onChange && onChange({ ...value, [moveKey]: move || null })
   }
@@ -221,6 +311,44 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
     // Pokemon boost formula: stat * (2 + boost) / 2 for positive, stat * 2 / (2 - boost) for negative
     const multiplier = boost > 0 ? (2 + boost) / 2 : 2 / (2 - boost)
     return Math.floor(baseStat * multiplier)
+  }
+
+  // Check if a stat is boosted by the selected item
+  const isStatBoostedByItem = (statName) => {
+    if (!value?.item) return false
+    
+    const item = allItems.find(i => i.slug === value.item)
+    if (!item) return false
+    
+    // Map frontend stat names to item effect names
+    const statMap = {
+      'attack': 'attack',
+      'defense': 'defense',
+      'special-attack': 'special_attack',
+      'special-defense': 'special_defense',
+      'speed': 'speed'
+    }
+    
+    const itemSlug = item.slug.toLowerCase()
+    
+    // Choice items boost specific stats
+    if (itemSlug === 'choice-band' && statName === 'attack') return true
+    if (itemSlug === 'choice-specs' && statName === 'special-attack') return true
+    if (itemSlug === 'choice-scarf' && statName === 'speed') return true
+    if (itemSlug === 'assault-vest' && statName === 'special-defense') return true
+    
+    // Species-specific items
+    if (itemSlug === 'light-ball' && value.name?.toLowerCase() === 'pikachu') {
+      if (statName === 'attack' || statName === 'special-attack') return true
+    }
+    if (itemSlug === 'thick-club' && (value.name?.toLowerCase() === 'cubone' || value.name?.toLowerCase() === 'marowak')) {
+      if (statName === 'attack') return true
+    }
+    if (itemSlug === 'deep-sea-tooth' && value.name?.toLowerCase() === 'clamperl' && statName === 'special-attack') return true
+    if (itemSlug === 'deep-sea-scale' && value.name?.toLowerCase() === 'clamperl' && statName === 'special-defense') return true
+    if (itemSlug === 'eviolite' && (statName === 'defense' || statName === 'special-defense')) return true
+    
+    return false
   }
 
   if (loading) {
@@ -328,6 +456,7 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
               const boostVal = value?.boosts?.[statKey] || 0
               const finalVal = finalStats?.[statKey] || '—'
               const boostedVal = statKey !== 'hp' ? calculateBoostedStat(finalVal, boostVal) : finalVal
+              const isItemBoosted = isStatBoostedByItem(stat)
               
               // Determine color based on nature
               const currentNature = allNatures.find(n => n.name === (value?.nature || 'hardy'))
@@ -373,11 +502,13 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
                   </div>
                   <div className="stat-col stat-final">
                     {boostVal !== 0 && statKey !== 'hp' ? (
-                      <span title={`Base: ${finalVal}`}>
+                      <span title={`Base: ${finalVal}`} className={isItemBoosted ? 'item-boosted' : ''}>
                         {boostedVal} <span style={{fontSize: '0.85em', opacity: 0.7}}>({finalVal})</span>
                       </span>
                     ) : (
-                      finalVal
+                      <span className={isItemBoosted ? 'item-boosted' : ''}>
+                        {finalVal}
+                      </span>
                     )}
                   </div>
                 </div>
@@ -456,6 +587,78 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
               ))}
             </select>
           </div>
+
+          {/* Item - NEW */}
+          {showItem && (
+            <div className="form-group item-selector">
+              <label>{t('calculate.item') || 'Objet tenu'}</label>
+              <div className="item-input-wrapper">
+                <input
+                  type="text"
+                  value={itemSearch}
+                  onChange={e => setItemSearch(e.target.value)}
+                  onFocus={() => setShowItemDropdown(true)}
+                  onBlur={() => setTimeout(() => setShowItemDropdown(false), 200)}
+                  placeholder={t('calculate.searchItem') || 'Rechercher un objet...'}
+                  className="form-control item-search-input"
+                />
+                {value?.item && (
+                  <button 
+                    className="item-clear-btn"
+                    onClick={() => {
+                      handleItemChange(null)
+                      setItemSearch('')
+                    }}
+                    title={t('common.clear') || 'Effacer'}
+                  >
+                    ×
+                  </button>
+                )}
+              </div>
+              
+              {showItemDropdown && (
+                <div className="item-dropdown">
+                  {filteredItems.length === 0 && (
+                    <div className="item-dropdown-empty">
+                      {t('common.noResults') || 'Aucun résultat'}
+                    </div>
+                  )}
+                  {filteredItems.slice(0, 100).map(item => {
+                    const displayName = language === 'fr' ? item.fr : item.en
+                    const description = language === 'fr' ? item.description_fr : item.description_en
+                    return (
+                      <div
+                        key={item.slug}
+                        className={`item-dropdown-item ${value?.item === item.slug ? 'selected' : ''}`}
+                        onClick={() => {
+                          handleItemChange(item.slug)
+                          setItemSearch(displayName)
+                          setShowItemDropdown(false)
+                        }}
+                        title={description}
+                      >
+                        <span className="item-name">{displayName}</span>
+                        {description && (
+                          <span className="item-description">{description}</span>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
+              )}
+              
+              {value?.item && (
+                <div className="selected-item-badge">
+                  {(() => {
+                    const selectedItem = allItems.find(i => i.slug === value.item)
+                    if (!selectedItem) return null
+                    const description = language === 'fr' ? selectedItem.description_fr : selectedItem.description_en
+                    return description || (language === 'fr' ? selectedItem.fr : selectedItem.en)
+                  })()}
+                </div>
+              )}
+            </div>
+          )}
 
           {/* Move (only for attacker) */}
           {side === 'left' && !showMultipleMoves && (

@@ -83,6 +83,7 @@ export default function TypeCoverage() {
             onChange={setAttacker} 
             showMultipleMoves={true}
             showTitle={false}
+            showItem={false}
           />
         </div>
 

@@ -22,6 +22,7 @@ try:
     from .calculate_terrain import compute_terrain_multiplier
     from .calculate_types import get_type_breakdown, type_effectiveness
     from .calculate_abilities import apply_ability_effects
+    from ..items.items import apply_item_stat_modifiers, compute_item_damage_multiplier, get_item
 except Exception:
     # If relative imports fail (exec as script), fallback to local defs below
     compute_weather_mult = None  # type: ignore
@@ -30,6 +31,9 @@ except Exception:
     type_effectiveness = None  # type: ignore
     # Try to load calculate_abilities.py directly from the same directory as this file.
     apply_ability_effects = None  # type: ignore
+    apply_item_stat_modifiers = None
+    compute_item_damage_multiplier = None
+    get_item = None
     try:
         import importlib.util
         mod_path = Path(__file__).parent / "calculate_abilities.py"
@@ -38,8 +42,20 @@ except Exception:
             mod = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(mod)  # type: ignore
             apply_ability_effects = getattr(mod, "apply_ability_effects", None)
+        # Try to load items.py from parent/items/items.py
+        items_mod_path = Path(__file__).parent.parent / "items" / "items.py"
+        if items_mod_path.exists():
+            spec = importlib.util.spec_from_file_location("items", str(items_mod_path))
+            items_mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(items_mod)  # type: ignore
+            apply_item_stat_modifiers = getattr(items_mod, "apply_item_stat_modifiers", None)
+            compute_item_damage_multiplier = getattr(items_mod, "compute_item_damage_multiplier", None)
+            get_item = getattr(items_mod, "get_item", None)
     except Exception:
         apply_ability_effects = None
+        apply_item_stat_modifiers = None
+        compute_item_damage_multiplier = None
+        get_item = None
 
 
 if get_type_breakdown is None:
@@ -375,6 +391,13 @@ def compute_damage_rolls(
 ) -> Tuple[List[int], List[Optional[int]]]:
     damage_all: List[int] = []
     remaining_hp_all: List[Optional[int]] = []
+    
+    # DEBUG: Print multipliers
+    print(f"=== DEBUG DAMAGE CALCULATION ===")
+    print(f"Base: {base}")
+    print(f"Multipliers: {multipliers}")
+    print(f"================================")
+    
     for r in rand_list:
         # Étape 1 : Multiplicateurs AVANT random (selon formule Pokémon Gen 5+)
         t = float(base)
@@ -388,6 +411,7 @@ def compute_damage_rolls(
         
         # Étape 3 : Multiplicateurs APRÈS random
         t = math.floor(t * multipliers.get("stab", 1.0))
+        t = math.floor(t * multipliers.get("item_mult", 1.0))  # Life Orb applied here (after STAB, before Type)
         t = math.floor(t * multipliers.get("type_mult", 1.0))
         t = math.floor(t * multipliers.get("burn_mult", 1.0))
         t = math.floor(t * multipliers.get("terrain_mult", 1.0))
@@ -496,6 +520,15 @@ def calculate_damage(
         else:
             category = "special"
     
+    # Apply held item stat modifiers BEFORE computing effective stats so that
+    # items like Choice Band or Thick Club affect the computed A/D values.
+    # Also get modified power from items like Muscle Band and type-boost items (Plates).
+    if 'apply_item_stat_modifiers' in globals() and apply_item_stat_modifiers:
+        try:
+            attacker, defender, power = apply_item_stat_modifiers(attacker, defender, move)
+        except Exception as e:
+            pass
+
     if category == "physical":
         A = compute_effective_stat(attacker, "attack", "attack", True, crit_effective)
         D = compute_effective_stat(defender, "defense", "defense", False, crit_effective)
@@ -600,6 +633,31 @@ def calculate_damage(
     if isinstance(ability_multipliers, dict):
         for k, v in ability_multipliers.items():
             multipliers[k] = float(multipliers.get(k, 1.0)) * float(v)
+    # Compute item damage multiplier (post-random multipliers like Expert Belt, Life Orb, etc.)
+    try:
+        if 'compute_item_damage_multiplier' in globals() and compute_item_damage_multiplier:
+            item_mult, other_item_mult, item_effects = compute_item_damage_multiplier(
+                attacker.get('item'),
+                defender.get('item'),
+                move,
+                attacker,
+                defender,
+                type_mult,
+                category,
+                attacker.get('consumed_items', []),
+                defender.get('consumed_items', []),
+            )
+            multipliers['item_mult'] = float(multipliers.get('item_mult', 1.0)) * float(item_mult)
+            multipliers['other_mult'] = float(multipliers.get('other_mult', 1.0)) * float(other_item_mult)
+            # Merge item effects into ability_effects for debug/consumers
+            if item_effects:
+                if isinstance(ability_effects, dict):
+                    ability_effects.update(item_effects)
+                else:
+                    ability_effects = item_effects
+    except Exception:
+        # ignore item computation errors
+        pass
     # If sniper was flagged earlier, keep that in ability_effects for debug
     if attacker.get("ability") and str(attacker.get("ability")).lower().replace("_", "-").replace(" ", "-") == "sniper":
         ability_effects.setdefault("sniper", True)

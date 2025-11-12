@@ -12,7 +12,7 @@ export default function Calculate() {
     <div className="calculate-page">
       <div className="panels-container">
         <div className="panel-left">
-          <PokemonPanel side="left" value={left} onChange={setLeft} />
+          <PokemonPanel side="left" value={left} onChange={setLeft} showMultipleMoves={false} />
         </div>
         
         <div className="panel-middle">
