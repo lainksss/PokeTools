@@ -124,6 +124,117 @@ select option:hover {
   color: white;
 }
 
+/* Header controls grouping: scale + language */
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Scale buttons styling (improved appearance) */
+.display-scale {
+  display: inline-flex;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  padding: 4px;
+  border-radius: 8px;
+}
+
+.scale-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 10px;
+  margin: 0;
+  background: transparent;
+  color: var(--text);
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s, transform 0.08s;
+}
+
+.scale-button:hover {
+  background: rgba(255,255,255,0.04);
+  transform: translateY(-1px);
+}
+
+.scale-button.active {
+  background: linear-gradient(90deg, var(--accent), #2563eb);
+  color: white;
+  box-shadow: 0 6px 14px rgba(37,99,235,0.12);
+}
+
+/* Ensure header controls are not affected by UI scale classes */
+.app-header .header-controls {
+  /* keep header controls compact and independent from page scaling */
+  gap: 10px;
+}
+
+/* Scale only the content of pages (the pas/steps). Target common page containers */
+.app-main.scale-small > * {
+  transform: scale(0.88);
+  transform-origin: top center;
+  transition: transform 180ms ease;
+}
+
+.app-main.scale-normal > * {
+  transform: scale(1);
+  transform-origin: top center;
+  transition: transform 180ms ease;
+}
+
+/* large = size before (more impact) */
+.app-main.scale-large > * {
+  transform: scale(1.18);
+  transform-origin: top center;
+  transition: transform 180ms ease;
+}
+
+/* Complement with variable tweaks so layout adapts too */
+.app-main.scale-small .calculate-page,
+.app-main.scale-small .threats-page,
+.app-main.scale-small .home-page,
+.app-main.scale-small .panels-container,
+.app-main.scale-small .results-panel,
+.app-main.scale-small .pokemon-panel {
+  --panel-min-width: 220px;
+  --panel-padding: 8px;
+}
+
+.app-main.scale-normal .calculate-page,
+.app-main.scale-normal .threats-page,
+.app-main.scale-normal .home-page,
+.app-main.scale-normal .panels-container,
+.app-main.scale-normal .results-panel,
+.app-main.scale-normal .pokemon-panel {
+  --panel-min-width: 280px;
+  --panel-padding: 12px;
+}
+
+.app-main.scale-large .calculate-page,
+.app-main.scale-large .threats-page,
+.app-main.scale-large .home-page,
+.app-main.scale-large .panels-container,
+.app-main.scale-large .results-panel,
+.app-main.scale-large .pokemon-panel {
+  --panel-min-width: 340px;
+  --panel-padding: 18px;
+}
+
+/* Apply panel padding where used */
+.panel-left, .panel-right, .panel-middle, .results-panel, .pokemon-panel {
+  padding: var(--panel-padding, 20px);
+}
+
+/* Ensure panels respect min-width in grid */
+.panels-container {
+  grid-template-columns: minmax(var(--panel-min-width, 280px), 1fr) auto minmax(var(--panel-min-width, 280px), 1fr);
+}
+
 .app-main {
   flex: 1;
   display: flex;

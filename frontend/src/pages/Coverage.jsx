@@ -173,7 +173,8 @@ export default function Coverage() {
             side="left" 
             value={attacker} 
             onChange={setAttacker} 
-            showMultipleMoves={true} 
+            showMultipleMoves={true}
+            showTitle={false}
           />
         </div>
 

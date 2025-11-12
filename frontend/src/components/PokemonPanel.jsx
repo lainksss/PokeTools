@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
 
-export default function PokemonPanel({ side, value, onChange, showMultipleMoves = false }) {
+export default function PokemonPanel({ side, value, onChange, showMultipleMoves = false, showTitle = true }) {
   const { t, getPokemonName, matchesPokemonName, language } = useTranslation()
   const [allPokemon, setAllPokemon] = useState([])
   const [filteredPokemon, setFilteredPokemon] = useState([])
@@ -245,7 +245,7 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
 
   return (
     <div className="pokemon-panel">
-      <h3>{side === 'left' ? t('calculate.attacker') : t('calculate.defender')}</h3>
+      {showTitle && <h3>{side === 'left' ? t('calculate.attacker') : t('calculate.defender')}</h3>}
       
       {/* Pokemon selection with search */}
       <div className="form-group pokemon-selector-wrapper">

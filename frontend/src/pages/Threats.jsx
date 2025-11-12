@@ -181,6 +181,7 @@ export default function Threats() {
             side="defender" 
             value={defender} 
             onChange={setDefender}
+            showTitle={false}
           />
         </div>
 
