@@ -14,7 +14,7 @@ export const translations = {
       welcome: "Bienvenue",
       description: "Utilisez le menu pour accéder au calculateur de dégâts ou à l'analyse des menaces.",
       centerTitle: "PokeTools",
-      centerDesc: "PokeTools est dédié au Pokemon Compétitif et a pour but de simplifier des tâches, calculs et reflexion supplémentaires pour vos équipes. Certaines fonctionnalités sont encore en développement.",
+      centerDesc: "PokeTools est dédié au Pokemon Compétitif et a pour but de simplifier des tâches, calculs et reflexions supplémentaires pour vos équipes. Certaines fonctionnalités sont encore en développement.",
       block_calc_title: "Calculateur de dégât",
       block_calc_desc: "Calculateur de dégâts. Certaines options manquent encore (ex : objets).",
       block_threats_title: "Analyseur de menace",
