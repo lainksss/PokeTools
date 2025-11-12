@@ -389,6 +389,31 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
           <div className="evs-remaining">
             {t('pokemon.evsRemaining')}: <strong style={{color: remainingEvs < 0 ? '#ef4444' : '#10b981'}}>{remainingEvs}</strong> / 510
           </div>
+
+          {/* Multiple moves for coverage: placed under EVs and aligned horizontally */}
+          {side === 'left' && showMultipleMoves && (
+            <div className="form-group coverage-moves-group">
+              <label>{t('coverage.moves') || 'Attaques (max 4)'}</label>
+              <div className="coverage-moves-row">
+                {[1, 2, 3, 4].map(num => (
+                  <div key={num} className="coverage-move">
+                    <select 
+                      value={value?.[`move${num === 1 ? '' : num}`]?.name || ''}
+                      onChange={e => handleMoveChange(e.target.value, num)}
+                      className="form-control move-select"
+                    >
+                      <option value="">-- {t('pokemon.none')} --</option>
+                      {pokemonMoves.map(move => (
+                        <option key={move.name} value={move.name}>
+                          {move.name.replace(/-/g, ' ')} ({move.type}, {move.power || '—'})
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Selectors on the right */}
@@ -459,29 +484,7 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
             </div>
           )}
 
-          {/* Multiple Moves (for coverage analysis) */}
-          {side === 'left' && showMultipleMoves && (
-            <div className="form-group">
-              <label>{t('coverage.moves') || 'Attaques (max 4)'}</label>
-              {[1, 2, 3, 4].map(num => (
-                <div key={num} className="move-select-row">
-                  <label className="move-number">{num}.</label>
-                  <select 
-                    value={value?.[`move${num === 1 ? '' : num}`]?.name || ''}
-                    onChange={e => handleMoveChange(e.target.value, num)}
-                    className="form-control move-select"
-                  >
-                    <option value="">-- {t('pokemon.none')} --</option>
-                    {pokemonMoves.map(move => (
-                      <option key={move.name} value={move.name}>
-                        {move.name.replace(/-/g, ' ')} ({move.type}, {move.power || '—'})
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              ))}
-            </div>
-          )}
+          {/* Multiple Moves (moved to stats column) - removed from selectors container */}
         </div>
       </div>
     </div>

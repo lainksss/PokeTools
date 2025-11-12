@@ -1511,6 +1511,35 @@ select.form-control option:checked {
   min-width: 0;
 }
 
+/* New coverage moves row: align 4 selects horizontally under EVs */
+.coverage-moves-group {
+  margin-top: 8px;
+}
+
+.coverage-moves-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  align-items: stretch;
+}
+
+.coverage-move {
+  width: 100%;
+}
+
+/* Responsive: 2 columns on medium screens, 1 column on small screens */
+@media (max-width: 1000px) {
+  .coverage-moves-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .coverage-moves-row {
+    grid-template-columns: 1fr;
+  }
+}
+
 .form-group label {
   display: block;
   margin-bottom: 8px;
