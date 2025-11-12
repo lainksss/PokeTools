@@ -296,6 +296,35 @@ def api_pokemon_moves(pokemon_id: int):
     """Retourne la liste des moves d'un pokémon par son ID."""
     mapping = _load_json("all_pokemon_moves.json") or {}
     moves = mapping.get(str(pokemon_id))
+    # If not found, try to handle mega forms by falling back to the base form's moves
+    if moves is None:
+        try:
+            all_pok = _load_json("all_pokemon.json") or {}
+            # find slug for this pokemon_id
+            slug = None
+            for s, d in all_pok.items():
+                if d and d.get("id") == pokemon_id:
+                    slug = s
+                    break
+            if slug and "-mega" in slug:
+                # derive base slug by removing the '-mega' part and any '-x'/'-y' suffix
+                # examples: 'charizard-mega-x' -> 'charizard', 'venusaur-mega' -> 'venusaur'
+                if slug.endswith(('-x', '-y')) and "-mega-" in slug:
+                    base_slug = slug.split("-mega", 1)[0]
+                else:
+                    base_slug = slug.replace("-mega", "")
+
+                # lookup base id
+                base_id = None
+                base_entry = all_pok.get(base_slug)
+                if base_entry:
+                    base_id = base_entry.get("id")
+
+                if base_id:
+                    moves = mapping.get(str(base_id))
+        except Exception:
+            moves = None
+
     if moves is None:
         return jsonify({"error": "moves not found"}), 404
     
