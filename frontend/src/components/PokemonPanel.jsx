@@ -49,6 +49,7 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
           name: firstPoke.name,
           types: firstPoke.types,
           base_stats: firstPoke.base_stats,
+          can_evolve: firstPoke.can_evolve,
           evs: { hp: 0, attack: 0, defense: 0, special_attack: 0, special_defense: 0, speed: 0 },
           boosts: { attack: 0, defense: 0, special_attack: 0, special_defense: 0, speed: 0 },
           nature: 'hardy',
@@ -202,8 +203,8 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
         if (itemSlug === 'deep-sea-scale' && pokemonName === 'clamperl') {
           stats.special_defense = Math.floor(stats.special_defense * 2.0)
         }
-        // Eviolite: Defense x1.5, Special Defense x1.5 (needs evolution check)
-        if (itemSlug === 'eviolite') {
+        // Eviolite: Defense x1.5, Special Defense x1.5 (only for Pokemon that can evolve)
+        if (itemSlug === 'eviolite' && value?.can_evolve) {
           stats.defense = Math.floor(stats.defense * 1.5)
           stats.special_defense = Math.floor(stats.special_defense * 1.5)
         }
@@ -235,6 +236,7 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
         name: pokemon.name,
         types: pokemon.types,
         base_stats: pokemon.base_stats,
+        can_evolve: pokemon.can_evolve,
         evs: value?.evs || { hp: 0, attack: 0, defense: 0, special_attack: 0, special_defense: 0, speed: 0 },
         boosts: value?.boosts || { attack: 0, defense: 0, special_attack: 0, special_defense: 0, speed: 0 },
         nature: value?.nature || 'hardy',
@@ -345,8 +347,8 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
       if (statName === 'attack') return true
     }
     if (itemSlug === 'deep-sea-tooth' && value.name?.toLowerCase() === 'clamperl' && statName === 'special-attack') return true
-    if (itemSlug === 'deep-sea-scale' && value.name?.toLowerCase() === 'clamperl' && statName === 'special-defense') return true
-    if (itemSlug === 'eviolite' && (statName === 'defense' || statName === 'special-defense')) return true
+    if (itemSlug === 'deep-sea-scale' && pokemonName === 'clamperl' && statName === 'special-defense') return true
+    if (itemSlug === 'eviolite' && value?.can_evolve && (statName === 'defense' || statName === 'special-defense')) return true
     
     return false
   }

@@ -392,12 +392,6 @@ def compute_damage_rolls(
     damage_all: List[int] = []
     remaining_hp_all: List[Optional[int]] = []
     
-    # DEBUG: Print multipliers
-    print(f"=== DEBUG DAMAGE CALCULATION ===")
-    print(f"Base: {base}")
-    print(f"Multipliers: {multipliers}")
-    print(f"================================")
-    
     for r in rand_list:
         # Étape 1 : Multiplicateurs AVANT random (selon formule Pokémon Gen 5+)
         t = float(base)
@@ -745,4 +739,6 @@ if __name__ == "__main__":
             print(f"  KO chance: {res.get('ko_chance'):.1f}% ({res.get('ko_count')}/{len(dmg_all)})")
         print("=" * 60 + "\n")
 
-    pretty_print_result(out, move, attacker, defender)
+    # Uncomment to test:
+    # pretty_print_result(out, move, attacker, defender)
+

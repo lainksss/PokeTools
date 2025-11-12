@@ -257,15 +257,18 @@ def api_health():
 def api_pokemon_list():
     """Retourne la liste complète des pokémons avec leurs stats de base."""
     pok = _load_json("all_pokemon.json") or {}
+    evo = _load_json("pokemon_evolution.json") or {}
     results = []
     for slug, data in pok.items():
         if not data:
             continue
+        evo_info = evo.get(slug, {})
         entry = {
             "id": data.get("id"),
             "name": slug,
             "types": data.get("types", []),
-            "base_stats": data.get("base_stats", {})
+            "base_stats": data.get("base_stats", {}),
+            "can_evolve": evo_info.get("can_evolve", False)
         }
         results.append(entry)
     # Trier par ID
@@ -662,10 +665,6 @@ def api_find_threats_stream():
                     move_data = all_moves.get(move_slug, {})
                     damage_class = move_data.get("damage_class")
                     
-                    # DEBUG pour le premier Pokémon
-                    if processed == 0 and len(ko_attacks) == 0:
-                        print(f"Testing {poke_slug} - Move: {move_slug} - Class: {damage_class}")
-                    
                     # Ignorer les moves de statut
                     if damage_class not in ["physical", "special"]:
                         continue
@@ -717,12 +716,6 @@ def api_find_threats_stream():
                         damage_min = min(damage_all)
                         damage_max = max(damage_all)
                         damage_rolls = damage_all
-                        
-                        # DEBUG pour le premier Pokémon
-                        if processed == 0 and len(ko_attacks) == 0:
-                            print(f"  -> Damage: {damage_min}-{damage_max} vs {defender_hp} HP")
-                            print(f"  -> Attacker Attack: {attacker.get('attack')}, SpA: {attacker.get('special_attack')}")
-                            print(f"  -> Nature: {nature}, EVs: Attack={evs.get('attack')}, SpA={evs.get('special_attack')}")
                         
                         # Vérifier si c'est un KO
                         is_ko = False
@@ -827,10 +820,6 @@ def api_find_threats_stream():
                 
                 # Si on a trouvé au moins une attaque qui KO
                 if ko_attacks:
-                    # DEBUG
-                    if total_threats < 3:
-                        print(f"\n*** THREAT FOUND: {poke_slug} with {len(ko_attacks)} KO moves ***\n")
-                    
                     # Trier par % de KO (meilleurs d'abord)
                     ko_attacks.sort(key=lambda x: (-x["ko_percent"], -x["damage_max"]))
                     
