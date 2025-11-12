@@ -1,0 +1,682 @@
+{
+  "charcoal": {
+    "en": "Charcoal",
+    "fr": "Charbon",
+    "description": {
+      "en": "Increases Fire-type move power by 20%.",
+      "fr": "Augmente de 20% la puissance des capacités de type Feu."
+    }
+  },
+  "magnet": {
+    "en": "Magnet",
+    "fr": "Aimant",
+    "description": {
+      "en": "Increases Electric-type move power by 20%.",
+      "fr": "Augmente de 20% la puissance des capacités de type Électrik."
+    }
+  },
+  "sharp-beak": {
+    "en": "Sharp Beak",
+    "fr": "Bec Pointu",
+    "description": {
+      "en": "Increases Flying-type move power by 20%.",
+      "fr": "Augmente de 20% la puissance des capacités de type Vol."
+    }
+  },
+  "black-belt": {
+    "en": "Black Belt",
+    "fr": "Ceinture Noire",
+    "description": {
+      "en": "Increases Fighting-type move power by 20%.",
+      "fr": "Augmente de 20% la puissance des capacités de type Combat."
+    }
+  },
+  "mystic-water": {
+    "en": "Mystic Water",
+    "fr": "Eau Mystique",
+    "description": {
+      "en": "Increases Water-type move power by 20%.",
+      "fr": "Augmente de 20% la puissance des capacités de type Eau."
+    }
+  },
+  "miracle-seed": {
+    "en": "Miracle Seed",
+    "fr": "Graine Miracle",
+    "description": {
+      "en": "Increases Grass-type move power by 20%.",
+      "fr": "Augmente de 20% la puissance des capacités de type Plante."
+    }
+  },
+  "never-melt-ice": {
+    "en": "Never-Melt Ice",
+    "fr": "Glace Éternelle",
+    "description": {
+      "en": "Increases Ice-type move power by 20%.",
+      "fr": "Augmente de 20% la puissance des capacités de type Glace."
+    }
+  },
+  "poison-barb": {
+    "en": "Poison Barb",
+    "fr": "Pic Venin",
+    "description": {
+      "en": "Increases Poison-type move power by 20%.",
+      "fr": "Augmente de 20% la puissance des capacités de type Poison."
+    }
+  },
+  "hard-stone": {
+    "en": "Hard Stone",
+    "fr": "Pierre Dure",
+    "description": {
+      "en": "Increases Rock-type move power by 20%.",
+      "fr": "Augmente de 20% la puissance des capacités de type Roche."
+    }
+  },
+  "soft-sand": {
+    "en": "Soft Sand",
+    "fr": "Sable Doux",
+    "description": {
+      "en": "Increases Ground-type move power by 20%.",
+      "fr": "Augmente de 20% la puissance des capacités de type Sol."
+    }
+  },
+  "spell-tag": {
+    "en": "Spell Tag",
+    "fr": "Rune Sort",
+    "description": {
+      "en": "Increases Ghost-type move power by 20%.",
+      "fr": "Augmente de 20% la puissance des capacités de type Spectre."
+    }
+  },
+  "twisted-spoon": {
+    "en": "Twisted Spoon",
+    "fr": "Cuiller Tordue",
+    "description": {
+      "en": "Increases Psychic-type move power by 20%.",
+      "fr": "Augmente de 20% la puissance des capacités de type Psy."
+    }
+  },
+  "dragon-fang": {
+    "en": "Dragon Fang",
+    "fr": "Croc Dragon",
+    "description": {
+      "en": "Increases Dragon-type move power by 20%.",
+      "fr": "Augmente de 20% la puissance des capacités de type Dragon."
+    }
+  },
+  "black-glasses": {
+    "en": "Black Glasses",
+    "fr": "Lunettes Noires",
+    "description": {
+      "en": "Increases Dark-type move power by 20%.",
+      "fr": "Augmente de 20% la puissance des capacités de type Ténèbres."
+    }
+  },
+  "metal-coat": {
+    "en": "Metal Coat",
+    "fr": "Peau Métal",
+    "description": {
+      "en": "Increases Steel-type move power by 20%. Evolves Onix and Scyther when traded.",
+      "fr": "Augmente de 20% la puissance des capacités de type Acier. Fait évoluer Onix en Steelix et Insécateur en Cizayox si tenue pendant un échange."
+    }
+  },
+  "silk-scarf": {
+    "en": "Silk Scarf",
+    "fr": "Mouchoir Soie",
+    "description": {
+      "en": "Increases Normal-type move power by 20%.",
+      "fr": "Augmente de 20% la puissance des capacités de type Normal."
+    }
+  },
+  "silver-powder": {
+    "en": "Silver Powder",
+    "fr": "Poudre Argentée",
+    "description": {
+      "en": "Increases Bug-type move power by 20%.",
+      "fr": "Augmente de 20% la puissance des capacités de type Insecte."
+    }
+  },
+  "fairy-feather": {
+    "en": "Fairy Feather",
+    "fr": "Plume Féérique",
+    "description": {
+      "en": "Increases Fairy-type move power by 20%.",
+      "fr": "Augmente de 20% la puissance des capacités de type Fée."
+    }
+  },
+  "choice-band": {
+    "en": "Choice Band",
+    "fr": "Bandeau Choix",
+    "description": {
+      "en": "Increases Attack by 50% but locks the holder into the first move used.",
+      "fr": "Augmente l'Attaque du porteur de 50% mais le bloque sur la première capacité utilisée."
+    }
+  },
+  "choice-specs": {
+    "en": "Choice Specs",
+    "fr": "Lunettes Choix",
+    "description": {
+      "en": "Increases Special Attack by 50% but locks the holder into the first move used.",
+      "fr": "Augmente l'Attaque Spéciale du porteur de 50% mais le bloque sur la première capacité utilisée."
+    }
+  },
+  "choice-scarf": {
+    "en": "Choice Scarf",
+    "fr": "Mouchoir Choix",
+    "description": {
+      "en": "Increases Speed by 50% but locks the holder into the first move used.",
+      "fr": "Augmente la Vitesse du porteur de 50% mais le bloque sur la première capacité utilisée."
+    }
+  },
+  "muscle-band": {
+    "en": "Muscle Band",
+    "fr": "Bandeau Muscle",
+    "description": {
+      "en": "Increases the power of physical moves by 10%.",
+      "fr": "Augmente la puissance des attaques physiques du porteur de 10%."
+    }
+  },
+  "wise-glasses": {
+    "en": "Wise Glasses",
+    "fr": "Lunettes Sages",
+    "description": {
+      "en": "Increases the power of special moves by 10%.",
+      "fr": "Augmente de 10% la puissance des attaques spéciales."
+    }
+  },
+  "expert-belt": {
+    "en": "Expert Belt",
+    "fr": "Ceinture Pro",
+    "description": {
+      "en": "Increases the power of super effective moves by 20%.",
+      "fr": "Augmente de 20% la puissance des attaques super efficaces."
+    }
+  },
+  "life-orb": {
+    "en": "Life Orb",
+    "fr": "Orbe Vie",
+    "description": {
+      "en": "Increases move power by 30%, but the holder loses 10% of its max HP after each attack.",
+      "fr": "Augmente de 30% la puissance des capacités, mais le porteur perd 10% de ses PV max à chaque attaque."
+    }
+  },
+  "eviolite": {
+    "en": "Eviolite",
+    "fr": "Évoluroc",
+    "description": {
+      "en": "Increases Defense and Special Defense by 50% if the holder can still evolve.",
+      "fr": "Augmente de 50% la Défense et la Défense Spéciale du porteur si son espèce est capable d'évoluer."
+    }
+  },
+  "assault-vest": {
+    "en": "Assault Vest",
+    "fr": "Veste de Combat",
+    "description": {
+      "en": "Increases Special Defense by 50%, but prevents the use of status moves.",
+      "fr": "Augmente de 50% la Défense Spéciale du porteur, mais le contraint à ne pas utiliser de capacités non offensives (à l'exception de Moi d'Abord)."
+    }
+  },
+  "normal-gem": {
+    "en": "Normal Gem",
+    "fr": "Joyau Normal",
+    "description": {
+      "en": "Increases the power of the first successful Normal-type move by 50%. Single use.",
+      "fr": "Augmente de 50% les dégâts de la première attaque réussie de type Normal. Usage unique."
+    }
+  },
+  "loaded-dice": {
+    "en": "Loaded Dice",
+    "fr": "Dé Pipé",
+    "description": {
+      "en": "Multi-hit moves always hit at least 4 times (50% for 4 hits, 50% for 5 hits).",
+      "fr": "Lorsque le porteur utilise une attaque multi-coups, cet objet garantie qu'il tape au moins 4 coups (50% de taper 4 coups et 50% de taper 5 coups)."
+    }
+  },
+  "iron-ball": {
+    "en": "Iron Ball",
+    "fr": "Balle Fer",
+    "description": {
+      "en": "Halves the holder's Speed. Also grounds Flying-type Pokémon.",
+      "fr": "Réduit la Vitesse du porteur de moitié. Ce dernier s'écrase également au sol (donc prend des dégâts d'attaques sol s'il est type vol)."
+    }
+  },
+  "macho-brace": {
+    "en": "Macho Brace",
+    "fr": "Bracelet Macho",
+    "description": {
+      "en": "Halves the holder's Speed.",
+      "fr": "Réduit la Vitesse du porteur de moitié."
+    }
+  },
+  "air-balloon": {
+    "en": "Air Balloon",
+    "fr": "Ballon",
+    "description": {
+      "en": "Grants immunity to Ground-type moves until the holder is hit. Single use.",
+      "fr": "Immunise le porteur aux capacités de type Sol. Est détruit définitivement dès le premier coup subi par le porteur. Usage unique."
+    }
+  },
+  "light-ball": {
+    "en": "Light Ball",
+    "fr": "Balle Lumière",
+    "description": {
+      "en": "Doubles Attack and Special Attack when held by Pikachu.",
+      "fr": "Double l'Attaque et l'Attaque Spéciale si portée par Pikachu."
+    }
+  },
+  "thick-club": {
+    "en": "Thick Club",
+    "fr": "Masse Os",
+    "description": {
+      "en": "Doubles Attack when held by Cubone or Marowak.",
+      "fr": "Double l'attaque si portée par Osselait et Ossatueur."
+    }
+  },
+  "deep-sea-tooth": {
+    "en": "Deep Sea Tooth",
+    "fr": "Dent Océan",
+    "description": {
+      "en": "Doubles Special Attack when held by Clamperl. Evolves Clamperl into Huntail when traded.",
+      "fr": "Double l'Attaque Spéciale si portée par Coquiperl. Fait évoluer Coquiperl en Serpang si tenue pendant un échange."
+    }
+  },
+  "deep-sea-scale": {
+    "en": "Deep Sea Scale",
+    "fr": "Écaille Océan",
+    "description": {
+      "en": "Doubles Special Defense when held by Clamperl. Evolves Clamperl into Gorebyss when traded.",
+      "fr": "Double la Défense Spéciale si portée par Coquiperl. Fait évoluer Coquiperl en Rosabyss si tenue pendant un échange."
+    }
+  },
+  "adamant-orb": {
+    "en": "Adamant Orb",
+    "fr": "Orbe Adamant",
+    "description": {
+      "en": "Increases Dragon and Steel-type move power by 20% when held by Dialga.",
+      "fr": "Augmente de 20% les capacités de type Acier et Dragon si porté par Dialga."
+    }
+  },
+  "lustrous-orb": {
+    "en": "Lustrous Orb",
+    "fr": "Orbe Perlé",
+    "description": {
+      "en": "Increases Dragon and Water-type move power by 20% when held by Palkia.",
+      "fr": "Si elle est détenue par un Palkia, ses attaques de type Dragon et de type Eau ont une puissance 1,2x."
+    }
+  },
+  "griseous-orb": {
+    "en": "Griseous Orb",
+    "fr": "Orbe Platiné",
+    "description": {
+      "en": "Increases Dragon and Ghost-type move power by 20% when held by Giratina.",
+      "fr": "S'il est tenu par un Giratina, ses attaques de type Dragon et Spectre ont une puissance 1,2x."
+    }
+  },
+  "soul-dew": {
+    "en": "Soul Dew",
+    "fr": "Rosée Âme",
+    "description": {
+      "en": "Increases Psychic and Dragon-type move power by 20% when held by Latios or Latias.",
+      "fr": "Augmente de 20% la puissance des capacités de type Psy et Dragon de Latios et Latias."
+    }
+  },
+  "chople-berry": {
+    "en": "Chople Berry",
+    "fr": "Baie Pomroz",
+    "description": {
+      "en": "Halves damage from a super effective Fighting-type move. Single use.",
+      "fr": "Réduit de moitié les dégâts infligés par une attaque super efficace de type Combat. Usage unique."
+    }
+  },
+  "coba-berry": {
+    "en": "Coba Berry",
+    "fr": "Baie Cobaba",
+    "description": {
+      "en": "Halves damage from a super effective Flying-type move. Single use.",
+      "fr": "Réduit de moitié les dégâts infligés par une attaque super efficace de type Vol. Usage unique."
+    }
+  },
+  "kebia-berry": {
+    "en": "Kebia Berry",
+    "fr": "Baie Kébia",
+    "description": {
+      "en": "Halves damage from a super effective Poison-type move. Single use.",
+      "fr": "Réduit de moitié les dégâts infligés par une attaque super efficace de type Poison. Usage unique."
+    }
+  },
+  "shuca-berry": {
+    "en": "Shuca Berry",
+    "fr": "Baie Jouca",
+    "description": {
+      "en": "Halves damage from a super effective Ground-type move. Single use.",
+      "fr": "Réduit de moitié les dégâts infligés par une attaque super efficace de type Sol. Usage unique."
+    }
+  },
+  "charti-berry": {
+    "en": "Charti Berry",
+    "fr": "Baie Charti",
+    "description": {
+      "en": "Halves damage from a super effective Rock-type move. Single use.",
+      "fr": "Réduit de moitié les dégâts infligés par une attaque super efficace de type Roche. Usage unique."
+    }
+  },
+  "tanga-berry": {
+    "en": "Tanga Berry",
+    "fr": "Baie Panga",
+    "description": {
+      "en": "Halves damage from a super effective Bug-type move. Single use.",
+      "fr": "Réduit de moitié les dégâts infligés par une attaque super efficace de type Insecte. Usage unique."
+    }
+  },
+  "kasib-berry": {
+    "en": "Kasib Berry",
+    "fr": "Baie Sédra",
+    "description": {
+      "en": "Halves damage from a super effective Ghost-type move. Single use.",
+      "fr": "Réduit de moitié les dégâts infligés par une attaque super efficace de type Spectre. Usage unique."
+    }
+  },
+  "haban-berry": {
+    "en": "Haban Berry",
+    "fr": "Baie Fraigo",
+    "description": {
+      "en": "Halves damage from a super effective Dragon-type move. Single use.",
+      "fr": "Réduit de moitié les dégâts infligés par une attaque super efficace de type Dragon. Usage unique."
+    }
+  },
+  "colbur-berry": {
+    "en": "Colbur Berry",
+    "fr": "Baie Lampou",
+    "description": {
+      "en": "Halves damage from a super effective Dark-type move. Single use.",
+      "fr": "Réduit de moitié les dégâts infligés par une attaque super efficace de type Ténèbres. Usage unique."
+    }
+  },
+  "babiri-berry": {
+    "en": "Babiri Berry",
+    "fr": "Baie Babiri",
+    "description": {
+      "en": "Halves damage from a super effective Steel-type move. Single use.",
+      "fr": "Réduit de moitié les dégâts infligés par une attaque super efficace de type Acier. Usage unique."
+    }
+  },
+  "occa-berry": {
+    "en": "Occa Berry",
+    "fr": "Baie Chocco",
+    "description": {
+      "en": "Halves damage from a super effective Fire-type move. Single use.",
+      "fr": "Réduit de moitié les dégâts infligés par une attaque super efficace de type Feu. Usage unique."
+    }
+  },
+  "passho-berry": {
+    "en": "Passho Berry",
+    "fr": "Baie Pocpoc",
+    "description": {
+      "en": "Halves damage from a super effective Water-type move. Single use.",
+      "fr": "Réduit de moitié les dégâts infligés par une attaque super efficace de type Eau. Usage unique."
+    }
+  },
+  "wacan-berry": {
+    "en": "Wacan Berry",
+    "fr": "Baie Parma",
+    "description": {
+      "en": "Halves damage from a super effective Electric-type move. Single use.",
+      "fr": "Réduit de moitié les dégâts infligés par une attaque super efficace de type Électrik. Usage unique."
+    }
+  },
+  "rindo-berry": {
+    "en": "Rindo Berry",
+    "fr": "Baie Ratam",
+    "description": {
+      "en": "Halves damage from a super effective Grass-type move. Single use.",
+      "fr": "Réduit de moitié les dégâts infligés par une attaque super efficace de type Plante. Usage unique."
+    }
+  },
+  "yache-berry": {
+    "en": "Yache Berry",
+    "fr": "Baie Nanone",
+    "description": {
+      "en": "Halves damage from a super effective Ice-type move. Single use.",
+      "fr": "Réduit de moitié les dégâts infligés par une attaque super efficace de type Glace. Usage unique."
+    }
+  },
+  "roseli-berry": {
+    "en": "Roseli Berry",
+    "fr": "Baie Selro",
+    "description": {
+      "en": "Halves damage from a super effective Fairy-type move. Single use.",
+      "fr": "Réduit de moitié les dégâts infligés par une attaque super efficace de type Fée. Usage unique."
+    }
+  },
+  "payapa-berry": {
+    "en": "Payapa Berry",
+    "fr": "Baie Yapap",
+    "description": {
+      "en": "Halves damage from a super effective Psychic-type move. Single use.",
+      "fr": "Réduit de moitié les dégâts infligés par une attaque super efficace de type Psy. Usage unique."
+    }
+  },
+  "chilan-berry": {
+    "en": "Chilan Berry",
+    "fr": "Baie Zalis",
+    "description": {
+      "en": "Halves damage from a super effective Normal-type move. Single use.",
+      "fr": "Réduit de moitié les dégâts infligés par une attaque super efficace de type Normal. Usage unique."
+    }
+  },
+  "booster-energy": {
+    "en": "Booster Energy",
+    "fr": "Énergie Booster",
+    "description": {
+      "en": "Boosts the highest stat by 30% (50% for Speed) for Pokémon with Protosynthesis or Quark Drive. Single use.",
+      "fr": "Si le Pokémon tenant cet objet possède le talent Paléosynthèse ou Charge Quantique, sa statistique la plus élevée augmente de 30% (50% si c'est sa Vitesse) dés qu'il entre sur le terrain. Usage unique."
+    }
+  },
+  "hearthflame-mask": {
+    "en": "Hearthflame Mask",
+    "fr": "Masque du Fourneau",
+    "description": {
+      "en": "Ogerpon gains Fire type and +20% physical attack power. Changes ability to Mold Breaker and Ivy Cudgel to Fire.",
+      "fr": "Tenu, permet à Ogerpon de passer sous sa forme Fourneau et de gagner le type Feu ainsi que d'augmenter ses attaques physiques de 20%. Son talent devient Brise Moule et son attaque Massue Liane devient de type Feu. En Téracristalisant, il obtiendra le talent Force Mémorielle (du Fourneau)."
+    }
+  },
+  "wellspring-mask": {
+    "en": "Wellspring Mask",
+    "fr": "Masque du Puits",
+    "description": {
+      "en": "Ogerpon gains Water type and +20% physical attack power. Changes ability to Water Absorb and Ivy Cudgel to Water.",
+      "fr": "Tenu, permet à Ogerpon de passer sous sa forme Puits et de gagner le type Eau ainsi que d'augmenter ses attaques physiques de 20%. Son talent devient Absorb Eau et son attaque Massue Liane devient de type Eau. En Téracristalisant, il obtiendra le talent Force Mémorielle (du Puits)."
+    }
+  },
+  "cornerstone-mask": {
+    "en": "Cornerstone Mask",
+    "fr": "Masque de la Pierre",
+    "description": {
+      "en": "Ogerpon gains Rock type and +20% physical attack power. Changes ability to Sturdy and Ivy Cudgel to Rock.",
+      "fr": "Tenu, permet à Ogerpon de passer sous sa forme Pierre et de gagner le type Roche ainsi que d'augmenter ses attaques physiques de 20%. Son talent devient Fermeté et son attaque Massue Liane devient de type Roche. En Téracristalisant, il obtiendra le talent Force Mémorielle (de la Pierre)."
+    }
+  },
+  "odd-incense": {
+    "en": "Odd Incense",
+    "fr": "Encens Bizarre",
+    "description": {
+      "en": "Increases Psychic-type move power by 20%.",
+      "fr": "Augmente de 20% la puissance des capacités de type Psy."
+    }
+  },
+  "rose-incense": {
+    "en": "Rose Incense",
+    "fr": "Encens Fleur",
+    "description": {
+      "en": "Increases Grass-type move power by 20%.",
+      "fr": "Augmente de 20% la puissance des capacités de type Plante."
+    }
+  },
+  "sea-incense": {
+    "en": "Sea Incense",
+    "fr": "Encens Mer",
+    "description": {
+      "en": "Increases Water-type move power by 20%.",
+      "fr": "Augmente de 20% la puissance des capacités de type Eau."
+    }
+  },
+  "wave-incense": {
+    "en": "Wave Incense",
+    "fr": "Encens Vague",
+    "description": {
+      "en": "Increases Water-type move power by 20%.",
+      "fr": "Augmente de 20% la puissance des capacités de type Eau."
+    }
+  },
+  "rock-incense": {
+    "en": "Rock Incense",
+    "fr": "Encens Roc",
+    "description": {
+      "en": "Increases Rock-type move power by 20%.",
+      "fr": "Augmente de 20% la puissance des capacités de type Roche."
+    }
+  },
+  "full-incense": {
+    "en": "Full Incense",
+    "fr": "Encens Plein",
+    "description": {
+      "en": "Makes the holder move last at the same priority.",
+      "fr": "Fait attaquer le porteur en dernier à ordre de priorité égale."
+    }
+  },
+  "flame-plate": {
+    "en": "Flame Plate",
+    "fr": "Plaque Flamme",
+    "description": {
+      "en": "Increases Fire-type move power by 20%. Judgment becomes Fire-type.",
+      "fr": "Augmente de 20% la puissance des capacités de type Feu. Jugement devient de type Feu."
+    }
+  },
+  "splash-plate": {
+    "en": "Splash Plate",
+    "fr": "Plaque Hydro",
+    "description": {
+      "en": "Increases Water-type move power by 20%. Judgment becomes Water-type.",
+      "fr": "Augmente de 20% la puissance des capacités de type Eau. Jugement devient de type Eau."
+    }
+  },
+  "meadow-plate": {
+    "en": "Meadow Plate",
+    "fr": "Plaque Herbe",
+    "description": {
+      "en": "Increases Grass-type move power by 20%. Judgment becomes Grass-type.",
+      "fr": "Augmente de 20% la puissance des capacités de type Plante. Jugement devient de type Plante."
+    }
+  },
+  "zap-plate": {
+    "en": "Zap Plate",
+    "fr": "Plaque Volt",
+    "description": {
+      "en": "Increases Electric-type move power by 20%. Judgment becomes Electric-type.",
+      "fr": "Augmente de 20% la puissance des capacités de type Électrik Jugement devient de type Électrik."
+    }
+  },
+  "icicle-plate": {
+    "en": "Icicle Plate",
+    "fr": "Plaque Glace",
+    "description": {
+      "en": "Increases Ice-type move power by 20%. Judgment becomes Ice-type.",
+      "fr": "Augmente de 20% la puissance des capacités de type Glace. Jugement devient de type Glace."
+    }
+  },
+  "fist-plate": {
+    "en": "Fist Plate",
+    "fr": "Plaque Poing",
+    "description": {
+      "en": "Increases Fighting-type move power by 20%. Judgment becomes Fighting-type.",
+      "fr": "Augmente de 20% la puissance des capacités de type Combat. Jugement devient de type Combat."
+    }
+  },
+  "toxic-plate": {
+    "en": "Toxic Plate",
+    "fr": "Plaque Toxic",
+    "description": {
+      "en": "Increases Poison-type move power by 20%. Judgment becomes Poison-type.",
+      "fr": "Augmente de 20% la puissance des capacités de type Poison. Jugement devient de type Poison."
+    }
+  },
+  "earth-plate": {
+    "en": "Earth Plate",
+    "fr": "Plaque Terre",
+    "description": {
+      "en": "Increases Ground-type move power by 20%. Judgment becomes Ground-type.",
+      "fr": "Augmente de 20% la puissance des capacités de type Sol. Jugement devient de type Sol."
+    }
+  },
+  "sky-plate": {
+    "en": "Sky Plate",
+    "fr": "Plaque Ciel",
+    "description": {
+      "en": "Increases Flying-type move power by 20%. Judgment becomes Flying-type.",
+      "fr": "Augmente de 20% la puissance des capacités de type Vol. Jugement devient de type Vol."
+    }
+  },
+  "mind-plate": {
+    "en": "Mind Plate",
+    "fr": "Plaque Esprit",
+    "description": {
+      "en": "Increases Psychic-type move power by 20%. Judgment becomes Psychic-type.",
+      "fr": "Augmente de 20% la puissance des capacités de type Psy. Jugement devient de type Psy."
+    }
+  },
+  "insect-plate": {
+    "en": "Insect Plate",
+    "fr": "Plaquinsect",
+    "description": {
+      "en": "Increases Bug-type move power by 20%. Judgment becomes Bug-type.",
+      "fr": "Les attaques de type Insecte du porteur ont une puissance 1,2x. Jugement est de type Insecte."
+    }
+  },
+  "stone-plate": {
+    "en": "Stone Plate",
+    "fr": "Plaque Roc",
+    "description": {
+      "en": "Increases Rock-type move power by 20%. Judgment becomes Rock-type.",
+      "fr": "Augmente de 20% la puissance des capacités de type Roche. Jugement devient de type Roche."
+    }
+  },
+  "spooky-plate": {
+    "en": "Spooky Plate",
+    "fr": "Plaque Fantôme",
+    "description": {
+      "en": "Increases Ghost-type move power by 20%. Judgment becomes Ghost-type.",
+      "fr": "Augmente de 20% la puissance des capacités de type Spectre. Jugement devient de type Spectre."
+    }
+  },
+  "draco-plate": {
+    "en": "Draco Plate",
+    "fr": "Plaque Draco",
+    "description": {
+      "en": "Increases Dragon-type move power by 20%. Judgment becomes Dragon-type.",
+      "fr": "Augmente de 20% la puissance des capacités de type Dragon. Jugement devient de type Dragon."
+    }
+  },
+  "dread-plate": {
+    "en": "Dread Plate",
+    "fr": "Plaque Ombre",
+    "description": {
+      "en": "Increases Dark-type move power by 20%. Judgment becomes Dark-type.",
+      "fr": "Augmente de 20% la puissance des capacités de type Ténèbres. Jugement devient de type Ténèbres."
+    }
+  },
+  "iron-plate": {
+    "en": "Iron Plate",
+    "fr": "Plaque Fer",
+    "description": {
+      "en": "Increases Steel-type move power by 20%. Judgment becomes Steel-type.",
+      "fr": "Augmente de 20% la puissance des capacités de type Acier. Jugement devient de type Acier."
+    }
+  },
+  "pixie-plate": {
+    "en": "Pixie Plate",
+    "fr": "Plaque Pixie",
+    "description": {
+      "en": "Increases Fairy-type move power by 20%. Judgment becomes Fairy-type.",
+      "fr": "Augmente de 20% la puissance des capacités de type Fée. Jugement devient de type Fée."
+    }
+  }
+}
