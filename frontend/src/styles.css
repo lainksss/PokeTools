@@ -469,8 +469,10 @@ select.form-control option:checked {
   transition: background 0.2s;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 .item-dropdown-item:hover {
@@ -495,6 +497,13 @@ select.form-control option:checked {
   font-size: 12px;
   color: var(--text-muted);
   font-style: italic;
+}
+
+.item-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1 1 auto;
 }
 
 .selected-item-badge {
@@ -1653,8 +1662,9 @@ select.form-control option:checked {
 
 .coverage-moves-row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  /* Give each move slot a sensible minimum width so blocks appear wider on large screens */
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  gap: 12px;
   align-items: stretch;
 }
 
@@ -1665,7 +1675,7 @@ select.form-control option:checked {
 /* Responsive: 2 columns on medium screens, 1 column on small screens */
 @media (max-width: 1000px) {
   .coverage-moves-row {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
   }
 }
 

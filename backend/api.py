@@ -369,6 +369,13 @@ def api_pokemon_names():
     return jsonify(names_data)
 
 
+@app.route("/api/move-names", methods=["GET"])
+def api_move_names():
+    """Retourne les traductions des noms d'attaques (toutes langues)."""
+    moves_data = _load_json("all_move_names_multilang.json") or {}
+    return jsonify(moves_data)
+
+
 @app.route("/api/items", methods=["GET"])
 def api_items():
     """Return localized items registry for frontend consumption."""
