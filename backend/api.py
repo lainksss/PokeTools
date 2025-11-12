@@ -685,6 +685,7 @@ def api_find_threats_stream():
                         "nature": nature,
                         "types": poke_types,
                         "ability": poke_ability,  # Utiliser l'ability si le Pokémon n'en a qu'une
+                        "item": None,  # Pas d'item par défaut pour les menaces
                         "is_terastallized": False,
                         "tera_type": None
                     }

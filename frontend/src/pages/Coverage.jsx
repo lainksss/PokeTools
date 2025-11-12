@@ -59,6 +59,7 @@ export default function Coverage() {
         nature: attacker.nature,
         types: attacker.types,
         ability: attacker.ability,
+        item: attacker.item || null,
         is_terastallized: attacker.is_terastallized,
         tera_type: attacker.tera_type,
         stages: attacker.boosts || {}

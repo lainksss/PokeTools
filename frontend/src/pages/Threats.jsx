@@ -38,6 +38,7 @@ export default function Threats() {
         nature: defender.nature,
         types: defender.types,
         ability: defender.ability,
+        item: defender.item || null,
         is_terastallized: defender.is_terastallized,
         tera_type: defender.tera_type
       },
