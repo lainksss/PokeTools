@@ -22,6 +22,12 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
   const [showItemDropdown, setShowItemDropdown] = useState(false)
   const [filteredItems, setFilteredItems] = useState([])
 
+  // Abilities state (searchable like items)
+  const [allAbilities, setAllAbilities] = useState([])
+  const [abilitySearch, setAbilitySearch] = useState('')
+  const [showAbilityDropdown, setShowAbilityDropdown] = useState(false)
+  const [filteredAbilities, setFilteredAbilities] = useState([])
+
   // Moves state (searchable like items)
   const [filteredMoves, setFilteredMoves] = useState([])
   const [moveSearch, setMoveSearch] = useState('')
@@ -39,8 +45,9 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
       fetch(`${API_URL}/api/pokemon`).then(r => r.json()),
       fetch(`${API_URL}/api/types`).then(r => r.json()),
       fetch(`${API_URL}/api/natures`).then(r => r.json()),
-      fetch(`${API_URL}/api/items`).then(r => r.json())
-    ]).then(([pokemonData, typesData, naturesData, itemsData]) => {
+      fetch(`${API_URL}/api/items`).then(r => r.json()),
+      fetch(`${API_URL}/api/abilities`).then(r => r.json())
+    ]).then(([pokemonData, typesData, naturesData, itemsData, abilitiesData]) => {
       if (!mounted) return
       setAllPokemon(pokemonData.results || [])
       setFilteredPokemon(pokemonData.results || [])
@@ -48,6 +55,8 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
       setAllNatures(naturesData.natures || [])
       setAllItems(itemsData.items || [])
       setFilteredItems(itemsData.items || [])
+      setAllAbilities((abilitiesData && abilitiesData.abilities) || [])
+      setFilteredAbilities((abilitiesData && abilitiesData.abilities) || [])
       
       // Initialize with first pokemon if none selected
       if (!value && pokemonData.results && pokemonData.results.length > 0) {
@@ -97,6 +106,40 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
       setFilteredItems(filtered)
     }
   }, [itemSearch, allItems])
+
+
+  // Filter abilities when search changes — limit to abilities the current Pokémon can have
+  useEffect(() => {
+    // Build the available set: if pokemonAbilities provided, intersect, otherwise use allAbilities
+    const available = (pokemonAbilities && pokemonAbilities.length > 0)
+      ? allAbilities.filter(a => pokemonAbilities.includes(a.slug))
+      : allAbilities
+
+    if (!abilitySearch.trim()) {
+      setFilteredAbilities(available)
+      return
+    }
+
+    const search = abilitySearch.toLowerCase()
+    const filtered = (available || []).filter(a => {
+      if ((a.slug && a.slug.toLowerCase().includes(search))) return true
+      if ((a.en && a.en.toLowerCase().includes(search))) return true
+      if ((a.fr && a.fr.toLowerCase().includes(search))) return true
+      return false
+    })
+    setFilteredAbilities(filtered)
+  }, [abilitySearch, allAbilities, pokemonAbilities])
+
+  // Update ability search text when language changes and an ability is selected
+  useEffect(() => {
+    if (value?.ability && allAbilities.length > 0) {
+      const selected = allAbilities.find(a => a.slug === value.ability)
+      if (selected) {
+        const displayName = language === 'fr' ? selected.fr : selected.en
+        setAbilitySearch(displayName || '')
+      }
+    }
+  }, [language, value?.ability, allAbilities, pokemonAbilities])
 
   // Filter moves when search changes
   useEffect(() => {
@@ -706,20 +749,69 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
           </div>
 
           {/* Ability */}
-          <div className="form-group">
+          <div className="form-group item-selector">
             <label>{t('calculate.ability')}</label>
-            <select 
-              value={value?.ability || ''}
-              onChange={e => handleAbilityChange(e.target.value)}
-              className="form-control"
-            >
-              <option value="">-- {t('pokemon.none')} --</option>
-              {pokemonAbilities.map(ability => (
-                <option key={ability} value={ability}>
-                  {ability.replace(/-/g, ' ')}
-                </option>
-              ))}
-            </select>
+            <div className="item-input-wrapper">
+              <input
+                type="text"
+                value={abilitySearch}
+                onChange={e => setAbilitySearch(e.target.value)}
+                onFocus={() => setShowAbilityDropdown(true)}
+                onBlur={() => setTimeout(() => setShowAbilityDropdown(false), 200)}
+                placeholder={t('calculate.searchAbility') || 'Rechercher un talent...'}
+                className="form-control item-search-input"
+              />
+              {value?.ability && (
+                <button
+                  className="item-clear-btn"
+                  onClick={() => {
+                    handleAbilityChange(null)
+                    setAbilitySearch('')
+                  }}
+                  title={t('common.clear') || 'Effacer'}
+                >
+                  ×
+                </button>
+              )}
+            </div>
+
+            {showAbilityDropdown && (
+              <div className="item-dropdown">
+                {filteredAbilities.length === 0 && (
+                  <div className="item-dropdown-empty">{t('common.noResults') || 'Aucun résultat'}</div>
+                )}
+                {filteredAbilities.slice(0, 200).map(ab => {
+                  const displayName = language === 'fr' ? (ab.fr || ab.en) : (ab.en || ab.fr)
+                  const description = language === 'fr' ? (ab.description_fr || '') : (ab.description_en || '')
+                  return (
+                    <div
+                      key={ab.slug}
+                      className={`item-dropdown-item ${value?.ability === ab.slug ? 'selected' : ''}`}
+                      onClick={() => {
+                        handleAbilityChange(ab.slug)
+                        setAbilitySearch(displayName)
+                        setShowAbilityDropdown(false)
+                      }}
+                      title={description}
+                    >
+                      <span className="item-name">{displayName}</span>
+                      {description && <span className="item-description">{description}</span>}
+                    </div>
+                  )
+                })}
+              </div>
+            )}
+
+            {value?.ability && (
+              <div className="selected-item-badge">
+                {(() => {
+                  const selected = allAbilities.find(a => a.slug === value.ability)
+                  if (!selected) return (value.ability || '')
+                  const description = language === 'fr' ? (selected.description_fr || selected.fr) : (selected.description_en || selected.en)
+                  return description || (language === 'fr' ? selected.fr : selected.en)
+                })()}
+              </div>
+            )}
           </div>
 
           {/* Item - NEW */}

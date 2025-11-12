@@ -376,6 +376,74 @@ def api_move_names():
     return jsonify(moves_data)
 
 
+@app.route("/api/abilities", methods=["GET"])
+def api_abilities():
+    """Return a list of ability objects with slug, en/fr names and descriptions.
+
+    The source of truth for slugs is `all_pokemon_abilities.json` which maps
+    pokemon IDs to ability slugs. Translations/descriptions are read from
+    `all_ability_translations.json` (indexed by numeric id). We attempt to
+    match translation entries to slugs by comparing the English name (lowercased)
+    to the slug with hyphens replaced by spaces.
+    """
+    # Load raw sources
+    abilities_mapping = _load_json("all_pokemon_abilities.json") or {}
+    ability_translations = _load_json("all_ability_translations.json") or {}
+
+    # Build unique slug set from abilities_mapping
+    slug_set = set()
+    for k, v in abilities_mapping.items():
+        if isinstance(v, list):
+            for slug in v:
+                if slug:
+                    slug_set.add(slug)
+
+    results = []
+    # Create a list of translation entries for faster lookup
+    entries = []
+    for aid, data in (ability_translations.items() if isinstance(ability_translations, dict) else []):
+        try:
+            en = data.get("names", {}).get("en")
+            fr = data.get("names", {}).get("fr")
+            desc_en = data.get("descriptions", {}).get("en", "")
+            desc_fr = data.get("descriptions", {}).get("fr", "")
+            entries.append({"id": aid, "en": en, "fr": fr, "desc_en": desc_en, "desc_fr": desc_fr})
+        except Exception:
+            continue
+
+    for slug in sorted(slug_set):
+        # normalize slug to compare with English name
+        norm = slug.replace("-", " ").lower()
+        found = None
+        for e in entries:
+            if not e.get("en"):
+                continue
+            if e.get("en").lower() == norm:
+                found = e
+                break
+
+        if found:
+            obj = {
+                "slug": slug,
+                "en": found.get("en") or slug,
+                "fr": found.get("fr") or found.get("en") or slug,
+                "description_en": found.get("desc_en") or "",
+                "description_fr": found.get("desc_fr") or ""
+            }
+        else:
+            # fallback: use slug as name
+            obj = {
+                "slug": slug,
+                "en": slug,
+                "fr": slug,
+                "description_en": "",
+                "description_fr": ""
+            }
+        results.append(obj)
+
+    return jsonify({"abilities": results, "count": len(results)})
+
+
 @app.route("/api/items", methods=["GET"])
 def api_items():
     """Return localized items registry for frontend consumption."""
