@@ -1,0 +1,42 @@
+{
+  "low-kick": {
+    "id": 67,
+    "power": null,
+    "type": "fighting",
+    "pp": 20,
+    "accuracy": 100,
+    "effect": "Inflicts regular damage.  Power increases with the target’s weight in kilograms, to a maximum of 120.\n\nTarget’s weight | Power\n--------------- | ----:\nUp to 10kg      |    20\nUp to 25kg      |    40\nUp to 50kg      |    60\nUp to 100kg     |    80\nUp to 200kg     |   100\nAbove 200kg     |   120\n"
+  },
+  "grass-knot": {
+    "id": 447,
+    "power": null,
+    "type": "grass",
+    "pp": 20,
+    "accuracy": 100,
+    "effect": "Inflicts regular damage.  Power increases with the target’s weight in kilograms, to a maximum of 120.\n\nTarget’s weight | Power\n--------------- | ----:\nUp to 10kg      |    20\nUp to 25kg      |    40\nUp to 50kg      |    60\nUp to 100kg     |    80\nUp to 200kg     |   100\nAbove 200kg     |   120\n"
+  },
+  "autotomize": {
+    "id": 475,
+    "power": null,
+    "type": "steel",
+    "pp": 15,
+    "accuracy": null,
+    "effect": "Raises the user’s Speed by two stages.  Halves the user’s weight; this effect does not stack."
+  },
+  "heavy-slam": {
+    "id": 484,
+    "power": null,
+    "type": "steel",
+    "pp": 10,
+    "accuracy": 100,
+    "effect": "Inflicts regular damage.  The greater the user’s weight compared to the target’s, the higher power this move has, to a maximum of 120.\n\nUser’s weight                    | Power\n-------------------------------- | ----:\nUp to 2× the target’s weight     |    40\nUp to 3× the target’s weight     |    60\nUp to 4× the target’s weight     |    80\nUp to 5× the target’s weight     |   100\nMore than 5× the target’s weight |   120\n"
+  },
+  "heat-crash": {
+    "id": 535,
+    "power": null,
+    "type": "fire",
+    "pp": 10,
+    "accuracy": 100,
+    "effect": "Inflicts regular damage.  The greater the user’s weight compared to the target’s, the higher power this move has, to a maximum of 120.\n\nUser’s weight                    | Power\n-------------------------------- | ----:\nUp to 2× the target’s weight     |    40\nUp to 3× the target’s weight     |    60\nUp to 4× the target’s weight     |    80\nUp to 5× the target’s weight     |   100\nMore than 5× the target’s weight |   120\n"
+  }
+}
