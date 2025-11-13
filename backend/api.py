@@ -148,6 +148,26 @@ def build_actor_from_payload(p):
         if actor.get("species"):
             evo_info = evo.get(actor["species"], {})
             actor["can_evolve"] = bool(evo_info.get("can_evolve", False))
+        # Determine weight_kg: prefer explicit payload override, else lookup from data file
+        try:
+            # payload can provide a current weight (e.g. after Autotomize/Minimize)
+            if p.get("weight_kg") is not None:
+                actor["weight_kg"] = float(p.get("weight_kg"))
+            else:
+                weights = _load_json("all_pokemon_weight_height.json") or {}
+                # Try by poke_id first
+                if poke_id is not None and str(poke_id) in weights:
+                    actor["weight_kg"] = float(weights.get(str(poke_id), {}).get("weight_kg", 0.0))
+                else:
+                    # Try by species slug -> lookup id
+                    sp = actor.get("species")
+                    if sp and sp in all_pok:
+                        sp_id = all_pok.get(sp, {}).get("id")
+                        if sp_id and str(sp_id) in weights:
+                            actor["weight_kg"] = float(weights.get(str(sp_id), {}).get("weight_kg", 0.0))
+        except Exception:
+            # ignore weight lookup errors
+            pass
     except Exception:
         # ignore any errors; these fields are optional
         pass
@@ -222,6 +242,88 @@ def api_calc_damage():
         complete_move_data = all_moves.get(move_name, {})
         # Fusionner les données (priorité aux données du payload pour les valeurs déjà présentes)
         move_data = {**complete_move_data, **move_data}
+
+    # --- Compute weight-based move power (Low Kick / Grass Knot / Heat Crash / Heavy Slam)
+    def _compute_weight_based_power(move, attacker, defender, gen=9):
+        """Return a copy of move with power set when it depends on weight.
+
+        Rules implemented (from data/all_pokemon_weight_moves.json):
+        - low-kick / grass-knot: target-weight thresholds -> {20,40,60,80,100,120}
+        - heavy-slam / heat-crash: ratio user_weight/target_weight thresholds -> {40,60,80,100,120}
+
+        The function prefers actor['weight_kg'] if present. If target weight is missing
+        or zero, heavy-slam/heat-crash will return max power 120 to avoid division by zero.
+        """
+        name = move.get("name")
+        if not name:
+            return move
+
+        name = name.lower()
+
+        # Helper to read weight from actor dict (already set in build_actor_from_payload or overridden)
+        def _actor_weight(a):
+            try:
+                w = a.get("weight_kg")
+                if w is None:
+                    return None
+                return float(w)
+            except Exception:
+                return None
+
+        # Low Kick / Grass Knot: use defender weight
+        if name in ("low-kick", "grass-knot"):
+            tgt_w = _actor_weight(defender)
+            if tgt_w is None:
+                return move
+            # thresholds in kg
+            if tgt_w <= 10:
+                power = 20
+            elif tgt_w <= 25:
+                power = 40
+            elif tgt_w <= 50:
+                power = 60
+            elif tgt_w <= 100:
+                power = 80
+            elif tgt_w <= 200:
+                power = 100
+            else:
+                power = 120
+            new = dict(move)
+            new["power"] = power
+            return new
+
+        # Heavy Slam / Heat Crash: compare attacker weight to defender weight
+        if name in ("heavy-slam", "heat-crash"):
+            atk_w = _actor_weight(attacker)
+            tgt_w = _actor_weight(defender)
+            if tgt_w is None or tgt_w <= 0 or atk_w is None:
+                # If missing or zero target weight, conservative: return max power
+                new = dict(move)
+                new["power"] = 120
+                return new
+            ratio = atk_w / tgt_w
+            if ratio <= 2:
+                power = 40
+            elif ratio <= 3:
+                power = 60
+            elif ratio <= 4:
+                power = 80
+            elif ratio <= 5:
+                power = 100
+            else:
+                power = 120
+            new = dict(move)
+            new["power"] = power
+            return new
+
+        return move
+
+    # apply weight-based power computation
+    try:
+        move_data = _compute_weight_based_power(move_data, attacker, defender, gen=payload.get("gen", 9))
+    except Exception:
+        # if anything fails, keep original move_data
+        pass
 
     # Calculer les dégâts
     try:
