@@ -486,6 +486,7 @@ def calculate_damage(
 
     # Compute offensive/defensive stats
     category = move.get("damage_class", "physical")
+    mv_name = (move.get("name") or "").lower()
     
     # Tera Blast : change de type, de catégorie et de puissance selon la téracristallisation
     move_type = move.get("type")
@@ -524,7 +525,12 @@ def calculate_damage(
             pass
 
     if category == "physical":
-        A = compute_effective_stat(attacker, "attack", "attack", True, crit_effective)
+        # Special-case: Body Press (fr: Big Splash) uses the attacker's DEFENSE as its
+        # attacking stat instead of ATTACK.
+        if mv_name in ("body-press", "body press", "bodypress"):
+            A = compute_effective_stat(attacker, "defense", "defense", True, crit_effective)
+        else:
+            A = compute_effective_stat(attacker, "attack", "attack", True, crit_effective)
         D = compute_effective_stat(defender, "defense", "defense", False, crit_effective)
     else:
         A = compute_effective_stat(attacker, "special_attack", "special_attack", True, crit_effective)
