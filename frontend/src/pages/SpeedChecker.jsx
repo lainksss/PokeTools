@@ -456,7 +456,8 @@ export default function SpeedChecker() {
                     ))}
                   </div>
                 </div>
-                <div className="result-stats">\n                  <span className="base-speed">Base: {result.baseSpeed}</span>
+                <div className="result-stats">
+                  <span className="base-speed">Base: {result.baseSpeed}</span>
                   <span className="final-speed">Final: {result.finalSpeed}</span>
                   <span className={`speed-diff ${result.isFaster ? 'faster' : 'slower'}`}>
                     {result.isFaster ? '+' : '-'}{result.speedDiff}
