@@ -224,6 +224,55 @@ def compute_targets_and_pb(move: Dict, field: Dict, gen: int) -> Tuple[float, fl
     return targets, pb
 
 
+def pokeRound(x: float) -> int:
+    """Round to nearest integer, ties at .5 round down (Pokémon Gen V+ rounding).
+    
+    This is the standard rounding used in Pokémon damage calculation.
+    Examples:
+    - 1.4 -> 1
+    - 1.5 -> 1
+    - 1.6 -> 2
+    - 2.5 -> 2
+    """
+    return int(math.floor(x + 0.5))
+
+
+def OF32(n: int) -> int:
+    """Overflow to 32-bit signed integer range."""
+    n = int(n)
+    if n > 2147483647:
+        return n - 4294967296
+    if n < -2147483648:
+        return n + 4294967296
+    return n
+
+
+def OF16(n: int) -> int:
+    """Overflow to 16-bit unsigned integer range."""
+    n = int(n)
+    return n & 0xFFFF
+
+
+def chainMods(mods: List[int], N: int = 41, M: int = 2097152) -> int:
+    """Chain modifiers using fixed-point 4096 arithmetic (Smogon style).
+    
+    mods: list of modifier values (e.g., [4096, 6144, 5324])
+    N: number of initial modifiers that get chained
+    M: denominator for final division (2097152 for BP mods, 131072 for final mods)
+    
+    Returns: chained modifier value (as integer, base 4096)
+    """
+    if not mods:
+        return 4096
+    
+    result = 4096
+    for mod in mods[:N] if len(mods) > N else mods:
+        result = result * mod + 2048
+        result = int(result / 4096)
+    
+    return result
+
+
 if compute_weather_mult is None:
     # fallback local implementation when import not available
     def compute_weather_mult(field: Dict, mv_type: Optional[str], move: Dict) -> Tuple[float, Dict]:
@@ -389,32 +438,102 @@ def compute_damage_rolls(
     multipliers: Dict[str, float],
     defender_hp: Optional[int],
 ) -> Tuple[List[int], List[Optional[int]]]:
+    """Calculate damage for each random roll following Smogon's exact formula.
+    
+    Based on @smogon/calc Gen 5-9 mechanics:
+    - Spread modifier (targets) applied as pokeRound(OF32(baseDamage * 3072) / 4096)
+    - Weather modifier applied as pokeRound(OF32(baseDamage * 6144) / 4096)
+    - Critical hits applied as Math.floor(OF32(baseDamage * 1.5))
+    - Random factor: (baseDamage * random) / 100
+    - STAB, Type effectiveness, Burn applied with Math.floor per step
+    - Final modifiers (screens, abilities, items) chained with chainMods
+    """
     damage_all: List[int] = []
     remaining_hp_all: List[Optional[int]] = []
     
     for r in rand_list:
-        # Étape 1 : Multiplicateurs AVANT random (selon formule Pokémon Gen 5+)
-        t = float(base)
-        t = math.floor(t * multipliers.get("targets", 1.0))
-        t = math.floor(t * multipliers.get("pb", 1.0))
-        t = math.floor(t * multipliers.get("weather_mult", 1.0))
-        t = math.floor(t * multipliers.get("glaive_rush", 1.0))
+        baseDamage = int(base)
         
-        # Étape 2 : Application du random
-        t = math.floor(t * (r / 100.0))
+        # Spread modifier (targets)
+        if multipliers.get("targets", 1.0) != 1.0:
+            baseDamage = pokeRound(OF32(baseDamage * 3072) / 4096)
         
-        # Étape 3 : Multiplicateurs APRÈS random
-        t = math.floor(t * multipliers.get("stab", 1.0))
-        t = math.floor(t * multipliers.get("item_mult", 1.0))  # Life Orb applied here (after STAB, before Type)
-        t = math.floor(t * multipliers.get("type_mult", 1.0))
-        t = math.floor(t * multipliers.get("burn_mult", 1.0))
-        t = math.floor(t * multipliers.get("terrain_mult", 1.0))
-        t = math.floor(t * multipliers.get("other_mult", 1.0))
-        t = math.floor(t * multipliers.get("zmove_mult", 1.0))
-        t = math.floor(t * multipliers.get("terashield_mult", 1.0))
-        t = math.floor(t * multipliers.get("crit_mult", 1.0))
+        # Parental Bond (second hit)
+        if multipliers.get("pb", 1.0) != 1.0:
+            pb_val = multipliers.get("pb", 1.0)
+            if pb_val == 0.25:  # Gen 7+
+                baseDamage = pokeRound(OF32(baseDamage * 1024) / 4096)
+            elif pb_val == 0.5:  # Gen 6
+                baseDamage = pokeRound(OF32(baseDamage * 2048) / 4096)
         
-        dmg = max(1, int(t))
+        # Weather modifier
+        weather = multipliers.get("weather_mult", 1.0)
+        if weather == 1.5:
+            baseDamage = pokeRound(OF32(baseDamage * 6144) / 4096)
+        elif weather == 0.5:
+            baseDamage = pokeRound(OF32(baseDamage * 2048) / 4096)
+        
+        # Glaive Rush (×2)
+        if multipliers.get("glaive_rush", 1.0) == 2.0:
+            baseDamage = baseDamage * 2
+        
+        # Critical hit
+        crit = multipliers.get("crit_mult", 1.0)
+        if crit == 1.5:
+            baseDamage = math.floor(OF32(baseDamage * 1.5))
+        elif crit == 2.0:
+            baseDamage = baseDamage * 2
+        
+        # Random factor
+        damage = math.floor((baseDamage * r) / 100)
+        
+        # STAB
+        stab = multipliers.get("stab", 1.0)
+        if stab == 1.5:
+            damage = math.floor(damage * 1.5)
+        elif stab == 2.0:
+            damage = damage * 2
+        elif stab == 2.25:
+            damage = math.floor(damage * 2.25)
+        
+        # Type effectiveness (applied per type)
+        type_mult = multipliers.get("type_mult", 1.0)
+        damage = math.floor(damage * type_mult)
+        
+        # Burn
+        burn = multipliers.get("burn_mult", 1.0)
+        if burn == 0.5:
+            damage = math.floor(damage * 0.5)
+        
+        # Final modifiers (screens, abilities, items) - chained
+        final_mods = []
+        
+        # Screens (Reflect/Light Screen/Aurora Veil)
+        # Note: These would come from field state, not implemented here yet
+        
+        # Abilities and items go into final_mods
+        # Life Orb, Expert Belt, etc.
+        item_mult = multipliers.get("item_mult", 1.0)
+        if item_mult != 1.0:
+            # Life Orb is 5324/4096
+            final_mods.append(int(item_mult * 4096))
+        
+        # Terrain multiplier
+        terrain = multipliers.get("terrain_mult", 1.0)
+        if terrain != 1.0:
+            final_mods.append(int(terrain * 4096))
+        
+        # Other modifiers
+        other = multipliers.get("other_mult", 1.0)
+        if other != 1.0:
+            final_mods.append(int(other * 4096))
+        
+        # Apply chained final modifiers
+        if final_mods:
+            finalMod = chainMods(final_mods, len(final_mods), 131072)
+            damage = pokeRound((damage * finalMod) / 4096)
+        
+        dmg = max(1, int(damage))
         damage_all.append(dmg)
         if defender_hp is not None:
             remaining_hp_all.append(max(0, int(defender_hp) - dmg))

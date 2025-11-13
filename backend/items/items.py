@@ -4,6 +4,7 @@ This module contains all held items and their effects on damage calculation,
 including type-boosting items, berries, choice items, and special items.
 """
 from typing import Dict, Optional, Tuple, Iterable
+import math
 
 # Item registry - all held items with their effects
 ITEMS: Dict[str, Dict] = {
@@ -227,6 +228,9 @@ def apply_item_stat_modifiers(
         if "category_boost" in attacker_item:
             if category == attacker_item["category_boost"]:
                 power = int(power * 1.1)
+        
+        # NOTE: Life Orb does NOT modify power - it's applied as a final damage multiplier
+        # in compute_item_damage_multiplier instead
     
     return attacker, defender, power
 
@@ -245,11 +249,14 @@ def compute_item_damage_multiplier(
     """Compute damage multiplier from held items.
     
     Returns (item_mult, other_mult, effects_dict).
-    - item_mult: Applied after STAB but before Type (Life Orb)
-    - other_mult: Applied after Type (Expert Belt, berries, etc.)
+    - item_mult: Applied in final modifier chain (Life Orb, etc.)
+    - other_mult: Applied in final modifier chain (Expert Belt, berries, etc.)
+    
+    Following Smogon mechanics, Life Orb is applied as a FINAL modifier (5324/4096),
+    not as a power multiplier.
     """
-    item_mult = 1.0  # Life Orb goes here (after STAB, before Type)
-    other_mult = 1.0  # Everything else goes here (after Type)
+    item_mult = 1.0
+    other_mult = 1.0
     effects = {}
     
     attacker_item = get_item(attacker_item_slug)
@@ -260,8 +267,11 @@ def compute_item_damage_multiplier(
     
     # Attacker item boosts
     if attacker_item:
-        # Type-boosting items are now handled in apply_item_stat_modifiers (modify power directly)
-        # So we DON'T apply them here anymore
+        # Life Orb: Applied as final damage multiplier (5324/4096 ≈ 1.2998046875)
+        # This matches Smogon's implementation exactly
+        if "power_mult" in attacker_item:
+            item_mult = float(attacker_item["power_mult"])
+            effects["life_orb"] = True
         
         # Ogerpon Masks (check species + physical category)
         if attacker_item.get("type_boost_mult") and attacker_species == "ogerpon":
@@ -269,15 +279,10 @@ def compute_item_damage_multiplier(
                 other_mult *= attacker_item["type_boost_mult"]
                 effects["ogerpon_mask_boost"] = attacker_item_slug
         
-        # Expert Belt (+20% on super effective)
+        # Expert Belt (+20% on super effective) - 4915/4096
         if attacker_item.get("super_effective_boost") and type_effectiveness > 1.0:
-            other_mult *= 1.2
+            other_mult *= 4915 / 4096
             effects["expert_belt"] = True
-        
-        # Life Orb (+30%) - applied after STAB but before Type
-        if "power_mult" in attacker_item:
-            item_mult *= attacker_item["power_mult"]
-            effects["life_orb"] = True
         
         # Normal Gem (one-use +50%)
         if "one_use_type_boost" in attacker_item:
