@@ -630,6 +630,8 @@ select.form-control option:checked {
   display: flex;
   gap: 20px;
   align-items: flex-start;
+  position: relative;
+  padding-bottom: 140px; /* espace augmenté pour le bloc attaques détaché */
 }
 
 /* Stats Container */
@@ -1295,6 +1297,23 @@ select.form-control option:checked {
   gap: 16px;
 }
 
+/* Compact stats table in coverage pages - removed to match calculator level */
+
+.threats-left .coverage-moves-row {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.threats-left .form-group label {
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.threats-left .item-search-input {
+  font-size: 13px;
+  padding: 7px 10px;
+}
+
 .threats-left h3,
 .threats-right h3,
 .threats-middle h3 {
@@ -1657,19 +1676,35 @@ select.form-control option:checked {
 
 /* New coverage moves row: align 4 selects horizontally under EVs */
 .coverage-moves-group {
-  margin-top: 8px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background: transparent;
+  border-radius: 0 0 12px 12px;
+  border-top: 1.5px solid var(--accent);
+  padding: 18px 24px 18px 24px;
+  margin: 0;
+  z-index: 2;
+  box-shadow: 0 -2px 12px 0 rgba(37,99,235,0.07);
 }
 
 .coverage-moves-row {
-  display: grid;
-  /* Give each move slot a sensible minimum width so blocks appear wider on large screens */
-  grid-template-columns: repeat(4, minmax(180px, 1fr));
-  gap: 12px;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  justify-content: center;
   align-items: stretch;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .coverage-move {
-  width: 100%;
+  flex: 1 1 0;
+  min-width: 160px;
+  max-width: 220px;
 }
 
 /* Responsive: 2 columns on medium screens, 1 column on small screens */
