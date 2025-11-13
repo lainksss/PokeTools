@@ -518,10 +518,8 @@ def compute_damage_rolls(
             # Life Orb is 5324/4096
             final_mods.append(int(item_mult * 4096))
         
-        # Terrain multiplier
-        terrain = multipliers.get("terrain_mult", 1.0)
-        if terrain != 1.0:
-            final_mods.append(int(terrain * 4096))
+        # Terrain multiplier is now applied to base power, not as final mod
+        # (removed from here per Smogon's implementation)
         
         # Other modifiers
         other = multipliers.get("other_mult", 1.0)
@@ -730,6 +728,14 @@ def calculate_damage(
     # If grassy terrain halves certain move powers, adjust power before base
     if terrain_effects.get("halve_power"):
         power = int(math.floor(power * 0.5))
+    
+    # Apply terrain multiplier as base power modifier (Smogon Gen 7+)
+    # Terrain boosts are bpMods, not final mods
+    if terrain_mult != 1.0:
+        # Use chainMods for terrain boost like Smogon does
+        # terrainMultiplier = gen.num > 7 ? 5325 : 6144
+        terrain_bp_mod = 5325 if gen >= 8 else 6144  # 1.3x for Gen 8+, 1.5x for Gen 6-7
+        power = OF16(max(1, pokeRound((power * terrain_bp_mod) // 4096)))
 
     base = compute_base(level, power, A, D)
 
