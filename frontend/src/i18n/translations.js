@@ -6,7 +6,8 @@ export const translations = {
       calculator: "Calculateur",
       threats: "Analyse des menaces",
       coverage: "Couverture offensive",
-      typeCoverage: "Couverture de types"
+      typeCoverage: "Couverture de types",
+      speedChecker: "Vérificateur de vitesse"
     },
     
     // Page Home
@@ -131,6 +132,35 @@ export const translations = {
       bestEffectiveness: "Meilleure efficacité"
     },
     
+    // Speed Checker
+    speedChecker: {
+      title: "Vérificateur de vitesse",
+      yourPokemon: "Votre Pokémon",
+      selectPokemon: "Sélectionner un Pokémon",
+      choose: "Choisir...",
+      level: "Niveau",
+      speedEV: "EVs en Vitesse",
+      nature: "Nature",
+      positiveNature: "+Vitesse",
+      neutralNature: "Neutre",
+      negativeNature: "-Vitesse",
+      tailwind: "Vent Arrière",
+      finalSpeed: "Vitesse finale",
+      compareAgainst: "Comparer contre",
+      minSpeed: "Vitesse Min",
+      customSpeed: "Personnalisé",
+      maxSpeed: "Vitesse Max",
+      opponentEV: "EVs adversaire",
+      positiveNatureCheck: "Nature +Vitesse",
+      results: "Résultats",
+      slowerThan: "Plus lents que vous",
+      fasterThan: "Plus rapides que vous",
+      slowerCount: "plus lents",
+      fasterCount: "plus rapides",
+      noSlower: "Aucun Pokémon plus lent que vous !",
+      noFaster: "Aucun Pokémon plus rapide que vous !"
+    },
+    
     // Pokemon Panel
     pokemon: {
       types: "Types",
@@ -226,7 +256,8 @@ export const translations = {
       calculator: "Calculator",
       threats: "Threat Analysis",
       coverage: "Offensive Coverage",
-      typeCoverage: "Type Coverage"
+      typeCoverage: "Type Coverage",
+      speedChecker: "Speed Checker"
     },
     
     // Page Home
@@ -349,6 +380,35 @@ export const translations = {
       noResults: "All Pokémon are covered or click \"Analyze Types\"",
       foundCount: "Uncovered Pokémon",
       bestEffectiveness: "Best effectiveness"
+    },
+    
+    // Speed Checker
+    speedChecker: {
+      title: "Speed Checker",
+      yourPokemon: "Your Pokémon",
+      selectPokemon: "Select a Pokémon",
+      choose: "Choose...",
+      level: "Level",
+      speedEV: "Speed EVs",
+      nature: "Nature",
+      positiveNature: "+Speed",
+      neutralNature: "Neutral",
+      negativeNature: "-Speed",
+      tailwind: "Tailwind",
+      finalSpeed: "Final Speed",
+      compareAgainst: "Compare Against",
+      minSpeed: "Min Speed",
+      customSpeed: "Custom",
+      maxSpeed: "Max Speed",
+      opponentEV: "Opponent EVs",
+      positiveNatureCheck: "+Speed Nature",
+      results: "Results",
+      slowerThan: "Slower Than You",
+      fasterThan: "Faster Than You",
+      slowerCount: "slower",
+      fasterCount: "faster",
+      noSlower: "No Pokémon slower than you!",
+      noFaster: "No Pokémon faster than you!"
     },
     
     // Pokemon Panel

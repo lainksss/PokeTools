@@ -1848,3 +1848,585 @@ select.form-control option:checked {
   font-size: 16px;
   color: var(--text);
 }
+
+/* ===== Speed Checker Page ===== */
+.speed-checker-page {
+  padding: 20px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.speed-checker-page h2 {
+  font-size: 28px;
+  margin-bottom: 24px;
+  text-align: center;
+  color: var(--accent);
+}
+
+.speed-checker-container {
+  display: grid;
+  grid-template-columns: 450px 1fr 550px;
+  gap: 20px;
+  align-items: start;
+}
+
+.speed-panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  min-height: 400px;
+}
+
+.speed-panel h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: var(--accent);
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.tailwind-button {
+  width: 100%;
+  padding: 14px;
+  background: rgba(59, 130, 246, 0.2);
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.tailwind-button:hover {
+  background: rgba(59, 130, 246, 0.3);
+  transform: translateY(-2px);
+}
+
+.tailwind-button.active {
+  background: var(--accent);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+.speed-display {
+  margin-top: 24px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+}
+
+.pokemon-info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.pokemon-info-header h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.pokemon-info-header .base-stat {
+  font-size: 13px;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.stat-display {
+  text-align: center;
+}
+
+.stat-label {
+  display: block;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.speed-value {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--text);
+  transition: all 0.3s;
+}
+
+.speed-value.tailwind-active {
+  color: #fbbf24;
+  text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+  animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 30px rgba(251, 191, 36, 0.8);
+  }
+}
+
+.speed-breakdown {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.comparison-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.comparison-mode-btn {
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.comparison-mode-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent);
+  transform: translateX(4px);
+}
+
+.comparison-mode-btn.active {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.btn-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.btn-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.custom-options {
+  margin-top: 20px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.results-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.toggle-btn {
+  flex: 1;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.toggle-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.results-list {
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.results-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.results-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.results-list::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+.no-results {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.result-item {
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  transition: all 0.2s;
+}
+
+.result-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent);
+  transform: translateX(4px);
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.result-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.result-types {
+  display: flex;
+  gap: 4px;
+}
+
+.result-stats {
+  display: flex;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.base-speed {
+  color: var(--text-muted);
+}
+
+.final-speed {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.speed-diff {
+  margin-left: auto;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.speed-diff.faster {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.2);
+}
+
+.speed-diff.slower {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.2);
+}
+
+@media (max-width: 1200px) {
+  .speed-checker-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .speed-panel {
+    min-height: auto;
+  }
+}
+
+/* Speed Checker - Pokemon Search */
+.pokemon-search-container {
+  position: relative;
+}
+
+.pokemon-search-input {
+  width: 100%;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.pokemon-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-top: 4px;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.pokemon-dropdown-item {
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.pokemon-dropdown-item:hover {
+  background: rgba(59, 130, 246, 0.2);
+}
+
+.pokemon-dropdown-item .pokemon-name {
+  font-weight: 500;
+}
+
+.pokemon-dropdown-item .pokemon-speed {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.pokemon-info-display {
+  margin: 16px 0;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.pokemon-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.pokemon-header h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.pokemon-types {
+  display: flex;
+  gap: 6px;
+}
+
+.type-badge {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: white;
+}
+
+.base-speed-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.base-speed-display .label {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.base-speed-display .value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.ev-input-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.ev-input-container input {
+  flex: 1;
+}
+
+.ev-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.ev-buttons button {
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ev-buttons button:hover {
+  background: rgba(59, 130, 246, 0.3);
+  border-color: var(--accent);
+}
+
+.boost-selector {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.boost-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.boost-btn:hover:not(:disabled) {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.boost-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.boost-value {
+  flex: 1;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.tailwind-icon {
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+/* Ability and Nature Selects */
+.ability-select,
+.nature-select {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.ability-select:hover,
+.nature-select:hover {
+  border-color: var(--accent);
+}
+
+.ability-select option,
+.nature-select option {
+  background: var(--card);
+  color: var(--text);
+  padding: 8px;
+}
+
+/* Speed Counter */
+.speed-counter {
+  margin-top: 12px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.speed-counter::first-letter {
+  text-transform: uppercase;
+}

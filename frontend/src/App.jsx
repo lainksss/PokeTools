@@ -22,6 +22,7 @@ export default function App() {
           <NavLink to="/threats" className={({isActive}) => isActive ? 'active' : ''}>{t('nav.threats')}</NavLink>
           <NavLink to="/coverage" className={({isActive}) => isActive ? 'active' : ''}>{t('nav.coverage') || 'Coverage'}</NavLink>
           <NavLink to="/type-coverage" className={({isActive}) => isActive ? 'active' : ''}>{t('nav.typeCoverage') || 'Type Coverage'}</NavLink>
+          <NavLink to="/speed-checker" className={({isActive}) => isActive ? 'active' : ''}>{t('nav.speedChecker') || 'Speed Checker'}</NavLink>
         </nav>
         <div className="header-controls">
           <div className="display-scale" role="group" aria-label="Display scale">
