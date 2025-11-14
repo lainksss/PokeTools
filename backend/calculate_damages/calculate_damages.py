@@ -228,12 +228,17 @@ def pokeRound(x: float) -> int:
     """Round to nearest integer, ties at .5 round down (Pokémon Gen V+ rounding).
     
     This is the standard rounding used in Pokémon damage calculation.
+    For values ending in exactly .5, round DOWN (truncate).
     Examples:
     - 1.4 -> 1
-    - 1.5 -> 1
+    - 1.5 -> 1  (tie rounds down)
     - 1.6 -> 2
-    - 2.5 -> 2
+    - 2.5 -> 2  (tie rounds down)
     """
+    # Check if it's exactly .5 (within floating point precision)
+    if abs(x - math.floor(x) - 0.5) < 1e-9:
+        return int(math.floor(x))
+    # Otherwise round normally (.5+ goes up)
     return int(math.floor(x + 0.5))
 
 
@@ -502,9 +507,8 @@ def compute_damage_rolls(
         type_mult = multipliers.get("type_mult", 1.0)
         damage = math.floor(damage * type_mult)
         
-        # Misty Terrain: halve Dragon-type damage (use pokeRound, not floor)
-        if terrain_effects and terrain_effects.get("name") == "misty" and terrain_effects.get("halve_dragon"):
-            damage = pokeRound(damage * 0.5)
+        # Misty Terrain Dragon halving is now applied as BP modifier (before base calculation),
+        # not as a final damage modifier here
         
         # Burn
         burn = multipliers.get("burn_mult", 1.0)
@@ -736,9 +740,12 @@ def calculate_damage(
         # Grassy Terrain halves Earthquake/Bulldoze/Magnitude (BP modifier)
         power = int(math.floor(power * 0.5))
     
+    # Misty Terrain Dragon halving: apply as BP modifier (0.5x power)
+    if terrain_effects.get("halve_dragon"):
+        power = OF16(max(1, pokeRound((power * 2048) / 4096)))
+    
     # Apply terrain multiplier as base power modifier (Smogon Gen 7+)
-    # Terrain boosts (Electric/Grassy/Psychic) are BP mods
-    # Misty Terrain is NOT a BP mod, it's a final damage modifier
+    # Terrain boosts (Electric/Grassy/Psychic) are BP mods (NOT Misty, handled above)
     if terrain_mult != 1.0 and terrain_effects.get("name") != "misty":
         # Use chainMods for terrain boost like Smogon does
         # terrainMultiplier = gen.num > 7 ? 5325 : 6144
