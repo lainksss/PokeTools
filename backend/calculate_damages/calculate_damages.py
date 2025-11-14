@@ -424,10 +424,11 @@ if compute_terrain_multiplier is None:
 
 def compute_base(level: int, power: int, A: float, D: float) -> int:
     numerator = (2 * level) // 5 + 2
-    base1 = int(numerator) * int(power) * int(A)
-    if int(D) == 0:
-        D = 1.0
-    base2 = base1 // int(D)
+    # Use floor for A and D to handle stat boosts correctly
+    A_floor = int(math.floor(A))
+    D_floor = int(math.floor(D)) if D > 0 else 1
+    base1 = int(numerator) * int(power) * A_floor
+    base2 = base1 // D_floor
     base = base2 // 50 + 2
     return int(base)
 
@@ -735,7 +736,7 @@ def calculate_damage(
         # Use chainMods for terrain boost like Smogon does
         # terrainMultiplier = gen.num > 7 ? 5325 : 6144
         terrain_bp_mod = 5325 if gen >= 8 else 6144  # 1.3x for Gen 8+, 1.5x for Gen 6-7
-        power = OF16(max(1, pokeRound((power * terrain_bp_mod) // 4096)))
+        power = OF16(max(1, pokeRound((power * terrain_bp_mod) / 4096)))
 
     base = compute_base(level, power, A, D)
 
@@ -808,6 +809,8 @@ def calculate_damage(
 
     if debug:
         result["debug"] = {
+            "power": power,
+            "base": base,
             "A": A,
             "D": D,
             "type_mult": type_mult,
@@ -816,6 +819,9 @@ def calculate_damage(
             "weather_mult": weather_mult,
             "burn_mult": burn_mult,
             "terrain_mult": terrain_mult,
+            "targets": targets,
+            "pb": pb,
+            "multipliers": multipliers,
             "effects": combined_effects,
             "ability_effects": ability_effects,
         }
