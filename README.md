@@ -1,4 +1,4 @@
-# [PokeTools](https://lainksss.github.io/PokeTools/) — Complete Documentation (English)
+# [PokeTools](https://lainksss.github.io/PokeTools/) — Complete Documentation
 
 This README provides a detailed overview of the PokeTools codebase: backend (Flask), frontend (React + Vite), data files, all HTTP/SSE API endpoints, request/response formats, and how to run the project locally.
 
@@ -91,193 +91,24 @@ PokeTools is a suite of tools for competitive Pokémon: damage calculator, threa
 ### API Endpoints (detailed list)
 All endpoints are prefixed with `/api`.
 
-#### GET /api/health
-- Simple health-check
-- Response: `{ ok: True, service: "PokeTools-backend" }`
+## Tests
 
-#### GET /api/pokemon
-- Returns Pokémon list: `{ count, results: [{id, name, types, base_stats}, ...] }`
+Quick instructions to run backend tests (Windows PowerShell):
 
-#### GET /api/pokemon/<id>
-- Pokémon details by ID: `{ id, name, types, base_stats }`
-
-#### GET /api/pokemon/<id>/moves
-- List of moves (limited details) for the Pokémon: `{ pokemon_id, count, moves: [{name, type, power, accuracy, damage_class}, ...] }`
-
-#### GET /api/pokemon/<id>/abilities
-- Returns abilities for the Pokémon: `{ pokemon_id, count, abilities: [...] }`
-
-#### GET /api/types
-- Simple type list: `{ count, types: ["fire","water",...] }`
-
-#### GET /api/pokemon-names
-- Returns `all_pokemon_names_multilang.json` (multi-language mapping)
-
-#### GET /api/natures
-- List of natures and their effects: `{ count, natures: [{name, increase, decrease}, ...] }`
-
-#### POST /api/calc_stats
-- Payload (JSON): `{ base_stats: {hp, attack, defense, special-attack, ...}, evs?: {...}, nature?: "adamant" }`
-- Response: `{ stats: {hp, attack, defense, special_attack, special_defense, speed} }`
-
-#### POST /api/calc_damage
-- Payload (JSON):
-  ```json
-  {
-    "attacker": { ...actor-payload... },
-    "defender": { ...actor-payload... },
-    "move": { "name"?: string, "type"?: string, "power"?: int, "damage_class"?: string },
-    "field"?: { "weather", "terrain", "battle_mode", ... },
-    "defender_hp"?: int,
-    "is_critical"?: bool,
-    "random_range"?: [min,max],
-    "gen"?: int,
-    "debug"?: bool
-  }
-  ```
-- Behavior: enriches `move` from `all_moves.json` if `name` is provided, builds `attacker` and `defender` via `build_actor_from_payload`, calls `calculate_damage(...)` and returns the raw result (typically includes `damage_all`, `damage_min`, `damage_max`, `defender_hp`, etc.).
-
-#### POST /api/find_threats
-- Synchronous (non-stream) version — analyzes all Pokémon and returns those that can KO the defender with various variants (EVs/natures).
-- Payload: `{ defender: <actor-payload>, ko_mode?: "OHKO"|"2HKO", field?: {...} }`
-- Response: `{ defender_hp, ko_mode, threat_count, threats: [{attacker_name, attacker_id, variant, move_name, move_power, damage_min, damage_max, ko_percent, guaranteed_ko, other_moves_count}, ...] }`
-
-#### POST /api/find_threats_stream
-- Streaming (SSE) version, recommended for long analyses.
-- Payload: same as `find_threats`.
-- SSE events (prefix `data: JSON\n\n`):
-  - type: "init" → `{ type: 'init', total, defender_hp }`
-  - type: "progress" → `{ type: 'progress', processed, total, threats_found }`
-  - type: "threat" → `{ type: 'threat', data: <threat_entry> }`
-  - type: "complete" → `{ type: 'complete', total_threats, total_processed }`
-  - type: "error" → `{ type: 'error', message }`
-
-#### POST /api/analyze_coverage_stream
-- Analyzes offensive coverage for an attacker (multiple moves) and streams results.
-- Payload:
-  ```json
-  {
-    "attacker": <actor-payload>,
-    "moves": [ {name|partial move data}, ... ],
-    "ko_mode"?: "OHKO"|"2HKO",
-    "include_no_ko"?: bool,
-    "bulk_mode"?: "none"|"custom"|"max",
-    "custom_evs"?: int,
-    "field"?: {...}
-  }
-  ```
-- SSE events:
-  - init/progress/coverage/complete/error
-  - coverage entries: `{ defender_name, defender_id, defender_types, defender_hp, best_move_name, best_move_type, max_ko_chance, max_rolls_that_ko, damage_range }`
-
-#### POST /api/analyze_type_coverage
-- Non-streaming: finds Pokémon NOT hit super effectively by the provided moves.
-- Payload: `{ attacker: {is_terastallized, tera_type, ...}, moves: [{name}, ...] }`
-- Response: `{ not_super_effective: [ {pokemon_id, pokemon_name, types, best_effectiveness, best_move, best_move_type}, ... ], total_pokemon, not_covered, move_types_used }`
-
-### Streaming Endpoints — Notes
-- Streaming endpoints return `text/event-stream` and emit lines in SSE format `data: <JSON>\n\n`.
-- On the frontend, use `new EventSource(url)` or a fetch+readable stream implementation to read data.
-- JSON events include a `type` field (init/progress/threat/coverage/complete/error) for real-time progress/results.
-
-### Key Mechanics & Rules
-- Terastallization: when a Pokémon is terastallized and a `tera_type` is provided, the backend treats its defensive types as only `tera_type`; `orig_types` is kept for correct STAB calculation.
-- Natures: `all_natures.json` is used to determine nature effects. Stat names are normalized (e.g. `special-attack` → `special_attack`) and multipliers (1.1/0.9) are applied.
-- Abilities & edge cases: for `2HKO` mode, the backend tries to handle abilities that activate at full HP (e.g. Multiscale) by recalculating the second hit without the effect if needed.
-- Tera Blast: detected by move name `tera-blast` — if the attacker is terastallized, the move takes the `tera_type` as its type.
-- Simplifications: some calculations use approximations (e.g. KO% estimation based on rolls) — see code for details.
-
-## Frontend — Details
-
-### Stack & Structure
-- React 18 with Vite
-- `src/App.jsx`: main shell, navigation (uses `NavLink` for active nav bar)
-- `src/pages/`: main pages — `Calculate`, `Threats`, `Coverage`, `TypeCoverage`, `Home`
-- `src/components/`: panels and reusable widgets
-- Global styles: `src/styles.css`
-- i18n: `src/i18n/LanguageContext.jsx` with `translations.js` (FR/EN)
-
-### Expected Behavior
-- The frontend consumes REST endpoints for lists/details (Pokémon, moves, natures).
-- For heavy analyses (coverage/threats), the frontend opens an SSE connection (`EventSource`) to `/api/find_threats_stream` or `/api/analyze_coverage_stream` and processes `init/progress/threat/coverage/complete/error` messages for real-time progress/results.
-
-## API Request Examples
-
-### 1) Example `calc_stats` (PowerShell curl)
-```powershell
-curl -Method POST -Uri http://127.0.0.1:5000/api/calc_stats -Headers @{"Content-Type"="application/json"} -Body (
-  (@{
-    base_stats = @{ hp= 70; attack= 90; defense=70; "special-attack"= 60; "special-defense"= 70; speed= 80 }
-    evs = @{ hp= 0; attack=252; defense=0; "special-attack"=0; "special-defense"=0; speed= 0 }
-    nature = 'adamant'
-  } | ConvertTo-Json -Depth 5)
-)
-```
-- Expected response: `{ "stats": { ... } }`
-
-### 2) Example `calc_damage`
-```powershell
-curl -Method POST -Uri http://127.0.0.1:5000/api/calc_damage -Headers @{"Content-Type"="application/json"} -Body (
-  (@{
-    attacker = @{ pokemon_id=1; base_stats=@{ attack=100; "special-attack"=50 }; evs=@{}; nature='adamant'; types=['fire'] }
-    defender = @{ pokemon_id=2; base_stats=@{ defense=90; "special-defense"=80 }; evs=@{}; nature='calm'; types=['water'] }
-    move = @{ name = 'flamethrower' }
-  } | ConvertTo-Json -Depth 6)
-)
-```
-- Response: JSON from `calculate_damage` (typically `damage_all`, `damage_min`, `damage_max`, `defender_hp`, ...)
-
-### 3) Example SSE (Threats) in browser (JS)
-```javascript
-const evt = new EventSource('http://127.0.0.1:5000/api/find_threats_stream');
-evt.onmessage = (e) => {
-  try {
-    const payload = JSON.parse(e.data);
-    switch(payload.type) {
-      case 'init': /* show total */ break;
-      case 'progress': /* update progress bar */ break;
-      case 'threat': /* show intermediate threat */ break;
-      case 'complete': /* finish */ break;
-      case 'error': /* show error */ break;
-    }
-  } catch (err) { console.error(err); }
-}
-// Note: in our React frontend, we sometimes use fetch + ReadableStream for more control.
-```
-
-## How to Run (dev)
-
-### Backend (Windows PowerShell)
-1. Create a virtual environment and install dependencies
 ```powershell
 cd backend
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+python -m venv .venv            # if not already created
+.\.venv\Scripts\Activate.ps1  # activate the virtualenv
 pip install -r requirements.txt
+python -m pytest -q             # run the full test suite
 ```
-2. Start the API
-```powershell
-# direct launch (api.py contains Flask runner)
-python .\api.py
-# Options: override host/port
-$env:API_HOST = '127.0.0.1'; $env:API_PORT = '5000'; python .\api.py
-```
-- The backend listens on 0.0.0.0:5000 by default (debug=True). CORS is enabled for local frontend access.
 
-### Frontend
-```powershell
-cd frontend
-npm install
-npm run dev
-```
-- Vite starts a dev server (default http://localhost:5173). The frontend is configured to call the backend API (check config if needed).
+- To run a single test file: `python -m pytest -q test/test_calcs.py`.
+- To run a single test function: `python -m pytest -q test/test_calcs.py::test_case_1`.
 
-## Developer Notes / Debug
-- If endpoints are missing or you get 500 errors, check the backend console (the runner prints logs and debug info for the first Pokémon in streaming analyses).
-- The calculation modules (`calculate_damages`, `calculate_statistics`) are the core logic: modifying these requires sanity tests (unit consistency, stat naming, key normalization). Pay attention to stat names (`special-attack` vs `special_attack`).
-- Streaming endpoints use approximations for KO% — for perfect accuracy, see how `damage_all` is computed in `calculate_damage` and prefer full distributions.
+Notes:
+- The backend tests read JSON datasets from the repository `data/` folder (tests were adjusted to load data from the repo root).
+- Tests in the suite were updated to use `assert` instead of returning boolean values to avoid pytest warnings.
 
-## Contact & Credits
-The project is maintained by me (Alexandro 'Lainkss').
+See `backend/README.md` for more detailed commands and PowerShell snippets.
 
----

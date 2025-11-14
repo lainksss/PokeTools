@@ -8,7 +8,7 @@ from calculate_damages.calculate_damages import calculate_damage
 
 
 # Load Pokemon data
-POKEMON_DATA_PATH = Path(__file__).parent.parent / "data" / "all_pokemon.json"
+POKEMON_DATA_PATH = Path(__file__).parent.parent.parent / "data" / "all_pokemon.json"
 with open(POKEMON_DATA_PATH, "r", encoding="utf-8") as f:
     POKEMON_DATA = json.load(f)
 
@@ -122,7 +122,7 @@ def test_case_1():
         print(f"A: {dbg.get('A')}, D: {dbg.get('D')}, Type: {dbg.get('type_mult')}, STAB: {dbg.get('stab')}")
         print(f"Item mult: {dbg.get('item_mult')}, Other mult: {dbg.get('other_mult')}")
     
-    return actual == expected
+    assert actual == expected
 
 
 def test_case_2():
@@ -180,7 +180,7 @@ def test_case_2():
         print(f"A: {dbg.get('A')}, D: {dbg.get('D')}, Type: {dbg.get('type_mult')}, STAB: {dbg.get('stab')}")
         print(f"Item mult: {dbg.get('item_mult')}, Other mult: {dbg.get('other_mult')}")
     
-    return actual == expected
+    assert actual == expected
 
 
 def test_case_3():
@@ -241,7 +241,7 @@ def test_case_3():
         print(f"Terrain mult: {dbg.get('terrain_mult')}")
         print(f"Item mult: {dbg.get('item_mult')}, Other mult: {dbg.get('other_mult')}")
     
-    return actual == expected
+    assert actual == expected
 
 
 def test_case_4():
@@ -302,7 +302,7 @@ def test_case_4():
         print(f"A: {dbg.get('A')}, D: {dbg.get('D')}, Type: {dbg.get('type_mult')}, STAB: {dbg.get('stab')}")
         print(f"Weather mult: {dbg.get('weather_mult')}")
     
-    return actual == expected
+    assert actual == expected
 
 
 def test_case_5():
@@ -366,7 +366,7 @@ def test_case_5():
         print(f"A: {dbg.get('A')}, D: {dbg.get('D')}, Type: {dbg.get('type_mult')}, STAB: {dbg.get('stab')}")
         print(f"Weather mult: {dbg.get('weather_mult')}")
     
-    return actual == expected
+    assert actual == expected
 
 
 def test_case_6():
@@ -432,7 +432,7 @@ def test_case_6():
         print(f"Terrain mult: {dbg.get('terrain_mult')}")
         print(f"Item mult: {dbg.get('item_mult')}, Other mult: {dbg.get('other_mult')}")
     
-    return actual == expected
+    assert actual == expected
 
 
 def test_case_7():
@@ -513,7 +513,7 @@ def test_case_7():
     if result.get('effects'):
         print(f"Effects: {result['effects']}")
     
-    return actual == expected
+    assert actual == expected
 
 
 if __name__ == "__main__":

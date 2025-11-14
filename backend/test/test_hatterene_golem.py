@@ -1,4 +1,4 @@
-"""Test Raichu vs Ninetales-Alola in Snow + Electric Terrain."""
+"""Test Hatterene vs Golem in Sandstorm + Psychic Terrain."""
 import sys
 import json
 from pathlib import Path
@@ -7,12 +7,12 @@ sys.path.insert(0, str(Path(__file__).parent))
 from calculate_damages.calculate_damages import calculate_damage
 
 # Load Pokemon data
-POKEMON_DATA_PATH = Path(__file__).parent.parent / "data" / "all_pokemon.json"
+POKEMON_DATA_PATH = Path(__file__).parent.parent.parent / "data" / "all_pokemon.json"
 with open(POKEMON_DATA_PATH, "r", encoding="utf-8") as f:
     POKEMON_DATA = json.load(f)
 
 # Load moves data
-MOVES_DATA_PATH = Path(__file__).parent.parent / "data" / "all_moves.json"
+MOVES_DATA_PATH = Path(__file__).parent.parent.parent / "data" / "all_moves.json"
 with open(MOVES_DATA_PATH, "r", encoding="utf-8") as f:
     MOVES_DATA = json.load(f)
 
@@ -55,40 +55,41 @@ def get_pokemon_stats(species: str, level: int, evs: dict, ivs: dict = None, nat
     return stats
 
 
-def test_raichu_ninetales():
-    """12 Atk Raichu Thunder Punch vs. 16 HP / 0 Def Ninetales-Alola in Snow: 45-54"""
+def test_hatterene_golem():
+    """20 SpA Hatterene Psychic vs. 0 HP / 0 SpD Golem in Sand: 84-99 (54.1 - 63.8%) -- guaranteed 2HKO"""
     print("\n" + "="*80)
-    print("TEST: 12 Atk Raichu Thunder Punch vs. 16 HP / 0 Def Ninetales-Alola in Snow + Electric Terrain")
+    print("TEST: 20 SpA Hatterene Psychic vs. 0 HP / 0 SpD Golem in Sand + Psychic Terrain")
     print("="*80)
     
-    # Raichu: 12 Atk (12 EVs en Atk selon notation Smogon)
+    # Hatterene: 20 SpA EVs
     attacker = get_pokemon_stats(
-        species="raichu",
+        species="hatterene",
         level=50,
-        evs={"hp": 0, "attack": 12, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0},
-        ivs={"hp": 31, "attack": 31, "defense": 31, "special-attack": 31, "special-defense": 31, "speed": 31},
-        natures={"attack": 1.0},  # Neutral
+        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 20, "special-defense": 0, "speed": 0},
+        natures={"special-attack": 1.0},  # Neutral
     )
-    attacker["is_grounded"] = True  # Pour Electric Terrain
+    attacker["is_grounded"] = True  # Pour Psychic Terrain
     
-    # Ninetales-Alola: 16 HP / 0 Def (16 EVs en HP selon notation Smogon)
+    # Golem: 0 HP / 0 SpD
     defender = get_pokemon_stats(
-        species="ninetales-alola",
+        species="golem",
         level=50,
-        evs={"hp": 16, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0},
-        ivs={"hp": 31, "attack": 31, "defense": 31, "special-attack": 31, "special-defense": 31, "speed": 31},
-        natures={"defense": 1.0},  # Neutral
+        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0},
+        natures={"special-defense": 1.0},  # Neutral
     )
     
     # Load move from JSON data
-    move = MOVES_DATA.get("thunder-punch", {})
-    move["name"] = "thunder-punch"
+    move = MOVES_DATA.get("psychic", {})
+    move["name"] = "psychic"
     
     print(f"Move loaded: {move}")
+    print(f"Hatterene SpA: {attacker['special_attack']}")
+    print(f"Golem HP: {defender['hp']}, SpD: {defender['special_defense']}")
+    print(f"Golem types: {defender['types']}")
     
     field = {
-        "weather": "snow",
-        "terrain": "electric",
+        "weather": "sandstorm",
+        "terrain": "psychic",
     }
     
     result = calculate_damage(
@@ -101,15 +102,13 @@ def test_raichu_ninetales():
         debug=True,
     )
     
-    expected = (45, 45, 46, 46, 48, 48, 48, 49, 49, 49, 51, 51, 51, 52, 52, 54)
+    expected = (84, 84, 85, 87, 87, 88, 90, 90, 91, 93, 93, 94, 96, 96, 97, 99)
     actual = tuple(result['damage_all'])
     
-    print(f"Expected: {expected}")
+    print(f"\nExpected: {expected}")
     print(f"Actual:   {actual}")
     print(f"Match: {actual == expected}")
     print(f"\nBase: {result.get('base_val')}")
-    print(f"Attacker Atk: {attacker.get('attack')}")
-    print(f"Defender HP: {defender.get('hp')}, Def: {defender.get('defense')}")
     
     if result.get('debug'):
         dbg = result['debug']
@@ -120,16 +119,12 @@ def test_raichu_ninetales():
         print(f"  STAB: {dbg.get('stab')}")
         print(f"  Weather: {dbg.get('weather_mult')}")
         print(f"  Terrain: {dbg.get('terrain_mult')}")
-        print(f"  Targets: {dbg.get('targets')}")
-        print(f"  PB: {dbg.get('pb')}")
-        print(f"  Burn mult: {dbg.get('burn_mult')}")
-        print(f"  Multipliers applied: {dbg.get('multipliers')}")
     
-    return actual == expected
+    assert actual == expected
 
 
 if __name__ == "__main__":
-    passed = test_raichu_ninetales()
+    passed = test_hatterene_golem()
     print("\n" + "="*80)
     if passed:
         print("✓ TEST PASSED")

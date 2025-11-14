@@ -7,7 +7,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from calculate_damages.calculate_damages import calculate_damage
 
 # Load Pokemon data
-POKEMON_DATA_PATH = Path(__file__).parent.parent / "data" / "all_pokemon.json"
+POKEMON_DATA_PATH = Path(__file__).parent.parent.parent / "data" / "all_pokemon.json"
 with open(POKEMON_DATA_PATH, "r", encoding="utf-8") as f:
     POKEMON_DATA = json.load(f)
 
@@ -111,7 +111,7 @@ def test_ivysaur_tyranitar():
         if dbg.get('effects'):
             print(f"  Effects: {dbg['effects']}")
     
-    return actual == expected
+    assert actual == expected
 
 
 if __name__ == "__main__":

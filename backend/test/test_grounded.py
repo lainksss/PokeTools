@@ -86,7 +86,7 @@ def test_grounded_cases():
     print(f"SUMMARY: {passed}/{len(tests)} tests passed")
     print("="*80)
     
-    return failed == 0
+    assert failed == 0
 
 
 if __name__ == "__main__":
