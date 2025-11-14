@@ -438,6 +438,7 @@ def compute_damage_rolls(
     rand_list: Iterable[int],
     multipliers: Dict[str, float],
     defender_hp: Optional[int],
+    terrain_effects: Optional[Dict] = None,
 ) -> Tuple[List[int], List[Optional[int]]]:
     """Calculate damage for each random roll following Smogon's exact formula.
     
@@ -500,6 +501,10 @@ def compute_damage_rolls(
         # Type effectiveness (applied per type)
         type_mult = multipliers.get("type_mult", 1.0)
         damage = math.floor(damage * type_mult)
+        
+        # Misty Terrain: halve Dragon-type damage (use pokeRound, not floor)
+        if terrain_effects and terrain_effects.get("name") == "misty" and terrain_effects.get("halve_dragon"):
+            damage = pokeRound(damage * 0.5)
         
         # Burn
         burn = multipliers.get("burn_mult", 1.0)
@@ -727,12 +732,14 @@ def calculate_damage(
             D = float(D) * 1.5
 
     # If grassy terrain halves certain move powers, adjust power before base
-    if terrain_effects.get("halve_power"):
+    if terrain_effects.get("halve_power") and terrain_effects.get("name") != "misty":
+        # Grassy Terrain halves Earthquake/Bulldoze/Magnitude (BP modifier)
         power = int(math.floor(power * 0.5))
     
     # Apply terrain multiplier as base power modifier (Smogon Gen 7+)
-    # Terrain boosts are bpMods, not final mods
-    if terrain_mult != 1.0:
+    # Terrain boosts (Electric/Grassy/Psychic) are BP mods
+    # Misty Terrain is NOT a BP mod, it's a final damage modifier
+    if terrain_mult != 1.0 and terrain_effects.get("name") != "misty":
         # Use chainMods for terrain boost like Smogon does
         # terrainMultiplier = gen.num > 7 ? 5325 : 6144
         terrain_bp_mod = 5325 if gen >= 8 else 6144  # 1.3x for Gen 8+, 1.5x for Gen 6-7
@@ -788,7 +795,7 @@ def calculate_damage(
     if attacker.get("ability") and str(attacker.get("ability")).lower().replace("_", "-").replace(" ", "-") == "sniper":
         ability_effects.setdefault("sniper", True)
 
-    damage_all, remaining_hp_all = compute_damage_rolls(base, rand_list, multipliers, defender_hp if defender_hp is not None else defender.get("hp"))
+    damage_all, remaining_hp_all = compute_damage_rolls(base, rand_list, multipliers, defender_hp if defender_hp is not None else defender.get("hp"), terrain_effects)
 
     result = {"damage_all": damage_all, "remaining_hp_all": remaining_hp_all, "base_val": base}
     # Merge weather and terrain effect flags for consumers
