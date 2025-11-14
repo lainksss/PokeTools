@@ -590,6 +590,13 @@ def api_find_threats():
     defender_payload = data.get("defender")
     ko_mode = data.get("ko_mode", "OHKO")  # 'OHKO' or '2HKO'
     field = data.get("field", {})
+    analysis_options = data.get("analysis_options", {}) or {}
+
+    attack_mode = analysis_options.get("attack_mode", "default")
+    custom_evs = int(analysis_options.get("custom_evs", 0) or 0)
+    nature_boost = bool(analysis_options.get("nature_boost", False))
+    item_choice = bool(analysis_options.get("item_choice", False))
+    life_orb = bool(analysis_options.get("life_orb", False))
 
     if not defender_payload:
         return jsonify({"error": "missing defender"}), 400
@@ -606,16 +613,17 @@ def api_find_threats():
 
     threats = []
     
-    # Natures qui augmentent l'attaque
-    attack_boosting_natures = []
-    sp_attack_boosting_natures = []
-    
+    # Natures qui augmentent l'attaque (choisir la première disponible)
+    attack_boosting_nature = None
+    sp_attack_boosting_nature = None
     for nature_name, nature_data in all_natures.items():
         inc = nature_data.get("increase")
-        if inc == "attack":
-            attack_boosting_natures.append(nature_name)
-        elif inc == "special-attack":
-            sp_attack_boosting_natures.append(nature_name)
+        if inc == "attack" and not attack_boosting_nature:
+            attack_boosting_nature = nature_name
+        elif inc == "special-attack" and not sp_attack_boosting_nature:
+            sp_attack_boosting_nature = nature_name
+        if attack_boosting_nature and sp_attack_boosting_nature:
+            break
 
     # Pour chaque Pokémon
     for poke_slug, poke_data in all_pokemon.items():
@@ -629,152 +637,144 @@ def api_find_threats():
         
         # Récupérer les moves de ce Pokémon
         poke_moves = pokemon_moves_map.get(str(poke_id), [])
-        
-        # Tester 2 variants: 
-        # 1. Full Attack EVs (252 Attack + 252 Sp.Attack)
-        # 2. Full Attack EVs + Nature qui booste l'attaque
-        
-        variants = [
-            {
-                "name": "Max EVs",
-                "evs": {"hp": 0, "attack": 252, "defense": 0, "special_attack": 252, "special_defense": 0, "speed": 0},
-                "nature": "hardy"
+        if not poke_moves:
+            continue
+
+        # Pour chaque move, déterminer EVs/nature/item selon les analysis_options
+        ko_moves = []
+        for move_slug in poke_moves:
+            move_data = all_moves.get(move_slug, {})
+            damage_class = move_data.get("damage_class")
+            power = move_data.get("power")
+
+            # Ignorer les moves de statut
+            if damage_class not in ("physical", "special"):
+                continue
+
+            # Determine evs and nature based on attack_mode
+            if attack_mode == 'none':
+                evs = {"hp": 0, "attack": 0, "defense": 0, "special_attack": 0, "special_defense": 0, "speed": 0}
+                nature = 'hardy'
+            elif attack_mode == 'custom':
+                # Apply custom_evs to both Attack and Sp. Atk as requested
+                evs = {"hp": 0, "attack": custom_evs, "defense": 0, "special_attack": custom_evs, "special_defense": 0, "speed": 0}
+                if nature_boost:
+                    nature = attack_boosting_nature if damage_class == 'physical' else sp_attack_boosting_nature or 'hardy'
+                else:
+                    nature = 'hardy'
+            elif attack_mode == 'max':
+                evs = {"hp": 0, "attack": 252, "defense": 0, "special_attack": 252, "special_defense": 0, "speed": 0}
+                if nature_boost:
+                    nature = attack_boosting_nature if damage_class == 'physical' else sp_attack_boosting_nature or 'hardy'
+                else:
+                    nature = 'hardy'
+            else:  # default behavior
+                if damage_class == 'physical':
+                    evs = {"hp": 0, "attack": 252, "defense": 0, "special_attack": 0, "special_defense": 0, "speed": 0}
+                    nature = attack_boosting_nature or 'hardy'
+                else:
+                    evs = {"hp": 0, "attack": 0, "defense": 0, "special_attack": 252, "special_defense": 0, "speed": 0}
+                    nature = sp_attack_boosting_nature or 'hardy'
+
+            # Determine item (life orb or choice) if requested (custom options only meaningful when custom selected, but apply if set)
+            item = None
+            if life_orb:
+                item = 'life-orb'
+            elif item_choice:
+                # Choose choice item variant based on damage class
+                item = 'choice-band' if damage_class == 'physical' else 'choice-specs'
+
+            # Construire le payload pour le calcul
+            calc_payload = {
+                "attacker": {
+                    "pokemon_id": poke_id,
+                    "base_stats": base_stats,
+                    "evs": evs,
+                    "nature": nature,
+                    "types": poke_types,
+                    "ability": None,
+                    "item": item,
+                    "is_terastallized": False,
+                    "tera_type": None
+                },
+                "defender": defender_payload,
+                "move": {
+                    "name": move_slug,
+                    "type": move_data.get("type"),
+                    "power": power,
+                    "damage_class": damage_class
+                },
+                "field": field,
+                "is_critical": False
             }
-        ]
-        
-        # Ajouter variants avec natures
-        if attack_boosting_natures:
-            variants.append({
-                "name": "Max EVs + Atk Nature",
-                "evs": {"hp": 0, "attack": 252, "defense": 0, "special_attack": 0, "special_defense": 0, "speed": 0},
-                "nature": attack_boosting_natures[0]
-            })
-        
-        if sp_attack_boosting_natures:
-            variants.append({
-                "name": "Max EVs + SpA Nature",
-                "evs": {"hp": 0, "attack": 0, "defense": 0, "special_attack": 252, "special_defense": 0, "speed": 0},
-                "nature": sp_attack_boosting_natures[0]
-            })
-        
-        for variant in variants:
-            # Construire l'attaquant
-            attacker_payload = {
-                "pokemon_id": poke_id,
-                "base_stats": base_stats,
-                "evs": variant["evs"],
-                "nature": variant["nature"],
-                "types": poke_types,
-                "ability": None,
-                "is_terastallized": False,
-                "tera_type": None
+
+            try:
+                attacker_calc = build_actor_from_payload(calc_payload["attacker"])
+                move = calc_payload["move"]
+                is_crit = calc_payload.get("is_critical", False)
+
+                dmg_result = calculate_damage(
+                    attacker=attacker_calc,
+                    defender=defender,
+                    move=move,
+                    field=field,
+                    is_critical=is_crit
+                )
+
+                damage_min = dmg_result.get("damage_min") or 0
+                damage_max = dmg_result.get("damage_max") or 0
+
+                # Vérifier si c'est un KO
+                is_ko = False
+                ko_percent = 0
+
+                if ko_mode == "OHKO":
+                    if damage_max >= defender_hp:
+                        is_ko = True
+                        if damage_min >= defender_hp:
+                            ko_percent = 100
+                        else:
+                            total_rolls = max(1, damage_max - damage_min + 1)
+                            ko_rolls = max(1, damage_max - defender_hp + 1)
+                            ko_percent = min(100, int((ko_rolls / total_rolls) * 100))
+                else:  # 2HKO approximation
+                    if damage_max * 2 >= defender_hp:
+                        is_ko = True
+                        if damage_min * 2 >= defender_hp:
+                            ko_percent = 100
+                        else:
+                            ko_percent = 50
+
+                if is_ko:
+                    ko_moves.append({
+                        "move_name": move_slug,
+                        "move_power": power,
+                        "damage_min": damage_min,
+                        "damage_max": damage_max,
+                        "ko_percent": ko_percent,
+                        "guaranteed_ko": ko_percent == 100
+                    })
+
+            except Exception:
+                continue
+
+        # Si on a trouvé des moves qui KO pour ce pokémon
+        if ko_moves:
+            ko_moves.sort(key=lambda x: (not x.get("guaranteed_ko", False), -x.get("damage_max", 0)))
+            best_move = ko_moves[0]
+            threat_entry = {
+                "attacker_name": poke_name.capitalize(),
+                "attacker_id": poke_id,
+                "variant": attack_mode,
+                "move_name": best_move["move_name"],
+                "move_power": best_move["move_power"],
+                "damage_min": best_move["damage_min"],
+                "damage_max": best_move["damage_max"],
+                "ko_percent": best_move["ko_percent"],
+                "guaranteed_ko": best_move["guaranteed_ko"],
+                "other_moves_count": len(ko_moves) - 1
             }
-            
-            ko_moves = []  # Liste des moves qui peuvent KO
-            
-            # Tester chaque move
-            for move_slug in poke_moves:
-                move_data = all_moves.get(move_slug, {})
-                damage_class = move_data.get("damage_class")
-                power = move_data.get("power")
-                
-                # OPTIMISATION: Ignorer uniquement les moves de statut (pas physiques/spéciaux)
-                if damage_class == "status":
-                    continue
-                
-                # Construire le payload pour le calcul
-                calc_payload = {
-                    "attacker": attacker_payload,
-                    "defender": defender_payload,
-                    "move": {
-                        "name": move_slug,
-                        "type": move_data.get("type"),
-                        "power": power,
-                        "damage_class": damage_class
-                    },
-                    "field": field,
-                    "is_critical": False
-                }
-                
-                try:
-                    attacker_calc = build_actor_from_payload(calc_payload["attacker"])
-                    move = calc_payload["move"]
-                    is_crit = calc_payload.get("is_critical", False)
-                    
-                    dmg_result = calculate_damage(
-                        attacker=attacker_calc,
-                        defender=defender,
-                        move=move,
-                        field=field,
-                        is_critical=is_crit
-                    )
-                    
-                    damage_min = dmg_result["damage_min"]
-                    damage_max = dmg_result["damage_max"]
-                    
-                    # Vérifier si c'est un KO
-                    is_ko = False
-                    ko_percent = 0
-                    
-                    if ko_mode == "OHKO":
-                        # OHKO: damage_max >= defender_hp
-                        if damage_max >= defender_hp:
-                            is_ko = True
-                            # Calculer le pourcentage de KO
-                            if damage_min >= defender_hp:
-                                ko_percent = 100
-                            else:
-                                # Approximation: probabilité linéaire entre min et max
-                                ko_rolls = damage_max - defender_hp + 1
-                                total_rolls = damage_max - damage_min + 1
-                                ko_percent = min(100, int((ko_rolls / total_rolls) * 100))
-                    
-                    elif ko_mode == "2HKO":
-                        # 2HKO: damage_max * 2 >= defender_hp
-                        if damage_max * 2 >= defender_hp:
-                            is_ko = True
-                            if damage_min * 2 >= defender_hp:
-                                ko_percent = 100
-                            else:
-                                # Calcul simplifié pour 2HKO
-                                ko_percent = 50  # Approximation
-                    
-                    if is_ko:
-                        ko_moves.append({
-                            "move_name": move_slug,
-                            "move_power": power,
-                            "damage_min": damage_min,
-                            "damage_max": damage_max,
-                            "ko_percent": ko_percent,
-                            "guaranteed_ko": ko_percent == 100
-                        })
-                
-                except Exception as e:
-                    # Ignorer les erreurs de calcul
-                    continue
-            
-            # Si ce variant a au moins un move qui KO
-            if ko_moves:
-                # Trier par KO garanti d'abord, puis par damage_max
-                ko_moves.sort(key=lambda x: (not x["guaranteed_ko"], -x["damage_max"]))
-                
-                # Prendre le meilleur move
-                best_move = ko_moves[0]
-                
-                threat_entry = {
-                    "attacker_name": poke_name.capitalize(),
-                    "attacker_id": poke_id,
-                    "variant": variant["name"],
-                    "move_name": best_move["move_name"],
-                    "move_power": best_move["move_power"],
-                    "damage_min": best_move["damage_min"],
-                    "damage_max": best_move["damage_max"],
-                    "ko_percent": best_move["ko_percent"],
-                    "guaranteed_ko": best_move["guaranteed_ko"],
-                    "other_moves_count": len(ko_moves) - 1
-                }
-                
-                threats.append(threat_entry)
+            threats.append(threat_entry)
     
     # Trier les menaces par KO garanti d'abord, puis par damage_max
     threats.sort(key=lambda x: (not x["guaranteed_ko"], -x["damage_max"]))
@@ -798,6 +798,13 @@ def api_find_threats_stream():
     defender_payload = data.get("defender")
     ko_mode = data.get("ko_mode", "OHKO")
     field = data.get("field", {})
+    analysis_options = data.get("analysis_options", {}) or {}
+
+    attack_mode = analysis_options.get("attack_mode", "default")
+    custom_evs = int(analysis_options.get("custom_evs", 0) or 0)
+    nature_boost = bool(analysis_options.get("nature_boost", False))
+    item_choice = bool(analysis_options.get("item_choice", False))
+    life_orb = bool(analysis_options.get("life_orb", False))
 
     if not defender_payload:
         return jsonify({"error": "missing defender"}), 400
@@ -874,16 +881,34 @@ def api_find_threats_stream():
                     # Ignorer les moves de statut
                     if damage_class not in ["physical", "special"]:
                         continue
-                    
-                    # Choisir les EVs et la nature selon le type de move
-                    if damage_class == "physical":
-                        evs = {"hp": 0, "attack": 252, "defense": 0, "special_attack": 0, "special_defense": 0, "speed": 0}
-                        nature = attack_boost_nature or "hardy"
-                    else:  # special
-                        evs = {"hp": 0, "attack": 0, "defense": 0, "special_attack": 252, "special_defense": 0, "speed": 0}
-                        nature = sp_attack_boost_nature or "hardy"
+
+                    # Choisir les EVs et la nature selon le type de move et les analysis_options
+                    if attack_mode == 'none':
+                        evs = {"hp": 0, "attack": 0, "defense": 0, "special_attack": 0, "special_defense": 0, "speed": 0}
+                        nature = 'hardy'
+                    elif attack_mode == 'custom':
+                        evs = {"hp": 0, "attack": custom_evs, "defense": 0, "special_attack": custom_evs, "special_defense": 0, "speed": 0}
+                        nature = (attack_boost_nature if damage_class == 'physical' else sp_attack_boost_nature) if nature_boost else 'hardy'
+                    elif attack_mode == 'max':
+                        evs = {"hp": 0, "attack": 252, "defense": 0, "special_attack": 252, "special_defense": 0, "speed": 0}
+                        nature = (attack_boost_nature if damage_class == 'physical' else sp_attack_boost_nature) if nature_boost else 'hardy'
+                    else:
+                        # default
+                        if damage_class == "physical":
+                            evs = {"hp": 0, "attack": 252, "defense": 0, "special_attack": 0, "special_defense": 0, "speed": 0}
+                            nature = attack_boost_nature or "hardy"
+                        else:
+                            evs = {"hp": 0, "attack": 0, "defense": 0, "special_attack": 252, "special_defense": 0, "speed": 0}
+                            nature = sp_attack_boost_nature or "hardy"
                     
                     # Construire l'attaquant pour ce move
+                    # Determine item if requested
+                    item = None
+                    if life_orb:
+                        item = 'life-orb'
+                    elif item_choice:
+                        item = 'choice-band' if damage_class == 'physical' else 'choice-specs'
+
                     attacker_payload = {
                         "pokemon_id": poke_id,
                         "base_stats": base_stats,
@@ -891,7 +916,7 @@ def api_find_threats_stream():
                         "nature": nature,
                         "types": poke_types,
                         "ability": poke_ability,  # Utiliser l'ability si le Pokémon n'en a qu'une
-                        "item": None,  # Pas d'item par défaut pour les menaces
+                        "item": item,
                         "is_terastallized": False,
                         "tera_type": None
                     }

@@ -114,34 +114,36 @@ export default function MiddlePanel({ left, right, setResult }) {
         </div>
       </div>
       
-      <div className="form-group">
-        <label>{t('calculate.weather')}</label>
-        <select 
-          value={weather}
-          onChange={e => setWeather(e.target.value)}
-          className="form-control"
-        >
-          {ALL_WEATHERS.map(w => (
-            <option key={w} value={w}>
-              {t(`weather.${w}`)}
-            </option>
-          ))}
-        </select>
-      </div>
+      <div className="form-row">
+        <div className="form-group">
+          <label>{t('calculate.weather')}</label>
+          <select 
+            value={weather}
+            onChange={e => setWeather(e.target.value)}
+            className="form-control"
+          >
+            {ALL_WEATHERS.map(w => (
+              <option key={w} value={w}>
+                {t(`weather.${w}`)}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      <div className="form-group">
-        <label>{t('calculate.terrain')}</label>
-        <select 
-          value={terrain}
-          onChange={e => setTerrain(e.target.value)}
-          className="form-control"
-        >
-          {ALL_TERRAINS.map(ter => (
-            <option key={ter} value={ter}>
-              {t(`terrain.${ter}`)}
-            </option>
-          ))}
-        </select>
+        <div className="form-group">
+          <label>{t('calculate.terrain')}</label>
+          <select 
+            value={terrain}
+            onChange={e => setTerrain(e.target.value)}
+            className="form-control"
+          >
+            {ALL_TERRAINS.map(ter => (
+              <option key={ter} value={ter}>
+                {t(`terrain.${ter}`)}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <div className="form-group">

@@ -331,6 +331,66 @@ select option:hover {
   padding: 12px 16px;
 }
 
+/* Analysis options buttons container used on Threats page */
+.analysis-options {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  align-items: center;
+  flex-wrap: nowrap; /* force single line */
+  justify-content: space-between;
+  overflow-x: auto; /* allow horizontal scroll on very small screens */
+}
+
+.analysis-options .tailwind-button {
+  width: auto;
+  flex: 1 1 0; /* allow buttons to shrink to fit on one line */
+  min-width: 0; /* allow shrinking below content width */
+  padding: 0 12px; /* horizontal padding only; height will enforce vertical size */
+  height: 48px; /* uniform height for all option buttons (increased) */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Generic option button class to apply same sizing to expanded custom options */
+.option-button {
+  height: 48px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Size variants for analysis option buttons */
+.analysis-options .tailwind-button.small {
+  flex: 0 1 110px;
+  max-width: 140px;
+}
+
+.analysis-options .tailwind-button.medium {
+  flex: 1 1 150px;
+  max-width: 220px;
+}
+
+.analysis-options .tailwind-button.large {
+  flex: 1 1 200px;
+  max-width: 320px;
+}
+
+/* Generic horizontal form row for two-column controls (weather + terrain) */
+.form-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+}
+
+.form-row .form-group {
+  flex: 1 1 0;
+  margin: 0;
+}
+
 .form-group label {
   font-size: 14px;
   font-weight: 500;

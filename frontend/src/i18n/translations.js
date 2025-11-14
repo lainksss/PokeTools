@@ -100,6 +100,15 @@ export const translations = {
       guaranteedKO: "✓ KO Garanti",
       physical: "Physique",
       special: "Spécial"
+      ,
+      attackOptions: "Options de l'attaquant",
+      noAttack: "Pas d'attaque",
+      custom: "Customisé",
+      maxAtk: "Max Atq/SpA",
+      customEVLabel: "EVs à assigner:",
+      natureBoost: "Atq/SpA nature",
+      itemChoice: "Objet Choix",
+      lifeOrb: "Orbe Vie"
     },
 
     // Page Coverage
@@ -114,8 +123,8 @@ export const translations = {
       noCoverage: "Aucun Pokémon trouvé avec ces critères",
       showAlive: "Afficher ceux qui survivent",
       bulkMode: "Bulk des adversaires",
-      bulkNone: "Aucun bulk (0 EVs)",
-      bulkCustom: "Bulk personnalisé",
+      bulkNone: "Aucun bulk",
+      bulkCustom: "Bulk customisé",
       bulkMax: "Bulk maximum",
       customEvs: "EVs personnalisés"
     },
@@ -354,6 +363,15 @@ export const translations = {
       guaranteedKO: "✓ Guaranteed KO",
       physical: "Physical",
       special: "Special"
+      ,
+      attackOptions: "Attacker Options",
+      noAttack: "No attack",
+      custom: "Custom",
+      maxAtk: "Max Atk/SpA",
+      customEVLabel: "EVs to assign:",
+      natureBoost: "Atk/SpA nature",
+      itemChoice: "Item Choice",
+      lifeOrb: "Life Orb"
     },
 
     // Page Coverage
