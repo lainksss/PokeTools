@@ -1,0 +1,519 @@
+import React, { useState, useEffect } from 'react'
+import { useTranslation } from '../i18n/LanguageContext'
+import { API_URL } from '../apiConfig'
+
+export default function SpeedChecker() {
+  const { t, language, getPokemonName, matchesPokemonName } = useTranslation()
+  const [allPokemon, setAllPokemon] = useState([])
+  const [allNatures, setAllNatures] = useState([])
+  const [allAbilities, setAllAbilities] = useState([])
+  
+  // Left panel - User's Pokémon
+  const [selectedPokemon, setSelectedPokemon] = useState(null)
+  const [value, setValue] = useState({ nature: 'hardy' })
+  const [speedEV, setSpeedEV] = useState(0)
+  const [speedNature, setSpeedNature] = useState('neutral') // 'positive', 'neutral', 'negative'
+  const [ability, setAbility] = useState(null)
+  const [speedBoost, setSpeedBoost] = useState(0) // -6 to +6
+  const [tailwind, setTailwind] = useState(false)
+  // Choice Scarf toggle (user)
+  const [choiceScarf, setChoiceScarf] = useState(false)
+  const level = 50 // Always level 50
+  
+  // Search functionality
+  const [searchText, setSearchText] = useState('')
+  const [showDropdown, setShowDropdown] = useState(false)
+  const [filteredPokemon, setFilteredPokemon] = useState([])
+  const [pokemonAbilities, setPokemonAbilities] = useState([])
+  
+  // Middle panel - Comparison mode
+  const [comparisonMode, setComparisonMode] = useState('min') // 'min', 'custom', 'max'
+  const [customEV, setCustomEV] = useState(0)
+  const [customNature, setCustomNature] = useState(false)
+  // Choice Scarf toggle (middle panel)
+  const [choiceScarfMiddle, setChoiceScarfMiddle] = useState(false)
+  
+  // Right panel - Results
+  const [showSlower, setShowSlower] = useState(true) // true = slower, false = faster
+  const [results, setResults] = useState([])
+
+  // Load Pokémon data
+  useEffect(() => {
+    Promise.all([
+      fetch(`${API_URL}/api/pokemon`).then(r => r.json()),
+      fetch(`${API_URL}/api/natures`).then(r => r.json()),
+      fetch(`${API_URL}/api/abilities`).then(r => r.json())
+    ]).then(([pokemon, natures, abilities]) => {
+      const pokemonList = pokemon.results || []
+      setAllPokemon(pokemonList)
+      setFilteredPokemon(pokemonList)
+      setAllNatures(natures.natures || [])
+      setAllAbilities(abilities.abilities || [])
+    }).catch(err => console.error('Error loading data:', err))
+  }, [])
+  
+  // Filter pokemon based on search
+  useEffect(() => {
+    if (!searchText.trim()) {
+      setFilteredPokemon(allPokemon)
+    } else {
+      const filtered = allPokemon.filter(p => 
+        matchesPokemonName(p.id, searchText)
+      )
+      setFilteredPokemon(filtered)
+    }
+  }, [searchText, allPokemon, matchesPokemonName])
+  
+  // Load abilities when pokemon selected
+  useEffect(() => {
+    if (!selectedPokemon) {
+      setPokemonAbilities([])
+      setAbility(null)
+      return
+    }
+    
+    fetch(`${API_URL}/api/pokemon/${selectedPokemon.id}/abilities`)
+      .then(r => r.json())
+      .then(data => {
+        setPokemonAbilities(data.abilities || [])
+        if (data.abilities && data.abilities.length > 0) {
+          setAbility(data.abilities[0].slug)
+        }
+      })
+      .catch(err => console.error('Error loading abilities:', err))
+  }, [selectedPokemon])
+
+  // Calculate final speed stat
+  const calculateSpeed = (baseStat, level, ev, nature, boost = 0) => {
+    const iv = 31 // Always assume max IVs
+    const base = Math.floor(((2 * baseStat + iv + Math.floor(ev / 4)) * level) / 100) + 5
+    let multiplier = 1.0
+    if (nature === 'positive') multiplier = 1.1
+    if (nature === 'negative') multiplier = 0.9
+    let stat = Math.floor(base * multiplier)
+    
+    // Apply boost multiplier
+    if (boost !== 0) {
+      const boostMultiplier = boost > 0 
+        ? (2 + boost) / 2 
+        : 2 / (2 - boost)
+      stat = Math.floor(stat * boostMultiplier)
+    }
+    
+    return stat
+  }
+
+  // Calculate user's speed
+  const userSpeed = selectedPokemon 
+    ? calculateSpeed(selectedPokemon.base_stats.speed, level, speedEV, speedNature, speedBoost)
+    : 0
+  let finalUserSpeed = userSpeed
+  if (choiceScarf) finalUserSpeed = Math.floor(finalUserSpeed * 1.5)
+  if (tailwind) finalUserSpeed = finalUserSpeed * 2
+  
+  // Get speed-related natures
+  const speedNatures = allNatures.filter(n => 
+    n.increased === 'speed' || n.decreased === 'speed' || (!n.increased && !n.decreased)
+  )
+  
+  // Select pokemon handler
+  const handleSelectPokemon = (pokemon) => {
+    setSelectedPokemon(pokemon)
+    setSearchText(getPokemonName(pokemon.id, pokemon.name))
+    setShowDropdown(false)
+  }
+
+  // Compare speeds
+  useEffect(() => {
+    if (!selectedPokemon || allPokemon.length === 0) {
+      setResults([])
+      return
+    }
+
+      const comparisons = allPokemon.map(pokemon => {
+      let opponentEV = 0
+      let opponentNature = 'neutral'
+      
+      if (comparisonMode === 'min') {
+        opponentEV = 0
+        opponentNature = 'neutral'
+      } else if (comparisonMode === 'custom') {
+        opponentEV = customEV
+        opponentNature = customNature ? 'positive' : 'neutral'
+      } else if (comparisonMode === 'max') {
+        opponentEV = 252
+        opponentNature = 'positive'
+      }
+
+      const opponentSpeed = calculateSpeed(pokemon.base_stats.speed, level, opponentEV, opponentNature)
+      let opponentFinalSpeed = opponentSpeed
+      if (choiceScarfMiddle) opponentFinalSpeed = Math.floor(opponentFinalSpeed * 1.5)
+      const isFaster = finalUserSpeed > opponentFinalSpeed
+      const speedDiff = finalUserSpeed - opponentFinalSpeed
+
+      return {
+        name: getPokemonName(pokemon.id, pokemon.name),
+        nameEn: pokemon.name,
+        types: pokemon.types,
+        baseSpeed: pokemon.base_stats.speed,
+        finalSpeed: opponentFinalSpeed,
+        isFaster,
+        speedDiff: Math.abs(speedDiff)
+      }
+    })    // Filter and sort
+    const filtered = comparisons.filter(c => 
+      showSlower ? c.isFaster : !c.isFaster
+    ).sort((a, b) => {
+      if (showSlower) {
+        return b.finalSpeed - a.finalSpeed // Slower: highest to lowest
+      } else {
+        return a.finalSpeed - b.finalSpeed // Faster: lowest to highest
+      }
+    })
+
+    setResults(filtered)
+  }, [selectedPokemon, level, speedEV, speedNature, speedBoost, tailwind, choiceScarf, comparisonMode, customEV, customNature, choiceScarfMiddle, showSlower, allPokemon])
+
+  return (
+    <div className="speed-checker-page">
+      <h2>{t('speedChecker.title') || 'Speed Checker'}</h2>
+      
+      <div className="speed-checker-container">
+        {/* Left Panel - User's Pokémon */}
+        <div className="speed-panel speed-panel-left">
+          <h3>{t('speedChecker.yourPokemon') || 'Your Pokémon'}</h3>
+          
+          {/* Pokemon Search */}
+          <div className="form-group">
+            <label>{t('calculate.selectPokemon')}</label>
+            <div className="pokemon-search-container">
+              <input
+                type="text"
+                className="pokemon-search-input"
+                placeholder={t('calculate.search')}
+                value={searchText}
+                onChange={(e) => {
+                  setSearchText(e.target.value)
+                  setShowDropdown(true)
+                }}
+                onFocus={() => setShowDropdown(true)}
+              />
+              {showDropdown && filteredPokemon.length > 0 && (
+                <div className="pokemon-dropdown">
+                  {filteredPokemon.slice(0, 50).map(p => (
+                    <div
+                      key={p.id}
+                      className="pokemon-dropdown-item"
+                      onClick={() => handleSelectPokemon(p)}
+                    >
+                      <span className="pokemon-name">{getPokemonName(p.id, p.name)}</span>
+                      <span className="pokemon-speed">Speed: {p.base_stats.speed}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {selectedPokemon && (
+            <>
+              {/* Pokemon Info Display */}
+              <div className="pokemon-info-display">
+                <div className="pokemon-header">
+                  <h4>{getPokemonName(selectedPokemon.id, selectedPokemon.name)}</h4>
+                  <div className="pokemon-types">
+                    {selectedPokemon.types.map((type, idx) => (
+                      <span key={idx} className={`type-badge type-${type.toLowerCase()}`}>
+                        {type}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className="base-speed-display">
+                  <span className="label">{t('speedChecker.baseSpeed') || 'Base Speed:'}</span>
+                  <span className="value">{selectedPokemon.base_stats.speed}</span>
+                </div>
+              </div>
+
+              {/* Nature Selection */}
+              <div className="form-group">
+                <label>{t('calculate.nature')}</label>
+                <select 
+                  value={value.nature || 'hardy'} 
+                  onChange={(e) => {
+                    const selectedNature = allNatures.find(n => n.name === e.target.value)
+                    if (selectedNature) {
+                      if (selectedNature.increase === 'speed') {
+                        setSpeedNature('positive')
+                      } else if (selectedNature.decrease === 'speed') {
+                        setSpeedNature('negative')
+                      } else {
+                        setSpeedNature('neutral')
+                      }
+                    }
+                    setValue({...value, nature: e.target.value})
+                  }}
+                  className="nature-select"
+                >
+                  {allNatures.map(n => {
+                    let display = t(`natures.${n.name}`)
+                    if (n.increase && n.decrease) {
+                      display += ` (+${n.increase}, -${n.decrease})`
+                    } else if (!n.increase && !n.decrease) {
+                      display += ` (${t('pokemon.neutral')})`
+                    }
+                    return (
+                      <option key={n.name} value={n.name}>{display}</option>
+                    )
+                  })}
+                </select>
+              </div>
+
+              {/* Ability Selection */}
+              <div className="form-group">
+                <label>{t('calculate.ability')}</label>
+                <select 
+                  value={ability || ''} 
+                  onChange={(e) => setAbility(e.target.value)}
+                  className="ability-select"
+                >
+                  <option value="">{t('pokemon.none')}</option>
+                  {allAbilities
+                    .filter(a => pokemonAbilities.some(pa => pa.slug === a.slug))
+                    .map(a => (
+                      <option key={a.slug} value={a.slug}>
+                        {a[language] || a.en}
+                      </option>
+                    ))}
+                </select>
+              </div>
+
+              {/* EVs Input */}
+              <div className="form-group">
+                <label>{t('calculate.evs')} - {t('calculate.speed')}</label>
+                <div className="ev-input-container">
+                  <input
+                    type="number"
+                    value={speedEV}
+                    onChange={(e) => setSpeedEV(Math.max(0, Math.min(252, parseInt(e.target.value) || 0)))}
+                    min="0"
+                    max="252"
+                    step="4"
+                  />
+                  <div className="ev-buttons">
+                    <button onClick={() => setSpeedEV(0)}>0</button>
+                    <button onClick={() => setSpeedEV(252)}>252</button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Speed Boost */}
+              <div className="form-group">
+                <label>Speed Boost</label>
+                <div className="boost-selector">
+                  <button 
+                    className="boost-btn" 
+                    onClick={() => setSpeedBoost(Math.max(-6, speedBoost - 1))}
+                    disabled={speedBoost <= -6}
+                  >
+                    -
+                  </button>
+                  <span className="boost-value">{speedBoost > 0 ? '+' : ''}{speedBoost}</span>
+                  <button 
+                    className="boost-btn" 
+                    onClick={() => setSpeedBoost(Math.min(6, speedBoost + 1))}
+                    disabled={speedBoost >= 6}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+
+              {/* Weather Effects Toggles */}
+              <div className="form-group horizontal">
+                {/* Tailwind Toggle */}
+                <button 
+                  className={`tailwind-button ${tailwind ? 'active' : ''}`}
+                  onClick={() => setTailwind(!tailwind)}
+                >
+                  <span className="tailwind-icon">🌪️</span>
+                  {t('speedChecker.tailwind') || 'Tailwind'}: {tailwind ? 'ON' : 'OFF'}
+                </button>
+
+                {/* Choice Scarf Toggle */}
+                <button 
+                  className={`tailwind-button${choiceScarf ? ' active' : ''}`}
+                  onClick={() => setChoiceScarf(!choiceScarf)}
+                  type="button"
+                >
+                  <span className="tailwind-icon">🧣</span>
+                  {t('speedChecker.choiceScarf') || 'Choice Scarf'}: {choiceScarf ? t('speedChecker.on') || 'ON' : t('speedChecker.off') || 'OFF'}
+                </button>
+              </div>
+
+              {/* Final Speed Display */}
+              <div className="speed-display">
+                <div className="stat-display">
+                  <span className="stat-label">{t('speedChecker.finalSpeed') || 'Final Speed'}</span>
+                  <div className={`speed-value ${tailwind ? 'tailwind-active' : ''}`}>
+                    {finalUserSpeed}
+                  </div>
+                  <div className="speed-breakdown">
+                    {userSpeed}
+                    {choiceScarf && (
+                      <>
+                        × 1.5 = {Math.floor(userSpeed * 1.5)}
+                      </>
+                    )}
+                    {tailwind && (
+                      <>
+                        {choiceScarf ? ' × 2' : '× 2'} = {finalUserSpeed}
+                      </>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+
+        {/* Middle Panel - Comparison Options */}
+        <div className="speed-panel speed-panel-middle">
+          <h3>{t('speedChecker.compareAgainst') || 'Compare Against'}</h3>
+          <div className="comparison-buttons">
+            <button
+              className={`comparison-mode-btn ${comparisonMode === 'min' ? 'active' : ''}`}
+              onClick={() => setComparisonMode('min')}
+            >
+              <div className="btn-title">{t('speedChecker.minSpeed') || 'Min Speed'}</div>
+              <div className="btn-desc">0 EVs, Neutral</div>
+            </button>
+
+            <button
+              className={`comparison-mode-btn ${comparisonMode === 'custom' ? 'active' : ''}`}
+              onClick={() => setComparisonMode('custom')}
+            >
+              <div className="btn-title">{t('speedChecker.customSpeed') || 'Custom'}</div>
+              <div className="btn-desc">Personalized EVs</div>
+            </button>
+
+            <button
+              className={`comparison-mode-btn ${comparisonMode === 'max' ? 'active' : ''}`}
+              onClick={() => setComparisonMode('max')}
+            >
+              <div className="btn-title">{t('speedChecker.maxSpeed') || 'Max Speed'}</div>
+              <div className="btn-desc">252 EVs, +Nature</div>
+            </button>
+          </div>
+
+          {comparisonMode === 'custom' && (
+            <div className="custom-options">
+              <div className="form-group">
+                <label>{t('speedChecker.opponentEV') || 'Opponent EVs'}</label>
+                <input 
+                  type="number" 
+                  value={customEV} 
+                  onChange={(e) => setCustomEV(Math.max(0, Math.min(252, parseInt(e.target.value) || 0)))}
+                  min="0"
+                  max="252"
+                  step="4"
+                />
+              </div>
+              <div className="form-group">
+                <button
+                  type="button"
+                  className={`tailwind-button ${customNature ? 'active' : ''}`}
+                  onClick={() => setCustomNature(!customNature)}
+                  aria-pressed={customNature}
+                >
+                  <span className="tailwind-icon">🍀</span>
+                  {t('speedChecker.positiveNatureCheck') || '+Speed Nature'}: {customNature ? t('speedChecker.on') || 'ON' : t('speedChecker.off') || 'OFF'}
+                </button>
+              </div>
+              {/* Choice Scarf Toggle (middle panel, custom only) */}
+              <div className="form-group">
+                <button 
+                  className={`tailwind-button${choiceScarfMiddle ? ' active' : ''}`}
+                  onClick={() => setChoiceScarfMiddle(!choiceScarfMiddle)}
+                  type="button"
+                >
+                  <span className="tailwind-icon">🧣</span>
+                  {t('speedChecker.choiceScarf') || 'Choice Scarf'}: {choiceScarfMiddle ? t('speedChecker.on') || 'ON' : t('speedChecker.off') || 'OFF'}
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Right Panel - Results */}
+        <div className="speed-panel speed-panel-right">
+          <h3>{t('speedChecker.results') || 'Results'}</h3>
+          
+          <div className="results-toggle">
+            <button
+              className={`toggle-btn ${showSlower ? 'active' : ''}`}
+              onClick={() => setShowSlower(true)}
+            >
+              {t('speedChecker.slowerThan') || 'Slower Than You'}
+            </button>
+            <button
+              className={`toggle-btn ${!showSlower ? 'active' : ''}`}
+              onClick={() => setShowSlower(false)}
+            >
+              {t('speedChecker.fasterThan') || 'Faster Than You'}
+            </button>
+          </div>
+          
+          {selectedPokemon && (
+            <div className="speed-counter">
+              {showSlower 
+                ? `${results.length} ${t('speedChecker.slowerCount') || 'slower'} • ${allPokemon.filter(p => {
+                    const oppSpeed = calculateSpeed(p.base_stats.speed, level, comparisonMode === 'min' ? 0 : comparisonMode === 'max' ? 252 : customEV, comparisonMode === 'min' ? 'neutral' : comparisonMode === 'max' ? 'positive' : customNature ? 'positive' : 'neutral')
+                    const oppFinalSpeed = choiceScarfMiddle ? Math.floor(oppSpeed * 1.5) : oppSpeed
+                    return finalUserSpeed <= oppFinalSpeed
+                  }).length} ${t('speedChecker.fasterCount') || 'faster'}`
+                : `${results.length} ${t('speedChecker.fasterCount') || 'faster'} • ${allPokemon.filter(p => {
+                    const oppSpeed = calculateSpeed(p.base_stats.speed, level, comparisonMode === 'min' ? 0 : comparisonMode === 'max' ? 252 : customEV, comparisonMode === 'min' ? 'neutral' : comparisonMode === 'max' ? 'positive' : customNature ? 'positive' : 'neutral')
+                    const oppFinalSpeed = choiceScarfMiddle ? Math.floor(oppSpeed * 1.5) : oppSpeed
+                    return finalUserSpeed > oppFinalSpeed
+                  }).length} ${t('speedChecker.slowerCount') || 'slower'}`
+              }
+            </div>
+          )}
+
+          <div className="results-list">
+            {results.length === 0 && selectedPokemon && (
+              <div className="no-results">
+                {showSlower 
+                  ? (t('speedChecker.noSlower') || 'No Pokémon slower than you!')
+                  : (t('speedChecker.noFaster') || 'No Pokémon faster than you!')}
+              </div>
+            )}
+            
+            {results.map((result, idx) => (
+              <div key={idx} className="result-item">
+                <div className="result-header">
+                  <div className="result-name">{result.name}</div>
+                  <div className="result-types">
+                    {result.types && result.types.map((type, i) => (
+                      <span key={i} className={`type-badge type-${type.toLowerCase()}`}>
+                        {t(`types.${type}`)}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className="result-stats">
+                  <span className="base-speed">Base: {result.baseSpeed}</span>
+                  <span className="final-speed">Final: {result.finalSpeed}</span>
+                  <span className={`speed-diff ${result.isFaster ? 'faster' : 'slower'}`}>
+                    {result.isFaster ? '+' : '-'}{result.speedDiff}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}

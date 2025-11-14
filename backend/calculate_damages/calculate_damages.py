@@ -22,14 +22,20 @@ try:
     from .calculate_terrain import compute_terrain_multiplier
     from .calculate_types import get_type_breakdown, type_effectiveness
     from .calculate_abilities import apply_ability_effects
+    from .calculate_grounded import is_grounded
+    from ..items.items import apply_item_stat_modifiers, compute_item_damage_multiplier, get_item
 except Exception:
     # If relative imports fail (exec as script), fallback to local defs below
     compute_weather_mult = None  # type: ignore
     compute_terrain_multiplier = None  # type: ignore
     get_type_breakdown = None  # type: ignore
     type_effectiveness = None  # type: ignore
+    is_grounded = None  # type: ignore
     # Try to load calculate_abilities.py directly from the same directory as this file.
     apply_ability_effects = None  # type: ignore
+    apply_item_stat_modifiers = None
+    compute_item_damage_multiplier = None
+    get_item = None
     try:
         import importlib.util
         mod_path = Path(__file__).parent / "calculate_abilities.py"
@@ -38,8 +44,28 @@ except Exception:
             mod = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(mod)  # type: ignore
             apply_ability_effects = getattr(mod, "apply_ability_effects", None)
+        # Try to load calculate_grounded.py
+        grounded_mod_path = Path(__file__).parent / "calculate_grounded.py"
+        if grounded_mod_path.exists():
+            spec = importlib.util.spec_from_file_location("calculate_grounded", str(grounded_mod_path))
+            grounded_mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(grounded_mod)  # type: ignore
+            is_grounded = getattr(grounded_mod, "is_grounded", None)
+        # Try to load items.py from parent/items/items.py
+        items_mod_path = Path(__file__).parent.parent / "items" / "items.py"
+        if items_mod_path.exists():
+            spec = importlib.util.spec_from_file_location("items", str(items_mod_path))
+            items_mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(items_mod)  # type: ignore
+            apply_item_stat_modifiers = getattr(items_mod, "apply_item_stat_modifiers", None)
+            compute_item_damage_multiplier = getattr(items_mod, "compute_item_damage_multiplier", None)
+            get_item = getattr(items_mod, "get_item", None)
     except Exception:
         apply_ability_effects = None
+        is_grounded = None
+        apply_item_stat_modifiers = None
+        compute_item_damage_multiplier = None
+        get_item = None
 
 
 if get_type_breakdown is None:
@@ -208,6 +234,60 @@ def compute_targets_and_pb(move: Dict, field: Dict, gen: int) -> Tuple[float, fl
     return targets, pb
 
 
+def pokeRound(x: float) -> int:
+    """Round to nearest integer, ties at .5 round down (Pokémon Gen V+ rounding).
+    
+    This is the standard rounding used in Pokémon damage calculation.
+    For values ending in exactly .5, round DOWN (truncate).
+    Examples:
+    - 1.4 -> 1
+    - 1.5 -> 1  (tie rounds down)
+    - 1.6 -> 2
+    - 2.5 -> 2  (tie rounds down)
+    """
+    # Check if it's exactly .5 (within floating point precision)
+    if abs(x - math.floor(x) - 0.5) < 1e-9:
+        return int(math.floor(x))
+    # Otherwise round normally (.5+ goes up)
+    return int(math.floor(x + 0.5))
+
+
+def OF32(n: int) -> int:
+    """Overflow to 32-bit signed integer range."""
+    n = int(n)
+    if n > 2147483647:
+        return n - 4294967296
+    if n < -2147483648:
+        return n + 4294967296
+    return n
+
+
+def OF16(n: int) -> int:
+    """Overflow to 16-bit unsigned integer range."""
+    n = int(n)
+    return n & 0xFFFF
+
+
+def chainMods(mods: List[int], N: int = 41, M: int = 2097152) -> int:
+    """Chain modifiers using fixed-point 4096 arithmetic (Smogon style).
+    
+    mods: list of modifier values (e.g., [4096, 6144, 5324])
+    N: number of initial modifiers that get chained
+    M: denominator for final division (2097152 for BP mods, 131072 for final mods)
+    
+    Returns: chained modifier value (as integer, base 4096)
+    """
+    if not mods:
+        return 4096
+    
+    result = 4096
+    for mod in mods[:N] if len(mods) > N else mods:
+        result = result * mod + 2048
+        result = int(result / 4096)
+    
+    return result
+
+
 if compute_weather_mult is None:
     # fallback local implementation when import not available
     def compute_weather_mult(field: Dict, mv_type: Optional[str], move: Dict) -> Tuple[float, Dict]:
@@ -359,10 +439,11 @@ if compute_terrain_multiplier is None:
 
 def compute_base(level: int, power: int, A: float, D: float) -> int:
     numerator = (2 * level) // 5 + 2
-    base1 = int(numerator) * int(power) * int(A)
-    if int(D) == 0:
-        D = 1.0
-    base2 = base1 // int(D)
+    # Use floor for A and D to handle stat boosts correctly
+    A_floor = int(math.floor(A))
+    D_floor = int(math.floor(D)) if D > 0 else 1
+    base1 = int(numerator) * int(power) * A_floor
+    base2 = base1 // D_floor
     base = base2 // 50 + 2
     return int(base)
 
@@ -372,31 +453,105 @@ def compute_damage_rolls(
     rand_list: Iterable[int],
     multipliers: Dict[str, float],
     defender_hp: Optional[int],
+    terrain_effects: Optional[Dict] = None,
 ) -> Tuple[List[int], List[Optional[int]]]:
+    """Calculate damage for each random roll following Smogon's exact formula.
+    
+    Based on @smogon/calc Gen 5-9 mechanics:
+    - Spread modifier (targets) applied as pokeRound(OF32(baseDamage * 3072) / 4096)
+    - Weather modifier applied as pokeRound(OF32(baseDamage * 6144) / 4096)
+    - Critical hits applied as Math.floor(OF32(baseDamage * 1.5))
+    - Random factor: (baseDamage * random) / 100
+    - STAB, Type effectiveness, Burn applied with Math.floor per step
+    - Final modifiers (screens, abilities, items) chained with chainMods
+    """
     damage_all: List[int] = []
     remaining_hp_all: List[Optional[int]] = []
+    
     for r in rand_list:
-        # Étape 1 : Multiplicateurs AVANT random (selon formule Pokémon Gen 5+)
-        t = float(base)
-        t = math.floor(t * multipliers.get("targets", 1.0))
-        t = math.floor(t * multipliers.get("pb", 1.0))
-        t = math.floor(t * multipliers.get("weather_mult", 1.0))
-        t = math.floor(t * multipliers.get("glaive_rush", 1.0))
+        baseDamage = int(base)
         
-        # Étape 2 : Application du random
-        t = math.floor(t * (r / 100.0))
+        # Spread modifier (targets)
+        if multipliers.get("targets", 1.0) != 1.0:
+            baseDamage = pokeRound(OF32(baseDamage * 3072) / 4096)
         
-        # Étape 3 : Multiplicateurs APRÈS random
-        t = math.floor(t * multipliers.get("stab", 1.0))
-        t = math.floor(t * multipliers.get("type_mult", 1.0))
-        t = math.floor(t * multipliers.get("burn_mult", 1.0))
-        t = math.floor(t * multipliers.get("terrain_mult", 1.0))
-        t = math.floor(t * multipliers.get("other_mult", 1.0))
-        t = math.floor(t * multipliers.get("zmove_mult", 1.0))
-        t = math.floor(t * multipliers.get("terashield_mult", 1.0))
-        t = math.floor(t * multipliers.get("crit_mult", 1.0))
+        # Parental Bond (second hit)
+        if multipliers.get("pb", 1.0) != 1.0:
+            pb_val = multipliers.get("pb", 1.0)
+            if pb_val == 0.25:  # Gen 7+
+                baseDamage = pokeRound(OF32(baseDamage * 1024) / 4096)
+            elif pb_val == 0.5:  # Gen 6
+                baseDamage = pokeRound(OF32(baseDamage * 2048) / 4096)
         
-        dmg = max(1, int(t))
+        # Weather modifier
+        weather = multipliers.get("weather_mult", 1.0)
+        if weather == 1.5:
+            baseDamage = pokeRound(OF32(baseDamage * 6144) / 4096)
+        elif weather == 0.5:
+            baseDamage = pokeRound(OF32(baseDamage * 2048) / 4096)
+        
+        # Glaive Rush (×2)
+        if multipliers.get("glaive_rush", 1.0) == 2.0:
+            baseDamage = baseDamage * 2
+        
+        # Critical hit
+        crit = multipliers.get("crit_mult", 1.0)
+        if crit == 1.5:
+            baseDamage = math.floor(OF32(baseDamage * 1.5))
+        elif crit == 2.0:
+            baseDamage = baseDamage * 2
+        
+        # Random factor
+        damage = math.floor((baseDamage * r) / 100)
+        
+        # STAB
+        stab = multipliers.get("stab", 1.0)
+        if stab == 1.5:
+            damage = math.floor(damage * 1.5)
+        elif stab == 2.0:
+            damage = damage * 2
+        elif stab == 2.25:
+            damage = math.floor(damage * 2.25)
+        
+        # Type effectiveness (applied per type)
+        type_mult = multipliers.get("type_mult", 1.0)
+        damage = math.floor(damage * type_mult)
+        
+        # Misty Terrain Dragon halving is now applied as BP modifier (before base calculation),
+        # not as a final damage modifier here
+        
+        # Burn
+        burn = multipliers.get("burn_mult", 1.0)
+        if burn == 0.5:
+            damage = math.floor(damage * 0.5)
+        
+        # Final modifiers (screens, abilities, items) - chained
+        final_mods = []
+        
+        # Screens (Reflect/Light Screen/Aurora Veil)
+        # Note: These would come from field state, not implemented here yet
+        
+        # Abilities and items go into final_mods
+        # Life Orb, Expert Belt, etc.
+        item_mult = multipliers.get("item_mult", 1.0)
+        if item_mult != 1.0:
+            # Life Orb is 5324/4096
+            final_mods.append(int(item_mult * 4096))
+        
+        # Terrain multiplier is now applied to base power, not as final mod
+        # (removed from here per Smogon's implementation)
+        
+        # Other modifiers
+        other = multipliers.get("other_mult", 1.0)
+        if other != 1.0:
+            final_mods.append(int(other * 4096))
+        
+        # Apply chained final modifiers
+        if final_mods:
+            finalMod = chainMods(final_mods, len(final_mods), 131072)
+            damage = pokeRound((damage * finalMod) / 4096)
+        
+        dmg = max(1, int(damage))
         damage_all.append(dmg)
         if defender_hp is not None:
             remaining_hp_all.append(max(0, int(defender_hp) - dmg))
@@ -468,6 +623,7 @@ def calculate_damage(
 
     # Compute offensive/defensive stats
     category = move.get("damage_class", "physical")
+    mv_name = (move.get("name") or "").lower()
     
     # Tera Blast : change de type, de catégorie et de puissance selon la téracristallisation
     move_type = move.get("type")
@@ -496,8 +652,22 @@ def calculate_damage(
         else:
             category = "special"
     
+    # Apply held item stat modifiers BEFORE computing effective stats so that
+    # items like Choice Band or Thick Club affect the computed A/D values.
+    # Also get modified power from items like Muscle Band and type-boost items (Plates).
+    if 'apply_item_stat_modifiers' in globals() and apply_item_stat_modifiers:
+        try:
+            attacker, defender, power = apply_item_stat_modifiers(attacker, defender, move)
+        except Exception as e:
+            pass
+
     if category == "physical":
-        A = compute_effective_stat(attacker, "attack", "attack", True, crit_effective)
+        # Special-case: Body Press (fr: Big Splash) uses the attacker's DEFENSE as its
+        # attacking stat instead of ATTACK.
+        if mv_name in ("body-press", "body press", "bodypress"):
+            A = compute_effective_stat(attacker, "defense", "defense", True, crit_effective)
+        else:
+            A = compute_effective_stat(attacker, "attack", "attack", True, crit_effective)
         D = compute_effective_stat(defender, "defense", "defense", False, crit_effective)
     else:
         A = compute_effective_stat(attacker, "special_attack", "special_attack", True, crit_effective)
@@ -565,6 +735,12 @@ def calculate_damage(
     burn_mult = compute_burn_mult(attacker, category, move, gen)
     other_mult, zmove_mult, terashield_mult = compute_other_z_terashield(attacker, defender, field)
 
+    # Compute grounded status for attacker and defender (if not explicitly set)
+    if "is_grounded" not in attacker and is_grounded is not None:
+        attacker["is_grounded"] = is_grounded(attacker, field)
+    if "is_grounded" not in defender and is_grounded is not None:
+        defender["is_grounded"] = is_grounded(defender, field)
+
     terrain_mult, terrain_effects = compute_terrain_multiplier(field, mv_type, move, attacker, defender, gen)
 
     # Apply weather stat modifications (sandstorm increases Rock Sp. Def, snow increases Ice Def)
@@ -576,8 +752,21 @@ def calculate_damage(
             D = float(D) * 1.5
 
     # If grassy terrain halves certain move powers, adjust power before base
-    if terrain_effects.get("halve_power"):
+    if terrain_effects.get("halve_power") and terrain_effects.get("name") != "misty":
+        # Grassy Terrain halves Earthquake/Bulldoze/Magnitude (BP modifier)
         power = int(math.floor(power * 0.5))
+    
+    # Misty Terrain Dragon halving: apply as BP modifier (0.5x power)
+    if terrain_effects.get("halve_dragon"):
+        power = OF16(max(1, pokeRound((power * 2048) / 4096)))
+    
+    # Apply terrain multiplier as base power modifier (Smogon Gen 7+)
+    # Terrain boosts (Electric/Grassy/Psychic) are BP mods (NOT Misty, handled above)
+    if terrain_mult != 1.0 and terrain_effects.get("name") != "misty":
+        # Use chainMods for terrain boost like Smogon does
+        # terrainMultiplier = gen.num > 7 ? 5325 : 6144
+        terrain_bp_mod = 5325 if gen >= 8 else 6144  # 1.3x for Gen 8+, 1.5x for Gen 6-7
+        power = OF16(max(1, pokeRound((power * terrain_bp_mod) / 4096)))
 
     base = compute_base(level, power, A, D)
 
@@ -600,11 +789,36 @@ def calculate_damage(
     if isinstance(ability_multipliers, dict):
         for k, v in ability_multipliers.items():
             multipliers[k] = float(multipliers.get(k, 1.0)) * float(v)
+    # Compute item damage multiplier (post-random multipliers like Expert Belt, Life Orb, etc.)
+    try:
+        if 'compute_item_damage_multiplier' in globals() and compute_item_damage_multiplier:
+            item_mult, other_item_mult, item_effects = compute_item_damage_multiplier(
+                attacker.get('item'),
+                defender.get('item'),
+                move,
+                attacker,
+                defender,
+                type_mult,
+                category,
+                attacker.get('consumed_items', []),
+                defender.get('consumed_items', []),
+            )
+            multipliers['item_mult'] = float(multipliers.get('item_mult', 1.0)) * float(item_mult)
+            multipliers['other_mult'] = float(multipliers.get('other_mult', 1.0)) * float(other_item_mult)
+            # Merge item effects into ability_effects for debug/consumers
+            if item_effects:
+                if isinstance(ability_effects, dict):
+                    ability_effects.update(item_effects)
+                else:
+                    ability_effects = item_effects
+    except Exception:
+        # ignore item computation errors
+        pass
     # If sniper was flagged earlier, keep that in ability_effects for debug
     if attacker.get("ability") and str(attacker.get("ability")).lower().replace("_", "-").replace(" ", "-") == "sniper":
         ability_effects.setdefault("sniper", True)
 
-    damage_all, remaining_hp_all = compute_damage_rolls(base, rand_list, multipliers, defender_hp if defender_hp is not None else defender.get("hp"))
+    damage_all, remaining_hp_all = compute_damage_rolls(base, rand_list, multipliers, defender_hp if defender_hp is not None else defender.get("hp"), terrain_effects)
 
     result = {"damage_all": damage_all, "remaining_hp_all": remaining_hp_all, "base_val": base}
     # Merge weather and terrain effect flags for consumers
@@ -625,6 +839,8 @@ def calculate_damage(
 
     if debug:
         result["debug"] = {
+            "power": power,
+            "base": base,
             "A": A,
             "D": D,
             "type_mult": type_mult,
@@ -633,6 +849,9 @@ def calculate_damage(
             "weather_mult": weather_mult,
             "burn_mult": burn_mult,
             "terrain_mult": terrain_mult,
+            "targets": targets,
+            "pb": pb,
+            "multipliers": multipliers,
             "effects": combined_effects,
             "ability_effects": ability_effects,
         }
@@ -687,4 +906,6 @@ if __name__ == "__main__":
             print(f"  KO chance: {res.get('ko_chance'):.1f}% ({res.get('ko_count')}/{len(dmg_all)})")
         print("=" * 60 + "\n")
 
-    pretty_print_result(out, move, attacker, defender)
+    # Uncomment to test:
+    # pretty_print_result(out, move, attacker, defender)
+

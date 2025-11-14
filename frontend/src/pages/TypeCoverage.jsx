@@ -81,7 +81,9 @@ export default function TypeCoverage() {
             side="left" 
             value={attacker} 
             onChange={setAttacker} 
-            showMultipleMoves={true} 
+            showMultipleMoves={true}
+            showTitle={false}
+            showItem={false}
           />
         </div>
 

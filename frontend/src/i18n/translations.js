@@ -6,7 +6,8 @@ export const translations = {
       calculator: "Calculateur",
       threats: "Analyse des menaces",
       coverage: "Couverture offensive",
-      typeCoverage: "Couverture de types"
+      typeCoverage: "Couverture de types",
+      speedChecker: "Vérificateur de vitesse"
     },
     
     // Page Home
@@ -14,15 +15,17 @@ export const translations = {
       welcome: "Bienvenue",
       description: "Utilisez le menu pour accéder au calculateur de dégâts ou à l'analyse des menaces.",
       centerTitle: "PokeTools",
-      centerDesc: "PokeTools est dédié au Pokemon Compétitif et a pour but de simplifier des tâches, calculs et reflexion supplémentaires pour vos équipes. Certaines fonctionnalités sont encore en développement.",
+      centerDesc: "PokeTools est dédié au Pokemon Compétitif et a pour but de simplifier des tâches, calculs et reflexions supplémentaires pour vos équipes. Certaines fonctionnalités sont encore en développement.",
       block_calc_title: "Calculateur de dégât",
-      block_calc_desc: "Calculateur de dégâts. Certaines options manquent encore (ex : objets).",
+      block_calc_desc: "Calculateur de dégâts (EVs, objets, talents, météo, terrain,...). Certains talents manquent.",
       block_threats_title: "Analyseur de menace",
-      block_threats_desc: "Trouvez rapidement quels Pokémon peuvent KO un défenseur donné.",
+      block_threats_desc: "Trouvez rapidement quels Pokémon peuvent KO un défenseur donné (paramétrables !).",
       block_coverage_title: "Vérifier la couverture offensive",
-      block_coverage_desc: "Analysez quelles attaques couvrent le mieux vos menaces et comblent les faiblesses.",
+      block_coverage_desc: "Analysez quelles attaques couvrent le mieux vos menaces et comblent les faiblesses (paramétrables !).",
       block_type_title: "Vérifier la couverture de type",
-      block_type_desc: "Évaluez les résistances et vulnérabilités pour compléter votre équipe."
+      block_type_desc: "Évaluez les résistances et vulnérabilités pour compléter votre équipe.",
+      block_speed_title: "Vérificateur de vitesse",
+      block_speed_desc: "Choisis ton pokemon, tes evs, et pleins de paramètres (pour toi ou pour les adversaires) !"
     },
     
     // Page Calculate
@@ -46,6 +49,10 @@ export const translations = {
       teraType: "Type Téra",
       move: "Attaque",
       selectMove: "Sélectionner une attaque",
+      searchMove: "Rechercher une attaque...",
+      searchAbility: "Rechercher un talent...",
+      item: "Objet tenu",
+      searchItem: "Rechercher un objet...",
       critical: "Coup critique",
       battleMode: "Mode de combat",
       battleConditions: "Conditions de combat",
@@ -95,6 +102,15 @@ export const translations = {
       guaranteedKO: "✓ KO Garanti",
       physical: "Physique",
       special: "Spécial"
+      ,
+      attackOptions: "Options de l'attaquant",
+      noAttack: "Pas d'attaque",
+      custom: "Customisé",
+      maxAtk: "Max Atq/SpA",
+      customEVLabel: "EVs à assigner:",
+      natureBoost: "Atq/SpA nature",
+      itemChoice: "Objet Choix",
+      lifeOrb: "Orbe Vie"
     },
 
     // Page Coverage
@@ -109,10 +125,20 @@ export const translations = {
       noCoverage: "Aucun Pokémon trouvé avec ces critères",
       showAlive: "Afficher ceux qui survivent",
       bulkMode: "Bulk des adversaires",
-      bulkNone: "Aucun bulk (0 EVs)",
-      bulkCustom: "Bulk personnalisé",
+      bulkNone: "Aucun bulk",
+      bulkCustom: "Bulk customisé",
       bulkMax: "Bulk maximum",
-      customEvs: "EVs personnalisés"
+      customEvs: "EVs personnalisés: défenses | PV",
+      bulkNatureLabel: "Nature assignée pour la défense",
+      bulkNatureByMove: "Selon l'attaque",
+      bulkNatureDef: "Défense",
+      bulkNatureSpDef: "Déf. Spé.",
+      natureDefSpDef: "Nature def/spe def",
+      bulkNatureToggle: "Adapter/Fixer nature",
+      hpEvsLabel: "EVs en PV",
+      bulkNatureToggle: "Adapter la nature",
+      assaultVest: "Veste de Combat",
+      evoluroc: "Evoluroc"
     },
 
     // Page Type Coverage
@@ -125,6 +151,39 @@ export const translations = {
       noResults: "Tous les Pokémon sont couverts ou cliquez sur \"Analyser les types\"",
       foundCount: "Pokémon non couverts",
       bestEffectiveness: "Meilleure efficacité"
+    },
+    
+    // Speed Checker
+    speedChecker: {
+      title: "Vérificateur de vitesse",
+      yourPokemon: "Votre Pokémon",
+      selectPokemon: "Sélectionner un Pokémon",
+      choose: "Choisir...",
+      level: "Niveau",
+      speedEV: "EVs en Vitesse",
+      nature: "Nature",
+      positiveNature: "+Vitesse",
+      neutralNature: "Neutre",
+      negativeNature: "-Vitesse",
+      tailwind: "Vent Arrière",
+      finalSpeed: "Vitesse finale",
+      baseSpeed: "Vitesse de base:",
+      compareAgainst: "Comparer contre",
+      minSpeed: "Vitesse Min",
+      customSpeed: "Personnalisé",
+      maxSpeed: "Vitesse Max",
+      opponentEV: "EVs adversaire",
+      positiveNatureCheck: "Nature +Vitesse",
+      results: "Résultats",
+      slowerThan: "Plus lents que vous",
+      fasterThan: "Plus rapides que vous",
+      slowerCount: "plus lents",
+      fasterCount: "plus rapides",
+      noSlower: "Aucun Pokémon plus lent que vous !",
+      noFaster: "Aucun Pokémon plus rapide que vous !",
+      choiceScarf: "Mouchoir Choix",
+      on: "Activé",
+      off: "Désactivé"
     },
     
     // Pokemon Panel
@@ -187,7 +246,9 @@ export const translations = {
     common: {
       loading: "Chargement...",
       error: "Erreur",
-      close: "Fermer"
+      close: "Fermer",
+      clear: "Effacer",
+      noResults: "Aucun résultat"
     },
 
     // Types
@@ -220,7 +281,8 @@ export const translations = {
       calculator: "Calculator",
       threats: "Threat Analysis",
       coverage: "Offensive Coverage",
-      typeCoverage: "Type Coverage"
+      typeCoverage: "Type Coverage",
+      speedChecker: "Speed Checker"
     },
     
     // Page Home
@@ -230,13 +292,15 @@ export const translations = {
       centerTitle: "PokeTools",
       centerDesc: "PokeTools is dedicated to Competitive Pokémon and aims to simplify tasks, calculations and extra thinking for your teams. Some features are still in development.",
       block_calc_title: "Damage calculator",
-      block_calc_desc: "Damage calculator. Some options are missing (e.g. items).",
+      block_calc_desc: "Damage calculator (EVs, items, abilities, weather, terrain, etc.). Some abilities are missing.",
       block_threats_title: "Threat analyzer",
-      block_threats_desc: "Quickly find which Pokémon can KO a given defender.",
+      block_threats_desc: "Quickly find which Pokémon can KO a given defender (configurable).",
       block_coverage_title: "Check offensive coverage",
-      block_coverage_desc: "Analyze which moves best cover your threats and patch weaknesses.",
+      block_coverage_desc: "Analyze which moves best cover your threats and patch weaknesses (configurable).",
       block_type_title: "Check type coverage",
-      block_type_desc: "Evaluate resistances and vulnerabilities to round out your team."
+      block_type_desc: "Evaluate resistances and vulnerabilities to round out your team.",
+      block_speed_title: "Speed checker",
+      block_speed_desc: "Choose your Pokémon, your EVs, and lots of parameters (for you or for opponents)!"
     },
     
     // Page Calculate
@@ -260,6 +324,10 @@ export const translations = {
       teraType: "Tera Type",
       move: "Move",
       selectMove: "Select a move",
+      searchMove: "Search move...",
+      searchAbility: "Search ability...",
+      item: "Held item",
+      searchItem: "Search item...",
       critical: "Critical hit",
       battleMode: "Battle mode",
       battleConditions: "Battle Conditions",
@@ -309,6 +377,15 @@ export const translations = {
       guaranteedKO: "✓ Guaranteed KO",
       physical: "Physical",
       special: "Special"
+      ,
+      attackOptions: "Attacker Options",
+      noAttack: "No attack",
+      custom: "Custom",
+      maxAtk: "Max Atk/SpA",
+      customEVLabel: "EVs to assign:",
+      natureBoost: "Atk/SpA nature",
+      itemChoice: "Item Choice",
+      lifeOrb: "Life Orb"
     },
 
     // Page Coverage
@@ -326,7 +403,16 @@ export const translations = {
       bulkNone: "No bulk (0 EVs)",
       bulkCustom: "Custom bulk",
       bulkMax: "Maximum bulk",
-      customEvs: "Custom EVs"
+      customEvs: "Custom EVs: defenses | hp",
+      natureDefSpDef: "Nature def/spdef",
+      bulkNatureToggle: "Adapt/Fixed nature",
+      hpEvsLabel: "HP EVs",
+      bulkNatureLabel: "Assigned defensive nature",
+      bulkNatureByMove: "By move (auto)",
+      bulkNatureDef: "Defense",
+      bulkNatureSpDef: "Sp. Def",
+      assaultVest: "Assault Vest",
+      evoluroc: "Evoluroc"
     },
 
     // Page Type Coverage
@@ -339,6 +425,39 @@ export const translations = {
       noResults: "All Pokémon are covered or click \"Analyze Types\"",
       foundCount: "Uncovered Pokémon",
       bestEffectiveness: "Best effectiveness"
+    },
+    
+    // Speed Checker
+    speedChecker: {
+      title: "Speed Checker",
+      yourPokemon: "Your Pokémon",
+      selectPokemon: "Select a Pokémon",
+      choose: "Choose...",
+      level: "Level",
+      speedEV: "Speed EVs",
+      nature: "Nature",
+      positiveNature: "+Speed",
+      neutralNature: "Neutral",
+      negativeNature: "-Speed",
+      tailwind: "Tailwind",
+      finalSpeed: "Final Speed",
+      baseSpeed: "Base Speed:",
+      compareAgainst: "Compare Against",
+      minSpeed: "Min Speed",
+      customSpeed: "Custom",
+      maxSpeed: "Max Speed",
+      opponentEV: "Opponent EVs",
+      positiveNatureCheck: "+Speed Nature",
+      results: "Results",
+      slowerThan: "Slower Than You",
+      fasterThan: "Faster Than You",
+      slowerCount: "slower",
+      fasterCount: "faster",
+      noSlower: "No Pokémon slower than you!",
+      noFaster: "No Pokémon faster than you!",
+      choiceScarf: "Choice Scarf",
+      on: "ON",
+      off: "OFF"
     },
     
     // Pokemon Panel
@@ -401,7 +520,9 @@ export const translations = {
     common: {
       loading: "Loading...",
       error: "Error",
-      close: "Close"
+      close: "Close",
+      clear: "Clear",
+      noResults: "No results"
     },
 
     // Types

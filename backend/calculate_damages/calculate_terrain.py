@@ -36,10 +36,11 @@ def compute_terrain_multiplier(field: Dict, mv_type: Optional[str], move: Dict, 
         return terrain_mult, effects
 
     if t in ("misty",):
-        # misty prevents status and halves Dragon power on grounded targets in Gen9? historically half Dragon
+        # misty prevents status. Halve damage taken by grounded Pokémon from
+        # Dragon-type moves: apply when the defender is grounded.
         if mv_type == "dragon" and defender.get("is_grounded", True):
             terrain_mult = 0.5
-            effects["halve_power"] = True
+            effects["halve_dragon"] = True
         effects["name"] = "misty"
         effects["prevent_status"] = True
         return terrain_mult, effects

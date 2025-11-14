@@ -89,6 +89,13 @@ def apply_ability_effects(
         A = float(A) * 1.5
         effects["guts"] = True
 
+    # Solar Power: increase Special Attack by 50% under harsh sunlight for special moves
+    if atk_ability == "solar-power" and category == "special":
+        weather = (field.get("weather") or "").lower()
+        if weather in ("sun", "harsh-sunshine", "harsh sunshine", "desolate-land", "desolate land"):
+            A = float(A) * 1.5
+            effects["solar_power"] = True
+
     # Aerilate / Pixilate / Refrigerate / Galvanize: treat Normal moves as other type + 20%
     mapping = {
         "aerilate": "flying",

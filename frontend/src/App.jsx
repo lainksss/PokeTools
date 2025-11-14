@@ -4,7 +4,14 @@ import { useTranslation } from './i18n/LanguageContext'
 
 export default function App() {
   const { t, language, changeLanguage } = useTranslation()
-  
+  const [scale, setScale] = React.useState(() => {
+    try { return localStorage.getItem('ui-scale') || 'normal' } catch { return 'normal' }
+  })
+
+  React.useEffect(() => {
+    try { localStorage.setItem('ui-scale', scale) } catch {}
+  }, [scale])
+
   return (
     <div className="app-root">
       <header className="app-header">
@@ -15,23 +22,46 @@ export default function App() {
           <NavLink to="/threats" className={({isActive}) => isActive ? 'active' : ''}>{t('nav.threats')}</NavLink>
           <NavLink to="/coverage" className={({isActive}) => isActive ? 'active' : ''}>{t('nav.coverage') || 'Coverage'}</NavLink>
           <NavLink to="/type-coverage" className={({isActive}) => isActive ? 'active' : ''}>{t('nav.typeCoverage') || 'Type Coverage'}</NavLink>
+          <NavLink to="/speed-checker" className={({isActive}) => isActive ? 'active' : ''}>{t('nav.speedChecker') || 'Speed Checker'}</NavLink>
         </nav>
-        <div className="language-selector">
-          <button 
-            className={`lang-button ${language === 'fr' ? 'active' : ''}`}
-            onClick={() => changeLanguage('fr')}
-          >
-            🇫🇷 FR
-          </button>
-          <button 
-            className={`lang-button ${language === 'en' ? 'active' : ''}`}
-            onClick={() => changeLanguage('en')}
-          >
-            🇬🇧 EN
-          </button>
+        <div className="header-controls">
+          <div className="display-scale" role="group" aria-label="Display scale">
+            <button
+              className={`scale-button ${scale === 'small' ? 'active' : ''}`}
+              onClick={() => setScale('small')}
+              title="Small UI"
+            >S</button>
+            <button
+              className={`scale-button ${scale === 'normal' ? 'active' : ''}`}
+              onClick={() => setScale('normal')}
+              title="Normal UI"
+            >M</button>
+            <button
+              className={`scale-button ${scale === 'large' ? 'active' : ''}`}
+              onClick={() => setScale('large')}
+              title="Large UI"
+            >L</button>
+          </div>
+
+          <div className="language-selector">
+            <button 
+              className={`lang-button ${language === 'fr' ? 'active' : ''}`}
+              onClick={() => changeLanguage('fr')}
+              title="Français"
+            >
+              🇫🇷 FR
+            </button>
+            <button 
+              className={`lang-button ${language === 'en' ? 'active' : ''}`}
+              onClick={() => changeLanguage('en')}
+              title="English"
+            >
+              🇬🇧 EN
+            </button>
+          </div>
         </div>
       </header>
-      <main className="app-main">
+      <main className={`app-main scale-${scale}`}>
         <Outlet />
       </main>
       <footer className="app-footer">Made by Lainkss (@lainkss on discord)</footer>

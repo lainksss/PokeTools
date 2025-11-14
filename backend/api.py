@@ -129,6 +129,55 @@ def build_actor_from_payload(p):
         "tera_type": tera_type,
         "orig_types": original_types,  # Types d'origine (pour le STAB)
     }
+    # Include held item if provided
+    if p.get("item"):
+        actor["item"] = p.get("item")
+
+    # Try to determine species slug and evolution info from data files when possible
+    try:
+        all_pok = _load_json("all_pokemon.json") or {}
+        evo = _load_json("pokemon_evolution.json") or {}
+        # p may provide pokemon_id
+        poke_id = p.get("pokemon_id") or p.get("id") or None
+        if poke_id is not None:
+            for slug, dd in all_pok.items():
+                if dd and dd.get("id") == poke_id:
+                    actor["species"] = slug
+                    break
+        # can_evolve info
+        if actor.get("species"):
+            evo_info = evo.get(actor["species"], {})
+            actor["can_evolve"] = bool(evo_info.get("can_evolve", False))
+        # Determine weight_kg: prefer explicit payload override, else lookup from data file
+        try:
+            # payload can provide a current weight (e.g. after Autotomize/Minimize)
+            if p.get("weight_kg") is not None:
+                actor["weight_kg"] = float(p.get("weight_kg"))
+            else:
+                weights = _load_json("all_pokemon_weight_height.json") or {}
+                # Try by poke_id first
+                if poke_id is not None and str(poke_id) in weights:
+                    actor["weight_kg"] = float(weights.get(str(poke_id), {}).get("weight_kg", 0.0))
+                else:
+                    # Try by species slug -> lookup id
+                    sp = actor.get("species")
+                    if sp and sp in all_pok:
+                        sp_id = all_pok.get(sp, {}).get("id")
+                        if sp_id and str(sp_id) in weights:
+                            actor["weight_kg"] = float(weights.get(str(sp_id), {}).get("weight_kg", 0.0))
+        except Exception:
+            # ignore weight lookup errors
+            pass
+    except Exception:
+        # ignore any errors; these fields are optional
+        pass
+    # Include consumed items list if provided (used for one-use items like gems/berries)
+    consumed = p.get("consumed_items") or p.get("consumed")
+    if consumed:
+        try:
+            actor["consumed_items"] = list(consumed)
+        except Exception:
+            actor["consumed_items"] = []
     return actor
 
 
@@ -194,6 +243,88 @@ def api_calc_damage():
         # Fusionner les données (priorité aux données du payload pour les valeurs déjà présentes)
         move_data = {**complete_move_data, **move_data}
 
+    # --- Compute weight-based move power (Low Kick / Grass Knot / Heat Crash / Heavy Slam)
+    def _compute_weight_based_power(move, attacker, defender, gen=9):
+        """Return a copy of move with power set when it depends on weight.
+
+        Rules implemented (from data/all_pokemon_weight_moves.json):
+        - low-kick / grass-knot: target-weight thresholds -> {20,40,60,80,100,120}
+        - heavy-slam / heat-crash: ratio user_weight/target_weight thresholds -> {40,60,80,100,120}
+
+        The function prefers actor['weight_kg'] if present. If target weight is missing
+        or zero, heavy-slam/heat-crash will return max power 120 to avoid division by zero.
+        """
+        name = move.get("name")
+        if not name:
+            return move
+
+        name = name.lower()
+
+        # Helper to read weight from actor dict (already set in build_actor_from_payload or overridden)
+        def _actor_weight(a):
+            try:
+                w = a.get("weight_kg")
+                if w is None:
+                    return None
+                return float(w)
+            except Exception:
+                return None
+
+        # Low Kick / Grass Knot: use defender weight
+        if name in ("low-kick", "grass-knot"):
+            tgt_w = _actor_weight(defender)
+            if tgt_w is None:
+                return move
+            # thresholds in kg
+            if tgt_w <= 10:
+                power = 20
+            elif tgt_w <= 25:
+                power = 40
+            elif tgt_w <= 50:
+                power = 60
+            elif tgt_w <= 100:
+                power = 80
+            elif tgt_w <= 200:
+                power = 100
+            else:
+                power = 120
+            new = dict(move)
+            new["power"] = power
+            return new
+
+        # Heavy Slam / Heat Crash: compare attacker weight to defender weight
+        if name in ("heavy-slam", "heat-crash"):
+            atk_w = _actor_weight(attacker)
+            tgt_w = _actor_weight(defender)
+            if tgt_w is None or tgt_w <= 0 or atk_w is None:
+                # If missing or zero target weight, conservative: return max power
+                new = dict(move)
+                new["power"] = 120
+                return new
+            ratio = atk_w / tgt_w
+            if ratio <= 2:
+                power = 40
+            elif ratio <= 3:
+                power = 60
+            elif ratio <= 4:
+                power = 80
+            elif ratio <= 5:
+                power = 100
+            else:
+                power = 120
+            new = dict(move)
+            new["power"] = power
+            return new
+
+        return move
+
+    # apply weight-based power computation
+    try:
+        move_data = _compute_weight_based_power(move_data, attacker, defender, gen=payload.get("gen", 9))
+    except Exception:
+        # if anything fails, keep original move_data
+        pass
+
     # Calculer les dégâts
     try:
         # Ajouter battle_mode au field si fourni
@@ -228,15 +359,18 @@ def api_health():
 def api_pokemon_list():
     """Retourne la liste complète des pokémons avec leurs stats de base."""
     pok = _load_json("all_pokemon.json") or {}
+    evo = _load_json("pokemon_evolution.json") or {}
     results = []
     for slug, data in pok.items():
         if not data:
             continue
+        evo_info = evo.get(slug, {})
         entry = {
             "id": data.get("id"),
             "name": slug,
             "types": data.get("types", []),
-            "base_stats": data.get("base_stats", {})
+            "base_stats": data.get("base_stats", {}),
+            "can_evolve": evo_info.get("can_evolve", False)
         }
         results.append(entry)
     # Trier par ID
@@ -264,6 +398,35 @@ def api_pokemon_moves(pokemon_id: int):
     """Retourne la liste des moves d'un pokémon par son ID."""
     mapping = _load_json("all_pokemon_moves.json") or {}
     moves = mapping.get(str(pokemon_id))
+    # If not found, try to handle mega forms by falling back to the base form's moves
+    if moves is None:
+        try:
+            all_pok = _load_json("all_pokemon.json") or {}
+            # find slug for this pokemon_id
+            slug = None
+            for s, d in all_pok.items():
+                if d and d.get("id") == pokemon_id:
+                    slug = s
+                    break
+            if slug and "-mega" in slug:
+                # derive base slug by removing the '-mega' part and any '-x'/'-y' suffix
+                # examples: 'charizard-mega-x' -> 'charizard', 'venusaur-mega' -> 'venusaur'
+                if slug.endswith(('-x', '-y')) and "-mega-" in slug:
+                    base_slug = slug.split("-mega", 1)[0]
+                else:
+                    base_slug = slug.replace("-mega", "")
+
+                # lookup base id
+                base_id = None
+                base_entry = all_pok.get(base_slug)
+                if base_entry:
+                    base_id = base_entry.get("id")
+
+                if base_id:
+                    moves = mapping.get(str(base_id))
+        except Exception:
+            moves = None
+
     if moves is None:
         return jsonify({"error": "moves not found"}), 404
     
@@ -308,6 +471,99 @@ def api_pokemon_names():
     return jsonify(names_data)
 
 
+@app.route("/api/move-names", methods=["GET"])
+def api_move_names():
+    """Retourne les traductions des noms d'attaques (toutes langues)."""
+    moves_data = _load_json("all_move_names_multilang.json") or {}
+    return jsonify(moves_data)
+
+
+@app.route("/api/abilities", methods=["GET"])
+def api_abilities():
+    """Return a list of ability objects with slug, en/fr names and descriptions.
+
+    The source of truth for slugs is `all_pokemon_abilities.json` which maps
+    pokemon IDs to ability slugs. Translations/descriptions are read from
+    `all_ability_translations.json` (indexed by numeric id). We attempt to
+    match translation entries to slugs by comparing the English name (lowercased)
+    to the slug with hyphens replaced by spaces.
+    """
+    # Load raw sources
+    abilities_mapping = _load_json("all_pokemon_abilities.json") or {}
+    ability_translations = _load_json("all_ability_translations.json") or {}
+
+    # Build unique slug set from abilities_mapping
+    slug_set = set()
+    for k, v in abilities_mapping.items():
+        if isinstance(v, list):
+            for slug in v:
+                if slug:
+                    slug_set.add(slug)
+
+    results = []
+    # Create a list of translation entries for faster lookup
+    entries = []
+    for aid, data in (ability_translations.items() if isinstance(ability_translations, dict) else []):
+        try:
+            en = data.get("names", {}).get("en")
+            fr = data.get("names", {}).get("fr")
+            desc_en = data.get("descriptions", {}).get("en", "")
+            desc_fr = data.get("descriptions", {}).get("fr", "")
+            entries.append({"id": aid, "en": en, "fr": fr, "desc_en": desc_en, "desc_fr": desc_fr})
+        except Exception:
+            continue
+
+    for slug in sorted(slug_set):
+        # normalize slug to compare with English name
+        norm = slug.replace("-", " ").lower()
+        found = None
+        for e in entries:
+            if not e.get("en"):
+                continue
+            if e.get("en").lower() == norm:
+                found = e
+                break
+
+        if found:
+            obj = {
+                "slug": slug,
+                "en": found.get("en") or slug,
+                "fr": found.get("fr") or found.get("en") or slug,
+                "description_en": found.get("desc_en") or "",
+                "description_fr": found.get("desc_fr") or ""
+            }
+        else:
+            # fallback: use slug as name
+            obj = {
+                "slug": slug,
+                "en": slug,
+                "fr": slug,
+                "description_en": "",
+                "description_fr": ""
+            }
+        results.append(obj)
+
+    return jsonify({"abilities": results, "count": len(results)})
+
+
+@app.route("/api/items", methods=["GET"])
+def api_items():
+    """Return localized items registry for frontend consumption."""
+    items_data = _load_json("all_items.json") or {}
+    # Transform object to array with slugs
+    items_list = []
+    for slug, data in items_data.items():
+        item_obj = {
+            "slug": slug,
+            "en": data.get("en", slug),
+            "fr": data.get("fr", slug),
+            "description_en": data.get("description", {}).get("en", ""),
+            "description_fr": data.get("description", {}).get("fr", "")
+        }
+        items_list.append(item_obj)
+    return jsonify({"items": items_list, "count": len(items_list)})
+
+
 @app.route("/api/natures", methods=["GET"])
 def api_natures():
     """Retourne la liste de toutes les natures avec leurs effets."""
@@ -334,6 +590,13 @@ def api_find_threats():
     defender_payload = data.get("defender")
     ko_mode = data.get("ko_mode", "OHKO")  # 'OHKO' or '2HKO'
     field = data.get("field", {})
+    analysis_options = data.get("analysis_options", {}) or {}
+
+    attack_mode = analysis_options.get("attack_mode", "default")
+    custom_evs = int(analysis_options.get("custom_evs", 0) or 0)
+    nature_boost = bool(analysis_options.get("nature_boost", False))
+    item_choice = bool(analysis_options.get("item_choice", False))
+    life_orb = bool(analysis_options.get("life_orb", False))
 
     if not defender_payload:
         return jsonify({"error": "missing defender"}), 400
@@ -350,16 +613,17 @@ def api_find_threats():
 
     threats = []
     
-    # Natures qui augmentent l'attaque
-    attack_boosting_natures = []
-    sp_attack_boosting_natures = []
-    
+    # Natures qui augmentent l'attaque (choisir la première disponible)
+    attack_boosting_nature = None
+    sp_attack_boosting_nature = None
     for nature_name, nature_data in all_natures.items():
         inc = nature_data.get("increase")
-        if inc == "attack":
-            attack_boosting_natures.append(nature_name)
-        elif inc == "special-attack":
-            sp_attack_boosting_natures.append(nature_name)
+        if inc == "attack" and not attack_boosting_nature:
+            attack_boosting_nature = nature_name
+        elif inc == "special-attack" and not sp_attack_boosting_nature:
+            sp_attack_boosting_nature = nature_name
+        if attack_boosting_nature and sp_attack_boosting_nature:
+            break
 
     # Pour chaque Pokémon
     for poke_slug, poke_data in all_pokemon.items():
@@ -373,152 +637,147 @@ def api_find_threats():
         
         # Récupérer les moves de ce Pokémon
         poke_moves = pokemon_moves_map.get(str(poke_id), [])
-        
-        # Tester 2 variants: 
-        # 1. Full Attack EVs (252 Attack + 252 Sp.Attack)
-        # 2. Full Attack EVs + Nature qui booste l'attaque
-        
-        variants = [
-            {
-                "name": "Max EVs",
-                "evs": {"hp": 0, "attack": 252, "defense": 0, "special_attack": 252, "special_defense": 0, "speed": 0},
-                "nature": "hardy"
+        if not poke_moves:
+            continue
+
+        # Pour chaque move, déterminer EVs/nature/item selon les analysis_options
+        ko_moves = []
+        for move_slug in poke_moves:
+            move_data = all_moves.get(move_slug, {})
+            damage_class = move_data.get("damage_class")
+            power = move_data.get("power")
+
+            # Ignorer les moves de statut
+            if damage_class not in ("physical", "special"):
+                continue
+
+            # Determine evs and nature based on attack_mode
+            if attack_mode == 'none':
+                evs = {"hp": 0, "attack": 0, "defense": 0, "special_attack": 0, "special_defense": 0, "speed": 0}
+                nature = 'hardy'
+            elif attack_mode == 'custom':
+                # Apply custom_evs to both Attack and Sp. Atk as requested
+                evs = {"hp": 0, "attack": custom_evs, "defense": 0, "special_attack": custom_evs, "special_defense": 0, "speed": 0}
+                if nature_boost:
+                    nature = attack_boosting_nature if damage_class == 'physical' else sp_attack_boosting_nature or 'hardy'
+                else:
+                    nature = 'hardy'
+            elif attack_mode == 'max':
+                evs = {"hp": 0, "attack": 252, "defense": 0, "special_attack": 252, "special_defense": 0, "speed": 0}
+                if nature_boost:
+                    nature = attack_boosting_nature if damage_class == 'physical' else sp_attack_boosting_nature or 'hardy'
+                else:
+                    nature = 'hardy'
+            else:  # default behavior
+                if damage_class == 'physical':
+                    evs = {"hp": 0, "attack": 252, "defense": 0, "special_attack": 0, "special_defense": 0, "speed": 0}
+                    nature = attack_boosting_nature or 'hardy'
+                else:
+                    evs = {"hp": 0, "attack": 0, "defense": 0, "special_attack": 252, "special_defense": 0, "speed": 0}
+                    nature = sp_attack_boosting_nature or 'hardy'
+
+            # Determine item (life orb or choice) if requested (custom options only meaningful when custom selected, but apply if set)
+            item = None
+            if life_orb:
+                item = 'life-orb'
+            elif item_choice:
+                # Choose choice item variant based on damage class
+                item = 'choice-band' if damage_class == 'physical' else 'choice-specs'
+            elif attack_mode == 'max':
+                # En mode max, ajouter automatiquement Choice Band ou Choice Specs
+                item = 'choice-band' if damage_class == 'physical' else 'choice-specs'
+
+            # Construire le payload pour le calcul
+            calc_payload = {
+                "attacker": {
+                    "pokemon_id": poke_id,
+                    "base_stats": base_stats,
+                    "evs": evs,
+                    "nature": nature,
+                    "types": poke_types,
+                    "ability": None,
+                    "item": item,
+                    "is_terastallized": False,
+                    "tera_type": None
+                },
+                "defender": defender_payload,
+                "move": {
+                    "name": move_slug,
+                    "type": move_data.get("type"),
+                    "power": power,
+                    "damage_class": damage_class
+                },
+                "field": field,
+                "is_critical": False
             }
-        ]
-        
-        # Ajouter variants avec natures
-        if attack_boosting_natures:
-            variants.append({
-                "name": "Max EVs + Atk Nature",
-                "evs": {"hp": 0, "attack": 252, "defense": 0, "special_attack": 0, "special_defense": 0, "speed": 0},
-                "nature": attack_boosting_natures[0]
-            })
-        
-        if sp_attack_boosting_natures:
-            variants.append({
-                "name": "Max EVs + SpA Nature",
-                "evs": {"hp": 0, "attack": 0, "defense": 0, "special_attack": 252, "special_defense": 0, "speed": 0},
-                "nature": sp_attack_boosting_natures[0]
-            })
-        
-        for variant in variants:
-            # Construire l'attaquant
-            attacker_payload = {
-                "pokemon_id": poke_id,
-                "base_stats": base_stats,
-                "evs": variant["evs"],
-                "nature": variant["nature"],
-                "types": poke_types,
-                "ability": None,
-                "is_terastallized": False,
-                "tera_type": None
+
+            try:
+                attacker_calc = build_actor_from_payload(calc_payload["attacker"])
+                move = calc_payload["move"]
+                is_crit = calc_payload.get("is_critical", False)
+
+                dmg_result = calculate_damage(
+                    attacker=attacker_calc,
+                    defender=defender,
+                    move=move,
+                    field=field,
+                    is_critical=is_crit
+                )
+
+                damage_min = dmg_result.get("damage_min") or 0
+                damage_max = dmg_result.get("damage_max") or 0
+
+                # Vérifier si c'est un KO
+                is_ko = False
+                ko_percent = 0
+
+                if ko_mode == "OHKO":
+                    if damage_max >= defender_hp:
+                        is_ko = True
+                        if damage_min >= defender_hp:
+                            ko_percent = 100
+                        else:
+                            total_rolls = max(1, damage_max - damage_min + 1)
+                            ko_rolls = max(1, damage_max - defender_hp + 1)
+                            ko_percent = min(100, int((ko_rolls / total_rolls) * 100))
+                else:  # 2HKO approximation
+                    if damage_max * 2 >= defender_hp:
+                        is_ko = True
+                        if damage_min * 2 >= defender_hp:
+                            ko_percent = 100
+                        else:
+                            ko_percent = 50
+
+                if is_ko:
+                    ko_moves.append({
+                        "move_name": move_slug,
+                        "move_power": power,
+                        "damage_min": damage_min,
+                        "damage_max": damage_max,
+                        "ko_percent": ko_percent,
+                        "guaranteed_ko": ko_percent == 100
+                    })
+
+            except Exception:
+                continue
+
+        # Si on a trouvé des moves qui KO pour ce pokémon
+        if ko_moves:
+            ko_moves.sort(key=lambda x: (not x.get("guaranteed_ko", False), -x.get("damage_max", 0)))
+            best_move = ko_moves[0]
+            threat_entry = {
+                "attacker_name": poke_name.capitalize(),
+                "attacker_id": poke_id,
+                "variant": attack_mode,
+                "move_name": best_move["move_name"],
+                "move_power": best_move["move_power"],
+                "damage_min": best_move["damage_min"],
+                "damage_max": best_move["damage_max"],
+                "ko_percent": best_move["ko_percent"],
+                "guaranteed_ko": best_move["guaranteed_ko"],
+                "other_moves_count": len(ko_moves) - 1
             }
-            
-            ko_moves = []  # Liste des moves qui peuvent KO
-            
-            # Tester chaque move
-            for move_slug in poke_moves:
-                move_data = all_moves.get(move_slug, {})
-                damage_class = move_data.get("damage_class")
-                power = move_data.get("power")
-                
-                # OPTIMISATION: Ignorer uniquement les moves de statut (pas physiques/spéciaux)
-                if damage_class == "status":
-                    continue
-                
-                # Construire le payload pour le calcul
-                calc_payload = {
-                    "attacker": attacker_payload,
-                    "defender": defender_payload,
-                    "move": {
-                        "name": move_slug,
-                        "type": move_data.get("type"),
-                        "power": power,
-                        "damage_class": damage_class
-                    },
-                    "field": field,
-                    "is_critical": False
-                }
-                
-                try:
-                    attacker_calc = build_actor_from_payload(calc_payload["attacker"])
-                    move = calc_payload["move"]
-                    is_crit = calc_payload.get("is_critical", False)
-                    
-                    dmg_result = calculate_damage(
-                        attacker=attacker_calc,
-                        defender=defender,
-                        move=move,
-                        field=field,
-                        is_critical=is_crit
-                    )
-                    
-                    damage_min = dmg_result["damage_min"]
-                    damage_max = dmg_result["damage_max"]
-                    
-                    # Vérifier si c'est un KO
-                    is_ko = False
-                    ko_percent = 0
-                    
-                    if ko_mode == "OHKO":
-                        # OHKO: damage_max >= defender_hp
-                        if damage_max >= defender_hp:
-                            is_ko = True
-                            # Calculer le pourcentage de KO
-                            if damage_min >= defender_hp:
-                                ko_percent = 100
-                            else:
-                                # Approximation: probabilité linéaire entre min et max
-                                ko_rolls = damage_max - defender_hp + 1
-                                total_rolls = damage_max - damage_min + 1
-                                ko_percent = min(100, int((ko_rolls / total_rolls) * 100))
-                    
-                    elif ko_mode == "2HKO":
-                        # 2HKO: damage_max * 2 >= defender_hp
-                        if damage_max * 2 >= defender_hp:
-                            is_ko = True
-                            if damage_min * 2 >= defender_hp:
-                                ko_percent = 100
-                            else:
-                                # Calcul simplifié pour 2HKO
-                                ko_percent = 50  # Approximation
-                    
-                    if is_ko:
-                        ko_moves.append({
-                            "move_name": move_slug,
-                            "move_power": power,
-                            "damage_min": damage_min,
-                            "damage_max": damage_max,
-                            "ko_percent": ko_percent,
-                            "guaranteed_ko": ko_percent == 100
-                        })
-                
-                except Exception as e:
-                    # Ignorer les erreurs de calcul
-                    continue
-            
-            # Si ce variant a au moins un move qui KO
-            if ko_moves:
-                # Trier par KO garanti d'abord, puis par damage_max
-                ko_moves.sort(key=lambda x: (not x["guaranteed_ko"], -x["damage_max"]))
-                
-                # Prendre le meilleur move
-                best_move = ko_moves[0]
-                
-                threat_entry = {
-                    "attacker_name": poke_name.capitalize(),
-                    "attacker_id": poke_id,
-                    "variant": variant["name"],
-                    "move_name": best_move["move_name"],
-                    "move_power": best_move["move_power"],
-                    "damage_min": best_move["damage_min"],
-                    "damage_max": best_move["damage_max"],
-                    "ko_percent": best_move["ko_percent"],
-                    "guaranteed_ko": best_move["guaranteed_ko"],
-                    "other_moves_count": len(ko_moves) - 1
-                }
-                
-                threats.append(threat_entry)
+            threats.append(threat_entry)
     
     # Trier les menaces par KO garanti d'abord, puis par damage_max
     threats.sort(key=lambda x: (not x["guaranteed_ko"], -x["damage_max"]))
@@ -542,6 +801,13 @@ def api_find_threats_stream():
     defender_payload = data.get("defender")
     ko_mode = data.get("ko_mode", "OHKO")
     field = data.get("field", {})
+    analysis_options = data.get("analysis_options", {}) or {}
+
+    attack_mode = analysis_options.get("attack_mode", "default")
+    custom_evs = int(analysis_options.get("custom_evs", 0) or 0)
+    nature_boost = bool(analysis_options.get("nature_boost", False))
+    item_choice = bool(analysis_options.get("item_choice", False))
+    life_orb = bool(analysis_options.get("life_orb", False))
 
     if not defender_payload:
         return jsonify({"error": "missing defender"}), 400
@@ -615,23 +881,40 @@ def api_find_threats_stream():
                     move_data = all_moves.get(move_slug, {})
                     damage_class = move_data.get("damage_class")
                     
-                    # DEBUG pour le premier Pokémon
-                    if processed == 0 and len(ko_attacks) == 0:
-                        print(f"Testing {poke_slug} - Move: {move_slug} - Class: {damage_class}")
-                    
                     # Ignorer les moves de statut
                     if damage_class not in ["physical", "special"]:
                         continue
-                    
-                    # Choisir les EVs et la nature selon le type de move
-                    if damage_class == "physical":
-                        evs = {"hp": 0, "attack": 252, "defense": 0, "special_attack": 0, "special_defense": 0, "speed": 0}
-                        nature = attack_boost_nature or "hardy"
-                    else:  # special
-                        evs = {"hp": 0, "attack": 0, "defense": 0, "special_attack": 252, "special_defense": 0, "speed": 0}
-                        nature = sp_attack_boost_nature or "hardy"
+
+                    # Choisir les EVs et la nature selon le type de move et les analysis_options
+                    if attack_mode == 'none':
+                        evs = {"hp": 0, "attack": 0, "defense": 0, "special_attack": 0, "special_defense": 0, "speed": 0}
+                        nature = 'hardy'
+                    elif attack_mode == 'custom':
+                        evs = {"hp": 0, "attack": custom_evs, "defense": 0, "special_attack": custom_evs, "special_defense": 0, "speed": 0}
+                        nature = (attack_boost_nature if damage_class == 'physical' else sp_attack_boost_nature) if nature_boost else 'hardy'
+                    elif attack_mode == 'max':
+                        evs = {"hp": 0, "attack": 252, "defense": 0, "special_attack": 252, "special_defense": 0, "speed": 0}
+                        nature = (attack_boost_nature if damage_class == 'physical' else sp_attack_boost_nature) if nature_boost else 'hardy'
+                    else:
+                        # default
+                        if damage_class == "physical":
+                            evs = {"hp": 0, "attack": 252, "defense": 0, "special_attack": 0, "special_defense": 0, "speed": 0}
+                            nature = attack_boost_nature or "hardy"
+                        else:
+                            evs = {"hp": 0, "attack": 0, "defense": 0, "special_attack": 252, "special_defense": 0, "speed": 0}
+                            nature = sp_attack_boost_nature or "hardy"
                     
                     # Construire l'attaquant pour ce move
+                    # Determine item if requested
+                    item = None
+                    if life_orb:
+                        item = 'life-orb'
+                    elif item_choice:
+                        item = 'choice-band' if damage_class == 'physical' else 'choice-specs'
+                    elif attack_mode == 'max':
+                        # En mode max, ajouter automatiquement Choice Band ou Choice Specs
+                        item = 'choice-band' if damage_class == 'physical' else 'choice-specs'
+
                     attacker_payload = {
                         "pokemon_id": poke_id,
                         "base_stats": base_stats,
@@ -639,6 +922,7 @@ def api_find_threats_stream():
                         "nature": nature,
                         "types": poke_types,
                         "ability": poke_ability,  # Utiliser l'ability si le Pokémon n'en a qu'une
+                        "item": item,
                         "is_terastallized": False,
                         "tera_type": None
                     }
@@ -670,12 +954,6 @@ def api_find_threats_stream():
                         damage_min = min(damage_all)
                         damage_max = max(damage_all)
                         damage_rolls = damage_all
-                        
-                        # DEBUG pour le premier Pokémon
-                        if processed == 0 and len(ko_attacks) == 0:
-                            print(f"  -> Damage: {damage_min}-{damage_max} vs {defender_hp} HP")
-                            print(f"  -> Attacker Attack: {attacker.get('attack')}, SpA: {attacker.get('special_attack')}")
-                            print(f"  -> Nature: {nature}, EVs: Attack={evs.get('attack')}, SpA={evs.get('special_attack')}")
                         
                         # Vérifier si c'est un KO
                         is_ko = False
@@ -780,10 +1058,6 @@ def api_find_threats_stream():
                 
                 # Si on a trouvé au moins une attaque qui KO
                 if ko_attacks:
-                    # DEBUG
-                    if total_threats < 3:
-                        print(f"\n*** THREAT FOUND: {poke_slug} with {len(ko_attacks)} KO moves ***\n")
-                    
                     # Trier par % de KO (meilleurs d'abord)
                     ko_attacks.sort(key=lambda x: (-x["ko_percent"], -x["damage_max"]))
                     
@@ -833,6 +1107,13 @@ def api_analyze_coverage_stream():
     field_data = payload.get("field", {})
     bulk_mode = payload.get("bulk_mode", "none")  # 'none', 'custom', 'max'
     custom_evs = payload.get("custom_evs", 0)  # EVs personnalisés pour le mode 'custom'
+    # Nouveaux champs bulk (front-end envoie ces champs pour le mode 'custom')
+    custom_def_evs = int(payload.get("custom_def_evs", 0) or 0)
+    custom_spdef_evs = int(payload.get("custom_spdef_evs", 0) or 0)
+    custom_hp_evs = int(payload.get("custom_hp_evs", 0) or 0)
+    bulk_nature_mode = payload.get("bulk_nature_mode", "byMove")  # 'byMove' or 'def'
+    bulk_assault_vest = bool(payload.get("bulk_assault_vest", False))
+    bulk_evoluroc = bool(payload.get("bulk_evoluroc", False))
 
     if not attacker_data:
         return jsonify({"error": "attacker required"}), 400
@@ -854,6 +1135,9 @@ def api_analyze_coverage_stream():
             # Construire l'attaquant
             attacker = build_actor_from_payload(attacker_data)
 
+            # Charger la table d'évolution pour décider de l'application d'Evoluroc
+            evo_map = _load_json("pokemon_evolution.json") or {}
+
             # Envoyer l'init
             yield f"data: {json.dumps({'type': 'init', 'total': total_pokemon})}\n\n"
 
@@ -870,13 +1154,22 @@ def api_analyze_coverage_stream():
                     evs = {"hp": 0, "defense": 0, "special_defense": 0}
                     nature = "hardy"
                 elif bulk_mode == "custom":
-                    # Bulk personnalisé : répartir les EVs en moitié-moitié
-                    ev_per_stat = custom_evs // 2
-                    evs = {"hp": ev_per_stat, "defense": ev_per_stat, "special_defense": ev_per_stat}
-                    nature = "hardy"
+                    # Bulk personnalisé : utiliser les EVs fournis par le frontend si présents
+                    # Frontend envoie `custom_def_evs`, `custom_spdef_evs`, `custom_hp_evs`.
+                    # On stocke les valeurs custom pour les adapter par attaque
+                    custom_hp = max(0, min(252, custom_hp_evs))
+                    custom_def = max(0, min(252, custom_def_evs))
+                    custom_spdef = max(0, min(252, custom_spdef_evs))
+                    evs = {"hp": custom_hp, "defense": 0, "special_defense": 0}
+                    # Nature: si le mode est 'byMove' on choisira plus bas selon l'attaque,
+                    # sinon on applique une nature défensive fixe ('bold')
+                    if bulk_nature_mode == "byMove":
+                        nature = "hardy"  # valeur par défaut, sera adaptée par attaque
+                    else:
+                        nature = "bold"
                 else:  # bulk_mode == "max"
-                    # Max bulk : 252 partout, nature sera adaptée par attaque
-                    evs = {"hp": 252, "defense": 252, "special_defense": 252}
+                    # Max bulk : sera adapté par attaque (252 HP + 252 dans la bonne défense)
+                    evs = {"hp": 252, "defense": 0, "special_defense": 0}
                     nature = "hardy"  # Sera changé pour chaque attaque
                 
                 # Tester chaque attaque et trouver la meilleure
@@ -895,25 +1188,63 @@ def api_analyze_coverage_stream():
                         else:
                             full_move_data = move_data
                         
-                        # Si mode max, adapter la nature selon le type d'attaque
+                        # Si mode max ou custom, adapter les EVs et la nature selon le type d'attaque
+                        defender_evs = evs.copy()
                         defender_nature = nature
                         if bulk_mode == "max":
                             damage_class = full_move_data.get("damage_class", "physical")
                             
-                            # Choisir la nature qui boost la défense appropriée
+                            # Répartir 252 HP + 252 dans la bonne défense (total 504 EVs, légal)
                             if damage_class == "special":
+                                defender_evs = {"hp": 252, "defense": 0, "special_defense": 252, "attack": 0, "special_attack": 0, "speed": 0}
                                 defender_nature = "calm"  # +Def Spé, -Attaque
                             else:
+                                defender_evs = {"hp": 252, "defense": 252, "special_defense": 0, "attack": 0, "special_attack": 0, "speed": 0}
                                 defender_nature = "bold"  # +Def, -Attaque
+                        elif bulk_mode == "custom":
+                            damage_class = full_move_data.get("damage_class", "physical")
+                            
+                            # Adapter les EVs custom selon l'attaque
+                            if damage_class == "special":
+                                defender_evs = {"hp": custom_hp, "defense": 0, "special_defense": custom_spdef, "attack": 0, "special_attack": 0, "speed": 0}
+                                if bulk_nature_mode == "byMove":
+                                    defender_nature = "calm"  # +Def Spé, -Attaque
+                            else:
+                                defender_evs = {"hp": custom_hp, "defense": custom_def, "special_defense": 0, "attack": 0, "special_attack": 0, "speed": 0}
+                                if bulk_nature_mode == "byMove":
+                                    defender_nature = "bold"  # +Def, -Attaque
+                        else:
+                            defender_evs = evs
                         
+                        # Déterminer l'item à appliquer au défenseur selon les options bulk
+                        item = None
+                        # poke contient le slug dans poke.get('name')
+                        slug = poke.get("name")
+                        can_evolve = False
+                        try:
+                            if slug and slug in evo_map:
+                                can_evolve = bool(evo_map.get(slug, {}).get("can_evolve", False))
+                        except Exception:
+                            can_evolve = False
+
+                        if bulk_evoluroc and can_evolve:
+                            # Use canonical item slug as present in data/all_items.json
+                            item = "eviolite"
+                        elif bulk_assault_vest:
+                            item = "assault-vest"
+                        elif bulk_mode == "max" and can_evolve:
+                            # En mode bulk max, ajouter automatiquement Eviolite si le Pokémon peut évoluer
+                            item = "eviolite"
+
                         # Construire le défenseur avec les paramètres appropriés
                         defender_payload = {
                             "pokemon_id": poke_id,
                             "base_stats": poke.get("base_stats", {}),
-                            "evs": evs,
+                            "evs": defender_evs,
                             "nature": defender_nature,
                             "types": poke.get("types", []),
                             "ability": None,
+                            "item": item,
                             "is_terastallized": False,
                             "tera_type": None
                         }

@@ -17,6 +17,13 @@ export default function Threats() {
   const [showOnlyGuaranteed, setShowOnlyGuaranteed] = useState(false)
   const [minRolls, setMinRolls] = useState(1) // Minimum de rolls pour afficher (1-16)
 
+  // Attacker analysis options
+  const [attackMode, setAttackMode] = useState('none') // 'default','none','custom','max' (default changed to 'none')
+  const [customAttackEV, setCustomAttackEV] = useState(0)
+  const [customNatureBoost, setCustomNatureBoost] = useState(false)
+  const [customItemChoice, setCustomItemChoice] = useState(false)
+  const [customLifeOrb, setCustomLifeOrb] = useState(false)
+
   const ALL_WEATHERS = ['none', 'sun', 'rain', 'sandstorm', 'snow']
   const ALL_TERRAINS = ['none', 'grassy', 'electric', 'misty', 'psychic']
 
@@ -38,6 +45,7 @@ export default function Threats() {
         nature: defender.nature,
         types: defender.types,
         ability: defender.ability,
+        item: defender.item || null,
         is_terastallized: defender.is_terastallized,
         tera_type: defender.tera_type
       },
@@ -45,6 +53,14 @@ export default function Threats() {
       field: {
         weather: weather === 'none' ? null : weather,
         terrain: terrain === 'none' ? null : terrain
+      }
+      ,
+      analysis_options: {
+        attack_mode: attackMode,
+        custom_evs: customAttackEV,
+        nature_boost: customNatureBoost,
+        item_choice: customItemChoice,
+        life_orb: customLifeOrb
       }
     }
 
@@ -135,6 +151,14 @@ export default function Threats() {
         weather: weather === 'none' ? null : weather,
         terrain: terrain === 'none' ? null : terrain
       }
+      ,
+      analysis_options: {
+        attack_mode: attackMode,
+        custom_evs: customAttackEV,
+        nature_boost: customNatureBoost,
+        item_choice: customItemChoice,
+        life_orb: customLifeOrb
+      }
     }
 
     try {
@@ -181,6 +205,7 @@ export default function Threats() {
             side="defender" 
             value={defender} 
             onChange={setDefender}
+            showTitle={false}
           />
         </div>
 
@@ -207,34 +232,125 @@ export default function Threats() {
             </div>
           </div>
 
-          <div className="form-group">
-            <label>{t('threats.weather')}</label>
-            <select 
-              value={weather}
-              onChange={e => setWeather(e.target.value)}
-              className="form-control"
-            >
-              {ALL_WEATHERS.map(w => (
-                <option key={w} value={w}>
-                  {t(`weather.${w}`)}
-                </option>
-              ))}
-            </select>
+          <div className="form-row">
+            <div className="form-group">
+              <label>{t('threats.weather')}</label>
+              <select 
+                value={weather}
+                onChange={e => setWeather(e.target.value)}
+                className="form-control"
+              >
+                {ALL_WEATHERS.map(w => (
+                  <option key={w} value={w}>
+                    {t(`weather.${w}`)}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label>{t('threats.terrain')}</label>
+              <select 
+                value={terrain}
+                onChange={e => setTerrain(e.target.value)}
+                className="form-control"
+              >
+                {ALL_TERRAINS.map(ter => (
+                  <option key={ter} value={ter}>
+                    {t(`terrain.${ter}`)}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
 
+          {/* Analysis options: horizontal buttons inspired by SpeedChecker */}
           <div className="form-group">
-            <label>{t('threats.terrain')}</label>
-            <select 
-              value={terrain}
-              onChange={e => setTerrain(e.target.value)}
-              className="form-control"
-            >
-              {ALL_TERRAINS.map(ter => (
-                <option key={ter} value={ter}>
-                  {t(`terrain.${ter}`)}
-                </option>
-              ))}
-            </select>
+            <label>{t('threats.attackOptions') || 'Attacker Options'}</label>
+            <div className="analysis-options">
+              <button
+                type="button"
+                className={`tailwind-button small option-button ${attackMode === 'none' ? 'active' : ''}`}
+                onClick={() => {
+                  setAttackMode('none')
+                  setCustomAttackEV(0)
+                  setCustomNatureBoost(false)
+                  setCustomItemChoice(false)
+                  setCustomLifeOrb(false)
+                }}
+              >
+                {t('threats.noAttack') || "Pas d'attaque"}
+              </button>
+
+              <button
+                type="button"
+                className={`tailwind-button large option-button ${attackMode === 'custom' ? 'active' : ''}`}
+                onClick={() => setAttackMode(prev => prev === 'custom' ? 'default' : 'custom')}
+              >
+                {t('threats.custom') || 'Personnalisé'}
+              </button>
+
+              <button
+                type="button"
+                className={`tailwind-button small option-button ${attackMode === 'max' ? 'active' : ''}`}
+                onClick={() => {
+                  setAttackMode('max')
+                  setCustomAttackEV(252)
+                  setCustomNatureBoost(true)
+                }}
+              >
+                {t('threats.maxAtk') || 'Max Atk/SpA'}
+              </button>
+            </div>
+
+            {/* Custom sub-options shown only when 'custom' is active */}
+            {attackMode === 'custom' && (
+              <div style={{ marginTop: 8 }}>
+                <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                  <label style={{ minWidth: 180 }}>{t('threats.customEVLabel') || 'EVs to assign (Atk & SpA each):'}</label>
+                  <input
+                    type="number"
+                    min="0"
+                    max="252"
+                    value={customAttackEV}
+                    onChange={(e) => setCustomAttackEV(Math.max(0, Math.min(252, parseInt(e.target.value) || 0)))}
+                  />
+                </div>
+
+                <div style={{ marginTop: 8, display: 'flex', gap: 8, alignItems: 'center' }}>
+                    <button
+                      type="button"
+                      className={`tailwind-button option-button ${customNatureBoost ? 'active' : ''}`}
+                      onClick={() => setCustomNatureBoost(prev => !prev)}
+                    >
+                      {t('threats.natureBoost') || '+ Atk/SpA nature'}
+                    </button>
+
+                    <button
+                      type="button"
+                      className={`tailwind-button option-button ${customItemChoice ? 'active' : ''}`}
+                      onClick={() => {
+                        setCustomItemChoice(prev => !prev)
+                        if (!customItemChoice) setCustomLifeOrb(false)
+                      }}
+                    >
+                      {t('threats.itemChoice') || 'Item Choix'}
+                    </button>
+
+                    <button
+                      type="button"
+                      className={`tailwind-button option-button ${customLifeOrb ? 'active' : ''}`}
+                      onClick={() => {
+                        setCustomLifeOrb(prev => !prev)
+                        if (!customLifeOrb) setCustomItemChoice(false)
+                      }}
+                    >
+                      {t('threats.lifeOrb') || 'Orbe Vie'}
+                    </button>
+                </div>
+              </div>
+            )}
+
           </div>
 
           <button 

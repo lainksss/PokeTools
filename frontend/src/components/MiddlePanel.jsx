@@ -40,6 +40,7 @@ export default function MiddlePanel({ left, right, setResult }) {
         nature: left.nature,
         types: left.types,
         ability: left.ability,
+        item: left.item || null,
         is_terastallized: left.is_terastallized,
         tera_type: left.tera_type,
         stages: left.boosts || {}
@@ -51,6 +52,7 @@ export default function MiddlePanel({ left, right, setResult }) {
         nature: right.nature,
         types: right.types,
         ability: right.ability,
+        item: right.item || null,
         is_terastallized: right.is_terastallized,
         tera_type: right.tera_type,
         stages: right.boosts || {}
@@ -62,7 +64,7 @@ export default function MiddlePanel({ left, right, setResult }) {
       },
       is_critical: isCritical,
       battle_mode: battleMode,
-      debug: true  // Activer le mode debug temporairement
+      debug: true
     }
 
     try {
@@ -112,34 +114,36 @@ export default function MiddlePanel({ left, right, setResult }) {
         </div>
       </div>
       
-      <div className="form-group">
-        <label>{t('calculate.weather')}</label>
-        <select 
-          value={weather}
-          onChange={e => setWeather(e.target.value)}
-          className="form-control"
-        >
-          {ALL_WEATHERS.map(w => (
-            <option key={w} value={w}>
-              {t(`weather.${w}`)}
-            </option>
-          ))}
-        </select>
-      </div>
+      <div className="form-row">
+        <div className="form-group">
+          <label>{t('calculate.weather')}</label>
+          <select 
+            value={weather}
+            onChange={e => setWeather(e.target.value)}
+            className="form-control"
+          >
+            {ALL_WEATHERS.map(w => (
+              <option key={w} value={w}>
+                {t(`weather.${w}`)}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      <div className="form-group">
-        <label>{t('calculate.terrain')}</label>
-        <select 
-          value={terrain}
-          onChange={e => setTerrain(e.target.value)}
-          className="form-control"
-        >
-          {ALL_TERRAINS.map(ter => (
-            <option key={ter} value={ter}>
-              {t(`terrain.${ter}`)}
-            </option>
-          ))}
-        </select>
+        <div className="form-group">
+          <label>{t('calculate.terrain')}</label>
+          <select 
+            value={terrain}
+            onChange={e => setTerrain(e.target.value)}
+            className="form-control"
+          >
+            {ALL_TERRAINS.map(ter => (
+              <option key={ter} value={ter}>
+                {t(`terrain.${ter}`)}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <div className="form-group">
