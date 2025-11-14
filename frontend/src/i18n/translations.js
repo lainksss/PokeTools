@@ -23,7 +23,9 @@ export const translations = {
       block_coverage_title: "Vérifier la couverture offensive",
       block_coverage_desc: "Analysez quelles attaques couvrent le mieux vos menaces et comblent les faiblesses (paramétrables !).",
       block_type_title: "Vérifier la couverture de type",
-      block_type_desc: "Évaluez les résistances et vulnérabilités pour compléter votre équipe."
+      block_type_desc: "Évaluez les résistances et vulnérabilités pour compléter votre équipe.",
+      block_speed_title: "Vérificateur de vitesse",
+      block_speed_desc: "Choisis ton pokemon, tes evs, et pleins de paramètres (pour toi ou pour les adversaires) !"
     },
     
     // Page Calculate
@@ -296,7 +298,9 @@ export const translations = {
       block_coverage_title: "Check offensive coverage",
       block_coverage_desc: "Analyze which moves best cover your threats and patch weaknesses (configurable).",
       block_type_title: "Check type coverage",
-      block_type_desc: "Evaluate resistances and vulnerabilities to round out your team."
+      block_type_desc: "Evaluate resistances and vulnerabilities to round out your team.",
+      block_speed_title: "Speed checker",
+      block_speed_desc: "Choose your Pokémon, your EVs, and lots of parameters (for you or for opponents)!"
     },
     
     // Page Calculate
