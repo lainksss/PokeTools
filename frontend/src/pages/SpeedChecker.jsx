@@ -16,6 +16,8 @@ export default function SpeedChecker() {
   const [ability, setAbility] = useState(null)
   const [speedBoost, setSpeedBoost] = useState(0) // -6 to +6
   const [tailwind, setTailwind] = useState(false)
+  // Choice Scarf toggle (user)
+  const [choiceScarf, setChoiceScarf] = useState(false)
   const level = 50 // Always level 50
   
   // Search functionality
@@ -28,6 +30,8 @@ export default function SpeedChecker() {
   const [comparisonMode, setComparisonMode] = useState('min') // 'min', 'custom', 'max'
   const [customEV, setCustomEV] = useState(0)
   const [customNature, setCustomNature] = useState(false)
+  // Choice Scarf toggle (middle panel)
+  const [choiceScarfMiddle, setChoiceScarfMiddle] = useState(false)
   
   // Right panel - Results
   const [showSlower, setShowSlower] = useState(true) // true = slower, false = faster
@@ -103,7 +107,9 @@ export default function SpeedChecker() {
   const userSpeed = selectedPokemon 
     ? calculateSpeed(selectedPokemon.base_stats.speed, level, speedEV, speedNature, speedBoost)
     : 0
-  const finalUserSpeed = tailwind ? userSpeed * 2 : userSpeed
+  let finalUserSpeed = userSpeed
+  if (choiceScarf) finalUserSpeed = Math.floor(finalUserSpeed * 1.5)
+  if (tailwind) finalUserSpeed = finalUserSpeed * 2
   
   // Get speed-related natures
   const speedNatures = allNatures.filter(n => 
@@ -140,15 +146,17 @@ export default function SpeedChecker() {
       }
 
       const opponentSpeed = calculateSpeed(pokemon.base_stats.speed, level, opponentEV, opponentNature)
-      const isFaster = finalUserSpeed > opponentSpeed
-      const speedDiff = finalUserSpeed - opponentSpeed
+      let opponentFinalSpeed = opponentSpeed
+      if (choiceScarfMiddle) opponentFinalSpeed = Math.floor(opponentFinalSpeed * 1.5)
+      const isFaster = finalUserSpeed > opponentFinalSpeed
+      const speedDiff = finalUserSpeed - opponentFinalSpeed
 
       return {
         name: getPokemonName(pokemon.id, pokemon.name),
         nameEn: pokemon.name,
         types: pokemon.types,
         baseSpeed: pokemon.base_stats.speed,
-        finalSpeed: opponentSpeed,
+        finalSpeed: opponentFinalSpeed,
         isFaster,
         speedDiff: Math.abs(speedDiff)
       }
@@ -164,7 +172,7 @@ export default function SpeedChecker() {
     })
 
     setResults(filtered)
-  }, [selectedPokemon, level, speedEV, speedNature, tailwind, comparisonMode, customEV, customNature, showSlower, allPokemon])
+  }, [selectedPokemon, level, speedEV, speedNature, speedBoost, tailwind, choiceScarf, comparisonMode, customEV, customNature, choiceScarfMiddle, showSlower, allPokemon])
 
   return (
     <div className="speed-checker-page">
@@ -222,7 +230,7 @@ export default function SpeedChecker() {
                   </div>
                 </div>
                 <div className="base-speed-display">
-                  <span className="label">Base Speed:</span>
+                  <span className="label">{t('speedChecker.baseSpeed') || 'Base Speed:'}</span>
                   <span className="value">{selectedPokemon.base_stats.speed}</span>
                 </div>
               </div>
@@ -321,14 +329,25 @@ export default function SpeedChecker() {
                 </div>
               </div>
 
-              {/* Tailwind Toggle */}
-              <div className="form-group">
+              {/* Weather Effects Toggles */}
+              <div className="form-group horizontal">
+                {/* Tailwind Toggle */}
                 <button 
                   className={`tailwind-button ${tailwind ? 'active' : ''}`}
                   onClick={() => setTailwind(!tailwind)}
                 >
                   <span className="tailwind-icon">🌪️</span>
                   {t('speedChecker.tailwind') || 'Tailwind'}: {tailwind ? 'ON' : 'OFF'}
+                </button>
+
+                {/* Choice Scarf Toggle */}
+                <button 
+                  className={`tailwind-button${choiceScarf ? ' active' : ''}`}
+                  onClick={() => setChoiceScarf(!choiceScarf)}
+                  type="button"
+                >
+                  <span className="tailwind-icon">🧣</span>
+                  {t('speedChecker.choiceScarf') || 'Choice Scarf'}: {choiceScarf ? t('speedChecker.on') || 'ON' : t('speedChecker.off') || 'OFF'}
                 </button>
               </div>
 
@@ -339,11 +358,19 @@ export default function SpeedChecker() {
                   <div className={`speed-value ${tailwind ? 'tailwind-active' : ''}`}>
                     {finalUserSpeed}
                   </div>
-                  {tailwind && (
-                    <div className="speed-breakdown">
-                      {userSpeed} × 2 = {finalUserSpeed}
-                    </div>
-                  )}
+                  <div className="speed-breakdown">
+                    {userSpeed}
+                    {choiceScarf && (
+                      <>
+                        × 1.5 = {Math.floor(userSpeed * 1.5)}
+                      </>
+                    )}
+                    {tailwind && (
+                      <>
+                        {choiceScarf ? ' × 2' : '× 2'} = {finalUserSpeed}
+                      </>
+                    )}
+                  </div>
                 </div>
               </div>
             </>
@@ -353,7 +380,6 @@ export default function SpeedChecker() {
         {/* Middle Panel - Comparison Options */}
         <div className="speed-panel speed-panel-middle">
           <h3>{t('speedChecker.compareAgainst') || 'Compare Against'}</h3>
-          
           <div className="comparison-buttons">
             <button
               className={`comparison-mode-btn ${comparisonMode === 'min' ? 'active' : ''}`}
@@ -393,15 +419,27 @@ export default function SpeedChecker() {
                   step="4"
                 />
               </div>
-              <div className="form-group checkbox-group">
-                <label>
-                  <input 
-                    type="checkbox" 
-                    checked={customNature} 
-                    onChange={(e) => setCustomNature(e.target.checked)}
-                  />
-                  {t('speedChecker.positiveNatureCheck') || '+Speed Nature'}
-                </label>
+              <div className="form-group">
+                <button
+                  type="button"
+                  className={`tailwind-button ${customNature ? 'active' : ''}`}
+                  onClick={() => setCustomNature(!customNature)}
+                  aria-pressed={customNature}
+                >
+                  <span className="tailwind-icon">🍀</span>
+                  {t('speedChecker.positiveNatureCheck') || '+Speed Nature'}: {customNature ? t('speedChecker.on') || 'ON' : t('speedChecker.off') || 'OFF'}
+                </button>
+              </div>
+              {/* Choice Scarf Toggle (middle panel, custom only) */}
+              <div className="form-group">
+                <button 
+                  className={`tailwind-button${choiceScarfMiddle ? ' active' : ''}`}
+                  onClick={() => setChoiceScarfMiddle(!choiceScarfMiddle)}
+                  type="button"
+                >
+                  <span className="tailwind-icon">🧣</span>
+                  {t('speedChecker.choiceScarf') || 'Choice Scarf'}: {choiceScarfMiddle ? t('speedChecker.on') || 'ON' : t('speedChecker.off') || 'OFF'}
+                </button>
               </div>
             </div>
           )}
@@ -429,8 +467,16 @@ export default function SpeedChecker() {
           {selectedPokemon && (
             <div className="speed-counter">
               {showSlower 
-                ? `${results.length} ${t('speedChecker.slowerCount') || 'slower'} • ${allPokemon.filter(p => finalUserSpeed <= calculateSpeed(p.base_stats.speed, level, comparisonMode === 'min' ? 0 : comparisonMode === 'max' ? 252 : customEV, comparisonMode === 'min' ? 'neutral' : comparisonMode === 'max' ? 'positive' : customNature ? 'positive' : 'neutral')).length} ${t('speedChecker.fasterCount') || 'faster'}`
-                : `${results.length} ${t('speedChecker.fasterCount') || 'faster'} • ${allPokemon.filter(p => finalUserSpeed > calculateSpeed(p.base_stats.speed, level, comparisonMode === 'min' ? 0 : comparisonMode === 'max' ? 252 : customEV, comparisonMode === 'min' ? 'neutral' : comparisonMode === 'max' ? 'positive' : customNature ? 'positive' : 'neutral')).length} ${t('speedChecker.slowerCount') || 'slower'}`
+                ? `${results.length} ${t('speedChecker.slowerCount') || 'slower'} • ${allPokemon.filter(p => {
+                    const oppSpeed = calculateSpeed(p.base_stats.speed, level, comparisonMode === 'min' ? 0 : comparisonMode === 'max' ? 252 : customEV, comparisonMode === 'min' ? 'neutral' : comparisonMode === 'max' ? 'positive' : customNature ? 'positive' : 'neutral')
+                    const oppFinalSpeed = choiceScarfMiddle ? Math.floor(oppSpeed * 1.5) : oppSpeed
+                    return finalUserSpeed <= oppFinalSpeed
+                  }).length} ${t('speedChecker.fasterCount') || 'faster'}`
+                : `${results.length} ${t('speedChecker.fasterCount') || 'faster'} • ${allPokemon.filter(p => {
+                    const oppSpeed = calculateSpeed(p.base_stats.speed, level, comparisonMode === 'min' ? 0 : comparisonMode === 'max' ? 252 : customEV, comparisonMode === 'min' ? 'neutral' : comparisonMode === 'max' ? 'positive' : customNature ? 'positive' : 'neutral')
+                    const oppFinalSpeed = choiceScarfMiddle ? Math.floor(oppSpeed * 1.5) : oppSpeed
+                    return finalUserSpeed > oppFinalSpeed
+                  }).length} ${t('speedChecker.slowerCount') || 'slower'}`
               }
             </div>
           )}

@@ -146,6 +146,7 @@ export const translations = {
       negativeNature: "-Vitesse",
       tailwind: "Vent Arrière",
       finalSpeed: "Vitesse finale",
+      baseSpeed: "Vitesse de base:",
       compareAgainst: "Comparer contre",
       minSpeed: "Vitesse Min",
       customSpeed: "Personnalisé",
@@ -158,7 +159,10 @@ export const translations = {
       slowerCount: "plus lents",
       fasterCount: "plus rapides",
       noSlower: "Aucun Pokémon plus lent que vous !",
-      noFaster: "Aucun Pokémon plus rapide que vous !"
+      noFaster: "Aucun Pokémon plus rapide que vous !",
+      choiceScarf: "Mouchoir Choix",
+      on: "Activé",
+      off: "Désactivé"
     },
     
     // Pokemon Panel
@@ -396,6 +400,7 @@ export const translations = {
       negativeNature: "-Speed",
       tailwind: "Tailwind",
       finalSpeed: "Final Speed",
+      baseSpeed: "Base Speed:",
       compareAgainst: "Compare Against",
       minSpeed: "Min Speed",
       customSpeed: "Custom",
@@ -408,7 +413,10 @@ export const translations = {
       slowerCount: "slower",
       fasterCount: "faster",
       noSlower: "No Pokémon slower than you!",
-      noFaster: "No Pokémon faster than you!"
+      noFaster: "No Pokémon faster than you!",
+      choiceScarf: "Choice Scarf",
+      on: "ON",
+      off: "OFF"
     },
     
     // Pokemon Panel
