@@ -683,6 +683,9 @@ def api_find_threats():
             elif item_choice:
                 # Choose choice item variant based on damage class
                 item = 'choice-band' if damage_class == 'physical' else 'choice-specs'
+            elif attack_mode == 'max':
+                # En mode max, ajouter automatiquement Choice Band ou Choice Specs
+                item = 'choice-band' if damage_class == 'physical' else 'choice-specs'
 
             # Construire le payload pour le calcul
             calc_payload = {
@@ -907,6 +910,9 @@ def api_find_threats_stream():
                     if life_orb:
                         item = 'life-orb'
                     elif item_choice:
+                        item = 'choice-band' if damage_class == 'physical' else 'choice-specs'
+                    elif attack_mode == 'max':
+                        # En mode max, ajouter automatiquement Choice Band ou Choice Specs
                         item = 'choice-band' if damage_class == 'physical' else 'choice-specs'
 
                     attacker_payload = {
@@ -1150,11 +1156,11 @@ def api_analyze_coverage_stream():
                 elif bulk_mode == "custom":
                     # Bulk personnalisé : utiliser les EVs fournis par le frontend si présents
                     # Frontend envoie `custom_def_evs`, `custom_spdef_evs`, `custom_hp_evs`.
-                    evs = {
-                        "hp": max(0, min(252, custom_hp_evs)),
-                        "defense": max(0, min(252, custom_def_evs)),
-                        "special_defense": max(0, min(252, custom_spdef_evs))
-                    }
+                    # On stocke les valeurs custom pour les adapter par attaque
+                    custom_hp = max(0, min(252, custom_hp_evs))
+                    custom_def = max(0, min(252, custom_def_evs))
+                    custom_spdef = max(0, min(252, custom_spdef_evs))
+                    evs = {"hp": custom_hp, "defense": 0, "special_defense": 0}
                     # Nature: si le mode est 'byMove' on choisira plus bas selon l'attaque,
                     # sinon on applique une nature défensive fixe ('bold')
                     if bulk_nature_mode == "byMove":
@@ -1162,8 +1168,8 @@ def api_analyze_coverage_stream():
                     else:
                         nature = "bold"
                 else:  # bulk_mode == "max"
-                    # Max bulk : 252 partout, nature sera adaptée par attaque
-                    evs = {"hp": 252, "defense": 252, "special_defense": 252}
+                    # Max bulk : sera adapté par attaque (252 HP + 252 dans la bonne défense)
+                    evs = {"hp": 252, "defense": 0, "special_defense": 0}
                     nature = "hardy"  # Sera changé pour chaque attaque
                 
                 # Tester chaque attaque et trouver la meilleure
@@ -1182,16 +1188,33 @@ def api_analyze_coverage_stream():
                         else:
                             full_move_data = move_data
                         
-                        # Si mode max, adapter la nature selon le type d'attaque
+                        # Si mode max ou custom, adapter les EVs et la nature selon le type d'attaque
+                        defender_evs = evs.copy()
                         defender_nature = nature
                         if bulk_mode == "max":
                             damage_class = full_move_data.get("damage_class", "physical")
                             
-                            # Choisir la nature qui boost la défense appropriée
+                            # Répartir 252 HP + 252 dans la bonne défense (total 504 EVs, légal)
                             if damage_class == "special":
+                                defender_evs = {"hp": 252, "defense": 0, "special_defense": 252, "attack": 0, "special_attack": 0, "speed": 0}
                                 defender_nature = "calm"  # +Def Spé, -Attaque
                             else:
+                                defender_evs = {"hp": 252, "defense": 252, "special_defense": 0, "attack": 0, "special_attack": 0, "speed": 0}
                                 defender_nature = "bold"  # +Def, -Attaque
+                        elif bulk_mode == "custom":
+                            damage_class = full_move_data.get("damage_class", "physical")
+                            
+                            # Adapter les EVs custom selon l'attaque
+                            if damage_class == "special":
+                                defender_evs = {"hp": custom_hp, "defense": 0, "special_defense": custom_spdef, "attack": 0, "special_attack": 0, "speed": 0}
+                                if bulk_nature_mode == "byMove":
+                                    defender_nature = "calm"  # +Def Spé, -Attaque
+                            else:
+                                defender_evs = {"hp": custom_hp, "defense": custom_def, "special_defense": 0, "attack": 0, "special_attack": 0, "speed": 0}
+                                if bulk_nature_mode == "byMove":
+                                    defender_nature = "bold"  # +Def, -Attaque
+                        else:
+                            defender_evs = evs
                         
                         # Déterminer l'item à appliquer au défenseur selon les options bulk
                         item = None
@@ -1209,12 +1232,15 @@ def api_analyze_coverage_stream():
                             item = "eviolite"
                         elif bulk_assault_vest:
                             item = "assault-vest"
+                        elif bulk_mode == "max" and can_evolve:
+                            # En mode bulk max, ajouter automatiquement Eviolite si le Pokémon peut évoluer
+                            item = "eviolite"
 
                         # Construire le défenseur avec les paramètres appropriés
                         defender_payload = {
                             "pokemon_id": poke_id,
                             "base_stats": poke.get("base_stats", {}),
-                            "evs": evs,
+                            "evs": defender_evs,
                             "nature": defender_nature,
                             "types": poke.get("types", []),
                             "ability": None,
