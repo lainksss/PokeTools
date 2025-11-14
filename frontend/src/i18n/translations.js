@@ -126,7 +126,17 @@ export const translations = {
       bulkNone: "Aucun bulk",
       bulkCustom: "Bulk customisé",
       bulkMax: "Bulk maximum",
-      customEvs: "EVs personnalisés"
+      customEvs: "EVs personnalisés defenses | pvs",
+      bulkNatureLabel: "Nature assignée pour la défense",
+      bulkNatureByMove: "Selon l'attaque",
+      bulkNatureDef: "Défense",
+      bulkNatureSpDef: "Déf. Spé.",
+      natureDefSpDef: "Nature def/spe def",
+      bulkNatureToggle: "Adapter/Fixer nature",
+      hpEvsLabel: "EVs en PV",
+      bulkNatureToggle: "Adapter la nature",
+      assaultVest: "Veste de Combat",
+      evoluroc: "Evoluroc"
     },
 
     // Page Type Coverage
@@ -389,7 +399,16 @@ export const translations = {
       bulkNone: "No bulk (0 EVs)",
       bulkCustom: "Custom bulk",
       bulkMax: "Maximum bulk",
-      customEvs: "Custom EVs"
+      customEvs: "Custom EVs",
+      natureDefSpDef: "Nature def/spdef",
+      bulkNatureToggle: "Adapt/Fixed nature",
+      hpEvsLabel: "HP EVs",
+      bulkNatureLabel: "Assigned defensive nature",
+      bulkNatureByMove: "By move (auto)",
+      bulkNatureDef: "Defense",
+      bulkNatureSpDef: "Sp. Def",
+      assaultVest: "Assault Vest",
+      evoluroc: "Evoluroc"
     },
 
     // Page Type Coverage

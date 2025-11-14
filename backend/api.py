@@ -1101,6 +1101,13 @@ def api_analyze_coverage_stream():
     field_data = payload.get("field", {})
     bulk_mode = payload.get("bulk_mode", "none")  # 'none', 'custom', 'max'
     custom_evs = payload.get("custom_evs", 0)  # EVs personnalisés pour le mode 'custom'
+    # Nouveaux champs bulk (front-end envoie ces champs pour le mode 'custom')
+    custom_def_evs = int(payload.get("custom_def_evs", 0) or 0)
+    custom_spdef_evs = int(payload.get("custom_spdef_evs", 0) or 0)
+    custom_hp_evs = int(payload.get("custom_hp_evs", 0) or 0)
+    bulk_nature_mode = payload.get("bulk_nature_mode", "byMove")  # 'byMove' or 'def'
+    bulk_assault_vest = bool(payload.get("bulk_assault_vest", False))
+    bulk_evoluroc = bool(payload.get("bulk_evoluroc", False))
 
     if not attacker_data:
         return jsonify({"error": "attacker required"}), 400
@@ -1122,6 +1129,9 @@ def api_analyze_coverage_stream():
             # Construire l'attaquant
             attacker = build_actor_from_payload(attacker_data)
 
+            # Charger la table d'évolution pour décider de l'application d'Evoluroc
+            evo_map = _load_json("pokemon_evolution.json") or {}
+
             # Envoyer l'init
             yield f"data: {json.dumps({'type': 'init', 'total': total_pokemon})}\n\n"
 
@@ -1138,10 +1148,19 @@ def api_analyze_coverage_stream():
                     evs = {"hp": 0, "defense": 0, "special_defense": 0}
                     nature = "hardy"
                 elif bulk_mode == "custom":
-                    # Bulk personnalisé : répartir les EVs en moitié-moitié
-                    ev_per_stat = custom_evs // 2
-                    evs = {"hp": ev_per_stat, "defense": ev_per_stat, "special_defense": ev_per_stat}
-                    nature = "hardy"
+                    # Bulk personnalisé : utiliser les EVs fournis par le frontend si présents
+                    # Frontend envoie `custom_def_evs`, `custom_spdef_evs`, `custom_hp_evs`.
+                    evs = {
+                        "hp": max(0, min(252, custom_hp_evs)),
+                        "defense": max(0, min(252, custom_def_evs)),
+                        "special_defense": max(0, min(252, custom_spdef_evs))
+                    }
+                    # Nature: si le mode est 'byMove' on choisira plus bas selon l'attaque,
+                    # sinon on applique une nature défensive fixe ('bold')
+                    if bulk_nature_mode == "byMove":
+                        nature = "hardy"  # valeur par défaut, sera adaptée par attaque
+                    else:
+                        nature = "bold"
                 else:  # bulk_mode == "max"
                     # Max bulk : 252 partout, nature sera adaptée par attaque
                     evs = {"hp": 252, "defense": 252, "special_defense": 252}
@@ -1174,6 +1193,23 @@ def api_analyze_coverage_stream():
                             else:
                                 defender_nature = "bold"  # +Def, -Attaque
                         
+                        # Déterminer l'item à appliquer au défenseur selon les options bulk
+                        item = None
+                        # poke contient le slug dans poke.get('name')
+                        slug = poke.get("name")
+                        can_evolve = False
+                        try:
+                            if slug and slug in evo_map:
+                                can_evolve = bool(evo_map.get(slug, {}).get("can_evolve", False))
+                        except Exception:
+                            can_evolve = False
+
+                        if bulk_evoluroc and can_evolve:
+                            # Use canonical item slug as present in data/all_items.json
+                            item = "eviolite"
+                        elif bulk_assault_vest:
+                            item = "assault-vest"
+
                         # Construire le défenseur avec les paramètres appropriés
                         defender_payload = {
                             "pokemon_id": poke_id,
@@ -1182,6 +1218,7 @@ def api_analyze_coverage_stream():
                             "nature": defender_nature,
                             "types": poke.get("types", []),
                             "ability": None,
+                            "item": item,
                             "is_terastallized": False,
                             "tera_type": None
                         }

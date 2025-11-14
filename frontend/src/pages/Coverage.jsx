@@ -17,7 +17,11 @@ export default function Coverage() {
   const [minRolls, setMinRolls] = useState(1)
   const [viewMode, setViewMode] = useState('ko') // 'ko' = afficher ceux qui sont KO, 'alive' = afficher ceux qui survivent
   const [bulkMode, setBulkMode] = useState('none') // 'none', 'custom', 'max'
-  const [customEvs, setCustomEvs] = useState(252) // EVs personnalisés pour le mode custom
+  const [customEvs, setCustomEvs] = useState(0) // EVs personnalisés pour le mode custom (appliqués both Def & SpDef)
+  const [customHpEvs, setCustomHpEvs] = useState(0) // EVs en PV pour bulk custom
+  const [bulkAdaptNature, setBulkAdaptNature] = useState(true) // true => adapt nature by move, false => use Def
+  const [bulkAssaultVest, setBulkAssaultVest] = useState(false)
+  const [bulkEvoluroc, setBulkEvoluroc] = useState(false)
 
   const ALL_WEATHERS = ['none', 'sun', 'rain', 'sandstorm', 'snow']
   const ALL_TERRAINS = ['none', 'grassy', 'electric', 'misty', 'psychic']
@@ -68,7 +72,12 @@ export default function Coverage() {
       ko_mode: koMode,
       include_no_ko: true, // TOUJOURS récupérer tous les Pokémon
       bulk_mode: bulkMode,
-      custom_evs: customEvs,
+      custom_def_evs: customEvs,
+      custom_spdef_evs: customEvs,
+      custom_hp_evs: customHpEvs,
+      bulk_nature_mode: bulkAdaptNature ? 'byMove' : 'def',
+      bulk_assault_vest: bulkAssaultVest,
+      bulk_evoluroc: bulkEvoluroc,
       field: {
         weather: weather === 'none' ? null : weather,
         terrain: terrain === 'none' ? null : terrain
@@ -235,19 +244,62 @@ export default function Coverage() {
           {bulkMode === 'custom' && (
             <div className="form-group">
               <label>{t('coverage.customEvs')}</label>
-              <input 
-                type="number" 
-                min="0" 
-                max="504" 
-                step="4"
-                value={customEvs}
-                onChange={e => {
-                  const val = parseInt(e.target.value) || 0
-                  setCustomEvs(Math.min(504, Math.max(0, val)))
-                }}
-                className="form-control"
-                placeholder="0-504"
-              />
+              <div className="ev-input-row">
+                <input 
+                  type="number" 
+                  min="0" 
+                  max="252" 
+                  step="4"
+                  value={customEvs}
+                  onChange={e => {
+                    const val = parseInt(e.target.value) || 0
+                    setCustomEvs(Math.min(252, Math.max(0, val)))
+                  }}
+                  className="form-control ev-compact-left"
+                  placeholder="Def/SpDef EVs"
+                />
+
+                <input
+                  type="number"
+                  min="0"
+                  max="252"
+                  step="4"
+                  value={customHpEvs}
+                  onChange={e => setCustomHpEvs(Math.min(252, Math.max(0, parseInt(e.target.value) || 0)))}
+                  className="form-control ev-compact-right"
+                  placeholder="HP EVs"
+                />
+              </div>
+            </div>
+          )}
+
+          {bulkMode === 'custom' && (
+            <div className="form-group">
+              <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                <button
+                  type="button"
+                  className={`tailwind-button option-button ${bulkAdaptNature ? 'active' : ''}`}
+                  onClick={() => setBulkAdaptNature(prev => !prev)}
+                >
+                  {t('coverage.natureDefSpDef') || 'Nature def/spe def'}
+                </button>
+
+                <button
+                  type="button"
+                  className={`tailwind-button option-button ${bulkAssaultVest ? 'active' : ''}`}
+                  onClick={() => setBulkAssaultVest(prev => !prev)}
+                >
+                  {t('coverage.assaultVest') || 'Veste de Combat'}
+                </button>
+
+                <button
+                  type="button"
+                  className={`tailwind-button option-button ${bulkEvoluroc ? 'active' : ''}`}
+                  onClick={() => setBulkEvoluroc(prev => !prev)}
+                >
+                  {t('coverage.evoluroc') || 'Evoluroc'}
+                </button>
+              </div>
             </div>
           )}
 

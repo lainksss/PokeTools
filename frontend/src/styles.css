@@ -2473,6 +2473,35 @@ select.form-control option:checked {
   flex: 1;
 }
 
+/* Compact EV inputs for Coverage bulk custom: stick inputs together */
+.ev-input-row {
+  display: flex;
+  gap: 0; /* stick them together */
+}
+.ev-input-row .ev-compact-left {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.ev-input-row .ev-compact-right {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: -1px; /* collapse double border look */
+}
+.ev-input-row .form-control {
+  padding: 10px 12px;
+  height: 44px; /* increase height slightly for better touch targets */
+  font-size: 15px;
+}
+
+/* Increase option button height to match taller inputs */
+.option-button {
+  height: 56px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .ev-buttons {
   display: flex;
   gap: 4px;
