@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function ResultsPanel({ result }) {
+export default function ResultsPanel({ result, showTitle = true }) {
   if (!result) {
     return (
       <div className="results-panel">
@@ -32,7 +32,7 @@ export default function ResultsPanel({ result }) {
 
   return (
     <div className="results-panel">
-      <h3>Résultats</h3>
+      {showTitle && <h3>Résultats</h3>}
       
       {/* Main statistics */}
       <div className="results-stats">

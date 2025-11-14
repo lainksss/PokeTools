@@ -288,9 +288,50 @@ select option:hover {
   background: var(--card);
   border-radius: 12px;
   border: 1px solid var(--border);
-  padding: 20px;
-  max-height: 200px;
+  padding: 20px; /* slightly larger padding for better separation */
+  max-height: 260px; /* increased height so results area is more visible */
   overflow-y: auto;
+  transition: max-height 180ms ease, padding 180ms ease;
+}
+
+/* Header and collapse button for results */
+.results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.results-header .results-title {
+  font-size: 16px;
+  color: var(--accent);
+}
+.collapse-btn {
+  padding: 6px 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.15s, transform 0.08s;
+}
+.collapse-btn:hover {
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-1px);
+}
+
+/* Collapsed state: keep header visible but hide content */
+.results-section.collapsed {
+  max-height: 56px; /* only header height visible */
+  padding-top: 12px;
+  padding-bottom: 12px;
+  overflow: hidden;
+}
+
+.results-content {
+  /* smooth reveal */
+  transition: opacity 140ms ease, transform 160ms ease;
 }
 
 /* Pokemon Panel */

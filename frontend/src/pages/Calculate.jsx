@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PokemonPanel from '../components/PokemonPanel'
 import MiddlePanel from '../components/MiddlePanel'
 import ResultsPanel from '../components/ResultsPanel'
@@ -7,6 +7,12 @@ export default function Calculate() {
   const [left, setLeft] = useState(null)
   const [right, setRight] = useState(null)
   const [result, setResult] = useState(null)
+  const [resultsCollapsed, setResultsCollapsed] = useState(false)
+
+  useEffect(() => {
+    // When a new result appears, expand the results panel by default
+    if (result) setResultsCollapsed(false)
+  }, [result])
 
   return (
     <div className="calculate-page">
@@ -24,9 +30,31 @@ export default function Calculate() {
         </div>
       </div>
 
-      <div className="results-section">
-        <ResultsPanel result={result} />
-      </div>
+      {result && (
+        <div className={`results-section ${resultsCollapsed ? 'collapsed' : ''}`}>
+          <div className="results-header">
+            <div className="results-header-left">
+              <strong className="results-title">{/* Title shown here to act as the fold handle */}Résultats</strong>
+            </div>
+            <div className="results-header-right">
+              <button
+                type="button"
+                className="collapse-btn"
+                onClick={() => setResultsCollapsed(prev => !prev)}
+                aria-expanded={!resultsCollapsed}
+              >
+                {resultsCollapsed ? 'Afficher' : 'Masquer'}
+              </button>
+            </div>
+          </div>
+
+          {!resultsCollapsed && (
+            <div className="results-content">
+              <ResultsPanel result={result} showTitle={false} />
+            </div>
+          )}
+        </div>
+      )}
     </div>
   )
 }
