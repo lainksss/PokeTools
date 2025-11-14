@@ -22,6 +22,7 @@ try:
     from .calculate_terrain import compute_terrain_multiplier
     from .calculate_types import get_type_breakdown, type_effectiveness
     from .calculate_abilities import apply_ability_effects
+    from .calculate_grounded import is_grounded
     from ..items.items import apply_item_stat_modifiers, compute_item_damage_multiplier, get_item
 except Exception:
     # If relative imports fail (exec as script), fallback to local defs below
@@ -29,6 +30,7 @@ except Exception:
     compute_terrain_multiplier = None  # type: ignore
     get_type_breakdown = None  # type: ignore
     type_effectiveness = None  # type: ignore
+    is_grounded = None  # type: ignore
     # Try to load calculate_abilities.py directly from the same directory as this file.
     apply_ability_effects = None  # type: ignore
     apply_item_stat_modifiers = None
@@ -42,6 +44,13 @@ except Exception:
             mod = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(mod)  # type: ignore
             apply_ability_effects = getattr(mod, "apply_ability_effects", None)
+        # Try to load calculate_grounded.py
+        grounded_mod_path = Path(__file__).parent / "calculate_grounded.py"
+        if grounded_mod_path.exists():
+            spec = importlib.util.spec_from_file_location("calculate_grounded", str(grounded_mod_path))
+            grounded_mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(grounded_mod)  # type: ignore
+            is_grounded = getattr(grounded_mod, "is_grounded", None)
         # Try to load items.py from parent/items/items.py
         items_mod_path = Path(__file__).parent.parent / "items" / "items.py"
         if items_mod_path.exists():
@@ -53,6 +62,7 @@ except Exception:
             get_item = getattr(items_mod, "get_item", None)
     except Exception:
         apply_ability_effects = None
+        is_grounded = None
         apply_item_stat_modifiers = None
         compute_item_damage_multiplier = None
         get_item = None
@@ -724,6 +734,12 @@ def calculate_damage(
 
     burn_mult = compute_burn_mult(attacker, category, move, gen)
     other_mult, zmove_mult, terashield_mult = compute_other_z_terashield(attacker, defender, field)
+
+    # Compute grounded status for attacker and defender (if not explicitly set)
+    if "is_grounded" not in attacker and is_grounded is not None:
+        attacker["is_grounded"] = is_grounded(attacker, field)
+    if "is_grounded" not in defender and is_grounded is not None:
+        defender["is_grounded"] = is_grounded(defender, field)
 
     terrain_mult, terrain_effects = compute_terrain_multiplier(field, mv_type, move, attacker, defender, gen)
 
