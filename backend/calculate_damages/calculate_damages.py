@@ -661,6 +661,58 @@ def calculate_damage(
         except Exception as e:
             pass
 
+    # Special-case: Ball'Météo (Weather Ball variant requested by user)
+    # Behaviour: base 50 special Normal. If any weather is active (and not neutralized
+    # by Cloud Nine/Air Lock), its power is doubled and its type changes depending on
+    # the weather:
+    #  - Sun / harsh sunlight -> Fire
+    #  - Rain -> Water
+    #  - Hail / Snow -> Ice
+    #  - Sandstorm -> Rock
+    #  - Fog -> remains Normal (but still doubled power)
+    try:
+        mv_name_raw = move.get("name") or ""
+        # normalize: lowercase, remove non-alphanum
+        mv_name_norm = "".join(ch for ch in mv_name_raw.lower() if ch.isalnum())
+        # match common variants: "weather-ball", "ball-meteo", "ball'météo", etc.
+        if (
+            mv_name_norm in ("ballmeteo", "ballmete", "weatherball")
+            or ("ball" in mv_name_norm and "meteo" in mv_name_norm)
+            or "weather" in mv_name_norm
+        ):
+            # enforce special category and ensure default base power is 50 if not provided
+            move.setdefault("damage_class", "special")
+            # Use provided power as baseline if given, otherwise 50
+            if not move.get("power"):
+                power = 50
+            # Determine if weather is active (respect Cloud Nine / Air Lock abilities)
+            weather_field = field.get("weather") if isinstance(field, dict) else None
+            if field.get("cloud_nine") or field.get("air_lock") or any(p.get("ability") in ("cloud-nine", "air-lock") for p in field.get("pokemon", [])):
+                weather_field = None
+            if weather_field:
+                w = str(weather_field).lower()
+                # double power
+                power = int(math.floor(power * 2))
+                # map weather to move type
+                if any(x in w for x in ("harsh", "sun", "sunny", "strong")):
+                    move_type = "fire"
+                elif "rain" in w:
+                    move_type = "water"
+                elif "hail" in w or "snow" in w:
+                    move_type = "ice"
+                elif "sand" in w:
+                    move_type = "rock"
+                elif "fog" in w:
+                    move_type = "normal"
+                else:
+                    move_type = move.get("type") or "normal"
+                # update move dict so downstream logic observes the changes
+                move["type"] = move_type
+                move["power"] = power
+    except Exception:
+        # Defensive: never let this break damage calculation
+        pass
+
     if category == "physical":
         # Special-case: Body Press (fr: Big Splash) uses the attacker's DEFENSE as its
         # attacking stat instead of ATTACK.
