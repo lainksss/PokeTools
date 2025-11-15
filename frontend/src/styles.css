@@ -434,7 +434,7 @@ select option:hover {
     margin-left: auto;
     margin-right: auto;
     width: 100% !important;
-    overflow-x: hidden;
+    /* Removed overflow-x: hidden to allow tables to take full width */
      /* Do not change panel min-width here — keep desktop proportions intact
        so the inner layout isn't compressed. JS scaling will visually resize. */
   }
@@ -442,16 +442,23 @@ select option:hover {
   .app-root.preserve-desktop .app-scale {
     /* Desktop baseline width: JS will set inline width as well. Keep origin centered. */
     width: 1100px;
-    transform-origin: top center;
+    transform-origin: top left;
     transition: transform 160ms ease;
     /* Remove auto margins: JS will position/translate to center visually */
     margin: 0;
     position: relative;
   }
 
-  /* Ensure nothing else clips the scaled content */
+  /* Allow horizontal scroll when tables exceed viewport */
   html, body {
-    overflow-x: hidden;
+    overflow-x: auto;
+  }
+  
+  /* Ensure stats tables and content use their natural width */
+  .app-root.preserve-desktop .stats-table,
+  .app-root.preserve-desktop .stats-row,
+  .app-root.preserve-desktop .stats-header {
+    min-width: max-content;
   }
 }
 
@@ -461,20 +468,33 @@ select option:hover {
    media queries from stacking the panels. */
 @media (max-width: 820px) {
   .app-root.preserve-desktop .panels-container {
-    grid-template-columns: minmax(var(--panel-min-width, 280px), 1fr) auto minmax(var(--panel-min-width, 280px), 1fr) !important;
+    grid-template-columns: 820px 440px 820px !important;
     grid-template-rows: none !important;
-     /* Keep a reasonable minimum height so panels don't collapse on small
-       devices. User requested a min between 150-200px; choose 160px here. */
-     min-height: 120vh;
+    gap: 24px !important;
+    min-height: auto !important;
+    align-items: start !important;
+    width: fit-content !important;
   }
 
   .app-root.preserve-desktop .panel-middle {
     order: 0 !important;
+    min-width: 440px !important;
+    width: 440px !important;
+  }
+  
+  .app-root.preserve-desktop .panel-left,
+  .app-root.preserve-desktop .panel-right {
+    min-width: 820px !important;
+    width: 820px !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
   /* Ensure any mobile-specific single-column rules are overridden */
   .app-root.preserve-desktop .panels-container > * {
     width: auto !important;
+    display: block !important;
   }
 }
 
@@ -522,6 +542,38 @@ select option:hover {
   /* Add small extra spacing between rows for clarity */
   .app-root.preserve-desktop .stats-table {
     gap: 8px;
+  }
+}
+
+/* Apply preserved-desktop panel widths to other pages (threats/coverage/speed) */
+@media (max-width: 820px) {
+  .app-root.preserve-desktop .threats-container,
+  .app-root.preserve-desktop .speed-checker-container {
+    display: grid !important;
+    grid-template-columns: 820px 440px 820px !important;
+    gap: 24px !important;
+    width: fit-content !important;
+    align-items: start !important;
+  }
+
+  .app-root.preserve-desktop .threats-left,
+  .app-root.preserve-desktop .speed-panel-left,
+  .app-root.preserve-desktop .pokemon-search-container {
+    min-width: 820px !important;
+    width: 820px !important;
+  }
+
+  .app-root.preserve-desktop .threats-middle,
+  .app-root.preserve-desktop .speed-panel,
+  .app-root.preserve-desktop .threats-middle {
+    min-width: 440px !important;
+    width: 440px !important;
+  }
+
+  .app-root.preserve-desktop .threats-right,
+  .app-root.preserve-desktop .speed-panel-right {
+    min-width: 820px !important;
+    width: 820px !important;
   }
 }
 
@@ -654,9 +706,10 @@ select option:hover {
 .panels-container {
   flex: 1;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr 400px 1fr;
   gap: var(--gap);
-  min-height: 0; /* Important for scroll */
+  min-height: 0;
+  align-items: start;
 }
 
 .panel-left,
@@ -665,7 +718,7 @@ select option:hover {
   border-radius: 12px;
   border: 1px solid var(--border);
   padding: 20px;
-  overflow-y: auto;
+  overflow-y: visible; /* Changed from auto to visible - no internal scroll */
 }
 
 .panel-middle {
@@ -682,8 +735,8 @@ select option:hover {
   border-radius: 12px;
   border: 1px solid var(--border);
   padding: 20px; /* slightly larger padding for better separation */
-  max-height: 260px; /* increased height so results area is more visible */
-  overflow-y: auto;
+  max-height: none; /* removed max-height to allow full content display */
+  overflow-y: visible; /* removed overflow to prevent internal scroll */
   transition: max-height 180ms ease, padding 180ms ease;
 }
 
@@ -732,6 +785,7 @@ select option:hover {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  overflow: visible; /* ensure full content is visible without scroll */
 }
 
 .pokemon-panel h3 {
@@ -1151,6 +1205,7 @@ select.form-control option:checked {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  overflow: visible; /* ensure no overflow restrictions */
 }
 
 /* Stats Table - Perfect alignment */
