@@ -668,6 +668,12 @@ select option:hover {
   opacity: 0.6;
   border-top: 1px solid var(--border);
   margin-top: 20px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--card);
+  z-index: 70;
 }
 
 /* Fix footer positioning on mobile preserve-desktop */
@@ -676,6 +682,11 @@ select option:hover {
     margin-top: 0;
     padding: 6px 8px;
     font-size: 10px;
+  }
+  .app-footer {
+    position: static;
+    background: none;
+    margin-top: 20px;
   }
 }
 .home-blocks-row {
@@ -712,6 +723,16 @@ select option:hover {
   align-items: start;
 }
 
+/* Ensure panels sit on a lower stacking context than the results block
+   so when results expand they push content instead of overlaying it. */
+.panels-container,
+.panel-left,
+.panel-middle,
+.panel-right {
+  position: relative;
+  z-index: 0;
+}
+
 .panel-left,
 .panel-right {
   background: var(--card);
@@ -732,12 +753,30 @@ select option:hover {
 
 .results-section {
   background: var(--card);
-  border-radius: 12px;
+  border-radius: 12px 12px 0 0;
   border: 1px solid var(--border);
-  padding: 20px; /* slightly larger padding for better separation */
-  max-height: none; /* removed max-height to allow full content display */
-  overflow-y: visible; /* removed overflow to prevent internal scroll */
-  transition: max-height 180ms ease, padding 180ms ease;
+  padding: 16px 20px;
+  max-height: 320px; /* limit height so the fixed banner doesn't cover entire page */
+  overflow-y: auto;
+  transition: max-height 220ms ease, padding 180ms ease, transform 150ms ease;
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 40px;
+  z-index: 60;
+  box-shadow: 0 -6px 24px rgba(2,6,23,0.6);
+}
+
+/* Reserve space at the bottom of the app so fixed results do not overlap content */
+.app-root {
+  --results-reserved: 360px; /* conservative reserve for expanded results */
+  padding-bottom: var(--results-reserved);
+}
+
+/* Collapsed fixed state */
+.results-section.collapsed {
+  max-height: 56px;
+  padding: 10px 14px;
 }
 
 /* Header and collapse button for results */
