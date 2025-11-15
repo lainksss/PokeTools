@@ -274,6 +274,27 @@ select option:hover {
   }
 }
 
+/* Apply a large vertical space to any graph-like container when preserving
+   the desktop layout on mobile so charts render without vertical clipping. */
+@media (max-width: 1000px) {
+  .app-root.preserve-desktop .chart,
+  .app-root.preserve-desktop .chart-container,
+  .app-root.preserve-desktop .graph,
+  .app-root.preserve-desktop .graph-container,
+  .app-root.preserve-desktop .results-section,
+  .app-root.preserve-desktop .results-panel,
+  .app-root.preserve-desktop .threats-results,
+  .app-root.preserve-desktop .threats-right,
+  .app-root.preserve-desktop .coverage-graph,
+  .app-root.preserve-desktop .type-coverage-info,
+  .app-root.preserve-desktop .speed-chart,
+  .app-root.preserve-desktop .chart-wrap,
+  .app-root.preserve-desktop canvas,
+  .app-root.preserve-desktop svg {
+    min-height: 120vh !important;
+  }
+}
+
 /* Portrait-specific: render the desktop layout scaled to fit portrait phone width.
    This targets portrait orientation and will override previous mobile rules.
    It scales the main content so the user sees the same layout as desktop, but
@@ -398,6 +419,112 @@ select option:hover {
   transition: background 0.15s, color 0.15s, transform 0.08s;
 }
 
+/*
+  Mobile-only JS scaling override
+  - When JS wants to preserve the desktop layout on small viewports it will
+    add `.preserve-desktop` to `.app-root` and apply an inline `transform` on
+    `.app-scale`. These rules neutralize earlier CSS transforms and ensure the
+    inner wrapper has the desktop baseline width so the JS scale is accurate.
+*/
+@media (max-width: 820px) {
+  .app-root.preserve-desktop {
+    /* Neutralize any transform applied to root by earlier rules */
+    -webkit-transform: none !important;
+    transform: none !important;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100% !important;
+    overflow-x: hidden;
+     /* Do not change panel min-width here — keep desktop proportions intact
+       so the inner layout isn't compressed. JS scaling will visually resize. */
+  }
+
+  .app-root.preserve-desktop .app-scale {
+    /* Desktop baseline width: JS will set inline width as well. Keep origin centered. */
+    width: 1100px;
+    transform-origin: top center;
+    transition: transform 160ms ease;
+    /* Remove auto margins: JS will position/translate to center visually */
+    margin: 0;
+    position: relative;
+  }
+
+  /* Ensure nothing else clips the scaled content */
+  html, body {
+    overflow-x: hidden;
+  }
+}
+
+/* When preserve-desktop is active on small viewports, restore the desktop
+   panels grid so the three-column layout is preserved (then JS visually
+   scales the whole `.app-scale` to fit). This prevents the CSS mobile
+   media queries from stacking the panels. */
+@media (max-width: 820px) {
+  .app-root.preserve-desktop .panels-container {
+    grid-template-columns: minmax(var(--panel-min-width, 280px), 1fr) auto minmax(var(--panel-min-width, 280px), 1fr) !important;
+    grid-template-rows: none !important;
+     /* Keep a reasonable minimum height so panels don't collapse on small
+       devices. User requested a min between 150-200px; choose 160px here. */
+     min-height: 120vh;
+  }
+
+  .app-root.preserve-desktop .panel-middle {
+    order: 0 !important;
+  }
+
+  /* Ensure any mobile-specific single-column rules are overridden */
+  .app-root.preserve-desktop .panels-container > * {
+    width: auto !important;
+  }
+}
+
+/* Improve touch comfort for stat tables when using preserved-desktop layout */
+@media (max-width: 820px) {
+  .app-root.preserve-desktop .stats-header,
+  .app-root.preserve-desktop .stats-row {
+    /* Keep original desktop column proportions so content isn't compressed */
+    grid-template-columns: 100px 80px 100px 90px 80px !important;
+    gap: 12px;
+    padding: 8px;
+  }
+
+  /* Slightly increase vertical padding inside panels for more breathing room */
+  .app-root.preserve-desktop .panel-left,
+  .app-root.preserve-desktop .panel-right,
+  .app-root.preserve-desktop .panel-middle,
+  .app-root.preserve-desktop .pokemon-panel,
+  .app-root.preserve-desktop .results-panel {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+  }
+
+  .app-root.preserve-desktop .stats-row {
+    border-radius: 8px;
+  }
+
+  .app-root.preserve-desktop .stat-col {
+    font-size: 15px;
+  }
+
+  .app-root.preserve-desktop .stat-col input,
+  .app-root.preserve-desktop .stat-col select {
+    font-size: 15px;
+    padding: 8px 10px;
+    min-height: 40px;
+    border-radius: 6px;
+  }
+
+  /* Ensure the inputs don't shrink below a touch-friendly size */
+  .app-root.preserve-desktop .stats-table input[type="number"] {
+    min-width: 56px;
+  }
+
+  /* Add small extra spacing between rows for clarity */
+  .app-root.preserve-desktop .stats-table {
+    gap: 8px;
+  }
+}
+
 .scale-button:hover {
   background: rgba(255,255,255,0.04);
   transform: translateY(-1px);
@@ -490,6 +617,15 @@ select option:hover {
   border-top: 1px solid var(--border);
   margin-top: 20px;
 }
+
+/* Fix footer positioning on mobile preserve-desktop */
+@media (max-width: 820px) {
+  .app-root.preserve-desktop .app-footer {
+    margin-top: 0;
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+}
 .home-blocks-row {
   align-items: stretch;
 }
@@ -504,6 +640,15 @@ select option:hover {
   flex-direction: column;
   padding: var(--gap);
   gap: var(--gap);
+}
+
+/* On mobile preserve-desktop, ensure pages fill available height */
+@media (max-width: 820px) {
+  .app-root.preserve-desktop .calculate-page,
+  .app-root.preserve-desktop .threats-page {
+    min-height: calc(100vh - 80px);
+    height: auto;
+  }
 }
 
 .panels-container {
