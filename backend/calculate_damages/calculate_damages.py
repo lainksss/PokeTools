@@ -742,6 +742,13 @@ def calculate_damage(
             ability_effects = {}
             ability_multipliers = {}
             ability_type_mult = 1.0
+        # If ability handlers modified the move (e.g. Technician increases base power),
+        # refresh the local `power` variable from the move dict so downstream code
+        # uses the updated base power.
+        try:
+            power = int(move.get("power") or power)
+        except Exception:
+            pass
 
     # simple multipliers
     targets, pb = compute_targets_and_pb(move, field, gen)

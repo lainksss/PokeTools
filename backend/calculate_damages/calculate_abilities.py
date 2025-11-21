@@ -70,14 +70,18 @@ def apply_ability_effects(
         mul("other_mult", 1.5)
         effects["strong_jaw"] = True
 
-    # Technician: boosts moves with power <= 60 by 1.5
+    # Technician: boosts moves with base power <= 60 by 1.5
     try:
         power = int(move.get("power") or 0)
     except Exception:
         power = 0
     if atk_ability == "technician" and power <= 60 and power > 0:
-        mul("other_mult", 1.5)
+        # Apply Technician by increasing the move's base power (not the final multiplier).
+        # Store original power for debugging/auditing.
         effects["technician"] = True
+        effects["technician_power_old"] = power
+        # Multiply base power by 1.5 and store as integer (floor)
+        move["power"] = int(power * 1.5)
 
     # Sniper: increase critical multiplier (handled by overriding crit_mult later)
     if atk_ability == "sniper":
