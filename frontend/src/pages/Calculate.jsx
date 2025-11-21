@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import PokemonPanel from '../components/PokemonPanel'
 import MiddlePanel from '../components/MiddlePanel'
 import ResultsPanel from '../components/ResultsPanel'
@@ -30,11 +31,11 @@ export default function Calculate() {
         </div>
       </div>
 
-      {result && (
+      {result && createPortal(
         <div className={`results-section ${resultsCollapsed ? 'collapsed' : ''}`}>
           <div className="results-header">
             <div className="results-header-left">
-              <strong className="results-title">{/* Title shown here to act as the fold handle */}Résultats</strong>
+              <strong className="results-title">Résultats</strong>
             </div>
             <div className="results-header-right">
               <button
@@ -53,7 +54,8 @@ export default function Calculate() {
               <ResultsPanel result={result} showTitle={false} />
             </div>
           )}
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   )

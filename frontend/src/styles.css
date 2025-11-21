@@ -136,6 +136,39 @@ body {
   overflow-x: hidden;
 }
 
+/* Mobile: keep a 16:9 visual layout and avoid items reflowing by applying
+   a global visual scale and constraining the app width relative to viewport height.
+   This preserves the desktop layout proportions and prevents elements from moving. */
+@media (max-width: 480px) {
+  /* Constrain overall app width to approximate a 16:9 frame based on device height */
+  .app-root {
+    max-width: calc(100vh * (16/9));
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+  }
+
+  /* Apply a gentle visual scale so UI looks like a zoomed-out 16:9 frame */
+  .app-main > * {
+    transform: scale(0.5);
+    transform-origin: top center;
+    transition: transform 160ms ease;
+  }
+
+  /* Prevent home blocks from stacking — allow horizontal scroll instead */
+  .home-blocks-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+  }
+
+  /* Slightly reduce individual block min-width to fit the scaled layout */
+  .home-block {
+    min-width: 150px;
+  }
+}
+
 /* Style global pour tous les selects et leurs options */
 select {
   background: rgba(255, 255, 255, 0.05);
@@ -185,6 +218,124 @@ select option:hover {
 .app-header nav {
   display: flex;
   gap: 16px;
+}
+
+/* Stronger visual de-zoom for phones/tablets: apply a global scale to the app root.
+   This is intentionally broad (max-width: 820px) so it triggers on most phones and
+   ensures the UI appears zoomed-out without changing layout flow. It will override
+   previous smaller media-query rules because it's placed later in the file. */
+@media (max-width: 820px) {
+  /* Try to render the desktop layout on phones by fixing the layout width to
+     the desktop container and scaling it to exactly fit the viewport width.
+     We set a fixed desktop width (1100px) and ask the browser to scale that
+     container so its visual width matches 100vw. This keeps the layout
+     identical to desktop but scaled down for phones. */
+  .app-root {
+    width: 1100px; /* desktop layout width we want to preserve */
+    margin-left: auto;
+    margin-right: auto;
+    /* Scale so 1100px maps to the viewport width. This uses calc(); some
+       browsers support dividing lengths in calc() to produce a unitless value
+       suitable for transform.scale(). If not supported, adjust the scale
+       value manually (see fallback below). */
+    -webkit-transform: scale(calc((100vw / 1100px) * 0.95));
+    transform: scale(calc((100vw / 1100px) * 0.95));
+    transform-origin: top center;
+    transition: transform 160ms ease;
+  }
+
+  /* Fallback for browsers that ignore calc() in transform: keep a reasonable
+     scale so the UI still fits (this will be overridden if calc() works). */
+  @supports not (transform: scale(calc((100vw / 1100px) * 0.95))) {
+    .app-root {
+      -webkit-transform: scale(0.72);
+      transform: scale(0.72);
+      width: calc(100% / 0.72);
+    }
+  }
+
+  /* Ensure vertical scrolling is available so nothing is permanently cropped */
+  html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  /* Keep home blocks row from reflowing vertically; allow horizontal scroll if needed */
+  .home-blocks-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+  }
+
+  /* Adjust block min-width so blocks fit after scaling */
+  .home-block {
+    min-width: 140px;
+  }
+}
+
+/* Apply a large vertical space to any graph-like container when preserving
+   the desktop layout on mobile so charts render without vertical clipping. */
+@media (max-width: 1000px) {
+  .app-root.preserve-desktop .chart,
+  .app-root.preserve-desktop .chart-container,
+  .app-root.preserve-desktop .graph,
+  .app-root.preserve-desktop .graph-container,
+  .app-root.preserve-desktop .results-section,
+  .app-root.preserve-desktop .results-panel,
+  .app-root.preserve-desktop .threats-results,
+  .app-root.preserve-desktop .threats-right,
+  .app-root.preserve-desktop .coverage-graph,
+  .app-root.preserve-desktop .type-coverage-info,
+  .app-root.preserve-desktop .speed-chart,
+  .app-root.preserve-desktop .chart-wrap,
+  .app-root.preserve-desktop canvas,
+  .app-root.preserve-desktop svg {
+    min-height: 120vh !important;
+  }
+}
+
+/* Portrait-specific: render the desktop layout scaled to fit portrait phone width.
+   This targets portrait orientation and will override previous mobile rules.
+   It scales the main content so the user sees the same layout as desktop, but
+   reduced to the phone's width (clickable areas remain aligned). */
+@media (orientation: portrait) and (max-width: 820px) {
+  .app-root {
+    width: 1100px; /* desktop layout width */
+    margin-left: auto;
+    margin-right: auto;
+    /* scale content so 1100px maps to viewport width */
+    -webkit-transform: scale(calc(100vw / 1100px));
+    transform: scale(calc(100vw / 1100px));
+    transform-origin: top left;
+    transition: transform 160ms ease;
+  }
+
+  /* Apply scale to the main content container as well to ensure consistent origin */
+  .app-main > * {
+    -webkit-transform: none !important;
+    transform: none !important;
+  }
+
+  /* Make sure nothing clips the scaled content and allow vertical scroll */
+  html, body, .app-root {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  /* Ensure blocks remain in a horizontal row (desktop look) */
+  .home-blocks-row {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+  }
+
+  /* Slightly reduce block min-width to help them fit when scaled */
+  .home-block {
+    min-width: 140px !important;
+  }
 }
 
 .app-header nav a {
@@ -266,6 +417,164 @@ select option:hover {
   font-weight: 700;
   border-radius: 6px;
   transition: background 0.15s, color 0.15s, transform 0.08s;
+}
+
+/*
+  Mobile-only JS scaling override
+  - When JS wants to preserve the desktop layout on small viewports it will
+    add `.preserve-desktop` to `.app-root` and apply an inline `transform` on
+    `.app-scale`. These rules neutralize earlier CSS transforms and ensure the
+    inner wrapper has the desktop baseline width so the JS scale is accurate.
+*/
+@media (max-width: 820px) {
+  .app-root.preserve-desktop {
+    /* Neutralize any transform applied to root by earlier rules */
+    -webkit-transform: none !important;
+    transform: none !important;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100% !important;
+    /* Removed overflow-x: hidden to allow tables to take full width */
+     /* Do not change panel min-width here — keep desktop proportions intact
+       so the inner layout isn't compressed. JS scaling will visually resize. */
+  }
+
+  .app-root.preserve-desktop .app-scale {
+    /* Desktop baseline width: JS will set inline width as well. Keep origin centered. */
+    width: 1100px;
+    transform-origin: top left;
+    transition: transform 160ms ease;
+    /* Remove auto margins: JS will position/translate to center visually */
+    margin: 0;
+    position: relative;
+  }
+
+  /* Allow horizontal scroll when tables exceed viewport */
+  html, body {
+    overflow-x: auto;
+  }
+  
+  /* Ensure stats tables and content use their natural width */
+  .app-root.preserve-desktop .stats-table,
+  .app-root.preserve-desktop .stats-row,
+  .app-root.preserve-desktop .stats-header {
+    min-width: max-content;
+  }
+}
+
+/* When preserve-desktop is active on small viewports, restore the desktop
+   panels grid so the three-column layout is preserved (then JS visually
+   scales the whole `.app-scale` to fit). This prevents the CSS mobile
+   media queries from stacking the panels. */
+@media (max-width: 820px) {
+  .app-root.preserve-desktop .panels-container {
+    grid-template-columns: 820px 440px 820px !important;
+    grid-template-rows: none !important;
+    gap: 24px !important;
+    min-height: auto !important;
+    align-items: start !important;
+    width: fit-content !important;
+  }
+
+  .app-root.preserve-desktop .panel-middle {
+    order: 0 !important;
+    min-width: 440px !important;
+    width: 440px !important;
+  }
+  
+  .app-root.preserve-desktop .panel-left,
+  .app-root.preserve-desktop .panel-right {
+    min-width: 820px !important;
+    width: 820px !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Ensure any mobile-specific single-column rules are overridden */
+  .app-root.preserve-desktop .panels-container > * {
+    width: auto !important;
+    display: block !important;
+  }
+}
+
+/* Improve touch comfort for stat tables when using preserved-desktop layout */
+@media (max-width: 820px) {
+  .app-root.preserve-desktop .stats-header,
+  .app-root.preserve-desktop .stats-row {
+    /* Keep original desktop column proportions so content isn't compressed */
+    grid-template-columns: 100px 80px 100px 90px 80px !important;
+    gap: 12px;
+    padding: 8px;
+  }
+
+  /* Slightly increase vertical padding inside panels for more breathing room */
+  .app-root.preserve-desktop .panel-left,
+  .app-root.preserve-desktop .panel-right,
+  .app-root.preserve-desktop .panel-middle,
+  .app-root.preserve-desktop .pokemon-panel,
+  .app-root.preserve-desktop .results-panel {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+  }
+
+  .app-root.preserve-desktop .stats-row {
+    border-radius: 8px;
+  }
+
+  .app-root.preserve-desktop .stat-col {
+    font-size: 15px;
+  }
+
+  .app-root.preserve-desktop .stat-col input,
+  .app-root.preserve-desktop .stat-col select {
+    font-size: 15px;
+    padding: 8px 10px;
+    min-height: 40px;
+    border-radius: 6px;
+  }
+
+  /* Ensure the inputs don't shrink below a touch-friendly size */
+  .app-root.preserve-desktop .stats-table input[type="number"] {
+    min-width: 56px;
+  }
+
+  /* Add small extra spacing between rows for clarity */
+  .app-root.preserve-desktop .stats-table {
+    gap: 8px;
+  }
+}
+
+/* Apply preserved-desktop panel widths to other pages (threats/coverage/speed) */
+@media (max-width: 820px) {
+  .app-root.preserve-desktop .threats-container,
+  .app-root.preserve-desktop .speed-checker-container {
+    display: grid !important;
+    grid-template-columns: 820px 440px 820px !important;
+    gap: 24px !important;
+    width: fit-content !important;
+    align-items: start !important;
+  }
+
+  .app-root.preserve-desktop .threats-left,
+  .app-root.preserve-desktop .speed-panel-left,
+  .app-root.preserve-desktop .pokemon-search-container {
+    min-width: 820px !important;
+    width: 820px !important;
+  }
+
+  .app-root.preserve-desktop .threats-middle,
+  .app-root.preserve-desktop .speed-panel,
+  .app-root.preserve-desktop .threats-middle {
+    min-width: 440px !important;
+    width: 440px !important;
+  }
+
+  .app-root.preserve-desktop .threats-right,
+  .app-root.preserve-desktop .speed-panel-right {
+    min-width: 820px !important;
+    width: 820px !important;
+  }
 }
 
 .scale-button:hover {
@@ -359,6 +668,26 @@ select option:hover {
   opacity: 0.6;
   border-top: 1px solid var(--border);
   margin-top: 20px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--card);
+  z-index: 70;
+}
+
+/* Fix footer positioning on mobile preserve-desktop */
+@media (max-width: 820px) {
+  .app-root.preserve-desktop .app-footer {
+    margin-top: 0;
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+  .app-footer {
+    position: static;
+    background: none;
+    margin-top: 20px;
+  }
 }
 .home-blocks-row {
   align-items: stretch;
@@ -376,12 +705,32 @@ select option:hover {
   gap: var(--gap);
 }
 
+/* On mobile preserve-desktop, ensure pages fill available height */
+@media (max-width: 820px) {
+  .app-root.preserve-desktop .calculate-page,
+  .app-root.preserve-desktop .threats-page {
+    min-height: calc(100vh - 80px);
+    height: auto;
+  }
+}
+
 .panels-container {
   flex: 1;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr 400px 1fr;
   gap: var(--gap);
-  min-height: 0; /* Important for scroll */
+  min-height: 0;
+  align-items: start;
+}
+
+/* Ensure panels sit on a lower stacking context than the results block
+   so when results expand they push content instead of overlaying it. */
+.panels-container,
+.panel-left,
+.panel-middle,
+.panel-right {
+  position: relative;
+  z-index: 0;
 }
 
 .panel-left,
@@ -390,7 +739,7 @@ select option:hover {
   border-radius: 12px;
   border: 1px solid var(--border);
   padding: 20px;
-  overflow-y: auto;
+  overflow-y: visible; /* Changed from auto to visible - no internal scroll */
 }
 
 .panel-middle {
@@ -404,12 +753,30 @@ select option:hover {
 
 .results-section {
   background: var(--card);
-  border-radius: 12px;
+  border-radius: 12px 12px 0 0;
   border: 1px solid var(--border);
-  padding: 20px; /* slightly larger padding for better separation */
-  max-height: 260px; /* increased height so results area is more visible */
+  padding: 16px 20px;
+  max-height: 320px; /* limit height so the fixed banner doesn't cover entire page */
   overflow-y: auto;
-  transition: max-height 180ms ease, padding 180ms ease;
+  transition: max-height 220ms ease, padding 180ms ease, transform 150ms ease;
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 40px;
+  z-index: 60;
+  box-shadow: 0 -6px 24px rgba(2,6,23,0.6);
+}
+
+/* Reserve space at the bottom of the app so fixed results do not overlap content */
+.app-root {
+  --results-reserved: 360px; /* conservative reserve for expanded results */
+  padding-bottom: var(--results-reserved);
+}
+
+/* Collapsed fixed state */
+.results-section.collapsed {
+  max-height: 56px;
+  padding: 10px 14px;
 }
 
 /* Header and collapse button for results */
@@ -457,6 +824,7 @@ select option:hover {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  overflow: visible; /* ensure full content is visible without scroll */
 }
 
 .pokemon-panel h3 {
@@ -876,6 +1244,7 @@ select.form-control option:checked {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  overflow: visible; /* ensure no overflow restrictions */
 }
 
 /* Stats Table - Perfect alignment */
