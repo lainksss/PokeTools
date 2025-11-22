@@ -4,20 +4,41 @@ Note: the list below enumerates abilities that have special handling in the back
 
 (Descriptions sourced from `calculate_abilities.py` and `calculate_damages.py` code.)
 
+Note: move-level boolean flags (contact / punch / bite, etc.) are loaded
+from `data/moves_with_flags.json` by `calculate_abilities.apply_ability_effects` at
+runtime. The API layer no longer duplicates this enrichment — ability handlers
+consume those flags directly.
+
+Quick summary (implementation style):
+
+- Base-power modifications (mutate `move["power"]`): `technician`, `strong-jaw`, `tough-claws`, `aerilate`/`pixilate`/`refrigerate`/`galvanize`/`normalize`, `reckless`.
+- Final multipliers (applied to `other_mult`): `sheer-force`, `iron-fist`, and other simple multipliers remain as final modifiers.
+
+Note: the `recoil` attribute is not universally present in `moves_with_flags.json`; some tests set `move["recoil"] = True` manually. If you want automatic detection of recoil moves, we can extend `backend/scripts/import_all_move_flags.py` to include a `recoil` flag based on move meta from PokeAPI.
+
 - `huge-power` / `pure-power`: doubles the user's Attack for physical moves.
 	- Test: ✅ `huge-power` is covered by `backend/test/test_huge_power.py` (Azumarill Aqua Jet case).
 
 - `tough-claws`: +30% for moves that make contact.
+	- Implementation: applied as a base-power modification (the ability mutates `move["power"] = int(p * 1.3)`) so rounding and 16-roll damage distributions match authoritative calculators.
+	- Test: ✅ `tough-claws` is covered by `backend/test/test_tough_claws.py` (Perrserker Metal Claw case).
 
 - `sheer-force`: +30% for moves with secondary effects (with secondary effects suppressed).
+	- Implementation: currently applied as a final multiplier (`other_mult *= 1.3`).
 
 - `reckless`: +20% for moves with recoil.
+	- Implementation: applied as a base-power modification (the ability mutates `move["power"] = int(p * 1.2)`) so rounding and 16-roll damage distributions match authoritative calculators. Tests may set `move["recoil"] = True` when recoil isn't present in `moves_with_flags.json`.
 
 - `iron-fist`: +20% for punching moves.
+	- Implementation: currently applied as a final multiplier (`other_mult *= 1.2`).
+	- Test: ✅ `iron-fist` is covered by `backend/test/test_iron_fist.py` (Golurk Shadow Punch case).
 
 - `strong-jaw`: +50% for biting moves.
+	- Implementation: applied as a base-power modification (the ability mutates `move["power"] = int(p * 1.5)`) so rounding and 16-roll damage distributions match authoritative calculators.
+	- Test: ✅ `strong-jaw` is covered by `backend/test/test_strong_jaw.py` (Bruxish Psychic Fangs case).
 
 - `technician`: multiplies power by 1.5 for moves with base power <= 60.
+	- Implementation: applied as a base-power modification (mutates `move["power"]`) to preserve expected rounding.
 	- Test: ✅ `technician` is covered by `backend/test/test_technician.py` (Scizor Bullet Punch case).
 
 - `sniper`: marks increased critical damage (handled as larger crit multiplier when applicable).
@@ -28,7 +49,8 @@ Note: the list below enumerates abilities that have special handling in the back
 	- Test: ✅ Unit tests reference `solar-power` in `backend/test/test_calcs.py`.
 
 - `aerilate` / `pixilate` / `refrigerate` / `galvanize` / `normalize`: convert Normal moves to another type and apply ~20% boost (e.g., Aerilate turns Normal → Flying).
-	- Test: ✅ `abilities` totally covered in `backend/test/test_aerilate_family.py` 
+	- Implementation: these are applied as base-power modifications (they mutate `move["type"]` and `move["power"]`) so type-effectiveness and STAB are recalculated using the mutated move and rounding matches tests.
+	- Test: ✅ `abilities` covered in `backend/test/test_aerilate_family.py`.
 
 - `protean` / `libero`: change the user's type to the move's type (marked in effects for later logic).
 	- Test: ✅ `protean`/`libero` covered by `backend/test/test_protean_libero.py` (Cinderace / Greninja cases).

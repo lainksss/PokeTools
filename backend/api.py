@@ -242,6 +242,8 @@ def api_calc_damage():
         complete_move_data = all_moves.get(move_name, {})
         # Fusionner les données (priorité aux données du payload pour les valeurs déjà présentes)
         move_data = {**complete_move_data, **move_data}
+        # Note: move flag enrichment is handled centrally in
+        # `calculate_abilities.apply_ability_effects` to avoid duplication.
 
     # --- Compute weight-based move power (Low Kick / Grass Knot / Heat Crash / Heavy Slam)
     def _compute_weight_based_power(move, attacker, defender, gen=9):
