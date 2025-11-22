@@ -658,6 +658,12 @@ def calculate_damage(
     if 'apply_item_stat_modifiers' in globals() and apply_item_stat_modifiers:
         try:
             attacker, defender, power = apply_item_stat_modifiers(attacker, defender, move)
+            # Keep the move dict in sync with the returned power so downstream
+            # code that prefers `move["power"]` sees the item-modified value.
+            try:
+                move["power"] = int(power)
+            except Exception:
+                pass
         except Exception as e:
             pass
 
