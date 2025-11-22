@@ -759,7 +759,10 @@ def calculate_damage(
 
     # STAB / type / burn / others
     stab = compute_stab(attacker, move, move_type_override=move_type if is_tera_blast else None)
-    mv_type = move_type
+    # If an ability (Protean/Libero) or an effect (Aerilate/Normalize/etc.) changed
+    # the move's type, prefer the updated type stored on the `move` dict. Fall
+    # back to the original `move_type` otherwise.
+    mv_type = move.get("type") or move_type
     type_mult = type_effectiveness(mv_type, defender.get("types", []), type_chart)
     
     # Tera Blast Stellar : super efficace contre Pokémon téracristallisés, neutre sinon

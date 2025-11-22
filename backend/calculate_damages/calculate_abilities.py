@@ -100,6 +100,24 @@ def apply_ability_effects(
             A = float(A) * 1.5
             effects["solar_power"] = True
 
+    # Normalize / Normalise: change ANY move to type Normal and apply ~20% boost
+    if atk_ability in ("normalize", "normalise"):
+        try:
+            orig = move.get("type")
+            move["type"] = "normal"
+            # Apply Normalize as a base-power modification (like Technician),
+            # so that rounding matches expected behaviour.
+            try:
+                p = int(move.get("power") or 0)
+                if p > 0:
+                    move["power"] = int(p * 1.2)
+                    effects["normalize_power_old"] = p
+            except Exception:
+                pass
+            effects["normalize"] = {"from": orig, "to": "normal"}
+        except Exception:
+            pass
+
     # Aerilate / Pixilate / Refrigerate / Galvanize: treat Normal moves as other type + 20%
     mapping = {
         "aerilate": "flying",
@@ -110,13 +128,30 @@ def apply_ability_effects(
     if atk_ability in mapping and mv_type == "normal":
         new_type = mapping[atk_ability]
         move["type"] = new_type
-        mul("other_mult", 1.2)
+        # Apply Aerilate-family as a base-power modification (like Technician)
+        # so rounding/rolls match authoritative calculators.
+        try:
+            p = int(move.get("power") or 0)
+            if p > 0:
+                move["power"] = int(p * 1.2)
+                effects[f"{atk_ability}_power_old"] = p
+        except Exception:
+            pass
         # recompute STAB will happen in calling code if needed
         effects[atk_ability] = new_type
 
-    # Protean / Libero: change user's type to move's type (we mark it; compute_stab already respects is_terastallized/orig_types logic)
+    # Protean / Libero: change user's type to move's type and update attacker's types
     if atk_ability in ("protean", "libero") and mv_type:
-        # Caller may choose to update attacker's 'types' or rely on effects
+        # Store original types for consumers that need them
+        if attacker is not None:
+            # Preserve original types if not already stored
+            if "orig_types" not in attacker and "types" in attacker:
+                try:
+                    attacker["orig_types"] = list(attacker.get("types") or [])
+                except Exception:
+                    attacker["orig_types"] = attacker.get("types")
+            # Update current types to the move's type
+            attacker["types"] = [mv_type]
         effects[atk_ability] = mv_type
 
     # Type-specific boosts when at low HP (Blaze, Torrent, Overgrow, Swarm)

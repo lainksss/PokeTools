@@ -17,8 +17,10 @@ Note: the list below enumerates abilities that have special handling in the back
 - `guts`: +50% Attack if the user has a status condition and uses a physical move.
 - `solar-power`: +50% Special Attack in harsh sunlight for special moves.
 	- Test: ✅ Unit tests reference `solar-power` in `backend/test/test_calcs.py`.
-- `aerilate` / `pixilate` / `refrigerate` / `galvanize`: convert Normal moves to another type and apply ~20% boost (e.g., Aerilate turns Normal → Flying).
+- `aerilate` / `pixilate` / `refrigerate` / `galvanize` / `normalize`: convert Normal moves to another type and apply ~20% boost (e.g., Aerilate turns Normal → Flying).
+	- Test: ✅ `abilities` totally covered in `backend/test/test_aerilate_family.py` 
 - `protean` / `libero`: change the user's type to the move's type (marked in effects for later logic).
+	- Test: ✅ `protean`/`libero` covered by `backend/test/test_protean_libero.py` (Cinderace / Greninja cases).
 - `blaze` / `torrent` / `overgrow` / `swarm`: 1.5x boost for the respective type when HP <= 1/3.
 - `steelworker`: +50% for Steel-type moves.
 - `victory-star`: implemented as a precision/accuracy flag (placeholder-like handling).
