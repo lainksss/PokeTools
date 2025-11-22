@@ -44,7 +44,7 @@ Note: the `recoil` attribute is not universally present in `moves_with_flags.jso
 	- Test: ✅ `technician` is covered by `backend/test/test_technician.py` (Scizor Bullet Punch case).
 
 - `sniper`: marks increased critical damage (handled as larger crit multiplier when applicable).
-	- Test: ❌
+	- Test: ❌ But useless
 
 - `guts`: +50% Attack if the user has a status condition and uses a physical move.
 	- Test: ❌
@@ -67,7 +67,7 @@ Note: the `recoil` attribute is not universally present in `moves_with_flags.jso
 	- Test: ✅ `steelworker`/`steely-spirit` covered by `backend/test/test_steel_abilities.py` (Dialga Flash Cannon case).
 
 - `victory-star`: implemented as a precision/accuracy flag (placeholder-like handling).
-	- Test: ❌
+	- Test: ❌ But useless
 
 - `levitate`: immunity to Ground-type moves (treated as type multiplier = 0.0 where applicable).
 	- Test: ✅ `levitate` is tested in `backend/test/test_grounded.py` (ungrounded behavior and gravity override).

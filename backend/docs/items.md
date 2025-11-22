@@ -12,21 +12,21 @@ How to update: when you add a test that depends on an item's damage behaviour, m
 - `eviolite`: ✅ covered by `backend/test/test_calcs.py` and `backend/test/test_kyogre_simple.py`
 - `choice-specs`: ✅ covered by `backend/test/test_calcs.py` (several cases)
 - `choice-band`: ✅ covered by `backend/test/test_calcs.py` and `backend/test/test_garchomp_golem.py`
+- `charcoal`: ✅ covered by `backend/test/test_items_powerups.py::test_charcoal_charizard_flamethrower`
+- `magnet`: ✅ covered by `backend/test/test_items_powerups.py::test_magnet_magnezone_thunderbolt`
+- `sharp-beak`: ✅ covered by `backend/test/test_items_powerups.py::test_sharp_beak_thundurus_fly`
+- `black-belt`: ✅ covered by `backend/test/test_items_powerups.py::test_black_belt_urshifu_close_combat`
+- `mystic-water`: ✅ covered by `backend/test/test_items_powerups.py::test_mystic_water_kyogre_water_spout_rain_double`
+- `miracle-seed`: ✅ covered by `backend/test/test_items_powerups.py::test_miracle_seed_venusaur_solar_beam`
+- `never-melt-ice`: ✅ covered by `backend/test/test_items_powerups.py::test_never_melt_ice_calyrex_glacial_lance_double`
+- `poison-barb`: ✅ covered by `backend/test/test_items_powerups.py::test_poison_barb_sneasler_dire_claw`
+- `hard-stone`: ✅ covered by `backend/test/test_items_powerups.py::test_hard_stone_tyranitar_rock_tomb_sandstorm`
+- `soft-sand`: ✅ covered by `backend/test/test_items_powerups.py::test_soft_sand_hippowdon_earthquake_double_sandstorm`
 
 **Items present in `items.py` but not currently covered by tests**
 
 The list below was taken from `backend/items/items.py`. These items have behaviour that can affect damage (type boosts, power modifiers, final multipliers, stat multipliers, one-use gems, etc.) but currently lack explicit unit tests in `backend/test`.
 
-- `charcoal`
-- `magnet`
-- `sharp-beak`
-- `black-belt`
-- `mystic-water`
-- `miracle-seed`
-- `never-melt-ice`
-- `poison-barb`
-- `hard-stone`
-- `soft-sand`
 - `spell-tag`
 - `twisted-spoon`
 - `dragon-fang`
