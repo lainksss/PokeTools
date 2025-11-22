@@ -6,35 +6,60 @@ Note: the list below enumerates abilities that have special handling in the back
 
 - `huge-power` / `pure-power`: doubles the user's Attack for physical moves.
 	- Test: ✅ `huge-power` is covered by `backend/test/test_huge_power.py` (Azumarill Aqua Jet case).
+
 - `tough-claws`: +30% for moves that make contact.
+
 - `sheer-force`: +30% for moves with secondary effects (with secondary effects suppressed).
+
 - `reckless`: +20% for moves with recoil.
+
 - `iron-fist`: +20% for punching moves.
+
 - `strong-jaw`: +50% for biting moves.
+
 - `technician`: multiplies power by 1.5 for moves with base power <= 60.
 	- Test: ✅ `technician` is covered by `backend/test/test_technician.py` (Scizor Bullet Punch case).
+
 - `sniper`: marks increased critical damage (handled as larger crit multiplier when applicable).
+
 - `guts`: +50% Attack if the user has a status condition and uses a physical move.
+
 - `solar-power`: +50% Special Attack in harsh sunlight for special moves.
 	- Test: ✅ Unit tests reference `solar-power` in `backend/test/test_calcs.py`.
+
 - `aerilate` / `pixilate` / `refrigerate` / `galvanize` / `normalize`: convert Normal moves to another type and apply ~20% boost (e.g., Aerilate turns Normal → Flying).
 	- Test: ✅ `abilities` totally covered in `backend/test/test_aerilate_family.py` 
+
 - `protean` / `libero`: change the user's type to the move's type (marked in effects for later logic).
 	- Test: ✅ `protean`/`libero` covered by `backend/test/test_protean_libero.py` (Cinderace / Greninja cases).
+
 - `blaze` / `torrent` / `overgrow` / `swarm`: 1.5x boost for the respective type when HP <= 1/3.
+
 - `steelworker`: +50% for Steel-type moves.
+
 - `victory-star`: implemented as a precision/accuracy flag (placeholder-like handling).
+
 - `levitate`: immunity to Ground-type moves (treated as type multiplier = 0.0 where applicable).
 	- Test: ✅ `levitate` is tested in `backend/test/test_grounded.py` (ungrounded behavior and gravity override).
+
 - `water-absorb` / `volt-absorb` / `dry-skin`: absorb Water/Electric/Water respectively (negates damage and marks absorption effects).
+
 - `flash-fire`: absorbs Fire moves (negates/hides damage and signals activation).
+
 - `solid-rock` / `filter` / `prism-armor`: reduce super-effective damage by ~25%.
+
 - `tera-shell`: when at full HP, sets `effects['tera_shell_active'] = True` (used by `calculate_damages` to adjust type effectiveness).
+
 - `multiscale`: when at full HP, halves incoming damage (other_mult *= 0.5).
+
 - `shadow-shield`: similar to Multiscale; reduces damage to 0.5 when at full HP.
+
 - `thick-fat`: halves damage from Fire and Ice types.
+
 - `scrappy`: ignores Ghost immunities for Normal/Fighting moves (handled in damage calculations).
+
 - `merciless`: forces critical hits when the target is poisoned (handled in crit logic).
+
 - `battle-armor` / `shell-armor`: prevent critical hits (handled in crit logic).
 
 Note: `sniper` and other crit-related flags are set by ability handling and used in the main damage calculation to modify the critical multiplier.
