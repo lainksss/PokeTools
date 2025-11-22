@@ -24,10 +24,12 @@ Note: the `recoil` attribute is not universally present in `moves_with_flags.jso
 	- Test: ✅ `tough-claws` is covered by `backend/test/test_tough_claws.py` (Perrserker Metal Claw case).
 
 - `sheer-force`: +30% for moves with secondary effects (with secondary effects suppressed).
-	- Implementation: currently applied as a final multiplier (`other_mult *= 1.3`).
+	- Implementation: applied as a base-power modification (the ability mutates `move["power"] = int(p * 1.3)`) so rounding and 16-roll damage distributions match authoritative calculators. When a move has no explicit power the code falls back to applying a final multiplier (`other_mult *= 1.3`). Detection: Sheer Force only activates when the move explicitly has `move['has_secondary'] is True` or when the precomputed file `data/moves_secondary_effect.json` contains `"has_secondary": true` for that move (regenerate with `backend/importation/import_all_moves_secondary_effects.py`). When applied the code also sets `move["secondary_suppressed"] = True` so other pipeline stages can skip flinch/status/stat secondary effects.
+	- Test: ✅ `sheer-force` is covered by `backend/test/test_sheer_force.py` (Landorus Bite & Earthquake cases).
 
 - `reckless`: +20% for moves with recoil.
 	- Implementation: applied as a base-power modification (the ability mutates `move["power"] = int(p * 1.2)`) so rounding and 16-roll damage distributions match authoritative calculators. Tests may set `move["recoil"] = True` when recoil isn't present in `moves_with_flags.json`.
+	- Test: ✅ `reckless` is covered by `backend/test/test_reckless.py` (Staraptor Double Edge case).
 
 - `iron-fist`: +20% for punching moves.
 	- Implementation: currently applied as a final multiplier (`other_mult *= 1.2`).
