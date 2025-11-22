@@ -296,10 +296,20 @@ def apply_ability_effects(
                 mul("other_mult", 1.5)
                 effects["swarm"] = True
 
-    # Abilities that boost specific types (Steelworker, Battle Bond ignored)
-    if atk_ability == "steelworker" and mv_type == "steel":
-        mul("other_mult", 1.5)
-        effects["steelworker"] = True
+    # Abilities that boost specific types (Steelworker, Steely Spirit)
+    # Apply as a base-power modification so rounding and 16-roll distributions
+    # match authoritative calculators. Fall back to final multiplier if move
+    # has no explicit power.
+    if atk_ability in ("steelworker", "steely-spirit") and mv_type == "steel":
+        try:
+            p = int(move.get("power") or 0)
+            if p > 0:
+                effects["steelworker"] = atk_ability
+                effects["steelworker_power_old"] = p
+                move["power"] = int(p * 1.5)
+        except Exception:
+            mul("other_mult", 1.5)
+            effects["steelworker"] = atk_ability
     if atk_ability == "victorystar":
         # implemented elsewhere if needed (accuracy)
         effects["victorystar"] = True
