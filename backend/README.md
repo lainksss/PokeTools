@@ -56,4 +56,7 @@ Notes for developers
   - `api.py` — routes and SSE streaming endpoints
 - SSE endpoints: `find_threats_stream` and `analyze_coverage_stream` emit `text/event-stream` events with `data: <JSON>` lines. See `api.py` and frontend SSE handling.
 
+  Field conditions (auras)
+  - **Fairy Aura / Dark Aura / Aura Break**: These three auras were implemented as field-level conditions (in `calculate_damages/special_conditions.py`) and are applied as base-power modifiers so rounding and authoritative 16-roll damage distributions match expected results. Unit tests covering aura combinations live in `backend/test/test_auras.py`.
+
 If you add or update datasets, ensure `data/` files remain JSON-valid and include required keys used by the calculators (types, base_stats, moves, abilities).

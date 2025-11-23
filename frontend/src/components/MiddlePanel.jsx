@@ -23,7 +23,7 @@ export default function MiddlePanel({ left, right, setLeft, setRight, setResult 
   const [attackerStatus, setAttackerStatus] = useState('none')
   const [defenderStatus, setDefenderStatus] = useState('none')
   const [isCritical, setIsCritical] = useState(false)
-  const [battleMode, setBattleMode] = useState('single') // 'single' or 'double'
+  const [battleMode, setBattleMode] = useState('double') // 'single' or 'double'
 
   // Keep local selectors synced with parent left/right values when available
   React.useEffect(() => {

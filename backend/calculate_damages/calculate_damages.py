@@ -23,6 +23,7 @@ try:
     from .calculate_types import get_type_breakdown, type_effectiveness
     from .calculate_abilities import apply_ability_effects
     from .calculate_grounded import is_grounded
+    from .special_conditions import compute_aura_multiplier
     from ..items.items import apply_item_stat_modifiers, compute_item_damage_multiplier, get_item
 except Exception:
     # If relative imports fail (exec as script), fallback to local defs below
@@ -812,6 +813,12 @@ def calculate_damage(
     if ability_type_mult == 0.0:
         type_mult = 0.0
 
+    # Aura support delegated to special_conditions module
+    try:
+        aura_mult = compute_aura_multiplier(attacker, defender, field, mv_type)
+    except Exception:
+        aura_mult = 1.0
+
     burn_mult = compute_burn_mult(attacker, category, move, gen)
     other_mult, zmove_mult, terashield_mult = compute_other_z_terashield(attacker, defender, field)
 
@@ -847,6 +854,15 @@ def calculate_damage(
         # terrainMultiplier = gen.num > 7 ? 5325 : 6144
         terrain_bp_mod = 5325 if gen >= 8 else 6144  # 1.3x for Gen 8+, 1.5x for Gen 6-7
         power = OF16(max(1, pokeRound((power * terrain_bp_mod) / 4096)))
+
+    # Apply aura as a base-power modifier (affects rounding like terrain BP mods)
+    # aura_mult was computed earlier by compute_aura_multiplier
+    try:
+        if aura_mult is not None and float(aura_mult) != 1.0:
+            aura_bp_mod = int(float(aura_mult) * 4096)
+            power = OF16(max(1, pokeRound((power * aura_bp_mod) / 4096)))
+    except Exception:
+        pass
 
     base = compute_base(level, power, A, D)
 

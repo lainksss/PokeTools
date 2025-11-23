@@ -38,6 +38,15 @@ Test coverage: ✅ Weather handling for `sun`, `rain`, `sandstorm` and `snow/hai
 
 Test coverage: ✅ Grassy and Misty terrain are used in unit tests (`backend/test/test_ivysaur_tyranitar.py`, `backend/test/test_garchomp_golem.py`, `backend/test/test_calcs.py`), including grassy healing/boost behavior. Some per-move halving (e.g., Earthquake under Grassy Terrain) is not explicitly asserted but the terrain logic itself is tested.
 
+**Auras**
+- **Files**: `backend/calculate_damages/special_conditions.py`, integrated from `calculate_damages.py`.
+
+- **Field keys**: `fairy_aura`, `dark_aura`, `aura_break` (boolean flags). Also accepts compact forms like `aura: 'fairy'` or an `auras` list.
+
+- **Behavior**: Auras are treated as field-level base-power modifiers (applied before base damage computation) so that rounding steps reproduce authoritative 16-roll damage distributions. `Aura Break` inverts the boost (reduces BP) when present together with an aura.
+
+- **Test coverage**: ✅ Aura combinations and interactions with `Aura Break` are covered by `backend/test/test_auras.py` and `test_clefable_moonblast.py`which asserts exact 16-roll tuples for representative Fairy/Dark moves.
+
 **Grounding / Gravity / Ungrounding**
 - **Files**: `backend/calculate_damages/calculate_grounded.py` (function `is_grounded`), consulted by terrain/weather logic and damage pipeline.
 
