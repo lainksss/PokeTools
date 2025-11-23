@@ -12,6 +12,9 @@ export default function Threats() {
   const [loading, setLoading] = useState(false)
   const [weather, setWeather] = useState('none')
   const [terrain, setTerrain] = useState('none')
+  const [reflect, setReflect] = useState(false)
+  const [lightScreen, setLightScreen] = useState(false)
+  const [auroraVeil, setAuroraVeil] = useState(false)
   const [progress, setProgress] = useState({ processed: 0, total: 0, threats_found: 0 })
   const [useStreaming, setUseStreaming] = useState(true)
   const [showOnlyGuaranteed, setShowOnlyGuaranteed] = useState(false)
@@ -53,6 +56,10 @@ export default function Threats() {
       field: {
         weather: weather === 'none' ? null : weather,
         terrain: terrain === 'none' ? null : terrain
+        ,
+        reflect: reflect || undefined,
+        light_screen: lightScreen || undefined,
+        aurora_veil: auroraVeil || undefined
       }
       ,
       analysis_options: {
@@ -149,7 +156,10 @@ export default function Threats() {
       ko_mode: koMode,
       field: {
         weather: weather === 'none' ? null : weather,
-        terrain: terrain === 'none' ? null : terrain
+        terrain: terrain === 'none' ? null : terrain,
+        reflect: reflect || undefined,
+        light_screen: lightScreen || undefined,
+        aurora_veil: auroraVeil || undefined
       }
       ,
       analysis_options: {
@@ -261,6 +271,20 @@ export default function Threats() {
                   </option>
                 ))}
               </select>
+            </div>
+          </div>
+
+          <div className="form-group" role="group" aria-label={t('calculate.screens')}>
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <button type="button" className={`aura-button ${reflect ? 'active' : ''}`} onClick={() => setReflect(v => !v)}>
+                {t('screens.reflect') || 'Protection'}
+              </button>
+              <button type="button" className={`aura-button ${lightScreen ? 'active' : ''}`} onClick={() => setLightScreen(v => !v)}>
+                {t('screens.light') || 'Mur lumière'}
+              </button>
+              <button type="button" className={`aura-button ${auroraVeil ? 'active' : ''}`} onClick={() => setAuroraVeil(v => !v)}>
+                {t('screens.aurora') || 'Voile Aurore'}
+              </button>
             </div>
           </div>
 

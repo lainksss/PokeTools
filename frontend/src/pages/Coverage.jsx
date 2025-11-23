@@ -15,6 +15,9 @@ export default function Coverage() {
   const [fairyAura, setFairyAura] = useState(false)
   const [darkAura, setDarkAura] = useState(false)
   const [auraBreak, setAuraBreak] = useState(false)
+  const [reflect, setReflect] = useState(false)
+  const [lightScreen, setLightScreen] = useState(false)
+  const [auroraVeil, setAuroraVeil] = useState(false)
   const [progress, setProgress] = useState({ processed: 0, total: 0, coverage_found: 0 })
   const [showOnlyGuaranteed, setShowOnlyGuaranteed] = useState(false)
   const [minRolls, setMinRolls] = useState(1)
@@ -87,7 +90,10 @@ export default function Coverage() {
         ,
         fairy_aura: fairyAura || undefined,
         dark_aura: darkAura || undefined,
-        aura_break: auraBreak || undefined
+        aura_break: auraBreak || undefined,
+        reflect: reflect || undefined,
+        light_screen: lightScreen || undefined,
+        aurora_veil: auroraVeil || undefined
       }
     }
 
@@ -258,6 +264,20 @@ export default function Coverage() {
               </button>
               <button type="button" className={`aura-button ${auraBreak ? 'active' : ''}`} onClick={() => setAuraBreak(v => !v)}>
                 {t('auras.break') || 'Aura Break'}
+              </button>
+            </div>
+          </div>
+
+          <div className="form-group" role="group" aria-label={t('calculate.screens')}>
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <button type="button" className={`aura-button ${reflect ? 'active' : ''}`} onClick={() => setReflect(v => !v)}>
+                {t('screens.reflect') || 'Protection'}
+              </button>
+              <button type="button" className={`aura-button ${lightScreen ? 'active' : ''}`} onClick={() => setLightScreen(v => !v)}>
+                {t('screens.light') || 'Mur lumière'}
+              </button>
+              <button type="button" className={`aura-button ${auroraVeil ? 'active' : ''}`} onClick={() => setAuroraVeil(v => !v)}>
+                {t('screens.aurora') || 'Voile Aurore'}
               </button>
             </div>
           </div>

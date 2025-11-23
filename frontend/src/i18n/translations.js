@@ -63,6 +63,7 @@ export const translations = {
       weather: "Météo",
       terrain: "Terrain",
       auras: "Auras",
+      screens: "Écrans",
       calculate: "Calculer",
       results: "Résultats",
       damage: "Dégâts",
@@ -231,6 +232,13 @@ export const translations = {
       dark: "Aura Ténébreuse",
       break: "Aura Inversée"
     },
+
+    // Screens
+    screens: {
+      reflect: "Protection",
+      light: "Mur lumière",
+      aurora: "Voile Aurore"
+    },
     
     // Natures communes
     natures: {
@@ -356,6 +364,7 @@ export const translations = {
       weather: "Weather",
       terrain: "Terrain",
       auras: "Auras",
+      screens: "Screens",
       calculate: "Calculate",
       results: "Results",
       damage: "Damage",
@@ -522,6 +531,13 @@ export const translations = {
       fairy: "Fairy Aura",
       dark: "Dark Aura",
       break: "Aura Break"
+    },
+
+    // Screens
+    screens: {
+      reflect: "Reflect",
+      light: "Light Screen",
+      aurora: "Aurora Veil"
     },
     
     // Common natures (keep English names)
