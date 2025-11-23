@@ -47,7 +47,7 @@ Note: the `recoil` attribute is not universally present in `moves_with_flags.jso
 	- Test: ❌ But useless
 
 - `guts`: +50% Attack if the user has a status condition and uses a physical move.
-	- Test: ❌
+	- Test: ✅ totally implemented in its test `test_guts_facade.py` 
 
 - `solar-power`: +50% Special Attack in harsh sunlight for special moves.
 	- Test: ✅ Unit tests reference `solar-power` in `backend/test/test_calcs.py`.

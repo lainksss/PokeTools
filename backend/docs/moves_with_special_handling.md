@@ -50,7 +50,7 @@ This document lists moves that have explicit special-case handling in the backen
   - File: `backend/calculate_damages/calculate_damages.py`
   - Location: burn multiplier computation
   - Behavior: normally physical moves have their power halved when the attacker is burned, but `facade` is exempt from this reduction for Gen >= 6 (the code checks `if not (gen >= 6 and move.get('name') == 'facade')`).
-  - Test: ❌ Not directly tested.
+  - Test: ✅ totally tested in `test_facade_status.py` !
 
 - **Always-critical moves**
   - File: `backend/calculate_damages/calculate_damages.py`
