@@ -756,6 +756,18 @@ def calculate_damage(
         except Exception:
             pass
 
+    # Special-case: Facade doubles to 140 BP when the user is burned/poisoned/paralyzed
+    try:
+        mv_lower = (move.get("name") or "").lower()
+        if mv_lower == "facade" and attacker.get("status") in ("burn", "poison", "paralysis"):
+            power = 140
+            try:
+                move["power"] = int(power)
+            except Exception:
+                pass
+    except Exception:
+        pass
+
     # simple multipliers
     targets, pb = compute_targets_and_pb(move, field, gen)
     weather_mult, weather_effects = compute_weather_mult(field, move_type, move)

@@ -483,6 +483,8 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
     : 0
   const remainingEvs = 510 - totalEvs
 
+  const isParalyzed = (value && value.status === 'paralysis')
+
   return (
     <div className="pokemon-panel">
       {showTitle && <h3>{side === 'left' ? t('calculate.attacker') : t('calculate.defender')}</h3>}
@@ -613,14 +615,30 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
                     )}
                   </div>
                   <div className="stat-col stat-final">
-                    {boostVal !== 0 && statKey !== 'hp' ? (
-                      <span title={`Base: ${finalVal}`} className={isItemBoosted ? 'item-boosted' : ''}>
-                        {boostedVal} <span style={{fontSize: '0.85em', opacity: 0.7}}>({finalVal})</span>
-                      </span>
+                    {statKey === 'speed' ? (
+                      // Apply paralysis halving and red color when status is paralysis
+                      (() => {
+                        const baseDisplay = boostVal !== 0 && statKey !== 'hp' ? boostedVal : finalVal
+                        const displayed = isParalyzed && typeof baseDisplay === 'number' ? Math.floor(baseDisplay / 2) : baseDisplay
+                        return (
+                          <span title={`Base: ${finalVal}`} style={{ color: isParalyzed ? '#ef4444' : undefined }} className={isItemBoosted ? 'item-boosted' : ''}>
+                            {displayed}
+                            {boostVal !== 0 && statKey !== 'hp' ? (
+                              <span style={{fontSize: '0.85em', opacity: 0.7}}>({finalVal})</span>
+                            ) : null}
+                          </span>
+                        )
+                      })()
                     ) : (
-                      <span className={isItemBoosted ? 'item-boosted' : ''}>
-                        {finalVal}
-                      </span>
+                      boostVal !== 0 && statKey !== 'hp' ? (
+                        <span title={`Base: ${finalVal}`} className={isItemBoosted ? 'item-boosted' : ''}>
+                          {boostedVal} <span style={{fontSize: '0.85em', opacity: 0.7}}>({finalVal})</span>
+                        </span>
+                      ) : (
+                        <span className={isItemBoosted ? 'item-boosted' : ''}>
+                          {finalVal}
+                        </span>
+                      )
                     )}
                   </div>
                 </div>

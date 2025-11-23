@@ -54,6 +54,8 @@ export const translations = {
       item: "Objet tenu",
       searchItem: "Rechercher un objet...",
       critical: "Coup critique",
+      attackerStatus: "Statut de l'attaquant",
+      defenderStatus: "Statut du défenseur",
       battleMode: "Mode de combat",
       battleConditions: "Conditions de combat",
       single: "Simple",
@@ -213,6 +215,14 @@ export const translations = {
       misty: "Brumeux",
       psychic: "Psychique"
     },
+
+    // Statuts possibles
+    status: {
+      none: "Aucun",
+      burn: "Brûlé",
+      poison: "Empoisonné",
+      paralysis: "Paralysé"
+    },
     
     // Natures communes
     natures: {
@@ -329,6 +339,8 @@ export const translations = {
       item: "Held item",
       searchItem: "Search item...",
       critical: "Critical hit",
+      attackerStatus: "Attacker status",
+      defenderStatus: "Defender status",
       battleMode: "Battle mode",
       battleConditions: "Battle Conditions",
       single: "Single",
@@ -486,6 +498,14 @@ export const translations = {
       electric: "Electric",
       misty: "Misty",
       psychic: "Psychic"
+    },
+
+    // Possible statuses
+    status: {
+      none: "None",
+      burn: "Burn",
+      poison: "Poison",
+      paralysis: "Paralysis"
     },
     
     // Common natures (keep English names)

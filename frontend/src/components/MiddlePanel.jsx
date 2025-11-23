@@ -11,13 +11,41 @@ const ALL_TERRAINS = [
   'none', 'grassy', 'electric', 'misty', 'psychic'
 ]
 
-export default function MiddlePanel({ left, right, setResult }) {
+const ALL_STATUSES = [
+  'none', 'burn', 'poison', 'paralysis'
+]
+
+export default function MiddlePanel({ left, right, setLeft, setRight, setResult }) {
   const { t } = useTranslation()
   const [loading, setLoading] = useState(false)
   const [weather, setWeather] = useState('none')
   const [terrain, setTerrain] = useState('none')
+  const [attackerStatus, setAttackerStatus] = useState('none')
+  const [defenderStatus, setDefenderStatus] = useState('none')
   const [isCritical, setIsCritical] = useState(false)
   const [battleMode, setBattleMode] = useState('single') // 'single' or 'double'
+
+  // Keep local selectors synced with parent left/right values when available
+  React.useEffect(() => {
+    try { setAttackerStatus(left?.status || 'none') } catch (e) {}
+  }, [left && left.status])
+
+  React.useEffect(() => {
+    try { setDefenderStatus(right?.status || 'none') } catch (e) {}
+  }, [right && right.status])
+
+  // When user changes the status selects, propagate into left/right via setters
+  React.useEffect(() => {
+    if (typeof setLeft === 'function' && left) {
+      setLeft(prev => ({ ...(prev || {}), status: attackerStatus === 'none' ? null : attackerStatus }))
+    }
+  }, [attackerStatus])
+
+  React.useEffect(() => {
+    if (typeof setRight === 'function' && right) {
+      setRight(prev => ({ ...(prev || {}), status: defenderStatus === 'none' ? null : defenderStatus }))
+    }
+  }, [defenderStatus])
 
   async function calculate() {
     if (!left || !right) {
@@ -44,6 +72,8 @@ export default function MiddlePanel({ left, right, setResult }) {
         is_terastallized: left.is_terastallized,
         tera_type: left.tera_type,
         stages: left.boosts || {}
+      ,
+        status: attackerStatus === 'none' ? null : attackerStatus
       },
       defender: {
         pokemon_id: right.id,
@@ -56,6 +86,8 @@ export default function MiddlePanel({ left, right, setResult }) {
         is_terastallized: right.is_terastallized,
         tera_type: right.tera_type,
         stages: right.boosts || {}
+      ,
+        status: defenderStatus === 'none' ? null : defenderStatus
       },
       move: left.move,
       field: {
@@ -141,6 +173,34 @@ export default function MiddlePanel({ left, right, setResult }) {
               <option key={ter} value={ter}>
                 {t(`terrain.${ter}`)}
               </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      <div className="form-row">
+        <div className="form-group">
+          <label>{t('calculate.attackerStatus')}</label>
+          <select
+            value={attackerStatus}
+            onChange={e => setAttackerStatus(e.target.value)}
+            className="form-control"
+          >
+            {ALL_STATUSES.map(s => (
+              <option key={s} value={s}>{t(`status.${s}`) || s}</option>
+            ))}
+          </select>
+        </div>
+
+        <div className="form-group">
+          <label>{t('calculate.defenderStatus')}</label>
+          <select
+            value={defenderStatus}
+            onChange={e => setDefenderStatus(e.target.value)}
+            className="form-control"
+          >
+            {ALL_STATUSES.map(s => (
+              <option key={s} value={s}>{t(`status.${s}`) || s}</option>
             ))}
           </select>
         </div>

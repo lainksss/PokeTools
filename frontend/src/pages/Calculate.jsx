@@ -23,7 +23,7 @@ export default function Calculate() {
         </div>
         
         <div className="panel-middle">
-          <MiddlePanel left={left} right={right} setResult={setResult} />
+          <MiddlePanel left={left} right={right} setLeft={setLeft} setRight={setRight} setResult={setResult} />
         </div>
         
         <div className="panel-right">
