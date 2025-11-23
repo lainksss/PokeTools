@@ -47,6 +47,28 @@ Test coverage: ✅ Grassy and Misty terrain are used in unit tests (`backend/tes
 
 - **Test coverage**: ✅ Aura combinations and interactions with `Aura Break` are covered by `backend/test/test_auras.py` and `test_clefable_moonblast.py`which asserts exact 16-roll tuples for representative Fairy/Dark moves.
 
+**Screens / Aurora Veil**
+
+- **Files**: `backend/calculate_damages/special_conditions.py`, integrated from `calculate_damages.py`.
+
+- **Field keys**: `reflect`, `light_screen` (and common aliases like `reflect_active`, `light_screen_active`), and `aurora_veil` or `aurora-veil`.
+
+- **Behavior implemented**:
+  - Reflect reduces *physical* damage; Light Screen reduces *special* damage. In single battles these screens halve damage (0.5). In multi-battle modes (e.g. `battle_mode: "double"`) they use a ~2/3 multiplier to mirror canonical game behavior (Gen V: `2703/4096`, Gen VI+: `2732/4096`).
+  - Aurora Veil functions as a combined screen (affecting both physical and special) but **does not** apply to critical hits or fixed-damage moves. The code checks for `is_critical` and `move.fixed_damage`/`fixed` flags when deciding whether Aurora Veil applies.
+  - If `aurora_veil` is present it supersedes Reflect/Light Screen (effects do not stack).
+
+- **Interactions / special cases**:
+  - An attacker with the `Infiltrator` ability ignores screens (the multiplier is treated as 1.0).
+  - Certain moves remove screens when they hit a non-immune target: `brick-break`, `defog`, `psychic-fangs`, and `raging-bull`. The helper `remove_screens_on_move(field, move, defender, attacker, type_mult)` will clear the corresponding flags in the `field` dict when the move is in that list and `type_mult > 0` (target not immune).
+  - A `Screen Cleaner` ability should remove screens on switch-in; use the helper `handle_screen_cleaner_on_switch(field, pokemon)` from `special_conditions.py` at the appropriate switch handler in higher-level battle logic.
+
+- **Implementation notes**:
+  - Screens/Aurora Veil are implemented as *final-stage* chained modifiers so they participate in Smogon-style fixed-point chaining and rounding (they are appended to the `final_mods` list inside `compute_damage_rolls` and processed via `chainMods`). This ensures the computed 16-roll damage distribution matches authoritative calculators.
+  - The code returns floating multipliers (e.g. `0.5` or `2732/4096`) from `compute_screen_multiplier()` and the damage pipeline converts these into integer fixed-point modifiers (`int(screen_mult * 4096)`) before chaining.
+
+- **Tests**: ✅ Screens and Aurora Veil are exercised by `backend/test/test_screens_and_aurora.py` which asserts exact 16-roll tuples for representative Solar Beam / Razor Leaf cases under Light Screen, Reflect, and Aurora Veil in `battle_mode: "double"`.
+
 **Grounding / Gravity / Ungrounding**
 - **Files**: `backend/calculate_damages/calculate_grounded.py` (function `is_grounded`), consulted by terrain/weather logic and damage pipeline.
 

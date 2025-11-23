@@ -23,7 +23,7 @@ try:
     from .calculate_types import get_type_breakdown, type_effectiveness
     from .calculate_abilities import apply_ability_effects
     from .calculate_grounded import is_grounded
-    from .special_conditions import compute_aura_multiplier
+    from .special_conditions import compute_aura_multiplier, compute_screen_multiplier, remove_screens_on_move
     from ..items.items import apply_item_stat_modifiers, compute_item_damage_multiplier, get_item
 except Exception:
     # If relative imports fail (exec as script), fallback to local defs below
@@ -530,7 +530,10 @@ def compute_damage_rolls(
         final_mods = []
         
         # Screens (Reflect/Light Screen/Aurora Veil)
-        # Note: These would come from field state, not implemented here yet
+        # Apply screen multiplier (Reflect / Light Screen / Aurora Veil)
+        screen_multiplier = float(multipliers.get("screen_mult", 1.0))
+        if screen_multiplier != 1.0:
+            final_mods.append(int(screen_multiplier * 4096))
         
         # Abilities and items go into final_mods
         # Life Orb, Expert Belt, etc.
@@ -819,8 +822,31 @@ def calculate_damage(
     except Exception:
         aura_mult = 1.0
 
+    # Screen (Reflect / Light Screen / Aurora Veil) multiplier and possible removal
+    try:
+        screen_mult = compute_screen_multiplier(attacker, defender, field, category, move, gen, crit_effective)
+    except Exception:
+        screen_mult = 1.0
+
     burn_mult = compute_burn_mult(attacker, category, move, gen)
     other_mult, zmove_mult, terashield_mult = compute_other_z_terashield(attacker, defender, field)
+
+    # If the current move should remove screens (Brick Break/Defog/Psychic Fangs/Raging Bull)
+    # remove_screens_on_move will mutate `field` in-place when appropriate (only if target not immune)
+    try:
+        # Only attempt removal if type effectiveness is non-zero
+        try:
+            type_eff = float(type_mult)
+        except Exception:
+            type_eff = 1.0
+        if type_eff > 0.0:
+            # mutate field if a removal move
+            try:
+                remove_screens_on_move(field, move, defender, attacker, type_eff)
+            except Exception:
+                pass
+    except Exception:
+        pass
 
     # Compute grounded status for attacker and defender (if not explicitly set)
     if "is_grounded" not in attacker and is_grounded is not None:
@@ -874,6 +900,7 @@ def calculate_damage(
         "stab": stab,
         "burn_mult": burn_mult,
         "terrain_mult": terrain_mult,
+        "screen_mult": screen_mult,
         "other_mult": other_mult,
         "zmove_mult": zmove_mult,
         "terashield_mult": terashield_mult,
