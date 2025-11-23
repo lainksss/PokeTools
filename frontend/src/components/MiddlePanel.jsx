@@ -24,6 +24,9 @@ export default function MiddlePanel({ left, right, setLeft, setRight, setResult 
   const [defenderStatus, setDefenderStatus] = useState('none')
   const [isCritical, setIsCritical] = useState(false)
   const [battleMode, setBattleMode] = useState('double') // 'single' or 'double'
+  const [fairyAura, setFairyAura] = useState(false)
+  const [darkAura, setDarkAura] = useState(false)
+  const [auraBreak, setAuraBreak] = useState(false)
 
   // Keep local selectors synced with parent left/right values when available
   React.useEffect(() => {
@@ -93,6 +96,10 @@ export default function MiddlePanel({ left, right, setLeft, setRight, setResult 
       field: {
         weather: weather === 'none' ? null : weather,
         terrain: terrain === 'none' ? null : terrain
+        ,
+        fairy_aura: fairyAura || undefined,
+        dark_aura: darkAura || undefined,
+        aura_break: auraBreak || undefined
       },
       is_critical: isCritical,
       battle_mode: battleMode,
@@ -142,6 +149,38 @@ export default function MiddlePanel({ left, right, setLeft, setRight, setResult 
             onClick={() => setBattleMode('double')}
           >
             {t('calculate.double')}
+          </button>
+        </div>
+      </div>
+
+      <div className="form-group">
+        <label>{t('calculate.auras') || 'Auras'}</label>
+        <div className="auras-toggle" style={{ display: 'flex', gap: '8px' }}>
+          <button
+            type="button"
+            className={`aura-button ${fairyAura ? 'active' : ''}`}
+            onClick={() => setFairyAura(v => !v)}
+            aria-pressed={fairyAura}
+          >
+            {t('auras.fairy') || 'Fairy Aura'}
+          </button>
+
+          <button
+            type="button"
+            className={`aura-button ${darkAura ? 'active' : ''}`}
+            onClick={() => setDarkAura(v => !v)}
+            aria-pressed={darkAura}
+          >
+            {t('auras.dark') || 'Dark Aura'}
+          </button>
+
+          <button
+            type="button"
+            className={`aura-button ${auraBreak ? 'active' : ''}`}
+            onClick={() => setAuraBreak(v => !v)}
+            aria-pressed={auraBreak}
+          >
+            {t('auras.break') || 'Aura Break'}
           </button>
         </div>
       </div>

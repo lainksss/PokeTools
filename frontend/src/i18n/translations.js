@@ -62,6 +62,7 @@ export const translations = {
       double: "Double",
       weather: "Météo",
       terrain: "Terrain",
+      auras: "Auras",
       calculate: "Calculer",
       results: "Résultats",
       damage: "Dégâts",
@@ -223,6 +224,13 @@ export const translations = {
       poison: "Empoisonné",
       paralysis: "Paralysé"
     },
+
+    // Auras (field conditions)
+    auras: {
+      fairy: "Aura Féerique",
+      dark: "Aura Ténébreuse",
+      break: "Aura Inversée"
+    },
     
     // Natures communes
     natures: {
@@ -347,6 +355,7 @@ export const translations = {
       double: "Double",
       weather: "Weather",
       terrain: "Terrain",
+      auras: "Auras",
       calculate: "Calculate",
       results: "Results",
       damage: "Damage",
@@ -506,6 +515,13 @@ export const translations = {
       burn: "Burn",
       poison: "Poison",
       paralysis: "Paralysis"
+    },
+
+    // Auras (field conditions)
+    auras: {
+      fairy: "Fairy Aura",
+      dark: "Dark Aura",
+      break: "Aura Break"
     },
     
     // Common natures (keep English names)

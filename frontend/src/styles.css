@@ -402,6 +402,43 @@ select option:hover {
   border-radius: 8px;
 }
 
+/* Aura buttons styling: used in MiddlePanel, Coverage and Threats pages */
+.auras-toggle {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.aura-button {
+  padding: 6px 10px;
+  background: rgba(255,255,255,0.03);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 120ms ease, border-color 120ms ease, transform 80ms ease;
+  user-select: none;
+}
+
+.aura-button:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.aura-button.active {
+  background: linear-gradient(90deg, var(--accent), #6ea8ff20);
+  border-color: var(--accent);
+  color: white;
+  box-shadow: 0 6px 18px rgba(59,130,246,0.16);
+}
+
+/* Make aura buttons slightly smaller on narrow screens */
+@media (max-width: 700px) {
+  .aura-button { padding: 5px 8px; font-size: 0.8rem; }
+}
+
 .scale-button {
   display: inline-flex;
   align-items: center;

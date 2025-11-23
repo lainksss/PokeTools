@@ -12,6 +12,9 @@ export default function Coverage() {
   const [loading, setLoading] = useState(false)
   const [weather, setWeather] = useState('none')
   const [terrain, setTerrain] = useState('none')
+  const [fairyAura, setFairyAura] = useState(false)
+  const [darkAura, setDarkAura] = useState(false)
+  const [auraBreak, setAuraBreak] = useState(false)
   const [progress, setProgress] = useState({ processed: 0, total: 0, coverage_found: 0 })
   const [showOnlyGuaranteed, setShowOnlyGuaranteed] = useState(false)
   const [minRolls, setMinRolls] = useState(1)
@@ -81,6 +84,10 @@ export default function Coverage() {
       field: {
         weather: weather === 'none' ? null : weather,
         terrain: terrain === 'none' ? null : terrain
+        ,
+        fairy_aura: fairyAura || undefined,
+        dark_aura: darkAura || undefined,
+        aura_break: auraBreak || undefined
       }
     }
 
@@ -237,6 +244,21 @@ export default function Coverage() {
                 style={{ fontSize: '0.85em' }}
               >
                 {t('coverage.bulkMax')}
+              </button>
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label>{t('calculate.auras') || 'Auras'}</label>
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <button type="button" className={`aura-button ${fairyAura ? 'active' : ''}`} onClick={() => setFairyAura(v => !v)}>
+                {t('auras.fairy') || 'Fairy Aura'}
+              </button>
+              <button type="button" className={`aura-button ${darkAura ? 'active' : ''}`} onClick={() => setDarkAura(v => !v)}>
+                {t('auras.dark') || 'Dark Aura'}
+              </button>
+              <button type="button" className={`aura-button ${auraBreak ? 'active' : ''}`} onClick={() => setAuraBreak(v => !v)}>
+                {t('auras.break') || 'Aura Break'}
               </button>
             </div>
           </div>
