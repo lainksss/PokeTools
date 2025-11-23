@@ -16,6 +16,7 @@ export default function SpeedChecker() {
   const [ability, setAbility] = useState(null)
   const [speedBoost, setSpeedBoost] = useState(0) // -6 to +6
   const [tailwind, setTailwind] = useState(false)
+  const [weather, setWeather] = useState('none')
   // Choice Scarf toggle (user)
   const [choiceScarf, setChoiceScarf] = useState(false)
   const level = 50 // Always level 50
@@ -36,6 +37,8 @@ export default function SpeedChecker() {
   // Right panel - Results
   const [showSlower, setShowSlower] = useState(true) // true = slower, false = faster
   const [results, setResults] = useState([])
+
+  const ALL_WEATHERS = ['none', 'sun', 'rain', 'sandstorm', 'snow']
 
   // Load Pokémon data
   useEffect(() => {
@@ -349,6 +352,8 @@ export default function SpeedChecker() {
                   <span className="tailwind-icon">🧣</span>
                   {t('speedChecker.choiceScarf') || 'Choice Scarf'}: {choiceScarf ? t('speedChecker.on') || 'ON' : t('speedChecker.off') || 'OFF'}
                 </button>
+                
+                  {/* Weather selector moved to middle panel */}
               </div>
 
               {/* Final Speed Display */}
@@ -380,6 +385,19 @@ export default function SpeedChecker() {
         {/* Middle Panel - Comparison Options */}
         <div className="speed-panel speed-panel-middle">
           <h3>{t('speedChecker.compareAgainst') || 'Compare Against'}</h3>
+          <div className="form-group">
+            <select
+              aria-label={t('calculate.weather')}
+              value={weather}
+              onChange={e => setWeather(e.target.value)}
+              className="form-control"
+              style={{ maxWidth: 220 }}
+            >
+              {ALL_WEATHERS.map(w => (
+                <option key={w} value={w}>{t(`weather.${w}`)}</option>
+              ))}
+            </select>
+          </div>
           <div className="comparison-buttons">
             <button
               className={`comparison-mode-btn ${comparisonMode === 'min' ? 'active' : ''}`}

@@ -234,8 +234,8 @@ export default function Threats() {
 
           <div className="form-row">
             <div className="form-group">
-              <label>{t('threats.weather')}</label>
-              <select 
+              <select
+                aria-label={t('threats.weather')}
                 value={weather}
                 onChange={e => setWeather(e.target.value)}
                 className="form-control"
@@ -249,8 +249,8 @@ export default function Threats() {
             </div>
 
             <div className="form-group">
-              <label>{t('threats.terrain')}</label>
-              <select 
+              <select
+                aria-label={t('threats.terrain')}
                 value={terrain}
                 onChange={e => setTerrain(e.target.value)}
                 className="form-control"

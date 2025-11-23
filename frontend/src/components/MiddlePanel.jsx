@@ -133,9 +133,8 @@ export default function MiddlePanel({ left, right, setLeft, setRight, setResult 
     <div className="middle-panel">
       <h3>{t('calculate.battleConditions')}</h3>
       
-      <div className="form-group">
-        <label>{t('calculate.battleMode')}</label>
-        <div className="battle-mode-toggle">
+      <div className="form-group" role="group" aria-label={t('calculate.battleMode')}>
+        <div className="battle-mode-toggle" role="group" aria-label={t('calculate.battleMode')}>
           <button
             type="button"
             className={`mode-button ${battleMode === 'single' ? 'active' : ''}`}
@@ -153,8 +152,7 @@ export default function MiddlePanel({ left, right, setLeft, setRight, setResult 
         </div>
       </div>
 
-      <div className="form-group">
-        <label>{t('calculate.auras') || 'Auras'}</label>
+      <div className="form-group" role="group" aria-label={t('calculate.auras')}>
         <div className="auras-toggle" style={{ display: 'flex', gap: '8px' }}>
           <button
             type="button"
@@ -187,8 +185,8 @@ export default function MiddlePanel({ left, right, setLeft, setRight, setResult 
       
       <div className="form-row">
         <div className="form-group">
-          <label>{t('calculate.weather')}</label>
-          <select 
+          <select
+            aria-label={t('calculate.weather')}
             value={weather}
             onChange={e => setWeather(e.target.value)}
             className="form-control"
@@ -202,8 +200,8 @@ export default function MiddlePanel({ left, right, setLeft, setRight, setResult 
         </div>
 
         <div className="form-group">
-          <label>{t('calculate.terrain')}</label>
-          <select 
+          <select
+            aria-label={t('calculate.terrain')}
             value={terrain}
             onChange={e => setTerrain(e.target.value)}
             className="form-control"

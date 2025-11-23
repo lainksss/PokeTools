@@ -201,7 +201,7 @@ export const translations = {
     
     // Météos
     weather: {
-      none: "Aucune",
+      none: "Aucune météo",
       sun: "Soleil",
       rain: "Pluie",
       sandstorm: "Tempête de sable",
@@ -210,7 +210,7 @@ export const translations = {
     
     // Terrains
     terrain: {
-      none: "Aucun",
+      none: "Aucun terrain",
       grassy: "Herbu",
       electric: "Électrique",
       misty: "Brumeux",
@@ -493,7 +493,7 @@ export const translations = {
     
     // Weather
     weather: {
-      none: "None",
+      none: "No weather",
       sun: "Sun",
       rain: "Rain",
       sandstorm: "Sandstorm",
@@ -502,7 +502,7 @@ export const translations = {
     
     // Terrain
     terrain: {
-      none: "None",
+      none: "No terrain",
       grassy: "Grassy",
       electric: "Electric",
       misty: "Misty",

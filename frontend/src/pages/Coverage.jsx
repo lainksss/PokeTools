@@ -248,8 +248,7 @@ export default function Coverage() {
             </div>
           </div>
 
-          <div className="form-group">
-            <label>{t('calculate.auras') || 'Auras'}</label>
+          <div className="form-group" role="group" aria-label={t('calculate.auras')}>
             <div style={{ display: 'flex', gap: '8px' }}>
               <button type="button" className={`aura-button ${fairyAura ? 'active' : ''}`} onClick={() => setFairyAura(v => !v)}>
                 {t('auras.fairy') || 'Fairy Aura'}
@@ -327,8 +326,8 @@ export default function Coverage() {
 
           <div className="form-row">
             <div className="form-group">
-              <label>{t('calculate.weather')}</label>
-              <select 
+              <select
+                aria-label={t('calculate.weather')}
                 value={weather}
                 onChange={e => setWeather(e.target.value)}
                 className="form-control"
@@ -342,8 +341,8 @@ export default function Coverage() {
             </div>
 
             <div className="form-group">
-              <label>{t('calculate.terrain')}</label>
-              <select 
+              <select
+                aria-label={t('calculate.terrain')}
                 value={terrain}
                 onChange={e => setTerrain(e.target.value)}
                 className="form-control"
