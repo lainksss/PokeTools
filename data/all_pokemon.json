@@ -19339,5 +19339,329 @@
       "special-defense": 65,
       "speed": 100
     }
+  },
+  "raichu-mega-x": {
+    "id": 10304,
+    "types": [
+      "electric"
+    ],
+    "base_stats": {
+      "hp": 60,
+      "attack": 135,
+      "defense": 95,
+      "special-attack": 90,
+      "special-defense": 95,
+      "speed": 110
+    }
+  },
+  "raichu-mega-y": {
+    "id": 10305,
+    "types": [
+      "electric"
+    ],
+    "base_stats": {
+      "hp": 60,
+      "attack": 100,
+      "defense": 55,
+      "special-attack": 160,
+      "special-defense": 80,
+      "speed": 130
+    }
+  },
+  "chimecho-mega": {
+    "id": 10306,
+    "types": [
+      "psychic",
+      "steel"
+    ],
+    "base_stats": {
+      "hp": 75,
+      "attack": 50,
+      "defense": 110,
+      "special-attack": 135,
+      "special-defense": 120,
+      "speed": 65
+    }
+  },
+  "absol-mega-z": {
+    "id": 10307,
+    "types": [
+      "dark",
+      "ghost"
+    ],
+    "base_stats": {
+      "hp": 65,
+      "attack": 154,
+      "defense": 60,
+      "special-attack": 75,
+      "special-defense": 60,
+      "speed": 151
+    }
+  },
+  "staraptor-mega": {
+    "id": 10308,
+    "types": [
+      "fighting",
+      "flying"
+    ],
+    "base_stats": {
+      "hp": 85,
+      "attack": 140,
+      "defense": 100,
+      "special-attack": 60,
+      "special-defense": 90,
+      "speed": 110
+    }
+  },
+  "garchomp-mega-z": {
+    "id": 10309,
+    "types": [
+      "dragon"
+    ],
+    "base_stats": {
+      "hp": 108,
+      "attack": 130,
+      "defense": 85,
+      "special-attack": 141,
+      "special-defense": 85,
+      "speed": 151
+    }
+  },
+  "lucario-mega-z": {
+    "id": 10310,
+    "types": [
+      "fighting",
+      "steel"
+    ],
+    "base_stats": {
+      "hp": 70,
+      "attack": 100,
+      "defense": 70,
+      "special-attack": 164,
+      "special-defense": 70,
+      "speed": 151
+    }
+  },
+  "heatran-mega": {
+    "id": 10311,
+    "types": [
+      "fire",
+      "steel"
+    ],
+    "base_stats": {
+      "hp": 91,
+      "attack": 120,
+      "defense": 106,
+      "special-attack": 175,
+      "special-defense": 141,
+      "speed": 67
+    }
+  },
+  "darkrai-mega": {
+    "id": 10312,
+    "types": [
+      "dark"
+    ],
+    "base_stats": {
+      "hp": 70,
+      "attack": 120,
+      "defense": 130,
+      "special-attack": 165,
+      "special-defense": 130,
+      "speed": 85
+    }
+  },
+  "golurk-mega": {
+    "id": 10313,
+    "types": [
+      "ground",
+      "ghost"
+    ],
+    "base_stats": {
+      "hp": 89,
+      "attack": 159,
+      "defense": 105,
+      "special-attack": 70,
+      "special-defense": 105,
+      "speed": 55
+    }
+  },
+  "meowstic-mega": {
+    "id": 10314,
+    "types": [
+      "psychic"
+    ],
+    "base_stats": {
+      "hp": 74,
+      "attack": 48,
+      "defense": 76,
+      "special-attack": 143,
+      "special-defense": 101,
+      "speed": 124
+    }
+  },
+  "crabominable-mega": {
+    "id": 10315,
+    "types": [
+      "fighting",
+      "ice"
+    ],
+    "base_stats": {
+      "hp": 97,
+      "attack": 157,
+      "defense": 122,
+      "special-attack": 62,
+      "special-defense": 107,
+      "speed": 33
+    }
+  },
+  "golisopod-mega": {
+    "id": 10316,
+    "types": [
+      "bug",
+      "steel"
+    ],
+    "base_stats": {
+      "hp": 75,
+      "attack": 150,
+      "defense": 175,
+      "special-attack": 70,
+      "special-defense": 120,
+      "speed": 40
+    }
+  },
+  "magearna-mega": {
+    "id": 10317,
+    "types": [
+      "steel",
+      "fairy"
+    ],
+    "base_stats": {
+      "hp": 80,
+      "attack": 125,
+      "defense": 115,
+      "special-attack": 170,
+      "special-defense": 115,
+      "speed": 95
+    }
+  },
+  "magearna-original-mega": {
+    "id": 10318,
+    "types": [
+      "steel",
+      "fairy"
+    ],
+    "base_stats": {
+      "hp": 80,
+      "attack": 125,
+      "defense": 115,
+      "special-attack": 170,
+      "special-defense": 115,
+      "speed": 95
+    }
+  },
+  "zeraora-mega": {
+    "id": 10319,
+    "types": [
+      "electric"
+    ],
+    "base_stats": {
+      "hp": 88,
+      "attack": 157,
+      "defense": 75,
+      "special-attack": 147,
+      "special-defense": 80,
+      "speed": 153
+    }
+  },
+  "scovillain-mega": {
+    "id": 10320,
+    "types": [
+      "grass",
+      "fire"
+    ],
+    "base_stats": {
+      "hp": 65,
+      "attack": 138,
+      "defense": 85,
+      "special-attack": 138,
+      "special-defense": 85,
+      "speed": 75
+    }
+  },
+  "glimmora-mega": {
+    "id": 10321,
+    "types": [
+      "rock",
+      "poison"
+    ],
+    "base_stats": {
+      "hp": 83,
+      "attack": 90,
+      "defense": 105,
+      "special-attack": 150,
+      "special-defense": 96,
+      "speed": 101
+    }
+  },
+  "tatsugiri-curly-mega": {
+    "id": 10322,
+    "types": [
+      "dragon",
+      "water"
+    ],
+    "base_stats": {
+      "hp": 68,
+      "attack": 65,
+      "defense": 90,
+      "special-attack": 135,
+      "special-defense": 125,
+      "speed": 92
+    }
+  },
+  "tatsugiri-droopy-mega": {
+    "id": 10323,
+    "types": [
+      "dragon",
+      "water"
+    ],
+    "base_stats": {
+      "hp": 68,
+      "attack": 65,
+      "defense": 90,
+      "special-attack": 135,
+      "special-defense": 125,
+      "speed": 92
+    }
+  },
+  "tatsugiri-stretchy-mega": {
+    "id": 10324,
+    "types": [
+      "dragon",
+      "water"
+    ],
+    "base_stats": {
+      "hp": 68,
+      "attack": 65,
+      "defense": 90,
+      "special-attack": 135,
+      "special-defense": 125,
+      "speed": 92
+    }
+  },
+  "baxcalibur-mega": {
+    "id": 10325,
+    "types": [
+      "dragon",
+      "ice"
+    ],
+    "base_stats": {
+      "hp": 115,
+      "attack": 175,
+      "defense": 117,
+      "special-attack": 105,
+      "special-defense": 101,
+      "speed": 87
+    }
   }
 }
