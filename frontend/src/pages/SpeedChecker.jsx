@@ -78,9 +78,14 @@ export default function SpeedChecker() {
     fetch(`${API_URL}/api/pokemon/${selectedPokemon.id}/abilities`)
       .then(r => r.json())
       .then(data => {
-        setPokemonAbilities(data.abilities || [])
-        if (data.abilities && data.abilities.length > 0) {
-          setAbility(data.abilities[0].slug)
+        const raw = data.abilities || []
+        // Normalize to array of slugs (API may return strings)
+        const slugs = raw.map(a => (typeof a === 'string' ? a : (a.slug || ''))).filter(Boolean)
+        setPokemonAbilities(slugs)
+        if (slugs.length > 0) {
+          setAbility(slugs[0])
+        } else {
+          setAbility(null)
         }
       })
       .catch(err => console.error('Error loading abilities:', err))
@@ -111,6 +116,19 @@ export default function SpeedChecker() {
     ? calculateSpeed(selectedPokemon.base_stats.speed, level, speedEV, speedNature, speedBoost)
     : 0
   let finalUserSpeed = userSpeed
+  // Weather-affected abilities multiplier (user)
+  const weatherAbilityMultiplier = (abilitySlug, currentWeather) => {
+    if (!abilitySlug || !currentWeather || currentWeather === 'none') return 1
+    const slug = abilitySlug.toLowerCase()
+    if (slug === 'chlorophyll' && currentWeather === 'sun') return 2
+    if (slug === 'swift-swim' && currentWeather === 'rain') return 2
+    if (slug === 'sand-rush' && currentWeather === 'sandstorm') return 2
+    if (slug === 'slush-rush' && currentWeather === 'snow') return 2
+    return 1
+  }
+
+  const abilityMult = weatherAbilityMultiplier(ability, weather)
+  finalUserSpeed = Math.floor(finalUserSpeed * abilityMult)
   if (choiceScarf) finalUserSpeed = Math.floor(finalUserSpeed * 1.5)
   if (tailwind) finalUserSpeed = finalUserSpeed * 2
   
@@ -175,7 +193,7 @@ export default function SpeedChecker() {
     })
 
     setResults(filtered)
-  }, [selectedPokemon, level, speedEV, speedNature, speedBoost, tailwind, choiceScarf, comparisonMode, customEV, customNature, choiceScarfMiddle, showSlower, allPokemon])
+  }, [selectedPokemon, level, speedEV, speedNature, speedBoost, tailwind, choiceScarf, comparisonMode, customEV, customNature, choiceScarfMiddle, showSlower, allPokemon, ability, weather])
 
   return (
     <div className="speed-checker-page">
@@ -281,13 +299,13 @@ export default function SpeedChecker() {
                   className="ability-select"
                 >
                   <option value="">{t('pokemon.none')}</option>
-                  {allAbilities
-                    .filter(a => pokemonAbilities.some(pa => pa.slug === a.slug))
-                    .map(a => (
-                      <option key={a.slug} value={a.slug}>
-                        {a[language] || a.en}
-                      </option>
-                    ))}
+                    {allAbilities
+                      .filter(a => pokemonAbilities.includes(a.slug))
+                      .map(a => (
+                        <option key={a.slug} value={a.slug}>
+                          {a[language] || a.en}
+                        </option>
+                      ))}
                 </select>
               </div>
 
