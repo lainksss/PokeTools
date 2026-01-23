@@ -19,6 +19,36 @@ except Exception:
 bp = Blueprint('threats', __name__)
 
 
+def _select_best_moves_by_type(poke_moves, all_moves, max_per_type=3):
+    """Return a filtered list of move slugs: up to `max_per_type` best damaging moves per type.
+
+    - Excludes non-damaging moves (damage_class not in physical/special).
+    - Ranks moves by `power` (fallback 0) and selects top N per move type.
+    """
+    by_type = {}
+    for m in poke_moves:
+        md = all_moves.get(m, {})
+        damage_class = md.get("damage_class")
+        if damage_class not in ("physical", "special"):
+            continue
+        mtype = md.get("type") or "unknown"
+        power = md.get("power")
+        try:
+            pval = int(power) if power is not None else 0
+        except Exception:
+            pval = 0
+        by_type.setdefault(mtype, []).append((m, pval))
+
+    result = []
+    for t, moves in by_type.items():
+        # sort by power desc, keep up to max_per_type
+        moves.sort(key=lambda x: -x[1])
+        picked = [m for m, _ in moves[:max_per_type]]
+        result.extend(picked)
+
+    return result
+
+
 @bp.route("/find_threats", methods=["POST"])
 def find_threats():
     """Trouve tous les Pokémon pouvant OHKO ou 2HKO le défenseur."""
@@ -79,9 +109,15 @@ def find_threats():
         if not poke_moves:
             continue
 
+        # Pré-sélectionner les meilleures attaques par type (optimisation)
+        selected_moves = _select_best_moves_by_type(poke_moves, all_moves, max_per_type=3)
+        if not selected_moves:
+            # fallback to original list if selection empty
+            selected_moves = poke_moves
+
         # Pour chaque move, déterminer EVs/nature/item selon les analysis_options
         ko_moves = []
-        for move_slug in poke_moves:
+        for move_slug in selected_moves:
             move_data = all_moves.get(move_slug, {})
             damage_class = move_data.get("damage_class")
             power = move_data.get("power")
@@ -301,12 +337,17 @@ def find_threats_stream():
                 if not poke_moves:
                     processed += 1
                     continue
+
+                # Sélectionner les meilleures attaques par type pour accélérer les calculs
+                selected_moves = _select_best_moves_by_type(poke_moves, all_moves, max_per_type=3)
+                if not selected_moves:
+                    selected_moves = poke_moves
                 
                 ko_attacks = []
                 max_attacks_to_keep = 3
                 
-                # Tester chaque move
-                for move_slug in poke_moves:
+                # Tester chaque move (sur la sélection optimisée)
+                for move_slug in selected_moves:
                     if len(ko_attacks) >= max_attacks_to_keep:
                         break
                     
