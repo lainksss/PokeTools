@@ -188,11 +188,17 @@ def find_threats():
                 move = calc_payload["move"]
                 is_crit = calc_payload.get("is_critical", False)
 
+                # Use a fresh copy of the field for each calculation so that
+                # moves that remove screens (Brick Break / Psychic Fangs / etc.)
+                # do not mutate the shared `field` for subsequent attackers.
+                from copy import deepcopy
+                calc_field = deepcopy(field) if field is not None else {}
+
                 dmg_result = calculate_damage(
                     attacker=attacker_calc,
                     defender=defender,
                     move=move,
-                    field=field,
+                    field=calc_field,
                     is_critical=is_crit
                 )
 
@@ -408,11 +414,16 @@ def find_threats_stream():
                     }
                     
                     try:
+                        # Use a fresh copy of the field per move to avoid in-place
+                        # mutations during screen-removal moves affecting other attackers.
+                        from copy import deepcopy
+                        calc_field = deepcopy(field) if field is not None else {}
+
                         dmg_result = calculate_damage(
                             attacker=attacker,
                             defender=defender,
                             move=move_info,
-                            field=field,
+                            field=calc_field,
                             is_critical=False
                         )
                         
