@@ -7,8 +7,10 @@ export const translations = {
       threats: "Analyse des menaces",
       coverage: "Couverture offensive",
       typeCoverage: "Couverture de types",
-      speedChecker: "Vérificateur de vitesse"
+      speedChecker: "Vérificateur de vitesse",
+      speedGame: "Trouve le plus rapide",
     },
+    
     
     // Page Home
     home: {
@@ -190,6 +192,21 @@ export const translations = {
       off: "Désactivé"
     },
     
+    // Speed Game (Speed Duel)
+    speedGame: {
+      title: "Duel de Vitesse",
+      chooseButton: "Je choisis",
+      next: "Suivant",
+      conditionLabel: "Condition",
+      hint: "Choisis le Pokémon le plus rapide après modificateurs",
+      resultTitle: "Résultat",
+      baseLabel: "Base:",
+      fastestLabel: "Le plus rapide était:",
+      resultWin: "TU AS GAGNÉ",
+      resultLose: "MAUVAIS CHOIX",
+      resultTie: "ÉGALITÉ"
+    },
+    
     // Pokemon Panel
     pokemon: {
       types: "Types",
@@ -308,7 +325,8 @@ export const translations = {
       threats: "Threat Analysis",
       coverage: "Offensive Coverage",
       typeCoverage: "Type Coverage",
-      speedChecker: "Speed Checker"
+      speedChecker: "Speed Checker",
+      speedGame: "Find who's the fastest",
     },
     
     // Page Home
@@ -488,6 +506,21 @@ export const translations = {
       choiceScarf: "Choice Scarf",
       on: "ON",
       off: "OFF"
+    },
+
+    // Speed Game
+    speedGame: {
+      title: "Speed Duel",
+      chooseButton: "I choose",
+      next: "Next",
+      conditionLabel: "Condition",
+      hint: "Pick the faster Pokémon after modifiers",
+      resultTitle: "Result",
+      baseLabel: "Base:",
+      fastestLabel: "The fastest was:",
+      resultWin: "YOU WON",
+      resultLose: "WRONG CHOICE",
+      resultTie: "TIE"
     },
     
     // Pokemon Panel
