@@ -196,7 +196,7 @@ def analyze_coverage_stream():
                                 debug=False
                             )
                             best_move = full_move_data
-                        except:
+                        except Exception:
                             continue
                     
                     if best_result:

@@ -45,8 +45,8 @@ export default function SpeedGame() {
       if (diff >= 1 && diff <= 8) { a = p1; b = p2; break }
     }
     if (!a || !b) {
-      // fallback: pick two distinct random
-      const shuffled = pool.sort(() => Math.random() - 0.5)
+      // fallback: pick two distinct random (do not mutate pool)
+      const shuffled = [...pool].sort(() => Math.random() - 0.5)
       a = shuffled[0]; b = shuffled[1]
       if (a && b && a.base_stats.speed === b.base_stats.speed) {
         // ensure no exact tie by nudging selection
@@ -178,21 +178,21 @@ export default function SpeedGame() {
       {result && (
         <div className="result-panel">
           <h3>{t('speedGame.resultTitle') || 'Résultat'}</h3>
-          <div className="result-row">
-            <div>
-              <strong>{getPokemonName(left.id, left.name)}</strong>
-              <div>{t('speedGame.baseLabel') || 'Base:'} {result.left.base}</div>
-            </div>
-            <div>
-              <strong>{getPokemonName(right.id, right.name)}</strong>
-              <div>{t('speedGame.baseLabel') || 'Base:'} {result.right.base}</div>
-            </div>
-          </div>
+              <div className="result-row">
+                <div>
+                  <strong>{left ? getPokemonName(left.id, left.name) : ''}</strong>
+                  <div>{t('speedGame.baseLabel') || 'Base:'} {result.left.base}</div>
+                </div>
+                <div>
+                  <strong>{right ? getPokemonName(right.id, right.name) : ''}</strong>
+                  <div>{t('speedGame.baseLabel') || 'Base:'} {result.right.base}</div>
+                </div>
+              </div>
 
           <div className={`result-outcome ${result.correct === result.chosen ? 'win' : 'lose'}`}>
             {result.correct === result.chosen ? (t('speedGame.resultWin') || 'TU AS GAGNÉ') : (t('speedGame.resultLose') || 'MAUVAIS CHOIX')}
           </div>
-          <div style={{marginTop:8}}><strong>{t('speedGame.fastestLabel') || 'Le plus rapide était:'}</strong> {result.correct === 'left' ? getPokemonName(left.id, left.name) : getPokemonName(right.id, right.name)}</div>
+          <div style={{marginTop:8}}><strong>{t('speedGame.fastestLabel') || 'Le plus rapide était:'}</strong> {result.correct === 'left' ? (left ? getPokemonName(left.id, left.name) : '') : (right ? getPokemonName(right.id, right.name) : '')}</div>
 
           <button onClick={() => { setResult(null); pickPair() }}>{t('speedGame.next') || 'Suivant'}</button>
         </div>

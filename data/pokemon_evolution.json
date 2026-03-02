@@ -2339,14 +2339,6 @@
     "id": 591,
     "can_evolve": false
   },
-  "frillish": {
-    "id": 592,
-    "can_evolve": true
-  },
-  "jellicent": {
-    "id": 593,
-    "can_evolve": false
-  },
   "alomomola": {
     "id": 594,
     "can_evolve": false
@@ -2622,10 +2614,6 @@
   "litleo": {
     "id": 667,
     "can_evolve": true
-  },
-  "pyroar": {
-    "id": 668,
-    "can_evolve": false
   },
   "flabebe": {
     "id": 669,
