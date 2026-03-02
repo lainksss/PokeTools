@@ -43,16 +43,18 @@ export default function MiddlePanel({ left, right, setLeft, setRight, setResult 
 
   // When user changes the status selects, propagate into left/right via setters
   React.useEffect(() => {
-    if (typeof setLeft === 'function' && left) {
-      setLeft(prev => ({ ...(prev || {}), status: attackerStatus === 'none' ? null : attackerStatus }))
-    }
-  }, [attackerStatus])
+    if (typeof setLeft !== 'function' || !left) return
+    const desired = attackerStatus === 'none' ? null : attackerStatus
+    if ((left.status || null) === desired) return
+    setLeft(prev => ({ ...(prev || {}), status: desired }))
+  }, [attackerStatus, left?.id, left?.status, setLeft])
 
   React.useEffect(() => {
-    if (typeof setRight === 'function' && right) {
-      setRight(prev => ({ ...(prev || {}), status: defenderStatus === 'none' ? null : defenderStatus }))
-    }
-  }, [defenderStatus])
+    if (typeof setRight !== 'function' || !right) return
+    const desired = defenderStatus === 'none' ? null : defenderStatus
+    if ((right.status || null) === desired) return
+    setRight(prev => ({ ...(prev || {}), status: desired }))
+  }, [defenderStatus, right?.id, right?.status, setRight])
 
   async function calculate() {
     if (!left || !right) {
