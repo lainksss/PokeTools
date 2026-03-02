@@ -3,9 +3,10 @@ import React, { useState } from 'react'
 import PokemonPanel from '../components/PokemonPanel'
 import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
+import { convertEvsToOld, newEvToOld } from '../utils/evs'
 
 export default function Coverage() {
-  const { t, getPokemonName } = useTranslation()
+  const { t, getPokemonName, getMoveName } = useTranslation()
   const [attacker, setAttacker] = useState(null)
   const [koMode, setKoMode] = useState('OHKO') // 'OHKO' or '2HKO'
   const [allResults, setAllResults] = useState([]) // TOUS les résultats (KO + non-KO)
@@ -65,7 +66,7 @@ export default function Coverage() {
       attacker: {
         pokemon_id: attacker.id,
         base_stats: attacker.base_stats,
-        evs: attacker.evs,
+        evs: convertEvsToOld(attacker.evs || {}),
         nature: attacker.nature,
         types: attacker.types,
         ability: attacker.ability,
@@ -78,9 +79,9 @@ export default function Coverage() {
       ko_mode: koMode,
       include_no_ko: true, // TOUJOURS récupérer tous les Pokémon
       bulk_mode: bulkMode,
-      custom_def_evs: customEvs,
-      custom_spdef_evs: customEvs,
-      custom_hp_evs: customHpEvs,
+      custom_def_evs: newEvToOld(customEvs),
+      custom_spdef_evs: newEvToOld(customEvs),
+      custom_hp_evs: newEvToOld(customHpEvs),
       bulk_nature_mode: bulkAdaptNature ? 'byMove' : 'def',
       bulk_assault_vest: bulkAssaultVest,
       bulk_evoluroc: bulkEvoluroc,
@@ -167,10 +168,12 @@ export default function Coverage() {
   const coverage = allResults.filter(item => {
     // Si mode 'alive' : afficher ceux qui NE sont PAS KO
     if (viewMode === 'alive') {
-      return item.max_ko_chance === 0
+      // treat missing/null/0 as not KO-able
+      const chance = Number(item.max_ko_chance || 0)
+      return chance === 0
     }
     // Si mode 'ko' : afficher ceux qui PEUVENT être KO
-    return item.max_ko_chance > 0
+    return Number(item.max_ko_chance || 0) > 0
   })
 
   // Filtrer davantage selon les autres critères
@@ -289,12 +292,12 @@ export default function Coverage() {
                 <input 
                   type="number" 
                   min="0" 
-                  max="252" 
-                  step="4"
+                  max="32" 
+                  step="1"
                   value={customEvs}
                   onChange={e => {
                     const val = parseInt(e.target.value) || 0
-                    setCustomEvs(Math.min(252, Math.max(0, val)))
+                    setCustomEvs(Math.min(32, Math.max(0, val)))
                   }}
                   className="form-control ev-compact-left"
                   placeholder="Def/SpDef EVs"
@@ -303,10 +306,10 @@ export default function Coverage() {
                 <input
                   type="number"
                   min="0"
-                  max="252"
-                  step="4"
+                  max="32"
+                  step="1"
                   value={customHpEvs}
-                  onChange={e => setCustomHpEvs(Math.min(252, Math.max(0, parseInt(e.target.value) || 0)))}
+                  onChange={e => setCustomHpEvs(Math.min(32, Math.max(0, parseInt(e.target.value) || 0)))}
                   className="form-control ev-compact-right"
                   placeholder="HP EVs"
                 />
@@ -444,14 +447,14 @@ export default function Coverage() {
           
           {loading && <p className="loading-text">{t('threats.analyzing')}</p>}
           
-          {!loading && coverage.length === 0 && progress.processed > 0 && (
+          {!loading && (filteredCoverage.length === 0) && (
             <p className="no-threats">{t('coverage.noCoverage')}</p>
           )}
 
           {!loading && filteredCoverage.length > 0 && (
             <div className="threats-list">
               {filteredCoverage.map((item, idx) => (
-                <CoverageItem key={idx} item={item} koMode={koMode} t={t} getPokemonName={getPokemonName} />
+                <CoverageItem key={idx} item={item} koMode={koMode} t={t} getPokemonName={getPokemonName} getMoveName={getMoveName} />
               ))}
             </div>
           )}
@@ -461,7 +464,7 @@ export default function Coverage() {
   )
 }
 
-function CoverageItem({ item, koMode, t, getPokemonName }) {
+function CoverageItem({ item, koMode, t, getPokemonName, getMoveName }) {
   const maxChance = item.max_ko_chance || 0
   const isGuaranteed = item.max_rolls_that_ko === 16
 
@@ -484,7 +487,7 @@ function CoverageItem({ item, koMode, t, getPokemonName }) {
       <div className="threat-attacks">
         <div className="attack-info">
           <div className="attack-name">
-            <strong>{item.best_move_name}</strong>
+            <strong>{getMoveName(item.best_move_name, item.best_move_name)}</strong>
             <span className={`type-badge type-${item.best_move_type}`}>
               {t(`types.${item.best_move_type}`)}
             </span>

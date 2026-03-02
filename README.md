@@ -65,6 +65,10 @@ PokeTools is a suite of tools for competitive Pokémon: damage calculator, threa
     - `i18n/LanguageContext.jsx`, `translations.js`: simple i18n
     - `styles.css`: global styles
 
+  Frontend EVs note:
+  - The frontend UI uses a compact EV unit system to simplify inputs: each stat accepts 0..32 units and the total across all stats is capped at 66 units. This is a frontend convenience layer; before sending API requests the frontend converts these units to the traditional EV values expected by the backend (0..~252 scale) using the formula `0 -> 0`, `n (1..32) -> 4 + (n-1)*8`.
+  - The backend API still expects standard EV values (0..252-ish), so the conversion is performed client-side and the backend remains unchanged.
+
 ## Backend — Details
 
 ### Main Modules

@@ -3,9 +3,10 @@ import React, { useState } from 'react'
 import PokemonPanel from '../components/PokemonPanel'
 import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
+import { convertEvsToOld, newEvToOld } from '../utils/evs'
 
 export default function Threats() {
-  const { t, getPokemonName } = useTranslation()
+  const { t, getPokemonName, getMoveName } = useTranslation()
   const [defender, setDefender] = useState(null)
   const [koMode, setKoMode] = useState('OHKO') // 'OHKO' or '2HKO'
   const [threats, setThreats] = useState([])
@@ -71,7 +72,7 @@ export default function Threats() {
       defender: {
         pokemon_id: defender.id,
         base_stats: defender.base_stats,
-        evs: defender.evs,
+        evs: convertEvsToOld(defender.evs || {}),
         nature: defender.nature,
         types: defender.types,
         ability: defender.ability,
@@ -91,7 +92,7 @@ export default function Threats() {
       ,
       analysis_options: {
         attack_mode: attackMode,
-        custom_evs: customAttackEV,
+        custom_evs: newEvToOld(customAttackEV),
         nature_boost: customNatureBoost,
         item_choice: customItemChoice,
         life_orb: customLifeOrb
@@ -173,7 +174,7 @@ export default function Threats() {
       defender: {
         pokemon_id: defender.id,
         base_stats: defender.base_stats,
-        evs: defender.evs,
+        evs: convertEvsToOld(defender.evs || {}),
         nature: defender.nature,
         types: defender.types,
         ability: defender.ability,
@@ -191,7 +192,7 @@ export default function Threats() {
       ,
       analysis_options: {
         attack_mode: attackMode,
-        custom_evs: customAttackEV,
+        custom_evs: newEvToOld(customAttackEV),
         nature_boost: customNatureBoost,
         item_choice: customItemChoice,
         life_orb: customLifeOrb
@@ -476,7 +477,7 @@ export default function Threats() {
                     {threat.ko_attacks && threat.ko_attacks.map((attack, attackIdx) => (
                       <div key={attackIdx} className="attack-info">
                         <div className="attack-name">
-                          <strong>{attack.move_name}</strong>
+                          <strong>{getMoveName(attack.move_name, attack.move_name)}</strong>
                           <span className={`type-badge type-${attack.move_type}`}>
                             {t(`types.${attack.move_type}`)}
                           </span>

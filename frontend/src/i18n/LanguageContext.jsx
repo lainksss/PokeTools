@@ -10,6 +10,7 @@ export function LanguageProvider({ children }) {
     return localStorage.getItem('language') || 'fr'
   })
   const [pokemonNames, setPokemonNames] = useState({})
+  const [moveNames, setMoveNames] = useState({})
   
   // Charger les noms de Pokémon au démarrage
   useEffect(() => {
@@ -17,6 +18,12 @@ export function LanguageProvider({ children }) {
       .then(r => r.json())
       .then(data => setPokemonNames(data))
       .catch(err => console.error('Failed to load Pokemon names:', err))
+      
+      // Also load move translations for display in results
+      fetch(`${API_URL}/api/move-names`)
+      .then(r => r.json())
+      .then(data => setMoveNames(data))
+      .catch(err => console.error('Failed to load move names:', err))
   }, [])
   
   const changeLanguage = (lang) => {
@@ -40,6 +47,28 @@ export function LanguageProvider({ children }) {
     if (!pokemonNames[pokemonId]) return fallbackName
     return pokemonNames[pokemonId][language] || pokemonNames[pokemonId]['en'] || fallbackName
   }
+
+  // Fonction pour traduire un nom d'attaque (slug or raw name)
+  const getMoveName = (moveKeyOrName, fallback) => {
+    if (!moveKeyOrName) return fallback || ''
+    // If moveKeyOrName is a slug key present in moveNames, return localized
+    if (moveNames[moveKeyOrName]) {
+      return moveNames[moveKeyOrName][language] || moveNames[moveKeyOrName]['en'] || fallback || moveKeyOrName
+    }
+    // Otherwise try to find by matching English name (some payloads return raw english names)
+    const normalize = s => (s || '').toString().toLowerCase().replace(/[-_]/g, ' ').replace(/[’'`]/g, '').trim()
+    const inputNorm = normalize(moveKeyOrName)
+    for (const k of Object.keys(moveNames || {})) {
+      const entry = moveNames[k]
+      if (!entry) continue
+      const en = normalize(entry.en)
+      const fr = normalize(entry.fr)
+      if (en === inputNorm || fr === inputNorm) {
+        return entry[language] || entry.en || fallback || moveKeyOrName
+      }
+    }
+    return fallback || moveKeyOrName
+  }
   
   // Fonction pour vérifier si un texte correspond à un nom de Pokémon (dans n'importe quelle langue)
   const matchesPokemonName = (pokemonId, searchText) => {
@@ -53,7 +82,7 @@ export function LanguageProvider({ children }) {
   }
   
   return (
-    <LanguageContext.Provider value={{ t, language, changeLanguage, getPokemonName, matchesPokemonName }}>
+    <LanguageContext.Provider value={{ t, language, changeLanguage, getPokemonName, matchesPokemonName, getMoveName }}>
       {children}
     </LanguageContext.Provider>
   )

@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
+import { convertEvsToOld } from '../utils/evs'
 
 const ALL_WEATHERS = [
   'none', 'sun', 'rain', 'sandstorm', 'snow'
@@ -70,7 +71,7 @@ export default function MiddlePanel({ left, right, setLeft, setRight, setResult 
       attacker: {
         pokemon_id: left.id,
         base_stats: left.base_stats,
-        evs: left.evs,
+        evs: convertEvsToOld(left.evs || {}),
         nature: left.nature,
         types: left.types,
         ability: left.ability,
@@ -84,7 +85,7 @@ export default function MiddlePanel({ left, right, setLeft, setRight, setResult 
       defender: {
         pokemon_id: right.id,
         base_stats: right.base_stats,
-        evs: right.evs,
+        evs: convertEvsToOld(right.evs || {}),
         nature: right.nature,
         types: right.types,
         ability: right.ability,
