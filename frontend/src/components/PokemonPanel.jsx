@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
+import { convertEvsToOld } from '../utils/evs'
 
 export default function PokemonPanel({ side, value, onChange, showMultipleMoves = false, showTitle = true, showItem = true }) {
   const { t, getPokemonName, matchesPokemonName, language } = useTranslation()
@@ -262,12 +263,13 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
     
     let mounted = true
     
+      // Convert frontend EVs (0..32 units) to backend EV format
       fetch(`${API_URL}/api/calc_stats`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         base_stats: value.base_stats,
-        evs: value.evs || {},
+        evs: convertEvsToOld(value.evs || {}),
         nature: value.nature || 'hardy'
       })
     })
@@ -359,18 +361,18 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
   }
 
   const handleEVChange = (stat, val) => {
-    const newVal = Math.max(0, Math.min(252, parseInt(val) || 0))
-    
-    // Calculate total of other EVs
+    const newVal = Math.max(0, Math.min(32, parseInt(val) || 0))
+
+    // Calculate total of other EVs (in new units)
     const currentEvs = value?.evs || {}
     const otherEvsTotal = Object.entries(currentEvs)
       .filter(([key]) => key !== stat)
-      .reduce((sum, [, value]) => sum + (parseInt(value) || 0), 0)
-    
-    // Check if exceeding total limit of 510
-    const maxAllowed = 510 - otherEvsTotal
-    const finalVal = Math.min(newVal, maxAllowed, 252)
-    
+      .reduce((sum, [, v]) => sum + (parseInt(v) || 0), 0)
+
+    // Check if exceeding total limit of 66 (new system)
+    const maxAllowed = 66 - otherEvsTotal
+    const finalVal = Math.min(newVal, maxAllowed, 32)
+
     onChange && onChange({
       ...value,
       evs: { ...(value.evs || {}), [stat]: finalVal }
@@ -477,11 +479,13 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
     'speed': t('calculate.speed')
   }
 
-  // Calculate total EVs
+  // Calculate total EVs (new units) and remaining (out of 66)
   const totalEvs = value?.evs 
     ? Object.values(value.evs).reduce((sum, val) => sum + (parseInt(val) || 0), 0)
     : 0
-  const remainingEvs = 510 - totalEvs
+  const remainingEvs = 66 - totalEvs
+
+  const isParalyzed = (value && value.status === 'paralysis')
 
   return (
     <div className="pokemon-panel">
@@ -589,7 +593,8 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
                     <input 
                       type="number" 
                       min="0" 
-                      max="252" 
+                      max="32" 
+                      step="1"
                       value={evVal}
                       onChange={e => handleEVChange(statKey, e.target.value)}
                       className="ev-input"
@@ -613,14 +618,30 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
                     )}
                   </div>
                   <div className="stat-col stat-final">
-                    {boostVal !== 0 && statKey !== 'hp' ? (
-                      <span title={`Base: ${finalVal}`} className={isItemBoosted ? 'item-boosted' : ''}>
-                        {boostedVal} <span style={{fontSize: '0.85em', opacity: 0.7}}>({finalVal})</span>
-                      </span>
+                    {statKey === 'speed' ? (
+                      // Apply paralysis halving and red color when status is paralysis
+                      (() => {
+                        const baseDisplay = boostVal !== 0 && statKey !== 'hp' ? boostedVal : finalVal
+                        const displayed = isParalyzed && typeof baseDisplay === 'number' ? Math.floor(baseDisplay / 2) : baseDisplay
+                        return (
+                          <span title={`Base: ${finalVal}`} style={{ color: isParalyzed ? '#ef4444' : undefined }} className={isItemBoosted ? 'item-boosted' : ''}>
+                            {displayed}
+                            {boostVal !== 0 && statKey !== 'hp' ? (
+                              <span style={{fontSize: '0.85em', opacity: 0.7}}>({finalVal})</span>
+                            ) : null}
+                          </span>
+                        )
+                      })()
                     ) : (
-                      <span className={isItemBoosted ? 'item-boosted' : ''}>
-                        {finalVal}
-                      </span>
+                      boostVal !== 0 && statKey !== 'hp' ? (
+                        <span title={`Base: ${finalVal}`} className={isItemBoosted ? 'item-boosted' : ''}>
+                          {boostedVal} <span style={{fontSize: '0.85em', opacity: 0.7}}>({finalVal})</span>
+                        </span>
+                      ) : (
+                        <span className={isItemBoosted ? 'item-boosted' : ''}>
+                          {finalVal}
+                        </span>
+                      )
                     )}
                   </div>
                 </div>
@@ -630,7 +651,7 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
           
           {/* Remaining EVs */}
           <div className="evs-remaining">
-            {t('pokemon.evsRemaining')}: <strong style={{color: remainingEvs < 0 ? '#ef4444' : '#10b981'}}>{remainingEvs}</strong> / 510
+            {t('pokemon.evsRemaining')}: <strong style={{color: remainingEvs < 0 ? '#ef4444' : '#10b981'}}>{remainingEvs}</strong> / 66
           </div>
 
           {/* Multiple moves for coverage: placed under EVs and aligned horizontally */}

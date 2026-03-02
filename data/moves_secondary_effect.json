@@ -1,0 +1,5624 @@
+{
+  "pound": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "karate-chop": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "double-slap": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "comet-punch": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "mega-punch": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "pay-day": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "fire-punch": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "ice-punch": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "thunder-punch": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "scratch": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "vice-grip": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "guillotine": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "razor-wind": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "swords-dance": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "cut": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "gust": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "wing-attack": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "whirlwind": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "fly": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "bind": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "slam": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "vine-whip": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "stomp": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "double-kick": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "mega-kick": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "jump-kick": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "rolling-kick": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sand-attack": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "headbutt": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "horn-attack": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "fury-attack": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "horn-drill": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "tackle": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "body-slam": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "wrap": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "take-down": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "thrash": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "double-edge": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "tail-whip": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "poison-sting": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "twineedle": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "pin-missile": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "leer": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "bite": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "growl": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "roar": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sing": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "supersonic": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sonic-boom": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "disable": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "acid": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "ember": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "flamethrower": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "mist": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "water-gun": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "hydro-pump": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "surf": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "ice-beam": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "blizzard": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "psybeam": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "bubble-beam": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "aurora-beam": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "hyper-beam": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "peck": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "drill-peck": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "submission": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "low-kick": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "counter": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "seismic-toss": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "strength": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "absorb": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "mega-drain": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "leech-seed": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "growth": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "razor-leaf": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "solar-beam": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "poison-powder": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "stun-spore": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sleep-powder": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "petal-dance": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "string-shot": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "dragon-rage": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "fire-spin": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "thunder-shock": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "thunderbolt": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "thunder-wave": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "thunder": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "rock-throw": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "earthquake": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "fissure": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "dig": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "toxic": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "confusion": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "psychic": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "hypnosis": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "meditate": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "agility": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "quick-attack": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "rage": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "teleport": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "night-shade": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "mimic": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "screech": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "double-team": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "recover": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "harden": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "minimize": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "smokescreen": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "confuse-ray": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "withdraw": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "defense-curl": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "barrier": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "light-screen": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "haze": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "reflect": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "focus-energy": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "bide": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "metronome": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "mirror-move": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "self-destruct": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "egg-bomb": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "lick": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "smog": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "sludge": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "bone-club": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "fire-blast": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "waterfall": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "clamp": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "swift": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "skull-bash": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "spike-cannon": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "constrict": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "amnesia": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "kinesis": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "soft-boiled": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "high-jump-kick": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "glare": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "dream-eater": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "poison-gas": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "barrage": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "leech-life": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "lovely-kiss": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sky-attack": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "transform": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "bubble": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "dizzy-punch": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "spore": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "flash": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "psywave": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "splash": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "acid-armor": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "crabhammer": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "explosion": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "fury-swipes": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "bonemerang": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "rest": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "rock-slide": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "hyper-fang": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sharpen": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "conversion": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "tri-attack": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "super-fang": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "slash": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "substitute": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "struggle": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sketch": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "triple-kick": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "thief": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "spider-web": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "mind-reader": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "nightmare": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "flame-wheel": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "snore": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "curse": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "flail": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "conversion-2": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "aeroblast": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "cotton-spore": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "reversal": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "spite": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "powder-snow": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "protect": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "mach-punch": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "scary-face": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "feint-attack": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sweet-kiss": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "belly-drum": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sludge-bomb": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "mud-slap": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "octazooka": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "spikes": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "zap-cannon": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "foresight": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "destiny-bond": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "perish-song": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "icy-wind": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "detect": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "bone-rush": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "lock-on": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "outrage": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sandstorm": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "giga-drain": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "endure": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "charm": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "rollout": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "false-swipe": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "swagger": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "milk-drink": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "spark": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "fury-cutter": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "steel-wing": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "mean-look": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "attract": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sleep-talk": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "heal-bell": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "return": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "present": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "frustration": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "safeguard": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "pain-split": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sacred-fire": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "magnitude": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "dynamic-punch": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "megahorn": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "dragon-breath": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "baton-pass": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "encore": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "pursuit": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "rapid-spin": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "sweet-scent": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "iron-tail": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "metal-claw": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "vital-throw": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "morning-sun": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "synthesis": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "moonlight": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "hidden-power": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "cross-chop": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "twister": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "rain-dance": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sunny-day": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "crunch": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "mirror-coat": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "psych-up": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "extreme-speed": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "ancient-power": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "shadow-ball": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "future-sight": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "rock-smash": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "whirlpool": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "beat-up": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "fake-out": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "uproar": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "stockpile": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "spit-up": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "swallow": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "heat-wave": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "hail": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "torment": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "flatter": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "will-o-wisp": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "memento": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "facade": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "focus-punch": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "smelling-salts": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "follow-me": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "nature-power": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "charge": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "taunt": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "helping-hand": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "trick": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "role-play": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "wish": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "assist": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "ingrain": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "superpower": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "magic-coat": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "recycle": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "revenge": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "brick-break": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "yawn": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "knock-off": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "endeavor": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "eruption": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "skill-swap": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "imprison": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "refresh": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "grudge": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "snatch": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "secret-power": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "dive": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "arm-thrust": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "camouflage": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "tail-glow": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "luster-purge": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "mist-ball": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "feather-dance": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "teeter-dance": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "blaze-kick": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "mud-sport": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "ice-ball": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "needle-arm": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "slack-off": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "hyper-voice": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "poison-fang": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "crush-claw": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "blast-burn": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "hydro-cannon": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "meteor-mash": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "astonish": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "weather-ball": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "aromatherapy": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "fake-tears": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "air-cutter": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "overheat": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "odor-sleuth": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "rock-tomb": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "silver-wind": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "metal-sound": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "grass-whistle": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "tickle": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "cosmic-power": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "water-spout": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "signal-beam": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "shadow-punch": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "extrasensory": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sky-uppercut": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sand-tomb": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "sheer-cold": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "muddy-water": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "bullet-seed": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "aerial-ace": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "icicle-spear": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "iron-defense": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "block": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "howl": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "dragon-claw": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "frenzy-plant": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "bulk-up": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "bounce": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "mud-shot": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "poison-tail": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "covet": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "volt-tackle": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "magical-leaf": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "water-sport": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "calm-mind": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "leaf-blade": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "dragon-dance": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "rock-blast": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shock-wave": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "water-pulse": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "doom-desire": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "psycho-boost": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "roost": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "gravity": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "miracle-eye": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "wake-up-slap": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "hammer-arm": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "gyro-ball": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "healing-wish": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "brine": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "natural-gift": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "feint": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "pluck": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "tailwind": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "acupressure": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "metal-burst": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "u-turn": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "close-combat": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "payback": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "assurance": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "embargo": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "fling": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "psycho-shift": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "trump-card": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "heal-block": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "wring-out": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "power-trick": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "gastro-acid": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "lucky-chant": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "me-first": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "copycat": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "power-swap": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "guard-swap": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "punishment": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "last-resort": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "worry-seed": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sucker-punch": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "toxic-spikes": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "heart-swap": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "aqua-ring": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "magnet-rise": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "flare-blitz": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "force-palm": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "aura-sphere": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "rock-polish": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "poison-jab": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "dark-pulse": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "night-slash": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "aqua-tail": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "seed-bomb": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "air-slash": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "x-scissor": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "bug-buzz": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "dragon-pulse": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "dragon-rush": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "power-gem": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "drain-punch": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "vacuum-wave": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "focus-blast": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "energy-ball": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "brave-bird": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "earth-power": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "switcheroo": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "giga-impact": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "nasty-plot": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "bullet-punch": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "avalanche": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "ice-shard": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shadow-claw": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "thunder-fang": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "ice-fang": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "fire-fang": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "shadow-sneak": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "mud-bomb": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "psycho-cut": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "zen-headbutt": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "mirror-shot": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "flash-cannon": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "rock-climb": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "defog": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "trick-room": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "draco-meteor": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "discharge": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "lava-plume": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "leaf-storm": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "power-whip": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "rock-wrecker": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "cross-poison": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "gunk-shot": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "iron-head": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "magnet-bomb": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "stone-edge": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "captivate": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "stealth-rock": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "grass-knot": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "chatter": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "judgment": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "bug-bite": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "charge-beam": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "wood-hammer": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "aqua-jet": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "attack-order": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "defend-order": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "heal-order": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "head-smash": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "double-hit": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "roar-of-time": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "spacial-rend": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "lunar-dance": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "crush-grip": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "magma-storm": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "dark-void": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "seed-flare": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "ominous-wind": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": true
+  },
+  "shadow-force": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "hone-claws": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "wide-guard": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "guard-split": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "power-split": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "wonder-room": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "psyshock": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "venoshock": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "autotomize": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "rage-powder": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "telekinesis": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "magic-room": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "smack-down": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "storm-throw": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "flame-burst": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sludge-wave": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "quiver-dance": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "heavy-slam": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "synchronoise": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "electro-ball": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "soak": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "flame-charge": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "coil": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "low-sweep": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "acid-spray": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "foul-play": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "simple-beam": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "entrainment": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "after-you": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "round": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "echoed-voice": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "chip-away": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "clear-smog": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "stored-power": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "quick-guard": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "ally-switch": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "scald": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "shell-smash": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "heal-pulse": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "hex": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sky-drop": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shift-gear": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "circle-throw": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "incinerate": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "quash": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "acrobatics": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "reflect-type": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "retaliate": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "final-gambit": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "bestow": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "inferno": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "water-pledge": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "fire-pledge": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "grass-pledge": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "volt-switch": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "struggle-bug": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "bulldoze": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "frost-breath": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "dragon-tail": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "work-up": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "electroweb": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "wild-charge": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "drill-run": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "dual-chop": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "heart-stamp": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "horn-leech": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sacred-sword": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "razor-shell": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "heat-crash": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "leaf-tornado": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "steamroller": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "cotton-guard": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "night-daze": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "psystrike": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "tail-slap": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "hurricane": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "head-charge": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "gear-grind": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "searing-shot": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "techno-blast": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "relic-song": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "secret-sword": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "glaciate": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "bolt-strike": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "blue-flare": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "fiery-dance": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "freeze-shock": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "ice-burn": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "snarl": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "icicle-crash": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "v-create": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "fusion-flare": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "fusion-bolt": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "flying-press": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "mat-block": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "belch": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "rototiller": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "sticky-web": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "fell-stinger": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "phantom-force": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "trick-or-treat": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "noble-roar": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "ion-deluge": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "parabolic-charge": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "forests-curse": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "petal-blizzard": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "freeze-dry": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "disarming-voice": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "parting-shot": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "topsy-turvy": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "draining-kiss": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "crafty-shield": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "flower-shield": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "grassy-terrain": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "misty-terrain": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "electrify": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "play-rough": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "fairy-wind": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "moonblast": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "boomburst": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "fairy-lock": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "kings-shield": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "play-nice": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "confide": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "diamond-storm": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "steam-eruption": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "hyperspace-hole": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "water-shuriken": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "mystical-fire": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "spiky-shield": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "aromatic-mist": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "eerie-impulse": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "venom-drench": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "powder": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "geomancy": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "magnetic-flux": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "happy-hour": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "electric-terrain": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "dazzling-gleam": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "celebrate": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "hold-hands": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "baby-doll-eyes": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "nuzzle": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "hold-back": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "infestation": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "power-up-punch": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "oblivion-wing": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "thousand-arrows": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "thousand-waves": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "lands-wrath": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "light-of-ruin": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "origin-pulse": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "precipice-blades": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "dragon-ascent": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "hyperspace-fury": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "breakneck-blitz--physical": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "breakneck-blitz--special": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "all-out-pummeling--physical": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "all-out-pummeling--special": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "supersonic-skystrike--physical": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "supersonic-skystrike--special": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "acid-downpour--physical": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "acid-downpour--special": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "tectonic-rage--physical": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "tectonic-rage--special": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "continental-crush--physical": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "continental-crush--special": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "savage-spin-out--physical": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "savage-spin-out--special": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "never-ending-nightmare--physical": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "never-ending-nightmare--special": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "corkscrew-crash--physical": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "corkscrew-crash--special": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "inferno-overdrive--physical": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "inferno-overdrive--special": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "hydro-vortex--physical": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "hydro-vortex--special": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "bloom-doom--physical": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "bloom-doom--special": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "gigavolt-havoc--physical": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "gigavolt-havoc--special": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shattered-psyche--physical": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shattered-psyche--special": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "subzero-slammer--physical": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "subzero-slammer--special": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "devastating-drake--physical": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "devastating-drake--special": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "black-hole-eclipse--physical": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "black-hole-eclipse--special": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "twinkle-tackle--physical": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "twinkle-tackle--special": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "catastropika": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shore-up": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "first-impression": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "baneful-bunker": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "spirit-shackle": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "darkest-lariat": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sparkling-aria": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "ice-hammer": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "floral-healing": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "high-horsepower": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "strength-sap": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "solar-blade": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "leafage": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "spotlight": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "toxic-thread": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": true
+  },
+  "laser-focus": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "gear-up": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "throat-chop": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "pollen-puff": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "anchor-shot": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "psychic-terrain": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "lunge": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "fire-lash": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "power-trip": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "burn-up": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "speed-swap": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "smart-strike": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "purify": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "revelation-dance": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "core-enforcer": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "trop-kick": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "instruct": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "beak-blast": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "clanging-scales": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "dragon-hammer": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "brutal-swing": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "aurora-veil": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sinister-arrow-raid": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "malicious-moonsault": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "oceanic-operetta": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "guardian-of-alola": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "soul-stealing-7-star-strike": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "stoked-sparksurfer": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "pulverizing-pancake": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "extreme-evoboost": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "genesis-supernova": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shell-trap": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "fleur-cannon": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "psychic-fangs": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "stomping-tantrum": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shadow-bone": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "accelerock": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "liquidation": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "prismatic-laser": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "spectral-thief": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sunsteel-strike": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "moongeist-beam": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "tearful-look": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "zing-zap": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "natures-madness": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "multi-attack": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "10-000-000-volt-thunderbolt": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "mind-blown": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "plasma-fists": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "photon-geyser": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "light-that-burns-the-sky": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "searing-sunraze-smash": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "menacing-moonraze-maelstrom": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "lets-snuggle-forever": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "splintered-stormshards": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "clangorous-soulblaze": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "zippy-zap": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "splishy-splash": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "floaty-fall": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "pika-papow": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "bouncy-bubble": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "buzzy-buzz": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "sizzly-slide": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "glitzy-glow": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "baddy-bad": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sappy-seed": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "freezy-frost": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sparkly-swirl": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "veevee-volley": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "double-iron-bash": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "max-guard": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "dynamax-cannon": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "snipe-shot": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "jaw-lock": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "stuff-cheeks": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "no-retreat": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "tar-shot": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": true
+  },
+  "magic-powder": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "dragon-darts": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "teatime": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "octolock": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "bolt-beak": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "fishious-rend": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "court-change": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "max-flare": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "max-flutterby": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "max-lightning": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "max-strike": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "max-knuckle": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "max-phantasm": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "max-hailstorm": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "max-ooze": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "max-geyser": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "max-airstream": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "max-starfall": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "max-wyrmwind": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "max-mindstorm": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "max-rockfall": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "max-quake": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "max-darkness": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "max-overgrowth": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "max-steelspike": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "clangorous-soul": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "body-press": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "decorate": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "drum-beating": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "snap-trap": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "pyro-ball": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "behemoth-blade": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "behemoth-bash": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "aura-wheel": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "breaking-swipe": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "branch-poke": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "overdrive": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "apple-acid": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "grav-apple": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "spirit-break": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "strange-steam": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "life-dew": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "obstruct": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "false-surrender": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "meteor-assault": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "eternabeam": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "steel-beam": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "expanding-force": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "steel-roller": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "scale-shot": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "meteor-beam": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "shell-side-arm": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "misty-explosion": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "grassy-glide": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "rising-voltage": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "terrain-pulse": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "skitter-smack": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "burning-jealousy": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "lash-out": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "poltergeist": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "corrosive-gas": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "coaching": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "flip-turn": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "triple-axel": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "dual-wingbeat": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "scorching-sands": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "jungle-healing": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "wicked-blow": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "surging-strikes": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "thunder-cage": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "dragon-energy": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "freezing-glare": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": true,
+    "has_stat_change": false
+  },
+  "fiery-wrath": {
+    "has_secondary": true,
+    "has_flinch": true,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "thunderous-kick": {
+    "has_secondary": true,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": true
+  },
+  "glacial-lance": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "astral-barrage": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "eerie-spell": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "dire-claw": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "psyshield-bash": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "power-shift": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "stone-axe": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "springtide-storm": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "mystical-power": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "raging-fury": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "wave-crash": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "chloroblast": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "mountain-gale": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "victory-dance": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "headlong-rush": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "barb-barrage": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "esper-wing": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "bitter-malice": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shelter": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "triple-arrows": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "infernal-parade": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "ceaseless-edge": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "bleakwind-storm": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "wildbolt-storm": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "sandsear-storm": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "lunar-blessing": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "take-heart": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "tera-blast": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "silk-trap": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "axe-kick": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "last-respects": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "lumina-crash": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "order-up": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "jet-punch": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "spicy-extract": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "spin-out": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "population-bomb": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "ice-spinner": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "glaive-rush": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "revival-blessing": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "salt-cure": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "triple-dive": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "mortal-spin": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "doodle": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "fillet-away": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "kowtow-cleave": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "flower-trick": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "torch-song": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "aqua-step": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "raging-bull": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "make-it-rain": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "psyblade": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "hydro-steam": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "ruination": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "collision-course": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "electro-drift": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shed-tail": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "chilly-reception": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "tidy-up": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "snowscape": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "pounce": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "trailblaze": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "chilling-water": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "hyper-drill": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "twin-beam": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "rage-fist": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "armor-cannon": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "bitter-blade": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "double-shock": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "gigaton-hammer": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "comeuppance": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "aqua-cutter": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "blazing-torque": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "wicked-torque": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "noxious-torque": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "combat-torque": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "magical-torque": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "blood-moon": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "matcha-gotcha": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "syrup-bomb": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "ivy-cudgel": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "electro-shot": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "tera-starstorm": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "fickle-beam": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "burning-bulwark": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "thunderclap": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "mighty-cleave": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "tachyon-cutter": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "hard-press": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "dragon-cheer": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "alluring-voice": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "temper-flare": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "supercell-slam": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "psychic-noise": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "upper-hand": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "malignant-chain": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shadow-rush": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shadow-blast": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shadow-blitz": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shadow-bolt": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shadow-break": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shadow-chill": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shadow-end": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shadow-fire": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shadow-rave": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shadow-storm": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shadow-wave": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shadow-down": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shadow-half": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shadow-hold": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shadow-mist": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shadow-panic": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shadow-shed": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  },
+  "shadow-sky": {
+    "has_secondary": false,
+    "has_flinch": false,
+    "has_ailment": false,
+    "has_stat_change": false
+  }
+}

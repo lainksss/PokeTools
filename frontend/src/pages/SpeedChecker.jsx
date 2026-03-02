@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
+import { newEvToOld } from '../utils/evs'
 
 export default function SpeedChecker() {
   const { t, language, getPokemonName, matchesPokemonName } = useTranslation()
@@ -11,11 +12,12 @@ export default function SpeedChecker() {
   // Left panel - User's Pokémon
   const [selectedPokemon, setSelectedPokemon] = useState(null)
   const [value, setValue] = useState({ nature: 'hardy' })
-  const [speedEV, setSpeedEV] = useState(0)
+  const [speedEVUnits, setSpeedEVUnits] = useState(0) // 0..32 UI units
   const [speedNature, setSpeedNature] = useState('neutral') // 'positive', 'neutral', 'negative'
   const [ability, setAbility] = useState(null)
   const [speedBoost, setSpeedBoost] = useState(0) // -6 to +6
   const [tailwind, setTailwind] = useState(false)
+  const [weather, setWeather] = useState('none')
   // Choice Scarf toggle (user)
   const [choiceScarf, setChoiceScarf] = useState(false)
   const level = 50 // Always level 50
@@ -28,7 +30,7 @@ export default function SpeedChecker() {
   
   // Middle panel - Comparison mode
   const [comparisonMode, setComparisonMode] = useState('min') // 'min', 'custom', 'max'
-  const [customEV, setCustomEV] = useState(0)
+  const [customEV, setCustomEV] = useState(0) // in UI units 0..32
   const [customNature, setCustomNature] = useState(false)
   // Choice Scarf toggle (middle panel)
   const [choiceScarfMiddle, setChoiceScarfMiddle] = useState(false)
@@ -36,6 +38,8 @@ export default function SpeedChecker() {
   // Right panel - Results
   const [showSlower, setShowSlower] = useState(true) // true = slower, false = faster
   const [results, setResults] = useState([])
+
+  const ALL_WEATHERS = ['none', 'sun', 'rain', 'sandstorm', 'snow']
 
   // Load Pokémon data
   useEffect(() => {
@@ -75,9 +79,14 @@ export default function SpeedChecker() {
     fetch(`${API_URL}/api/pokemon/${selectedPokemon.id}/abilities`)
       .then(r => r.json())
       .then(data => {
-        setPokemonAbilities(data.abilities || [])
-        if (data.abilities && data.abilities.length > 0) {
-          setAbility(data.abilities[0].slug)
+        const raw = data.abilities || []
+        // Normalize to array of slugs (API may return strings)
+        const slugs = raw.map(a => (typeof a === 'string' ? a : (a.slug || ''))).filter(Boolean)
+        setPokemonAbilities(slugs)
+        if (slugs.length > 0) {
+          setAbility(slugs[0])
+        } else {
+          setAbility(null)
         }
       })
       .catch(err => console.error('Error loading abilities:', err))
@@ -104,10 +113,26 @@ export default function SpeedChecker() {
   }
 
   // Calculate user's speed
+  // convert UI units (0..32) to backend EVs using shared helper
+  const effectiveSpeedEV = newEvToOld(speedEVUnits)
+
   const userSpeed = selectedPokemon 
-    ? calculateSpeed(selectedPokemon.base_stats.speed, level, speedEV, speedNature, speedBoost)
+    ? calculateSpeed(selectedPokemon.base_stats.speed, level, effectiveSpeedEV, speedNature, speedBoost)
     : 0
   let finalUserSpeed = userSpeed
+  // Weather-affected abilities multiplier (user)
+  const weatherAbilityMultiplier = (abilitySlug, currentWeather) => {
+    if (!abilitySlug || !currentWeather || currentWeather === 'none') return 1
+    const slug = abilitySlug.toLowerCase()
+    if (slug === 'chlorophyll' && currentWeather === 'sun') return 2
+    if (slug === 'swift-swim' && currentWeather === 'rain') return 2
+    if (slug === 'sand-rush' && currentWeather === 'sandstorm') return 2
+    if (slug === 'slush-rush' && currentWeather === 'snow') return 2
+    return 1
+  }
+
+  const abilityMult = weatherAbilityMultiplier(ability, weather)
+  finalUserSpeed = Math.floor(finalUserSpeed * abilityMult)
   if (choiceScarf) finalUserSpeed = Math.floor(finalUserSpeed * 1.5)
   if (tailwind) finalUserSpeed = finalUserSpeed * 2
   
@@ -138,10 +163,10 @@ export default function SpeedChecker() {
         opponentEV = 0
         opponentNature = 'neutral'
       } else if (comparisonMode === 'custom') {
-        opponentEV = customEV
+        opponentEV = newEvToOld(customEV)
         opponentNature = customNature ? 'positive' : 'neutral'
       } else if (comparisonMode === 'max') {
-        opponentEV = 252
+        opponentEV = newEvToOld(32)
         opponentNature = 'positive'
       }
 
@@ -172,7 +197,7 @@ export default function SpeedChecker() {
     })
 
     setResults(filtered)
-  }, [selectedPokemon, level, speedEV, speedNature, speedBoost, tailwind, choiceScarf, comparisonMode, customEV, customNature, choiceScarfMiddle, showSlower, allPokemon])
+  }, [selectedPokemon, level, speedEVUnits, speedNature, speedBoost, tailwind, choiceScarf, comparisonMode, customEV, customNature, choiceScarfMiddle, showSlower, allPokemon, ability, weather])
 
   return (
     <div className="speed-checker-page">
@@ -278,13 +303,13 @@ export default function SpeedChecker() {
                   className="ability-select"
                 >
                   <option value="">{t('pokemon.none')}</option>
-                  {allAbilities
-                    .filter(a => pokemonAbilities.some(pa => pa.slug === a.slug))
-                    .map(a => (
-                      <option key={a.slug} value={a.slug}>
-                        {a[language] || a.en}
-                      </option>
-                    ))}
+                    {allAbilities
+                      .filter(a => pokemonAbilities.includes(a.slug))
+                      .map(a => (
+                        <option key={a.slug} value={a.slug}>
+                          {a[language] || a.en}
+                        </option>
+                      ))}
                 </select>
               </div>
 
@@ -294,16 +319,12 @@ export default function SpeedChecker() {
                 <div className="ev-input-container">
                   <input
                     type="number"
-                    value={speedEV}
-                    onChange={(e) => setSpeedEV(Math.max(0, Math.min(252, parseInt(e.target.value) || 0)))}
+                    value={speedEVUnits}
+                    onChange={(e) => setSpeedEVUnits(Math.max(0, Math.min(32, parseInt(e.target.value) || 0)))}
                     min="0"
-                    max="252"
-                    step="4"
+                    max="32"
+                    step="1"
                   />
-                  <div className="ev-buttons">
-                    <button onClick={() => setSpeedEV(0)}>0</button>
-                    <button onClick={() => setSpeedEV(252)}>252</button>
-                  </div>
                 </div>
               </div>
 
@@ -349,6 +370,8 @@ export default function SpeedChecker() {
                   <span className="tailwind-icon">🧣</span>
                   {t('speedChecker.choiceScarf') || 'Choice Scarf'}: {choiceScarf ? t('speedChecker.on') || 'ON' : t('speedChecker.off') || 'OFF'}
                 </button>
+                
+                  {/* Weather selector moved to middle panel */}
               </div>
 
               {/* Final Speed Display */}
@@ -380,6 +403,19 @@ export default function SpeedChecker() {
         {/* Middle Panel - Comparison Options */}
         <div className="speed-panel speed-panel-middle">
           <h3>{t('speedChecker.compareAgainst') || 'Compare Against'}</h3>
+          <div className="form-group">
+            <select
+              aria-label={t('calculate.weather')}
+              value={weather}
+              onChange={e => setWeather(e.target.value)}
+              className="form-control"
+              style={{ maxWidth: 220 }}
+            >
+              {ALL_WEATHERS.map(w => (
+                <option key={w} value={w}>{t(`weather.${w}`)}</option>
+              ))}
+            </select>
+          </div>
           <div className="comparison-buttons">
             <button
               className={`comparison-mode-btn ${comparisonMode === 'min' ? 'active' : ''}`}
@@ -402,7 +438,7 @@ export default function SpeedChecker() {
               onClick={() => setComparisonMode('max')}
             >
               <div className="btn-title">{t('speedChecker.maxSpeed') || 'Max Speed'}</div>
-              <div className="btn-desc">252 EVs, +Nature</div>
+              <div className="btn-desc">32 units, +Nature</div>
             </button>
           </div>
 
@@ -413,10 +449,10 @@ export default function SpeedChecker() {
                 <input 
                   type="number" 
                   value={customEV} 
-                  onChange={(e) => setCustomEV(Math.max(0, Math.min(252, parseInt(e.target.value) || 0)))}
+                  onChange={(e) => setCustomEV(Math.max(0, Math.min(32, parseInt(e.target.value) || 0)))}
                   min="0"
-                  max="252"
-                  step="4"
+                  max="32"
+                  step="1"
                 />
               </div>
               <div className="form-group">
@@ -468,12 +504,14 @@ export default function SpeedChecker() {
             <div className="speed-counter">
               {showSlower 
                 ? `${results.length} ${t('speedChecker.slowerCount') || 'slower'} • ${allPokemon.filter(p => {
-                    const oppSpeed = calculateSpeed(p.base_stats.speed, level, comparisonMode === 'min' ? 0 : comparisonMode === 'max' ? 252 : customEV, comparisonMode === 'min' ? 'neutral' : comparisonMode === 'max' ? 'positive' : customNature ? 'positive' : 'neutral')
+                    const oppEv = comparisonMode === 'min' ? 0 : comparisonMode === 'max' ? newEvToOld(32) : newEvToOld(customEV)
+                    const oppSpeed = calculateSpeed(p.base_stats.speed, level, oppEv, comparisonMode === 'min' ? 'neutral' : comparisonMode === 'max' ? 'positive' : customNature ? 'positive' : 'neutral')
                     const oppFinalSpeed = choiceScarfMiddle ? Math.floor(oppSpeed * 1.5) : oppSpeed
                     return finalUserSpeed <= oppFinalSpeed
                   }).length} ${t('speedChecker.fasterCount') || 'faster'}`
                 : `${results.length} ${t('speedChecker.fasterCount') || 'faster'} • ${allPokemon.filter(p => {
-                    const oppSpeed = calculateSpeed(p.base_stats.speed, level, comparisonMode === 'min' ? 0 : comparisonMode === 'max' ? 252 : customEV, comparisonMode === 'min' ? 'neutral' : comparisonMode === 'max' ? 'positive' : customNature ? 'positive' : 'neutral')
+                    const oppEv = comparisonMode === 'min' ? 0 : comparisonMode === 'max' ? newEvToOld(32) : newEvToOld(customEV)
+                    const oppSpeed = calculateSpeed(p.base_stats.speed, level, oppEv, comparisonMode === 'min' ? 'neutral' : comparisonMode === 'max' ? 'positive' : customNature ? 'positive' : 'neutral')
                     const oppFinalSpeed = choiceScarfMiddle ? Math.floor(oppSpeed * 1.5) : oppSpeed
                     return finalUserSpeed > oppFinalSpeed
                   }).length} ${t('speedChecker.slowerCount') || 'slower'}`

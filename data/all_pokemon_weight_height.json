@@ -5310,5 +5310,93 @@
   "10303": {
     "weight_kg": 99.0,
     "height_m": 1.6
+  },
+  "10304": {
+    "weight_kg": 38.0,
+    "height_m": 1.2
+  },
+  "10305": {
+    "weight_kg": 26.0,
+    "height_m": 1.0
+  },
+  "10306": {
+    "weight_kg": 8.0,
+    "height_m": 1.2
+  },
+  "10307": {
+    "weight_kg": 49.0,
+    "height_m": 1.2
+  },
+  "10308": {
+    "weight_kg": 50.0,
+    "height_m": 1.9
+  },
+  "10309": {
+    "weight_kg": 99.0,
+    "height_m": 1.9
+  },
+  "10310": {
+    "weight_kg": 49.4,
+    "height_m": 1.3
+  },
+  "10311": {
+    "weight_kg": 570.0,
+    "height_m": 2.8
+  },
+  "10312": {
+    "weight_kg": 240.0,
+    "height_m": 3.0
+  },
+  "10313": {
+    "weight_kg": 330.0,
+    "height_m": 4.0
+  },
+  "10314": {
+    "weight_kg": 10.1,
+    "height_m": 0.8
+  },
+  "10315": {
+    "weight_kg": 252.8,
+    "height_m": 2.6
+  },
+  "10316": {
+    "weight_kg": 148.0,
+    "height_m": 2.3
+  },
+  "10317": {
+    "weight_kg": 248.1,
+    "height_m": 1.3
+  },
+  "10318": {
+    "weight_kg": 248.1,
+    "height_m": 1.3
+  },
+  "10319": {
+    "weight_kg": 44.5,
+    "height_m": 1.5
+  },
+  "10320": {
+    "weight_kg": 22.0,
+    "height_m": 1.2
+  },
+  "10321": {
+    "weight_kg": 77.0,
+    "height_m": 2.8
+  },
+  "10322": {
+    "weight_kg": 24.0,
+    "height_m": 0.6
+  },
+  "10323": {
+    "weight_kg": 24.0,
+    "height_m": 0.6
+  },
+  "10324": {
+    "weight_kg": 24.0,
+    "height_m": 0.6
+  },
+  "10325": {
+    "weight_kg": 315.0,
+    "height_m": 2.1
   }
 }

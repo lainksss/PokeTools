@@ -402,6 +402,46 @@ select option:hover {
   border-radius: 8px;
 }
 
+/* Aura buttons styling: used in MiddlePanel, Coverage and Threats pages */
+.auras-toggle {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.aura-button {
+  padding: 6px 10px;
+  background: rgba(255,255,255,0.03);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 120ms ease, border-color 120ms ease, transform 80ms ease;
+  user-select: none;
+}
+
+.aura-button:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.aura-button.active {
+  background: linear-gradient(90deg, var(--accent), #6ea8ff20);
+  border-color: var(--accent);
+  color: white;
+  box-shadow: 0 6px 18px rgba(59,130,246,0.16);
+}
+
+/* (Consolidated SpeedGame styles moved further down) */
+
+
+/* Make aura buttons slightly smaller on narrow screens */
+@media (max-width: 700px) {
+  .aura-button { padding: 5px 8px; font-size: 0.8rem; }
+}
+
 .scale-button {
   display: inline-flex;
   align-items: center;
@@ -3098,4 +3138,226 @@ select.form-control option:checked {
 
 .speed-counter::first-letter {
   text-transform: uppercase;
+}
+
+/* ---- SpeedGame styles ---- */
+.speed-game-page {
+  padding: 18px;
+}
+.speed-game-board {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+}
+.pokemon-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  width: 260px;
+  text-align: center;
+}
+.pokemon-card img {
+  width: 120px;
+  height: 120px;
+  image-rendering: pixelated;
+  margin-bottom: 8px;
+}
+.pokemon-card h3 {
+  margin: 6px 0 8px 0;
+  font-size: 1.1rem;
+}
+.game-center {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+.condition-select select {
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+.controls .hint {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+.pokemon-card button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.pokemon-card button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.game-center .controls button {
+  background: linear-gradient(90deg, #4f46e5, #3b82f6);
+  padding: 10px 18px;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(59,130,246,0.18);
+}
+.speed-game-page .mode-switch button {
+  padding: 8px 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+.speed-game-page .mode-switch button[disabled] {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+}
+.speed-game-page .mode-switch button:hover:not([disabled]) {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+/* Center the guess board and single card */
+.guess-game-board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-top: 12px;
+}
+.guess-game-board .pokemon-card.single {
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Style inputs and buttons in guess game to match app design */
+.guess-game-board input[type="number"] {
+  width: 160px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.speed-game-page button {
+  background: linear-gradient(90deg, var(--accent), #2563eb);
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 10px;
+  box-shadow: 0 8px 22px rgba(37,99,235,0.12);
+  cursor: pointer;
+  font-weight: 800;
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+.speed-game-page button[disabled] {
+  background: rgba(255,255,255,0.03);
+  color: var(--text-muted);
+  box-shadow: none;
+  cursor: default;
+  opacity: 0.7;
+}
+.speed-game-page button:hover:not([disabled]) {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 34px rgba(37,99,235,0.18);
+}
+
+.speed-game-page .result-panel, .speed-game-page .result-outcome, .speed-game-page .guess-outcome {
+  margin-top: 12px;
+}
+.result-panel button {
+  background: linear-gradient(90deg, #10b981, #06b6d4);
+  padding: 10px 18px;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  box-shadow: 0 6px 18px rgba(6,182,212,0.12);
+}
+.result-outcome {
+  font-size: 2rem;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.6px;
+}
+.result-panel h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.result-panel {
+  margin-top: 18px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.result-row {
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+  width: 100%;
+}
+.result-row > div {
+  text-align: center;
+  min-width: 140px;
+}
+.result-row > div strong {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.result-row > div div {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+.result-outcome {
+  font-size: 2rem;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.6px;
+  margin-top: 8px;
+}
+.result-outcome.win { background: rgba(34,197,94,0.12); color: #86efac }
+.result-outcome.lose { background: rgba(239,68,68,0.08); color: #fca5a5 }
+.result-outcome.tie { background: rgba(148,163,184,0.06); color: #94a3b8 }
+
+.result-panel .winner {
+  font-size: 1.05rem;
+  margin-top: 6px;
+  color: var(--text);
+}
+
+.result-panel button { margin-top: 8px; }
+
+@media (max-width: 900px) {
+  .speed-game-board { flex-direction: column; }
+  .game-center { width: 100%; }
 }

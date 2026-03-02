@@ -56,4 +56,16 @@ Notes for developers
   - `api.py` — routes and SSE streaming endpoints
 - SSE endpoints: `find_threats_stream` and `analyze_coverage_stream` emit `text/event-stream` events with `data: <JSON>` lines. See `api.py` and frontend SSE handling.
 
+Field conditions
+- **Auras (Fairy Aura / Dark Aura / Aura Break)**: Implemented in `calculate_damages/special_conditions.py` and applied as base-power modifiers so rounding and authoritative 16-roll damage distributions match expected results. Unit tests covering aura combinations live in `backend/test/`.
+- **Screens (Reflect / Light Screen) and Aurora Veil**: Implemented as final-stage damage modifiers (chain of fixed-point modifiers) so they affect the final chained rounding. Key behavior:
+  - Reflect halves physical damage in single battles; in multi-battle modes (e.g., `battle_mode: "double"`) it uses a ~2/3 multiplier (Gen V uses `2703/4096`; Gen VI+ uses `2732/4096`).
+  - Light Screen is analogous for special damage.
+  - Aurora Veil acts like both screens but does not reduce damage from critical hits or fixed-damage moves; Aurora Veil is only effective while `hail` or `snow` (front-end or battle logic must enforce turn/set conditions).
+  - Attacker with the `Infiltrator` ability ignores screens.
+  - Certain moves (`brick-break`, `defog`, `psychic-fangs`, `raging-bull`) remove screens when they hit a non-immune target; the helper `remove_screens_on_move()` performs this mutation on the `field` dict.
+  - A `Screen Cleaner` ability should call `handle_screen_cleaner_on_switch()` when a Pokémon switches in to clear screens.
+
+These helpers live in `calculate_damages/special_conditions.py` and are exercised by the tests in `backend/test/test_screens_and_aurora.py`.
+
 If you add or update datasets, ensure `data/` files remain JSON-valid and include required keys used by the calculators (types, base_stats, moves, abilities).

@@ -88,6 +88,7 @@ export default function App() {
           <NavLink to="/coverage" className={({isActive}) => isActive ? 'active' : ''}>{t('nav.coverage') || 'Coverage'}</NavLink>
           <NavLink to="/type-coverage" className={({isActive}) => isActive ? 'active' : ''}>{t('nav.typeCoverage') || 'Type Coverage'}</NavLink>
           <NavLink to="/speed-checker" className={({isActive}) => isActive ? 'active' : ''}>{t('nav.speedChecker') || 'Speed Checker'}</NavLink>
+          <NavLink to="/speed-game" className={({isActive}) => isActive ? 'active' : ''}>{t('nav.speedGame') || 'Speed Duel'}</NavLink>
         </nav>
         <div className="header-controls">
           <div className="display-scale" role="group" aria-label="Display scale">

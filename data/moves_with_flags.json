@@ -1,0 +1,3467 @@
+{
+  "pound": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "karate-chop": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "double-slap": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "comet-punch": [
+    "contact",
+    "protect",
+    "mirror",
+    "punch"
+  ],
+  "mega-punch": [
+    "contact",
+    "protect",
+    "mirror",
+    "punch"
+  ],
+  "pay-day": [
+    "protect",
+    "mirror"
+  ],
+  "fire-punch": [
+    "contact",
+    "protect",
+    "mirror",
+    "punch"
+  ],
+  "ice-punch": [
+    "contact",
+    "protect",
+    "mirror",
+    "punch"
+  ],
+  "thunder-punch": [
+    "contact",
+    "protect",
+    "mirror",
+    "punch"
+  ],
+  "scratch": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "vice-grip": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "guillotine": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "razor-wind": [
+    "charge",
+    "protect",
+    "mirror"
+  ],
+  "swords-dance": [
+    "snatch",
+    "dance"
+  ],
+  "cut": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "gust": [
+    "protect",
+    "mirror",
+    "distance"
+  ],
+  "wing-attack": [
+    "contact",
+    "protect",
+    "mirror",
+    "distance"
+  ],
+  "whirlwind": [
+    "reflectable",
+    "mirror",
+    "authentic"
+  ],
+  "fly": [
+    "contact",
+    "charge",
+    "protect",
+    "mirror",
+    "gravity",
+    "distance"
+  ],
+  "bind": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "slam": [
+    "contact",
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "vine-whip": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "stomp": [
+    "contact",
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "double-kick": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "mega-kick": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "jump-kick": [
+    "contact",
+    "protect",
+    "mirror",
+    "gravity"
+  ],
+  "rolling-kick": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "sand-attack": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "headbutt": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "horn-attack": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "fury-attack": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "horn-drill": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "tackle": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "body-slam": [
+    "contact",
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "wrap": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "take-down": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "thrash": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "double-edge": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "tail-whip": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "poison-sting": [
+    "protect",
+    "mirror"
+  ],
+  "twineedle": [
+    "protect",
+    "mirror"
+  ],
+  "pin-missile": [
+    "protect",
+    "mirror"
+  ],
+  "leer": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "bite": [
+    "contact",
+    "protect",
+    "mirror",
+    "bite"
+  ],
+  "growl": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "roar": [
+    "reflectable",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "sing": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "supersonic": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "sonic-boom": [
+    "protect",
+    "mirror"
+  ],
+  "disable": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "authentic",
+    "mental"
+  ],
+  "acid": [
+    "protect",
+    "mirror"
+  ],
+  "ember": [
+    "protect",
+    "mirror"
+  ],
+  "flamethrower": [
+    "protect",
+    "mirror"
+  ],
+  "mist": [
+    "snatch"
+  ],
+  "water-gun": [
+    "protect",
+    "mirror"
+  ],
+  "hydro-pump": [
+    "protect",
+    "mirror"
+  ],
+  "surf": [
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "ice-beam": [
+    "protect",
+    "mirror"
+  ],
+  "blizzard": [
+    "protect",
+    "mirror"
+  ],
+  "psybeam": [
+    "protect",
+    "mirror"
+  ],
+  "bubble-beam": [
+    "protect",
+    "mirror"
+  ],
+  "aurora-beam": [
+    "protect",
+    "mirror"
+  ],
+  "hyper-beam": [
+    "recharge",
+    "protect",
+    "mirror"
+  ],
+  "peck": [
+    "contact",
+    "protect",
+    "mirror",
+    "distance"
+  ],
+  "drill-peck": [
+    "contact",
+    "protect",
+    "mirror",
+    "distance"
+  ],
+  "submission": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "low-kick": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "counter": [
+    "contact",
+    "protect"
+  ],
+  "seismic-toss": [
+    "contact",
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "strength": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "absorb": [
+    "protect",
+    "mirror",
+    "heal"
+  ],
+  "mega-drain": [
+    "protect",
+    "mirror",
+    "heal"
+  ],
+  "leech-seed": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "growth": [
+    "snatch"
+  ],
+  "razor-leaf": [
+    "protect",
+    "mirror"
+  ],
+  "solar-beam": [
+    "charge",
+    "protect",
+    "mirror"
+  ],
+  "poison-powder": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "powder"
+  ],
+  "stun-spore": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "powder"
+  ],
+  "sleep-powder": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "powder"
+  ],
+  "petal-dance": [
+    "contact",
+    "protect",
+    "mirror",
+    "dance"
+  ],
+  "string-shot": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "dragon-rage": [
+    "protect",
+    "mirror"
+  ],
+  "fire-spin": [
+    "protect",
+    "mirror"
+  ],
+  "thunder-shock": [
+    "protect",
+    "mirror"
+  ],
+  "thunderbolt": [
+    "protect",
+    "mirror"
+  ],
+  "thunder-wave": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "thunder": [
+    "protect",
+    "mirror"
+  ],
+  "rock-throw": [
+    "protect",
+    "mirror"
+  ],
+  "earthquake": [
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "fissure": [
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "dig": [
+    "contact",
+    "charge",
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "toxic": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "confusion": [
+    "protect",
+    "mirror"
+  ],
+  "psychic": [
+    "protect",
+    "mirror"
+  ],
+  "hypnosis": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "meditate": [
+    "snatch"
+  ],
+  "agility": [
+    "snatch"
+  ],
+  "quick-attack": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "rage": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "night-shade": [
+    "protect",
+    "mirror"
+  ],
+  "mimic": [
+    "protect",
+    "authentic"
+  ],
+  "screech": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "double-team": [
+    "snatch"
+  ],
+  "recover": [
+    "snatch",
+    "heal"
+  ],
+  "harden": [
+    "snatch"
+  ],
+  "minimize": [
+    "snatch"
+  ],
+  "smokescreen": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "confuse-ray": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "withdraw": [
+    "snatch"
+  ],
+  "defense-curl": [
+    "snatch"
+  ],
+  "barrier": [
+    "snatch"
+  ],
+  "light-screen": [
+    "snatch"
+  ],
+  "haze": [
+    "authentic"
+  ],
+  "reflect": [
+    "snatch"
+  ],
+  "focus-energy": [
+    "snatch"
+  ],
+  "bide": [
+    "contact",
+    "protect"
+  ],
+  "self-destruct": [
+    "protect",
+    "mirror"
+  ],
+  "egg-bomb": [
+    "protect",
+    "mirror",
+    "ballistics"
+  ],
+  "lick": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "smog": [
+    "protect",
+    "mirror"
+  ],
+  "sludge": [
+    "protect",
+    "mirror"
+  ],
+  "bone-club": [
+    "protect",
+    "mirror"
+  ],
+  "fire-blast": [
+    "protect",
+    "mirror"
+  ],
+  "waterfall": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "clamp": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "swift": [
+    "protect",
+    "mirror"
+  ],
+  "skull-bash": [
+    "contact",
+    "charge",
+    "protect",
+    "mirror"
+  ],
+  "spike-cannon": [
+    "protect",
+    "mirror"
+  ],
+  "constrict": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "amnesia": [
+    "snatch"
+  ],
+  "kinesis": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "soft-boiled": [
+    "snatch",
+    "heal"
+  ],
+  "high-jump-kick": [
+    "contact",
+    "protect",
+    "mirror",
+    "gravity"
+  ],
+  "glare": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "dream-eater": [
+    "protect",
+    "mirror",
+    "heal"
+  ],
+  "poison-gas": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "barrage": [
+    "protect",
+    "mirror",
+    "ballistics"
+  ],
+  "leech-life": [
+    "contact",
+    "protect",
+    "mirror",
+    "heal"
+  ],
+  "lovely-kiss": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "sky-attack": [
+    "charge",
+    "protect",
+    "mirror",
+    "distance"
+  ],
+  "bubble": [
+    "protect",
+    "mirror"
+  ],
+  "dizzy-punch": [
+    "contact",
+    "protect",
+    "mirror",
+    "punch"
+  ],
+  "spore": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "powder"
+  ],
+  "flash": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "psywave": [
+    "protect",
+    "mirror"
+  ],
+  "splash": [
+    "gravity"
+  ],
+  "acid-armor": [
+    "snatch"
+  ],
+  "crabhammer": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "explosion": [
+    "protect",
+    "mirror"
+  ],
+  "fury-swipes": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "bonemerang": [
+    "protect",
+    "mirror"
+  ],
+  "rest": [
+    "snatch",
+    "heal"
+  ],
+  "rock-slide": [
+    "protect",
+    "mirror"
+  ],
+  "hyper-fang": [
+    "contact",
+    "protect",
+    "mirror",
+    "bite"
+  ],
+  "sharpen": [
+    "snatch"
+  ],
+  "conversion": [
+    "snatch"
+  ],
+  "tri-attack": [
+    "protect",
+    "mirror"
+  ],
+  "super-fang": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "slash": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "substitute": [
+    "snatch",
+    "non-sky-battle"
+  ],
+  "struggle": [
+    "contact",
+    "protect"
+  ],
+  "sketch": [
+    "authentic"
+  ],
+  "triple-kick": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "thief": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "spider-web": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "mind-reader": [
+    "protect",
+    "mirror"
+  ],
+  "nightmare": [
+    "protect",
+    "mirror"
+  ],
+  "flame-wheel": [
+    "contact",
+    "protect",
+    "mirror",
+    "defrost"
+  ],
+  "snore": [
+    "protect",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "curse": [
+    "authentic"
+  ],
+  "flail": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "conversion-2": [
+    "authentic"
+  ],
+  "aeroblast": [
+    "protect",
+    "mirror",
+    "distance"
+  ],
+  "cotton-spore": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "powder"
+  ],
+  "reversal": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "spite": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "authentic"
+  ],
+  "powder-snow": [
+    "protect",
+    "mirror"
+  ],
+  "mach-punch": [
+    "contact",
+    "protect",
+    "mirror",
+    "punch"
+  ],
+  "scary-face": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "feint-attack": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "sweet-kiss": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "belly-drum": [
+    "snatch"
+  ],
+  "sludge-bomb": [
+    "protect",
+    "mirror",
+    "ballistics"
+  ],
+  "mud-slap": [
+    "protect",
+    "mirror"
+  ],
+  "octazooka": [
+    "protect",
+    "mirror",
+    "ballistics"
+  ],
+  "spikes": [
+    "reflectable",
+    "non-sky-battle"
+  ],
+  "zap-cannon": [
+    "protect",
+    "mirror",
+    "ballistics"
+  ],
+  "foresight": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "authentic"
+  ],
+  "destiny-bond": [
+    "authentic"
+  ],
+  "perish-song": [
+    "sound",
+    "distance",
+    "authentic"
+  ],
+  "icy-wind": [
+    "protect",
+    "mirror"
+  ],
+  "bone-rush": [
+    "protect",
+    "mirror"
+  ],
+  "lock-on": [
+    "protect",
+    "mirror"
+  ],
+  "outrage": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "giga-drain": [
+    "protect",
+    "mirror",
+    "heal"
+  ],
+  "charm": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "rollout": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "false-swipe": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "swagger": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "milk-drink": [
+    "snatch",
+    "heal"
+  ],
+  "spark": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "fury-cutter": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "steel-wing": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "mean-look": [
+    "reflectable",
+    "mirror"
+  ],
+  "attract": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "authentic",
+    "mental"
+  ],
+  "heal-bell": [
+    "snatch",
+    "sound",
+    "distance",
+    "authentic"
+  ],
+  "return": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "present": [
+    "protect",
+    "mirror"
+  ],
+  "frustration": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "safeguard": [
+    "snatch"
+  ],
+  "pain-split": [
+    "protect",
+    "mirror"
+  ],
+  "sacred-fire": [
+    "protect",
+    "mirror",
+    "defrost"
+  ],
+  "magnitude": [
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "dynamic-punch": [
+    "contact",
+    "protect",
+    "mirror",
+    "punch"
+  ],
+  "megahorn": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "dragon-breath": [
+    "protect",
+    "mirror"
+  ],
+  "encore": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "authentic",
+    "mental"
+  ],
+  "pursuit": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "rapid-spin": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "sweet-scent": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "iron-tail": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "metal-claw": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "vital-throw": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "morning-sun": [
+    "snatch",
+    "heal"
+  ],
+  "synthesis": [
+    "snatch",
+    "heal"
+  ],
+  "moonlight": [
+    "snatch",
+    "heal"
+  ],
+  "hidden-power": [
+    "protect",
+    "mirror"
+  ],
+  "cross-chop": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "twister": [
+    "protect",
+    "mirror"
+  ],
+  "crunch": [
+    "contact",
+    "protect",
+    "mirror",
+    "bite"
+  ],
+  "mirror-coat": [
+    "protect"
+  ],
+  "psych-up": [
+    "authentic"
+  ],
+  "extreme-speed": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "ancient-power": [
+    "protect",
+    "mirror"
+  ],
+  "shadow-ball": [
+    "protect",
+    "mirror",
+    "ballistics"
+  ],
+  "rock-smash": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "whirlpool": [
+    "protect",
+    "mirror"
+  ],
+  "beat-up": [
+    "protect",
+    "mirror"
+  ],
+  "fake-out": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "uproar": [
+    "protect",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "stockpile": [
+    "snatch"
+  ],
+  "spit-up": [
+    "protect"
+  ],
+  "swallow": [
+    "snatch",
+    "heal"
+  ],
+  "heat-wave": [
+    "protect",
+    "mirror"
+  ],
+  "torment": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "authentic",
+    "mental"
+  ],
+  "flatter": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "will-o-wisp": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "memento": [
+    "protect",
+    "mirror"
+  ],
+  "facade": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "focus-punch": [
+    "contact",
+    "protect",
+    "punch"
+  ],
+  "smelling-salts": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "charge": [
+    "snatch"
+  ],
+  "taunt": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "authentic",
+    "mental"
+  ],
+  "helping-hand": [
+    "authentic"
+  ],
+  "trick": [
+    "protect",
+    "mirror"
+  ],
+  "role-play": [
+    "authentic"
+  ],
+  "wish": [
+    "snatch",
+    "heal"
+  ],
+  "ingrain": [
+    "snatch",
+    "non-sky-battle"
+  ],
+  "superpower": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "recycle": [
+    "snatch"
+  ],
+  "revenge": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "brick-break": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "yawn": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "knock-off": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "endeavor": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "eruption": [
+    "protect",
+    "mirror"
+  ],
+  "skill-swap": [
+    "protect",
+    "mirror",
+    "authentic"
+  ],
+  "imprison": [
+    "snatch",
+    "authentic"
+  ],
+  "refresh": [
+    "snatch"
+  ],
+  "grudge": [
+    "authentic"
+  ],
+  "snatch": [
+    "authentic"
+  ],
+  "secret-power": [
+    "protect",
+    "mirror"
+  ],
+  "dive": [
+    "contact",
+    "charge",
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "arm-thrust": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "camouflage": [
+    "snatch"
+  ],
+  "tail-glow": [
+    "snatch"
+  ],
+  "luster-purge": [
+    "protect",
+    "mirror"
+  ],
+  "mist-ball": [
+    "protect",
+    "mirror",
+    "ballistics"
+  ],
+  "feather-dance": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "dance"
+  ],
+  "teeter-dance": [
+    "protect",
+    "mirror",
+    "dance"
+  ],
+  "blaze-kick": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "mud-sport": [
+    "non-sky-battle"
+  ],
+  "ice-ball": [
+    "contact",
+    "protect",
+    "mirror",
+    "ballistics"
+  ],
+  "needle-arm": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "slack-off": [
+    "snatch",
+    "heal"
+  ],
+  "hyper-voice": [
+    "protect",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "poison-fang": [
+    "contact",
+    "protect",
+    "mirror",
+    "bite"
+  ],
+  "crush-claw": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "blast-burn": [
+    "recharge",
+    "protect",
+    "mirror"
+  ],
+  "hydro-cannon": [
+    "recharge",
+    "protect",
+    "mirror"
+  ],
+  "meteor-mash": [
+    "contact",
+    "protect",
+    "mirror",
+    "punch"
+  ],
+  "astonish": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "weather-ball": [
+    "protect",
+    "mirror",
+    "ballistics"
+  ],
+  "aromatherapy": [
+    "snatch",
+    "distance"
+  ],
+  "fake-tears": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "air-cutter": [
+    "protect",
+    "mirror"
+  ],
+  "overheat": [
+    "protect",
+    "mirror"
+  ],
+  "odor-sleuth": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "authentic"
+  ],
+  "rock-tomb": [
+    "protect",
+    "mirror"
+  ],
+  "silver-wind": [
+    "protect",
+    "mirror"
+  ],
+  "metal-sound": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "grass-whistle": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "tickle": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "cosmic-power": [
+    "snatch"
+  ],
+  "water-spout": [
+    "protect",
+    "mirror"
+  ],
+  "signal-beam": [
+    "protect",
+    "mirror"
+  ],
+  "shadow-punch": [
+    "contact",
+    "protect",
+    "mirror",
+    "punch"
+  ],
+  "extrasensory": [
+    "protect",
+    "mirror"
+  ],
+  "sky-uppercut": [
+    "contact",
+    "protect",
+    "mirror",
+    "punch"
+  ],
+  "sand-tomb": [
+    "protect",
+    "mirror"
+  ],
+  "sheer-cold": [
+    "protect",
+    "mirror"
+  ],
+  "muddy-water": [
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "bullet-seed": [
+    "protect",
+    "mirror",
+    "ballistics"
+  ],
+  "aerial-ace": [
+    "contact",
+    "protect",
+    "mirror",
+    "distance"
+  ],
+  "icicle-spear": [
+    "protect",
+    "mirror"
+  ],
+  "iron-defense": [
+    "snatch"
+  ],
+  "block": [
+    "reflectable",
+    "mirror"
+  ],
+  "howl": [
+    "snatch",
+    "sound"
+  ],
+  "dragon-claw": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "frenzy-plant": [
+    "recharge",
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "bulk-up": [
+    "snatch"
+  ],
+  "bounce": [
+    "contact",
+    "charge",
+    "protect",
+    "mirror",
+    "gravity",
+    "distance"
+  ],
+  "mud-shot": [
+    "protect",
+    "mirror"
+  ],
+  "poison-tail": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "covet": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "volt-tackle": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "magical-leaf": [
+    "protect",
+    "mirror"
+  ],
+  "water-sport": [
+    "non-sky-battle"
+  ],
+  "calm-mind": [
+    "snatch"
+  ],
+  "leaf-blade": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "dragon-dance": [
+    "snatch",
+    "dance"
+  ],
+  "rock-blast": [
+    "protect",
+    "mirror",
+    "ballistics"
+  ],
+  "shock-wave": [
+    "protect",
+    "mirror"
+  ],
+  "water-pulse": [
+    "protect",
+    "mirror",
+    "distance",
+    "pulse"
+  ],
+  "psycho-boost": [
+    "protect",
+    "mirror"
+  ],
+  "roost": [
+    "snatch",
+    "heal"
+  ],
+  "gravity": [
+    "non-sky-battle"
+  ],
+  "miracle-eye": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "authentic"
+  ],
+  "wake-up-slap": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "hammer-arm": [
+    "contact",
+    "protect",
+    "mirror",
+    "punch"
+  ],
+  "gyro-ball": [
+    "contact",
+    "protect",
+    "mirror",
+    "ballistics"
+  ],
+  "healing-wish": [
+    "snatch",
+    "heal"
+  ],
+  "brine": [
+    "protect",
+    "mirror"
+  ],
+  "natural-gift": [
+    "protect",
+    "mirror"
+  ],
+  "feint": [
+    "mirror"
+  ],
+  "pluck": [
+    "contact",
+    "protect",
+    "mirror",
+    "distance"
+  ],
+  "tailwind": [
+    "snatch"
+  ],
+  "metal-burst": [
+    "protect",
+    "mirror"
+  ],
+  "u-turn": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "close-combat": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "payback": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "assurance": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "embargo": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "fling": [
+    "protect",
+    "mirror"
+  ],
+  "psycho-shift": [
+    "protect",
+    "mirror"
+  ],
+  "trump-card": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "heal-block": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "mental"
+  ],
+  "wring-out": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "power-trick": [
+    "snatch"
+  ],
+  "gastro-acid": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "lucky-chant": [
+    "snatch"
+  ],
+  "me-first": [
+    "protect",
+    "authentic"
+  ],
+  "power-swap": [
+    "protect",
+    "mirror",
+    "authentic"
+  ],
+  "guard-swap": [
+    "protect",
+    "mirror",
+    "authentic"
+  ],
+  "punishment": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "last-resort": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "worry-seed": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "sucker-punch": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "toxic-spikes": [
+    "reflectable",
+    "non-sky-battle"
+  ],
+  "heart-swap": [
+    "protect",
+    "mirror",
+    "authentic"
+  ],
+  "aqua-ring": [
+    "snatch"
+  ],
+  "magnet-rise": [
+    "snatch",
+    "gravity"
+  ],
+  "flare-blitz": [
+    "contact",
+    "protect",
+    "mirror",
+    "defrost"
+  ],
+  "force-palm": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "aura-sphere": [
+    "protect",
+    "mirror",
+    "distance",
+    "pulse",
+    "ballistics"
+  ],
+  "rock-polish": [
+    "snatch"
+  ],
+  "poison-jab": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "dark-pulse": [
+    "protect",
+    "mirror",
+    "distance",
+    "pulse"
+  ],
+  "night-slash": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "aqua-tail": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "seed-bomb": [
+    "protect",
+    "mirror",
+    "ballistics"
+  ],
+  "air-slash": [
+    "protect",
+    "mirror",
+    "distance"
+  ],
+  "x-scissor": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "bug-buzz": [
+    "protect",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "dragon-pulse": [
+    "protect",
+    "mirror",
+    "distance",
+    "pulse"
+  ],
+  "dragon-rush": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "power-gem": [
+    "protect",
+    "mirror"
+  ],
+  "drain-punch": [
+    "contact",
+    "protect",
+    "mirror",
+    "punch",
+    "heal"
+  ],
+  "vacuum-wave": [
+    "protect",
+    "mirror"
+  ],
+  "focus-blast": [
+    "protect",
+    "mirror",
+    "ballistics"
+  ],
+  "energy-ball": [
+    "protect",
+    "mirror",
+    "ballistics"
+  ],
+  "brave-bird": [
+    "contact",
+    "protect",
+    "mirror",
+    "distance"
+  ],
+  "earth-power": [
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "switcheroo": [
+    "protect",
+    "mirror"
+  ],
+  "giga-impact": [
+    "contact",
+    "recharge",
+    "protect",
+    "mirror"
+  ],
+  "nasty-plot": [
+    "snatch"
+  ],
+  "bullet-punch": [
+    "contact",
+    "protect",
+    "mirror",
+    "punch"
+  ],
+  "avalanche": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "ice-shard": [
+    "protect",
+    "mirror"
+  ],
+  "shadow-claw": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "thunder-fang": [
+    "contact",
+    "protect",
+    "mirror",
+    "bite"
+  ],
+  "ice-fang": [
+    "contact",
+    "protect",
+    "mirror",
+    "bite"
+  ],
+  "fire-fang": [
+    "contact",
+    "protect",
+    "mirror",
+    "bite"
+  ],
+  "shadow-sneak": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "mud-bomb": [
+    "protect",
+    "mirror",
+    "ballistics"
+  ],
+  "psycho-cut": [
+    "protect",
+    "mirror"
+  ],
+  "zen-headbutt": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "mirror-shot": [
+    "protect",
+    "mirror"
+  ],
+  "flash-cannon": [
+    "protect",
+    "mirror"
+  ],
+  "rock-climb": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "defog": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "authentic"
+  ],
+  "trick-room": [
+    "mirror"
+  ],
+  "draco-meteor": [
+    "protect",
+    "mirror"
+  ],
+  "discharge": [
+    "protect",
+    "mirror"
+  ],
+  "lava-plume": [
+    "protect",
+    "mirror"
+  ],
+  "leaf-storm": [
+    "protect",
+    "mirror"
+  ],
+  "power-whip": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "rock-wrecker": [
+    "recharge",
+    "protect",
+    "mirror",
+    "ballistics"
+  ],
+  "cross-poison": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "gunk-shot": [
+    "protect",
+    "mirror"
+  ],
+  "iron-head": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "magnet-bomb": [
+    "protect",
+    "mirror",
+    "ballistics"
+  ],
+  "stone-edge": [
+    "protect",
+    "mirror"
+  ],
+  "captivate": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "stealth-rock": [
+    "reflectable"
+  ],
+  "grass-knot": [
+    "contact",
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "chatter": [
+    "protect",
+    "mirror",
+    "sound",
+    "distance",
+    "authentic"
+  ],
+  "judgment": [
+    "protect",
+    "mirror"
+  ],
+  "bug-bite": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "charge-beam": [
+    "protect",
+    "mirror"
+  ],
+  "wood-hammer": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "aqua-jet": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "attack-order": [
+    "protect",
+    "mirror"
+  ],
+  "defend-order": [
+    "snatch"
+  ],
+  "heal-order": [
+    "snatch",
+    "heal"
+  ],
+  "head-smash": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "double-hit": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "roar-of-time": [
+    "recharge",
+    "protect",
+    "mirror"
+  ],
+  "spacial-rend": [
+    "protect",
+    "mirror"
+  ],
+  "lunar-dance": [
+    "snatch",
+    "heal",
+    "dance"
+  ],
+  "crush-grip": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "magma-storm": [
+    "protect",
+    "mirror"
+  ],
+  "dark-void": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "seed-flare": [
+    "protect",
+    "mirror"
+  ],
+  "ominous-wind": [
+    "protect",
+    "mirror"
+  ],
+  "shadow-force": [
+    "contact",
+    "charge",
+    "mirror"
+  ],
+  "hone-claws": [
+    "snatch"
+  ],
+  "wide-guard": [
+    "snatch"
+  ],
+  "guard-split": [
+    "protect"
+  ],
+  "power-split": [
+    "protect"
+  ],
+  "wonder-room": [
+    "mirror"
+  ],
+  "psyshock": [
+    "protect",
+    "mirror"
+  ],
+  "venoshock": [
+    "protect",
+    "mirror"
+  ],
+  "autotomize": [
+    "snatch"
+  ],
+  "rage-powder": [
+    "powder"
+  ],
+  "telekinesis": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "gravity"
+  ],
+  "magic-room": [
+    "mirror"
+  ],
+  "smack-down": [
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "storm-throw": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "flame-burst": [
+    "protect",
+    "mirror"
+  ],
+  "sludge-wave": [
+    "protect",
+    "mirror"
+  ],
+  "quiver-dance": [
+    "snatch",
+    "dance"
+  ],
+  "heavy-slam": [
+    "contact",
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "synchronoise": [
+    "protect",
+    "mirror"
+  ],
+  "electro-ball": [
+    "protect",
+    "mirror",
+    "ballistics"
+  ],
+  "soak": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "flame-charge": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "coil": [
+    "snatch"
+  ],
+  "low-sweep": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "acid-spray": [
+    "protect",
+    "mirror",
+    "ballistics"
+  ],
+  "foul-play": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "simple-beam": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "entrainment": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "after-you": [
+    "authentic"
+  ],
+  "round": [
+    "protect",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "echoed-voice": [
+    "protect",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "chip-away": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "clear-smog": [
+    "protect",
+    "mirror"
+  ],
+  "stored-power": [
+    "protect",
+    "mirror"
+  ],
+  "quick-guard": [
+    "snatch"
+  ],
+  "scald": [
+    "protect",
+    "mirror",
+    "defrost"
+  ],
+  "shell-smash": [
+    "snatch"
+  ],
+  "heal-pulse": [
+    "protect",
+    "reflectable",
+    "distance",
+    "heal",
+    "pulse"
+  ],
+  "hex": [
+    "protect",
+    "mirror"
+  ],
+  "sky-drop": [
+    "contact",
+    "charge",
+    "protect",
+    "mirror",
+    "gravity",
+    "distance"
+  ],
+  "shift-gear": [
+    "snatch"
+  ],
+  "circle-throw": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "incinerate": [
+    "protect",
+    "mirror"
+  ],
+  "quash": [
+    "protect",
+    "mirror"
+  ],
+  "acrobatics": [
+    "contact",
+    "protect",
+    "mirror",
+    "distance"
+  ],
+  "reflect-type": [
+    "protect",
+    "authentic"
+  ],
+  "retaliate": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "final-gambit": [
+    "protect"
+  ],
+  "bestow": [
+    "mirror",
+    "authentic"
+  ],
+  "inferno": [
+    "protect",
+    "mirror"
+  ],
+  "water-pledge": [
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "fire-pledge": [
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "grass-pledge": [
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "volt-switch": [
+    "protect",
+    "mirror"
+  ],
+  "struggle-bug": [
+    "protect",
+    "mirror"
+  ],
+  "bulldoze": [
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "frost-breath": [
+    "protect",
+    "mirror"
+  ],
+  "dragon-tail": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "work-up": [
+    "snatch"
+  ],
+  "electroweb": [
+    "protect",
+    "mirror"
+  ],
+  "wild-charge": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "drill-run": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "dual-chop": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "heart-stamp": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "horn-leech": [
+    "contact",
+    "protect",
+    "mirror",
+    "heal"
+  ],
+  "sacred-sword": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "razor-shell": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "heat-crash": [
+    "contact",
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "leaf-tornado": [
+    "protect",
+    "mirror"
+  ],
+  "steamroller": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "cotton-guard": [
+    "snatch"
+  ],
+  "night-daze": [
+    "protect",
+    "mirror"
+  ],
+  "psystrike": [
+    "protect",
+    "mirror"
+  ],
+  "tail-slap": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "hurricane": [
+    "protect",
+    "mirror",
+    "distance"
+  ],
+  "head-charge": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "gear-grind": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "searing-shot": [
+    "protect",
+    "mirror",
+    "ballistics"
+  ],
+  "techno-blast": [
+    "protect",
+    "mirror"
+  ],
+  "relic-song": [
+    "protect",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "secret-sword": [
+    "protect",
+    "mirror"
+  ],
+  "glaciate": [
+    "protect",
+    "mirror"
+  ],
+  "bolt-strike": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "blue-flare": [
+    "protect",
+    "mirror"
+  ],
+  "fiery-dance": [
+    "protect",
+    "mirror",
+    "dance"
+  ],
+  "freeze-shock": [
+    "charge",
+    "protect",
+    "mirror"
+  ],
+  "ice-burn": [
+    "charge",
+    "protect",
+    "mirror"
+  ],
+  "snarl": [
+    "protect",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "icicle-crash": [
+    "protect",
+    "mirror"
+  ],
+  "v-create": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "fusion-flare": [
+    "protect",
+    "mirror",
+    "defrost"
+  ],
+  "fusion-bolt": [
+    "protect",
+    "mirror"
+  ],
+  "flying-press": [
+    "contact",
+    "protect",
+    "mirror",
+    "gravity",
+    "distance",
+    "non-sky-battle"
+  ],
+  "mat-block": [
+    "snatch",
+    "non-sky-battle"
+  ],
+  "belch": [
+    "protect"
+  ],
+  "rototiller": [
+    "distance",
+    "non-sky-battle"
+  ],
+  "sticky-web": [
+    "reflectable"
+  ],
+  "fell-stinger": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "phantom-force": [
+    "contact",
+    "charge",
+    "mirror"
+  ],
+  "trick-or-treat": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "noble-roar": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "parabolic-charge": [
+    "protect",
+    "mirror",
+    "heal"
+  ],
+  "forests-curse": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "petal-blizzard": [
+    "protect",
+    "mirror"
+  ],
+  "freeze-dry": [
+    "protect",
+    "mirror"
+  ],
+  "disarming-voice": [
+    "protect",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "parting-shot": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "topsy-turvy": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "draining-kiss": [
+    "contact",
+    "protect",
+    "mirror",
+    "heal"
+  ],
+  "flower-shield": [
+    "distance"
+  ],
+  "grassy-terrain": [
+    "non-sky-battle"
+  ],
+  "misty-terrain": [
+    "non-sky-battle"
+  ],
+  "electrify": [
+    "protect",
+    "mirror"
+  ],
+  "play-rough": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "fairy-wind": [
+    "protect",
+    "mirror"
+  ],
+  "moonblast": [
+    "protect",
+    "mirror"
+  ],
+  "boomburst": [
+    "protect",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "fairy-lock": [
+    "mirror",
+    "authentic"
+  ],
+  "play-nice": [
+    "reflectable",
+    "mirror",
+    "authentic"
+  ],
+  "confide": [
+    "reflectable",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "diamond-storm": [
+    "protect",
+    "mirror"
+  ],
+  "steam-eruption": [
+    "protect",
+    "mirror",
+    "defrost"
+  ],
+  "hyperspace-hole": [
+    "mirror",
+    "authentic"
+  ],
+  "water-shuriken": [
+    "protect",
+    "mirror"
+  ],
+  "mystical-fire": [
+    "protect",
+    "mirror"
+  ],
+  "aromatic-mist": [
+    "authentic"
+  ],
+  "eerie-impulse": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "venom-drench": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "powder": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "authentic",
+    "powder"
+  ],
+  "geomancy": [
+    "charge",
+    "non-sky-battle"
+  ],
+  "magnetic-flux": [
+    "snatch",
+    "distance",
+    "authentic"
+  ],
+  "electric-terrain": [
+    "non-sky-battle"
+  ],
+  "dazzling-gleam": [
+    "protect",
+    "mirror"
+  ],
+  "hold-hands": [
+    "authentic"
+  ],
+  "baby-doll-eyes": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "nuzzle": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "hold-back": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "infestation": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "power-up-punch": [
+    "contact",
+    "protect",
+    "mirror",
+    "punch"
+  ],
+  "oblivion-wing": [
+    "protect",
+    "mirror",
+    "distance",
+    "heal"
+  ],
+  "thousand-arrows": [
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "thousand-waves": [
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "lands-wrath": [
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "light-of-ruin": [
+    "protect",
+    "mirror"
+  ],
+  "origin-pulse": [
+    "protect",
+    "mirror",
+    "pulse"
+  ],
+  "precipice-blades": [
+    "protect",
+    "mirror",
+    "non-sky-battle"
+  ],
+  "dragon-ascent": [
+    "contact",
+    "protect",
+    "mirror",
+    "distance"
+  ],
+  "hyperspace-fury": [
+    "mirror",
+    "authentic"
+  ],
+  "catastropika": [
+    "contact"
+  ],
+  "shore-up": [
+    "snatch",
+    "heal"
+  ],
+  "first-impression": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "spirit-shackle": [
+    "protect",
+    "mirror"
+  ],
+  "darkest-lariat": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "sparkling-aria": [
+    "protect",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "ice-hammer": [
+    "contact",
+    "protect",
+    "mirror",
+    "punch"
+  ],
+  "floral-healing": [
+    "protect",
+    "reflectable",
+    "heal"
+  ],
+  "high-horsepower": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "strength-sap": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "heal"
+  ],
+  "solar-blade": [
+    "contact",
+    "charge",
+    "protect",
+    "mirror"
+  ],
+  "leafage": [
+    "protect",
+    "mirror"
+  ],
+  "spotlight": [
+    "protect",
+    "reflectable"
+  ],
+  "toxic-thread": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "laser-focus": [
+    "snatch"
+  ],
+  "gear-up": [
+    "snatch",
+    "authentic"
+  ],
+  "throat-chop": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "pollen-puff": [
+    "protect",
+    "mirror",
+    "ballistics"
+  ],
+  "anchor-shot": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "psychic-terrain": [
+    "non-sky-battle"
+  ],
+  "lunge": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "fire-lash": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "power-trip": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "burn-up": [
+    "protect",
+    "mirror",
+    "defrost"
+  ],
+  "speed-swap": [
+    "protect",
+    "mirror",
+    "authentic"
+  ],
+  "smart-strike": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "purify": [
+    "protect",
+    "reflectable",
+    "heal"
+  ],
+  "revelation-dance": [
+    "protect",
+    "mirror",
+    "dance"
+  ],
+  "core-enforcer": [
+    "protect",
+    "mirror"
+  ],
+  "trop-kick": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "instruct": [
+    "protect",
+    "authentic"
+  ],
+  "beak-blast": [
+    "protect",
+    "ballistics"
+  ],
+  "clanging-scales": [
+    "protect",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "dragon-hammer": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "brutal-swing": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "aurora-veil": [
+    "snatch"
+  ],
+  "malicious-moonsault": [
+    "contact"
+  ],
+  "soul-stealing-7-star-strike": [
+    "contact"
+  ],
+  "pulverizing-pancake": [
+    "contact"
+  ],
+  "shell-trap": [
+    "protect"
+  ],
+  "fleur-cannon": [
+    "protect",
+    "mirror"
+  ],
+  "psychic-fangs": [
+    "contact",
+    "protect",
+    "mirror",
+    "bite"
+  ],
+  "stomping-tantrum": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "shadow-bone": [
+    "protect",
+    "mirror"
+  ],
+  "accelerock": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "liquidation": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "prismatic-laser": [
+    "recharge",
+    "protect",
+    "mirror"
+  ],
+  "spectral-thief": [
+    "contact",
+    "protect",
+    "mirror",
+    "authentic"
+  ],
+  "sunsteel-strike": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "moongeist-beam": [
+    "protect",
+    "mirror"
+  ],
+  "tearful-look": [
+    "reflectable",
+    "mirror"
+  ],
+  "zing-zap": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "natures-madness": [
+    "protect",
+    "mirror"
+  ],
+  "multi-attack": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "mind-blown": [
+    "protect",
+    "mirror"
+  ],
+  "plasma-fists": [
+    "contact",
+    "protect",
+    "mirror",
+    "punch"
+  ],
+  "photon-geyser": [
+    "protect",
+    "mirror"
+  ],
+  "searing-sunraze-smash": [
+    "contact"
+  ],
+  "lets-snuggle-forever": [
+    "contact"
+  ],
+  "clangorous-soulblaze": [
+    "sound",
+    "authentic"
+  ],
+  "zippy-zap": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "splishy-splash": [
+    "protect",
+    "mirror"
+  ],
+  "floaty-fall": [
+    "contact",
+    "protect",
+    "mirror",
+    "gravity"
+  ],
+  "pika-papow": [
+    "protect",
+    "mirror"
+  ],
+  "bouncy-bubble": [
+    "protect",
+    "mirror",
+    "heal"
+  ],
+  "buzzy-buzz": [
+    "protect",
+    "mirror"
+  ],
+  "sizzly-slide": [
+    "contact",
+    "protect",
+    "mirror",
+    "defrost"
+  ],
+  "glitzy-glow": [
+    "protect",
+    "mirror"
+  ],
+  "baddy-bad": [
+    "protect",
+    "mirror"
+  ],
+  "sappy-seed": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "freezy-frost": [
+    "protect",
+    "mirror"
+  ],
+  "sparkly-swirl": [
+    "protect",
+    "mirror"
+  ],
+  "veevee-volley": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "double-iron-bash": [
+    "contact",
+    "protect",
+    "mirror",
+    "punch"
+  ],
+  "dynamax-cannon": [
+    "protect"
+  ],
+  "snipe-shot": [
+    "protect",
+    "mirror"
+  ],
+  "jaw-lock": [
+    "contact",
+    "protect",
+    "mirror",
+    "bite"
+  ],
+  "stuff-cheeks": [
+    "snatch"
+  ],
+  "no-retreat": [
+    "snatch"
+  ],
+  "tar-shot": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "magic-powder": [
+    "protect",
+    "reflectable",
+    "mirror",
+    "powder"
+  ],
+  "dragon-darts": [
+    "protect",
+    "mirror"
+  ],
+  "teatime": [
+    "authentic"
+  ],
+  "octolock": [
+    "protect",
+    "mirror"
+  ],
+  "bolt-beak": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "fishious-rend": [
+    "contact",
+    "protect",
+    "mirror",
+    "bite"
+  ],
+  "court-change": [
+    "mirror"
+  ],
+  "clangorous-soul": [
+    "snatch",
+    "sound",
+    "dance"
+  ],
+  "body-press": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "drum-beating": [
+    "protect",
+    "mirror"
+  ],
+  "snap-trap": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "pyro-ball": [
+    "protect",
+    "mirror",
+    "defrost",
+    "ballistics"
+  ],
+  "behemoth-blade": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "behemoth-bash": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "aura-wheel": [
+    "protect",
+    "mirror"
+  ],
+  "breaking-swipe": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "branch-poke": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "overdrive": [
+    "protect",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "apple-acid": [
+    "protect",
+    "mirror"
+  ],
+  "grav-apple": [
+    "protect",
+    "mirror"
+  ],
+  "spirit-break": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "strange-steam": [
+    "protect",
+    "mirror"
+  ],
+  "life-dew": [
+    "snatch",
+    "heal",
+    "authentic"
+  ],
+  "false-surrender": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "meteor-assault": [
+    "recharge",
+    "protect",
+    "mirror"
+  ],
+  "eternabeam": [
+    "recharge",
+    "protect",
+    "mirror"
+  ],
+  "steel-beam": [
+    "protect",
+    "mirror"
+  ],
+  "expanding-force": [
+    "protect",
+    "mirror"
+  ],
+  "steel-roller": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "scale-shot": [
+    "protect",
+    "mirror"
+  ],
+  "meteor-beam": [
+    "charge",
+    "protect",
+    "mirror"
+  ],
+  "shell-side-arm": [
+    "protect",
+    "mirror"
+  ],
+  "misty-explosion": [
+    "protect",
+    "mirror"
+  ],
+  "grassy-glide": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "rising-voltage": [
+    "protect",
+    "mirror"
+  ],
+  "terrain-pulse": [
+    "protect",
+    "mirror",
+    "pulse"
+  ],
+  "skitter-smack": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "burning-jealousy": [
+    "protect",
+    "mirror"
+  ],
+  "lash-out": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "poltergeist": [
+    "protect",
+    "mirror"
+  ],
+  "corrosive-gas": [
+    "protect",
+    "reflectable",
+    "mirror"
+  ],
+  "coaching": [
+    "authentic"
+  ],
+  "flip-turn": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "triple-axel": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "dual-wingbeat": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "scorching-sands": [
+    "protect",
+    "mirror",
+    "defrost"
+  ],
+  "jungle-healing": [
+    "heal",
+    "authentic"
+  ],
+  "wicked-blow": [
+    "contact",
+    "protect",
+    "mirror",
+    "punch"
+  ],
+  "surging-strikes": [
+    "contact",
+    "protect",
+    "mirror",
+    "punch"
+  ],
+  "thunder-cage": [
+    "protect",
+    "mirror"
+  ],
+  "dragon-energy": [
+    "protect",
+    "mirror"
+  ],
+  "freezing-glare": [
+    "protect",
+    "mirror"
+  ],
+  "fiery-wrath": [
+    "protect",
+    "mirror"
+  ],
+  "thunderous-kick": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "glacial-lance": [
+    "protect",
+    "mirror"
+  ],
+  "astral-barrage": [
+    "protect",
+    "mirror"
+  ],
+  "eerie-spell": [
+    "protect",
+    "mirror",
+    "sound",
+    "authentic"
+  ],
+  "shadow-rush": [
+    "contact",
+    "protect"
+  ],
+  "shadow-blast": [
+    "protect"
+  ],
+  "shadow-blitz": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "shadow-bolt": [
+    "protect"
+  ],
+  "shadow-break": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "shadow-chill": [
+    "protect",
+    "mirror"
+  ],
+  "shadow-end": [
+    "contact",
+    "protect",
+    "mirror"
+  ],
+  "shadow-fire": [
+    "protect",
+    "mirror"
+  ],
+  "shadow-rave": [
+    "protect",
+    "mirror"
+  ],
+  "shadow-storm": [
+    "protect"
+  ],
+  "shadow-wave": [
+    "protect"
+  ],
+  "shadow-down": [
+    "protect",
+    "mirror"
+  ],
+  "shadow-half": [
+    "recharge",
+    "protect"
+  ],
+  "shadow-hold": [
+    "protect",
+    "mirror"
+  ],
+  "shadow-mist": [
+    "protect",
+    "mirror"
+  ],
+  "shadow-panic": [
+    "protect",
+    "mirror",
+    "sound"
+  ],
+  "shadow-shed": [
+    "protect"
+  ],
+  "shadow-sky": [
+    "protect"
+  ]
+}

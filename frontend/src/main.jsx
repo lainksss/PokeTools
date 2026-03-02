@@ -9,6 +9,7 @@ import Threats from './pages/Threats'
 import Coverage from './pages/Coverage'
 import TypeCoverage from './pages/TypeCoverage'
 import SpeedChecker from './pages/SpeedChecker'
+import SpeedGame from './pages/SpeedGame'
 import './styles.css'
 
 function Root() {
@@ -23,6 +24,7 @@ function Root() {
             <Route path="coverage" element={<Coverage />} />
             <Route path="type-coverage" element={<TypeCoverage />} />
             <Route path="speed-checker" element={<SpeedChecker />} />
+            <Route path="speed-game" element={<SpeedGame />} />
           </Route>
         </Routes>
       </HashRouter>

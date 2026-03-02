@@ -65,6 +65,14 @@ PokeTools is a suite of tools for competitive Pokémon: damage calculator, threa
     - `i18n/LanguageContext.jsx`, `translations.js`: simple i18n
     - `styles.css`: global styles
 
+    - `pages/SpeedGame.jsx`: mini-games pour la vitesse — la page s'appelle **Trouve la vitesse** et propose deux mini-jeux :
+      - `Duel de Vitesse` : devinez quel Pokémon a la vitesse finale la plus élevée (comportement existant),
+      - `Juste prix (vitesse)` : devinez la vitesse de base d'un Pokémon; l'interface donne uniquement « Trop haut » / « Trop bas » jusqu'à la bonne réponse, puis révèle la valeur.
+
+  Frontend EVs note:
+  - The frontend UI uses a compact EV unit system to simplify inputs: each stat accepts 0..32 units and the total across all stats is capped at 66 units. This is a frontend convenience layer; before sending API requests the frontend converts these units to the traditional EV values expected by the backend (0..~252 scale) using the formula `0 -> 0`, `n (1..32) -> 4 + (n-1)*8`.
+  - The backend API still expects standard EV values (0..252-ish), so the conversion is performed client-side and the backend remains unchanged.
+
 ## Backend — Details
 
 ### Main Modules

@@ -7,8 +7,10 @@ export const translations = {
       threats: "Analyse des menaces",
       coverage: "Couverture offensive",
       typeCoverage: "Couverture de types",
-      speedChecker: "Vérificateur de vitesse"
+      speedChecker: "Vérificateur de vitesse",
+      speedGame: "Trouve la vitesse",
     },
+    
     
     // Page Home
     home: {
@@ -54,12 +56,16 @@ export const translations = {
       item: "Objet tenu",
       searchItem: "Rechercher un objet...",
       critical: "Coup critique",
+      attackerStatus: "Statut de l'attaquant",
+      defenderStatus: "Statut du défenseur",
       battleMode: "Mode de combat",
       battleConditions: "Conditions de combat",
       single: "Simple",
       double: "Double",
       weather: "Météo",
       terrain: "Terrain",
+      auras: "Auras",
+      screens: "Écrans",
       calculate: "Calculer",
       results: "Résultats",
       damage: "Dégâts",
@@ -186,6 +192,34 @@ export const translations = {
       off: "Désactivé"
     },
     
+    // Speed Game (multiple mini-games)
+    speedGame: {
+      title: "Trouve la vitesse",
+      modeDuel: "Duel de Vitesse",
+      modeGuess: "Juste prix (vitesse)",
+      chooseButton: "Je choisis",
+      next: "Suivant",
+      conditionLabel: "Condition",
+      hint: "Choisis le Pokémon le plus rapide après modificateurs",
+      resultTitle: "Résultat",
+      baseLabel: "Base:",
+      fastestLabel: "Le plus rapide était:",
+      resultWin: "TU AS GAGNÉ",
+      resultLose: "MAUVAIS CHOIX",
+      resultTie: "ÉGALITÉ",
+
+      // Guess-the-speed game
+      guessTitle: "Devine la vitesse",
+      guessPlaceholder: "Entrez la vitesse (base)",
+      submitGuess: "Valider",
+      guessResultCorrect: "Exact!",
+      guessResultHigher: "Trop haut",
+      guessResultLower: "Trop bas",
+      revealBase: "Vitesse de base:",
+      playAgain: "Rejouer",
+      pickNew: "Nouveau Pokémon"
+    },
+    
     // Pokemon Panel
     pokemon: {
       types: "Types",
@@ -198,7 +232,7 @@ export const translations = {
     
     // Météos
     weather: {
-      none: "Aucune",
+      none: "Aucune météo",
       sun: "Soleil",
       rain: "Pluie",
       sandstorm: "Tempête de sable",
@@ -207,11 +241,33 @@ export const translations = {
     
     // Terrains
     terrain: {
-      none: "Aucun",
+      none: "Aucun terrain",
       grassy: "Herbu",
       electric: "Électrique",
       misty: "Brumeux",
       psychic: "Psychique"
+    },
+
+    // Statuts possibles
+    status: {
+      none: "Aucun",
+      burn: "Brûlé",
+      poison: "Empoisonné",
+      paralysis: "Paralysé"
+    },
+
+    // Auras (field conditions)
+    auras: {
+      fairy: "Aura Féerique",
+      dark: "Aura Ténébreuse",
+      break: "Aura Inversée"
+    },
+
+    // Screens
+    screens: {
+      reflect: "Protection",
+      light: "Mur lumière",
+      aurora: "Voile Aurore"
     },
     
     // Natures communes
@@ -282,7 +338,8 @@ export const translations = {
       threats: "Threat Analysis",
       coverage: "Offensive Coverage",
       typeCoverage: "Type Coverage",
-      speedChecker: "Speed Checker"
+      speedChecker: "Speed Checker",
+      speedGame: "Find Speed",
     },
     
     // Page Home
@@ -329,12 +386,16 @@ export const translations = {
       item: "Held item",
       searchItem: "Search item...",
       critical: "Critical hit",
+      attackerStatus: "Attacker status",
+      defenderStatus: "Defender status",
       battleMode: "Battle mode",
       battleConditions: "Battle Conditions",
       single: "Single",
       double: "Double",
       weather: "Weather",
       terrain: "Terrain",
+      auras: "Auras",
+      screens: "Screens",
       calculate: "Calculate",
       results: "Results",
       damage: "Damage",
@@ -459,6 +520,34 @@ export const translations = {
       on: "ON",
       off: "OFF"
     },
+
+    // Speed Game (multiple mini-games)
+    speedGame: {
+      title: "Find Speed",
+      modeDuel: "Speed Duel",
+      modeGuess: "Guess The Speed",
+      chooseButton: "I choose",
+      next: "Next",
+      conditionLabel: "Condition",
+      hint: "Pick the faster Pokémon after modifiers",
+      resultTitle: "Result",
+      baseLabel: "Base:",
+      fastestLabel: "The fastest was:",
+      resultWin: "YOU WON",
+      resultLose: "WRONG CHOICE",
+      resultTie: "TIE",
+
+      // Guess-the-speed game
+      guessTitle: "Guess the speed",
+      guessPlaceholder: "Enter base speed",
+      submitGuess: "Submit",
+      guessResultCorrect: "Correct!",
+      guessResultHigher: "Too high",
+      guessResultLower: "Too low",
+      revealBase: "Base speed:",
+      playAgain: "Play again",
+      pickNew: "New Pokémon"
+    },
     
     // Pokemon Panel
     pokemon: {
@@ -472,7 +561,7 @@ export const translations = {
     
     // Weather
     weather: {
-      none: "None",
+      none: "No weather",
       sun: "Sun",
       rain: "Rain",
       sandstorm: "Sandstorm",
@@ -481,11 +570,33 @@ export const translations = {
     
     // Terrain
     terrain: {
-      none: "None",
+      none: "No terrain",
       grassy: "Grassy",
       electric: "Electric",
       misty: "Misty",
       psychic: "Psychic"
+    },
+
+    // Possible statuses
+    status: {
+      none: "None",
+      burn: "Burn",
+      poison: "Poison",
+      paralysis: "Paralysis"
+    },
+
+    // Auras (field conditions)
+    auras: {
+      fairy: "Fairy Aura",
+      dark: "Dark Aura",
+      break: "Aura Break"
+    },
+
+    // Screens
+    screens: {
+      reflect: "Reflect",
+      light: "Light Screen",
+      aurora: "Aurora Veil"
     },
     
     // Common natures (keep English names)

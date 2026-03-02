@@ -3,15 +3,19 @@ import React, { useState } from 'react'
 import PokemonPanel from '../components/PokemonPanel'
 import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
+import { convertEvsToOld, newEvToOld } from '../utils/evs'
 
 export default function Threats() {
-  const { t, getPokemonName } = useTranslation()
+  const { t, getPokemonName, getMoveName } = useTranslation()
   const [defender, setDefender] = useState(null)
   const [koMode, setKoMode] = useState('OHKO') // 'OHKO' or '2HKO'
   const [threats, setThreats] = useState([])
   const [loading, setLoading] = useState(false)
   const [weather, setWeather] = useState('none')
   const [terrain, setTerrain] = useState('none')
+  const [reflect, setReflect] = useState(false)
+  const [lightScreen, setLightScreen] = useState(false)
+  const [auroraVeil, setAuroraVeil] = useState(false)
   const [progress, setProgress] = useState({ processed: 0, total: 0, threats_found: 0 })
   const [useStreaming, setUseStreaming] = useState(true)
   const [showOnlyGuaranteed, setShowOnlyGuaranteed] = useState(false)
@@ -27,6 +31,33 @@ export default function Threats() {
   const ALL_WEATHERS = ['none', 'sun', 'rain', 'sandstorm', 'snow']
   const ALL_TERRAINS = ['none', 'grassy', 'electric', 'misty', 'psychic']
 
+  // Derived filtered threats according to current UI filters
+  const filteredThreats = threats.filter(threat => {
+    if (showOnlyGuaranteed) {
+      const guaranteed = threat.guaranteed_ko === true || threat.best_ko_percent === 100 || (threat.ko_attacks && threat.ko_attacks.some(a => a.ko_percent === 100))
+      if (!guaranteed) return false
+    }
+
+    if (minRolls > 1) {
+      // Check per-attack ko_rolls or estimate from ko_percent
+      if (threat.ko_attacks && threat.ko_attacks.some(a => {
+        const total = a.total_rolls || 16
+        const ko = a.ko_rolls != null ? a.ko_rolls : Math.round((a.ko_percent || 0) / 100 * total)
+        return ko >= minRolls
+      })) return true
+
+      if (threat.ko_percent != null) {
+        const total = 16
+        const ko = Math.round((threat.ko_percent || 0) / 100 * total)
+        if (ko >= minRolls) return true
+      }
+
+      return false
+    }
+
+    return true
+  })
+
   async function findThreatsStreaming() {
     if (!defender) {
       alert(t('threats.noThreats'))
@@ -41,7 +72,7 @@ export default function Threats() {
       defender: {
         pokemon_id: defender.id,
         base_stats: defender.base_stats,
-        evs: defender.evs,
+        evs: convertEvsToOld(defender.evs || {}),
         nature: defender.nature,
         types: defender.types,
         ability: defender.ability,
@@ -53,11 +84,15 @@ export default function Threats() {
       field: {
         weather: weather === 'none' ? null : weather,
         terrain: terrain === 'none' ? null : terrain
+        ,
+        reflect: reflect || undefined,
+        light_screen: lightScreen || undefined,
+        aurora_veil: auroraVeil || undefined
       }
       ,
       analysis_options: {
         attack_mode: attackMode,
-        custom_evs: customAttackEV,
+        custom_evs: newEvToOld(customAttackEV),
         nature_boost: customNatureBoost,
         item_choice: customItemChoice,
         life_orb: customLifeOrb
@@ -139,7 +174,7 @@ export default function Threats() {
       defender: {
         pokemon_id: defender.id,
         base_stats: defender.base_stats,
-        evs: defender.evs,
+        evs: convertEvsToOld(defender.evs || {}),
         nature: defender.nature,
         types: defender.types,
         ability: defender.ability,
@@ -149,12 +184,15 @@ export default function Threats() {
       ko_mode: koMode,
       field: {
         weather: weather === 'none' ? null : weather,
-        terrain: terrain === 'none' ? null : terrain
+        terrain: terrain === 'none' ? null : terrain,
+        reflect: reflect || undefined,
+        light_screen: lightScreen || undefined,
+        aurora_veil: auroraVeil || undefined
       }
       ,
       analysis_options: {
         attack_mode: attackMode,
-        custom_evs: customAttackEV,
+        custom_evs: newEvToOld(customAttackEV),
         nature_boost: customNatureBoost,
         item_choice: customItemChoice,
         life_orb: customLifeOrb
@@ -234,8 +272,8 @@ export default function Threats() {
 
           <div className="form-row">
             <div className="form-group">
-              <label>{t('threats.weather')}</label>
-              <select 
+              <select
+                aria-label={t('threats.weather')}
                 value={weather}
                 onChange={e => setWeather(e.target.value)}
                 className="form-control"
@@ -249,8 +287,8 @@ export default function Threats() {
             </div>
 
             <div className="form-group">
-              <label>{t('threats.terrain')}</label>
-              <select 
+              <select
+                aria-label={t('threats.terrain')}
                 value={terrain}
                 onChange={e => setTerrain(e.target.value)}
                 className="form-control"
@@ -261,6 +299,20 @@ export default function Threats() {
                   </option>
                 ))}
               </select>
+            </div>
+          </div>
+
+          <div className="form-group" role="group" aria-label={t('calculate.screens')}>
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <button type="button" className={`aura-button ${reflect ? 'active' : ''}`} onClick={() => setReflect(v => !v)}>
+                {t('screens.reflect') || 'Protection'}
+              </button>
+              <button type="button" className={`aura-button ${lightScreen ? 'active' : ''}`} onClick={() => setLightScreen(v => !v)}>
+                {t('screens.light') || 'Mur lumière'}
+              </button>
+              <button type="button" className={`aura-button ${auroraVeil ? 'active' : ''}`} onClick={() => setAuroraVeil(v => !v)}>
+                {t('screens.aurora') || 'Voile Aurore'}
+              </button>
             </div>
           </div>
 
@@ -372,7 +424,7 @@ export default function Threats() {
               <div className="progress-text">
                 {progress.processed} / {progress.total} {t('threats.pokemonAnalyzed')}
                 <br />
-                {progress.threats_found} {t('threats.threatsFound')}
+                {filteredThreats.length} {t('threats.threatsFound')}
               </div>
             </div>
           )}
@@ -380,7 +432,7 @@ export default function Threats() {
 
         <div className="threats-right">
           <div className="threats-right-header">
-            <h3>{t('threats.results')} ({threats.length} {t('threats.threats')})</h3>
+            <h3>{t('threats.results')} ({filteredThreats.length} {t('threats.threats')})</h3>
             
             <div className="filters-group">
               <label className="guaranteed-filter">
@@ -414,22 +466,7 @@ export default function Threats() {
 
           {!loading && threats.length > 0 && (
             <div className="threats-list">
-              {threats
-                .filter(threat => {
-                  // Si le filtre "garantis seulement" est activé
-                  if (showOnlyGuaranteed && threat.best_ko_percent !== 100) {
-                    return false
-                  }
-                  
-                  // Filtrer par nombre minimum de rolls
-                  // Vérifier si au moins une attaque a >= minRolls
-                  const hasEnoughRolls = threat.ko_attacks && threat.ko_attacks.some(
-                    attack => attack.ko_rolls >= minRolls
-                  )
-                  
-                  return hasEnoughRolls
-                })
-                .map((threat, idx) => (
+              {filteredThreats.map((threat, idx) => (
                 <div key={idx} className="threat-card">
                   <div className="threat-header">
                     <h4>{getPokemonName(threat.attacker_id, threat.attacker_name)}</h4>
@@ -440,7 +477,7 @@ export default function Threats() {
                     {threat.ko_attacks && threat.ko_attacks.map((attack, attackIdx) => (
                       <div key={attackIdx} className="attack-info">
                         <div className="attack-name">
-                          <strong>{attack.move_name}</strong>
+                          <strong>{getMoveName(attack.move_name, attack.move_name)}</strong>
                           <span className={`type-badge type-${attack.move_type}`}>
                             {t(`types.${attack.move_type}`)}
                           </span>

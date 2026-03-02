@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
+import { convertEvsToOld } from '../utils/evs'
 
 const ALL_WEATHERS = [
   'none', 'sun', 'rain', 'sandstorm', 'snow'
@@ -11,13 +12,47 @@ const ALL_TERRAINS = [
   'none', 'grassy', 'electric', 'misty', 'psychic'
 ]
 
-export default function MiddlePanel({ left, right, setResult }) {
+const ALL_STATUSES = [
+  'none', 'burn', 'poison', 'paralysis'
+]
+
+export default function MiddlePanel({ left, right, setLeft, setRight, setResult }) {
   const { t } = useTranslation()
   const [loading, setLoading] = useState(false)
   const [weather, setWeather] = useState('none')
   const [terrain, setTerrain] = useState('none')
+  const [attackerStatus, setAttackerStatus] = useState('none')
+  const [defenderStatus, setDefenderStatus] = useState('none')
   const [isCritical, setIsCritical] = useState(false)
-  const [battleMode, setBattleMode] = useState('single') // 'single' or 'double'
+  const [battleMode, setBattleMode] = useState('double') // 'single' or 'double'
+  const [fairyAura, setFairyAura] = useState(false)
+  const [darkAura, setDarkAura] = useState(false)
+  const [auraBreak, setAuraBreak] = useState(false)
+  const [reflect, setReflect] = useState(false)
+  const [lightScreen, setLightScreen] = useState(false)
+  const [auroraVeil, setAuroraVeil] = useState(false)
+
+  // Keep local selectors synced with parent left/right values when available
+  React.useEffect(() => {
+    setAttackerStatus(left?.status || 'none')
+  }, [left?.id, left?.status])
+
+  React.useEffect(() => {
+    setDefenderStatus(right?.status || 'none')
+  }, [right?.id, right?.status])
+
+  // When user changes the status selects, propagate into left/right via setters
+  React.useEffect(() => {
+    if (typeof setLeft === 'function' && left) {
+      setLeft(prev => ({ ...(prev || {}), status: attackerStatus === 'none' ? null : attackerStatus }))
+    }
+  }, [attackerStatus])
+
+  React.useEffect(() => {
+    if (typeof setRight === 'function' && right) {
+      setRight(prev => ({ ...(prev || {}), status: defenderStatus === 'none' ? null : defenderStatus }))
+    }
+  }, [defenderStatus])
 
   async function calculate() {
     if (!left || !right) {
@@ -36,7 +71,7 @@ export default function MiddlePanel({ left, right, setResult }) {
       attacker: {
         pokemon_id: left.id,
         base_stats: left.base_stats,
-        evs: left.evs,
+        evs: convertEvsToOld(left.evs || {}),
         nature: left.nature,
         types: left.types,
         ability: left.ability,
@@ -44,11 +79,13 @@ export default function MiddlePanel({ left, right, setResult }) {
         is_terastallized: left.is_terastallized,
         tera_type: left.tera_type,
         stages: left.boosts || {}
+      ,
+        status: attackerStatus === 'none' ? null : attackerStatus
       },
       defender: {
         pokemon_id: right.id,
         base_stats: right.base_stats,
-        evs: right.evs,
+        evs: convertEvsToOld(right.evs || {}),
         nature: right.nature,
         types: right.types,
         ability: right.ability,
@@ -56,11 +93,20 @@ export default function MiddlePanel({ left, right, setResult }) {
         is_terastallized: right.is_terastallized,
         tera_type: right.tera_type,
         stages: right.boosts || {}
+      ,
+        status: defenderStatus === 'none' ? null : defenderStatus
       },
       move: left.move,
       field: {
         weather: weather === 'none' ? null : weather,
         terrain: terrain === 'none' ? null : terrain
+        ,
+        fairy_aura: fairyAura || undefined,
+        dark_aura: darkAura || undefined,
+        aura_break: auraBreak || undefined,
+        reflect: reflect || undefined,
+        light_screen: lightScreen || undefined,
+        aurora_veil: auroraVeil || undefined
       },
       is_critical: isCritical,
       battle_mode: battleMode,
@@ -94,9 +140,8 @@ export default function MiddlePanel({ left, right, setResult }) {
     <div className="middle-panel">
       <h3>{t('calculate.battleConditions')}</h3>
       
-      <div className="form-group">
-        <label>{t('calculate.battleMode')}</label>
-        <div className="battle-mode-toggle">
+      <div className="form-group" role="group" aria-label={t('calculate.battleMode')}>
+        <div className="battle-mode-toggle" role="group" aria-label={t('calculate.battleMode')}>
           <button
             type="button"
             className={`mode-button ${battleMode === 'single' ? 'active' : ''}`}
@@ -113,11 +158,73 @@ export default function MiddlePanel({ left, right, setResult }) {
           </button>
         </div>
       </div>
+
+      <div className="form-group" role="group" aria-label={t('calculate.auras')}>
+        <div className="auras-toggle" style={{ display: 'flex', gap: '8px' }}>
+          <button
+            type="button"
+            className={`aura-button ${fairyAura ? 'active' : ''}`}
+            onClick={() => setFairyAura(v => !v)}
+            aria-pressed={fairyAura}
+          >
+            {t('auras.fairy') || 'Fairy Aura'}
+          </button>
+
+          <button
+            type="button"
+            className={`aura-button ${darkAura ? 'active' : ''}`}
+            onClick={() => setDarkAura(v => !v)}
+            aria-pressed={darkAura}
+          >
+            {t('auras.dark') || 'Dark Aura'}
+          </button>
+
+          <button
+            type="button"
+            className={`aura-button ${auraBreak ? 'active' : ''}`}
+            onClick={() => setAuraBreak(v => !v)}
+            aria-pressed={auraBreak}
+          >
+            {t('auras.break') || 'Aura Break'}
+          </button>
+        </div>
+      </div>
+
+      <div className="form-group" role="group" aria-label={t('calculate.screens')}>
+        <div className="auras-toggle" style={{ display: 'flex', gap: '8px' }}>
+          <button
+            type="button"
+            className={`aura-button ${reflect ? 'active' : ''}`}
+            onClick={() => setReflect(v => !v)}
+            aria-pressed={reflect}
+          >
+            {t('screens.reflect') || 'Protection'}
+          </button>
+
+          <button
+            type="button"
+            className={`aura-button ${lightScreen ? 'active' : ''}`}
+            onClick={() => setLightScreen(v => !v)}
+            aria-pressed={lightScreen}
+          >
+            {t('screens.light') || 'Mur lumière'}
+          </button>
+
+          <button
+            type="button"
+            className={`aura-button ${auroraVeil ? 'active' : ''}`}
+            onClick={() => setAuroraVeil(v => !v)}
+            aria-pressed={auroraVeil}
+          >
+            {t('screens.aurora') || 'Voile Aurore'}
+          </button>
+        </div>
+      </div>
       
       <div className="form-row">
         <div className="form-group">
-          <label>{t('calculate.weather')}</label>
-          <select 
+          <select
+            aria-label={t('calculate.weather')}
             value={weather}
             onChange={e => setWeather(e.target.value)}
             className="form-control"
@@ -131,8 +238,8 @@ export default function MiddlePanel({ left, right, setResult }) {
         </div>
 
         <div className="form-group">
-          <label>{t('calculate.terrain')}</label>
-          <select 
+          <select
+            aria-label={t('calculate.terrain')}
             value={terrain}
             onChange={e => setTerrain(e.target.value)}
             className="form-control"
@@ -141,6 +248,34 @@ export default function MiddlePanel({ left, right, setResult }) {
               <option key={ter} value={ter}>
                 {t(`terrain.${ter}`)}
               </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      <div className="form-row">
+        <div className="form-group">
+          <label>{t('calculate.attackerStatus')}</label>
+          <select
+            value={attackerStatus}
+            onChange={e => setAttackerStatus(e.target.value)}
+            className="form-control"
+          >
+            {ALL_STATUSES.map(s => (
+              <option key={s} value={s}>{t(`status.${s}`) || s}</option>
+            ))}
+          </select>
+        </div>
+
+        <div className="form-group">
+          <label>{t('calculate.defenderStatus')}</label>
+          <select
+            value={defenderStatus}
+            onChange={e => setDefenderStatus(e.target.value)}
+            className="form-control"
+          >
+            {ALL_STATUSES.map(s => (
+              <option key={s} value={s}>{t(`status.${s}`) || s}</option>
             ))}
           </select>
         </div>
