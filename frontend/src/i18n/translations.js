@@ -8,7 +8,7 @@ export const translations = {
       coverage: "Couverture offensive",
       typeCoverage: "Couverture de types",
       speedChecker: "Vérificateur de vitesse",
-      speedGame: "Trouve le plus rapide",
+      speedGame: "Trouve la vitesse",
     },
     
     
@@ -192,9 +192,11 @@ export const translations = {
       off: "Désactivé"
     },
     
-    // Speed Game (Speed Duel)
+    // Speed Game (multiple mini-games)
     speedGame: {
-      title: "Duel de Vitesse",
+      title: "Trouve la vitesse",
+      modeDuel: "Duel de Vitesse",
+      modeGuess: "Juste prix (vitesse)",
       chooseButton: "Je choisis",
       next: "Suivant",
       conditionLabel: "Condition",
@@ -204,7 +206,18 @@ export const translations = {
       fastestLabel: "Le plus rapide était:",
       resultWin: "TU AS GAGNÉ",
       resultLose: "MAUVAIS CHOIX",
-      resultTie: "ÉGALITÉ"
+      resultTie: "ÉGALITÉ",
+
+      // Guess-the-speed game
+      guessTitle: "Devine la vitesse",
+      guessPlaceholder: "Entrez la vitesse (base)",
+      submitGuess: "Valider",
+      guessResultCorrect: "Exact!",
+      guessResultHigher: "Trop haut",
+      guessResultLower: "Trop bas",
+      revealBase: "Vitesse de base:",
+      playAgain: "Rejouer",
+      pickNew: "Nouveau Pokémon"
     },
     
     // Pokemon Panel
@@ -326,7 +339,7 @@ export const translations = {
       coverage: "Offensive Coverage",
       typeCoverage: "Type Coverage",
       speedChecker: "Speed Checker",
-      speedGame: "Find who's the fastest",
+      speedGame: "Find Speed",
     },
     
     // Page Home
@@ -508,9 +521,11 @@ export const translations = {
       off: "OFF"
     },
 
-    // Speed Game
+    // Speed Game (multiple mini-games)
     speedGame: {
-      title: "Speed Duel",
+      title: "Find Speed",
+      modeDuel: "Speed Duel",
+      modeGuess: "Guess The Speed",
       chooseButton: "I choose",
       next: "Next",
       conditionLabel: "Condition",
@@ -520,7 +535,18 @@ export const translations = {
       fastestLabel: "The fastest was:",
       resultWin: "YOU WON",
       resultLose: "WRONG CHOICE",
-      resultTie: "TIE"
+      resultTie: "TIE",
+
+      // Guess-the-speed game
+      guessTitle: "Guess the speed",
+      guessPlaceholder: "Enter base speed",
+      submitGuess: "Submit",
+      guessResultCorrect: "Correct!",
+      guessResultHigher: "Too high",
+      guessResultLower: "Too low",
+      revealBase: "Base speed:",
+      playAgain: "Play again",
+      pickNew: "New Pokémon"
     },
     
     // Pokemon Panel

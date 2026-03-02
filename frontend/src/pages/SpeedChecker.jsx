@@ -11,7 +11,7 @@ export default function SpeedChecker() {
   // Left panel - User's Pokémon
   const [selectedPokemon, setSelectedPokemon] = useState(null)
   const [value, setValue] = useState({ nature: 'hardy' })
-  const [speedEV, setSpeedEV] = useState(0)
+  const [speedEVUnits, setSpeedEVUnits] = useState(0) // 0..32 UI units
   const [speedNature, setSpeedNature] = useState('neutral') // 'positive', 'neutral', 'negative'
   const [ability, setAbility] = useState(null)
   const [speedBoost, setSpeedBoost] = useState(0) // -6 to +6
@@ -29,7 +29,7 @@ export default function SpeedChecker() {
   
   // Middle panel - Comparison mode
   const [comparisonMode, setComparisonMode] = useState('min') // 'min', 'custom', 'max'
-  const [customEV, setCustomEV] = useState(0)
+  const [customEV, setCustomEV] = useState(0) // in UI units 0..32
   const [customNature, setCustomNature] = useState(false)
   // Choice Scarf toggle (middle panel)
   const [choiceScarfMiddle, setChoiceScarfMiddle] = useState(false)
@@ -112,8 +112,18 @@ export default function SpeedChecker() {
   }
 
   // Calculate user's speed
+  // convert UI units (0..32) to backend EVs
+  const convertUnitToBackend = (n) => {
+    const m = parseInt(n, 10) || 0
+    if (m <= 0) return 0
+    const capped = Math.min(32, m)
+    return 4 + (capped - 1) * 8
+  }
+
+  const effectiveSpeedEV = convertUnitToBackend(speedEVUnits)
+
   const userSpeed = selectedPokemon 
-    ? calculateSpeed(selectedPokemon.base_stats.speed, level, speedEV, speedNature, speedBoost)
+    ? calculateSpeed(selectedPokemon.base_stats.speed, level, effectiveSpeedEV, speedNature, speedBoost)
     : 0
   let finalUserSpeed = userSpeed
   // Weather-affected abilities multiplier (user)
@@ -159,10 +169,10 @@ export default function SpeedChecker() {
         opponentEV = 0
         opponentNature = 'neutral'
       } else if (comparisonMode === 'custom') {
-        opponentEV = customEV
+        opponentEV = convertUnitToBackend(customEV)
         opponentNature = customNature ? 'positive' : 'neutral'
       } else if (comparisonMode === 'max') {
-        opponentEV = 252
+        opponentEV = convertUnitToBackend(32)
         opponentNature = 'positive'
       }
 
@@ -193,7 +203,7 @@ export default function SpeedChecker() {
     })
 
     setResults(filtered)
-  }, [selectedPokemon, level, speedEV, speedNature, speedBoost, tailwind, choiceScarf, comparisonMode, customEV, customNature, choiceScarfMiddle, showSlower, allPokemon, ability, weather])
+  }, [selectedPokemon, level, speedEVUnits, speedNature, speedBoost, tailwind, choiceScarf, comparisonMode, customEV, customNature, choiceScarfMiddle, showSlower, allPokemon, ability, weather])
 
   return (
     <div className="speed-checker-page">
@@ -315,16 +325,12 @@ export default function SpeedChecker() {
                 <div className="ev-input-container">
                   <input
                     type="number"
-                    value={speedEV}
-                    onChange={(e) => setSpeedEV(Math.max(0, Math.min(252, parseInt(e.target.value) || 0)))}
+                    value={speedEVUnits}
+                    onChange={(e) => setSpeedEVUnits(Math.max(0, Math.min(32, parseInt(e.target.value) || 0)))}
                     min="0"
-                    max="252"
-                    step="4"
+                    max="32"
+                    step="1"
                   />
-                  <div className="ev-buttons">
-                    <button onClick={() => setSpeedEV(0)}>0</button>
-                    <button onClick={() => setSpeedEV(252)}>252</button>
-                  </div>
                 </div>
               </div>
 
@@ -438,7 +444,7 @@ export default function SpeedChecker() {
               onClick={() => setComparisonMode('max')}
             >
               <div className="btn-title">{t('speedChecker.maxSpeed') || 'Max Speed'}</div>
-              <div className="btn-desc">252 EVs, +Nature</div>
+              <div className="btn-desc">32 units, +Nature</div>
             </button>
           </div>
 
@@ -449,10 +455,10 @@ export default function SpeedChecker() {
                 <input 
                   type="number" 
                   value={customEV} 
-                  onChange={(e) => setCustomEV(Math.max(0, Math.min(252, parseInt(e.target.value) || 0)))}
+                  onChange={(e) => setCustomEV(Math.max(0, Math.min(32, parseInt(e.target.value) || 0)))}
                   min="0"
-                  max="252"
-                  step="4"
+                  max="32"
+                  step="1"
                 />
               </div>
               <div className="form-group">
@@ -504,12 +510,14 @@ export default function SpeedChecker() {
             <div className="speed-counter">
               {showSlower 
                 ? `${results.length} ${t('speedChecker.slowerCount') || 'slower'} • ${allPokemon.filter(p => {
-                    const oppSpeed = calculateSpeed(p.base_stats.speed, level, comparisonMode === 'min' ? 0 : comparisonMode === 'max' ? 252 : customEV, comparisonMode === 'min' ? 'neutral' : comparisonMode === 'max' ? 'positive' : customNature ? 'positive' : 'neutral')
+                    const oppEv = comparisonMode === 'min' ? 0 : comparisonMode === 'max' ? convertUnitToBackend(32) : convertUnitToBackend(customEV)
+                    const oppSpeed = calculateSpeed(p.base_stats.speed, level, oppEv, comparisonMode === 'min' ? 'neutral' : comparisonMode === 'max' ? 'positive' : customNature ? 'positive' : 'neutral')
                     const oppFinalSpeed = choiceScarfMiddle ? Math.floor(oppSpeed * 1.5) : oppSpeed
                     return finalUserSpeed <= oppFinalSpeed
                   }).length} ${t('speedChecker.fasterCount') || 'faster'}`
                 : `${results.length} ${t('speedChecker.fasterCount') || 'faster'} • ${allPokemon.filter(p => {
-                    const oppSpeed = calculateSpeed(p.base_stats.speed, level, comparisonMode === 'min' ? 0 : comparisonMode === 'max' ? 252 : customEV, comparisonMode === 'min' ? 'neutral' : comparisonMode === 'max' ? 'positive' : customNature ? 'positive' : 'neutral')
+                    const oppEv = comparisonMode === 'min' ? 0 : comparisonMode === 'max' ? convertUnitToBackend(32) : convertUnitToBackend(customEV)
+                    const oppSpeed = calculateSpeed(p.base_stats.speed, level, oppEv, comparisonMode === 'min' ? 'neutral' : comparisonMode === 'max' ? 'positive' : customNature ? 'positive' : 'neutral')
                     const oppFinalSpeed = choiceScarfMiddle ? Math.floor(oppSpeed * 1.5) : oppSpeed
                     return finalUserSpeed > oppFinalSpeed
                   }).length} ${t('speedChecker.slowerCount') || 'slower'}`

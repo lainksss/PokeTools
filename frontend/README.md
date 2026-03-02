@@ -30,6 +30,7 @@ Structure
 - `src/components/` — UI components
 - `src/i18n/` — `LanguageContext.jsx`, `translations.js` for simple i18n
 - `src/styles.css` — global styles
+- `src/pages/` — pages: `SpeedGame` (Trouve la vitesse — propose `Duel de Vitesse` et `Juste prix (vitesse)`)
 
 Notes
 - The frontend uses SSE to receive incremental results for heavy tasks (`/api/find_threats_stream`, `/api/analyze_coverage_stream`). Prefer `EventSource` in simple cases or fetch+streams when you need more control.
