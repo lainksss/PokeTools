@@ -8547,7 +8547,7 @@
       "speed": 30
     }
   },
-  "frillish": {
+  "frillish-male": {
     "id": 592,
     "types": [
       "water",
@@ -8562,7 +8562,7 @@
       "speed": 40
     }
   },
-  "jellicent": {
+  "jellicent-male": {
     "id": 593,
     "types": [
       "water",
@@ -9655,7 +9655,7 @@
       "speed": 72
     }
   },
-  "pyroar": {
+  "pyroar-male": {
     "id": 668,
     "types": [
       "fire",
