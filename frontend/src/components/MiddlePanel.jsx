@@ -34,12 +34,12 @@ export default function MiddlePanel({ left, right, setLeft, setRight, setResult 
 
   // Keep local selectors synced with parent left/right values when available
   React.useEffect(() => {
-    try { setAttackerStatus(left?.status || 'none') } catch (e) {}
-  }, [left && left.status])
+    setAttackerStatus(left?.status || 'none')
+  }, [left?.id, left?.status])
 
   React.useEffect(() => {
-    try { setDefenderStatus(right?.status || 'none') } catch (e) {}
-  }, [right && right.status])
+    setDefenderStatus(right?.status || 'none')
+  }, [right?.id, right?.status])
 
   // When user changes the status selects, propagate into left/right via setters
   React.useEffect(() => {

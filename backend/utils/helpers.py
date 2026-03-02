@@ -2,6 +2,9 @@
 
 from utils.data_loader import load_json
 
+# Simple cache to map numeric id -> species slug to avoid repeated iteration
+_ID_TO_SLUG_CACHE = None
+
 
 def build_actor_from_payload(p):
     """Build a minimal attacker/defender dict expected by calculate_damage.
@@ -77,10 +80,12 @@ def build_actor_from_payload(p):
         # p may provide pokemon_id
         poke_id = p.get("pokemon_id") or p.get("id") or None
         if poke_id is not None:
-            for slug, dd in all_pok.items():
-                if dd and dd.get("id") == poke_id:
-                    actor["species"] = slug
-                    break
+            global _ID_TO_SLUG_CACHE
+            if _ID_TO_SLUG_CACHE is None:
+                _ID_TO_SLUG_CACHE = {dd.get('id'): slug for slug, dd in all_pok.items() if dd and dd.get('id')}
+            slug = _ID_TO_SLUG_CACHE.get(poke_id)
+            if slug:
+                actor["species"] = slug
         # can_evolve info
         if actor.get("species"):
             evo_info = evo.get(actor["species"], {})

@@ -3,7 +3,7 @@
 // Backend expects traditional EVs (0..252, steps of 4). Convert accordingly.
 
 export function newEvToOld(newEv) {
-  const n = parseInt(newEv) || 0
+  const n = parseInt(newEv, 10) || 0
   if (n <= 0) return 0
   const capped = Math.min(32, n)
   return 4 + (capped - 1) * 8
