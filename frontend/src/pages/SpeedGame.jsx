@@ -8,6 +8,10 @@ export default function SpeedGame() {
   const [left, setLeft] = useState(null)
   const [right, setRight] = useState(null)
   const [result, setResult] = useState(null)
+  const [mode, setMode] = useState('duel') // 'duel' or 'guess'
+  const [target, setTarget] = useState(null)
+  const [guessValue, setGuessValue] = useState('')
+  const [guessResult, setGuessResult] = useState(null)
 
   useEffect(() => {
     fetch(`${API_URL}/api/pokemon`)
@@ -55,6 +59,16 @@ export default function SpeedGame() {
     setRight(b)
   }
 
+  function pickTarget() {
+    setGuessResult(null)
+    setGuessValue('')
+    if (!allPokemon || allPokemon.length === 0) return
+    const pool = allPokemon.filter(p => !String(p.name).includes('-') && p.can_evolve === false)
+    if (pool.length === 0) return
+    const idx = Math.floor(Math.random() * pool.length)
+    setTarget(pool[idx])
+  }
+
   useEffect(() => { pickPair() }, [allPokemon])
 
   const handleGuess = (side) => {
@@ -65,10 +79,27 @@ export default function SpeedGame() {
     setResult({ chosen: side, correct, left: { base: leftBase }, right: { base: rightBase } })
   }
 
+  const handleSubmitGuess = () => {
+    if (!target) return
+    const base = target.base_stats.speed || 0
+    const g = parseInt(guessValue, 10)
+    if (Number.isNaN(g)) return
+    let outcome = 'correct'
+    if (g > base) outcome = 'higher'
+    else if (g < base) outcome = 'lower'
+    setGuessResult({ guess: g, base, outcome })
+  }
+
   return (
     <div className="speed-game-page">
       <h2>{t('speedGame.title') || 'Speed Duel'}</h2>
-      <div className="speed-game-board">
+
+      <div style={{marginBottom:12}} className="mode-switch">
+        <button onClick={() => { setMode('duel'); setGuessResult(null); setResult(null) }} disabled={mode === 'duel'}>{t('speedGame.modeDuel') || 'Duel de Vitesse'}</button>
+        <button onClick={() => { setMode('guess'); setResult(null); pickTarget() }} disabled={mode === 'guess'} style={{marginLeft:8}}>{t('speedGame.modeGuess') || 'Juste prix (vitesse)'}</button>
+      </div>
+      {mode === 'duel' && (
+        <div className="speed-game-board">
         <div className="pokemon-card left">
           {left ? (
             <>
@@ -96,7 +127,53 @@ export default function SpeedGame() {
             </>
           ) : <div>{t('common.loading') || 'Loading...'}</div>}
         </div>
-      </div>
+        </div>
+      )}
+
+      {mode === 'guess' && (
+        <div className="guess-game-board">
+          <div className="pokemon-card single">
+            {target ? (
+              <>
+                <img src={spriteUrl(target.id)} alt={target.name} />
+                <h3>{getPokemonName(target.id, target.name)}</h3>
+                <div style={{marginTop:8}}>
+                  <input type="number" placeholder={t('speedGame.guessPlaceholder') || 'Entrez la vitesse (base)'} value={guessValue} onChange={e => setGuessValue(e.target.value)} />
+                </div>
+                <div style={{marginTop:8}}>
+                  <button onClick={handleSubmitGuess} disabled={!guessValue}>{t('speedGame.submitGuess') || 'Valider'}</button>
+                  <button onClick={pickTarget} style={{marginLeft:8}}>{t('speedGame.pickNew') || 'Nouveau Pokémon'}</button>
+                </div>
+              </>
+            ) : <div>{t('common.loading') || 'Loading...'}</div>}
+          </div>
+
+          {guessResult && (
+            <div className="result-panel">
+              <h3>{t('speedGame.guessTitle') || 'Devine la vitesse'}</h3>
+
+              <div style={{marginTop:8}} className={`guess-outcome ${guessResult.outcome}`}>
+                {guessResult.outcome === 'correct' ? (
+                  <>
+                    {t('speedGame.guessResultCorrect') || 'Exact !'}
+                    <div style={{marginTop:8}}>
+                      <strong>{t('speedGame.revealBase') || 'Vitesse de base:'}</strong> {target && (target.base_stats.speed || 0)}
+                    </div>
+                  </>
+                ) : (
+                  (guessResult.outcome === 'higher' ? (t('speedGame.guessResultHigher') || 'Trop haut') : (t('speedGame.guessResultLower') || 'Trop bas'))
+                )}
+              </div>
+
+              {guessResult.outcome === 'correct' ? (
+                <div style={{marginTop:8}}>
+                  <button onClick={() => { setGuessResult(null); setGuessValue(''); pickTarget() }}>{t('speedGame.playAgain') || 'Rejouer'}</button>
+                </div>
+              ) : null}
+            </div>
+          )}
+        </div>
+      )}
 
       {result && (
         <div className="result-panel">
