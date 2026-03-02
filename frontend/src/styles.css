@@ -434,95 +434,7 @@ select option:hover {
   box-shadow: 0 6px 18px rgba(59,130,246,0.16);
 }
 
-/* Speed game specific styles */
-.speed-game-page {
-  padding: 18px;
-}
-
-.speed-game-page .mode-switch button {
-  padding: 8px 14px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid var(--border);
-  color: var(--text);
-  border-radius: 10px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 150ms ease;
-}
-.speed-game-page .mode-switch button[disabled] {
-  opacity: 0.6;
-  cursor: default;
-  transform: none;
-}
-.speed-game-page .mode-switch button:hover:not([disabled]) {
-  transform: translateY(-2px);
-  border-color: var(--accent);
-}
-
-/* Pokemon cards inside the speed game */
-.speed-game-page .pokemon-card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 14px;
-  min-width: 220px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-
-/* Center the guess board and single card */
-.guess-game-board {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
-  margin-top: 12px;
-}
-.guess-game-board .pokemon-card.single {
-  max-width: 420px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Style inputs and buttons in guess game to match app design */
-.guess-game-board input[type="number"] {
-  width: 160px;
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,0.03);
-  color: var(--text);
-  font-weight: 600;
-}
-
-.speed-game-page button {
-  background: linear-gradient(90deg, var(--accent), #2563eb);
-  border: none;
-  color: white;
-  padding: 10px 16px;
-  border-radius: 10px;
-  box-shadow: 0 8px 22px rgba(37,99,235,0.12);
-  cursor: pointer;
-  font-weight: 800;
-  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
-}
-.speed-game-page button[disabled] {
-  background: rgba(255,255,255,0.03);
-  color: var(--text-muted);
-  box-shadow: none;
-  cursor: default;
-  opacity: 0.7;
-}
-.speed-game-page button:hover:not([disabled]) {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 34px rgba(37,99,235,0.18);
-}
-
-.speed-game-page .result-panel, .speed-game-page .result-outcome, .speed-game-page .guess-outcome {
-  margin-top: 12px;
-}
+/* (Consolidated SpeedGame styles moved further down) */
 
 
 /* Make aura buttons slightly smaller on narrow screens */
@@ -3298,6 +3210,77 @@ select.form-control option:checked {
   font-size: 1rem;
   border-radius: 10px;
   box-shadow: 0 6px 18px rgba(59,130,246,0.18);
+}
+.speed-game-page .mode-switch button {
+  padding: 8px 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+.speed-game-page .mode-switch button[disabled] {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+}
+.speed-game-page .mode-switch button:hover:not([disabled]) {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+/* Center the guess board and single card */
+.guess-game-board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-top: 12px;
+}
+.guess-game-board .pokemon-card.single {
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Style inputs and buttons in guess game to match app design */
+.guess-game-board input[type="number"] {
+  width: 160px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.speed-game-page button {
+  background: linear-gradient(90deg, var(--accent), #2563eb);
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 10px;
+  box-shadow: 0 8px 22px rgba(37,99,235,0.12);
+  cursor: pointer;
+  font-weight: 800;
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+.speed-game-page button[disabled] {
+  background: rgba(255,255,255,0.03);
+  color: var(--text-muted);
+  box-shadow: none;
+  cursor: default;
+  opacity: 0.7;
+}
+.speed-game-page button:hover:not([disabled]) {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 34px rgba(37,99,235,0.18);
+}
+
+.speed-game-page .result-panel, .speed-game-page .result-outcome, .speed-game-page .guess-outcome {
+  margin-top: 12px;
 }
 .result-panel button {
   background: linear-gradient(90deg, #10b981, #06b6d4);
