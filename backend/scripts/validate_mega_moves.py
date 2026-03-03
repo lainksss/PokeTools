@@ -27,12 +27,16 @@ all_moves = json.load(open(MOVES_FILE, encoding='utf-8'))
 def parse_args():
     p = argparse.ArgumentParser(description="Validate (and optionally fill) mega moves")
     p.add_argument("--apply", action="store_true", help="Apply changes: copy base moves into mega entries and write file")
+    p.add_argument("--merge-mega", action="store_true", help="Alias for --apply (kept for backward compatibility)")
     p.add_argument("--dry-run", action="store_true", help="Only show what would be changed (default if --apply not used)")
     p.add_argument("--no-backup", action="store_true", help="When applying, don't create a backup of the original moves file")
     return p.parse_args()
 
 
 args = parse_args()
+# support legacy flag name
+if getattr(args, 'merge_mega', False):
+    args.apply = True
 
 fails = []
 checked = 0
@@ -114,6 +118,14 @@ else:
         with open(MOVES_FILE, "w", encoding="utf-8") as f:
             json.dump(all_moves, f, indent=2, ensure_ascii=False)
         print(f"Applied changes: updated {len(written)} mega entries in {MOVES_FILE}")
+
+        # remove fixed problems from the failure list so exit code reflects remaining issues
+        try:
+            fixed_slugs = {w[0] for w in written}
+            fails = [f for f in fails if f[0] not in fixed_slugs]
+        except Exception:
+            # if something unexpected happens, leave fails as-is
+            pass
 
 # exit code for CI
 import sys
