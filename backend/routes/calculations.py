@@ -6,8 +6,13 @@ POST /api/calc_damage - calcul des dégâts
 
 from flask import Blueprint, request, jsonify
 
-from utils.data_loader import load_json
-from utils.helpers import build_actor_from_payload, compute_weight_based_power
+# Support importing utils when module is used as `backend.routes` or as top-level `routes`
+try:
+    from utils.data_loader import load_json
+    from utils.helpers import build_actor_from_payload, compute_weight_based_power
+except Exception:
+    from ..utils.data_loader import load_json
+    from ..utils.helpers import build_actor_from_payload, compute_weight_based_power
 
 try:
     from calculate_statistics.calculate_statistics import calc_all_stats

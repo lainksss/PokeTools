@@ -94,10 +94,12 @@ Note: the `recoil` attribute is not universally present in `moves_with_flags.jso
 	- Test: ✅ covered by `backend/test/test_absorb_abilities.py` (zero damage + heal check).
 
 - `solid-rock` / `filter` / `prism-armor`: reduce super-effective damage by ~25%.
-	- Test: ❌
+	- Implementation: applied as a final multiplier (`other_mult *= 0.75`) when the move is super-effective (type_mult > 1.0). All three abilities have identical mechanics.
+	- Test: ✅ `solid-rock`/`filter`/`prism-armor` covered by `backend/test/test_solid_rock_filter.py` (flamethrower vs grass type with ability reduction).
 
-- `tera-shell`: when at full HP, sets `effects['tera_shell_active'] = True` (used by `calculate_damages` to adjust type effectiveness).
-	- Test: ❌
+- `tera-shell`: when at full HP, halves incoming damage (other_mult *= 0.5). Only active when the defender is at full HP.
+	- Implementation: checks `defender['hp'] >= defender['max_hp']` and applies 0.5× multiplier to other_mult if true.
+	- Test: ✅ `tera-shell` covered by `backend/test/test_tera_shell.py` (damage reduction at full/partial HP).
 
 - `sap-sipper`: grants immunity to Grass-type moves.
 	- Behavior: when hit by a Grass move the holder is immune (damage negated) and `effects['sap_sipper_activated'] = True` is set.
@@ -134,22 +136,43 @@ Note: the `recoil` attribute is not universally present in `moves_with_flags.jso
 	- Notes: Sturdy only activates when the Pokemon is at full HP; partial damage negates the ability's protection. This matches official Pokémon mechanics (e.g., generation 5+).
 	- Test: ✅ `sturdy` covered by `backend/test/test_sturdy.py` (survives KO at full HP, no protection when damaged).
 
-- `multiscale`: when at full HP, halves incoming damage (other_mult *= 0.5).
-	- Test: ❌
+- `multiscale`: when at full HP, halves incoming damage (other_mult *= 0.5). Signature ability of Dragonite.
+	- Implementation: checks `defender['hp'] >= defender['max_hp']` and applies 0.5× multiplier to other_mult if true.
+	- Test: ✅ `multiscale` covered by `backend/test/test_multiscale.py` (Solar Beam / Ice Beam with 50% reduction at full HP).
 
-- `shadow-shield`: similar to Multiscale; reduces damage to 0.5 when at full HP.
-	- Test: ❌
+- `shadow-shield`: similar to Multiscale; reduces damage to 0.5 when at full HP. Signature ability of Necrozma.
+	- Implementation: identical to Multiscale; checks full HP and applies 0.5× multiplier.
+	- Test: ✅ `shadow-shield` covered by `backend/test/test_shadow_shield.py` (Ice Beam / Solar Blade with 50% reduction at full HP).
 
-- `thick-fat`: halves damage from Fire and Ice types.
-	- Test: ❌
+- `thick-fat`: halves damage from Fire and Ice types (other_mult *= 0.5 when move type is fire or ice).
+	- Implementation: checks `move['type'] in ('fire', 'ice')` and applies 0.5× multiplier to other_mult if true.
+	- Test: ✅ `thick-fat` covered by `backend/test/test_thick_fat.py` (Ice Beam / Flamethrower with 50% reduction, baseline comparison).
 
 - `scrappy`: ignores Ghost immunities for Normal/Fighting moves (handled in damage calculations).
 	- Test: ❌
 
-- `merciless`: forces critical hits when the target is poisoned (handled in crit logic).
-	- Test: ❌
+- `merciless`: forces critical hits when the target is poisoned.
+	- Implementation: checks `defender['status'] == 'poisoned'` and forces critical hit (returns `effects['merciless_crit'] = True`).
+	- Test: ✅ `merciless` covered by `backend/test/test_merciless.py` (Solar Beam with poison status forcing crits vs normal non-crit).
 
-- `battle-armor` / `shell-armor`: prevent critical hits (handled in crit logic).
-	- Test: ❌
+- `battle-armor` / `shell-armor`: prevent critical hits (blocks critical hit calculation).
+	- Implementation: checks if defender has this ability and sets `is_critical = False` if a critical would have been triggered. Note: cannot block crits forced by ability effects like Merciless.
+	- Test: ✅ `battle-armor`/`shell-armor` covered by `backend/test/test_battle_armor.py` (demonstrates that Merciless-forced crits cannot be blocked).
 
 Note: `sniper` and other crit-related flags are set by ability handling and used in the main damage calculation to modify the critical multiplier.
+
+## Test Coverage Summary
+
+**Recently Tested (17 tests, ✅):**
+- Damage reduction abilities: `multiscale`, `shadow-shield`, `thick-fat`, `tera-shell`, `solid-rock`, `filter`, `prism-armor`
+- Critical mechanics: `merciless`, `battle-armor`, `shell-armor`
+
+**Other Fully Tested (✅):**
+- Power modifiers: `huge-power`, `sheer-force`, `tough-claws`, `strong-jaw`, `technician`, `iron-fist`, `reckless`, `steelworker`, `steely-spirit`
+- Type conversions: `aerilate`, `pixilate`, `refrigerate`, `galvanize`, `normalize`
+- Type immunity/absorption: `water-absorb`, `volt-absorb`, `dry-skin`, `flash-fire`, `lightning-rod`, `storm-drain`, `earth-eater`, `sap-sipper`, `bulletproof`, `motor-drive`, `soundproof`, `cacophony`, `wind-rider`
+- Special mechanics: `levitate`, `protean`, `libero`, `wonder-guard`, `sturdy`, `solar-power`, `guts`
+
+**Not Yet Tested (❌):**
+- Type boost at low HP: `blaze`, `torrent`, `overgrow`, `swarm`
+- Other: `victory-star`, `sniper`, `scrappy`
