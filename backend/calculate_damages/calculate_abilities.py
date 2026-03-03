@@ -327,9 +327,38 @@ def apply_ability_effects(
         ) or (def_ability == "dry-skin" and mv_type == "water"):
             type_mult = 0.0
             effects["absorbed"] = def_ability
+            # These abilities heal the holder when hit by the corresponding type.
+            # Convention: include a heal fraction (1/4 of max HP) so callers can
+            # report/heal appropriately after damage calculation.
+            try:
+                effects["absorbed_heal_fraction"] = 0.25
+            except Exception:
+                pass
     if def_ability == "flash-fire" and mv_type == "fire":
         type_mult = 0.0
+        # Flash Fire grants immunity and activation (no direct heal).
         effects["absorbed"] = "flash-fire"
+        effects["flash_fire_activated"] = True
+    # Lightning Rod: absorb Electric moves and mark activation (no heal).
+    if def_ability == "lightning-rod" and mv_type == "electric":
+        type_mult = 0.0
+        effects["absorbed"] = "lightning-rod"
+        # Signal activation so callers can apply the Sp. Atk boost elsewhere if desired
+        effects["lightning_rod_activated"] = True
+    # Storm Drain: absorb Water moves and mark activation (no heal by default).
+    if def_ability == "storm-drain" and mv_type == "water":
+        type_mult = 0.0
+        effects["absorbed"] = "storm-drain"
+        effects["storm_drain_activated"] = True
+
+    # Earth Eater: absorbs Ground moves and heals the holder instead of taking damage.
+    if def_ability == "earth-eater" and mv_type == "ground":
+        type_mult = 0.0
+        effects["absorbed"] = "earth-eater"
+        try:
+            effects["absorbed_heal_fraction"] = 0.25
+        except Exception:
+            pass
 
     # Solid Rock / Filter / Prism Armor reduce super-effective damage by 25%
     if def_ability in ("solid-rock", "filter", "prism-armor") and type_mult > 1.0:

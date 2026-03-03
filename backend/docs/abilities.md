@@ -73,10 +73,25 @@ Note: the `recoil` attribute is not universally present in `moves_with_flags.jso
 	- Test: ✅ `levitate` is tested in `backend/test/test_grounded.py` (ungrounded behavior and gravity override).
 
 - `water-absorb` / `volt-absorb` / `dry-skin`: absorb Water/Electric/Water respectively (negates damage and marks absorption effects).
-	- Test: ❌
+
+	- Behavior: when hit by the corresponding type these abilities make the holder immune (damage negated) and signal activation. `water-absorb` / `dry-skin` also restore HP (implemented as a 25% max-HP heal reported in the damage result when `max_hp` is provided). `volt-absorb` behaves similarly for Electric moves.
+	- Test: ✅ `water-absorb` / `volt-absorb` / `dry-skin` covered by `backend/test/test_absorb_abilities.py` (zero damage + heal/activation checks).
 
 - `flash-fire`: absorbs Fire moves (negates/hides damage and signals activation).
-	- Test: ❌
+	- Behavior: grants immunity to Fire moves and signals activation via `effects['flash_fire_activated'] = True`. No automatic HP restore.
+	- Test: ✅ covered by `backend/test/test_absorb_abilities.py` (zero damage + activation check).
+
+- `lightning-rod`: absorbs Electric moves (negates damage and signals activation).
+	- Behavior: when hit by an Electric move the holder is immune and `effects['lightning_rod_activated'] = True` is set; no automatic HP restore.
+	- Test: ✅ covered by `backend/test/test_absorb_abilities.py` (zero damage + activation check).
+
+- `storm-drain`: absorbs Water moves (negates damage and signals activation).
+	- Behavior: when hit by a Water move the holder is immune and `effects['storm_drain_activated'] = True` is set; no automatic HP restore in current implementation (activation flagged for consumers).
+	- Test: ✅ covered by `backend/test/test_absorb_abilities.py` (zero damage + activation check).
+
+- `earth-eater`: absorbs Ground moves and heals the holder instead of taking damage.
+	- Behavior: when hit by a Ground move the holder is immune and regains HP (implemented as a 25% max-HP heal reported in the damage result when `max_hp` is provided).
+	- Test: ✅ covered by `backend/test/test_absorb_abilities.py` (zero damage + heal check).
 
 - `solid-rock` / `filter` / `prism-armor`: reduce super-effective damage by ~25%.
 	- Test: ❌

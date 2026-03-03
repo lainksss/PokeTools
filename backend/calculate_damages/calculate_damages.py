@@ -555,7 +555,11 @@ def compute_damage_rolls(
             finalMod = chainMods(final_mods, len(final_mods), 131072)
             damage = pokeRound((damage * finalMod) / 4096)
         
-        dmg = max(1, int(damage))
+        # Allow zero damage when type effectiveness or other modifiers reduce damage to 0
+        if damage <= 0:
+            dmg = 0
+        else:
+            dmg = max(1, int(damage))
         damage_all.append(dmg)
         if defender_hp is not None:
             remaining_hp_all.append(max(0, int(defender_hp) - dmg))
@@ -955,6 +959,25 @@ def calculate_damage(
         combined_effects.update(ability_effects)
     if combined_effects:
         result["effects"] = combined_effects
+    # If an ability absorbed the move (Water Absorb / Volt Absorb / Dry Skin / Flash Fire),
+    # include healing/activation info in the result for consumers.
+    try:
+        if isinstance(ability_effects, dict):
+            absorbed = ability_effects.get("absorbed")
+            heal_frac = ability_effects.get("absorbed_heal_fraction")
+            if absorbed:
+                hp_before = defender_hp if defender_hp is not None else defender.get("hp")
+                max_hp = defender.get("max_hp") or defender.get("maxhp") or None
+                if heal_frac and hp_before is not None and max_hp:
+                    heal_amount = int(math.floor(float(max_hp) * float(heal_frac)))
+                    new_hp = min(int(max_hp), int(hp_before) + heal_amount)
+                    healed = new_hp - int(hp_before)
+                    result["healed"] = {"ability": absorbed, "amount": healed, "new_hp": new_hp}
+                else:
+                    result["healed"] = {"ability": absorbed, "amount": 0, "new_hp": hp_before}
+    except Exception:
+        # Non-fatal: don't break damage calculation if healing reporting fails
+        pass
     hp_val = defender_hp if defender_hp is not None else defender.get("hp")
     if hp_val is not None:
         ko_count = sum(1 for d in damage_all if d >= hp_val)
