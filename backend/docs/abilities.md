@@ -99,6 +99,41 @@ Note: the `recoil` attribute is not universally present in `moves_with_flags.jso
 - `tera-shell`: when at full HP, sets `effects['tera_shell_active'] = True` (used by `calculate_damages` to adjust type effectiveness).
 	- Test: ❌
 
+- `sap-sipper`: grants immunity to Grass-type moves.
+	- Behavior: when hit by a Grass move the holder is immune (damage negated) and `effects['sap_sipper_activated'] = True` is set.
+	- Test: ✅ `sap-sipper` covered by `backend/test/test_sap_sipper.py` (zero damage + activation).
+
+- `bulletproof`: grants immunity to ball/bomb moves (moves with the `"ballistics"` flag).
+	- Behavior: when hit by a ballistics move the holder is immune (damage negated) and `effects['bulletproof_activated'] = True` is set.
+	- Implementation: move flags are loaded from `data/moves_with_flags.json` at runtime; detection checks for `"ballistics"` in the move's flag list.
+	- Test: ✅ `bulletproof` covered by `backend/test/test_bulletproof.py` (blocks ball/bomb moves like Seed Bomb, allows normal moves).
+
+- `motor-drive`: grants immunity to Electric-type moves.
+	- Behavior: when hit by an Electric move the holder is immune (damage negated) and `effects['motor_drive_activated'] = True` is set.
+	- Test: ✅ `motor-drive` covered by `backend/test/test_motor_drive.py` (zero damage + activation).
+
+- `soundproof` / `cacophony`: grant immunity to sound-based moves (moves with the `"sound"` flag).
+	- Behavior: when hit by a sound move the holder is immune (damage negated) and activation is flagged (e.g., `effects['soundproof_activated'] = True` or `effects['cacophony_activated'] = True`).
+	- Implementation: move flags are loaded from `data/moves_with_flags.json` at runtime; detection checks for `"sound"` in the move's flag list.
+	- Test: ✅ `soundproof`/`cacophony` covered by `backend/test/test_soundproof.py` (blocks sound moves, dual ability support).
+
+- `wind-rider`: grants immunity to wind-based moves.
+	- Behavior: when hit by a wind move the holder is immune (damage negated) and `effects['wind_rider_activated'] = True` is set.
+	- Implementation: moves are detected by hardcoded name list: `{"razor-wind", "whirlwind", "tailwind", "icy-wind", "silver-wind", "ominous-wind", "fairy-wind"}`. This approach accommodates moves not yet flagged in `moves_with_flags.json`.
+	- Test: ✅ `wind-rider` covered by `backend/test/test_wind_rider.py` (blocks wind moves, allows normal moves).
+
+- `wonder-guard`: blocks all non-super-effective moves.
+	- Behavior: only moves with type effectiveness > 1.0 (super-effective) deal damage; all neutral/non-effective moves are blocked (damage set to 0.0).
+	- Implementation: implemented as a flag-based check in `calculate_damages.py` (lines ~820–827) after type multipliers are computed. The handler returns `effects['wonder_guard_enabled'] = True`, and the main pipeline checks `type_mult <= 1.0` to nullify damage.
+	- Notes: this ability requires special post-computation handling because it depends on the final `type_mult` value, which is computed after `apply_ability_effects()` returns. Shedinja's Wonder Guard is particularly important in competitive play.
+	- Test: ✅ `wonder-guard` covered by `backend/test/test_wonder_guard.py` (blocks non-super-effective moves, allows super-effective).
+
+- `sturdy`: grants immunity to KO at full HP; guarantees survival at 1 HP if damage would otherwise cause KO.
+	- Behavior: when the holder is at full HP and takes damage that would normally result in KO (remaining HP ≤ 0), the damage is capped so that the holder survives at exactly 1 HP. If the holder is not at full HP, Sturdy provides no protection.
+	- Implementation: implemented as a post-damage-calculation check in `calculate_damages.py` (lines ~957–968). After damage rolls are computed, if the defender has Sturdy and `current_hp == max_hp`, all damage values are capped at `max_hp - 1` and remaining HP is recalculated.
+	- Notes: Sturdy only activates when the Pokemon is at full HP; partial damage negates the ability's protection. This matches official Pokémon mechanics (e.g., generation 5+).
+	- Test: ✅ `sturdy` covered by `backend/test/test_sturdy.py` (survives KO at full HP, no protection when damaged).
+
 - `multiscale`: when at full HP, halves incoming damage (other_mult *= 0.5).
 	- Test: ❌
 

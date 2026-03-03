@@ -820,6 +820,12 @@ def calculate_damage(
     if ability_type_mult == 0.0:
         type_mult = 0.0
 
+    # Wonder Guard: only super-effective moves deal damage (after type_mult is computed)
+    if ability_effects.get("wonder_guard_enabled") and type_mult <= 1.0:
+        type_mult = 0.0
+        ability_effects["immune"] = "wonder-guard"
+        ability_effects["wonder_guard_blocked"] = True
+
     # Aura support delegated to special_conditions module
     try:
         aura_mult = compute_aura_multiplier(attacker, defender, field, mv_type)
@@ -946,6 +952,20 @@ def calculate_damage(
         ability_effects.setdefault("sniper", True)
 
     damage_all, remaining_hp_all = compute_damage_rolls(base, rand_list, multipliers, defender_hp if defender_hp is not None else defender.get("hp"), terrain_effects)
+
+    # Sturdy: if at full HP and damage would KO, survive at 1 HP instead
+    def_ability = (defender.get("ability") or "").lower().replace("_", "-").replace(" ", "-")
+    if def_ability == "sturdy":
+        max_hp = defender.get("max_hp") or defender.get("maxhp")
+        current_hp = defender_hp if defender_hp is not None else defender.get("hp")
+        if max_hp and current_hp and current_hp == max_hp:
+            # At full HP: cap damage so that at least 1 HP survives
+            damage_all = [min(dmg, max_hp - 1) for dmg in damage_all]
+            # Recompute remaining_hp based on capped damage
+            remaining_hp_all = [max(1, current_hp - dmg) if current_hp is not None else None for dmg in damage_all]
+            if ability_effects is None:
+                ability_effects = {}
+            ability_effects["sturdy_activated"] = True
 
     result = {"damage_all": damage_all, "remaining_hp_all": remaining_hp_all, "base_val": base}
     # Merge weather and terrain effect flags for consumers

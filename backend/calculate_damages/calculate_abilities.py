@@ -398,6 +398,77 @@ def apply_ability_effects(
             mul("other_mult", 0.5)
             effects["thick_fat"] = True
 
+    # Sap Sipper: grants immunity to Grass-type moves
+    if def_ability == "sap-sipper" and mv_type == "grass":
+        type_mult = 0.0
+        effects["immune"] = "sap-sipper"
+        effects["sap_sipper_activated"] = True
+
+    # Bulletproof: grants immunity to ball and bomb moves
+    if def_ability == "bulletproof":
+        # Check if move has ballistics flag (ball/bomb moves) from precomputed flags
+        flags = []
+        if _MOVES_WITH_FLAGS and mv_name:
+            flags = [f.lower() for f in (_MOVES_WITH_FLAGS.get(mv_name, []) or [])]
+        is_ballistics = "ballistics" in flags
+        if is_ballistics:
+            type_mult = 0.0
+            effects["immune"] = "bulletproof"
+            effects["bulletproof_activated"] = True
+
+    # Motor Drive: grants immunity to Electric-type moves and activates (triggers Attack boost in battle)
+    if def_ability == "motor-drive" and mv_type == "electric":
+        type_mult = 0.0
+        effects["immune"] = "motor-drive"
+        effects["motor_drive_activated"] = True  # In battle, this would trigger +1 Attack stage
+
+    # Soundproof / Cacophony: grants immunity to sound-based moves
+    if def_ability in ["soundproof", "cacophony"]:
+        # Check if move has sound flag from precomputed flags
+        flags = []
+        if _MOVES_WITH_FLAGS and mv_name:
+            flags = [f.lower() for f in (_MOVES_WITH_FLAGS.get(mv_name, []) or [])]
+        is_sound = "sound" in flags
+        if is_sound:
+            type_mult = 0.0
+            ability_name = "soundproof" if def_ability == "soundproof" else "cacophony"
+            effects["immune"] = ability_name
+            effects[f"{def_ability}_activated"] = True
+
+    # Sturdy: grants immunity to one-hit KO (OHKO) moves
+    if def_ability == "sturdy":
+        # Check if move is an OHKO move by name (Horn Drill, Guillotine, Sheer Cold)
+        ohko_moves = {"horn-drill", "guillotine", "sheer-cold"}
+        is_ohko = mv_name in ohko_moves
+        if is_ohko:
+            type_mult = 0.0
+            effects["immune"] = "sturdy"
+            effects["sturdy_activated"] = True
+
+    # Wind Rider: grants immunity to wind-based moves and activates (triggers Attack boost in battle)
+    if def_ability == "wind-rider":
+        # Check if move has wind flag from precomputed flags or specific wind move names
+        flags = []
+        if _MOVES_WITH_FLAGS and mv_name:
+            flags = [f.lower() for f in (_MOVES_WITH_FLAGS.get(mv_name, []) or [])]
+        is_wind = "wind" in flags
+        # Also check against specific wind move names (Razor Wind, Whirlwind, Tailwind, etc.)
+        wind_moves = {"razor-wind", "whirlwind", "tailwind", "icy-wind", "silver-wind", "ominous-wind", "fairy-wind"}
+        if mv_name in wind_moves:
+            is_wind = True
+        if is_wind:
+            type_mult = 0.0
+            effects["immune"] = "wind-rider"
+            effects["wind_rider_activated"] = True  # In battle, this would trigger +1 Attack stage
+
+    # Wonder Guard: only super-effective moves deal damage (Shedinja's main ability)
+    # NOTE: We can't check type_mult here since it's passed as 1.0 and computed later.
+    # Instead, we return a flag that tells calculate_damages.py to apply the check after
+    # type_mult is computed.
+    if def_ability == "wonder-guard":
+        # Return a flag; calculate_damages.py will apply this after type effectiveness is computed
+        effects["wonder_guard_enabled"] = True
+
     # Neuroforce / Beast Boost etc increase damage in particular circumstances (not implemented here)
 
     return multipliers, A, D, type_mult, effects
