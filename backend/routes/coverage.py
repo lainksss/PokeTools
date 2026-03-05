@@ -7,8 +7,13 @@ POST /api/analyze_type_coverage - analyse la couverture de types
 import json
 from flask import Blueprint, request, jsonify, Response, stream_with_context
 
-from utils.data_loader import load_json
-from utils.helpers import build_actor_from_payload
+# Support utils import either as top-level `utils` or as `backend.utils`
+try:
+    from utils.data_loader import load_json
+    from utils.helpers import build_actor_from_payload
+except Exception:
+    from ..utils.data_loader import load_json
+    from ..utils.helpers import build_actor_from_payload
 
 try:
     from calculate_damages.calculate_damages import calculate_damage

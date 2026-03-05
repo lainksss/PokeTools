@@ -11,6 +11,15 @@ export default function ResultsPanel({ result, showTitle = true }) {
 
   // Calculate statistics
   const rolls = result.damage_all || []
+  // Determine number of hits to display: prefer move.multi_hit.min, then move.hits, else 1
+  const hitsCount = (() => {
+    if (result.move) {
+      const mh = result.move.multi_hit || {}
+      if (mh && mh.min) return mh.min
+      if (result.move.hits) return result.move.hits
+    }
+    return 1
+  })()
   const remainingHP = result.remaining_hp_all || []
   const defenderHP = result.defender_hp || 0
   
@@ -61,6 +70,21 @@ export default function ResultsPanel({ result, showTitle = true }) {
       {rolls.length > 0 && (
         <div className="damage-rolls">
           <h4>Possible damage</h4>
+          {/* Multi-hit summary: show min/max totals using the minimum hit count */}
+          {result.move && (result.move.multi_hit || result.move.hits) && (() => {
+            const mh = result.move.multi_hit || {}
+            const minHits = mh && mh.min ? mh.min : (result.move.hits || 1)
+            const minRoll = Math.min(...rolls)
+            const maxRoll = Math.max(...rolls)
+            const minTotal = minRoll * minHits
+            const maxTotal = maxRoll * minHits
+            return (
+              <div className="damage-range" style={{marginBottom:8}}>
+                <div className="damage-label">Possible damage ({hitsCount} hits) :</div>
+                <div className="damage-values">{minTotal} &nbsp;--&gt; &nbsp;{maxTotal}</div>
+              </div>
+            )
+          })()}
           <div className="rolls-inline">
             {rolls.map((dmg, i) => {
               const hpLeft = remainingHP[i] !== undefined ? remainingHP[i] : '?'

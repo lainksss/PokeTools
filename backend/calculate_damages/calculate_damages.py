@@ -197,15 +197,14 @@ def compute_stat_with_stages_only(pkm: Dict, key: str, stages_key: str) -> float
 
 def determine_crit_effective(attacker: Dict, defender: Dict, is_critical: bool, move: Dict) -> bool:
     crit_effective = is_critical
-    if defender.get("ability") in ("battle-armor", "shell-armor") or defender.get("lucky_chant"):
-        crit_effective = False
-    always_crit = {"storm-throw", "frost-breath", "zippy-zap", "surging-strikes", "wicked-blow", "flower-trick"}
-    if move.get("name") in always_crit or move.get("always_crit"):
+    if move.get("crit"):
         crit_effective = True
     if attacker.get("ability") == "merciless" and defender.get("status") == "poisoned":
         crit_effective = True
     if attacker.get("laser_focus"):
         crit_effective = True
+    if defender.get("ability") in ("battle-armor", "shell-armor") or defender.get("lucky_chant"):
+        crit_effective = False
     return crit_effective
 
 
@@ -555,7 +554,11 @@ def compute_damage_rolls(
             finalMod = chainMods(final_mods, len(final_mods), 131072)
             damage = pokeRound((damage * finalMod) / 4096)
         
-        dmg = max(1, int(damage))
+        # Allow zero damage when type effectiveness or other modifiers reduce damage to 0
+        if damage <= 0:
+            dmg = 0
+        else:
+            dmg = max(1, int(damage))
         damage_all.append(dmg)
         if defender_hp is not None:
             remaining_hp_all.append(max(0, int(defender_hp) - dmg))
@@ -816,6 +819,12 @@ def calculate_damage(
     if ability_type_mult == 0.0:
         type_mult = 0.0
 
+    # Wonder Guard: only super-effective moves deal damage (after type_mult is computed)
+    if ability_effects.get("wonder_guard_enabled") and type_mult <= 1.0:
+        type_mult = 0.0
+        ability_effects["immune"] = "wonder-guard"
+        ability_effects["wonder_guard_blocked"] = True
+
     # Aura support delegated to special_conditions module
     try:
         aura_mult = compute_aura_multiplier(attacker, defender, field, mv_type)
@@ -943,6 +952,30 @@ def calculate_damage(
 
     damage_all, remaining_hp_all = compute_damage_rolls(base, rand_list, multipliers, defender_hp if defender_hp is not None else defender.get("hp"), terrain_effects)
 
+    # Sturdy: if at full HP and damage would KO, survive at 1 HP instead
+    def_ability = (defender.get("ability") or "").lower().replace("_", "-").replace(" ", "-")
+    if def_ability == "sturdy":
+        max_hp = defender.get("max_hp") or defender.get("maxhp")
+        current_hp = defender_hp if defender_hp is not None else defender.get("hp")
+        if max_hp and current_hp and current_hp == max_hp:
+            # Only apply Sturdy if at least one damage roll would actually KO
+            try:
+                would_ko = any(dmg >= current_hp for dmg in damage_all)
+            except TypeError:
+                # If damage values are not comparable, skip Sturdy post-processing
+                would_ko = False
+            if would_ko:
+                # At full HP and at least one roll KOs: cap damage so that at least 1 HP survives
+                damage_all = [min(dmg, max_hp - 1) for dmg in damage_all]
+                # Recompute remaining_hp based on capped damage
+                remaining_hp_all = [
+                    max(1, current_hp - dmg) if current_hp is not None else None
+                    for dmg in damage_all
+                ]
+                if ability_effects is None:
+                    ability_effects = {}
+                ability_effects["sturdy_activated"] = True
+
     result = {"damage_all": damage_all, "remaining_hp_all": remaining_hp_all, "base_val": base}
     # Merge weather and terrain effect flags for consumers
     combined_effects: Dict = {}
@@ -955,6 +988,25 @@ def calculate_damage(
         combined_effects.update(ability_effects)
     if combined_effects:
         result["effects"] = combined_effects
+    # If an ability absorbed the move (Water Absorb / Volt Absorb / Dry Skin / Flash Fire),
+    # include healing/activation info in the result for consumers.
+    try:
+        if isinstance(ability_effects, dict):
+            absorbed = ability_effects.get("absorbed")
+            heal_frac = ability_effects.get("absorbed_heal_fraction")
+            if absorbed:
+                hp_before = defender_hp if defender_hp is not None else defender.get("hp")
+                max_hp = defender.get("max_hp") or defender.get("maxhp") or None
+                if heal_frac and hp_before is not None and max_hp:
+                    heal_amount = int(math.floor(float(max_hp) * float(heal_frac)))
+                    new_hp = min(int(max_hp), int(hp_before) + heal_amount)
+                    healed = new_hp - int(hp_before)
+                    result["healed"] = {"ability": absorbed, "amount": healed, "new_hp": new_hp}
+                else:
+                    result["healed"] = {"ability": absorbed, "amount": 0, "new_hp": hp_before}
+    except Exception:
+        # Non-fatal: don't break damage calculation if healing reporting fails
+        pass
     hp_val = defender_hp if defender_hp is not None else defender.get("hp")
     if hp_val is not None:
         ko_count = sum(1 for d in damage_all if d >= hp_val)

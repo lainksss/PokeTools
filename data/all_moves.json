@@ -5,6 +5,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "karate-chop": {
@@ -13,6 +14,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "double-slap": {
@@ -20,7 +22,11 @@
     "power": 15,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 5
+    },
+    "crit": false,
     "targets": 1
   },
   "comet-punch": {
@@ -28,7 +34,11 @@
     "power": 18,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 5
+    },
+    "crit": false,
     "targets": 1
   },
   "mega-punch": {
@@ -37,6 +47,7 @@
     "accuracy": 85,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "pay-day": {
@@ -45,6 +56,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "fire-punch": {
@@ -53,6 +65,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "ice-punch": {
@@ -61,6 +74,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "thunder-punch": {
@@ -69,6 +83,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "scratch": {
@@ -77,6 +92,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "vice-grip": {
@@ -85,6 +101,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "guillotine": {
@@ -93,6 +110,7 @@
     "accuracy": 30,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "razor-wind": {
@@ -101,6 +119,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "swords-dance": {
@@ -109,6 +128,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "cut": {
@@ -117,6 +137,7 @@
     "accuracy": 95,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "gust": {
@@ -125,6 +146,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "wing-attack": {
@@ -133,6 +155,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "whirlwind": {
@@ -141,6 +164,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "fly": {
@@ -149,6 +173,7 @@
     "accuracy": 95,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "bind": {
@@ -157,6 +182,7 @@
     "accuracy": 85,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "slam": {
@@ -165,6 +191,7 @@
     "accuracy": 75,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "vine-whip": {
@@ -173,6 +200,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "stomp": {
@@ -181,6 +209,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "double-kick": {
@@ -188,7 +217,11 @@
     "power": 30,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 2
+    },
+    "crit": false,
     "targets": 1
   },
   "mega-kick": {
@@ -197,6 +230,7 @@
     "accuracy": 75,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "jump-kick": {
@@ -205,6 +239,7 @@
     "accuracy": 95,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "rolling-kick": {
@@ -213,6 +248,7 @@
     "accuracy": 85,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sand-attack": {
@@ -221,6 +257,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "headbutt": {
@@ -229,6 +266,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "horn-attack": {
@@ -237,6 +275,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "fury-attack": {
@@ -244,7 +283,11 @@
     "power": 15,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 5
+    },
+    "crit": false,
     "targets": 1
   },
   "horn-drill": {
@@ -253,6 +296,7 @@
     "accuracy": 30,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "tackle": {
@@ -261,6 +305,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "body-slam": {
@@ -269,6 +314,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "wrap": {
@@ -277,6 +323,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "take-down": {
@@ -285,6 +332,7 @@
     "accuracy": 85,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "thrash": {
@@ -293,6 +341,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "double-edge": {
@@ -301,6 +350,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "tail-whip": {
@@ -309,6 +359,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "poison-sting": {
@@ -317,6 +368,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "twineedle": {
@@ -324,7 +376,11 @@
     "power": 25,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 2
+    },
+    "crit": false,
     "targets": 1
   },
   "pin-missile": {
@@ -332,7 +388,11 @@
     "power": 25,
     "accuracy": 95,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 5
+    },
+    "crit": false,
     "targets": 1
   },
   "leer": {
@@ -341,6 +401,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "bite": {
@@ -349,6 +410,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "growl": {
@@ -357,6 +419,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "roar": {
@@ -365,6 +428,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sing": {
@@ -373,6 +437,7 @@
     "accuracy": 55,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "supersonic": {
@@ -381,6 +446,7 @@
     "accuracy": 55,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sonic-boom": {
@@ -389,6 +455,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "disable": {
@@ -397,6 +464,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "acid": {
@@ -405,6 +473,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "ember": {
@@ -413,6 +482,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "flamethrower": {
@@ -421,6 +491,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "mist": {
@@ -429,6 +500,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "water-gun": {
@@ -437,6 +509,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "hydro-pump": {
@@ -445,6 +518,7 @@
     "accuracy": 80,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "surf": {
@@ -453,6 +527,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "ice-beam": {
@@ -461,6 +536,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "blizzard": {
@@ -469,6 +545,7 @@
     "accuracy": 70,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "psybeam": {
@@ -477,6 +554,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "bubble-beam": {
@@ -485,6 +563,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "aurora-beam": {
@@ -493,6 +572,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "hyper-beam": {
@@ -501,6 +581,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "peck": {
@@ -509,6 +590,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "drill-peck": {
@@ -517,6 +599,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "submission": {
@@ -525,6 +608,7 @@
     "accuracy": 80,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "low-kick": {
@@ -533,6 +617,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "counter": {
@@ -541,6 +626,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "seismic-toss": {
@@ -549,6 +635,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "strength": {
@@ -557,6 +644,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "absorb": {
@@ -565,6 +653,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "mega-drain": {
@@ -573,6 +662,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "leech-seed": {
@@ -581,6 +671,7 @@
     "accuracy": 90,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "growth": {
@@ -589,6 +680,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "razor-leaf": {
@@ -597,6 +689,7 @@
     "accuracy": 95,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "solar-beam": {
@@ -605,6 +698,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "poison-powder": {
@@ -613,6 +707,7 @@
     "accuracy": 75,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "stun-spore": {
@@ -621,6 +716,7 @@
     "accuracy": 75,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sleep-powder": {
@@ -629,6 +725,7 @@
     "accuracy": 75,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "petal-dance": {
@@ -637,6 +734,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "string-shot": {
@@ -645,6 +743,7 @@
     "accuracy": 95,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "dragon-rage": {
@@ -653,6 +752,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "fire-spin": {
@@ -661,6 +761,7 @@
     "accuracy": 85,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "thunder-shock": {
@@ -669,6 +770,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "thunderbolt": {
@@ -677,6 +779,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "thunder-wave": {
@@ -685,6 +788,7 @@
     "accuracy": 90,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "thunder": {
@@ -693,6 +797,7 @@
     "accuracy": 70,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "rock-throw": {
@@ -701,6 +806,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "earthquake": {
@@ -709,6 +815,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "fissure": {
@@ -717,6 +824,7 @@
     "accuracy": 30,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "dig": {
@@ -725,6 +833,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "toxic": {
@@ -733,6 +842,7 @@
     "accuracy": 90,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "confusion": {
@@ -741,6 +851,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "psychic": {
@@ -749,6 +860,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "hypnosis": {
@@ -757,6 +869,7 @@
     "accuracy": 60,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "meditate": {
@@ -765,6 +878,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "agility": {
@@ -773,6 +887,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "quick-attack": {
@@ -781,6 +896,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "rage": {
@@ -789,6 +905,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "teleport": {
@@ -797,6 +914,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "night-shade": {
@@ -805,6 +923,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "mimic": {
@@ -813,6 +932,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "screech": {
@@ -821,6 +941,7 @@
     "accuracy": 85,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "double-team": {
@@ -829,6 +950,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "recover": {
@@ -837,6 +959,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "harden": {
@@ -845,6 +968,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "minimize": {
@@ -853,6 +977,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "smokescreen": {
@@ -861,6 +986,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "confuse-ray": {
@@ -869,6 +995,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "withdraw": {
@@ -877,6 +1004,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "defense-curl": {
@@ -885,6 +1013,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "barrier": {
@@ -893,6 +1022,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "light-screen": {
@@ -901,6 +1031,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "haze": {
@@ -909,6 +1040,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "reflect": {
@@ -917,6 +1049,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "focus-energy": {
@@ -925,6 +1058,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "bide": {
@@ -933,6 +1067,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "metronome": {
@@ -941,6 +1076,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "mirror-move": {
@@ -949,6 +1085,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "self-destruct": {
@@ -957,6 +1094,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "egg-bomb": {
@@ -965,6 +1103,7 @@
     "accuracy": 75,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "lick": {
@@ -973,6 +1112,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "smog": {
@@ -981,6 +1121,7 @@
     "accuracy": 70,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sludge": {
@@ -989,6 +1130,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "bone-club": {
@@ -997,6 +1139,7 @@
     "accuracy": 85,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "fire-blast": {
@@ -1005,6 +1148,7 @@
     "accuracy": 85,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "waterfall": {
@@ -1013,6 +1157,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "clamp": {
@@ -1021,6 +1166,7 @@
     "accuracy": 85,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "swift": {
@@ -1029,6 +1175,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "skull-bash": {
@@ -1037,6 +1184,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "spike-cannon": {
@@ -1044,7 +1192,11 @@
     "power": 20,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 5
+    },
+    "crit": false,
     "targets": 1
   },
   "constrict": {
@@ -1053,6 +1205,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "amnesia": {
@@ -1061,6 +1214,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "kinesis": {
@@ -1069,6 +1223,7 @@
     "accuracy": 80,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "soft-boiled": {
@@ -1077,6 +1232,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "high-jump-kick": {
@@ -1085,6 +1241,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "glare": {
@@ -1093,6 +1250,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "dream-eater": {
@@ -1101,6 +1259,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "poison-gas": {
@@ -1109,6 +1268,7 @@
     "accuracy": 90,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "barrage": {
@@ -1116,7 +1276,11 @@
     "power": 15,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 5
+    },
+    "crit": false,
     "targets": 1
   },
   "leech-life": {
@@ -1125,6 +1289,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "lovely-kiss": {
@@ -1133,6 +1298,7 @@
     "accuracy": 75,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sky-attack": {
@@ -1141,6 +1307,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "transform": {
@@ -1149,6 +1316,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "bubble": {
@@ -1157,6 +1325,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "dizzy-punch": {
@@ -1165,6 +1334,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "spore": {
@@ -1173,6 +1343,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "flash": {
@@ -1181,6 +1352,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "psywave": {
@@ -1189,6 +1361,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "splash": {
@@ -1197,6 +1370,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "acid-armor": {
@@ -1205,6 +1379,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "crabhammer": {
@@ -1213,6 +1388,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "explosion": {
@@ -1221,6 +1397,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "fury-swipes": {
@@ -1228,7 +1405,11 @@
     "power": 18,
     "accuracy": 80,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 5
+    },
+    "crit": false,
     "targets": 1
   },
   "bonemerang": {
@@ -1236,7 +1417,11 @@
     "power": 50,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 2
+    },
+    "crit": false,
     "targets": 1
   },
   "rest": {
@@ -1245,6 +1430,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "rock-slide": {
@@ -1253,6 +1439,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "hyper-fang": {
@@ -1261,6 +1448,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sharpen": {
@@ -1269,6 +1457,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "conversion": {
@@ -1277,6 +1466,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "tri-attack": {
@@ -1285,6 +1475,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "super-fang": {
@@ -1293,6 +1484,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "slash": {
@@ -1301,6 +1493,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "substitute": {
@@ -1309,6 +1502,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "struggle": {
@@ -1317,6 +1511,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sketch": {
@@ -1325,6 +1520,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "triple-kick": {
@@ -1332,7 +1528,11 @@
     "power": 10,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 3,
+      "max": 3
+    },
+    "crit": false,
     "targets": 1
   },
   "thief": {
@@ -1341,6 +1541,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "spider-web": {
@@ -1349,6 +1550,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "mind-reader": {
@@ -1357,6 +1559,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "nightmare": {
@@ -1365,6 +1568,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "flame-wheel": {
@@ -1373,6 +1577,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "snore": {
@@ -1381,6 +1586,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "curse": {
@@ -1389,6 +1595,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "flail": {
@@ -1397,6 +1604,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "conversion-2": {
@@ -1405,6 +1613,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "aeroblast": {
@@ -1413,6 +1622,7 @@
     "accuracy": 95,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "cotton-spore": {
@@ -1421,6 +1631,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "reversal": {
@@ -1429,6 +1640,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "spite": {
@@ -1437,6 +1649,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "powder-snow": {
@@ -1445,6 +1658,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "protect": {
@@ -1453,6 +1667,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "mach-punch": {
@@ -1461,6 +1676,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "scary-face": {
@@ -1469,6 +1685,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "feint-attack": {
@@ -1477,6 +1694,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sweet-kiss": {
@@ -1485,6 +1703,7 @@
     "accuracy": 75,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "belly-drum": {
@@ -1493,6 +1712,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sludge-bomb": {
@@ -1501,6 +1721,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "mud-slap": {
@@ -1509,6 +1730,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "octazooka": {
@@ -1517,6 +1739,7 @@
     "accuracy": 85,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "spikes": {
@@ -1525,6 +1748,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "zap-cannon": {
@@ -1533,6 +1757,7 @@
     "accuracy": 50,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "foresight": {
@@ -1541,6 +1766,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "destiny-bond": {
@@ -1549,6 +1775,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "perish-song": {
@@ -1557,6 +1784,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "icy-wind": {
@@ -1565,6 +1793,7 @@
     "accuracy": 95,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "detect": {
@@ -1573,6 +1802,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "bone-rush": {
@@ -1580,7 +1810,11 @@
     "power": 25,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 5
+    },
+    "crit": false,
     "targets": 1
   },
   "lock-on": {
@@ -1589,6 +1823,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "outrage": {
@@ -1597,6 +1832,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sandstorm": {
@@ -1605,6 +1841,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "giga-drain": {
@@ -1613,6 +1850,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "endure": {
@@ -1621,6 +1859,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "charm": {
@@ -1629,6 +1868,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "rollout": {
@@ -1637,6 +1877,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "false-swipe": {
@@ -1645,6 +1886,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "swagger": {
@@ -1653,6 +1895,7 @@
     "accuracy": 85,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "milk-drink": {
@@ -1661,6 +1904,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "spark": {
@@ -1669,6 +1913,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "fury-cutter": {
@@ -1677,6 +1922,7 @@
     "accuracy": 95,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "steel-wing": {
@@ -1685,6 +1931,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "mean-look": {
@@ -1693,6 +1940,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "attract": {
@@ -1701,6 +1949,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sleep-talk": {
@@ -1709,6 +1958,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "heal-bell": {
@@ -1717,6 +1967,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "return": {
@@ -1725,6 +1976,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "present": {
@@ -1733,6 +1985,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "frustration": {
@@ -1741,6 +1994,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "safeguard": {
@@ -1749,6 +2003,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "pain-split": {
@@ -1757,6 +2012,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sacred-fire": {
@@ -1765,6 +2021,7 @@
     "accuracy": 95,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "magnitude": {
@@ -1773,6 +2030,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "dynamic-punch": {
@@ -1781,6 +2039,7 @@
     "accuracy": 50,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "megahorn": {
@@ -1789,6 +2048,7 @@
     "accuracy": 85,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "dragon-breath": {
@@ -1797,6 +2057,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "baton-pass": {
@@ -1805,6 +2066,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "encore": {
@@ -1813,6 +2075,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "pursuit": {
@@ -1821,6 +2084,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "rapid-spin": {
@@ -1829,6 +2093,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sweet-scent": {
@@ -1837,6 +2102,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "iron-tail": {
@@ -1845,6 +2111,7 @@
     "accuracy": 75,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "metal-claw": {
@@ -1853,6 +2120,7 @@
     "accuracy": 95,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "vital-throw": {
@@ -1861,6 +2129,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "morning-sun": {
@@ -1869,6 +2138,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "synthesis": {
@@ -1877,6 +2147,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "moonlight": {
@@ -1885,6 +2156,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "hidden-power": {
@@ -1893,6 +2165,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "cross-chop": {
@@ -1901,6 +2174,7 @@
     "accuracy": 80,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "twister": {
@@ -1909,6 +2183,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "rain-dance": {
@@ -1917,6 +2192,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "sunny-day": {
@@ -1925,6 +2201,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "crunch": {
@@ -1933,6 +2210,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "mirror-coat": {
@@ -1941,6 +2219,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "psych-up": {
@@ -1949,6 +2228,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "extreme-speed": {
@@ -1957,6 +2237,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "ancient-power": {
@@ -1965,6 +2246,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shadow-ball": {
@@ -1973,6 +2255,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "future-sight": {
@@ -1981,6 +2264,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "rock-smash": {
@@ -1989,6 +2273,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "whirlpool": {
@@ -1997,6 +2282,7 @@
     "accuracy": 85,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "beat-up": {
@@ -2004,7 +2290,11 @@
     "power": null,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 6,
+      "max": 6
+    },
+    "crit": false,
     "targets": 1
   },
   "fake-out": {
@@ -2013,6 +2303,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "uproar": {
@@ -2021,6 +2312,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "stockpile": {
@@ -2029,6 +2321,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "spit-up": {
@@ -2037,6 +2330,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "swallow": {
@@ -2045,6 +2339,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "heat-wave": {
@@ -2053,6 +2348,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "hail": {
@@ -2061,6 +2357,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "torment": {
@@ -2069,6 +2366,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "flatter": {
@@ -2077,6 +2375,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "will-o-wisp": {
@@ -2085,6 +2384,7 @@
     "accuracy": 85,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "memento": {
@@ -2093,6 +2393,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "facade": {
@@ -2101,6 +2402,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "focus-punch": {
@@ -2109,6 +2411,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "smelling-salts": {
@@ -2117,6 +2420,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "follow-me": {
@@ -2125,6 +2429,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "nature-power": {
@@ -2133,6 +2438,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "charge": {
@@ -2141,6 +2447,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "taunt": {
@@ -2149,6 +2456,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "helping-hand": {
@@ -2157,6 +2465,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "trick": {
@@ -2165,6 +2474,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "role-play": {
@@ -2173,6 +2483,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "wish": {
@@ -2181,6 +2492,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "assist": {
@@ -2189,6 +2501,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "ingrain": {
@@ -2197,6 +2510,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "superpower": {
@@ -2205,6 +2519,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "magic-coat": {
@@ -2213,6 +2528,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "recycle": {
@@ -2221,6 +2537,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "revenge": {
@@ -2229,6 +2546,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "brick-break": {
@@ -2237,6 +2555,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "yawn": {
@@ -2245,6 +2564,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "knock-off": {
@@ -2253,6 +2573,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "endeavor": {
@@ -2261,6 +2582,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "eruption": {
@@ -2269,6 +2591,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "skill-swap": {
@@ -2277,6 +2600,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "imprison": {
@@ -2285,6 +2609,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "refresh": {
@@ -2293,6 +2618,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "grudge": {
@@ -2301,6 +2627,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "snatch": {
@@ -2309,6 +2636,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "secret-power": {
@@ -2317,6 +2645,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "dive": {
@@ -2325,6 +2654,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "arm-thrust": {
@@ -2332,7 +2662,11 @@
     "power": 15,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 5
+    },
+    "crit": false,
     "targets": 1
   },
   "camouflage": {
@@ -2341,6 +2675,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "tail-glow": {
@@ -2349,6 +2684,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "luster-purge": {
@@ -2357,6 +2693,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "mist-ball": {
@@ -2365,6 +2702,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "feather-dance": {
@@ -2373,6 +2711,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "teeter-dance": {
@@ -2381,6 +2720,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "blaze-kick": {
@@ -2389,6 +2729,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "mud-sport": {
@@ -2397,6 +2738,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "ice-ball": {
@@ -2405,6 +2747,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "needle-arm": {
@@ -2413,6 +2756,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "slack-off": {
@@ -2421,6 +2765,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "hyper-voice": {
@@ -2429,6 +2774,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "poison-fang": {
@@ -2437,6 +2783,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "crush-claw": {
@@ -2445,6 +2792,7 @@
     "accuracy": 95,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "blast-burn": {
@@ -2453,6 +2801,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "hydro-cannon": {
@@ -2461,6 +2810,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "meteor-mash": {
@@ -2469,6 +2819,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "astonish": {
@@ -2477,6 +2828,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "weather-ball": {
@@ -2485,6 +2837,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "aromatherapy": {
@@ -2493,6 +2846,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "fake-tears": {
@@ -2501,6 +2855,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "air-cutter": {
@@ -2509,6 +2864,7 @@
     "accuracy": 95,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "overheat": {
@@ -2517,6 +2873,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "odor-sleuth": {
@@ -2525,6 +2882,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "rock-tomb": {
@@ -2533,6 +2891,7 @@
     "accuracy": 95,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "silver-wind": {
@@ -2541,6 +2900,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "metal-sound": {
@@ -2549,6 +2909,7 @@
     "accuracy": 85,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "grass-whistle": {
@@ -2557,6 +2918,7 @@
     "accuracy": 55,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "tickle": {
@@ -2565,6 +2927,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "cosmic-power": {
@@ -2573,6 +2936,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "water-spout": {
@@ -2581,6 +2945,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "signal-beam": {
@@ -2589,6 +2954,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shadow-punch": {
@@ -2597,6 +2963,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "extrasensory": {
@@ -2605,6 +2972,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sky-uppercut": {
@@ -2613,6 +2981,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sand-tomb": {
@@ -2621,6 +2990,7 @@
     "accuracy": 85,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sheer-cold": {
@@ -2629,6 +2999,7 @@
     "accuracy": 30,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "muddy-water": {
@@ -2637,6 +3008,7 @@
     "accuracy": 85,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "bullet-seed": {
@@ -2644,7 +3016,11 @@
     "power": 25,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 5
+    },
+    "crit": false,
     "targets": 1
   },
   "aerial-ace": {
@@ -2653,6 +3029,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "icicle-spear": {
@@ -2660,7 +3037,11 @@
     "power": 25,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 5
+    },
+    "crit": false,
     "targets": 1
   },
   "iron-defense": {
@@ -2669,6 +3050,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "block": {
@@ -2677,6 +3059,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "howl": {
@@ -2685,6 +3068,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "dragon-claw": {
@@ -2693,6 +3077,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "frenzy-plant": {
@@ -2701,6 +3086,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "bulk-up": {
@@ -2709,6 +3095,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "bounce": {
@@ -2717,6 +3104,7 @@
     "accuracy": 85,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "mud-shot": {
@@ -2725,6 +3113,7 @@
     "accuracy": 95,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "poison-tail": {
@@ -2733,6 +3122,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "covet": {
@@ -2741,6 +3131,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "volt-tackle": {
@@ -2749,6 +3140,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "magical-leaf": {
@@ -2757,6 +3149,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "water-sport": {
@@ -2765,6 +3158,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "calm-mind": {
@@ -2773,6 +3167,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "leaf-blade": {
@@ -2781,6 +3176,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "dragon-dance": {
@@ -2789,6 +3185,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "rock-blast": {
@@ -2796,7 +3193,11 @@
     "power": 25,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 5
+    },
+    "crit": false,
     "targets": 1
   },
   "shock-wave": {
@@ -2805,6 +3206,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "water-pulse": {
@@ -2813,6 +3215,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "doom-desire": {
@@ -2821,6 +3224,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "psycho-boost": {
@@ -2829,6 +3233,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "roost": {
@@ -2837,6 +3242,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "gravity": {
@@ -2845,6 +3251,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "miracle-eye": {
@@ -2853,6 +3260,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "wake-up-slap": {
@@ -2861,6 +3269,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "hammer-arm": {
@@ -2869,6 +3278,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "gyro-ball": {
@@ -2877,6 +3287,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "healing-wish": {
@@ -2885,6 +3296,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "brine": {
@@ -2893,6 +3305,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "natural-gift": {
@@ -2901,6 +3314,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "feint": {
@@ -2909,6 +3323,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "pluck": {
@@ -2917,6 +3332,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "tailwind": {
@@ -2925,6 +3341,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "acupressure": {
@@ -2933,6 +3350,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "metal-burst": {
@@ -2941,6 +3359,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "u-turn": {
@@ -2949,6 +3368,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "close-combat": {
@@ -2957,6 +3377,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "payback": {
@@ -2965,6 +3386,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "assurance": {
@@ -2973,6 +3395,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "embargo": {
@@ -2981,6 +3404,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "fling": {
@@ -2989,6 +3413,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "psycho-shift": {
@@ -2997,6 +3422,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "trump-card": {
@@ -3005,6 +3431,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "heal-block": {
@@ -3013,6 +3440,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "wring-out": {
@@ -3021,6 +3449,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "power-trick": {
@@ -3029,6 +3458,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "gastro-acid": {
@@ -3037,6 +3467,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "lucky-chant": {
@@ -3045,6 +3476,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "me-first": {
@@ -3053,6 +3485,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "copycat": {
@@ -3061,6 +3494,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "power-swap": {
@@ -3069,6 +3503,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "guard-swap": {
@@ -3077,6 +3512,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "punishment": {
@@ -3085,6 +3521,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "last-resort": {
@@ -3093,6 +3530,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "worry-seed": {
@@ -3101,6 +3539,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sucker-punch": {
@@ -3109,6 +3548,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "toxic-spikes": {
@@ -3117,6 +3557,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "heart-swap": {
@@ -3125,6 +3566,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "aqua-ring": {
@@ -3133,6 +3575,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "magnet-rise": {
@@ -3141,6 +3584,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "flare-blitz": {
@@ -3149,6 +3593,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "force-palm": {
@@ -3157,6 +3602,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "aura-sphere": {
@@ -3165,6 +3611,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "rock-polish": {
@@ -3173,6 +3620,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "poison-jab": {
@@ -3181,6 +3629,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "dark-pulse": {
@@ -3189,6 +3638,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "night-slash": {
@@ -3197,6 +3647,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "aqua-tail": {
@@ -3205,6 +3656,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "seed-bomb": {
@@ -3213,6 +3665,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "air-slash": {
@@ -3221,6 +3674,7 @@
     "accuracy": 95,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "x-scissor": {
@@ -3229,6 +3683,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "bug-buzz": {
@@ -3237,6 +3692,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "dragon-pulse": {
@@ -3245,6 +3701,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "dragon-rush": {
@@ -3253,6 +3710,7 @@
     "accuracy": 75,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "power-gem": {
@@ -3261,6 +3719,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "drain-punch": {
@@ -3269,6 +3728,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "vacuum-wave": {
@@ -3277,6 +3737,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "focus-blast": {
@@ -3285,6 +3746,7 @@
     "accuracy": 70,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "energy-ball": {
@@ -3293,6 +3755,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "brave-bird": {
@@ -3301,6 +3764,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "earth-power": {
@@ -3309,6 +3773,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "switcheroo": {
@@ -3317,6 +3782,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "giga-impact": {
@@ -3325,6 +3791,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "nasty-plot": {
@@ -3333,6 +3800,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "bullet-punch": {
@@ -3341,6 +3809,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "avalanche": {
@@ -3349,6 +3818,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "ice-shard": {
@@ -3357,6 +3827,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shadow-claw": {
@@ -3365,6 +3836,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "thunder-fang": {
@@ -3373,6 +3845,7 @@
     "accuracy": 95,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "ice-fang": {
@@ -3381,6 +3854,7 @@
     "accuracy": 95,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "fire-fang": {
@@ -3389,6 +3863,7 @@
     "accuracy": 95,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shadow-sneak": {
@@ -3397,6 +3872,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "mud-bomb": {
@@ -3405,6 +3881,7 @@
     "accuracy": 85,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "psycho-cut": {
@@ -3413,6 +3890,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "zen-headbutt": {
@@ -3421,6 +3899,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "mirror-shot": {
@@ -3429,6 +3908,7 @@
     "accuracy": 85,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "flash-cannon": {
@@ -3437,6 +3917,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "rock-climb": {
@@ -3445,6 +3926,7 @@
     "accuracy": 85,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "defog": {
@@ -3453,6 +3935,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "trick-room": {
@@ -3461,6 +3944,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "draco-meteor": {
@@ -3469,6 +3953,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "discharge": {
@@ -3477,6 +3962,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "lava-plume": {
@@ -3485,6 +3971,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "leaf-storm": {
@@ -3493,6 +3980,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "power-whip": {
@@ -3501,6 +3989,7 @@
     "accuracy": 85,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "rock-wrecker": {
@@ -3509,6 +3998,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "cross-poison": {
@@ -3517,6 +4007,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "gunk-shot": {
@@ -3525,6 +4016,7 @@
     "accuracy": 80,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "iron-head": {
@@ -3533,6 +4025,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "magnet-bomb": {
@@ -3541,6 +4034,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "stone-edge": {
@@ -3549,6 +4043,7 @@
     "accuracy": 80,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "captivate": {
@@ -3557,6 +4052,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "stealth-rock": {
@@ -3565,6 +4061,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "grass-knot": {
@@ -3573,6 +4070,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "chatter": {
@@ -3581,6 +4079,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "judgment": {
@@ -3589,6 +4088,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "bug-bite": {
@@ -3597,6 +4097,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "charge-beam": {
@@ -3605,6 +4106,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "wood-hammer": {
@@ -3613,6 +4115,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "aqua-jet": {
@@ -3621,6 +4124,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "attack-order": {
@@ -3629,6 +4133,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "defend-order": {
@@ -3637,6 +4142,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "heal-order": {
@@ -3645,6 +4151,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "head-smash": {
@@ -3653,6 +4160,7 @@
     "accuracy": 80,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "double-hit": {
@@ -3660,7 +4168,11 @@
     "power": 35,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 2
+    },
+    "crit": false,
     "targets": 1
   },
   "roar-of-time": {
@@ -3669,6 +4181,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "spacial-rend": {
@@ -3677,6 +4190,7 @@
     "accuracy": 95,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "lunar-dance": {
@@ -3685,6 +4199,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "crush-grip": {
@@ -3693,6 +4208,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "magma-storm": {
@@ -3701,6 +4217,7 @@
     "accuracy": 75,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "dark-void": {
@@ -3709,6 +4226,7 @@
     "accuracy": 50,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "seed-flare": {
@@ -3717,6 +4235,7 @@
     "accuracy": 85,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "ominous-wind": {
@@ -3725,6 +4244,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shadow-force": {
@@ -3733,6 +4253,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "hone-claws": {
@@ -3741,6 +4262,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "wide-guard": {
@@ -3749,6 +4271,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "guard-split": {
@@ -3757,6 +4280,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "power-split": {
@@ -3765,6 +4289,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "wonder-room": {
@@ -3773,6 +4298,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "psyshock": {
@@ -3781,6 +4307,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "venoshock": {
@@ -3789,6 +4316,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "autotomize": {
@@ -3797,6 +4325,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "rage-powder": {
@@ -3805,6 +4334,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "telekinesis": {
@@ -3813,6 +4343,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "magic-room": {
@@ -3821,6 +4352,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "smack-down": {
@@ -3829,6 +4361,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "storm-throw": {
@@ -3837,6 +4370,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": true,
     "targets": 1
   },
   "flame-burst": {
@@ -3845,6 +4379,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sludge-wave": {
@@ -3853,6 +4388,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "quiver-dance": {
@@ -3861,6 +4397,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "heavy-slam": {
@@ -3869,6 +4406,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "synchronoise": {
@@ -3877,6 +4415,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "electro-ball": {
@@ -3885,6 +4424,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "soak": {
@@ -3893,6 +4433,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "flame-charge": {
@@ -3901,6 +4442,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "coil": {
@@ -3909,6 +4451,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "low-sweep": {
@@ -3917,6 +4460,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "acid-spray": {
@@ -3925,6 +4469,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "foul-play": {
@@ -3933,6 +4478,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "simple-beam": {
@@ -3941,6 +4487,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "entrainment": {
@@ -3949,6 +4496,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "after-you": {
@@ -3957,6 +4505,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "round": {
@@ -3965,6 +4514,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "echoed-voice": {
@@ -3973,6 +4523,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "chip-away": {
@@ -3981,6 +4532,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "clear-smog": {
@@ -3989,6 +4541,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "stored-power": {
@@ -3997,6 +4550,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "quick-guard": {
@@ -4005,6 +4559,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "ally-switch": {
@@ -4013,6 +4568,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "scald": {
@@ -4021,6 +4577,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shell-smash": {
@@ -4029,6 +4586,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "heal-pulse": {
@@ -4037,6 +4595,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "hex": {
@@ -4045,6 +4604,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sky-drop": {
@@ -4053,6 +4613,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shift-gear": {
@@ -4061,6 +4622,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "circle-throw": {
@@ -4069,6 +4631,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "incinerate": {
@@ -4077,6 +4640,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "quash": {
@@ -4085,6 +4649,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "acrobatics": {
@@ -4093,6 +4658,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "reflect-type": {
@@ -4101,6 +4667,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "retaliate": {
@@ -4109,6 +4676,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "final-gambit": {
@@ -4117,6 +4685,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "bestow": {
@@ -4125,6 +4694,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "inferno": {
@@ -4133,6 +4703,7 @@
     "accuracy": 50,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "water-pledge": {
@@ -4141,6 +4712,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "fire-pledge": {
@@ -4149,6 +4721,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "grass-pledge": {
@@ -4157,6 +4730,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "volt-switch": {
@@ -4165,6 +4739,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "struggle-bug": {
@@ -4173,6 +4748,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "bulldoze": {
@@ -4181,6 +4757,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "frost-breath": {
@@ -4189,6 +4766,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": true,
     "targets": 1
   },
   "dragon-tail": {
@@ -4197,6 +4775,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "work-up": {
@@ -4205,6 +4784,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "electroweb": {
@@ -4213,6 +4793,7 @@
     "accuracy": 95,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "wild-charge": {
@@ -4221,6 +4802,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "drill-run": {
@@ -4229,6 +4811,7 @@
     "accuracy": 95,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "dual-chop": {
@@ -4236,7 +4819,11 @@
     "power": 40,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 2
+    },
+    "crit": false,
     "targets": 1
   },
   "heart-stamp": {
@@ -4245,6 +4832,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "horn-leech": {
@@ -4253,6 +4841,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sacred-sword": {
@@ -4261,6 +4850,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "razor-shell": {
@@ -4269,6 +4859,7 @@
     "accuracy": 95,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "heat-crash": {
@@ -4277,6 +4868,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "leaf-tornado": {
@@ -4285,6 +4877,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "steamroller": {
@@ -4293,6 +4886,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "cotton-guard": {
@@ -4301,6 +4895,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "night-daze": {
@@ -4309,6 +4904,7 @@
     "accuracy": 95,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "psystrike": {
@@ -4317,6 +4913,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "tail-slap": {
@@ -4324,7 +4921,11 @@
     "power": 25,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 5
+    },
+    "crit": false,
     "targets": 1
   },
   "hurricane": {
@@ -4333,6 +4934,7 @@
     "accuracy": 70,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "head-charge": {
@@ -4341,6 +4943,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "gear-grind": {
@@ -4348,7 +4951,11 @@
     "power": 50,
     "accuracy": 85,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 2
+    },
+    "crit": false,
     "targets": 1
   },
   "searing-shot": {
@@ -4357,6 +4964,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "techno-blast": {
@@ -4365,6 +4973,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "relic-song": {
@@ -4373,6 +4982,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "secret-sword": {
@@ -4381,6 +4991,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "glaciate": {
@@ -4389,6 +5000,7 @@
     "accuracy": 95,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "bolt-strike": {
@@ -4397,6 +5009,7 @@
     "accuracy": 85,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "blue-flare": {
@@ -4405,6 +5018,7 @@
     "accuracy": 85,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "fiery-dance": {
@@ -4413,6 +5027,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "freeze-shock": {
@@ -4421,6 +5036,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "ice-burn": {
@@ -4429,6 +5045,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "snarl": {
@@ -4437,6 +5054,7 @@
     "accuracy": 95,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "icicle-crash": {
@@ -4445,6 +5063,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "v-create": {
@@ -4453,6 +5072,7 @@
     "accuracy": 95,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "fusion-flare": {
@@ -4461,6 +5081,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "fusion-bolt": {
@@ -4469,6 +5090,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "flying-press": {
@@ -4477,6 +5099,7 @@
     "accuracy": 95,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "mat-block": {
@@ -4485,6 +5108,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "belch": {
@@ -4493,6 +5117,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "rototiller": {
@@ -4501,6 +5126,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "sticky-web": {
@@ -4509,6 +5135,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "fell-stinger": {
@@ -4517,6 +5144,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "phantom-force": {
@@ -4525,6 +5153,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "trick-or-treat": {
@@ -4533,6 +5162,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "noble-roar": {
@@ -4541,6 +5171,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "ion-deluge": {
@@ -4549,6 +5180,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "parabolic-charge": {
@@ -4557,6 +5189,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "forests-curse": {
@@ -4565,6 +5198,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "petal-blizzard": {
@@ -4573,6 +5207,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "freeze-dry": {
@@ -4581,6 +5216,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "disarming-voice": {
@@ -4589,6 +5225,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "parting-shot": {
@@ -4597,6 +5234,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "topsy-turvy": {
@@ -4605,6 +5243,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "draining-kiss": {
@@ -4613,6 +5252,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "crafty-shield": {
@@ -4621,6 +5261,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "flower-shield": {
@@ -4629,6 +5270,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "grassy-terrain": {
@@ -4637,6 +5279,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "misty-terrain": {
@@ -4645,6 +5288,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "electrify": {
@@ -4653,6 +5297,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "play-rough": {
@@ -4661,6 +5306,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "fairy-wind": {
@@ -4669,6 +5315,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "moonblast": {
@@ -4677,6 +5324,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "boomburst": {
@@ -4685,6 +5333,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "fairy-lock": {
@@ -4693,6 +5342,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "kings-shield": {
@@ -4701,6 +5351,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "play-nice": {
@@ -4709,6 +5360,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "confide": {
@@ -4717,6 +5369,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "diamond-storm": {
@@ -4725,6 +5378,7 @@
     "accuracy": 95,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "steam-eruption": {
@@ -4733,6 +5387,7 @@
     "accuracy": 95,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "hyperspace-hole": {
@@ -4741,6 +5396,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "water-shuriken": {
@@ -4748,7 +5404,11 @@
     "power": 15,
     "accuracy": 100,
     "damage_class": "special",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 5
+    },
+    "crit": false,
     "targets": 1
   },
   "mystical-fire": {
@@ -4757,6 +5417,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "spiky-shield": {
@@ -4765,6 +5426,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "aromatic-mist": {
@@ -4773,6 +5435,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "eerie-impulse": {
@@ -4781,6 +5444,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "venom-drench": {
@@ -4789,6 +5453,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "powder": {
@@ -4797,6 +5462,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "geomancy": {
@@ -4805,6 +5471,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "magnetic-flux": {
@@ -4813,6 +5480,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "happy-hour": {
@@ -4821,6 +5489,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "electric-terrain": {
@@ -4829,6 +5498,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "dazzling-gleam": {
@@ -4837,6 +5507,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "celebrate": {
@@ -4845,6 +5516,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "hold-hands": {
@@ -4853,6 +5525,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "baby-doll-eyes": {
@@ -4861,6 +5534,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "nuzzle": {
@@ -4869,6 +5543,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "hold-back": {
@@ -4877,6 +5552,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "infestation": {
@@ -4885,6 +5561,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "power-up-punch": {
@@ -4893,6 +5570,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "oblivion-wing": {
@@ -4901,6 +5579,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "thousand-arrows": {
@@ -4909,6 +5588,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "thousand-waves": {
@@ -4917,6 +5597,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "lands-wrath": {
@@ -4925,6 +5606,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "light-of-ruin": {
@@ -4933,6 +5615,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "origin-pulse": {
@@ -4941,6 +5624,7 @@
     "accuracy": 85,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "precipice-blades": {
@@ -4949,6 +5633,7 @@
     "accuracy": 85,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "dragon-ascent": {
@@ -4957,6 +5642,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "hyperspace-fury": {
@@ -4965,6 +5651,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "breakneck-blitz--physical": {
@@ -4973,6 +5660,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "breakneck-blitz--special": {
@@ -4981,6 +5669,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "all-out-pummeling--physical": {
@@ -4989,6 +5678,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "all-out-pummeling--special": {
@@ -4997,6 +5687,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "supersonic-skystrike--physical": {
@@ -5005,6 +5696,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "supersonic-skystrike--special": {
@@ -5013,6 +5705,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "acid-downpour--physical": {
@@ -5021,6 +5714,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "acid-downpour--special": {
@@ -5029,6 +5723,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "tectonic-rage--physical": {
@@ -5037,6 +5732,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "tectonic-rage--special": {
@@ -5045,6 +5741,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "continental-crush--physical": {
@@ -5053,6 +5750,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "continental-crush--special": {
@@ -5061,6 +5759,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "savage-spin-out--physical": {
@@ -5069,6 +5768,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "savage-spin-out--special": {
@@ -5077,6 +5777,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "never-ending-nightmare--physical": {
@@ -5085,6 +5786,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "never-ending-nightmare--special": {
@@ -5093,6 +5795,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "corkscrew-crash--physical": {
@@ -5101,6 +5804,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "corkscrew-crash--special": {
@@ -5109,6 +5813,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "inferno-overdrive--physical": {
@@ -5117,6 +5822,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "inferno-overdrive--special": {
@@ -5125,6 +5831,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "hydro-vortex--physical": {
@@ -5133,6 +5840,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "hydro-vortex--special": {
@@ -5141,6 +5849,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "bloom-doom--physical": {
@@ -5149,6 +5858,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "bloom-doom--special": {
@@ -5157,6 +5867,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "gigavolt-havoc--physical": {
@@ -5165,6 +5876,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "gigavolt-havoc--special": {
@@ -5173,6 +5885,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shattered-psyche--physical": {
@@ -5181,6 +5894,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shattered-psyche--special": {
@@ -5189,6 +5903,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "subzero-slammer--physical": {
@@ -5197,6 +5912,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "subzero-slammer--special": {
@@ -5205,6 +5921,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "devastating-drake--physical": {
@@ -5213,6 +5930,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "devastating-drake--special": {
@@ -5221,6 +5939,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "black-hole-eclipse--physical": {
@@ -5229,6 +5948,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "black-hole-eclipse--special": {
@@ -5237,6 +5957,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "twinkle-tackle--physical": {
@@ -5245,6 +5966,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "twinkle-tackle--special": {
@@ -5253,6 +5975,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "catastropika": {
@@ -5261,6 +5984,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shore-up": {
@@ -5269,6 +5993,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "first-impression": {
@@ -5277,6 +6002,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "baneful-bunker": {
@@ -5285,6 +6011,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "spirit-shackle": {
@@ -5293,6 +6020,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "darkest-lariat": {
@@ -5301,6 +6029,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sparkling-aria": {
@@ -5309,6 +6038,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "ice-hammer": {
@@ -5317,6 +6047,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "floral-healing": {
@@ -5325,6 +6056,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "high-horsepower": {
@@ -5333,6 +6065,7 @@
     "accuracy": 95,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "strength-sap": {
@@ -5341,6 +6074,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "solar-blade": {
@@ -5349,6 +6083,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "leafage": {
@@ -5357,6 +6092,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "spotlight": {
@@ -5365,6 +6101,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "toxic-thread": {
@@ -5373,6 +6110,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "laser-focus": {
@@ -5381,6 +6119,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "gear-up": {
@@ -5389,6 +6128,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "throat-chop": {
@@ -5397,6 +6137,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "pollen-puff": {
@@ -5405,6 +6146,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "anchor-shot": {
@@ -5413,6 +6155,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "psychic-terrain": {
@@ -5421,6 +6164,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "lunge": {
@@ -5429,6 +6173,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "fire-lash": {
@@ -5437,6 +6182,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "power-trip": {
@@ -5445,6 +6191,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "burn-up": {
@@ -5453,6 +6200,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "speed-swap": {
@@ -5461,6 +6209,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "smart-strike": {
@@ -5469,6 +6218,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "purify": {
@@ -5477,6 +6227,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "revelation-dance": {
@@ -5485,6 +6236,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "core-enforcer": {
@@ -5493,6 +6245,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "trop-kick": {
@@ -5501,6 +6254,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "instruct": {
@@ -5509,6 +6263,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "beak-blast": {
@@ -5517,6 +6272,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "clanging-scales": {
@@ -5525,6 +6281,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "dragon-hammer": {
@@ -5533,6 +6290,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "brutal-swing": {
@@ -5541,6 +6299,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "aurora-veil": {
@@ -5549,6 +6308,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sinister-arrow-raid": {
@@ -5557,6 +6317,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "malicious-moonsault": {
@@ -5565,6 +6326,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "oceanic-operetta": {
@@ -5573,6 +6335,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "guardian-of-alola": {
@@ -5581,6 +6344,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "soul-stealing-7-star-strike": {
@@ -5589,6 +6353,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "stoked-sparksurfer": {
@@ -5597,6 +6362,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "pulverizing-pancake": {
@@ -5605,6 +6371,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "extreme-evoboost": {
@@ -5613,6 +6380,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "genesis-supernova": {
@@ -5621,6 +6389,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shell-trap": {
@@ -5629,6 +6398,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "fleur-cannon": {
@@ -5637,6 +6407,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "psychic-fangs": {
@@ -5645,6 +6416,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "stomping-tantrum": {
@@ -5653,6 +6425,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shadow-bone": {
@@ -5661,6 +6434,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "accelerock": {
@@ -5669,6 +6443,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "liquidation": {
@@ -5677,6 +6452,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "prismatic-laser": {
@@ -5685,6 +6461,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "spectral-thief": {
@@ -5693,6 +6470,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sunsteel-strike": {
@@ -5701,6 +6479,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "moongeist-beam": {
@@ -5709,6 +6488,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "tearful-look": {
@@ -5717,6 +6497,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "zing-zap": {
@@ -5725,6 +6506,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "natures-madness": {
@@ -5733,6 +6515,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "multi-attack": {
@@ -5741,6 +6524,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "10-000-000-volt-thunderbolt": {
@@ -5749,6 +6533,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "mind-blown": {
@@ -5757,6 +6542,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "plasma-fists": {
@@ -5765,6 +6551,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "photon-geyser": {
@@ -5773,6 +6560,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "light-that-burns-the-sky": {
@@ -5781,6 +6569,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "searing-sunraze-smash": {
@@ -5789,6 +6578,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "menacing-moonraze-maelstrom": {
@@ -5797,6 +6587,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "lets-snuggle-forever": {
@@ -5805,6 +6596,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "splintered-stormshards": {
@@ -5813,6 +6605,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "clangorous-soulblaze": {
@@ -5821,6 +6614,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "zippy-zap": {
@@ -5829,6 +6623,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "splishy-splash": {
@@ -5837,6 +6632,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "floaty-fall": {
@@ -5845,6 +6641,7 @@
     "accuracy": 95,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "pika-papow": {
@@ -5853,6 +6650,7 @@
     "accuracy": null,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "bouncy-bubble": {
@@ -5861,6 +6659,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "buzzy-buzz": {
@@ -5869,6 +6668,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sizzly-slide": {
@@ -5877,6 +6677,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "glitzy-glow": {
@@ -5885,6 +6686,7 @@
     "accuracy": 95,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "baddy-bad": {
@@ -5893,6 +6695,7 @@
     "accuracy": 95,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sappy-seed": {
@@ -5901,6 +6704,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "freezy-frost": {
@@ -5909,6 +6713,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "sparkly-swirl": {
@@ -5917,6 +6722,7 @@
     "accuracy": 85,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "veevee-volley": {
@@ -5925,6 +6731,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "double-iron-bash": {
@@ -5932,7 +6739,11 @@
     "power": 60,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 2
+    },
+    "crit": false,
     "targets": 1
   },
   "max-guard": {
@@ -5941,6 +6752,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "dynamax-cannon": {
@@ -5949,6 +6761,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "snipe-shot": {
@@ -5957,6 +6770,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "jaw-lock": {
@@ -5965,6 +6779,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "stuff-cheeks": {
@@ -5973,6 +6788,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "no-retreat": {
@@ -5981,6 +6797,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "tar-shot": {
@@ -5989,6 +6806,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "magic-powder": {
@@ -5997,6 +6815,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "dragon-darts": {
@@ -6004,7 +6823,11 @@
     "power": 50,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 2
+    },
+    "crit": false,
     "targets": 1
   },
   "teatime": {
@@ -6013,6 +6836,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "octolock": {
@@ -6021,6 +6845,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "bolt-beak": {
@@ -6029,6 +6854,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "fishious-rend": {
@@ -6037,6 +6863,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "court-change": {
@@ -6045,6 +6872,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "max-flare": {
@@ -6053,6 +6881,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "max-flutterby": {
@@ -6061,6 +6890,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "max-lightning": {
@@ -6069,6 +6899,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "max-strike": {
@@ -6077,6 +6908,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "max-knuckle": {
@@ -6085,6 +6917,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "max-phantasm": {
@@ -6093,6 +6926,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "max-hailstorm": {
@@ -6101,6 +6935,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "max-ooze": {
@@ -6109,6 +6944,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "max-geyser": {
@@ -6117,6 +6953,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "max-airstream": {
@@ -6125,6 +6962,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "max-starfall": {
@@ -6133,6 +6971,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "max-wyrmwind": {
@@ -6141,6 +6980,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "max-mindstorm": {
@@ -6149,6 +6989,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "max-rockfall": {
@@ -6157,6 +6998,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "max-quake": {
@@ -6165,6 +7007,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "max-darkness": {
@@ -6173,6 +7016,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "max-overgrowth": {
@@ -6181,6 +7025,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "max-steelspike": {
@@ -6189,6 +7034,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "clangorous-soul": {
@@ -6197,6 +7043,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "body-press": {
@@ -6205,6 +7052,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "decorate": {
@@ -6213,6 +7061,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "drum-beating": {
@@ -6221,6 +7070,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "snap-trap": {
@@ -6229,6 +7079,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "pyro-ball": {
@@ -6237,6 +7088,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "behemoth-blade": {
@@ -6245,6 +7097,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "behemoth-bash": {
@@ -6253,6 +7106,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "aura-wheel": {
@@ -6261,6 +7115,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "breaking-swipe": {
@@ -6269,6 +7124,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "branch-poke": {
@@ -6277,6 +7133,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "overdrive": {
@@ -6285,6 +7142,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "apple-acid": {
@@ -6293,6 +7151,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "grav-apple": {
@@ -6301,6 +7160,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "spirit-break": {
@@ -6309,6 +7169,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "strange-steam": {
@@ -6317,6 +7178,7 @@
     "accuracy": 95,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "life-dew": {
@@ -6325,6 +7187,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "obstruct": {
@@ -6333,6 +7196,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "false-surrender": {
@@ -6341,6 +7205,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "meteor-assault": {
@@ -6349,6 +7214,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "eternabeam": {
@@ -6357,6 +7223,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "steel-beam": {
@@ -6365,6 +7232,7 @@
     "accuracy": 95,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "expanding-force": {
@@ -6373,6 +7241,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "steel-roller": {
@@ -6381,6 +7250,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "scale-shot": {
@@ -6388,7 +7258,11 @@
     "power": 25,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 5
+    },
+    "crit": false,
     "targets": 1
   },
   "meteor-beam": {
@@ -6397,6 +7271,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shell-side-arm": {
@@ -6405,6 +7280,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "misty-explosion": {
@@ -6413,6 +7289,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "grassy-glide": {
@@ -6421,6 +7298,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "rising-voltage": {
@@ -6429,6 +7307,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "terrain-pulse": {
@@ -6437,6 +7316,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "skitter-smack": {
@@ -6445,6 +7325,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "burning-jealousy": {
@@ -6453,6 +7334,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "lash-out": {
@@ -6461,6 +7343,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "poltergeist": {
@@ -6469,6 +7352,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "corrosive-gas": {
@@ -6477,6 +7361,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "coaching": {
@@ -6485,6 +7370,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "flip-turn": {
@@ -6493,6 +7379,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "triple-axel": {
@@ -6500,7 +7387,11 @@
     "power": 20,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 3,
+      "max": 3
+    },
+    "crit": false,
     "targets": 1
   },
   "dual-wingbeat": {
@@ -6508,7 +7399,11 @@
     "power": 40,
     "accuracy": 90,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 2,
+      "max": 2
+    },
+    "crit": false,
     "targets": 1
   },
   "scorching-sands": {
@@ -6517,6 +7412,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "jungle-healing": {
@@ -6525,6 +7421,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "wicked-blow": {
@@ -6533,6 +7430,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": true,
     "targets": 1
   },
   "surging-strikes": {
@@ -6540,7 +7438,11 @@
     "power": 25,
     "accuracy": 100,
     "damage_class": "physical",
-    "multi_hit": null,
+    "multi_hit": {
+      "min": 3,
+      "max": 3
+    },
+    "crit": true,
     "targets": 1
   },
   "thunder-cage": {
@@ -6549,6 +7451,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "dragon-energy": {
@@ -6557,6 +7460,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "freezing-glare": {
@@ -6565,6 +7469,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "fiery-wrath": {
@@ -6573,6 +7478,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "thunderous-kick": {
@@ -6581,6 +7487,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "glacial-lance": {
@@ -6589,6 +7496,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "astral-barrage": {
@@ -6597,6 +7505,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "eerie-spell": {
@@ -6605,6 +7514,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "dire-claw": {
@@ -6613,6 +7523,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "psyshield-bash": {
@@ -6621,6 +7532,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "power-shift": {
@@ -6629,6 +7541,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "stone-axe": {
@@ -6637,6 +7550,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "springtide-storm": {
@@ -6645,6 +7559,7 @@
     "accuracy": 80,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "mystical-power": {
@@ -6653,6 +7568,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "raging-fury": {
@@ -6661,6 +7577,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "wave-crash": {
@@ -6669,6 +7586,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "chloroblast": {
@@ -6677,6 +7595,7 @@
     "accuracy": 95,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "mountain-gale": {
@@ -6685,6 +7604,7 @@
     "accuracy": 85,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "victory-dance": {
@@ -6693,6 +7613,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "headlong-rush": {
@@ -6701,6 +7622,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "barb-barrage": {
@@ -6709,6 +7631,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "esper-wing": {
@@ -6717,6 +7640,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "bitter-malice": {
@@ -6725,6 +7649,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shelter": {
@@ -6733,6 +7658,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "triple-arrows": {
@@ -6741,6 +7667,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "infernal-parade": {
@@ -6749,6 +7676,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "ceaseless-edge": {
@@ -6757,6 +7685,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "bleakwind-storm": {
@@ -6765,6 +7694,7 @@
     "accuracy": 80,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "wildbolt-storm": {
@@ -6773,6 +7703,7 @@
     "accuracy": 80,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "sandsear-storm": {
@@ -6781,6 +7712,7 @@
     "accuracy": 80,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "lunar-blessing": {
@@ -6789,6 +7721,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "take-heart": {
@@ -6797,6 +7730,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "tera-blast": {
@@ -6805,6 +7739,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "silk-trap": {
@@ -6813,6 +7748,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "axe-kick": {
@@ -6821,6 +7757,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "last-respects": {
@@ -6829,6 +7766,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "lumina-crash": {
@@ -6837,6 +7775,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "order-up": {
@@ -6845,6 +7784,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "jet-punch": {
@@ -6853,6 +7793,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "spicy-extract": {
@@ -6861,6 +7802,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "spin-out": {
@@ -6869,6 +7811,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "population-bomb": {
@@ -6877,6 +7820,7 @@
     "accuracy": 90,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "ice-spinner": {
@@ -6885,6 +7829,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "glaive-rush": {
@@ -6893,6 +7838,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "revival-blessing": {
@@ -6901,6 +7847,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "salt-cure": {
@@ -6909,6 +7856,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "triple-dive": {
@@ -6917,6 +7865,7 @@
     "accuracy": 95,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "mortal-spin": {
@@ -6925,6 +7874,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "doodle": {
@@ -6933,6 +7883,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "fillet-away": {
@@ -6941,6 +7892,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "kowtow-cleave": {
@@ -6949,6 +7901,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "flower-trick": {
@@ -6957,6 +7910,7 @@
     "accuracy": null,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "torch-song": {
@@ -6965,6 +7919,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "aqua-step": {
@@ -6973,6 +7928,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "raging-bull": {
@@ -6981,6 +7937,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "make-it-rain": {
@@ -6989,6 +7946,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "psyblade": {
@@ -6997,6 +7955,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "hydro-steam": {
@@ -7005,6 +7964,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "ruination": {
@@ -7013,6 +7973,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "collision-course": {
@@ -7021,6 +7982,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "electro-drift": {
@@ -7029,6 +7991,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shed-tail": {
@@ -7037,6 +8000,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "chilly-reception": {
@@ -7045,6 +8009,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "tidy-up": {
@@ -7053,6 +8018,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "snowscape": {
@@ -7061,6 +8027,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "pounce": {
@@ -7069,6 +8036,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "trailblaze": {
@@ -7077,6 +8045,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "chilling-water": {
@@ -7085,6 +8054,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "hyper-drill": {
@@ -7093,6 +8063,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "twin-beam": {
@@ -7101,6 +8072,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "rage-fist": {
@@ -7109,6 +8081,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "armor-cannon": {
@@ -7117,6 +8090,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "bitter-blade": {
@@ -7125,6 +8099,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "double-shock": {
@@ -7133,6 +8108,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "gigaton-hammer": {
@@ -7141,6 +8117,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "comeuppance": {
@@ -7149,6 +8126,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "aqua-cutter": {
@@ -7157,6 +8135,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "blazing-torque": {
@@ -7165,6 +8144,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "wicked-torque": {
@@ -7173,6 +8153,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "noxious-torque": {
@@ -7181,6 +8162,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "combat-torque": {
@@ -7189,6 +8171,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "magical-torque": {
@@ -7197,6 +8180,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "blood-moon": {
@@ -7205,6 +8189,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "matcha-gotcha": {
@@ -7213,6 +8198,7 @@
     "accuracy": 90,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "syrup-bomb": {
@@ -7221,6 +8207,7 @@
     "accuracy": 85,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "ivy-cudgel": {
@@ -7229,6 +8216,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "electro-shot": {
@@ -7237,6 +8225,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "tera-starstorm": {
@@ -7245,6 +8234,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 2
   },
   "fickle-beam": {
@@ -7253,6 +8243,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "burning-bulwark": {
@@ -7261,6 +8252,7 @@
     "accuracy": 0,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "thunderclap": {
@@ -7269,6 +8261,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "mighty-cleave": {
@@ -7277,6 +8270,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "tachyon-cutter": {
@@ -7285,6 +8279,7 @@
     "accuracy": 0,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "hard-press": {
@@ -7293,6 +8288,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "dragon-cheer": {
@@ -7301,6 +8297,7 @@
     "accuracy": 0,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "alluring-voice": {
@@ -7309,6 +8306,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "temper-flare": {
@@ -7317,6 +8315,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "supercell-slam": {
@@ -7325,6 +8324,7 @@
     "accuracy": 95,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "psychic-noise": {
@@ -7333,6 +8333,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "upper-hand": {
@@ -7341,6 +8342,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "malignant-chain": {
@@ -7349,6 +8351,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shadow-rush": {
@@ -7357,6 +8360,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shadow-blast": {
@@ -7365,6 +8369,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shadow-blitz": {
@@ -7373,6 +8378,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shadow-bolt": {
@@ -7381,6 +8387,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shadow-break": {
@@ -7389,6 +8396,7 @@
     "accuracy": 100,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shadow-chill": {
@@ -7397,6 +8405,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shadow-end": {
@@ -7405,6 +8414,7 @@
     "accuracy": 60,
     "damage_class": "physical",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shadow-fire": {
@@ -7413,6 +8423,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shadow-rave": {
@@ -7421,6 +8432,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shadow-storm": {
@@ -7429,6 +8441,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shadow-wave": {
@@ -7437,6 +8450,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shadow-down": {
@@ -7445,6 +8459,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shadow-half": {
@@ -7453,6 +8468,7 @@
     "accuracy": 100,
     "damage_class": "special",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "shadow-hold": {
@@ -7461,6 +8477,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shadow-mist": {
@@ -7469,6 +8486,7 @@
     "accuracy": 100,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shadow-panic": {
@@ -7477,6 +8495,7 @@
     "accuracy": 90,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 1
   },
   "shadow-shed": {
@@ -7485,6 +8504,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   },
   "shadow-sky": {
@@ -7493,6 +8513,7 @@
     "accuracy": null,
     "damage_class": "status",
     "multi_hit": null,
+    "crit": false,
     "targets": 3
   }
 }

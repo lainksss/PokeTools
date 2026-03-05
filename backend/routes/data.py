@@ -15,7 +15,11 @@ GET /api/health - health check
 
 from flask import Blueprint, jsonify
 
-from utils.data_loader import load_json
+# Support importing when package is `backend.routes` or when `routes` is on PYTHONPATH
+try:
+    from utils.data_loader import load_json
+except (ImportError, ModuleNotFoundError):
+    from ..utils.data_loader import load_json
 
 bp = Blueprint('data', __name__, url_prefix='/api')
 
@@ -146,6 +150,22 @@ def move_names():
     """Retourne les traductions des noms d'attaques (toutes langues)."""
     moves_data = load_json("all_move_names_multilang.json") or {}
     return jsonify(moves_data)
+
+
+@bp.route("/move/<string:move_slug>", methods=["GET"])
+def move_detail(move_slug: str):
+    """Return full move details from all_moves.json for the given slug.
+
+    Example: GET /api/move/bullet-seed
+    """
+    all_moves = load_json("all_moves.json") or {}
+    mv = all_moves.get(move_slug)
+    if mv is None:
+        return jsonify({"error": "move not found"}), 404
+    # Attach the slug as name for convenience
+    resp = {"name": move_slug}
+    resp.update(mv)
+    return jsonify(resp)
 
 
 @bp.route("/abilities", methods=["GET"])

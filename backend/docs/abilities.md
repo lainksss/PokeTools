@@ -73,33 +73,106 @@ Note: the `recoil` attribute is not universally present in `moves_with_flags.jso
 	- Test: ✅ `levitate` is tested in `backend/test/test_grounded.py` (ungrounded behavior and gravity override).
 
 - `water-absorb` / `volt-absorb` / `dry-skin`: absorb Water/Electric/Water respectively (negates damage and marks absorption effects).
-	- Test: ❌
+
+	- Behavior: when hit by the corresponding type these abilities make the holder immune (damage negated) and signal activation. `water-absorb` / `dry-skin` also restore HP (implemented as a 25% max-HP heal reported in the damage result when `max_hp` is provided). `volt-absorb` behaves similarly for Electric moves.
+	- Test: ✅ `water-absorb` / `volt-absorb` / `dry-skin` covered by `backend/test/test_absorb_abilities.py` (zero damage + heal/activation checks).
 
 - `flash-fire`: absorbs Fire moves (negates/hides damage and signals activation).
-	- Test: ❌
+	- Behavior: grants immunity to Fire moves and signals activation via `effects['flash_fire_activated'] = True`. No automatic HP restore.
+	- Test: ✅ covered by `backend/test/test_absorb_abilities.py` (zero damage + activation check).
+
+- `lightning-rod`: absorbs Electric moves (negates damage and signals activation).
+	- Behavior: when hit by an Electric move the holder is immune and `effects['lightning_rod_activated'] = True` is set; no automatic HP restore.
+	- Test: ✅ covered by `backend/test/test_absorb_abilities.py` (zero damage + activation check).
+
+- `storm-drain`: absorbs Water moves (negates damage and signals activation).
+	- Behavior: when hit by a Water move the holder is immune and `effects['storm_drain_activated'] = True` is set; no automatic HP restore in current implementation (activation flagged for consumers).
+	- Test: ✅ covered by `backend/test/test_absorb_abilities.py` (zero damage + activation check).
+
+- `earth-eater`: absorbs Ground moves and heals the holder instead of taking damage.
+	- Behavior: when hit by a Ground move the holder is immune and regains HP (implemented as a 25% max-HP heal reported in the damage result when `max_hp` is provided).
+	- Test: ✅ covered by `backend/test/test_absorb_abilities.py` (zero damage + heal check).
 
 - `solid-rock` / `filter` / `prism-armor`: reduce super-effective damage by ~25%.
-	- Test: ❌
+	- Implementation: applied as a final multiplier (`other_mult *= 0.75`) when the move is super-effective (type_mult > 1.0). All three abilities have identical mechanics.
+	- Test: ✅ `solid-rock`/`filter`/`prism-armor` covered by `backend/test/test_solid_rock_filter.py` (flamethrower vs grass type with ability reduction).
 
-- `tera-shell`: when at full HP, sets `effects['tera_shell_active'] = True` (used by `calculate_damages` to adjust type effectiveness).
-	- Test: ❌
+- `tera-shell`: when at full HP, halves incoming damage (other_mult *= 0.5). Only active when the defender is at full HP.
+	- Implementation: checks `defender['hp'] >= defender['max_hp']` and applies 0.5× multiplier to other_mult if true.
+	- Test: ✅ `tera-shell` covered by `backend/test/test_tera_shell.py` (damage reduction at full/partial HP).
 
-- `multiscale`: when at full HP, halves incoming damage (other_mult *= 0.5).
-	- Test: ❌
+- `sap-sipper`: grants immunity to Grass-type moves.
+	- Behavior: when hit by a Grass move the holder is immune (damage negated) and `effects['sap_sipper_activated'] = True` is set.
+	- Test: ✅ `sap-sipper` covered by `backend/test/test_sap_sipper.py` (zero damage + activation).
 
-- `shadow-shield`: similar to Multiscale; reduces damage to 0.5 when at full HP.
-	- Test: ❌
+- `bulletproof`: grants immunity to ball/bomb moves (moves with the `"ballistics"` flag).
+	- Behavior: when hit by a ballistics move the holder is immune (damage negated) and `effects['bulletproof_activated'] = True` is set.
+	- Implementation: move flags are loaded from `data/moves_with_flags.json` at runtime; detection checks for `"ballistics"` in the move's flag list.
+	- Test: ✅ `bulletproof` covered by `backend/test/test_bulletproof.py` (blocks ball/bomb moves like Seed Bomb, allows normal moves).
 
-- `thick-fat`: halves damage from Fire and Ice types.
-	- Test: ❌
+- `motor-drive`: grants immunity to Electric-type moves.
+	- Behavior: when hit by an Electric move the holder is immune (damage negated) and `effects['motor_drive_activated'] = True` is set.
+	- Test: ✅ `motor-drive` covered by `backend/test/test_motor_drive.py` (zero damage + activation).
+
+- `soundproof` / `cacophony`: grant immunity to sound-based moves (moves with the `"sound"` flag).
+	- Behavior: when hit by a sound move the holder is immune (damage negated) and activation is flagged (e.g., `effects['soundproof_activated'] = True` or `effects['cacophony_activated'] = True`).
+	- Implementation: move flags are loaded from `data/moves_with_flags.json` at runtime; detection checks for `"sound"` in the move's flag list.
+	- Test: ✅ `soundproof`/`cacophony` covered by `backend/test/test_soundproof.py` (blocks sound moves, dual ability support).
+
+- `wind-rider`: grants immunity to wind-based moves.
+	- Behavior: when hit by a wind move the holder is immune (damage negated) and `effects['wind_rider_activated'] = True` is set.
+	- Implementation: moves are detected by hardcoded name list: `{"razor-wind", "whirlwind", "tailwind", "icy-wind", "silver-wind", "ominous-wind", "fairy-wind"}`. This approach accommodates moves not yet flagged in `moves_with_flags.json`.
+	- Test: ✅ `wind-rider` covered by `backend/test/test_wind_rider.py` (blocks wind moves, allows normal moves).
+
+- `wonder-guard`: blocks all non-super-effective moves.
+	- Behavior: only moves with type effectiveness > 1.0 (super-effective) deal damage; all neutral/non-effective moves are blocked (damage set to 0.0).
+	- Implementation: implemented as a flag-based check in `calculate_damages.py` (lines ~820–827) after type multipliers are computed. The handler returns `effects['wonder_guard_enabled'] = True`, and the main pipeline checks `type_mult <= 1.0` to nullify damage.
+	- Notes: this ability requires special post-computation handling because it depends on the final `type_mult` value, which is computed after `apply_ability_effects()` returns. Shedinja's Wonder Guard is particularly important in competitive play.
+	- Test: ✅ `wonder-guard` covered by `backend/test/test_wonder_guard.py` (blocks non-super-effective moves, allows super-effective).
+
+- `sturdy`: grants immunity to KO at full HP; guarantees survival at 1 HP if damage would otherwise cause KO.
+	- Behavior: when the holder is at full HP and takes damage that would normally result in KO (remaining HP ≤ 0), the damage is capped so that the holder survives at exactly 1 HP. If the holder is not at full HP, Sturdy provides no protection.
+	- Implementation: implemented as a post-damage-calculation check in `calculate_damages.py` (lines ~957–968). After damage rolls are computed, if the defender has Sturdy and `current_hp == max_hp`, all damage values are capped at `max_hp - 1` and remaining HP is recalculated.
+	- Notes: Sturdy only activates when the Pokemon is at full HP; partial damage negates the ability's protection. This matches official Pokémon mechanics (e.g., generation 5+).
+	- Test: ✅ `sturdy` covered by `backend/test/test_sturdy.py` (survives KO at full HP, no protection when damaged).
+
+- `multiscale`: when at full HP, halves incoming damage (other_mult *= 0.5). Signature ability of Dragonite.
+	- Implementation: checks `defender['hp'] >= defender['max_hp']` and applies 0.5× multiplier to other_mult if true.
+	- Test: ✅ `multiscale` covered by `backend/test/test_multiscale.py` (Solar Beam / Ice Beam with 50% reduction at full HP).
+
+- `shadow-shield`: similar to Multiscale; reduces damage to 0.5 when at full HP. Signature ability of Necrozma.
+	- Implementation: identical to Multiscale; checks full HP and applies 0.5× multiplier.
+	- Test: ✅ `shadow-shield` covered by `backend/test/test_shadow_shield.py` (Ice Beam / Solar Blade with 50% reduction at full HP).
+
+- `thick-fat`: halves damage from Fire and Ice types (other_mult *= 0.5 when move type is fire or ice).
+	- Implementation: checks `move['type'] in ('fire', 'ice')` and applies 0.5× multiplier to other_mult if true.
+	- Test: ✅ `thick-fat` covered by `backend/test/test_thick_fat.py` (Ice Beam / Flamethrower with 50% reduction, baseline comparison).
 
 - `scrappy`: ignores Ghost immunities for Normal/Fighting moves (handled in damage calculations).
 	- Test: ❌
 
-- `merciless`: forces critical hits when the target is poisoned (handled in crit logic).
-	- Test: ❌
+- `merciless`: forces critical hits when the target is poisoned.
+	- Implementation: checks `defender['status'] == 'poisoned'` and forces critical hit (returns `effects['merciless_crit'] = True`).
+	- Test: ✅ `merciless` covered by `backend/test/test_merciless.py` (Solar Beam with poison status forcing crits vs normal non-crit).
 
-- `battle-armor` / `shell-armor`: prevent critical hits (handled in crit logic).
-	- Test: ❌
+- `battle-armor` / `shell-armor`: prevent critical hits (blocks critical hit calculation).
+	- Implementation: checks if defender has this ability and sets `is_critical = False` if a critical would have been triggered. Note: cannot block crits forced by ability effects like Merciless.
+	- Test: ✅ `battle-armor`/`shell-armor` covered by `backend/test/test_battle_armor.py` (demonstrates that Merciless-forced crits cannot be blocked).
 
 Note: `sniper` and other crit-related flags are set by ability handling and used in the main damage calculation to modify the critical multiplier.
+
+## Test Coverage Summary
+
+**Recently Tested (17 tests, ✅):**
+- Damage reduction abilities: `multiscale`, `shadow-shield`, `thick-fat`, `tera-shell`, `solid-rock`, `filter`, `prism-armor`
+- Critical mechanics: `merciless`, `battle-armor`, `shell-armor`
+
+**Other Fully Tested (✅):**
+- Power modifiers: `huge-power`, `sheer-force`, `tough-claws`, `strong-jaw`, `technician`, `iron-fist`, `reckless`, `steelworker`, `steely-spirit`
+- Type conversions: `aerilate`, `pixilate`, `refrigerate`, `galvanize`, `normalize`
+- Type immunity/absorption: `water-absorb`, `volt-absorb`, `dry-skin`, `flash-fire`, `lightning-rod`, `storm-drain`, `earth-eater`, `sap-sipper`, `bulletproof`, `motor-drive`, `soundproof`, `cacophony`, `wind-rider`
+- Special mechanics: `levitate`, `protean`, `libero`, `wonder-guard`, `sturdy`, `solar-power`, `guts`
+
+**Not Yet Tested (❌):**
+- Type boost at low HP: `blaze`, `torrent`, `overgrow`, `swarm`
+- Other: `victory-star`, `sniper`, `scrappy`

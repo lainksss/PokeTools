@@ -69,7 +69,7 @@ The list below was taken from `backend/items/items.py`. These items have behavio
 - `wise-glasses`
 - `expert-belt`
 - `normal-gem`
-- `loaded-dice`
+- `loaded-dice` # Loaded Dice causes multi-strike moves used by the holder to always hit at least four times, if possible. To add in front
 - `iron-ball`
 - `macho-brace`
 - `air-balloon`
