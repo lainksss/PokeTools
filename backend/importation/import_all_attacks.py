@@ -1,23 +1,3 @@
-# Fetches all Pokémon moves from PokeAPI and builds a dict:
-#
-# Example export (sample structure saved to data/all_moves.json):
-# {
-#   "thunderbolt": {
-#     "type": "electric",
-#     "power": 90,
-#     "accuracy": 100,
-#     "damage_class": "special",
-#     "multi_hit": null
-#   },
-#   "double-slap": {
-#     "type": "normal",
-#     "power": 15,
-#     "accuracy": 85,
-#     "damage_class": "physical",
-#     "multi_hit": {"min":2, "max":5}
-#   }
-# }
-
 import requests
 import time
 import json
@@ -29,53 +9,66 @@ MOVE_ENDPOINT = f"{BASE}/move"
 SESSION = requests.Session()
 SESSION.headers.update({"User-Agent": "pokemon-move-fetcher/1.0 (by you)"})
 
+
 def fetch_all_moves_urls() -> List[Dict]:
     """Return the list of resource objects {name, url} for all moves."""
     url = MOVE_ENDPOINT + "?limit=100&offset=0"
     results = []
+
     while url:
         r = SESSION.get(url, timeout=15)
         r.raise_for_status()
         data = r.json()
         results.extend(data.get("results", []))
         url = data.get("next")
-        time.sleep(0.1)  # polite delay
+        time.sleep(0.1)
     return results
+
 
 def fetch_move_detail(url: str) -> Dict:
     """Fetch move details from its /move/{name} URL."""
+
     r = SESSION.get(url, timeout=15)
     r.raise_for_status()
     data = r.json()
+    meta = data.get("meta") or {}
+
+    # --- multi hit ---
+    min_hits = meta.get("min_hits")
+    max_hits = meta.get("max_hits")
+
+    multi_hit = None
+    if min_hits and max_hits:
+        multi_hit = {
+            "min": min_hits,
+            "max": max_hits
+        }
+    # --- crit detection ---
+    crit = False
+    if meta.get("crit_rate") == 6:
+        crit = True
+
     move = {
         "type": data["type"]["name"],
-        "power": data["power"],  # base damage
-        "accuracy": data["accuracy"],  # accuracy
-        "damage_class": data["damage_class"]["name"],  # physical, special, status
-        "multi_hit": None,
-        "targets": 1  # Par défaut, 1 cible
+        "power": data["power"],
+        "accuracy": data["accuracy"],
+        "damage_class": data["damage_class"]["name"],
+        "multi_hit": multi_hit,
+        "crit": crit,
+        "targets": 1
     }
-    
-    # Récupérer le nombre de cibles de l'attaque
-    # target peut être: specific-move, selected-pokemon, all-other-pokemon, all-opponents, etc.
+
+    # --- target detection ---
     target_info = data.get("target", {})
-    if target_info:
-        target_name = target_info.get("name", "")
-        # Les attaques qui touchent plusieurs adversaires en double bataille
-        if target_name in ["all-opponents", "all-other-pokemon"]:
-            move["targets"] = 2
-        # Les attaques qui touchent tout le terrain (ex: Earthquake)
-        elif target_name in ["entire-field", "all-pokemon"]:
-            move["targets"] = 3  # Touche tous les Pokémon sur le terrain
-        else:
-            move["targets"] = 1
-    
-    # Check if the move is multi-hit (e.g. Double Slap, Fury Attack, Bullet Seed, etc.)
-    # `meta` can be null in some responses => normalize to dict
-    meta = data.get("meta") or {}
-    if isinstance(meta, dict) and "hits" in meta:
-        move["multi_hit"] = meta["hits"]
+    target_name = target_info.get("name", "")
+    if target_name in ["all-opponents", "all-other-pokemon"]:
+        move["targets"] = 2
+    elif target_name in ["entire-field", "all-pokemon"]:
+        move["targets"] = 3
+    else:
+        move["targets"] = 1
     return move
+
 
 def build_moves_dict(save_to="data/all_moves.json"):
     urls = fetch_all_moves_urls()
@@ -91,14 +84,11 @@ def build_moves_dict(save_to="data/all_moves.json"):
                 detail = fetch_move_detail(entry["url"])
             except Exception as e2:
                 print(f"[ERROR] repeated failure for {entry['name']}: {e2}. Skip.")
-                # skip this move and continue
                 continue
         out[entry["name"]] = detail
         if i % 50 == 0:
             print(f"  -> fetched {i}/{len(urls)}")
         time.sleep(0.05)
-    
-    # save to JSON
     from pathlib import Path
     Path("data").mkdir(exist_ok=True)
     with open(save_to, "w", encoding="utf-8") as f:

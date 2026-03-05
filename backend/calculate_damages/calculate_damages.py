@@ -199,8 +199,7 @@ def determine_crit_effective(attacker: Dict, defender: Dict, is_critical: bool, 
     crit_effective = is_critical
     if defender.get("ability") in ("battle-armor", "shell-armor") or defender.get("lucky_chant"):
         crit_effective = False
-    always_crit = {"storm-throw", "frost-breath", "zippy-zap", "surging-strikes", "wicked-blow", "flower-trick"}
-    if move.get("name") in always_crit or move.get("always_crit"):
+    if move.get("crit"):
         crit_effective = True
     if attacker.get("ability") == "merciless" and defender.get("status") == "poisoned":
         crit_effective = True
