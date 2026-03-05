@@ -958,13 +958,23 @@ def calculate_damage(
         max_hp = defender.get("max_hp") or defender.get("maxhp")
         current_hp = defender_hp if defender_hp is not None else defender.get("hp")
         if max_hp and current_hp and current_hp == max_hp:
-            # At full HP: cap damage so that at least 1 HP survives
-            damage_all = [min(dmg, max_hp - 1) for dmg in damage_all]
-            # Recompute remaining_hp based on capped damage
-            remaining_hp_all = [max(1, current_hp - dmg) if current_hp is not None else None for dmg in damage_all]
-            if ability_effects is None:
-                ability_effects = {}
-            ability_effects["sturdy_activated"] = True
+            # Only apply Sturdy if at least one damage roll would actually KO
+            try:
+                would_ko = any(dmg >= current_hp for dmg in damage_all)
+            except TypeError:
+                # If damage values are not comparable, skip Sturdy post-processing
+                would_ko = False
+            if would_ko:
+                # At full HP and at least one roll KOs: cap damage so that at least 1 HP survives
+                damage_all = [min(dmg, max_hp - 1) for dmg in damage_all]
+                # Recompute remaining_hp based on capped damage
+                remaining_hp_all = [
+                    max(1, current_hp - dmg) if current_hp is not None else None
+                    for dmg in damage_all
+                ]
+                if ability_effects is None:
+                    ability_effects = {}
+                ability_effects["sturdy_activated"] = True
 
     result = {"damage_all": damage_all, "remaining_hp_all": remaining_hp_all, "base_val": base}
     # Merge weather and terrain effect flags for consumers
