@@ -69,7 +69,10 @@ def calc_all_stats(
 	evs = evs or {}
 	natures = natures or {}
 
-	# Ensure EV rules: per-stat max 252, total max 510
+	# Ensure EV rules: per-stat max 252, total max 516
+	# Note: the frontend uses a simplified 66-unit system where each unit converts
+	# to backend EVs via: 0→0, n→4+(n-1)*8. Max total from 66 units is 516,
+	# so we allow up to 516 instead of the traditional 510 game cap.
 	def _normalize_evs(evs_in: Dict[str, int]) -> Dict[str, int]:
 		keys = ["hp", "attack", "defense", "special_attack", "special_defense", "speed"]
 		vals = {k: max(0, int(evs_in.get(k, 0) or 0)) for k in keys}
@@ -77,26 +80,6 @@ def calc_all_stats(
 		for k in keys:
 			if vals[k] > 252:
 				vals[k] = 252
-		total = sum(vals.values())
-		if total <= 510:
-			return vals
-		# reduce excess deterministically: reduce from largest EVs first until total == 510
-		excess = total - 510
-		# loop until fixed
-		while excess > 0:
-			# sort keys by current value desc
-			sorted_keys = sorted(keys, key=lambda kk: vals[kk], reverse=True)
-			reduced_this_round = 0
-			for k in sorted_keys:
-				if excess <= 0:
-					break
-				if vals[k] > 0:
-					vals[k] -= 1
-					excess -= 1
-					reduced_this_round += 1
-			# safety: if nothing reduced (shouldn't happen) break to avoid infinite loop
-			if reduced_this_round == 0:
-				break
 		return vals
 
 	evs = _normalize_evs(evs)
