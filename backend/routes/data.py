@@ -18,7 +18,7 @@ from flask import Blueprint, jsonify
 # Support importing when package is `backend.routes` or when `routes` is on PYTHONPATH
 try:
     from utils.data_loader import load_json
-except Exception:
+except (ImportError, ModuleNotFoundError):
     from ..utils.data_loader import load_json
 
 bp = Blueprint('data', __name__, url_prefix='/api')
