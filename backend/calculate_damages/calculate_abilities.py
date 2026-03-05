@@ -437,8 +437,8 @@ def apply_ability_effects(
 
     # Sturdy: grants immunity to one-hit KO (OHKO) moves
     if def_ability == "sturdy":
-        # Check if move is an OHKO move by name (Horn Drill, Guillotine, Sheer Cold)
-        ohko_moves = {"horn-drill", "guillotine", "sheer-cold"}
+        # Check if move is an OHKO move by name (Horn Drill, Guillotine, Sheer Cold, Fissure)
+        ohko_moves = {"horn-drill", "guillotine", "sheer-cold", "fissure"}
         is_ohko = mv_name in ohko_moves
         if is_ohko:
             type_mult = 0.0
