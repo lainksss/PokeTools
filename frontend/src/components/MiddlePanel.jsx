@@ -127,8 +127,26 @@ export default function MiddlePanel({ left, right, setLeft, setRight, setResult 
         throw new Error(errorData.message || 'Calculation error')
       }
       
-      const data = await res.json()
-      setResult(data)
+      let data = await res.json()
+      // Ensure the move object contains full metadata (multi_hit etc.). If
+      // left.move lacks multi_hit, fetch details from the API and merge.
+      let moveWithMeta = left.move || {}
+      try {
+        const hasMulti = moveWithMeta && (moveWithMeta.multi_hit || moveWithMeta.hits)
+        if (!hasMulti && moveWithMeta && moveWithMeta.name) {
+          const mvRes = await fetch(`${API_URL}/api/move/${encodeURIComponent(moveWithMeta.name)}`)
+          if (mvRes.ok) {
+            const mvData = await mvRes.json()
+            moveWithMeta = { ...moveWithMeta, ...mvData }
+          }
+        }
+      } catch (e) {
+        // non-fatal: continue with original left.move
+      }
+
+      // Attach the (possibly enriched) move to the result so the ResultsPanel
+      // can present multi-hit info client-side.
+      setResult({ ...data, move: moveWithMeta })
     } catch (e) {
       console.error('Error:', e)
       alert('Calculation error: ' + e.message)
