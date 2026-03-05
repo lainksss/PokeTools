@@ -197,14 +197,14 @@ def compute_stat_with_stages_only(pkm: Dict, key: str, stages_key: str) -> float
 
 def determine_crit_effective(attacker: Dict, defender: Dict, is_critical: bool, move: Dict) -> bool:
     crit_effective = is_critical
-    if defender.get("ability") in ("battle-armor", "shell-armor") or defender.get("lucky_chant"):
-        crit_effective = False
     if move.get("crit"):
         crit_effective = True
     if attacker.get("ability") == "merciless" and defender.get("status") == "poisoned":
         crit_effective = True
     if attacker.get("laser_focus"):
         crit_effective = True
+    if defender.get("ability") in ("battle-armor", "shell-armor") or defender.get("lucky_chant"):
+        crit_effective = False
     return crit_effective
 
 

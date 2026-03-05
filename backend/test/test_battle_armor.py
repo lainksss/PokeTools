@@ -91,7 +91,7 @@ def test_battle_armor_blocks_crit():
     )
 
     # Battle Armor cannot block crits from abilities like Merciless that force them
-    expected = (25, 25, 26, 26, 27, 27, 27, 27, 28, 28, 28, 28, 29, 29, 30, 30)
+    expected = (16, 17, 17, 17, 18, 18, 18, 18, 18, 18, 19, 19, 19, 19, 19, 20)
     actual = tuple(result["damage_all"])
 
     print(f"Solar Beam vs Battle Armor (crit not blocked): {actual}")
@@ -127,7 +127,7 @@ def test_shell_armor_blocks_crit():
     )
 
     # Shell Armor also cannot block crits from Merciless
-    expected = (25, 25, 26, 26, 27, 27, 27, 27, 28, 28, 28, 28, 29, 29, 30, 30)
+    expected = (16, 17, 17, 17, 18, 18, 18, 18, 18, 18, 19, 19, 19, 19, 19, 20)
     actual = tuple(result["damage_all"])
 
     print(f"Solar Beam vs Shell Armor (crit not blocked): {actual}")
