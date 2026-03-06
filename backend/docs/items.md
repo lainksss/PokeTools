@@ -74,9 +74,13 @@ The list below was taken from `backend/items/items.py`. These items have behavio
 - `macho-brace`
 - `air-balloon`
 - `booster-energy`
-- `hearthflame-mask`
-- `wellspring-mask`
-- `cornerstone-mask`
+- `hearthflame-mask` # only ogerpon fire can have that and he's forced to have that
+- `wellspring-mask` # only ogerpon water can have that and he's forced to have that
+- `cornerstone-mask` # only ogerpon rock can have that and he's forced to have that
+- `rusted-shield` # only crowned zamazenta in its other form can have that and he's forced to have that
+- `rusted-sword` # only crowned zacian in its other form can have that and he's forced to have that
+- `mega-gems` # all megas should have that to make sure they have no item
+- `booster-energy`# activate the ability of a paradox if he doesn't have its ability activated already
 - `chople-berry`
 - `coba-berry`
 - `kebia-berry`

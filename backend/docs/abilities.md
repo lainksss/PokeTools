@@ -52,6 +52,14 @@ Note: the `recoil` attribute is not universally present in `moves_with_flags.jso
 - `solar-power`: +50% Special Attack in harsh sunlight for special moves.
 	- Test: ✅ Unit tests reference `solar-power` in `backend/test/test_calcs.py`.
 
+- `hadron-engine`: +33% (factor 5461/4096) Special Attack in Electric Terrain for special moves. Signature ability of Miraidon.
+	- Implementation: checks if the user has the ability, terrain is Electric/Electric-Terrain, and move is special. When all conditions are met, the Special Attack stat is multiplied by 5461/4096 using `pokeRound()` for precise rounding.
+	- Test: ✅ `hadron-engine` covered by `backend/test/test_hadron_engine.py` (Volt Switch & Draco Meteor cases with/without Electric Terrain).
+
+- `orichalcum-pulse`: +33% (factor 5461/4096) Attack in harsh sunlight for physical moves. Signature ability of Koraidon. Boost applies even with Utility Umbrella active.
+	- Implementation: checks if the user has the ability, weather is harsh sunlight (sun/harsh-sunshine/harsh-sunlight/desolate-land), and move is physical. When all conditions are met, the Attack stat is multiplied by 5461/4096 using `pokeRound()` for precise rounding.
+	- Test: ✅ `orichalcum-pulse` covered by `backend/test/test_orichalcum_pulse.py` (Close Combat & Fire Punch cases with/without harsh sunlight and ability).
+
 - `aerilate` / `pixilate` / `refrigerate` / `galvanize` / `normalize`: convert Normal moves to another type and apply ~20% boost (e.g., Aerilate turns Normal → Flying).
 	- Implementation: these are applied as base-power modifications (they mutate `move["type"]` and `move["power"]`) so type-effectiveness and STAB are recalculated using the mutated move and rounding matches tests.
 	- Test: ✅ `abilities` covered in `backend/test/test_aerilate_family.py`.
@@ -163,16 +171,24 @@ Note: `sniper` and other crit-related flags are set by ability handling and used
 
 ## Test Coverage Summary
 
-**Recently Tested (17 tests, ✅):**
+**Recently Tested (23 tests, ✅):**
 - Damage reduction abilities: `multiscale`, `shadow-shield`, `thick-fat`, `tera-shell`, `solid-rock`, `filter`, `prism-armor`
 - Critical mechanics: `merciless`, `battle-armor`, `shell-armor`
+- Stat-boosting abilities: `hadron-engine`, `orichalcum-pulse`
 
 **Other Fully Tested (✅):**
 - Power modifiers: `huge-power`, `sheer-force`, `tough-claws`, `strong-jaw`, `technician`, `iron-fist`, `reckless`, `steelworker`, `steely-spirit`
 - Type conversions: `aerilate`, `pixilate`, `refrigerate`, `galvanize`, `normalize`
 - Type immunity/absorption: `water-absorb`, `volt-absorb`, `dry-skin`, `flash-fire`, `lightning-rod`, `storm-drain`, `earth-eater`, `sap-sipper`, `bulletproof`, `motor-drive`, `soundproof`, `cacophony`, `wind-rider`
-- Special mechanics: `levitate`, `protean`, `libero`, `wonder-guard`, `sturdy`, `solar-power`, `guts`
+- Special mechanics: `levitate`, `protean`, `libero`, `wonder-guard`, `sturdy`, `solar-power`, `guts`, `hadron-engine`, `orichalcum-pulse`
 
 **Not Yet Tested (❌):**
 - Type boost at low HP: `blaze`, `torrent`, `overgrow`, `swarm`
 - Other: `victory-star`, `sniper`, `scrappy`
+
+**Legendaries/important abilities**
+- Ogerpon (each of them)
+- Zacian
+- Zamazenta
+- Chien pao / Ting Lu / Yu-yu / Chong jian
+- All paradoxes
