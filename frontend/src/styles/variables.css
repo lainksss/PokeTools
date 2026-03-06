@@ -1,0 +1,21 @@
+/* ======================================
+   CSS VARIABLES & THEME
+   ====================================== */
+
+:root {
+  --gap: 16px;
+  --bg: #0f1724;
+  --card: #1a2332;
+  --accent: #3b82f6;
+  --border: rgba(255, 255, 255, 0.2);
+  --text: #e6eef6;
+  --text-muted: #9ca3af;
+  color-scheme: dark;
+
+  /* Panel sizing for scale variants */
+  --panel-min-width: 280px;
+  --panel-padding: 12px;
+
+  /* Results reserved space */
+  --results-reserved: 360px;
+}

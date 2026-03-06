@@ -1,0 +1,98 @@
+/* ======================================
+   BASE STYLES & RESET
+   ====================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+  background: linear-gradient(180deg, #0a1120, #0f1724);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ======================================
+   GLOBAL SELECT STYLING
+   ====================================== */
+
+select {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border: 1px solid var(--border);
+}
+
+select option {
+  background: #1a2332;
+  color: #ffffff;
+  padding: 8px;
+}
+
+select option:checked {
+  background: linear-gradient(#2563eb, #2563eb);
+  color: #ffffff;
+}
+
+/* Pour Firefox */
+select option:hover {
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+
+/* ======================================
+   SCROLLBAR STYLING
+   ====================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ======================================
+   MOBILE LAYOUT PRESERVATION (16:9)
+   ====================================== */
+
+/* Mobile: keep a 16:9 visual layout and avoid items reflowing by applying
+   a global visual scale and constraining the app width relative to viewport height. */
+@media (max-width: 480px) {
+  .app-root {
+    max-width: calc(100vh * (16/9));
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+  }
+
+  .app-main > * {
+    transform: scale(0.5);
+    transform-origin: top center;
+    transition: transform 160ms ease;
+  }
+
+  .home-blocks-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+  }
+
+  .home-block {
+    min-width: 150px;
+  }
+}

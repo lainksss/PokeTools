@@ -1,0 +1,439 @@
+/* ======================================
+   SPEED CHECKER PAGE STYLES
+   ====================================== */
+
+.speed-checker-page {
+  padding: 20px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.speed-checker-page h2 {
+  font-size: 28px;
+  margin-bottom: 24px;
+  text-align: center;
+  color: var(--accent);
+}
+
+.speed-checker-container {
+  display: grid;
+  grid-template-columns: 450px 1fr 550px;
+  gap: 20px;
+  align-items: start;
+}
+
+/* Speed panel (left/middle/right) */
+.speed-panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  min-height: 400px;
+}
+
+.speed-panel h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: var(--accent);
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 10px;
+}
+
+/* Speed display container */
+.speed-display {
+  margin-top: 24px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+}
+
+.pokemon-info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.pokemon-info-header h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.pokemon-info-header .base-stat {
+  font-size: 13px;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.stat-display {
+  text-align: center;
+}
+
+.stat-label {
+  display: block;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.speed-value {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--text);
+  transition: all 0.3s;
+}
+
+.speed-value.tailwind-active {
+  color: #fbbf24;
+  text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+  animation: pulse-glow 2s infinite;
+}
+
+.speed-breakdown {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Speed search/input */
+.pokemon-search-container {
+  position: relative;
+}
+
+.pokemon-search-input {
+  width: 100%;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.pokemon-info-display {
+  margin: 16px 0;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.pokemon-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.pokemon-header h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.pokemon-types {
+  display: flex;
+  gap: 6px;
+}
+
+.base-speed-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.base-speed-display .label {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.base-speed-display .value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* EV input container for speed */
+.ev-input-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.ev-input-container input {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.ev-input-container input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* EV selector group for speed panels */
+.ev-selector-group {
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-top: 16px;
+}
+
+.ev-selector-group h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ev-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.ev-stat-input {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ev-stat-input label {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.ev-stat-input input {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.ev-stat-input input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Custom options - EV selectors (Speed Checker middle panel) */
+.custom-options {
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-top: 16px;
+}
+
+.custom-options .form-group {
+  margin-bottom: 12px;
+}
+
+.custom-options .form-group:last-child {
+  margin-bottom: 0;
+}
+
+.custom-options input[type="number"] {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+  transition: all 0.2s;
+}
+
+.custom-options input[type="number"]:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Comparison buttons */
+.comparison-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.btn-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Custom options section */
+.custom-options {
+  margin-top: 20px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+}
+
+/* Results toggles */
+.results-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+/* Results list container */
+.results-list {
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.results-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.results-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.results-list::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+.no-results {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Individual result item */
+.result-item {
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  transition: all 0.2s;
+}
+
+.result-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent);
+  transform: translateX(4px);
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.result-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.result-types {
+  display: flex;
+  gap: 4px;
+}
+
+.result-stats {
+  display: flex;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.base-speed {
+  color: var(--text-muted);
+}
+
+.final-speed {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.speed-diff {
+  margin-left: auto;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.speed-diff.faster {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.2);
+}
+
+.speed-diff.slower {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.2);
+}
+
+/* Speed message counter */
+.speed-counter {
+  margin-top: 12px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.speed-counter::first-letter {
+  text-transform: uppercase;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .speed-checker-container {
+    grid-template-columns: 1fr;
+  }
+
+  .speed-panel {
+    min-height: auto;
+  }
+}

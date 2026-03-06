@@ -1,0 +1,32 @@
+/* ======================================
+   FOOTER STYLES
+   ====================================== */
+
+.app-footer {
+  text-align: center;
+  padding: 8px 12px 8px 12px;
+  font-size: 12px;
+  opacity: 0.6;
+  border-top: 1px solid var(--border);
+  margin-top: 20px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--card);
+  z-index: 70;
+}
+
+@media (max-width: 820px) {
+  .app-root.preserve-desktop .app-footer {
+    margin-top: 0;
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+
+  .app-footer {
+    position: static;
+    background: none;
+    margin-top: 20px;
+  }
+}

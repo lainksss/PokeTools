@@ -1,0 +1,77 @@
+/* ======================================
+   HEADER & NAVIGATION STYLES
+   ====================================== */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid var(--border);
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* Navigation menu */
+.app-header nav {
+  display: flex;
+  gap: 16px;
+}
+
+.app-header nav a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.app-header nav a:hover {
+  opacity: 0.8;
+}
+
+/* Active nav link highlight */
+.app-header nav a.active {
+  background: linear-gradient(90deg, var(--accent), #2563eb20);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Header controls grouping: scale + language */
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.app-header .header-controls {
+  gap: 10px;
+}
+
+/* Display scale buttons container */
+.display-scale {
+  display: inline-flex;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  padding: 4px;
+  border-radius: 8px;
+}
+
+/* Language selector container */
+.language-selector {
+  display: flex;
+  gap: 8px;
+}
+
+/* Auras toggle container */
+.auras-toggle {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}

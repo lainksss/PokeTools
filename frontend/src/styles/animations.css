@@ -1,0 +1,17 @@
+/* ======================================
+   ANIMATIONS & KEYFRAMES
+   ====================================== */
+
+@keyframes stellar-shimmer {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.2); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 30px rgba(251, 191, 36, 0.8);
+  }
+}

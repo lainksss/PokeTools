@@ -1,0 +1,293 @@
+/* ======================================
+   THREATS PAGE STYLES
+   ====================================== */
+
+.threats-page {
+  height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  padding: var(--gap);
+  gap: var(--gap);
+}
+
+.threats-header {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.threats-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.threats-header p {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* Main threats container grid */
+.threats-container {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--gap);
+  min-height: 0;
+}
+
+/* Left and right threat panels */
+.threats-left,
+.threats-right {
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.threats-left h3,
+.threats-right h3,
+.threats-middle h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0;
+}
+
+/* Compact styling for threats forms */
+.threats-left .coverage-moves-row {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.threats-left .form-group label {
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.threats-left .item-search-input {
+  font-size: 13px;
+  padding: 7px 10px;
+}
+
+/* Right panel header */
+.threats-right-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+/* Filters (guaranteed & rolls) */
+.filters-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.guaranteed-filter,
+.rolls-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text);
+  cursor: pointer;
+  user-select: none;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.guaranteed-filter:hover,
+.rolls-filter:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent);
+}
+
+.guaranteed-filter input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #10b981;
+}
+
+.rolls-filter {
+  cursor: default;
+}
+
+.rolls-filter input[type="number"] {
+  width: 50px;
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.rolls-filter input[type="number"]:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.rolls-filter .rolls-label {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.guaranteed-filter span,
+.rolls-filter > span:first-child {
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+/* Middle threats panel */
+.threats-middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 300px;
+  padding-top: 40px;
+}
+
+.ko-mode-toggle {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+/* EV selector for threats attacker */
+.threat-ev-selector {
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-top: 16px;
+}
+
+.threat-ev-selector h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.threat-ev-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.threat-ev-input {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.threat-ev-input label {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.threat-ev-input input {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.threat-ev-input input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.threat-ev-total {
+  margin-top: 12px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Threats middle panel - EV inputs styling */
+.threats-middle input[type="number"] {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.2s;
+  max-width: 100px;
+}
+
+.threats-middle input[type="number"]:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Custom EV input section in threats middle panel */
+.threats-middle > div[style*="display: flex"] > div[style*="display: flex"] {
+  gap: 8px;
+  align-items: center;
+}
+
+/* Loading state */
+.loading-text {
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.no-threats {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 20px;
+}
+
+/* Threats list */
+.threats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .threats-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .threats-middle {
+    order: 2;
+  }
+}
