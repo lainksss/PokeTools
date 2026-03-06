@@ -60,6 +60,10 @@ Note: the `recoil` attribute is not universally present in `moves_with_flags.jso
 	- Implementation: checks if the user has the ability, weather is harsh sunlight (sun/harsh-sunshine/harsh-sunlight/desolate-land), and move is physical. When all conditions are met, the Attack stat is multiplied by 5461/4096 using `pokeRound()` for precise rounding.
 	- Test: ✅ `orichalcum-pulse` covered by `backend/test/test_orichalcum_pulse.py` (Close Combat & Fire Punch cases with/without harsh sunlight and ability).
 
+- `protosynthesis`: boosts the user's highest non-HP stat by +30% (or +50% for Speed stat) in harsh sunlight or while holding Booster Energy. Signature ability of Flutter Mane. 
+	- Implementation: determines the highest non-HP stat using stage multipliers (positive stage: 1.0 + min(stage×0.5, 4.0), negative stage: 1.0 + min(|stage|×0.33, 2.0)). Applies priority tie-breaker: attack > defense > special_attack > special_defense > speed. Boosts the corresponding attacking stat (Attack for physical moves, Special Attack for special moves) by +30% or +50% for Speed using `pokeRound()` for precise rounding. Activation requires harsh sunlight or Booster Energy (weather takes priority if both present). Boost only applies to the applicable stat for the move category.
+	- Test: ✅ `protosynthesis` covered by `backend/test/test_protosynthesis.py` (5 tests: Dazzling Gleam/Shadow Ball with/without harsh sunlight, multi-target move reduction verified).
+
 - `aerilate` / `pixilate` / `refrigerate` / `galvanize` / `normalize`: convert Normal moves to another type and apply ~20% boost (e.g., Aerilate turns Normal → Flying).
 	- Implementation: these are applied as base-power modifications (they mutate `move["type"]` and `move["power"]`) so type-effectiveness and STAB are recalculated using the mutated move and rounding matches tests.
 	- Test: ✅ `abilities` covered in `backend/test/test_aerilate_family.py`.
@@ -171,10 +175,10 @@ Note: `sniper` and other crit-related flags are set by ability handling and used
 
 ## Test Coverage Summary
 
-**Recently Tested (23 tests, ✅):**
+**Recently Tested (25 tests, ✅):**
 - Damage reduction abilities: `multiscale`, `shadow-shield`, `thick-fat`, `tera-shell`, `solid-rock`, `filter`, `prism-armor`
 - Critical mechanics: `merciless`, `battle-armor`, `shell-armor`
-- Stat-boosting abilities: `hadron-engine`, `orichalcum-pulse`
+- Stat-boosting abilities: `hadron-engine`, `orichalcum-pulse`, `protosynthesis` (Flutter Mane; multi-target move mechanics validated)
 
 **Other Fully Tested (✅):**
 - Power modifiers: `huge-power`, `sheer-force`, `tough-claws`, `strong-jaw`, `technician`, `iron-fist`, `reckless`, `steelworker`, `steely-spirit`
@@ -186,9 +190,9 @@ Note: `sniper` and other crit-related flags are set by ability handling and used
 - Type boost at low HP: `blaze`, `torrent`, `overgrow`, `swarm`
 - Other: `victory-star`, `sniper`, `scrappy`
 
-**Legendaries/important abilities**
+**Legendaries/important abilities (with full damage calculations)**
 - Ogerpon (each of them)
 - Zacian
 - Zamazenta
 - Chien pao / Ting Lu / Yu-yu / Chong jian
-- All paradoxes
+- Future paradoxes left

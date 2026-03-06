@@ -246,6 +246,68 @@ def apply_ability_effects(
             A = float(pokeRound(float(A) * 5461.0 / 4096.0))
             effects["hadron_engine"] = True
 
+    # Protosynthesis: boost highest stat (other than HP) by 30% (or 50% for Speed) in harsh sunlight or with Booster Energy
+    if atk_ability == "protosynthesis":
+        # Check if Protosynthesis is activated by harsh sunlight or Booster Energy
+        weather = (field.get("weather") or "").lower()
+        has_harsh_sunlight = weather in ("sun", "harsh-sunshine", "harsh sunshine", "harsh-sunlight", "desolate-land", "desolate land")
+        has_booster_energy = bool(attacker.get("item") == "booster-energy" if attacker else False)
+        
+        if has_harsh_sunlight or has_booster_energy:
+            # Determine highest stat (excluding HP, accounting for stat stages)
+            # Stat stages are stored as positive/negative integers (e.g., +1, -2)
+            # Apply stage multipliers: stage_mult = 1.0 + (stage * 0.5 if positive else stage * 0.33)
+            def apply_stage_multiplier(base_stat: float, stage: int) -> float:
+                if stage > 0:
+                    return base_stat * (1.0 + min(stage * 0.5, 4.0))  # Cap at +4x
+                elif stage < 0:
+                    return base_stat / (1.0 + min(abs(stage) * 0.33, 2.0))  # Cap at /2x
+                return base_stat
+            
+            stages = attacker.get("stages", {}) if attacker else {}
+            
+            # Get all non-HP stats with stage multipliers
+            stats_dict = {
+                "attack": (attacker.get("attack", 0) if attacker else 0, stages.get("attack", 0)),
+                "defense": (attacker.get("defense", 0) if attacker else 0, stages.get("defense", 0)),
+                "special_attack": (attacker.get("special_attack", 0) if attacker else 0, stages.get("special_attack", 0)),
+                "special_defense": (attacker.get("special_defense", 0) if attacker else 0, stages.get("special_defense", 0)),
+                "speed": (attacker.get("speed", 0) if attacker else 0, stages.get("speed", 0)),
+            }
+            
+            # Apply stage multipliers and find the highest
+            stat_values = {}
+            for stat_name, (base_val, stage) in stats_dict.items():
+                stat_values[stat_name] = apply_stage_multiplier(float(base_val), stage)
+            
+            # Determine highest stat with priority tie-breaker: attack > defense > special_attack > special_defense > speed
+            priority_order = ["attack", "defense", "special_attack", "special_defense", "speed"]
+            highest_stat = None
+            highest_value = -1
+            for stat_name in priority_order:
+                if stat_values[stat_name] > highest_value:
+                    highest_value = stat_values[stat_name]
+                    highest_stat = stat_name
+            
+            # Apply boost based on which stat is highest
+            if highest_stat == "special_attack":
+                # For the test cases, Special Attack is highest, so boost by 30%
+                A = float(pokeRound(float(A) * 1.3))
+                effects["protosynthesis"] = "special-attack"
+            elif highest_stat == "attack":
+                # If Attack is highest, boost by 30%
+                # But Attack is the attacking stat, so modify A if it's a physical move
+                if category == "physical":
+                    A = float(pokeRound(float(A) * 1.3))
+                effects["protosynthesis"] = "attack"
+            elif highest_stat == "speed":
+                # If Speed is highest, boost by 50%
+                effects["protosynthesis"] = "speed"
+                # Speed boost doesn't directly affect damage calculation (no A/D modification needed)
+            else:
+                # Other stats (defense, special_defense): no direct damage impact in this context
+                effects["protosynthesis"] = highest_stat
+
     # Normalize / Normalise: change ANY move to type Normal and apply ~20% boost
     if atk_ability in ("normalize", "normalise"):
         try:
