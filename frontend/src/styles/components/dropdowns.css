@@ -34,7 +34,10 @@
   overflow-y: auto;
   z-index: 2500;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  /* always stay below the sticky header */
+  transform: translateY(52px);
 }
+
 
 /* Pokemon dropdown scrollbar */
 .pokemon-dropdown-container::-webkit-scrollbar {
@@ -123,8 +126,8 @@
   width: min(90vw, 550px);
   overflow-y: auto;
   z-index: 2500;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-}
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);  /* always stay below the sticky header */
+  transform: translateY(52px);}
 
 /* Item dropdown scrollbar */
 .item-dropdown::-webkit-scrollbar {
