@@ -70,7 +70,7 @@
   font-size: 1.08rem;
   font-weight: 700;
   margin-bottom: 8px;
-  color: #fff;
+  color: var(--text);
 }
 
 .block-desc {
@@ -104,7 +104,7 @@
 .center-title {
   font-size: 2.2rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--text);
   margin-bottom: 12px;
   margin: 0 0 8px 0;
 }
@@ -153,7 +153,7 @@
 .hero-title {
   font-size: 36px;
   font-weight: 800;
-  color: white;
+  color: var(--text);
   margin-bottom: 8px;
 }
 

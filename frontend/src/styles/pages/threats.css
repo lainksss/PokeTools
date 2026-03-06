@@ -3,27 +3,31 @@
    ====================================== */
 
 .threats-page {
-  height: calc(100vh - 120px);
+  flex: 1;
   display: flex;
   flex-direction: column;
   padding: var(--gap);
   gap: var(--gap);
+  min-height: 0;
+  overflow: hidden;
 }
 
 .threats-header {
   text-align: center;
-  margin-bottom: 8px;
+  margin-bottom: 0;
+  padding: 8px 0;
+  flex: 0 0 auto;
 }
 
 .threats-header h2 {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 0;
+  color: var(--text);
 }
 
 .threats-header p {
-  color: var(--text-muted);
-  font-size: 14px;
+  display: none;
 }
 
 /* Main threats container grid */
@@ -31,13 +35,13 @@
   flex: 1;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  gap: var(--gap);
+  gap: 32px;
   min-height: 0;
+  align-items: start;
 }
 
-/* Left and right threat panels */
-.threats-left,
-.threats-right {
+/* Left panel (defender) */
+.threats-left {
   background: var(--card);
   border-radius: 12px;
   border: 1px solid var(--border);
@@ -46,31 +50,96 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  min-height: 0;
+}
+
+/* Right panel (results) */
+.threats-right {
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 20px;
+  /* Make right results panel scroll independently and limit its height */
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 0;
 }
 
 .threats-left h3,
-.threats-right h3,
+.threats-right h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0 0 12px 0;
+}
+
+/* Middle panel (conditions) */
+.threats-middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 300px;
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 20px;
+  min-width: 280px;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.threats-middle > div[style*="display: flex"] {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .threats-middle h3 {
   font-size: 18px;
   font-weight: 600;
   color: var(--accent);
   margin: 0;
+  width: 100%;
+  text-align: center;
 }
 
-/* Compact styling for threats forms */
-.threats-left .coverage-moves-row {
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+/* Form groups */
+.form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.threats-left .form-group label {
+.form-group label {
   font-size: 13px;
-  margin-bottom: 6px;
+  margin-bottom: 0;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.threats-left .item-search-input {
+.form-group select,
+.form-group input {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg2);
+  color: var(--text);
   font-size: 13px;
-  padding: 7px 10px;
+  transition: all 0.2s;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--surface);
 }
 
 /* Right panel header */
@@ -78,7 +147,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+
+.threats-right-header h3 {
+  margin-bottom: 0;
 }
 
 /* Filters (guaranteed & rolls) */
@@ -86,7 +160,8 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  align-items: flex-end;
+  width: 100%;
+  padding: 8px 0;
 }
 
 .guaranteed-filter,
@@ -98,11 +173,12 @@
   color: var(--text);
   cursor: pointer;
   user-select: none;
-  padding: 6px 12px;
+  padding: 8px 12px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border);
   border-radius: 6px;
   transition: all 0.2s;
+  white-space: nowrap;
 }
 
 .guaranteed-filter:hover,
@@ -120,16 +196,17 @@
 
 .rolls-filter {
   cursor: default;
+  justify-content: space-between;
 }
 
 .rolls-filter input[type="number"] {
   width: 50px;
-  padding: 4px 8px;
-  background: rgba(0, 0, 0, 0.3);
+  padding: 4px 6px;
+  background: rgba(0, 0, 0, 0.2);
   border: 1px solid var(--border);
   border-radius: 4px;
   color: var(--text);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   text-align: center;
 }
@@ -145,40 +222,65 @@
 }
 
 .guaranteed-filter span,
-.rolls-filter > span:first-child {
+.rolls-filter span {
   white-space: nowrap;
   font-weight: 500;
 }
 
-/* Middle threats panel */
-.threats-middle {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-  max-width: 300px;
-  padding-top: 40px;
-}
-
+/* KO mode toggle */
 .ko-mode-toggle {
   display: flex;
   gap: 8px;
   width: 100%;
 }
 
+/* Results list */
+.threats-results {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+/* Threat item in results */
+.threat-item {
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.threat-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent);
+}
+
+.threat-item h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 6px 0;
+}
+
+.threat-item p {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 2px 0;
+}
+
 /* EV selector for threats attacker */
 .threat-ev-selector {
-  padding: 16px;
+  padding: 12px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border);
   border-radius: 8px;
-  margin-top: 16px;
+  width: 100%;
 }
 
 .threat-ev-selector h4 {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 700;
   color: var(--accent);
   margin: 0 0 12px 0;
   text-transform: uppercase;
@@ -188,7 +290,7 @@
 .threat-ev-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  gap: 10px;
 }
 
 .threat-ev-input {
@@ -198,7 +300,7 @@
 }
 
 .threat-ev-input label {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -206,12 +308,12 @@
 }
 
 .threat-ev-input input {
-  padding: 8px 10px;
+  padding: 6px 8px;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 4px;
   background: rgba(255, 255, 255, 0.05);
   color: var(--text);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   text-align: center;
   transition: all 0.2s;
@@ -224,28 +326,42 @@
 }
 
 .threat-ev-total {
-  margin-top: 12px;
+  margin-top: 10px;
   padding: 8px;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--border);
   border-radius: 6px;
   text-align: center;
-  font-size: 13px;
+  font-size: 12px;
   color: var(--text-muted);
 }
 
-/* Threats middle panel - EV inputs styling */
-.threats-middle input[type="number"] {
-  padding: 8px 10px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text);
-  font-size: 14px;
-  font-weight: 600;
+/* Loading state */
+.loading-indicator {
   text-align: center;
-  transition: all 0.2s;
-  max-width: 100px;
+  padding: 20px;
+  color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .threats-container {
+    grid-template-columns: 1fr;
+  }
+
+  .threats-middle {
+    order: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .threats-header h2 {
+    font-size: 22px;
+  }
+
+  .threat-ev-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .threats-middle input[type="number"]:focus {
@@ -278,6 +394,176 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+/* Threat card */
+.threat-card {
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.threat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.threat-header h4 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* For coverage page only */
+.threat-name-types {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.threat-types {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.threat-best-ko {
+  font-size: 12px;
+  font-weight: 600;
+  color: #10b981;
+  white-space: nowrap;
+}
+
+/* Attack info (per move) */
+.threat-attacks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.attack-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 6px;
+}
+
+.attack-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-size: 12px;
+}
+
+.attack-name strong {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.attack-power {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.damage-class {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Attack stats (damage + ko info) */
+.attack-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 11px;
+}
+
+.damage-range {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.damage-label {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.damage-values {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.damage-percent {
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+/* KO info on single line */
+.ko-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: nowrap;
+}
+
+.ko-rolls {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.ko-percent {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.ko-percent.guaranteed {
+  color: #10b981;
+}
+
+/* Nature info */
+.nature-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+}
+
+.nature-label {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.nature-value {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Guaranteed KO badge */
+.guaranteed-badge {
+  padding: 4px 8px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid #10b981;
+  border-radius: 4px;
+  color: #10b981;
+  font-size: 10px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 4px;
 }
 
 /* Responsive */

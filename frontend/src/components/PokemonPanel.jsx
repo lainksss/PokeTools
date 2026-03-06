@@ -1,11 +1,80 @@
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
 import { convertEvsToOld } from '../utils/evs'
 
 export default function PokemonPanel({ side, value, onChange, showMultipleMoves = false, showTitle = true, showItem = true }) {
   const { t, getPokemonName, matchesPokemonName, language } = useTranslation()
+  // Refs for inputs (for dropdown positioning)
+  const pokemonInputRef = useRef(null)
+  const abilityInputRef = useRef(null)
+  const itemInputRef = useRef(null)
+  const moveInputRefs = useRef({ 1: null, 2: null, 3: null, 4: null })
+
+  // State for dropdown positioning
+  const [dropdownPositions, setDropdownPositions] = useState({
+    pokemon: { left: 0, top: 0 },
+    ability: { left: 0, top: 0 },
+    item: { left: 0, top: 0 },
+    move1: { left: 0, top: 0 },
+    move2: { left: 0, top: 0 },
+    move3: { left: 0, top: 0 },
+    move4: { left: 0, top: 0 }
+  })
+
+  // Update dropdown position when input element changes or window resizes
+  const updateDropdownPosition = (inputRef, key) => {
+    if (!inputRef?.current) return
+    const rect = inputRef.current.getBoundingClientRect()
+    // Compute available space below and above the input
+    const viewportHeight = window.innerHeight
+    const spaceBelow = viewportHeight - rect.bottom
+    const spaceAbove = rect.top
+    // Dropdown max height from CSS (fallback)
+    const cssMax = 500
+    const dropdownMaxHeight = Math.min(cssMax, Math.floor(viewportHeight - 80))
+
+    // If not enough space below but more space above, open upwards
+    let topPos
+    if (spaceBelow < 200 && spaceAbove > spaceBelow) {
+      // open above: position top so dropdown bottom aligns with rect.top - 4
+      topPos = rect.top + window.scrollY - dropdownMaxHeight - 4
+      // ensure topPos is not negative
+      if (topPos < 8) topPos = 8
+    } else {
+      // default: open below the input
+      topPos = rect.bottom + window.scrollY + 4
+    }
+
+    setDropdownPositions(prev => ({
+      ...prev,
+      [key]: {
+        left: rect.left + window.scrollX,
+        top: topPos
+      }
+    }))
+  }
+
+  // Setup listeners for dropdown positioning
+  useEffect(() => {
+    const handlePositionUpdate = () => {
+      updateDropdownPosition(pokemonInputRef, 'pokemon')
+      updateDropdownPosition(abilityInputRef, 'ability')
+      updateDropdownPosition(itemInputRef, 'item')
+      updateDropdownPosition(moveInputRefs.current[1], 'move1')
+      updateDropdownPosition(moveInputRefs.current[2], 'move2')
+      updateDropdownPosition(moveInputRefs.current[3], 'move3')
+      updateDropdownPosition(moveInputRefs.current[4], 'move4')
+    }
+
+    window.addEventListener('resize', handlePositionUpdate)
+    window.addEventListener('scroll', handlePositionUpdate, true)
+    return () => {
+      window.removeEventListener('resize', handlePositionUpdate)
+      window.removeEventListener('scroll', handlePositionUpdate, true)
+    }
+  }, [])
   const [allPokemon, setAllPokemon] = useState([])
   const [filteredPokemon, setFilteredPokemon] = useState([])
   const [searchText, setSearchText] = useState('')
@@ -495,15 +564,22 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
       <div className="form-group pokemon-selector-wrapper">
         <label>{t('calculate.selectPokemon')}</label>
         <input
+          ref={pokemonInputRef}
           type="text"
           value={searchText}
           onChange={e => handlePokemonSearch(e.target.value)}
-          onFocus={() => setShowDropdown(true)}
+          onFocus={() => {
+            setShowDropdown(true)
+            updateDropdownPosition(pokemonInputRef, 'pokemon')
+          }}
           placeholder={t('calculate.search')}
           className="form-control pokemon-search-input"
         />
         {showDropdown && searchText && filteredPokemon.length > 0 && (
-          <div className="pokemon-dropdown-container">
+          <div 
+            className="pokemon-dropdown-container"
+            style={{ left: `${dropdownPositions.pokemon.left}px`, top: `${dropdownPositions.pokemon.top}px` }}
+          >
             {filteredPokemon.slice(0, 50).map(p => (
               <div
                 key={p.id}
@@ -679,10 +755,14 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
                       <div className="form-group item-selector">
                         <div className="item-input-wrapper">
                           <input
+                            ref={el => moveInputRefs.current[num] = el}
                             type="text"
                             value={searchValue || (selectedMove ? (language === 'fr' ? (selectedMove.translations?.fr || (selectedMove.name || '').replace(/-/g, ' ')) : (selectedMove.translations?.en || (selectedMove.name || '').replace(/-/g, ' '))) : '')}
                             onChange={e => setMoveSearches(prev => ({...prev, [num]: e.target.value}))}
-                            onFocus={() => setShowMoveDropdowns(prev => ({...prev, [num]: true}))}
+                            onFocus={() => {
+                              setShowMoveDropdowns(prev => ({...prev, [num]: true}))
+                              updateDropdownPosition(moveInputRefs.current[num], `move${num}`)
+                            }}
                             onBlur={() => setTimeout(() => setShowMoveDropdowns(prev => ({...prev, [num]: false})), 200)}
                             placeholder={t('calculate.searchMove') || 'Rechercher une attaque...'}
                             className="form-control item-search-input"
@@ -702,7 +782,10 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
                         </div>
 
                         {isDropdownOpen && (
-                          <div className="item-dropdown">
+                          <div 
+                            className="item-dropdown"
+                            style={{ left: `${dropdownPositions[`move${num}`].left}px`, top: `${dropdownPositions[`move${num}`].top}px` }}
+                          >
                             {(!localFiltered || localFiltered.length === 0) && (
                               <div className="item-dropdown-empty">{t('common.noResults') || 'Aucun résultat'}</div>
                             )}
@@ -774,10 +857,14 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
             <label>{t('calculate.ability')}</label>
             <div className="item-input-wrapper">
               <input
+                ref={abilityInputRef}
                 type="text"
                 value={abilitySearch}
                 onChange={e => setAbilitySearch(e.target.value)}
-                onFocus={() => setShowAbilityDropdown(true)}
+                onFocus={() => {
+                  setShowAbilityDropdown(true)
+                  updateDropdownPosition(abilityInputRef, 'ability')
+                }}
                 onBlur={() => setTimeout(() => setShowAbilityDropdown(false), 200)}
                 placeholder={t('calculate.searchAbility') || 'Rechercher un talent...'}
                 className="form-control item-search-input"
@@ -797,7 +884,10 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
             </div>
 
             {showAbilityDropdown && (
-              <div className="item-dropdown">
+              <div 
+                className="item-dropdown"
+                style={{ left: `${dropdownPositions.ability.left}px`, top: `${dropdownPositions.ability.top}px` }}
+              >
                 {filteredAbilities.length === 0 && (
                   <div className="item-dropdown-empty">{t('common.noResults') || 'Aucun résultat'}</div>
                 )}
@@ -841,10 +931,14 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
               <label>{t('calculate.item') || 'Objet tenu'}</label>
               <div className="item-input-wrapper">
                 <input
+                  ref={itemInputRef}
                   type="text"
                   value={itemSearch}
                   onChange={e => setItemSearch(e.target.value)}
-                  onFocus={() => setShowItemDropdown(true)}
+                  onFocus={() => {
+                    setShowItemDropdown(true)
+                    updateDropdownPosition(itemInputRef, 'item')
+                  }}
                   onBlur={() => setTimeout(() => setShowItemDropdown(false), 200)}
                   placeholder={t('calculate.searchItem') || 'Rechercher un objet...'}
                   className="form-control item-search-input"
@@ -864,7 +958,10 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
               </div>
               
               {showItemDropdown && (
-                <div className="item-dropdown">
+                <div 
+                  className="item-dropdown"
+                  style={{ left: `${dropdownPositions.item.left}px`, top: `${dropdownPositions.item.top}px` }}
+                >
                   {filteredItems.length === 0 && (
                     <div className="item-dropdown-empty">
                       {t('common.noResults') || 'Aucun résultat'}
@@ -913,10 +1010,14 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
               <label>{t('calculate.move')}</label>
               <div className="item-input-wrapper">
                 <input
+                  ref={el => moveInputRefs.current[1] = el}
                   type="text"
                   value={moveSearch}
                   onChange={e => setMoveSearch(e.target.value)}
-                  onFocus={() => setShowMoveDropdown(true)}
+                  onFocus={() => {
+                    setShowMoveDropdown(true)
+                    updateDropdownPosition(moveInputRefs.current[1], 'move1')
+                  }}
                   onBlur={() => setTimeout(() => setShowMoveDropdown(false), 200)}
                   placeholder={t('calculate.searchMove') || 'Rechercher une attaque...'}
                   className="form-control item-search-input"
@@ -936,7 +1037,7 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
               </div>
 
               {showMoveDropdown && (
-                <div className="item-dropdown">
+                <div className="item-dropdown" style={{ left: `${dropdownPositions.move1.left}px`, top: `${dropdownPositions.move1.top}px` }}>
                   {(!filteredMoves || filteredMoves.length === 0) && (
                     <div className="item-dropdown-empty">
                       {t('common.noResults') || 'Aucun résultat'}

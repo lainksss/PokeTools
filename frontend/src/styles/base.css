@@ -2,63 +2,102 @@
    BASE STYLES & RESET
    ====================================== */
 
-* {
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  font-size: 13px;
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
-  background: linear-gradient(180deg, #0a1120, #0f1724);
+  font-family: 'Outfit', 'Inter', 'Segoe UI', 'Roboto', system-ui, sans-serif;
+  background: var(--bg);
   color: var(--text);
   min-height: 100vh;
   overflow-x: hidden;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ======================================
-   GLOBAL SELECT STYLING
-   ====================================== */
+/* ---- Typography ---- */
+h1 { font-size: 1.8rem; font-weight: 800; }
+h2 { font-size: 1.4rem; font-weight: 700; }
+h3 { font-size: 1.1rem; font-weight: 600; }
+h4 { font-size: 0.95rem; font-weight: 600; }
+p  { color: var(--text-muted); }
 
+strong { font-weight: 600; }
+
+/* ---- App Layout ---- */
+.app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+.app-main {
+  flex: 1;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 20px 16px;
+}
+
+/* ---- Scrollbar Styling ---- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar);
+  border-radius: 99px;
+}
+
+/* ---- Select Styling ---- */
 select {
-  background: rgba(255, 255, 255, 0.05);
-  color: #ffffff;
+  background: var(--card);
+  color: var(--text);
   border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 6px 8px;
+  font-family: inherit;
+  font-size: 0.92rem;
+  transition: border-color var(--transition);
+}
+
+select:hover {
+  border-color: var(--accent);
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-dim);
 }
 
 select option {
-  background: #1a2332;
-  color: #ffffff;
+  background: var(--card);
+  color: var(--text);
   padding: 8px;
 }
 
 select option:checked {
-  background: linear-gradient(#2563eb, #2563eb);
-  color: #ffffff;
-}
-
-/* Pour Firefox */
-select option:hover {
-  background: #2563eb !important;
-  color: #ffffff !important;
-}
-
-/* ======================================
-   SCROLLBAR STYLING
-   ====================================== */
-
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.02);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
+  background: var(--accent);
+  color: #fff;
 }
 
 ::-webkit-scrollbar-thumb:hover {

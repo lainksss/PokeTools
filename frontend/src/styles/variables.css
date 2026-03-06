@@ -3,19 +3,87 @@
    ====================================== */
 
 :root {
-  --gap: 16px;
-  --bg: #0f1724;
-  --card: #1a2332;
-  --accent: #3b82f6;
-  --border: rgba(255, 255, 255, 0.2);
-  --text: #e6eef6;
-  --text-muted: #9ca3af;
-  color-scheme: dark;
+  --transition: 0.2s ease;
+  
+  /* Shared */
+  --success: #34d399;
+  --danger: #f87171;
+  --warning: #fbbf24;
+  --info: #60a5fa;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --radius-lg: 16px;
 
   /* Panel sizing for scale variants */
   --panel-min-width: 280px;
-  --panel-padding: 12px;
+  --panel-min-width: 340px;
+  --panel-padding: 20px;
 
   /* Results reserved space */
   --results-reserved: 360px;
+}
+
+[data-theme="dark"] {
+  --bg:           #0b0d17;
+  --bg2:          #10121e;
+  --surface:      #161928;
+  --card:         #1c1f33;
+  --card-hover:   #222641;
+  --border:       rgba(255, 255, 255, 0.07);
+  --border-focus: rgba(139, 92, 246, 0.5);
+  --text:         #e2e8f6;
+  --text-muted:   #7a82a0;
+  --text-dim:     #4a5068;
+  --accent:       #818cf8;
+  --accent-hover: #6366f1;
+  --accent-dim:   rgba(129, 140, 248, 0.12);
+  --badge-bg:     rgba(129, 140, 248, 0.1);
+  --scrollbar:    #2a2e48;
+  --overlay:      rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+
+  /* Compatibility aliases (common names used across components) */
+  --bg-input: var(--card);
+  --bg-card: var(--card);
+  --bg-card-hover: var(--card-hover);
+  --border-primary: var(--border);
+  --border-secondary: rgba(255,255,255,0.12);
+  --border-input: rgba(255,255,255,0.12);
+  --text-primary: var(--text);
+  --text-secondary: var(--text-muted);
+  --accent-light: var(--accent-dim);
+  --accent-on: #ffffff;
+}
+
+[data-theme="light"] {
+  /* Warm beige / candy-pink theme */
+  --bg:           #f7efe6; /* warm beige page background */
+  --bg2:          #f6e9e3; /* slightly darker beige */
+  --surface:      #fff9f7; /* near-white warm surface */
+  --card:         #fff8f6; /* card background warm */
+  --card-hover:   #fff1ef; /* hover tint with soft pink */
+  --border:       rgba(214, 185, 170, 0.45); /* soft warm border */
+  --border-focus: rgba(244, 166, 193, 0.45); /* pink focus */
+  --text:         #2b2623; /* warm dark text (brownish) */
+  --text-muted:   #7a6560; /* muted warm */
+  --text-dim:     #9c8f8f;
+  --accent:       #f4a6c1; /* candy pink accent */
+  --accent-hover: #f07aa3; /* stronger pink on hover */
+  --accent-dim:   rgba(244, 166, 193, 0.08);
+  --badge-bg:     rgba(244, 166, 193, 0.12);
+  --scrollbar:    #e9ded7;
+  --overlay:      rgba(255, 250, 250, 0.85);
+  color-scheme: light;
+
+  /* Compatibility aliases (common names used across components) */
+  --bg-input: var(--card);
+  --bg-card: var(--card);
+  --bg-card-hover: var(--card-hover);
+  --border-primary: var(--border);
+  --border-secondary: rgba(0,0,0,0.12);
+  --border-input: rgba(0,0,0,0.15);
+  --text-primary: var(--text);
+  --text-secondary: var(--text-muted);
+  --accent-light: var(--accent-dim);
+  --accent-on: #ffffff;
 }

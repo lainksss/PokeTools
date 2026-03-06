@@ -187,10 +187,6 @@ export default function Coverage() {
 
   return (
     <div className="threats-page">
-      <div className="threats-header">
-        <h2>{t('coverage.title')}</h2>
-        <p>{t('coverage.description')}</p>
-      </div>
 
       <div className="threats-container">
         <div className="threats-left">

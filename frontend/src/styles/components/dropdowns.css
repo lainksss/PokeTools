@@ -10,7 +10,7 @@
 .pokemon-search-input {
   width: 100%;
   padding: 10px 12px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-input);
   border: 1px solid var(--border);
   border-radius: 6px;
   color: var(--text);
@@ -24,18 +24,16 @@
 
 /* Pokemon dropdown container */
 .pokemon-dropdown-container {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: rgba(26, 35, 50, 0.98);
+  position: fixed;
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: 8px;
-  margin-top: 4px;
-  max-height: 300px;
+  max-height: 450px;
+  min-width: 320px;
+  width: min(90vw, 500px);
   overflow-y: auto;
-  z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 2500;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
 /* Pokemon dropdown scrollbar */
@@ -44,16 +42,16 @@
 }
 
 .pokemon-dropdown-container::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--scrollbar);
 }
 
 .pokemon-dropdown-container::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--scrollbar-thumb);
   border-radius: 4px;
 }
 
 .pokemon-dropdown-container::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--scrollbar-thumb);
 }
 
 /* Pokemon dropdown items */
@@ -66,11 +64,11 @@
 }
 
 .pokemon-dropdown-item:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--accent-light);
 }
 
 .pokemon-dropdown-item:active {
-  background: rgba(59, 130, 246, 0.3);
+  background: var(--accent-light);
 }
 
 /* Item selector wrapper */
@@ -116,18 +114,16 @@
 
 /* Item dropdown container */
 .item-dropdown {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: rgba(26, 35, 50, 0.98);
+  position: fixed;
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: 8px;
-  margin-top: 4px;
-  max-height: 400px;
+  max-height: 500px;
+  min-width: 340px;
+  width: min(90vw, 550px);
   overflow-y: auto;
-  z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 2500;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
 /* Item dropdown scrollbar */
@@ -136,17 +132,16 @@
 }
 
 .item-dropdown::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+  background: var(--scrollbar);
 }
 
 .item-dropdown::-webkit-scrollbar-thumb {
-  background: rgba(59, 130, 246, 0.5);
+  background: var(--scrollbar-thumb);
   border-radius: 4px;
 }
 
 .item-dropdown::-webkit-scrollbar-thumb:hover {
-  background: rgba(59, 130, 246, 0.7);
+  background: var(--scrollbar-thumb);
 }
 
 /* Empty state in item dropdown */
@@ -163,7 +158,7 @@
   padding: 12px 16px;
   cursor: pointer;
   transition: background 0.2s;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -172,11 +167,11 @@
 }
 
 .item-dropdown-item:hover {
-  background: rgba(59, 130, 246, 0.2);
+  background: var(--accent-light);
 }
 
 .item-dropdown-item.selected {
-  background: rgba(59, 130, 246, 0.3);
+  background: var(--accent-light);
 }
 
 .item-dropdown-item:last-child {
@@ -216,7 +211,7 @@
   border-radius: 6px;
   margin-top: 4px;
   z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-md);
 }
 
 /* Pokemon dropdown item (speed checker row) */
@@ -227,11 +222,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border);
 }
 
 .pokemon-dropdown-item:hover {
-  background: rgba(59, 130, 246, 0.2);
+  background: var(--accent-light);
 }
 
 .pokemon-dropdown-item .pokemon-name {

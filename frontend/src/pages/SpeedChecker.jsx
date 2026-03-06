@@ -1,10 +1,44 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
 import { newEvToOld } from '../utils/evs'
 
 export default function SpeedChecker() {
   const { t, language, getPokemonName, matchesPokemonName } = useTranslation()
+  const speedPokemonInputRef = useRef(null)
+  
+  // State for dropdown positioning
+  const [dropdownPos, setDropdownPos] = useState({ left: 0, top: 0 })
+  
+  const updateDropdownPosition = () => {
+    if (!speedPokemonInputRef?.current) return
+    const rect = speedPokemonInputRef.current.getBoundingClientRect()
+    const viewportHeight = window.innerHeight
+    const spaceBelow = viewportHeight - rect.bottom
+    const spaceAbove = rect.top
+    const cssMax = 300
+    const dropdownMaxHeight = Math.min(cssMax, Math.floor(viewportHeight - 80))
+    let topPos
+    if (spaceBelow < 160 && spaceAbove > spaceBelow) {
+      topPos = rect.top + window.scrollY - dropdownMaxHeight - 4
+      if (topPos < 8) topPos = 8
+    } else {
+      topPos = rect.bottom + window.scrollY + 4
+    }
+    setDropdownPos({
+      left: rect.left + window.scrollX,
+      top: topPos
+    })
+  }
+  
+  useEffect(() => {
+    window.addEventListener('resize', updateDropdownPosition)
+    window.addEventListener('scroll', updateDropdownPosition, true)
+    return () => {
+      window.removeEventListener('resize', updateDropdownPosition)
+      window.removeEventListener('scroll', updateDropdownPosition, true)
+    }
+  }, [])
   const [allPokemon, setAllPokemon] = useState([])
   const [allNatures, setAllNatures] = useState([])
   const [allAbilities, setAllAbilities] = useState([])
@@ -201,7 +235,6 @@ export default function SpeedChecker() {
 
   return (
     <div className="speed-checker-page">
-      <h2>{t('speedChecker.title') || 'Speed Checker'}</h2>
       
       <div className="speed-checker-container">
         {/* Left Panel - User's Pokémon */}
@@ -213,6 +246,7 @@ export default function SpeedChecker() {
             <label>{t('calculate.selectPokemon')}</label>
             <div className="pokemon-search-container">
               <input
+                ref={speedPokemonInputRef}
                 type="text"
                 className="pokemon-search-input"
                 placeholder={t('calculate.search')}
@@ -221,10 +255,16 @@ export default function SpeedChecker() {
                   setSearchText(e.target.value)
                   setShowDropdown(true)
                 }}
-                onFocus={() => setShowDropdown(true)}
+                onFocus={() => {
+                  setShowDropdown(true)
+                  updateDropdownPosition()
+                }}
               />
               {showDropdown && filteredPokemon.length > 0 && (
-                <div className="pokemon-dropdown">
+                <div 
+                  className="pokemon-dropdown"
+                  style={{ left: `${dropdownPos.left}px`, top: `${dropdownPos.top}px`, position: 'fixed' }}
+                >
                   {filteredPokemon.slice(0, 50).map(p => (
                     <div
                       key={p.id}

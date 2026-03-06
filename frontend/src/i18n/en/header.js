@@ -1,6 +1,7 @@
 export const headerEn = {
   // Navigation
   nav: {
+    home: "Home",
     calculator: "Calculator",
     threats: "Threat Analysis",
     coverage: "Offensive Coverage",

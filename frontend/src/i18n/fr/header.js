@@ -1,6 +1,7 @@
 export const headerFr = {
   // Navigation
   nav: {
+    home: "Accueil",
     calculator: "Calculateur",
     threats: "Analyse des menaces",
     coverage: "Couverture offensive",

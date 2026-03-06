@@ -92,5 +92,11 @@
   font-size: 13px;
   color: #60a5fa;
   display: inline-block;
-  max-width: fit-content;
+  max-width: calc(100% - 24px);
+  /* Prevent very long descriptions from pushing the layout down */
+  max-height: 96px;
+  overflow-y: auto;
+  padding-right: 10px;
+  box-sizing: border-box;
+  word-wrap: break-word;
 }

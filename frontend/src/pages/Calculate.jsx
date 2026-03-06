@@ -46,6 +46,14 @@ export default function Calculate() {
               >
                 {resultsCollapsed ? 'Afficher' : 'Masquer'}
               </button>
+              <button
+                type="button"
+                className="close-results-btn"
+                onClick={() => setResult(null)}
+                title="Fermer"
+              >
+                ×
+              </button>
             </div>
           </div>
 

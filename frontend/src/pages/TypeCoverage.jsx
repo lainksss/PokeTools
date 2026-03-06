@@ -69,10 +69,6 @@ export default function TypeCoverage() {
 
   return (
     <div className="threats-page">
-      <div className="threats-header">
-        <h2>{t('typeCoverage.title')}</h2>
-        <p>{t('typeCoverage.description')}</p>
-      </div>
 
       <div className="threats-container">
         <div className="threats-left">

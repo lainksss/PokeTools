@@ -2,41 +2,132 @@
    COVERAGE ANALYSIS PAGE STYLES
    ====================================== */
 
-/* Coverage moves row styling */
-.coverage-moves-group {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  background: transparent;
-  border-radius: 0 0 12px 12px;
-  border-top: 1.5px solid var(--accent);
-  padding: 18px 24px;
+.coverage-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: var(--gap);
+  gap: var(--gap);
+  min-height: 0;
+  overflow: hidden;
+}
+
+.coverage-header {
+  text-align: center;
+  margin-bottom: 0;
+  padding: 8px 0;
+  flex: 0 0 auto;
+}
+
+.coverage-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.coverage-header p {
+  display: none;
+}
+
+/* Main coverage container grid */
+.coverage-container {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 32px;
+  min-height: 0;
+}
+
+/* Left panel (attacker) */
+.coverage-left {
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.coverage-left h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent);
   margin: 0;
-  z-index: 2;
-  box-shadow: 0 -2px 12px 0 rgba(37,99,235,0.07);
+}
+
+/* Middle panel (conditions) */
+.coverage-middle {
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 280px;
+}
+
+.coverage-middle h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0;
+}
+
+/* Right panel (results) */
+.coverage-right {
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.coverage-right h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0;
+}
+
+/* Coverage moves section (now in normal flow) */
+.coverage-moves-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  margin-top: 12px;
 }
 
 .coverage-moves-row {
   display: flex;
   flex-direction: row;
-  gap: 24px;
-  justify-content: center;
+  gap: 12px;
+  justify-content: flex-start;
   align-items: stretch;
   width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
+  flex-wrap: nowrap;
 }
 
 .coverage-move {
-  flex: 1 1 0;
-  min-width: 160px;
-  max-width: 220px;
+  flex: 1;
+  min-width: 0;
 }
 
 /* Responsive adjustments */
 @media (max-width: 1000px) {
+  .coverage-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
   .coverage-moves-row {
     grid-template-columns: repeat(2, minmax(180px, 1fr));
   }

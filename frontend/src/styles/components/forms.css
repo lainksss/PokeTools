@@ -17,6 +17,27 @@
   color: var(--text);
 }
 
+/* Form groups in panel-middle should be centered */
+.panel-middle .form-group {
+  width: 100%;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+}
+
+.panel-middle .form-group label {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.panel-middle .form-group > div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
 /* Horizontal form-group variant */
 .form-group.horizontal {
   display: flex;
@@ -85,20 +106,25 @@ select.form-control option:checked {
   gap: 8px;
   width: 100%;
   align-items: center;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  overflow-x: auto;
+  /* allow options to wrap on small widths so labels don't overflow */
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .analysis-options .tailwind-button {
   width: auto;
-  flex: 1 1 0;
-  min-width: 0;
-  padding: 0 12px;
-  height: 48px;
+  flex: 1 1 180px;
+  min-width: 140px;
+  padding: 10px 14px;
+  min-height: 48px;
+  height: auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  white-space: normal;
+  line-height: 1.15;
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
 /* EV input field */

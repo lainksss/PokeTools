@@ -231,10 +231,6 @@ export default function Threats() {
 
   return (
     <div className="threats-page">
-      <div className="threats-header">
-        <h2>{t('threats.title')}</h2>
-        <p>{t('threats.subtitle')}</p>
-      </div>
 
       <div className="threats-container">
         <div className="threats-left">
