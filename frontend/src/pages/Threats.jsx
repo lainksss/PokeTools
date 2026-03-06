@@ -343,7 +343,7 @@ export default function Threats() {
                 className={`tailwind-button small option-button ${attackMode === 'max' ? 'active' : ''}`}
                 onClick={() => {
                   setAttackMode('max')
-                  setCustomAttackEV(252)
+                  setCustomAttackEV(32)
                   setCustomNatureBoost(true)
                 }}
               >
@@ -359,9 +359,9 @@ export default function Threats() {
                   <input
                     type="number"
                     min="0"
-                    max="252"
+                    max="32"
                     value={customAttackEV}
-                    onChange={(e) => setCustomAttackEV(Math.max(0, Math.min(252, parseInt(e.target.value) || 0)))}
+                    onChange={(e) => setCustomAttackEV(Math.max(0, Math.min(32, parseInt(e.target.value) || 0)))}
                   />
                 </div>
 
