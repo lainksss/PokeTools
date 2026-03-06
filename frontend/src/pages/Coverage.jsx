@@ -29,6 +29,7 @@ export default function Coverage() {
   const [bulkAdaptNature, setBulkAdaptNature] = useState(true) // true => adapt nature by move, false => use Def
   const [bulkAssaultVest, setBulkAssaultVest] = useState(false)
   const [bulkEvoluroc, setBulkEvoluroc] = useState(false)
+  const [fullyEvolvedOnly, setFullyEvolvedOnly] = useState(false)
 
   const ALL_WEATHERS = ['none', 'sun', 'rain', 'sandstorm', 'snow']
   const ALL_TERRAINS = ['none', 'grassy', 'electric', 'misty', 'psychic']
@@ -96,6 +97,8 @@ export default function Coverage() {
         light_screen: lightScreen || undefined,
         aurora_veil: auroraVeil || undefined
       }
+      ,
+      fully_evolved_only: fullyEvolvedOnly
     }
 
     try {
@@ -279,6 +282,16 @@ export default function Coverage() {
                 {t('screens.aurora') || 'Voile Aurore'}
               </button>
             </div>
+          </div>
+
+          <div className="form-group" style={{ marginTop: 8 }}>
+            <button
+              type="button"
+              className={`tailwind-button option-button ${fullyEvolvedOnly ? 'active' : ''}`}
+              onClick={() => setFullyEvolvedOnly(v => !v)}
+            >
+              {t('coverage.fullyEvolvedOnly') || 'Fully evolved only'}
+            </button>
           </div>
 
           {bulkMode === 'custom' && (

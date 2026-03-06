@@ -28,4 +28,6 @@ export const speedCheckerEn = {
   choiceScarf: "Choice Scarf",
   on: "ON",
   off: "OFF"
+  ,
+  fullyEvolvedOnly: "Fully evolved only"
 }

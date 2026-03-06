@@ -36,4 +36,6 @@ export const threatsFr = {
   natureBoost: "Atq/SpA nature",
   itemChoice: "Objet Choix",
   lifeOrb: "Orbe Vie"
+  ,
+  fullyEvolvedOnly: "Pleinement évolués uniquement"
 }

@@ -22,4 +22,6 @@ export const coverageEn = {
   bulkNatureSpDef: "Sp. Def",
   assaultVest: "Assault Vest",
   evoluroc: "Evoluroc"
+  ,
+  fullyEvolvedOnly: "Fully evolved only"
 }

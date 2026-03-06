@@ -54,6 +54,7 @@ export default function SpeedChecker() {
   const [weather, setWeather] = useState('none')
   // Choice Scarf toggle (user)
   const [choiceScarf, setChoiceScarf] = useState(false)
+  const [fullyEvolvedOnly, setFullyEvolvedOnly] = useState(false)
   const level = 50 // Always level 50
   
   // Search functionality
@@ -189,7 +190,9 @@ export default function SpeedChecker() {
       return
     }
 
-      const comparisons = allPokemon.map(pokemon => {
+      const pool = fullyEvolvedOnly ? allPokemon.filter(p => p.can_evolve === false) : allPokemon
+
+      const comparisons = pool.map(pokemon => {
       let opponentEV = 0
       let opponentNature = 'neutral'
       
@@ -231,7 +234,7 @@ export default function SpeedChecker() {
     })
 
     setResults(filtered)
-  }, [selectedPokemon, level, speedEVUnits, speedNature, speedBoost, tailwind, choiceScarf, comparisonMode, customEV, customNature, choiceScarfMiddle, showSlower, allPokemon, ability, weather])
+  }, [selectedPokemon, level, speedEVUnits, speedNature, speedBoost, tailwind, choiceScarf, comparisonMode, customEV, customNature, choiceScarfMiddle, showSlower, allPokemon, ability, weather, fullyEvolvedOnly])
 
   return (
     <div className="speed-checker-page">
@@ -278,6 +281,16 @@ export default function SpeedChecker() {
                 </div>
               )}
             </div>
+          </div>
+
+          <div style={{ marginTop: 10 }}>
+            <button
+              type="button"
+              className={`tailwind-button option-button ${fullyEvolvedOnly ? 'active' : ''}`}
+              onClick={() => setFullyEvolvedOnly(v => !v)}
+            >
+              {t('speedChecker.fullyEvolvedOnly') || 'Fully evolved only'}
+            </button>
           </div>
 
           {selectedPokemon && (
@@ -542,20 +555,19 @@ export default function SpeedChecker() {
           
           {selectedPokemon && (
             <div className="speed-counter">
-              {showSlower 
-                ? `${results.length} ${t('speedChecker.slowerCount') || 'slower'} • ${allPokemon.filter(p => {
-                    const oppEv = comparisonMode === 'min' ? 0 : comparisonMode === 'max' ? newEvToOld(32) : newEvToOld(customEV)
-                    const oppSpeed = calculateSpeed(p.base_stats.speed, level, oppEv, comparisonMode === 'min' ? 'neutral' : comparisonMode === 'max' ? 'positive' : customNature ? 'positive' : 'neutral')
-                    const oppFinalSpeed = choiceScarfMiddle ? Math.floor(oppSpeed * 1.5) : oppSpeed
-                    return finalUserSpeed <= oppFinalSpeed
-                  }).length} ${t('speedChecker.fasterCount') || 'faster'}`
-                : `${results.length} ${t('speedChecker.fasterCount') || 'faster'} • ${allPokemon.filter(p => {
-                    const oppEv = comparisonMode === 'min' ? 0 : comparisonMode === 'max' ? newEvToOld(32) : newEvToOld(customEV)
-                    const oppSpeed = calculateSpeed(p.base_stats.speed, level, oppEv, comparisonMode === 'min' ? 'neutral' : comparisonMode === 'max' ? 'positive' : customNature ? 'positive' : 'neutral')
-                    const oppFinalSpeed = choiceScarfMiddle ? Math.floor(oppSpeed * 1.5) : oppSpeed
-                    return finalUserSpeed > oppFinalSpeed
-                  }).length} ${t('speedChecker.slowerCount') || 'slower'}`
-              }
+              {(() => {
+                const pool = fullyEvolvedOnly ? allPokemon.filter(p => p.can_evolve === false) : allPokemon
+                const countOpp = (pred) => pool.filter(p => {
+                  const oppEv = comparisonMode === 'min' ? 0 : comparisonMode === 'max' ? newEvToOld(32) : newEvToOld(customEV)
+                  const oppSpeed = calculateSpeed(p.base_stats.speed, level, oppEv, comparisonMode === 'min' ? 'neutral' : comparisonMode === 'max' ? 'positive' : customNature ? 'positive' : 'neutral')
+                  const oppFinalSpeed = choiceScarfMiddle ? Math.floor(oppSpeed * 1.5) : oppSpeed
+                  return pred(finalUserSpeed, oppFinalSpeed)
+                }).length
+
+                return showSlower
+                  ? `${results.length} ${t('speedChecker.slowerCount') || 'slower'} • ${countOpp((you, opp) => you <= opp)} ${t('speedChecker.fasterCount') || 'faster'}`
+                  : `${results.length} ${t('speedChecker.fasterCount') || 'faster'} • ${countOpp((you, opp) => you > opp)} ${t('speedChecker.slowerCount') || 'slower'}`
+              })()}
             </div>
           )}
 

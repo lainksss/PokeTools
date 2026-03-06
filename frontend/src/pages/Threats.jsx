@@ -18,6 +18,7 @@ export default function Threats() {
   const [auroraVeil, setAuroraVeil] = useState(false)
   const [progress, setProgress] = useState({ processed: 0, total: 0, threats_found: 0 })
   const [useStreaming, setUseStreaming] = useState(true)
+  const [fullyEvolvedOnly, setFullyEvolvedOnly] = useState(false)
   const [showOnlyGuaranteed, setShowOnlyGuaranteed] = useState(false)
   const [minRolls, setMinRolls] = useState(1) // Minimum de rolls pour afficher (1-16)
 
@@ -97,6 +98,8 @@ export default function Threats() {
         item_choice: customItemChoice,
         life_orb: customLifeOrb
       }
+      ,
+      fully_evolved_only: fullyEvolvedOnly
     }
 
     try {
@@ -197,6 +200,8 @@ export default function Threats() {
         item_choice: customItemChoice,
         life_orb: customLifeOrb
       }
+      ,
+      fully_evolved_only: fullyEvolvedOnly
     }
 
     try {
@@ -310,6 +315,16 @@ export default function Threats() {
                 {t('screens.aurora') || 'Voile Aurore'}
               </button>
             </div>
+          </div>
+
+          <div className="form-group" style={{ marginTop: 8 }}>
+            <button
+              type="button"
+              className={`tailwind-button option-button ${fullyEvolvedOnly ? 'active' : ''}`}
+              onClick={() => setFullyEvolvedOnly(v => !v)}
+            >
+              {t('threats.fullyEvolvedOnly') || 'Fully evolved only'}
+            </button>
           </div>
 
           {/* Analysis options: horizontal buttons inspired by SpeedChecker */}

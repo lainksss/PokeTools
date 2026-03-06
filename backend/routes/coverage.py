@@ -41,6 +41,7 @@ def analyze_coverage_stream():
     bulk_nature_mode = payload.get("bulk_nature_mode", "byMove")
     bulk_assault_vest = bool(payload.get("bulk_assault_vest", False))
     bulk_evoluroc = bool(payload.get("bulk_evoluroc", False))
+    fully_evolved_only = bool(payload.get("fully_evolved_only", False))
 
     if not attacker_data:
         return jsonify({"error": "attacker required"}), 400
@@ -51,10 +52,22 @@ def analyze_coverage_stream():
     def generate():
         try:
             all_pokemon_data = load_json("all_pokemon.json") or {}
-            all_pokemon = [
-                {"name": name, **data} 
-                for name, data in all_pokemon_data.items()
-            ]
+            evo_map = load_json("pokemon_evolution.json") or {}
+
+            # Build list and optionally filter to fully-evolved only
+            all_pokemon = []
+            for name, data in all_pokemon_data.items():
+                if not data:
+                    continue
+                if fully_evolved_only:
+                    try:
+                        can_evolve = bool((evo_map.get(name) or {}).get('can_evolve', False))
+                    except Exception:
+                        can_evolve = False
+                    if can_evolve:
+                        continue
+                all_pokemon.append({"name": name, **data})
+
             total_pokemon = len(all_pokemon)
 
             attacker = build_actor_from_payload(attacker_data)
@@ -260,8 +273,11 @@ def analyze_type_coverage():
     if not moves_data or len(moves_data) == 0:
         return jsonify({"error": "at least one move required"}), 400
 
+    fully_evolved_only = bool(payload.get('fully_evolved_only', False))
+
     try:
         all_pokemon_data = load_json("all_pokemon.json") or {}
+        evo_map = load_json("pokemon_evolution.json") or {}
         all_moves = load_json("all_moves.json") or {}
         type_chart = load_json("all_types.json") or {}
         
@@ -294,6 +310,13 @@ def analyze_type_coverage():
         not_super_effective = []
         
         for poke_name, poke_data in all_pokemon_data.items():
+            if fully_evolved_only:
+                try:
+                    can_evolve = bool((evo_map.get(poke_name) or {}).get('can_evolve', False))
+                except Exception:
+                    can_evolve = False
+                if can_evolve:
+                    continue
             poke_id = poke_data.get("id")
             poke_types = poke_data.get("types", [])
             

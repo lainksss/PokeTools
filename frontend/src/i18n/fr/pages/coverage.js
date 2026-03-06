@@ -22,4 +22,6 @@ export const coverageFr = {
   hpEvsLabel: "EVs en PV",
   assaultVest: "Veste de Combat",
   evoluroc: "Evoluroc"
+  ,
+  fullyEvolvedOnly: "Pleinement évolués uniquement"
 }

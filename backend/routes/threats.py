@@ -71,6 +71,8 @@ def find_threats():
     item_choice = bool(analysis_options.get("item_choice", False))
     life_orb = bool(analysis_options.get("life_orb", False))
 
+    fully_evolved_only = bool(data.get('fully_evolved_only', False))
+
     if not defender_payload:
         return jsonify({"error": "missing defender"}), 400
 
@@ -98,6 +100,9 @@ def find_threats():
         if attack_boosting_nature and sp_attack_boosting_nature:
             break
 
+    # Load evolution info to optionally filter only fully-evolved forms
+    evo_map = load_json("pokemon_evolution.json") or {}
+
     # Pour chaque Pokémon
     for poke_slug, poke_data in all_pokemon.items():
         if not poke_data:
@@ -108,6 +113,15 @@ def find_threats():
         poke_types = poke_data.get("types", [])
         base_stats = poke_data.get("base_stats", {})
         
+        # Optionally skip non-fully-evolved Pokémon to reduce analysis cost
+        try:
+            can_evolve = bool((evo_map.get(poke_slug) or {}).get('can_evolve', False))
+        except Exception:
+            can_evolve = False
+
+        if fully_evolved_only and can_evolve:
+            continue
+
         # Récupérer les moves de ce Pokémon
         poke_moves = pokemon_moves_map.get(str(poke_id), [])
         if not poke_moves:
@@ -291,6 +305,8 @@ def find_threats_stream():
     item_choice = bool(analysis_options.get("item_choice", False))
     life_orb = bool(analysis_options.get("life_orb", False))
 
+    fully_evolved_only = bool(data.get('fully_evolved_only', False))
+
     if not defender_payload:
         return jsonify({"error": "missing defender"}), 400
 
@@ -302,6 +318,7 @@ def find_threats_stream():
 
             # Charger les données
             all_pokemon = load_json("all_pokemon.json") or {}
+            evo_map = load_json("pokemon_evolution.json") or {}
             all_moves = load_json("all_moves.json") or {}
             all_natures = load_json("all_natures.json") or {}
             pokemon_moves_map = load_json("all_pokemon_moves.json") or {}
@@ -320,7 +337,11 @@ def find_threats_stream():
                 if attack_boost_nature and sp_attack_boost_nature:
                     break
 
-            total_pokemon = len(all_pokemon)
+            # If filtering only fully-evolved, compute filtered total
+            if fully_evolved_only:
+                total_pokemon = sum(1 for k, v in all_pokemon.items() if v and not bool((evo_map.get(k) or {}).get('can_evolve', False)))
+            else:
+                total_pokemon = len(all_pokemon)
             processed = 0
             total_threats = 0
             
@@ -336,6 +357,16 @@ def find_threats_stream():
                 poke_types = poke_data.get("types", [])
                 base_stats = poke_data.get("base_stats", {})
                 
+                # Optionally skip non-fully-evolved Pokémon
+                try:
+                    can_evolve = bool((evo_map.get(poke_slug) or {}).get('can_evolve', False))
+                except Exception:
+                    can_evolve = False
+
+                if fully_evolved_only and can_evolve:
+                    processed += 1
+                    continue
+
                 # Vérifier si le Pokémon a un seul talent
                 poke_abilities = pokemon_abilities_map.get(str(poke_id), [])
                 poke_ability = None

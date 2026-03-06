@@ -28,4 +28,6 @@ export const speedCheckerFr = {
   choiceScarf: "Mouchoir Choix",
   on: "Activé",
   off: "Désactivé"
+  ,
+  fullyEvolvedOnly: "Pleinement évolués uniquement"
 }
