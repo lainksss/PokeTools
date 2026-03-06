@@ -64,6 +64,10 @@ Note: the `recoil` attribute is not universally present in `moves_with_flags.jso
 	- Implementation: determines the highest non-HP stat using stage multipliers (positive stage: 1.0 + min(stage×0.5, 4.0), negative stage: 1.0 + min(|stage|×0.33, 2.0)). Applies priority tie-breaker: attack > defense > special_attack > special_defense > speed. Boosts the corresponding attacking stat (Attack for physical moves, Special Attack for special moves) by +30% or +50% for Speed using `pokeRound()` for precise rounding. Activation requires harsh sunlight or Booster Energy (weather takes priority if both present). Boost only applies to the applicable stat for the move category.
 	- Test: ✅ `protosynthesis` covered by `backend/test/test_protosynthesis.py` (5 tests: Dazzling Gleam/Shadow Ball with/without harsh sunlight, multi-target move reduction verified).
 
+- `quark-drive`: boosts the user's highest non-HP stat by +30% (or +50% for Speed stat) in Electric Terrain or while holding Booster Energy. Signature ability of Iron Bundle. Also boosts the defender's Defense or Special Defense (if either is the highest stat) by +30% to reduce incoming damage.
+	- Implementation: **Attacker-side**: determines the highest non-HP stat using stage multipliers (positive stage: 1.0 + min(stage×0.5, 4.0), negative stage: 1.0 + min(|stage|×0.33, 2.0)). Applies priority tie-breaker: attack > defense > special_attack > special_defense > speed. Boosts the corresponding attacking stat (Attack for physical moves, Special Attack for special moves) by +30% or +50% for Speed using `pokeRound()` for precise rounding. Activation requires Electric Terrain or Booster Energy (terrain takes priority if both present). **Defender-side**: applies identical stat detection logic to the defender. When Defense or Special Defense is the highest stat, boosts the corresponding defensive stat by +30% to reduce incoming damage. Both attacker and defender boosts apply independently; in battles with Electric Terrain, both can activate simultaneously, potentially offsetting each other's effects.
+	- Test: ✅ `quark-drive` covered by `backend/test/test_quark_drive.py` (5 tests: Icy Wind/Volt Switch with Electric Terrain demonstrating attacker boost, Spark with terrain + defender boost showing mutual cancellation, baseline tests without terrain).
+
 - `aerilate` / `pixilate` / `refrigerate` / `galvanize` / `normalize`: convert Normal moves to another type and apply ~20% boost (e.g., Aerilate turns Normal → Flying).
 	- Implementation: these are applied as base-power modifications (they mutate `move["type"]` and `move["power"]`) so type-effectiveness and STAB are recalculated using the mutated move and rounding matches tests.
 	- Test: ✅ `abilities` covered in `backend/test/test_aerilate_family.py`.
@@ -178,7 +182,7 @@ Note: `sniper` and other crit-related flags are set by ability handling and used
 **Recently Tested (25 tests, ✅):**
 - Damage reduction abilities: `multiscale`, `shadow-shield`, `thick-fat`, `tera-shell`, `solid-rock`, `filter`, `prism-armor`
 - Critical mechanics: `merciless`, `battle-armor`, `shell-armor`
-- Stat-boosting abilities: `hadron-engine`, `orichalcum-pulse`, `protosynthesis` (Flutter Mane; multi-target move mechanics validated)
+- Stat-boosting abilities: `hadron-engine`, `orichalcum-pulse`, `protosynthesis`, `quark-drive` (Flutter Mane, Iron Bundle; multi-target move mechanics validated; defender-side stat boosts for Quark Drive)
 
 **Other Fully Tested (✅):**
 - Power modifiers: `huge-power`, `sheer-force`, `tough-claws`, `strong-jaw`, `technician`, `iron-fist`, `reckless`, `steelworker`, `steely-spirit`

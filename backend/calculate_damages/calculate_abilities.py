@@ -308,6 +308,66 @@ def apply_ability_effects(
                 # Other stats (defense, special_defense): no direct damage impact in this context
                 effects["protosynthesis"] = highest_stat
 
+    # Quark Drive: boost highest stat by 30% (or 50% for Speed) in Electric Terrain or with Booster Energy
+    if atk_ability == "quark-drive":
+        # Check if Quark Drive is activated by Electric Terrain or Booster Energy
+        terrain = (field.get("terrain") or "").lower()
+        has_electric_terrain = terrain in ("electric", "electric-terrain", "electric terrain")
+        has_booster_energy = bool(attacker.get("item") == "booster-energy" if attacker else False)
+        
+        if has_electric_terrain or has_booster_energy:
+            # Determine highest stat (excluding HP, accounting for stat stages)
+            # Same logic as Protosynthesis
+            def apply_stage_multiplier(base_stat: float, stage: int) -> float:
+                if stage > 0:
+                    return base_stat * (1.0 + min(stage * 0.5, 4.0))  # Cap at +4x
+                elif stage < 0:
+                    return base_stat / (1.0 + min(abs(stage) * 0.33, 2.0))  # Cap at /2x
+                return base_stat
+            
+            stages = attacker.get("stages", {}) if attacker else {}
+            
+            # Get all non-HP stats with stage multipliers
+            stats_dict = {
+                "attack": (attacker.get("attack", 0) if attacker else 0, stages.get("attack", 0)),
+                "defense": (attacker.get("defense", 0) if attacker else 0, stages.get("defense", 0)),
+                "special_attack": (attacker.get("special_attack", 0) if attacker else 0, stages.get("special_attack", 0)),
+                "special_defense": (attacker.get("special_defense", 0) if attacker else 0, stages.get("special_defense", 0)),
+                "speed": (attacker.get("speed", 0) if attacker else 0, stages.get("speed", 0)),
+            }
+            
+            # Apply stage multipliers and find the highest
+            stat_values = {}
+            for stat_name, (base_val, stage) in stats_dict.items():
+                stat_values[stat_name] = apply_stage_multiplier(float(base_val), stage)
+            
+            # Determine highest stat with priority tie-breaker: attack > defense > special_attack > special_defense > speed
+            priority_order = ["attack", "defense", "special_attack", "special_defense", "speed"]
+            highest_stat = None
+            highest_value = -1
+            for stat_name in priority_order:
+                if stat_values[stat_name] > highest_value:
+                    highest_value = stat_values[stat_name]
+                    highest_stat = stat_name
+            
+            # Apply boost based on which stat is highest
+            if highest_stat == "special_attack":
+                # For special moves, Special Attack is the attacking stat
+                A = float(pokeRound(float(A) * 1.3))
+                effects["quark_drive"] = "special-attack"
+            elif highest_stat == "attack":
+                # If Attack is highest, boost by 30% only for physical moves
+                if category == "physical":
+                    A = float(pokeRound(float(A) * 1.3))
+                effects["quark_drive"] = "attack"
+            elif highest_stat == "speed":
+                # If Speed is highest, boost by 50%
+                effects["quark_drive"] = "speed"
+                # Speed boost doesn't directly affect damage calculation (no A/D modification needed)
+            else:
+                # Other stats (defense, special_defense): no direct damage impact in this context
+                effects["quark_drive"] = highest_stat
+
     # Normalize / Normalise: change ANY move to type Normal and apply ~20% boost
     if atk_ability in ("normalize", "normalise"):
         try:
@@ -458,6 +518,60 @@ def apply_ability_effects(
             max_hp = float(defender.get("max_hp"))
             if hp >= max_hp:  # Full HP
                 effects["tera_shell_active"] = True
+
+    # Quark Drive (defender-side): boost highest stat by 30% (or 50% for Speed) in Electric Terrain or with Booster Energy
+    if def_ability == "quark-drive":
+        # Check if Quark Drive is activated by Electric Terrain or Booster Energy
+        terrain = (field.get("terrain") or "").lower()
+        has_electric_terrain = terrain in ("electric", "electric-terrain", "electric terrain")
+        has_booster_energy = bool(defender.get("item") == "booster-energy" if defender else False)
+        
+        if has_electric_terrain or has_booster_energy:
+            # Determine highest stat (excluding HP, accounting for stat stages)
+            def apply_stage_multiplier(base_stat: float, stage: int) -> float:
+                if stage > 0:
+                    return base_stat * (1.0 + min(stage * 0.5, 4.0))  # Cap at +4x
+                elif stage < 0:
+                    return base_stat / (1.0 + min(abs(stage) * 0.33, 2.0))  # Cap at /2x
+                return base_stat
+            
+            stages = defender.get("stages", {}) if defender else {}
+            
+            # Get all non-HP stats with stage multipliers
+            stats_dict = {
+                "attack": (defender.get("attack", 0) if defender else 0, stages.get("attack", 0)),
+                "defense": (defender.get("defense", 0) if defender else 0, stages.get("defense", 0)),
+                "special_attack": (defender.get("special_attack", 0) if defender else 0, stages.get("special_attack", 0)),
+                "special_defense": (defender.get("special_defense", 0) if defender else 0, stages.get("special_defense", 0)),
+                "speed": (defender.get("speed", 0) if defender else 0, stages.get("speed", 0)),
+            }
+            
+            # Apply stage multipliers and find the highest
+            stat_values = {}
+            for stat_name, (base_val, stage) in stats_dict.items():
+                stat_values[stat_name] = apply_stage_multiplier(float(base_val), stage)
+            
+            # Determine highest stat with priority tie-breaker: attack > defense > special_attack > special_defense > speed
+            priority_order = ["attack", "defense", "special_attack", "special_defense", "speed"]
+            highest_stat = None
+            highest_value = -1
+            for stat_name in priority_order:
+                if stat_values[stat_name] > highest_value:
+                    highest_value = stat_values[stat_name]
+                    highest_stat = stat_name
+            
+            # Apply boost based on which stat is highest
+            if highest_stat == "defense":
+                # When Defense is highest, boost D by 30%
+                D = float(pokeRound(float(D) * 1.3))
+                effects["quark_drive_defender"] = "defense"
+            elif highest_stat == "special_defense":
+                # When Special Defense is highest, boost D by 30% (same defensive stat)
+                D = float(pokeRound(float(D) * 1.3))
+                effects["quark_drive_defender"] = "special-defense"
+            else:
+                # Other stats don't directly affect damage reduction (no D modification needed)
+                effects["quark_drive_defender"] = highest_stat
 
     # Multiscale: when defender is at full HP, halve damage taken
     if def_ability == "multiscale":
