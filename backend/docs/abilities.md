@@ -199,4 +199,3 @@ Note: `sniper` and other crit-related flags are set by ability handling and used
 - Zacian
 - Zamazenta
 - Chien pao / Ting Lu / Yu-yu / Chong jian
-- Future paradoxes left

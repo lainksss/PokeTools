@@ -330,3 +330,61 @@ def test_protosynthesis_flutter_mane_shadow_ball_vs_flutter_mane():
     print(f"Match: {actual == expected}")
     
     assert actual == expected, f"Mismatch: expected {expected}, got {actual}"
+
+
+def test_protosynthesis_flutter_mane_shadow_ball_defender_protosynthesis():
+    """0 SpA Flutter Mane Shadow Ball vs. 0 HP / 4 SpD Protosynthesis Flutter Mane (harsh sunlight, doubles, level 50)
+    Defender has Protosynthesis with 4 SpD EVs (highest stat is Special Defense).
+    Protosynthesis boosts defender's Special Defense by 30%, reducing damage taken.
+    Expected: (68, 72, 72, 72, 72, 74, 74, 74, 78, 78, 78, 78, 80, 80, 80, 84)
+    """
+    print("\n" + "="*80)
+    print("TEST 6: 0 SpA Flutter Mane Shadow Ball vs. 0 HP / 4 SpD Protosynthesis Flutter Mane")
+    print("        (harsh sunlight, doubles, level 50, defender Protosynthesis)")
+    print("="*80)
+    
+    attacker = get_pokemon_stats(
+        species="flutter-mane",
+        level=50,
+        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0},
+        ability=None
+    )
+    
+    defender = get_pokemon_stats(
+        species="flutter-mane",
+        level=50,
+        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 4, "speed": 0},
+        ability="protosynthesis"
+    )
+    
+    move = {
+        "name": "shadow-ball",
+        "power": 80,
+        "type": "ghost",
+        "damage_class": "special",
+        "targets": 1
+    }
+    
+    field = {
+        "weather": "harsh-sunlight",
+        "battle_mode": "double"
+    }
+    
+    result = calculate_damage(
+        move=move,
+        attacker=attacker,
+        defender=defender,
+        field=field,
+        level=50,
+        random_range=range(85, 101),
+        debug=False,
+    )
+    
+    expected = (68, 72, 72, 72, 72, 74, 74, 74, 78, 78, 78, 78, 80, 80, 80, 84)
+    actual = tuple(result['damage_all'])
+    
+    print(f"Expected: {expected}")
+    print(f"Actual:   {actual}")
+    print(f"Match: {actual == expected}")
+    
+    assert actual == expected, f"Mismatch: expected {expected}, got {actual}"
