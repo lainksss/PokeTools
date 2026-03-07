@@ -40,7 +40,9 @@ export default function Coverage() {
       return
     }
 
-    if (!attacker.move) {
+      // Allow any of the 4 move slots to be used (slot 1..4)
+      const hasAnyMove = attacker && (attacker.move || attacker.move2 || attacker.move3 || attacker.move4)
+      if (!hasAnyMove) {
       alert('Veuillez sélectionner au moins une attaque')
       return
     }
@@ -173,7 +175,9 @@ export default function Coverage() {
       return
     }
 
-    if (!attacker.move) {
+      // Allow any of the 4 move slots to be used (slot 1..4)
+      const hasAnyMove = attacker && (attacker.move || attacker.move2 || attacker.move3 || attacker.move4)
+      if (!hasAnyMove) {
       alert('Veuillez sélectionner au moins une attaque')
       return
     }
