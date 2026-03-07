@@ -206,8 +206,7 @@ export default function Coverage() {
         <div className="threats-middle">
           <h3>{t('coverage.analysisSettings')}</h3>
           
-          <div className="form-group">
-            <label>{t('threats.koMode')}</label>
+          <div className="form-group" aria-label={t('threats.koMode')}>
             <div className="ko-mode-toggle">
               <button
                 type="button"
@@ -226,35 +225,38 @@ export default function Coverage() {
             </div>
           </div>
 
-          <div className="form-group">
-            <label>{t('coverage.bulkMode')}</label>
-            <div className="ko-mode-toggle">
-              <button
-                type="button"
-                className={`mode-button ${bulkMode === 'none' ? 'active' : ''}`}
-                onClick={() => setBulkMode('none')}
-                style={{ fontSize: '0.85em' }}
+          <div className="form-row">
+            <div className="form-group">
+              <select
+                aria-label={t('calculate.weather')}
+                value={weather}
+                onChange={e => setWeather(e.target.value)}
+                className="form-control"
               >
-                {t('coverage.bulkNone')}
-              </button>
-              <button
-                type="button"
-                className={`mode-button ${bulkMode === 'custom' ? 'active' : ''}`}
-                onClick={() => setBulkMode('custom')}
-                style={{ fontSize: '0.85em' }}
+                {ALL_WEATHERS.map(w => (
+                  <option key={w} value={w}>
+                    {t(`weather.${w}`)}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="form-group">
+              <select
+                aria-label={t('calculate.terrain')}
+                value={terrain}
+                onChange={e => setTerrain(e.target.value)}
+                className="form-control"
               >
-                {t('coverage.bulkCustom')}
-              </button>
-              <button
-                type="button"
-                className={`mode-button ${bulkMode === 'max' ? 'active' : ''}`}
-                onClick={() => setBulkMode('max')}
-                style={{ fontSize: '0.85em' }}
-              >
-                {t('coverage.bulkMax')}
-              </button>
+                {ALL_TERRAINS.map(ter => (
+                  <option key={ter} value={ter}>
+                    {t(`terrain.${ter}`)}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
+
 
           <div className="form-group" role="group" aria-label={t('calculate.auras')}>
             <div style={{ display: 'flex', gap: '8px' }}>
@@ -292,6 +294,36 @@ export default function Coverage() {
             >
               {t('coverage.fullyEvolvedOnly') || 'Fully evolved only'}
             </button>
+          </div>
+
+          {/* Bulk mode selector moved under Fully Evolved Only and using aura-button CSS */}
+          <div className="form-group">
+            <label>{t('coverage.bulkMode')}</label>
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <button
+                type="button"
+                className={`aura-button ${bulkMode === 'none' ? 'active' : ''}`}
+                onClick={() => setBulkMode('none')}
+              >
+                {t('coverage.bulkNone')}
+              </button>
+
+              <button
+                type="button"
+                className={`aura-button ${bulkMode === 'custom' ? 'active' : ''}`}
+                onClick={() => setBulkMode('custom')}
+              >
+                {t('coverage.bulkCustom')}
+              </button>
+
+              <button
+                type="button"
+                className={`aura-button ${bulkMode === 'max' ? 'active' : ''}`}
+                onClick={() => setBulkMode('max')}
+              >
+                {t('coverage.bulkMax')}
+              </button>
+            </div>
           </div>
 
           {bulkMode === 'custom' && (
@@ -356,37 +388,7 @@ export default function Coverage() {
             </div>
           )}
 
-          <div className="form-row">
-            <div className="form-group">
-              <select
-                aria-label={t('calculate.weather')}
-                value={weather}
-                onChange={e => setWeather(e.target.value)}
-                className="form-control"
-              >
-                {ALL_WEATHERS.map(w => (
-                  <option key={w} value={w}>
-                    {t(`weather.${w}`)}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div className="form-group">
-              <select
-                aria-label={t('calculate.terrain')}
-                value={terrain}
-                onChange={e => setTerrain(e.target.value)}
-                className="form-control"
-              >
-                {ALL_TERRAINS.map(ter => (
-                  <option key={ter} value={ter}>
-                    {t(`terrain.${ter}`)}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
+          
 
           <button 
             onClick={analyzeCoverageStreaming} 
