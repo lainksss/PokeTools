@@ -167,6 +167,124 @@ export default function Coverage() {
     await analyzeCoverageWithMode(true)
   }
 
+  async function deepAnalyzeCoverageStreaming() {
+    if (!attacker) {
+      alert('Veuillez sélectionner un Pokémon attaquant')
+      return
+    }
+
+    if (!attacker.move) {
+      alert('Veuillez sélectionner au moins une attaque')
+      return
+    }
+
+    setLoading(true)
+    setAllResults([])
+    setProgress({ processed: 0, total: 0, coverage_found: 0 })
+
+    // Récupérer les 4 attaques sélectionnées
+    const moves = [
+      attacker.move,
+      attacker.move2,
+      attacker.move3,
+      attacker.move4
+    ].filter(m => m !== null && m !== undefined)
+
+    if (moves.length === 0) {
+      alert('Veuillez sélectionner au moins une attaque')
+      setLoading(false)
+      return
+    }
+
+    const payload = {
+      attacker: {
+        pokemon_id: attacker.id,
+        base_stats: attacker.base_stats,
+        evs: convertEvsToOld(attacker.evs || {}),
+        nature: attacker.nature,
+        types: attacker.types,
+        ability: attacker.ability,
+        item: attacker.item || null,
+        is_terastallized: attacker.is_terastallized,
+        tera_type: attacker.tera_type,
+        stages: attacker.boosts || {}
+      },
+      moves: moves,
+      ko_mode: koMode,
+      field: {
+        weather: weather === 'none' ? null : weather,
+        terrain: terrain === 'none' ? null : terrain,
+        fairy_aura: fairyAura || undefined,
+        dark_aura: darkAura || undefined,
+        aura_break: auraBreak || undefined,
+        reflect: reflect || undefined,
+        light_screen: lightScreen || undefined,
+        aurora_veil: auroraVeil || undefined
+      },
+      fully_evolved_only: fullyEvolvedOnly
+    }
+
+    try {
+      const response = await fetch(`${API_URL}/api/deep_analyze_coverage_stream`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+
+      if (!response.ok) {
+        throw new Error('Erreur lors de la recherche approfondie')
+      }
+
+      const reader = response.body.getReader()
+      const decoder = new TextDecoder()
+      let buffer = ''
+      const foundCoverage = []
+
+      while (true) {
+        const { done, value } = await reader.read()
+        
+        if (done) break
+
+        buffer += decoder.decode(value, { stream: true })
+        const lines = buffer.split('\n')
+        buffer = lines.pop() || ''
+
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            const data = JSON.parse(line.slice(6))
+            
+            if (data.type === 'init') {
+              setProgress({ processed: 0, total: data.total, coverage_found: 0 })
+            } else if (data.type === 'coverage') {
+              foundCoverage.push(data.data)
+              setAllResults([...foundCoverage])
+              setProgress(prev => ({ ...prev, coverage_found: foundCoverage.length }))
+            } else if (data.type === 'progress') {
+              setProgress({
+                processed: data.processed,
+                total: data.total,
+                coverage_found: data.coverage_found
+              })
+            } else if (data.type === 'complete') {
+              setProgress(prev => ({ 
+                ...prev, 
+                processed: data.total_processed,
+                coverage_found: data.total_coverage 
+              }))
+            } else if (data.type === 'error') {
+              throw new Error(data.message)
+            }
+          }
+        }
+      }
+    } catch (e) {
+      console.error('Error:', e)
+      alert('Erreur: ' + e.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   // Filtrer les résultats selon le mode d'affichage
   const coverage = allResults.filter(item => {
     // Si mode 'alive' : afficher ceux qui NE sont PAS KO
@@ -390,13 +508,24 @@ export default function Coverage() {
 
           
 
-          <button 
-            onClick={analyzeCoverageStreaming} 
-            disabled={loading || !attacker}
-            className="calculate-button"
-          >
-            {loading ? t('common.loading') : t('coverage.analyze')}
-          </button>
+          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+            <button 
+              onClick={analyzeCoverageStreaming} 
+              disabled={loading || !attacker}
+              className="calculate-button"
+            >
+              {loading ? t('common.loading') : t('coverage.analyze')}
+            </button>
+
+            <button 
+              onClick={deepAnalyzeCoverageStreaming} 
+              disabled={loading || !attacker}
+              className="calculate-button"
+              title="Teste tous les talents et statuts des adversaires"
+            >
+              {loading ? t('common.loading') : 'Recherche approfondie'}
+            </button>
+          </div>
 
           {loading && progress.total > 0 && (
             <div className="progress-container">
