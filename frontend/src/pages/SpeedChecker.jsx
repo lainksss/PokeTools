@@ -119,9 +119,26 @@ export default function SpeedChecker() {
     if (!searchText.trim()) {
       setFilteredPokemon(allPokemon)
     } else {
-      const filtered = allPokemon.filter(p => 
-        matchesPokemonName(p.id, searchText)
-      )
+      const s = searchText.toLowerCase()
+      const filtered = allPokemon.filter(p => {
+        try {
+          // match on localized names if available
+          const localized = getPokemonName(p.id, p.name || '').toLowerCase()
+          if (localized.includes(s)) return true
+        } catch (e) {
+          // ignore
+        }
+        // fallback: match on slug/internal name (replace - with space)
+        const slug = (p.name || '').toString().toLowerCase().replace(/[-_]/g, ' ')
+        if (slug.includes(s)) return true
+        // last fallback: try matchesPokemonName if translations are loaded
+        try {
+          if (matchesPokemonName(p.id, searchText)) return true
+        } catch (e) {
+          // ignore
+        }
+        return false
+      })
       setFilteredPokemon(filtered)
     }
   }, [searchText, allPokemon, matchesPokemonName])
