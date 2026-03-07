@@ -527,8 +527,7 @@ export default function Threats() {
             <button 
               onClick={deepFindThreatsStreaming} 
               disabled={loading || !defender}
-              className="calculate-button"
-              style={{ backgroundColor: '#6366f1', borderColor: '#4f46e5' }}
+              className="calculate-button whitemode"
               title="Teste tous les talents, tous les statuts, et toutes les attaques"
             >
               {loading ? t('threats.searching') : 'Recherche approfondie'}
