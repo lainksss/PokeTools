@@ -2,6 +2,7 @@
 
 POST /api/find_threats - trouve les menaces OHKO/2HKO (non-streaming)
 POST /api/find_threats_stream - version streaming
+POST /api/deep_find_threats_stream - recherche approfondie (tous talents, tous statuts, arrêt à 3 OHKO)
 """
 
 import json
@@ -561,6 +562,291 @@ def find_threats_stream():
                         "attacker_id": poke_id,
                         "ko_attacks": ko_attacks[:3],
                         "best_ko_percent": ko_attacks[0]["ko_percent"]
+                    }
+                    
+                    total_threats += 1
+                    
+                    yield f"data: {json.dumps({'type': 'threat', 'data': threat_entry})}\n\n"
+                
+                processed += 1
+                
+                if processed % 20 == 0:
+                    yield f"data: {json.dumps({'type': 'progress', 'processed': processed, 'total': total_pokemon, 'threats_found': total_threats})}\n\n"
+
+            yield f"data: {json.dumps({'type': 'complete', 'total_threats': total_threats, 'total_processed': processed})}\n\n"
+            
+        except Exception as e:
+            yield f"data: {json.dumps({'type': 'error', 'message': str(e)})}\n\n"
+
+    return Response(
+        stream_with_context(generate()),
+        mimetype='text/event-stream',
+        headers={
+            'Cache-Control': 'no-cache',
+            'X-Accel-Buffering': 'no'
+        }
+    )
+
+
+@bp.route("/deep_find_threats_stream", methods=["POST"])
+def deep_find_threats_stream():
+    """Recherche approfondie: teste tous les talents, statuts, et attaques.
+    
+    Logique:
+    - Pour chaque Pokémon attaquant
+    - Pour chaque talent disponible
+    - Pour chaque statut (normal, brûlé, empoisonné)
+    - Tester les attaques du moins fort au plus fort
+    - S'arrêter après 3 attaques qui OHKO
+    """
+    
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "missing payload"}), 400
+
+    defender_payload = data.get("defender")
+    field = data.get("field", {})
+    fully_evolved_only = bool(data.get('fully_evolved_only', False))
+    analysis_options = data.get("analysis_options", {}) or {}
+
+    attack_mode = analysis_options.get("attack_mode", "default")
+    custom_evs = int(analysis_options.get("custom_evs", 0) or 0)
+    nature_boost = bool(analysis_options.get("nature_boost", False))
+    item_choice = bool(analysis_options.get("item_choice", False))
+    life_orb = bool(analysis_options.get("life_orb", False))
+
+    if not defender_payload:
+        return jsonify({"error": "missing defender"}), 400
+
+    def generate():
+        """Générateur qui yield les résultats progressivement."""
+        try:
+            defender = build_actor_from_payload(defender_payload)
+            defender_hp = defender["hp"]
+
+            # Charger les données
+            all_pokemon = load_json("all_pokemon.json") or {}
+            evo_map = load_json("pokemon_evolution.json") or {}
+            all_moves = load_json("all_moves.json") or {}
+            all_natures = load_json("all_natures.json") or {}
+            pokemon_moves_map = load_json("all_pokemon_moves.json") or {}
+            pokemon_abilities_map = load_json("all_pokemon_abilities.json") or {}
+
+            # Trouver les natures qui boostent l'attaque
+            attack_boost_nature = None
+            sp_attack_boost_nature = None
+            
+            for nature_name, nature_data in all_natures.items():
+                inc = nature_data.get("increase")
+                if inc == "attack" and not attack_boost_nature:
+                    attack_boost_nature = nature_name
+                elif inc == "special-attack" and not sp_attack_boost_nature:
+                    sp_attack_boost_nature = nature_name
+                if attack_boost_nature and sp_attack_boost_nature:
+                    break
+
+            # If filtering only fully-evolved, compute filtered total
+            if fully_evolved_only:
+                total_pokemon = sum(1 for k, v in all_pokemon.items() if v and not bool((evo_map.get(k) or {}).get('can_evolve', False)))
+            else:
+                total_pokemon = len(all_pokemon)
+            processed = 0
+            total_threats = 0
+            
+            yield f"data: {json.dumps({'type': 'init', 'total': total_pokemon, 'defender_hp': defender_hp})}\n\n"
+
+            # Pour chaque Pokémon
+            for poke_slug, poke_data in all_pokemon.items():
+                if not poke_data:
+                    processed += 1
+                    continue
+                    
+                poke_id = poke_data.get("id")
+                poke_types = poke_data.get("types", [])
+                base_stats = poke_data.get("base_stats", {})
+                
+                # Optionally skip non-fully-evolved Pokémon
+                try:
+                    can_evolve = bool((evo_map.get(poke_slug) or {}).get('can_evolve', False))
+                except Exception:
+                    can_evolve = False
+
+                if fully_evolved_only and can_evolve:
+                    processed += 1
+                    continue
+
+                # Récupérer les talents disponibles
+                poke_abilities = pokemon_abilities_map.get(str(poke_id), [])
+                if not poke_abilities:
+                    processed += 1
+                    continue
+                
+                # Récupérer les moves
+                poke_moves = pokemon_moves_map.get(str(poke_id), [])
+                if not poke_moves:
+                    processed += 1
+                    continue
+                
+                # Trier les attaques par puissance (du moins fort au plus fort)
+                moves_with_power = []
+                for move_slug in poke_moves:
+                    move_data = all_moves.get(move_slug, {})
+                    damage_class = move_data.get("damage_class")
+                    
+                    # Ignorer les moves de statut
+                    if damage_class not in ["physical", "special"]:
+                        continue
+                    
+                    power = move_data.get("power")
+                    try:
+                        pval = int(power) if power is not None else 0
+                    except Exception:
+                        pval = 0
+                    
+                    moves_with_power.append((move_slug, pval))
+                
+                # Trier du moins fort au plus fort
+                moves_with_power.sort(key=lambda x: x[1])
+                sorted_moves = [m for m, _ in moves_with_power]
+                
+                # For each move, find the best OHKO condition across abilities/statuses
+                all_ohko_conditions = []
+
+                for move_slug in sorted_moves:
+                    move_data = all_moves.get(move_slug, {})
+                    damage_class = move_data.get("damage_class")
+                    if damage_class not in ["physical", "special"]:
+                        continue
+
+                    power = move_data.get("power")
+                    best_for_move = None
+
+                    # iterate abilities and statuses to find best combo for this move
+                    stop_move = False
+                    for ability in poke_abilities:
+                        if stop_move:
+                            break
+                        for status in ['normal', 'burn', 'poison']:
+                            # Determine EVs and nature according to analysis_options
+                            if attack_mode == 'none':
+                                evs = {"hp": 0, "attack": 0, "defense": 0, "special_attack": 0, "special_defense": 0, "speed": 0}
+                                nature = 'hardy'
+                            elif attack_mode == 'custom':
+                                evs = {"hp": 0, "attack": custom_evs, "defense": 0, "special_attack": custom_evs, "special_defense": 0, "speed": 0}
+                                if nature_boost:
+                                    nature = attack_boost_nature if damage_class == 'physical' else sp_attack_boost_nature or 'hardy'
+                                else:
+                                    nature = 'hardy'
+                            elif attack_mode == 'max':
+                                evs = {"hp": 0, "attack": 252, "defense": 0, "special_attack": 252, "special_defense": 0, "speed": 0}
+                                if nature_boost:
+                                    nature = attack_boost_nature if damage_class == 'physical' else sp_attack_boost_nature or 'hardy'
+                                else:
+                                    nature = 'hardy'
+                            else:  # default behavior
+                                if damage_class == 'physical':
+                                    evs = {"hp": 0, "attack": 252, "defense": 0, "special_attack": 0, "special_defense": 0, "speed": 0}
+                                    nature = attack_boost_nature or 'hardy'
+                                else:
+                                    evs = {"hp": 0, "attack": 0, "defense": 0, "special_attack": 252, "special_defense": 0, "speed": 0}
+                                    nature = sp_attack_boost_nature or 'hardy'
+
+                            # Determine item if requested
+                            item = None
+                            if life_orb:
+                                item = 'life-orb'
+                            elif item_choice:
+                                item = 'choice-band' if damage_class == 'physical' else 'choice-specs'
+                            elif attack_mode == 'max':
+                                item = 'choice-band' if damage_class == 'physical' else 'choice-specs'
+
+                            attacker_payload = {
+                                "pokemon_id": poke_id,
+                                "base_stats": base_stats,
+                                "evs": evs,
+                                "nature": nature,
+                                "types": poke_types,
+                                "ability": ability,
+                                "item": item,
+                                "is_terastallized": False,
+                                "tera_type": None,
+                                "status": status
+                            }
+
+                            try:
+                                attacker = build_actor_from_payload(attacker_payload)
+
+                                move_info = {
+                                    "name": move_slug,
+                                    "type": move_data.get("type"),
+                                    "power": power,
+                                    "damage_class": damage_class
+                                }
+
+                                from copy import deepcopy
+                                calc_field = deepcopy(field) if field is not None else {}
+
+                                dmg_result = calculate_damage(
+                                    attacker=attacker,
+                                    defender=defender,
+                                    move=move_info,
+                                    field=calc_field,
+                                    is_critical=False
+                                )
+
+                                damage_all = dmg_result.get("damage_all", [])
+                                if not damage_all:
+                                    continue
+
+                                damage_min = min(damage_all)
+                                damage_max = max(damage_all)
+                                damage_rolls = damage_all
+                                total_rolls = len(damage_rolls) if damage_rolls else 16
+                                ko_rolls = sum(1 for d in damage_rolls if d >= defender_hp)
+
+                                if ko_rolls > 0:
+                                    ko_percent = int((ko_rolls / total_rolls) * 100) if total_rolls > 0 else 0
+                                    candidate = {
+                                        "move_name": move_slug,
+                                        "move_type": move_data.get("type"),
+                                        "move_power": power,
+                                        "damage_class": damage_class,
+                                        "damage_min": damage_min,
+                                        "damage_max": damage_max,
+                                        "ko_rolls": ko_rolls,
+                                        "total_rolls": total_rolls,
+                                        "ko_percent": ko_percent,
+                                        "nature_used": nature,
+                                        "ability_used": ability,
+                                        "status_used": status
+                                    }
+
+                                    # keep best candidate for this move
+                                    if not best_for_move or (candidate["ko_percent"] > best_for_move["ko_percent"] or (candidate["ko_percent"] == best_for_move["ko_percent"] and candidate["damage_max"] > best_for_move["damage_max"])):
+                                        best_for_move = candidate
+
+                                    # if we reached guaranteed KO for this move, stop testing more statuses/abilities for this move
+                                    if best_for_move and best_for_move.get("ko_percent") == 100:
+                                        stop_move = True
+                                        break
+
+                            except Exception:
+                                continue
+
+                    if best_for_move:
+                        all_ohko_conditions.append(best_for_move)
+                
+                # Si on a trouvé des attaques OHKO, les inclure dans la réponse
+                if all_ohko_conditions:
+                    # Garder les 3 meilleures globalement
+                    all_ohko_conditions.sort(key=lambda x: (-x["ko_percent"], -x["damage_max"]))
+                    best_attacks = all_ohko_conditions[:3]
+                    
+                    threat_entry = {
+                        "attacker_name": poke_slug.capitalize(),
+                        "attacker_id": poke_id,
+                        "ko_attacks": best_attacks,
+                        "best_ko_percent": best_attacks[0]["ko_percent"] if best_attacks else 0
                     }
                     
                     total_threats += 1
