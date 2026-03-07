@@ -10,9 +10,11 @@ from flask import Blueprint, request, jsonify
 try:
     from utils.data_loader import load_json
     from utils.helpers import build_actor_from_payload, compute_weight_based_power
+    from utils.mandatory_items import force_mandatory_item
 except Exception:
     from ..utils.data_loader import load_json
     from ..utils.helpers import build_actor_from_payload, compute_weight_based_power
+    from ..utils.mandatory_items import force_mandatory_item
 
 try:
     from calculate_statistics.calculate_statistics import calc_all_stats
@@ -78,6 +80,10 @@ def calc_damage():
     
     if not move_data:
         return jsonify({"error": "move required"}), 400
+
+    # Force mandatory items (mega-gem, primal-gem)
+    attacker_data = force_mandatory_item(attacker_data)
+    defender_data = force_mandatory_item(defender_data)
 
     attacker = build_actor_from_payload(attacker_data)
     defender = build_actor_from_payload(defender_data)

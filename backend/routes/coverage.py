@@ -11,9 +11,11 @@ from flask import Blueprint, request, jsonify, Response, stream_with_context
 try:
     from utils.data_loader import load_json
     from utils.helpers import build_actor_from_payload
+    from utils.mandatory_items import force_mandatory_item
 except Exception:
     from ..utils.data_loader import load_json
     from ..utils.helpers import build_actor_from_payload
+    from ..utils.mandatory_items import force_mandatory_item
 
 try:
     from calculate_damages.calculate_damages import calculate_damage
@@ -48,6 +50,9 @@ def analyze_coverage_stream():
     
     if not moves_data or len(moves_data) == 0:
         return jsonify({"error": "at least one move required"}), 400
+
+    # Force mandatory item for attacker
+    attacker_data = force_mandatory_item(attacker_data)
 
     def generate():
         try:
@@ -162,8 +167,11 @@ def analyze_coverage_stream():
                             "ability": None,
                             "item": item,
                             "is_terastallized": False,
-                            "tera_type": None
+                            "tera_type": None,
+                            "name": poke.get("name")
                         }
+                        # Force mandatory item for defender
+                        defender_payload = force_mandatory_item(defender_payload)
                         defender = build_actor_from_payload(defender_payload)
 
                         result = calculate_damage(
@@ -345,9 +353,12 @@ def deep_analyze_coverage_stream():
                                     "item": None,
                                     "is_terastallized": False,
                                     "tera_type": None,
-                                    "status": status
+                                    "status": status,
+                                    "name": poke_slug
                                 }
 
+                                # Force mandatory item for defender
+                                defender_payload = force_mandatory_item(defender_payload)
                                 defender = build_actor_from_payload(defender_payload)
 
                                 result = calculate_damage(
@@ -401,10 +412,14 @@ def deep_analyze_coverage_stream():
                                     "item": None,
                                     "is_terastallized": False,
                                     "tera_type": None,
-                                    "status": status
+                                    "status": status,
+                                    "name": poke_slug
                                 }
 
+                                # Force mandatory item for defender
+                                defender_payload = force_mandatory_item(defender_payload)
                                 defender = build_actor_from_payload(defender_payload)
+
                                 result = calculate_damage(
                                     full_move_data,
                                     attacker,

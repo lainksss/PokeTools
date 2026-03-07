@@ -678,5 +678,21 @@
       "en": "Increases Fairy-type move power by 20%. Judgment becomes Fairy-type.",
       "fr": "Augmente de 20% la puissance des capacités de type Fée. Jugement devient de type Fée."
     }
+  },
+  "mega-gem": {
+    "en": "Mega Gem",
+    "fr": "Méga Gemme",
+    "description": {
+      "en": "Required for Mega Evolution. Cannot be changed.",
+      "fr": "Requis pour la Méga-Évolution. Ne peut pas être changé."
+    }
+  },
+  "primal-gem": {
+    "en": "Primal Gem",
+    "fr": "Gemme Primo",
+    "description": {
+      "en": "Required for Primal Reversion. Cannot be changed.",
+      "fr": "Requis pour la Réversion Primale. Ne peut pas être changé."
+    }
   }
 }

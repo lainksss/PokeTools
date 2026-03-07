@@ -4,6 +4,7 @@ import PokemonPanel from '../components/PokemonPanel'
 import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
 import { convertEvsToOld, newEvToOld } from '../utils/evs'
+import { getMandatoryItem } from '../utils/getMandatoryItem'
 
 export default function Coverage() {
   const { t, getPokemonName, getMoveName } = useTranslation()
@@ -76,7 +77,8 @@ export default function Coverage() {
         item: attacker.item || null,
         is_terastallized: attacker.is_terastallized,
         tera_type: attacker.tera_type,
-        stages: attacker.boosts || {}
+        stages: attacker.boosts || {},
+        name: attacker.name
       },
       moves: moves,
       ko_mode: koMode,
@@ -101,6 +103,12 @@ export default function Coverage() {
       }
       ,
       fully_evolved_only: fullyEvolvedOnly
+    }
+
+    // Force mandatory item for attacker (mega-gem, primal-gem)
+    const mandatoryItemCov = getMandatoryItem(payload.attacker.name)
+    if (mandatoryItemCov) {
+      payload.attacker.item = mandatoryItemCov
     }
 
     try {
@@ -211,7 +219,8 @@ export default function Coverage() {
         item: attacker.item || null,
         is_terastallized: attacker.is_terastallized,
         tera_type: attacker.tera_type,
-        stages: attacker.boosts || {}
+        stages: attacker.boosts || {},
+        name: attacker.name
       },
       moves: moves,
       ko_mode: koMode,
@@ -226,6 +235,12 @@ export default function Coverage() {
         aurora_veil: auroraVeil || undefined
       },
       fully_evolved_only: fullyEvolvedOnly
+    }
+
+    // Force mandatory item for attacker (mega-gem, primal-gem)
+    const mandatoryItemDeepCov = getMandatoryItem(payload.attacker.name)
+    if (mandatoryItemDeepCov) {
+      payload.attacker.item = mandatoryItemDeepCov
     }
 
     try {

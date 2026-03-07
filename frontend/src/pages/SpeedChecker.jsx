@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
 import { newEvToOld } from '../utils/evs'
+import { getMandatoryItem } from '../utils/getMandatoryItem'
 
 export default function SpeedChecker() {
   const { t, language, getPokemonName, matchesPokemonName } = useTranslation()
@@ -208,7 +209,9 @@ export default function SpeedChecker() {
 
   const abilityMult = weatherAbilityMultiplier(ability, weather)
   finalUserSpeed = Math.floor(finalUserSpeed * abilityMult)
-  if (choiceScarf) finalUserSpeed = Math.floor(finalUserSpeed * 1.5)
+  // Prevent Choice Scarf on Mega/Primal forms (they must use mandatory gems)
+  const isMegaOrPrimal = selectedPokemon && (selectedPokemon.name?.includes('-mega') || selectedPokemon.name?.includes('-primal'))
+  if (choiceScarf && !isMegaOrPrimal) finalUserSpeed = Math.floor(finalUserSpeed * 1.5)
   if (tailwind) finalUserSpeed = finalUserSpeed * 2
   
   // Get speed-related natures
@@ -249,7 +252,9 @@ export default function SpeedChecker() {
 
       const opponentSpeed = calculateSpeed(pokemon.base_stats.speed, level, opponentEV, opponentNature)
       let opponentFinalSpeed = opponentSpeed
-      if (choiceScarfMiddle) opponentFinalSpeed = Math.floor(opponentFinalSpeed * 1.5)
+      // Prevent Choice Scarf on Mega/Primal opponent forms (they can only use mandatory gems)
+      const isOpponentMegaOrPrimal = pokemon.name?.includes('-mega') || pokemon.name?.includes('-primal')
+      if (choiceScarfMiddle && !isOpponentMegaOrPrimal) opponentFinalSpeed = Math.floor(opponentFinalSpeed * 1.5)
       const isFaster = finalUserSpeed > opponentFinalSpeed
       const speedDiff = finalUserSpeed - opponentFinalSpeed
 
@@ -452,6 +457,8 @@ export default function SpeedChecker() {
                   className={`tailwind-button${choiceScarf ? ' active' : ''}`}
                   onClick={() => setChoiceScarf(!choiceScarf)}
                   type="button"
+                  disabled={isMegaOrPrimal}
+                  title={isMegaOrPrimal ? 'Mega/Primal forms can only use mandatory gems' : ''}
                 >
                   <span className="tailwind-icon">🧣</span>
                   {t('speedChecker.choiceScarf') || 'Choice Scarf'}: {choiceScarf ? t('speedChecker.on') || 'ON' : t('speedChecker.off') || 'OFF'}

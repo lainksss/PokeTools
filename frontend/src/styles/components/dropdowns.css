@@ -240,3 +240,45 @@
   font-size: 12px;
   color: var(--text-muted);
 }
+
+/* Mandatory item display (for mega-gem and primal-gem) */
+.mandatory-item-display {
+  padding: 12px 0;
+}
+
+.mandatory-item-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(99, 102, 241, 0.1));
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 6px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.mandatory-item-badge.mandatory {
+  border-color: rgba(168, 85, 247, 0.5);
+  background: rgba(168, 85, 247, 0.08);
+}
+
+.mandatory-item-badge .lock-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.mandatory-item-badge .mandatory-indicator {
+  font-size: 12px;
+  color: rgba(168, 85, 247, 0.8);
+  font-weight: 600;
+  margin-left: auto;
+}
+
+.mandatory-item-display .item-description {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+}

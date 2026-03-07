@@ -4,6 +4,7 @@ import PokemonPanel from '../components/PokemonPanel'
 import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
 import { convertEvsToOld, newEvToOld } from '../utils/evs'
+import { getMandatoryItem } from '../utils/getMandatoryItem'
 
 export default function Threats() {
   const { t, getPokemonName, getMoveName } = useTranslation()
@@ -79,7 +80,8 @@ export default function Threats() {
         ability: defender.ability,
         item: defender.item || null,
         is_terastallized: defender.is_terastallized,
-        tera_type: defender.tera_type
+        tera_type: defender.tera_type,
+        name: defender.name
       },
       ko_mode: koMode,
       field: {
@@ -100,6 +102,12 @@ export default function Threats() {
       }
       ,
       fully_evolved_only: fullyEvolvedOnly
+    }
+
+    // Force mandatory item for defender (mega-gem, primal-gem)
+    const mandatoryItem = getMandatoryItem(payload.defender.name)
+    if (mandatoryItem) {
+      payload.defender.item = mandatoryItem
     }
 
     try {
@@ -254,7 +262,8 @@ export default function Threats() {
         ability: defender.ability,
         item: defender.item || null,
         is_terastallized: defender.is_terastallized,
-        tera_type: defender.tera_type
+        tera_type: defender.tera_type,
+        name: defender.name
       },
       field: {
         weather: weather === 'none' ? null : weather,
@@ -271,6 +280,12 @@ export default function Threats() {
         item_choice: customItemChoice,
         life_orb: customLifeOrb
       }
+    }
+
+    // Force mandatory item for defender (mega-gem, primal-gem)
+    const mandatoryItemDeep = getMandatoryItem(payload.defender.name)
+    if (mandatoryItemDeep) {
+      payload.defender.item = mandatoryItemDeep
     }
 
     try {

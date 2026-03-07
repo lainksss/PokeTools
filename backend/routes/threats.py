@@ -11,9 +11,11 @@ from flask import Blueprint, request, jsonify, Response, stream_with_context
 try:
     from utils.data_loader import load_json
     from utils.helpers import build_actor_from_payload
+    from utils.mandatory_items import force_mandatory_item
 except Exception:
     from ..utils.data_loader import load_json
     from ..utils.helpers import build_actor_from_payload
+    from ..utils.mandatory_items import force_mandatory_item
 
 try:
     from calculate_damages.calculate_damages import calculate_damage
@@ -76,6 +78,9 @@ def find_threats():
 
     if not defender_payload:
         return jsonify({"error": "missing defender"}), 400
+
+    # Force mandatory item for defender
+    defender_payload = force_mandatory_item(defender_payload)
 
     # Construire le défenseur
     defender = build_actor_from_payload(defender_payload)
@@ -189,7 +194,8 @@ def find_threats():
                     "ability": None,
                     "item": item,
                     "is_terastallized": False,
-                    "tera_type": None
+                    "tera_type": None,
+                    "name": poke_name
                 },
                 "defender": defender_payload,
                 "move": {
@@ -201,6 +207,10 @@ def find_threats():
                 "field": field,
                 "is_critical": False
             }
+
+            # Force mandatory items (mega-gem, primal-gem)
+            calc_payload["attacker"] = force_mandatory_item(calc_payload["attacker"])
+            calc_payload["defender"] = force_mandatory_item(calc_payload["defender"])
 
             try:
                 attacker_calc = build_actor_from_payload(calc_payload["attacker"])
@@ -314,7 +324,9 @@ def find_threats_stream():
     def generate():
         """Générateur qui yield les résultats progressivement."""
         try:
-            defender = build_actor_from_payload(defender_payload)
+            # Force mandatory item for defender
+            local_defender_payload = force_mandatory_item(defender_payload.copy() if isinstance(defender_payload, dict) else defender_payload)
+            defender = build_actor_from_payload(local_defender_payload)
             defender_hp = defender["hp"]
 
             # Charger les données
@@ -437,8 +449,12 @@ def find_threats_stream():
                         "ability": poke_ability,
                         "item": item,
                         "is_terastallized": False,
-                        "tera_type": None
+                        "tera_type": None,
+                        "name": poke_slug
                     }
+                    
+                    # Force mandatory items (mega-gem, primal-gem) before calculating damage
+                    attacker_payload = force_mandatory_item(attacker_payload)
                     
                     attacker = build_actor_from_payload(attacker_payload)
                     
@@ -621,7 +637,9 @@ def deep_find_threats_stream():
     def generate():
         """Générateur qui yield les résultats progressivement."""
         try:
-            defender = build_actor_from_payload(defender_payload)
+            # Force mandatory item for defender
+            local_defender_payload = force_mandatory_item(defender_payload.copy() if isinstance(defender_payload, dict) else defender_payload)
+            defender = build_actor_from_payload(local_defender_payload)
             defender_hp = defender["hp"]
 
             # Charger les données
@@ -770,8 +788,12 @@ def deep_find_threats_stream():
                                 "item": item,
                                 "is_terastallized": False,
                                 "tera_type": None,
-                                "status": status
+                                "status": status,
+                                "name": poke_slug
                             }
+
+                            # Force mandatory items (mega-gem, primal-gem) before calculating damage
+                            attacker_payload = force_mandatory_item(attacker_payload)
 
                             try:
                                 attacker = build_actor_from_payload(attacker_payload)

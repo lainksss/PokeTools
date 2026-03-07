@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
 import { convertEvsToOld } from '../utils/evs'
+import { getMandatoryItem, hasMandatoryItem } from '../utils/getMandatoryItem'
 
 export default function PokemonPanel({ side, value, onChange, showMultipleMoves = false, showTitle = true, showItem = true }) {
   const { t, getPokemonName, matchesPokemonName, language } = useTranslation()
@@ -325,6 +326,20 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
 
     return () => { mounted = false }
   }, [value && value.id])
+
+  // Force mandatory item (mega-gem or primal-gem) when pokemon changes
+  useEffect(() => {
+    if (!value || !value.name) return
+    
+    const mandatoryItem = getMandatoryItem(value.name)
+    if (mandatoryItem && value.item !== mandatoryItem) {
+      // Set the mandatory item
+      onChange && onChange({
+        ...value,
+        item: mandatoryItem
+      })
+    }
+  }, [value?.name])
 
   // Calculate final stats when base_stats, evs, nature, or item change
   useEffect(() => {
@@ -929,78 +944,111 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
           {showItem && (
             <div className="form-group item-selector">
               <label>{t('calculate.item') || 'Objet tenu'}</label>
-              <div className="item-input-wrapper">
-                <input
-                  ref={itemInputRef}
-                  type="text"
-                  value={itemSearch}
-                  onChange={e => setItemSearch(e.target.value)}
-                  onFocus={() => {
-                    setShowItemDropdown(true)
-                    updateDropdownPosition(itemInputRef, 'item')
-                  }}
-                  onBlur={() => setTimeout(() => setShowItemDropdown(false), 200)}
-                  placeholder={t('calculate.searchItem') || 'Rechercher un objet...'}
-                  className="form-control item-search-input"
-                />
-                {value?.item && (
-                  <button 
-                    className="item-clear-btn"
-                    onClick={() => {
-                      handleItemChange(null)
-                      setItemSearch('')
-                    }}
-                    title={t('common.clear') || 'Effacer'}
-                  >
-                    ×
-                  </button>
-                )}
-              </div>
-              
-              {showItemDropdown && (
-                <div 
-                  className="item-dropdown"
-                  style={{ left: `${dropdownPositions.item.left}px`, top: `${dropdownPositions.item.top}px` }}
-                >
-                  {filteredItems.length === 0 && (
-                    <div className="item-dropdown-empty">
-                      {t('common.noResults') || 'Aucun résultat'}
-                    </div>
-                  )}
-                  {filteredItems.slice(0, 100).map(item => {
-                    const displayName = language === 'fr' ? item.fr : item.en
-                    const description = language === 'fr' ? item.description_fr : item.description_en
-                    return (
-                      <div
-                        key={item.slug}
-                        className={`item-dropdown-item ${value?.item === item.slug ? 'selected' : ''}`}
-                        onClick={() => {
-                          handleItemChange(item.slug)
-                          setItemSearch(displayName)
-                          setShowItemDropdown(false)
-                        }}
-                        title={description}
-                      >
+              {(() => {
+                const isMandatory = hasMandatoryItem(value?.name)
+                const mandatoryItem = getMandatoryItem(value?.name)
+                const allItemsMap = allItems.reduce((acc, item) => {
+                  acc[item.slug] = item
+                  return acc
+                }, {})
+                const mandatoryItemData = mandatoryItem ? allItemsMap[mandatoryItem] : null
+                
+                if (isMandatory && mandatoryItemData) {
+                  // Display mandatory item as non-modifiable
+                  const displayName = language === 'fr' ? mandatoryItemData.fr : mandatoryItemData.en
+                  const description = language === 'fr' ? mandatoryItemData.description_fr : mandatoryItemData.description_en
+                  return (
+                    <div className="mandatory-item-display">
+                      <div className="mandatory-item-badge mandatory">
+                        <img src="/lock-icon.svg" alt="locked" className="lock-icon" style={{display: 'none'}} />
                         <span className="item-name">{displayName}</span>
-                        {description && (
-                          <span className="item-description">{description}</span>
-                        )}
+                        <span className="mandatory-indicator" title={t('calculate.mandatoryItem') || 'Objet obligatoire pour cette forme'}>(Obligatoire)</span>
                       </div>
-                    )
-                  })}
-                </div>
-              )}
-              
-              {value?.item && (
-                <div className="selected-item-badge">
-                  {(() => {
-                    const selectedItem = allItems.find(i => i.slug === value.item)
-                    if (!selectedItem) return null
-                    const description = language === 'fr' ? selectedItem.description_fr : selectedItem.description_en
-                    return description || (language === 'fr' ? selectedItem.fr : selectedItem.en)
-                  })()}
-                </div>
-              )}
+                      {description && (
+                        <small className="item-description">{description}</small>
+                      )}
+                    </div>
+                  )
+                }
+                
+                // Normal item selector
+                return (
+                  <>
+                    <div className="item-input-wrapper">
+                      <input
+                        ref={itemInputRef}
+                        type="text"
+                        value={itemSearch}
+                        onChange={e => setItemSearch(e.target.value)}
+                        onFocus={() => {
+                          setShowItemDropdown(true)
+                          updateDropdownPosition(itemInputRef, 'item')
+                        }}
+                        onBlur={() => setTimeout(() => setShowItemDropdown(false), 200)}
+                        placeholder={t('calculate.searchItem') || 'Rechercher un objet...'}
+                        className="form-control item-search-input"
+                      />
+                      {value?.item && (
+                        <button 
+                          className="item-clear-btn"
+                          onClick={() => {
+                            handleItemChange(null)
+                            setItemSearch('')
+                          }}
+                          title={t('common.clear') || 'Effacer'}
+                        >
+                          ×
+                        </button>
+                      )}
+                    </div>
+                    
+                    {showItemDropdown && (
+                      <div 
+                        className="item-dropdown"
+                        style={{ left: `${dropdownPositions.item.left}px`, top: `${dropdownPositions.item.top}px` }}
+                      >
+                        {filteredItems.length === 0 && (
+                          <div className="item-dropdown-empty">
+                            {t('common.noResults') || 'Aucun résultat'}
+                          </div>
+                        )}
+                        {filteredItems.slice(0, 100).map(item => {
+                          const displayName = language === 'fr' ? item.fr : item.en
+                          const description = language === 'fr' ? item.description_fr : item.description_en
+                          return (
+                            <div
+                              key={item.slug}
+                              className={`item-dropdown-item ${value?.item === item.slug ? 'selected' : ''}`}
+                              onClick={() => {
+                                handleItemChange(item.slug)
+                                setItemSearch(displayName)
+                                setShowItemDropdown(false)
+                              }}
+                              title={description}
+                            >
+                              <span className="item-name">{displayName}</span>
+                              {description && (
+                                <span className="item-description">{description}</span>
+                              )}
+                            </div>
+                          )
+                        })}
+                      </div>
+                    )}
+                    
+                    {value?.item && (
+                      <div className="selected-item-badge">
+                        {(() => {
+                          const selectedItem = allItems.find(i => i.slug === value.item)
+                          if (!selectedItem) return null
+                          const description = language === 'fr' ? selectedItem.description_fr : selectedItem.description_en
+                          return description || (language === 'fr' ? selectedItem.fr : selectedItem.en)
+                        })()}
+                      </div>
+                    )}
+                  </>
+                )
+              })()}
             </div>
           )}
 
