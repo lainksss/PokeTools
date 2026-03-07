@@ -8,8 +8,10 @@ export default function SpeedChecker() {
   const speedPokemonInputRef = useRef(null)
   
   // State for dropdown positioning
-  const [dropdownPos, setDropdownPos] = useState({ left: 0, top: 0 })
+  const [dropdownPos, setDropdownPos] = useState({ left: 0, top: 0, width: 320 })
   
+  const dropdownRef = useRef(null)
+
   const updateDropdownPosition = () => {
     if (!speedPokemonInputRef?.current) return
     const rect = speedPokemonInputRef.current.getBoundingClientRect()
@@ -25,18 +27,39 @@ export default function SpeedChecker() {
     } else {
       topPos = rect.bottom + window.scrollY + 4
     }
+
+    // compute width from input rect but cap it so the list isn't ultra-wide
+    const desiredWidth = Math.min(rect.width || 320, 420)
+    let leftPos = rect.left + window.scrollX
+    // avoid overflow off the right edge
+    if (leftPos + desiredWidth > window.innerWidth - 8) {
+      leftPos = Math.max(8, window.innerWidth - desiredWidth - 8)
+    }
+
     setDropdownPos({
-      left: rect.left + window.scrollX,
-      top: topPos
+      left: leftPos,
+      top: topPos,
+      width: desiredWidth
     })
   }
   
   useEffect(() => {
     window.addEventListener('resize', updateDropdownPosition)
     window.addEventListener('scroll', updateDropdownPosition, true)
+
+    const handleClickOutside = (e) => {
+      const target = e.target
+      if (speedPokemonInputRef.current && speedPokemonInputRef.current.contains(target)) return
+      if (dropdownRef.current && dropdownRef.current.contains(target)) return
+      setShowDropdown(false)
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+
     return () => {
       window.removeEventListener('resize', updateDropdownPosition)
       window.removeEventListener('scroll', updateDropdownPosition, true)
+      document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [])
   const [allPokemon, setAllPokemon] = useState([])
@@ -265,8 +288,9 @@ export default function SpeedChecker() {
               />
               {showDropdown && filteredPokemon.length > 0 && (
                 <div 
+                  ref={dropdownRef}
                   className="pokemon-dropdown"
-                  style={{ left: `${dropdownPos.left}px`, top: `${dropdownPos.top}px`, position: 'fixed' }}
+                  style={{ left: `${dropdownPos.left}px`, top: `${dropdownPos.top}px`, position: 'fixed', width: `${dropdownPos.width}px` }}
                 >
                   {filteredPokemon.slice(0, 50).map(p => (
                     <div
