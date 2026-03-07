@@ -22,6 +22,8 @@ How to update: when you add a test that depends on an item's damage behaviour, m
 - `poison-barb`: ✅ covered by `backend/test/test_items_powerups.py::test_poison_barb_sneasler_dire_claw`
 - `hard-stone`: ✅ covered by `backend/test/test_items_powerups.py::test_hard_stone_tyranitar_rock_tomb_sandstorm`
 - `soft-sand`: ✅ covered by `backend/test/test_items_powerups.py::test_soft_sand_hippowdon_earthquake_double_sandstorm`
+- `mega-gems`: ✅
+- `booster-energy`: ✅
 
 **Items present in `items.py` but not currently covered by tests**
 
@@ -79,8 +81,6 @@ The list below was taken from `backend/items/items.py`. These items have behavio
 - `cornerstone-mask` # only ogerpon rock can have that and he's forced to have that
 - `rusted-shield` # only crowned zamazenta in its other form can have that and he's forced to have that
 - `rusted-sword` # only crowned zacian in its other form can have that and he's forced to have that
-- `mega-gems` # all megas should have that to make sure they have no item
-- `booster-energy`# activate the ability of a paradox if he doesn't have its ability activated already
 - `chople-berry`
 - `coba-berry`
 - `kebia-berry`
