@@ -283,15 +283,7 @@ export default function SpeedChecker() {
             </div>
           </div>
 
-          <div style={{ marginTop: 10 }}>
-            <button
-              type="button"
-              className={`tailwind-button option-button ${fullyEvolvedOnly ? 'active' : ''}`}
-              onClick={() => setFullyEvolvedOnly(v => !v)}
-            >
-              {t('speedChecker.fullyEvolvedOnly') || 'Fully evolved only'}
-            </button>
-          </div>
+          
 
           {selectedPokemon && (
             <>
@@ -468,6 +460,15 @@ export default function SpeedChecker() {
                 <option key={w} value={w}>{t(`weather.${w}`)}</option>
               ))}
             </select>
+          </div>
+          <div style={{ marginTop: 10 }}>
+            <button
+              type="button"
+              className={`tailwind-button option-button ${fullyEvolvedOnly ? 'active' : ''}`}
+              onClick={() => setFullyEvolvedOnly(v => !v)}
+            >
+              {t('speedChecker.fullyEvolvedOnly') || 'Fully evolved only'}
+            </button>
           </div>
           <div className="comparison-buttons">
             <button
