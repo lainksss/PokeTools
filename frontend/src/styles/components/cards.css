@@ -222,9 +222,23 @@
 
 /* Individual attack info in threat card */
 .threat-attacks {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  /* Force up to 3 columns on wide screens for consistent alignment */
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
+}
+
+/* Responsive: 2 columns on medium screens, 1 column on small screens */
+@media (max-width: 1024px) {
+  .threat-attacks {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .threat-attacks {
+    grid-template-columns: 1fr;
+  }
 }
 
 .attack-info {
@@ -232,6 +246,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 6px;
   padding: 12px;
+  box-sizing: border-box;
 }
 
 .attack-name {
