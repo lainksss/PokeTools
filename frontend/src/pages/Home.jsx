@@ -11,6 +11,7 @@ export default function Home() {
         <h2 className="center-title">{t('home.centerTitle')}</h2>
         <p className="center-desc">{t('home.centerDesc')}</p>
       </div>
+      <div className="home-banner">{t('home.notice')}</div>
       <div className="home-blocks-row">
         <Link to="/calculate" className="home-block">
           <h3 className="block-title">{t('home.block_calc_title')}</h3>
@@ -31,6 +32,10 @@ export default function Home() {
         <Link to="/speed-checker" className="home-block">
           <h3 className="block-title">{t('home.block_speed_title')}</h3>
           <p className="block-desc">{t('home.block_speed_desc')}</p>
+        </Link>
+        <Link to="/speed-game" className="home-block">
+          <h3 className="block-title">{t('home.block_speed_game_title')}</h3>
+          <p className="block-desc">{t('home.block_speed_game_desc')}</p>
         </Link>
       </div>
     </div>

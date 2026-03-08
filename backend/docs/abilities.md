@@ -196,9 +196,9 @@ Note: `sniper` and other crit-related flags are set by ability handling and used
 
 **Not Yet Tested (❌):**
 - Type boost at low HP: `blaze`, `torrent`, `overgrow`, `swarm`
-- Other: `victory-star`, `sniper`, `scrappy`
+- Other: `victory-star`
 
 **Legendaries/important abilities (with full damage calculations)**
 - Ogerpon (each of them)
 - Chien pao / Ting Lu / Yu-yu / Chong jian
-- écaille spéciale
+- marvel-scale
