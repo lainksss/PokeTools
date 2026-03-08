@@ -306,22 +306,24 @@ export default function Coverage() {
 
   // Filtrer les résultats selon le mode d'affichage
   const coverage = allResults.filter(item => {
-    // Si mode 'alive' : afficher ceux qui NE sont PAS KO
+    // Vérifier si l'un des moves a un KO% positif (pire cas)
+    const hasAnyKO = item.moves?.some(m => (m.worst_ko_percent || 0) > 0)
+    
+    // Si mode 'alive' : afficher ceux qui NE sont PAS KO dans le pire cas
     if (viewMode === 'alive') {
-      // treat missing/null/0 as not KO-able
-      const chance = Number(item.max_ko_chance || 0)
-      return chance === 0
+      return !hasAnyKO
     }
-    // Si mode 'ko' : afficher ceux qui PEUVENT être KO
-    return Number(item.max_ko_chance || 0) > 0
+    // Si mode 'ko' : afficher ceux qui PEUVENT être KO dans le pire cas
+    return hasAnyKO
   })
 
   // Filtrer davantage selon les autres critères
   const filteredCoverage = coverage.filter(item => {
     // Si on veut voir seulement les KO garantis (seulement en mode 'ko')
-    if (viewMode === 'ko' && showOnlyGuaranteed && item.max_ko_chance < 100) return false
-    // Filtrer par nombre minimum de rolls (seulement en mode 'ko')
-    if (viewMode === 'ko' && item.max_rolls_that_ko < minRolls) return false
+    if (viewMode === 'ko' && showOnlyGuaranteed) {
+      const hasGuaranteed = item.moves?.some(m => m.worst_ko_percent === 100)
+      return hasGuaranteed
+    }
     return true
   })
 
@@ -624,8 +626,10 @@ export default function Coverage() {
 }
 
 function CoverageItem({ item, koMode, t, getPokemonName, getMoveName }) {
-  const maxChance = item.max_ko_chance || 0
-  const isGuaranteed = item.max_rolls_that_ko === 16
+  // Get the best move (highest worst_ko_percent)
+  const bestMove = item.moves?.length > 0 ? item.moves[0] : null
+  const maxChance = bestMove?.worst_ko_percent || 0
+  const isGuaranteed = maxChance === 100
 
   return (
     <div className="threat-card">
@@ -644,39 +648,40 @@ function CoverageItem({ item, koMode, t, getPokemonName, getMoveName }) {
       </div>
 
       <div className="threat-attacks">
-        <div className="attack-info">
-          <div className="attack-name">
-            <strong>{getMoveName(item.best_move_name, item.best_move_name)}</strong>
-            <span className={`type-badge type-${item.best_move_type}`}>
-              {t(`types.${item.best_move_type}`)}
-            </span>
-          </div>
-
-          <div className="attack-stats">
-            <div className="damage-range">
-              <span className="damage-label">{t('threats.damage')}:</span>
-              <span className="damage-values">
-                {item.damage_range?.[0]} - {item.damage_range?.[item.damage_range.length - 1]}
+        {item.moves?.map((move, idx) => (
+          <div key={idx} className="attack-info">
+            <div className="attack-name">
+              <strong>{getMoveName(move.name, move.name)}</strong>
+              <span className={`type-badge type-${move.type}`}>
+                {t(`types.${move.type}`)}
               </span>
-              {item.defender_hp && (
-                <span className="damage-percent">
-                  ({((item.damage_range?.[0] / item.defender_hp) * 100).toFixed(1)}% - {((item.damage_range?.[item.damage_range.length - 1] / item.defender_hp) * 100).toFixed(1)}%)
+            </div>
+
+            <div className="attack-stats">
+              <div className="damage-range">
+                <span className="damage-label">{t('threats.damage')}:</span>
+                <span className="damage-values">
+                  {move.damage_min} - {move.damage_max}
                 </span>
-              )}
+                {move.defender_hp && (
+                  <span className="damage-percent">
+                    ({((move.damage_min / move.defender_hp) * 100).toFixed(1)}% - {((move.damage_max / move.defender_hp) * 100).toFixed(1)}%)
+                  </span>
+                )}
+              </div>
+
+              <div className="ko-info">
+                <span className={`ko-percent ${move.worst_ko_percent === 100 ? 'guaranteed' : ''}`}>
+                  {move.worst_ko_percent.toFixed(1)}% {koMode}
+                </span>
+              </div>
             </div>
 
-            <div className="ko-info">
-              <span className="ko-rolls">{item.max_rolls_that_ko}/16 {t('threats.rolls')}</span>
-              <span className={`ko-percent ${isGuaranteed ? 'guaranteed' : ''}`}>
-                {maxChance.toFixed(1)}%
-              </span>
-            </div>
+            {move.worst_ko_percent === 100 && (
+              <div className="guaranteed-badge">{koMode} {t('threats.guaranteedKO')}</div>
+            )}
           </div>
-
-          {isGuaranteed && (
-            <div className="guaranteed-badge">{koMode} {t('threats.guaranteedKO')}</div>
-          )}
-        </div>
+        ))}
       </div>
     </div>
   )

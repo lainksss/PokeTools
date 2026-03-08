@@ -35,7 +35,7 @@ export const threatsFr = {
   customEVLabel: "EVs à assigner:",
   natureBoost: "Atq/SpA nature",
   itemChoice: "Objet Choix",
-  lifeOrb: "Orbe Vie"
-  ,
-  fullyEvolvedOnly: "Pleinement évolués uniquement"
+  lifeOrb: "Orbe Vie",
+  fullyEvolvedOnly: "Pleinement évolués uniquement",
+  worstCase: "Pire cas"
 }
