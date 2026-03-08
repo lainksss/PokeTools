@@ -12,7 +12,7 @@ Test cases provided by user with expected damage rolls:
 import json
 from pathlib import Path
 
-from backend.calculate_damages.calculate_damages import calculate_damage
+from calculate_damages.calculate_damages import calculate_damage
 
 
 # Load Pokemon data

@@ -24,7 +24,8 @@ How to update: when you add a test that depends on an item's damage behaviour, m
 - `soft-sand`: ✅ covered by `backend/test/test_items_powerups.py::test_soft_sand_hippowdon_earthquake_double_sandstorm`
 - `mega-gems`: ✅
 - `booster-energy`: ✅
-
+- `rusted-shield` ✅ covered by `backend/test/test_zamazenta_zacian.py`.
+- `rusted-sword` ✅ covered by `backend/test/test_zamazenta_zacian.py`.
 **Items present in `items.py` but not currently covered by tests**
 
 The list below was taken from `backend/items/items.py`. These items have behaviour that can affect damage (type boosts, power modifiers, final multipliers, stat multipliers, one-use gems, etc.) but currently lack explicit unit tests in `backend/test`.
@@ -79,8 +80,6 @@ The list below was taken from `backend/items/items.py`. These items have behavio
 - `hearthflame-mask` # only ogerpon fire can have that and he's forced to have that
 - `wellspring-mask` # only ogerpon water can have that and he's forced to have that
 - `cornerstone-mask` # only ogerpon rock can have that and he's forced to have that
-- `rusted-shield` # only crowned zamazenta in its other form can have that and he's forced to have that
-- `rusted-sword` # only crowned zacian in its other form can have that and he's forced to have that
 - `chople-berry`
 - `coba-berry`
 - `kebia-berry`

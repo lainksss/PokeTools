@@ -175,6 +175,10 @@ Note: the `recoil` attribute is not universally present in `moves_with_flags.jso
 	- Implementation: checks if defender has this ability and sets `is_critical = False` if a critical would have been triggered. Note: cannot block crits forced by ability effects like Merciless.
 	- Test: ✅ `battle-armor`/`shell-armor` covered by `backend/test/test_battle_armor.py` (demonstrates that Merciless-forced crits cannot be blocked).
 
+- `intrepid-sword` / `dauntless-shield`
+	- Transformation behaviour for `iron-head` → `behemoth-blade`/`bash` is documented in `backend/docs/moves_with_special_handling.md`.
+	- Test: ✅ `intrepid-sword` / `dauntless-shield` covered by `backend/test/test_zamazenta_zacian.py`.
+
 Note: `sniper` and other crit-related flags are set by ability handling and used in the main damage calculation to modify the critical multiplier.
 
 ## Test Coverage Summary
@@ -196,7 +200,5 @@ Note: `sniper` and other crit-related flags are set by ability handling and used
 
 **Legendaries/important abilities (with full damage calculations)**
 - Ogerpon (each of them)
-- Zacian
-- Zamazenta
 - Chien pao / Ting Lu / Yu-yu / Chong jian
 - écaille spéciale

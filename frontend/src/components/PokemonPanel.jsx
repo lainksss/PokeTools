@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
 import { convertEvsToOld } from '../utils/evs'
-import { getMandatoryItem, hasMandatoryItem } from '../utils/getMandatoryItem'
+import { getMandatoryItem, getMandatoryAbility, hasMandatoryItem } from '../utils/getMandatoryItem'
 
 export default function PokemonPanel({ side, value, onChange, showMultipleMoves = false, showTitle = true, showItem = true }) {
   const { t, getPokemonName, matchesPokemonName, language } = useTranslation()
@@ -106,6 +106,8 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
   // Multiple-moves UI state (for the 4-slot selectors)
   const [moveSearches, setMoveSearches] = useState({1: '', 2: '', 3: '', 4: ''})
   const [showMoveDropdowns, setShowMoveDropdowns] = useState({1: false, 2: false, 3: false, 4: false})
+  // Transformation moves (Iron Head -> Behemoth)
+  const [transformationMoves, setTransformationMoves] = useState({})
 
   // Load pokemon list on mount
   useEffect(() => {
@@ -117,8 +119,11 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
       fetch(`${API_URL}/api/types`).then(r => r.json()),
       fetch(`${API_URL}/api/natures`).then(r => r.json()),
       fetch(`${API_URL}/api/items`).then(r => r.json()),
-      fetch(`${API_URL}/api/abilities`).then(r => r.json())
-    ]).then(([pokemonData, typesData, naturesData, itemsData, abilitiesData]) => {
+      fetch(`${API_URL}/api/abilities`).then(r => r.json()),
+      fetch(`${API_URL}/api/move/behemoth-blade`).then(r => r.json()),
+      fetch(`${API_URL}/api/move/behemoth-bash`).then(r => r.json()),
+      fetch(`${API_URL}/api/move-names`).then(r => r.json())
+    ]).then(([pokemonData, typesData, naturesData, itemsData, abilitiesData, beheBladeData, beheBashData, moveNamesData]) => {
       if (!mounted) return
       setAllPokemon(pokemonData.results || [])
       setFilteredPokemon(pokemonData.results || [])
@@ -128,6 +133,22 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
       setFilteredItems(itemsData.items || [])
       setAllAbilities((abilitiesData && abilitiesData.abilities) || [])
       setFilteredAbilities((abilitiesData && abilitiesData.abilities) || [])
+      
+      // Enrich transformation moves with translations
+      const transformMoves = {}
+      if (beheBladeData && beheBladeData.name) {
+        transformMoves['behemoth-blade'] = {
+          ...beheBladeData,
+          translations: moveNamesData['781'] || { en: 'Behemoth Blade', fr: 'Gladius Maximus' }
+        }
+      }
+      if (beheBashData && beheBashData.name) {
+        transformMoves['behemoth-bash'] = {
+          ...beheBashData,
+          translations: moveNamesData['782'] || { en: 'Behemoth Bash', fr: 'Aegis Maxima' }
+        }
+      }
+      setTransformationMoves(transformMoves)
       
       // Initialize with first pokemon if none selected
       if (!value && pokemonData.results && pokemonData.results.length > 0) {
@@ -236,7 +257,15 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
   // Update move search text when language changes and a move is selected
   useEffect(() => {
     if (value?.move && (pokemonMoves || []).length > 0) {
-      const selected = (pokemonMoves || []).find(m => m.name === (value.move.name || value.move))
+      // Handle move transformations (iron-head becomes behemoth-blade/bash)
+      let moveToFind = value.move.name || value.move
+      let selected = (pokemonMoves || []).find(m => m.name === moveToFind)
+      // If not found and it's a transformed move, search for the original
+      if (!selected && moveToFind === 'behemoth-blade') {
+        selected = (pokemonMoves || []).find(m => m.name === 'iron-head')
+      } else if (!selected && moveToFind === 'behemoth-bash') {
+        selected = (pokemonMoves || []).find(m => m.name === 'iron-head')
+      }
       if (selected) {
         const displayName = language === 'fr' ? (selected.translations?.fr || selected.translations?.en) : (selected.translations?.en || selected.translations?.fr)
         setMoveSearch(displayName || '')
@@ -327,19 +356,67 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
     return () => { mounted = false }
   }, [value && value.id])
 
-  // Force mandatory item (mega-gem or primal-gem) when pokemon changes
+  // Force mandatory item and ability when pokemon changes; Transform base forms to crowned when rusted item selected
   useEffect(() => {
     if (!value || !value.name) return
-    
+
     const mandatoryItem = getMandatoryItem(value.name)
-    if (mandatoryItem && value.item !== mandatoryItem) {
-      // Set the mandatory item
-      onChange && onChange({
-        ...value,
-        item: mandatoryItem
-      })
+    const mandatoryAbility = getMandatoryAbility(value.name)
+
+    const updates = {}
+    
+    // Transform base forms to crowned when rusted item is selected
+    if (value.item === 'rusted-sword' && value.name === 'zacian') {
+      updates.name = 'zacian-crowned'
+      // Find crowned form and update ID, base_stats, and types
+      const crowned = allPokemon.find(p => p.name === 'zacian-crowned')
+      if (crowned) {
+        updates.id = crowned.id
+        updates.base_stats = crowned.base_stats
+        updates.types = crowned.types
+      }
+    } else if (value.item === 'rusted-shield' && value.name === 'zamazenta') {
+      updates.name = 'zamazenta-crowned'
+      // Find crowned form and update ID, base_stats, and types
+      const crowned = allPokemon.find(p => p.name === 'zamazenta-crowned')
+      if (crowned) {
+        updates.id = crowned.id
+        updates.base_stats = crowned.base_stats
+        updates.types = crowned.types
+      }
+    } else if (value.item !== 'rusted-sword' && value.name === 'zacian-crowned') {
+      // Revert to base form if rusted-sword is removed
+      updates.name = 'zacian'
+      // Find base form and update ID, base_stats, and types
+      const base = allPokemon.find(p => p.name === 'zacian')
+      if (base) {
+        updates.id = base.id
+        updates.base_stats = base.base_stats
+        updates.types = base.types
+      }
+    } else if (value.item !== 'rusted-shield' && value.name === 'zamazenta-crowned') {
+      // Revert to base form if rusted-shield is removed
+      updates.name = 'zamazenta'
+      // Find base form and update ID, base_stats, and types
+      const base = allPokemon.find(p => p.name === 'zamazenta')
+      if (base) {
+        updates.id = base.id
+        updates.base_stats = base.base_stats
+        updates.types = base.types
+      }
     }
-  }, [value?.name])
+    
+    if (mandatoryItem && value.item !== mandatoryItem) {
+      updates.item = mandatoryItem
+    }
+    if (mandatoryAbility && value.ability !== mandatoryAbility) {
+      updates.ability = mandatoryAbility
+    }
+
+    if (Object.keys(updates).length > 0) {
+      onChange && onChange({ ...value, ...updates })
+    }
+  }, [value?.name, value?.item, allPokemon])
 
   // Calculate final stats when base_stats, evs, nature, or item change
   useEffect(() => {
@@ -484,7 +561,17 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
   }
 
   const handleMoveChange = (moveName, moveNumber = 1) => {
-    const move = pokemonMoves.find(m => m.name === moveName)
+    let move = pokemonMoves.find(m => m.name === moveName)
+    
+    // Transform Iron Head to Behemoth Blade/Bash for crowned forms
+    if (move && moveName === 'iron-head') {
+      if (value.name === 'zacian-crowned' && transformationMoves['behemoth-blade']) {
+        move = transformationMoves['behemoth-blade']
+      } else if (value.name === 'zamazenta-crowned' && transformationMoves['behemoth-bash']) {
+        move = transformationMoves['behemoth-bash']
+      }
+    }
+    
     const moveKey = moveNumber === 1 ? 'move' : `move${moveNumber}`
     onChange && onChange({ ...value, [moveKey]: move || null })
   }
@@ -812,7 +899,7 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
                               return (
                                 <div
                                   key={m.name}
-                                  className={`item-dropdown-item ${selectedMove?.name === m.name ? 'selected' : ''}`}
+                                  className={`item-dropdown-item ${(selectedMove?.name === m.name || (m.name === 'iron-head' && (selectedMove?.name === 'behemoth-blade' || selectedMove?.name === 'behemoth-bash'))) ? 'selected' : ''}`}
                                   onClick={() => {
                                     handleMoveChange(m.name, num)
                                     setMoveSearches(prev => ({...prev, [num]: displayName}))
@@ -870,74 +957,97 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
           {/* Ability */}
           <div className="form-group item-selector">
             <label>{t('calculate.ability')}</label>
-            <div className="item-input-wrapper">
-              <input
-                ref={abilityInputRef}
-                type="text"
-                value={abilitySearch}
-                onChange={e => setAbilitySearch(e.target.value)}
-                onFocus={() => {
-                  setShowAbilityDropdown(true)
-                  updateDropdownPosition(abilityInputRef, 'ability')
-                }}
-                onBlur={() => setTimeout(() => setShowAbilityDropdown(false), 200)}
-                placeholder={t('calculate.searchAbility') || 'Rechercher un talent...'}
-                className="form-control item-search-input"
-              />
-              {value?.ability && (
-                <button
-                  className="item-clear-btn"
-                  onClick={() => {
-                    handleAbilityChange(null)
-                    setAbilitySearch('')
-                  }}
-                  title={t('common.clear') || 'Effacer'}
-                >
-                  ×
-                </button>
-              )}
-            </div>
-
-            {showAbilityDropdown && (
-              <div 
-                className="item-dropdown"
-                style={{ left: `${dropdownPositions.ability.left}px`, top: `${dropdownPositions.ability.top}px` }}
-              >
-                {filteredAbilities.length === 0 && (
-                  <div className="item-dropdown-empty">{t('common.noResults') || 'Aucun résultat'}</div>
-                )}
-                {filteredAbilities.slice(0, 200).map(ab => {
-                  const displayName = language === 'fr' ? (ab.fr || ab.en) : (ab.en || ab.fr)
-                  const description = language === 'fr' ? (ab.description_fr || '') : (ab.description_en || '')
-                  return (
-                    <div
-                      key={ab.slug}
-                      className={`item-dropdown-item ${value?.ability === ab.slug ? 'selected' : ''}`}
-                      onClick={() => {
-                        handleAbilityChange(ab.slug)
-                        setAbilitySearch(displayName)
-                        setShowAbilityDropdown(false)
-                      }}
-                      title={description}
-                    >
+            {(() => {
+              const mandatoryAbility = getMandatoryAbility(value?.name)
+              if (mandatoryAbility) {
+                const abilityData = allAbilities.find(a => a.slug === mandatoryAbility)
+                const displayName = abilityData ? (language === 'fr' ? (abilityData.fr || abilityData.en) : (abilityData.en || abilityData.fr)) : mandatoryAbility
+                const description = abilityData ? (language === 'fr' ? (abilityData.description_fr || '') : (abilityData.description_en || '')) : ''
+                return (
+                  <div className="mandatory-item-display">
+                    <div className="mandatory-item-badge mandatory">
                       <span className="item-name">{displayName}</span>
-                      {description && <span className="item-description">{description}</span>}
+                      <span className="mandatory-indicator" title={t('calculate.mandatoryAbility') || 'Talent obligatoire pour cette forme'}>(Obligatoire)</span>
                     </div>
-                  )
-                })}
-              </div>
-            )}
+                    {description && (
+                      <small className="item-description">{description}</small>
+                    )}
+                  </div>
+                )
+              }
+              return (
+                <>
+                  <div className="item-input-wrapper">
+                    <input
+                      ref={abilityInputRef}
+                      type="text"
+                      value={abilitySearch}
+                      onChange={e => setAbilitySearch(e.target.value)}
+                      onFocus={() => {
+                        setShowAbilityDropdown(true)
+                        updateDropdownPosition(abilityInputRef, 'ability')
+                      }}
+                      onBlur={() => setTimeout(() => setShowAbilityDropdown(false), 200)}
+                      placeholder={t('calculate.searchAbility') || 'Rechercher un talent...'}
+                      className="form-control item-search-input"
+                    />
+                    {value?.ability && (
+                      <button
+                        className="item-clear-btn"
+                        onClick={() => {
+                          handleAbilityChange(null)
+                          setAbilitySearch('')
+                        }}
+                        title={t('common.clear') || 'Effacer'}
+                      >
+                        ×
+                      </button>
+                    )}
+                  </div>
 
-            {value?.ability && (
-              <div className="selected-item-badge">
-                {(() => {
-                  const selected = allAbilities.find(a => a.slug === value.ability)
-                  if (!selected) return (value.ability || '')
-                  const description = language === 'fr' ? (selected.description_fr || selected.fr) : (selected.description_en || selected.en)
-                  return description || (language === 'fr' ? selected.fr : selected.en)
-                })()}
-              </div>
-            )}
+                  {showAbilityDropdown && (
+                    <div
+                      className="item-dropdown"
+                      style={{ left: `${dropdownPositions.ability.left}px`, top: `${dropdownPositions.ability.top}px` }}
+                    >
+                      {filteredAbilities.length === 0 && (
+                        <div className="item-dropdown-empty">{t('common.noResults') || 'Aucun résultat'}</div>
+                      )}
+                      {filteredAbilities.slice(0, 200).map(ab => {
+                        const displayName = language === 'fr' ? (ab.fr || ab.en) : (ab.en || ab.fr)
+                        const description = language === 'fr' ? (ab.description_fr || '') : (ab.description_en || '')
+                        return (
+                          <div
+                            key={ab.slug}
+                            className={`item-dropdown-item ${value?.ability === ab.slug ? 'selected' : ''}`}
+                            onClick={() => {
+                              handleAbilityChange(ab.slug)
+                              setAbilitySearch(displayName)
+                              setShowAbilityDropdown(false)
+                            }}
+                            title={description}
+                          >
+                            <span className="item-name">{displayName}</span>
+                            {description && <span className="item-description">{description}</span>}
+                          </div>
+                        )
+                      })}
+                    </div>
+                  )}
+
+                  {value?.ability && (
+                    <div className="selected-item-badge">
+                      {(() => {
+                        const selected = allAbilities.find(a => a.slug === value.ability)
+                        if (!selected) return (value.ability || '')
+                        const description = language === 'fr' ? (selected.description_fr || selected.fr) : (selected.description_en || selected.en)
+                        return description || (language === 'fr' ? selected.fr : selected.en)
+                      })()}
+                    </div>
+                  )}
+                </>
+              )
+            })()}
           </div>
 
           {/* Item - NEW */}

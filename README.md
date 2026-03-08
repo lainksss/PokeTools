@@ -96,6 +96,14 @@ PokeTools is a suite of tools for competitive Pokémon: damage calculator, threa
   - Computes final stats via `calc_all_stats(bases_normalized, evs, natures_map)`.
   - Handles terastallization: if `is_terastallized` and `tera_type` present, defensive types become only `tera_type` (original types kept in `orig_types` for STAB).
 
+### Move Transformations & Special Cases
+The backend includes a handful of hard‑coded move transformations and special behaviours. The canonical list is maintained in `backend/docs/moves_with_special_handling.md`.
+
+- **Iron Head → Behemoth Blade/Bash**: when the attacker species contains `zacian-crowned` or `zamazenta-crowned`, any move named `iron-head` is rewritten to the corresponding Behemoth move. This happens both in the core `calculate_damage()` function and in the routing layers (`threats.py`, `coverage.py`) where moves are normalised prior to invoking the calculator. The transformation sets the move’s name, type and power (100) so coverage/threats analysis, which may receive move slugs from generic lists, behaves identically to the main damage calculator UI.
+
+Refer to the “Moves With Special Handling” doc for more details.
+
+
 ### API Endpoints (detailed list)
 All endpoints are prefixed with `/api`.
 
@@ -117,6 +125,5 @@ python -m pytest -q             # run the full test suite
 Notes:
 - The backend tests read JSON datasets from the repository `data/` folder (tests were adjusted to load data from the repo root).
 - Tests in the suite were updated to use `assert` instead of returning boolean values to avoid pytest warnings.
-
 See `backend/README.md` for more detailed commands and PowerShell snippets.
 

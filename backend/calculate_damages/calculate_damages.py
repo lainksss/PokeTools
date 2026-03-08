@@ -726,7 +726,35 @@ def calculate_damage(
         # Defensive: never let this break damage calculation
         pass
 
+    # Transform Iron Head to Behemoth Blade/Bash for crowned forms (global for all endpoints)
+    try:
+        mv_name_raw = move.get("name") or ""
+        mv_name_norm = mv_name_raw.lower().replace(" ", "-").replace("_", "-")
+        attacker_species = attacker.get("species", "").lower() if attacker else ""
+        
+        if mv_name_norm == "iron-head":
+            if "zacian-crowned" in attacker_species:
+                # Transform to Behemoth Blade (phys, steel)
+                move["name"] = "behemoth-blade"
+                move_type = "steel"
+                power = 100
+                move["power"] = 100
+                category = "physical"
+                mv_name = "behemoth-blade"
+            elif "zamazenta-crowned" in attacker_species:
+                # Transform to Behemoth Bash (phys, steel)
+                move["name"] = "behemoth-bash"
+                move_type = "steel"
+                power = 100
+                move["power"] = 100
+                category = "physical"
+                mv_name = "behemoth-bash"
+    except Exception:
+        # Defensive: never let this break damage calculation
+        pass
+
     if category == "physical":
+
         # Special-case: Body Press (fr: Big Splash) uses the attacker's DEFENSE as its
         # attacking stat instead of ATTACK.
         if mv_name in ("body-press", "body press", "bodypress"):

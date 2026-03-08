@@ -10,7 +10,7 @@ All tests are in double battles at level 100.
 import json
 from pathlib import Path
 
-from backend.calculate_damages.calculate_damages import calculate_damage
+from calculate_damages.calculate_damages import calculate_damage
 
 
 # Load Pokemon data

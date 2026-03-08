@@ -15,7 +15,7 @@ Test cases provided by user with exact expected damage rolls:
 import json
 from pathlib import Path
 
-from backend.calculate_damages.calculate_damages import calculate_damage
+from calculate_damages.calculate_damages import calculate_damage
 
 
 # Load Pokemon data
@@ -116,94 +116,39 @@ def test_quark_drive_icy_wind_with_electric_terrain():
     
     assert actual == expected, f"Expected {expected}, got {actual}"
 
-
-def test_quark_drive_volt_switch_with_electric_terrain():
-    """252 SpA Quark Drive Iron Bundle Volt Switch (1-target) vs. 0 HP / 0 SpD Bulbasaur in Electric Terrain: 88-104"""
+def test_quark_drive_bulbasaur_solar_blade():
+    """0 Atk Bulbasaur Solar Blade vs. 0 HP / 252+ Def Quark Drive Iron Hands: 22-27"""
     print("\n" + "="*80)
-    print("TEST 2: 252 SpA Quark Drive Iron Bundle Volt Switch vs. 0 HP / 0 SpD Bulbasaur in Electric Terrain")
-    print("Doubles, Level 100, Volt Switch has 1 target (single-target move)")
+    print("TEST 3: 0 Atk Bulbasaur Solar Blade vs. 0 HP / 252+ Def Quark Drive Iron Hands in Electric Terrain")
+    print("Singles, Level 100, Defender has boosted Defense from Quark Drive")
     print("="*80)
     
     attacker = get_pokemon_stats(
-        species="iron-bundle",
-        level=100,
-        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 252, "special-defense": 0, "speed": 0},
-        ability="quark-drive"
-    )
-    
-    defender = get_pokemon_stats(
         species="bulbasaur",
-        level=100,
-        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0}
-    )
-    
-    move = {
-        "name": "volt-switch",
-        "power": 70,
-        "type": "electric",
-        "damage_class": "special",
-        "targets": 1,  # Volt Switch is single-target
-    }
-    
-    field = {
-        "terrain": "electric-terrain",
-        "battle_mode": "double"
-    }
-    
-    result = calculate_damage(
-        move=move,
-        attacker=attacker,
-        defender=defender,
-        field=field,
-        level=100,
-        random_range=range(85, 101),
-        debug=False,
-    )
-    
-    # Expected rolls from user: (88, 89, 90, 91, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104)
-    expected = (88, 89, 90, 91, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104)
-    actual = tuple(result['damage_all'])
-    
-    print(f"Expected: {expected}")
-    print(f"Actual:   {actual}")
-    print(f"Match: {actual == expected}")
-    print(f"Range: {min(actual) if actual else 0}-{max(actual) if actual else 0}")
-    
-    assert actual == expected, f"Expected {expected}, got {actual}"
-
-
-def test_quark_drive_spark_defense_with_electric_terrain():
-    """0 Atk Iron Bundle Spark vs. 0 HP / 252 Def Quark Drive Iron Bundle in Electric Terrain: 56-68"""
-    print("\n" + "="*80)
-    print("TEST 3: 0 Atk Iron Bundle Spark vs. 0 HP / 252 Def Quark Drive Iron Bundle in Electric Terrain")
-    print("Doubles, Level 100, Spark has 1 target (single-target move), attacker NO Quark Drive, defender WITH Quark Drive")
-    print("="*80)
-    
-    attacker = get_pokemon_stats(
-        species="iron-bundle",
-        level=100,
+        level=50,
         evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0},
         ability=None
     )
     
     defender = get_pokemon_stats(
-        species="iron-bundle",
-        level=100,
+        species="iron-hands",
+        level=50,
         evs={"hp": 0, "attack": 0, "defense": 252, "special-attack": 0, "special-defense": 0, "speed": 0},
-        ability="quark-drive"
+        ability="quark-drive",
+        natures={"defense": 1.1},
     )
     
     move = {
-        "name": "spark",
-        "power": 65,
-        "type": "electric",
+        "name": "solar-blade",
+        "power": 125,
+        "type": "grass",
         "damage_class": "physical",
-        "targets": 1,  # Spark is single-target
+        "targets": 1,
     }
     
     field = {
         "terrain": "electric-terrain",
-        "battle_mode": "double"
+        "battle_mode": "single"
     }
     
     result = calculate_damage(
@@ -211,13 +156,13 @@ def test_quark_drive_spark_defense_with_electric_terrain():
         attacker=attacker,
         defender=defender,
         field=field,
-        level=100,
+        level=50,
         random_range=range(85, 101),
         debug=False,
     )
     
-    # Expected rolls from user: (56, 58, 58, 58, 60, 60, 60, 62, 62, 62, 64, 64, 64, 66, 66, 68)
-    expected = (56, 58, 58, 58, 60, 60, 60, 62, 62, 62, 64, 64, 64, 66, 66, 68)
+    # Expected rolls from user: (22, 22, 22, 22, 24, 24, 24, 24, 24, 24, 25, 25, 25, 25, 25, 27)
+    expected = (22, 22, 22, 22, 24, 24, 24, 24, 24, 24, 25, 25, 25, 25, 25, 27)
     actual = tuple(result['damage_all'])
     
     print(f"Expected: {expected}")

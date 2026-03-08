@@ -103,6 +103,19 @@ def apply_ability_effects(
         A = float(A) * 2.0
         effects["huge_power"] = True
 
+    # Intrepid Sword (Zacian-Crowned): +1 Attack stage (multiplied in into A)
+    if atk_ability == "intrepid-sword":
+        # +1 stage = (2 + 1) / 2 = 1.5 multiplier
+        A = float(A) * 1.5
+        effects["intrepid_sword"] = True
+
+    if atk_ability == "dauntless-shield":
+        # Dauntless Shield (Zamazenta-Crowned, attacker-side): +1 Defense stage
+        # Important: This boosts the ATTACKER's defense, which affects moves like Body Press
+        # +1 stage = (2 + 1) / 2 = 1.5 multiplier
+        A = float(A) * 1.5
+        effects["dauntless_shield"] = True
+
     # Tough Claws: +30% on contact moves
     # Apply as a base-power modification so rounding matches authoritative calculators.
     if atk_ability == "tough-claws" and move.get("makes_contact"):
@@ -458,6 +471,12 @@ def apply_ability_effects(
     if atk_ability == "victorystar":
         # implemented elsewhere if needed (accuracy)
         effects["victorystar"] = True
+
+    # Dauntless Shield (Zamazenta-Crowned, defender-side): +1 Defense stage (multiplied into D)
+    if def_ability == "dauntless-shield":
+        # +1 stage = (2 + 1) / 2 = 1.5 multiplier
+        D = float(D) * 1.5
+        effects["dauntless_shield"] = True
 
     # --- Defender-side abilities that change type effectiveness ---
     # Levitate: immunity to Ground
