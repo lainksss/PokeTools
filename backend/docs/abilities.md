@@ -164,7 +164,7 @@ Note: the `recoil` attribute is not universally present in `moves_with_flags.jso
 	- Implementation: checks `move['type'] in ('fire', 'ice')` and applies 0.5× multiplier to other_mult if true.
 	- Test: ✅ `thick-fat` covered by `backend/test/test_thick_fat.py` (Ice Beam / Flamethrower with 50% reduction, baseline comparison).
 
-- `scrappy`: ignores Ghost immunities for Normal/Fighting moves (handled in damage calculations).
+- `scrappy` / `minds-eye`: ignores Ghost immunities for Normal/Fighting moves (handled in damage calculations).
 	- Test: ❌
 
 - `merciless`: forces critical hits when the target is poisoned.
