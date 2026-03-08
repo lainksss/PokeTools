@@ -32,10 +32,9 @@
   min-width: 320px;
   width: min(90vw, 500px);
   overflow-y: auto;
-  z-index: 2500;
+  z-index: 10000;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  /* always stay below the sticky header */
-  transform: translateY(52px);
+  /* position will be computed by JS; no fixed transform offset */
 }
 
 
@@ -125,9 +124,8 @@
   min-width: 340px;
   width: min(90vw, 550px);
   overflow-y: auto;
-  z-index: 2500;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);  /* always stay below the sticky header */
-  transform: translateY(52px);}
+  z-index: 10000;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);  /* positioning handled in JS */}
 
 /* Item dropdown scrollbar */
 .item-dropdown::-webkit-scrollbar {

@@ -36,16 +36,20 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
     const cssMax = 500
     const dropdownMaxHeight = Math.min(cssMax, Math.floor(viewportHeight - 80))
 
+    const HEADER_HEIGHT = 52 // previously handled by CSS transform
+
     // If not enough space below but more space above, open upwards
     let topPos
     if (spaceBelow < 200 && spaceAbove > spaceBelow) {
       // open above: position top so dropdown bottom aligns with rect.top - 4
       topPos = rect.top + window.scrollY - dropdownMaxHeight - 4
       // ensure topPos is not negative
-      if (topPos < 8) topPos = 8
+      if (topPos < HEADER_HEIGHT + 4) topPos = HEADER_HEIGHT + 4
     } else {
       // default: open below the input
       topPos = rect.bottom + window.scrollY + 4
+      // ensure dropdown doesn't go under fixed header
+      if (topPos < HEADER_HEIGHT + 4) topPos = HEADER_HEIGHT + 4
     }
 
     setDropdownPositions(prev => ({
