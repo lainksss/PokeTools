@@ -56,6 +56,17 @@ def _select_best_moves_by_type(poke_moves, all_moves, max_per_type=3):
     return result
 
 
+'''
+Note: Find_threats is not used and is never used in the code because it could be used as
+a non-streaming version of the endpoint for clients that don't support streaming.
+However, since the streaming version is more efficient and provides better UX for long analyses,
+the non-streaming version is not currently exposed in the frontend.
+It can be easily exposed in the future if needed by simply calling it from the frontend instead of the streaming version.
+
+Not sure if I should remove it or keep it for potential future use,
+but I'll keep it for now since it's not too much code and could be useful for debugging or non-streaming clients right now.
+'''
+
 @bp.route("/find_threats", methods=["POST"])
 def find_threats():
     """Trouve tous les Pokémon pouvant OHKO ou 2HKO le défenseur."""
