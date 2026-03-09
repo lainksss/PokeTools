@@ -104,7 +104,7 @@ def apply_ability_effects(
         effects["huge_power"] = True
 
     # Intrepid Sword (Zacian-Crowned): +1 Attack stage (multiplied in into A)
-    if atk_ability == "intrepid-sword":
+    if atk_ability == "intrepid-sword" and category == "physical":
         # +1 stage = (2 + 1) / 2 = 1.5 multiplier
         A = float(A) * 1.5
         effects["intrepid_sword"] = True
@@ -473,11 +473,24 @@ def apply_ability_effects(
         effects["victorystar"] = True
 
     # Dauntless Shield (Zamazenta-Crowned, defender-side): +1 Defense stage (multiplied into D)
-    if def_ability == "dauntless-shield":
+    if def_ability == "dauntless-shield" and category == "physical":
         # +1 stage = (2 + 1) / 2 = 1.5 multiplier
         D = float(D) * 1.5
         effects["dauntless_shield"] = True
 
+    # Marvel Scale: while the Pokémon with this Ability has a non-volatile
+    # status condition, its Defense is increased by 50%.
+    if def_ability == "marvel-scale" and category == "physical":
+        # Check for any non-volatile status stored in `defender['status']`.
+        # This mirrors how `guts` checks `attacker.get('status')` above.
+        if defender.get("status"):
+            try:
+                D = float(D) * 1.5
+                effects["marvel_scale"] = True
+            except Exception:
+                # Fallback: attempt to coerce and apply multiplier anyway
+                D = float(D) * 1.5
+                effects["marvel_scale"] = True
     # --- Defender-side abilities that change type effectiveness ---
     # Levitate: immunity to Ground
     if def_ability == "levitate" and mv_type == "ground":

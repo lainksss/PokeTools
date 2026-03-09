@@ -176,10 +176,16 @@ Note: the `recoil` attribute is not universally present in `moves_with_flags.jso
 	- Test: ✅ `battle-armor`/`shell-armor` covered by `backend/test/test_battle_armor.py` (demonstrates that Merciless-forced crits cannot be blocked).
 
 - `intrepid-sword` / `dauntless-shield`
-	- Transformation behaviour for `iron-head` → `behemoth-blade`/`bash` is documented in `backend/docs/moves_with_special_handling.md`.
-	- Test: ✅ `intrepid-sword` / `dauntless-shield` covered by `backend/test/test_zamazenta_zacian.py`.
+	- Dauntless Shield (Zamazenta-Crowned) / Intrepid Sword (Zacian-Crowned): attacker-side transformation behaviour and stat boosts.
+	- Implementation detail: `dauntless-shield` applies an attacker-side +1 Defense stage (1.5×) but is only applied for physical moves so that Special Attack moves are not incorrectly affected. See `backend/docs/moves_with_special_handling.md` for related move transforms (`iron-head` → `behemoth-blade`/`bash`).
+	- Tests: ✅ covered by `backend/test/test_zamazenta_zacian.py` and `backend/test/test_zamazenta_crowned.py`.
 
 Note: `sniper` and other crit-related flags are set by ability handling and used in the main damage calculation to modify the critical multiplier.
+
+- `marvel-scale`: increases the holder's physical `Defense` by 50% while it has a non-volatile status condition (e.g., `brn`, `par`, `psn`).
+	- Implementation: when `defender['ability'] == 'marvel-scale'` and `defender.get('status')` is truthy, the physical defense multiplier `D` is multiplied by 1.5 in `apply_ability_effects()` so incoming physical damage is reduced accordingly.
+	- Notes: this ability affects only physical `Defense` (not Special Defense).
+	- Tests: ✅ covered by `backend/test/test_marvel_scale_milotic.py` (Milotic burned / not burned cases).
 
 ## Test Coverage Summary
 
@@ -201,4 +207,3 @@ Note: `sniper` and other crit-related flags are set by ability handling and used
 **Legendaries/important abilities (with full damage calculations)**
 - Ogerpon (each of them)
 - Chien pao / Ting Lu / Yu-yu / Chong jian
-- marvel-scale
