@@ -8,6 +8,7 @@ import { getMandatoryItem, getMandatoryAbility, hasMandatoryItem } from '../util
 export default function PokemonPanel({ side, value, onChange, showMultipleMoves = false, showTitle = true, showItem = true }) {
   const { t, getPokemonName, matchesPokemonName, language } = useTranslation()
   // Refs for inputs (for dropdown positioning)
+  const panelRef = useRef(null)
   const pokemonInputRef = useRef(null)
   const abilityInputRef = useRef(null)
   const itemInputRef = useRef(null)
@@ -74,6 +75,24 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
     return () => {
       window.removeEventListener('resize', handlePositionUpdate)
       window.removeEventListener('scroll', handlePositionUpdate, true)
+    }
+  }, [])
+
+  // Close dropdowns when clicking outside the panel
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (panelRef.current && !panelRef.current.contains(e.target)) {
+        setShowDropdown(false)
+        setShowAbilityDropdown(false)
+        setShowItemDropdown(false)
+        setShowMoveDropdown(false)
+        setShowMoveDropdowns({ 1: false, 2: false, 3: false, 4: false })
+      }
+    }
+
+    document.addEventListener('click', handleClickOutside)
+    return () => {
+      document.removeEventListener('click', handleClickOutside)
     }
   }, [])
   const [allPokemon, setAllPokemon] = useState([])
@@ -748,7 +767,7 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
   const isParalyzed = (value && value.status === 'paralysis')
 
   return (
-    <div className="pokemon-panel">
+    <div className="pokemon-panel" ref={panelRef}>
       {showTitle && <h3>{side === 'left' ? t('calculate.attacker') : t('calculate.defender')}</h3>}
       
       {/* Pokemon selection with search */}
