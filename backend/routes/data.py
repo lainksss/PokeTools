@@ -130,6 +130,27 @@ def pokemon_abilities(pokemon_id: int):
     return jsonify({"pokemon_id": pokemon_id, "count": len(abilities), "abilities": abilities})
 
 
+@bp.route("/pokemon-abilities-all", methods=["GET"])
+def pokemon_abilities_all():
+    """Retourne le mapping complet de tous les pokémons vers leurs talents pour le frontend.
+    
+    Chaque Pokémon a une liste de talents, le premier étant le talent primaire.
+    Format: { "pokemon_id": ["ability1", "ability2", ...], ... }
+    """
+    mapping = load_json("all_pokemon_abilities.json") or {}
+    # Convert string keys to integers for cleaner frontend usage
+    result = {}
+    for pokemon_id_str, abilities in mapping.items():
+        try:
+            pokemon_id = int(pokemon_id_str)
+            # Ensure abilities is a list with at least one ability (primary)
+            if abilities and len(abilities) > 0:
+                result[pokemon_id] = abilities
+        except (ValueError, TypeError):
+            continue
+    return jsonify({"count": len(result), "abilities_map": result})
+
+
 @bp.route("/types", methods=["GET"])
 def types():
     """Retourne la liste de tous les types."""

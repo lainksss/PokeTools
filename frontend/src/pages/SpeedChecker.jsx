@@ -66,6 +66,7 @@ export default function SpeedChecker() {
   const [allPokemon, setAllPokemon] = useState([])
   const [allNatures, setAllNatures] = useState([])
   const [allAbilities, setAllAbilities] = useState([])
+  const [pokemonAbilitiesMap, setPokemonAbilitiesMap] = useState({}) // Map pokemon_id -> [abilities]
   
   // Left panel - User's Pokémon
   const [selectedPokemon, setSelectedPokemon] = useState(null)
@@ -76,6 +77,7 @@ export default function SpeedChecker() {
   const [speedBoost, setSpeedBoost] = useState(0) // -6 to +6
   const [tailwind, setTailwind] = useState(false)
   const [weather, setWeather] = useState('none')
+  const [terrain, setTerrain] = useState('none')
   // Choice Scarf toggle (user)
   const [choiceScarf, setChoiceScarf] = useState(false)
   const [fullyEvolvedOnly, setFullyEvolvedOnly] = useState(false)
@@ -99,19 +101,22 @@ export default function SpeedChecker() {
   const [results, setResults] = useState([])
 
   const ALL_WEATHERS = ['none', 'sun', 'rain', 'sandstorm', 'snow']
+  const ALL_TERRAINS = ['none', 'grassy', 'electric', 'psychic', 'misty']
 
   // Load Pokémon data
   useEffect(() => {
     Promise.all([
       fetch(`${API_URL}/api/pokemon`).then(r => r.json()),
       fetch(`${API_URL}/api/natures`).then(r => r.json()),
-      fetch(`${API_URL}/api/abilities`).then(r => r.json())
-    ]).then(([pokemon, natures, abilities]) => {
+      fetch(`${API_URL}/api/abilities`).then(r => r.json()),
+      fetch(`${API_URL}/api/pokemon-abilities-all`).then(r => r.json())
+    ]).then(([pokemon, natures, abilities, abilitiesMap]) => {
       const pokemonList = pokemon.results || []
       setAllPokemon(pokemonList)
       setFilteredPokemon(pokemonList)
       setAllNatures(natures.natures || [])
       setAllAbilities(abilities.abilities || [])
+      setPokemonAbilitiesMap(abilitiesMap.abilities_map || {})
     }).catch(err => console.error('Error loading data:', err))
   }, [])
   
@@ -188,6 +193,71 @@ export default function SpeedChecker() {
     return stat
   }
 
+  // Calculate any stat (for determining highest stat)
+  const calculateStat = (baseStat, level, ev = 0, nature = 'neutral') => {
+    const iv = 31 // Always assume max IVs
+    const base = Math.floor(((2 * baseStat + iv + Math.floor(ev / 4)) * level) / 100) + 5
+    let multiplier = 1.0
+    if (nature === 'positive') multiplier = 1.1
+    if (nature === 'negative') multiplier = 0.9
+    return Math.floor(base * multiplier)
+  }
+
+  // Determine if speed is the highest stat (with priority tie-breaker)
+  // For user's Pokémon: only speed gets EVs
+  const getHighestStatUser = (pokemon) => {
+    if (!pokemon) return null
+    
+    const stats = {
+      attack: calculateStat(pokemon.base_stats.attack, level, 0, 'neutral'),
+      defense: calculateStat(pokemon.base_stats.defense, level, 0, 'neutral'),
+      special_attack: calculateStat(pokemon.base_stats['special-attack'], level, 0, 'neutral'),
+      special_defense: calculateStat(pokemon.base_stats['special-defense'], level, 0, 'neutral'),
+      speed: calculateStat(pokemon.base_stats.speed, level, effectiveSpeedEV, speedNature)
+    }
+    
+    // Priority order: attack > defense > special_attack > special_defense > speed
+    const priorityOrder = ['attack', 'defense', 'special_attack', 'special_defense', 'speed']
+    let highest = null
+    let highestValue = -1
+    
+    for (const statName of priorityOrder) {
+      if (stats[statName] > highestValue) {
+        highestValue = stats[statName]
+        highest = statName
+      }
+    }
+    
+    return highest
+  }
+
+  // Determine if speed is the highest stat for an opponent
+  const getHighestStatOpponent = (pokemon, opponentEV, opponentNature) => {
+    if (!pokemon) return null
+    
+    const stats = {
+      attack: calculateStat(pokemon.base_stats.attack, level, 0, 'neutral'),
+      defense: calculateStat(pokemon.base_stats.defense, level, 0, 'neutral'),
+      special_attack: calculateStat(pokemon.base_stats['special-attack'], level, 0, 'neutral'),
+      special_defense: calculateStat(pokemon.base_stats['special-defense'], level, 0, 'neutral'),
+      speed: calculateStat(pokemon.base_stats.speed, level, opponentEV, opponentNature)
+    }
+    
+    // Priority order: attack > defense > special_attack > special_defense > speed
+    const priorityOrder = ['attack', 'defense', 'special_attack', 'special_defense', 'speed']
+    let highest = null
+    let highestValue = -1
+    
+    for (const statName of priorityOrder) {
+      if (stats[statName] > highestValue) {
+        highestValue = stats[statName]
+        highest = statName
+      }
+    }
+    
+    return highest
+  }
+
   // Calculate user's speed
   // convert UI units (0..32) to backend EVs using shared helper
   const effectiveSpeedEV = newEvToOld(speedEVUnits)
@@ -196,6 +266,27 @@ export default function SpeedChecker() {
     ? calculateSpeed(selectedPokemon.base_stats.speed, level, effectiveSpeedEV, speedNature, speedBoost)
     : 0
   let finalUserSpeed = userSpeed
+  
+  // Apply Quark Drive boost if terrain is electric and speed is highest stat
+  let hasQuarkDrive = false
+  if (ability === 'quark-drive' && terrain === 'electric') {
+    const highestStat = getHighestStatUser(selectedPokemon)
+    if (highestStat === 'speed') {
+      finalUserSpeed = Math.floor(finalUserSpeed * 1.5)
+      hasQuarkDrive = true
+    }
+  }
+  
+  // Apply Protosynthesis boost if weather is sun and speed is highest stat
+  let hasProtosynthesis = false
+  if (ability === 'protosynthesis' && weather === 'sun') {
+    const highestStat = getHighestStatUser(selectedPokemon)
+    if (highestStat === 'speed') {
+      finalUserSpeed = Math.floor(finalUserSpeed * 1.5)
+      hasProtosynthesis = true
+    }
+  }
+  
   // Weather-affected abilities multiplier (user)
   const weatherAbilityMultiplier = (abilitySlug, currentWeather) => {
     if (!abilitySlug || !currentWeather || currentWeather === 'none') return 1
@@ -252,6 +343,41 @@ export default function SpeedChecker() {
 
       const opponentSpeed = calculateSpeed(pokemon.base_stats.speed, level, opponentEV, opponentNature)
       let opponentFinalSpeed = opponentSpeed
+      
+      // Get opponent's primary ability (first in list)
+      const opponentAbilities = pokemonAbilitiesMap[pokemon.id] || []
+      const opponentPrimaryAbility = opponentAbilities.length > 0 ? opponentAbilities[0] : null
+      
+      // Apply weather-based ability multipliers for opponent
+      if (opponentPrimaryAbility) {
+        const abilityLower = opponentPrimaryAbility.toLowerCase()
+        if (abilityLower === 'chlorophyll' && weather === 'sun') {
+          opponentFinalSpeed = Math.floor(opponentFinalSpeed * 2)
+        } else if (abilityLower === 'swift-swim' && weather === 'rain') {
+          opponentFinalSpeed = Math.floor(opponentFinalSpeed * 2)
+        } else if (abilityLower === 'sand-rush' && weather === 'sandstorm') {
+          opponentFinalSpeed = Math.floor(opponentFinalSpeed * 2)
+        } else if (abilityLower === 'slush-rush' && weather === 'snow') {
+          opponentFinalSpeed = Math.floor(opponentFinalSpeed * 2)
+        }
+      }
+      
+      // Apply Quark Drive for opponent (electric terrain + speed is highest stat)
+      if (opponentPrimaryAbility && opponentPrimaryAbility.toLowerCase() === 'quark-drive' && terrain === 'electric') {
+        const highestStat = getHighestStatOpponent(pokemon, opponentEV, opponentNature)
+        if (highestStat === 'speed') {
+          opponentFinalSpeed = Math.floor(opponentFinalSpeed * 1.5)
+        }
+      }
+      
+      // Apply Protosynthesis for opponent (sun weather + speed is highest stat)
+      if (opponentPrimaryAbility && opponentPrimaryAbility.toLowerCase() === 'protosynthesis' && weather === 'sun') {
+        const highestStat = getHighestStatOpponent(pokemon, opponentEV, opponentNature)
+        if (highestStat === 'speed') {
+          opponentFinalSpeed = Math.floor(opponentFinalSpeed * 1.5)
+        }
+      }
+      
       // Prevent Choice Scarf on Mega/Primal opponent forms (they can only use mandatory gems)
       const isOpponentMegaOrPrimal = pokemon.name?.includes('-mega') || pokemon.name?.includes('-primal')
       if (choiceScarfMiddle && !isOpponentMegaOrPrimal) opponentFinalSpeed = Math.floor(opponentFinalSpeed * 1.5)
@@ -271,15 +397,12 @@ export default function SpeedChecker() {
     const filtered = comparisons.filter(c => 
       showSlower ? c.isFaster : !c.isFaster
     ).sort((a, b) => {
-      if (showSlower) {
-        return b.finalSpeed - a.finalSpeed // Slower: highest to lowest
-      } else {
-        return a.finalSpeed - b.finalSpeed // Faster: lowest to highest
-      }
+      // Sort by distance to user's speed (closest first in both categories)
+      return a.speedDiff - b.speedDiff
     })
 
     setResults(filtered)
-  }, [selectedPokemon, level, speedEVUnits, speedNature, speedBoost, tailwind, choiceScarf, comparisonMode, customEV, customNature, choiceScarfMiddle, showSlower, allPokemon, ability, weather, fullyEvolvedOnly])
+  }, [selectedPokemon, level, speedEVUnits, speedNature, speedBoost, tailwind, choiceScarf, comparisonMode, customEV, customNature, choiceScarfMiddle, showSlower, allPokemon, ability, weather, terrain, fullyEvolvedOnly, pokemonAbilitiesMap])
 
   return (
     <div className="speed-checker-page">
@@ -496,7 +619,10 @@ export default function SpeedChecker() {
         {/* Middle Panel - Comparison Options */}
         <div className="speed-panel speed-panel-middle">
           <h3>{t('speedChecker.compareAgainst') || 'Compare Against'}</h3>
+          
+          {/* Weather selector */}
           <div className="form-group">
+            <label>{t('calculate.weather')}</label>
             <select
               aria-label={t('calculate.weather')}
               value={weather}
@@ -509,6 +635,23 @@ export default function SpeedChecker() {
               ))}
             </select>
           </div>
+
+          {/* Terrain selector */}
+          <div className="form-group">
+            <label>{t('speedChecker.terrain') || 'Terrain'}</label>
+            <select
+              aria-label={t('speedChecker.terrain') || 'Terrain'}
+              value={terrain}
+              onChange={e => setTerrain(e.target.value)}
+              className="form-control"
+              style={{ maxWidth: 220 }}
+            >
+              {ALL_TERRAINS.map(t => (
+                <option key={t} value={t}>{t === 'none' ? 'None' : t.charAt(0).toUpperCase() + t.slice(1)}</option>
+              ))}
+            </select>
+          </div>
+
           <div style={{ marginTop: 10 }}>
             <button
               type="button"

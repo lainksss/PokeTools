@@ -13,6 +13,7 @@ export const speedCheckerEn = {
   finalSpeed: "Final Speed",
   baseSpeed: "Base Speed:",
   compareAgainst: "Compare Against",
+  terrain: "Terrain",
   minSpeed: "Min Speed",
   customSpeed: "Custom",
   maxSpeed: "Max Speed",
