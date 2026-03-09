@@ -368,7 +368,7 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
     return () => { mounted = false }
   }, [value && value.id])
 
-  // Force mandatory item and ability when pokemon changes; Transform base forms to crowned when rusted item selected
+  // Force mandatory item and ability when pokemon changes; Transform base forms or apply gems when appropriate
   useEffect(() => {
     if (!value || !value.name) return
 
@@ -376,7 +376,24 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
     const mandatoryAbility = getMandatoryAbility(value.name)
 
     const updates = {}
-    
+
+    // helper: pick best form (highest BST) matching the given suffix
+    const findBestForm = (base, suffix) => {
+      const candidates = allPokemon.filter(p => p.name.startsWith(base + suffix))
+      if (!candidates || candidates.length === 0) return null
+      let best = candidates[0]
+      let bestSum = Object.values(best.base_stats || {}).reduce((a, b) => a + b, 0)
+      for (let i = 1; i < candidates.length; i++) {
+        const c = candidates[i]
+        const sum = Object.values(c.base_stats || {}).reduce((a, b) => a + b, 0)
+        if (sum > bestSum) {
+          best = c
+          bestSum = sum
+        }
+      }
+      return best
+    }
+
     // Transform base forms to crowned when rusted item is selected
     if (value.item === 'rusted-sword' && value.name === 'zacian') {
       updates.name = 'zacian-crowned'
@@ -412,6 +429,54 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
       // Find base form and update ID, base_stats, and types
       const base = allPokemon.find(p => p.name === 'zamazenta')
       if (base) {
+        updates.id = base.id
+        updates.base_stats = base.base_stats
+        updates.types = base.types
+      }
+    }
+
+    // Mega / Primal gem transformation logic
+    // Determine the simple base name (strip any existing suffix)
+    const baseName = value.name.split(/-mega|-primal|-crowned/)[0]
+
+    // Apply gem when appropriate and not already in a special form
+    if (value.item === 'mega-gem' &&
+        !value.name.includes('-mega') &&
+        !value.name.includes('-primal') &&
+        !value.name.includes('crowned')) {
+      const bestMega = findBestForm(baseName, '-mega')
+      if (bestMega) {
+        updates.name = bestMega.name
+        updates.id = bestMega.id
+        updates.base_stats = bestMega.base_stats
+        updates.types = bestMega.types
+      }
+    } else if (value.item !== 'mega-gem' && value.name.includes('-mega')) {
+      // revert when mega-gem removed
+      const base = allPokemon.find(p => p.name === baseName)
+      if (base) {
+        updates.name = base.name
+        updates.id = base.id
+        updates.base_stats = base.base_stats
+        updates.types = base.types
+      }
+    }
+
+    if (value.item === 'primal-gem' &&
+        !value.name.includes('-primal') &&
+        !value.name.includes('-mega') &&
+        !value.name.includes('crowned')) {
+      const bestPrimal = findBestForm(baseName, '-primal')
+      if (bestPrimal) {
+        updates.name = bestPrimal.name
+        updates.id = bestPrimal.id
+        updates.base_stats = bestPrimal.base_stats
+        updates.types = bestPrimal.types
+      }
+    } else if (value.item !== 'primal-gem' && value.name.includes('-primal')) {
+      const base = allPokemon.find(p => p.name === baseName)
+      if (base) {
+        updates.name = base.name
         updates.id = base.id
         updates.base_stats = base.base_stats
         updates.types = base.types

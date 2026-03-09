@@ -79,6 +79,9 @@ All data import scripts are located in `backend/importation/`. They fetch from e
 
 ### Mega Evolution Move Handling
 
+*New feature:* when a Pokémon is given a `mega-gem` or `primal-gem` the frontend automatically switches it to its strongest Mega/Primal form (appending `-mega` or `-primal` to the slug) and the backend mirrors this behaviour so calculations use the correct base stats. Removing the gem will revert the species to its base form. This mirrors the existing logic for Zacian/Zamazenta crowned forms with rusted items.
+
+
 **Important:** Mega-evolution forms must inherit moves from their base forms to function correctly in the damage calculator.
 
 #### Validation & Auto-merge Script

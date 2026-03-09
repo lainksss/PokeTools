@@ -22,7 +22,8 @@ How to update: when you add a test that depends on an item's damage behaviour, m
 - `poison-barb`: ✅ covered by `backend/test/test_items_powerups.py::test_poison_barb_sneasler_dire_claw`
 - `hard-stone`: ✅ covered by `backend/test/test_items_powerups.py::test_hard_stone_tyranitar_rock_tomb_sandstorm`
 - `soft-sand`: ✅ covered by `backend/test/test_items_powerups.py::test_soft_sand_hippowdon_earthquake_double_sandstorm`
-- `mega-gems`: ✅
+- `mega-gems` / `primal-gem` : ✅
+  *When a Pokémon holds a `mega-gem` or `primal-gem` the backend will automatically convert its species payload to the best available mega/primal form (same as the frontend). The gem is then treated as mandatory and cannot be changed; removing it reverts the species.*
 - `booster-energy`: ✅
 - `rusted-shield` ✅ covered by `backend/test/test_zamazenta_zacian.py`.
 - `rusted-sword` ✅ covered by `backend/test/test_zamazenta_zacian.py`.
