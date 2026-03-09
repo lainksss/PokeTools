@@ -309,6 +309,18 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
     }
   }, [language, value?.id, getPokemonName])
 
+  // Clear ability/item/move search text whenever the selected Pokémon itself
+  // changes.  without this the previous text would remain even though the
+  // `value` prop has been reset by handlePokemonSelect above.
+  useEffect(() => {
+    if (value && value.id) {
+      setAbilitySearch('')
+      setItemSearch('')
+      setMoveSearch('')
+      setMoveSearches({1: '', 2: '', 3: '', 4: ''})
+    }
+  }, [value?.id])
+
   // Load moves and abilities when pokemon changes
   useEffect(() => {
     if (!value || !value.id) return
@@ -504,6 +516,8 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
     if (pokemon) {
       setSearchText(getPokemonName(pokemon.id, pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)))
       setShowDropdown(false)
+      // When switching Pokémon we clear any previous configuration that no
+      // longer applies: ability, item and moves (all slots).
       onChange && onChange({
         id: pokemon.id,
         name: pokemon.name,
@@ -514,10 +528,20 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
         boosts: value?.boosts || { attack: 0, defense: 0, special_attack: 0, special_defense: 0, speed: 0 },
         nature: value?.nature || 'hardy',
         ability: null,
+        item: null,
         move: null,
+        move2: null,
+        move3: null,
+        move4: null,
         is_terastallized: false,
         tera_type: null
       })
+      // also clear the local search strings so the inputs do not still show
+      // the previous selections
+      setAbilitySearch('')
+      setItemSearch('')
+      setMoveSearch('')
+      setMoveSearches({1: '', 2: '', 3: '', 4: ''})
     }
   }
 
