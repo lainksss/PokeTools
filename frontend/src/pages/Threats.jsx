@@ -17,6 +17,9 @@ export default function Threats() {
   const [reflect, setReflect] = useState(false)
   const [lightScreen, setLightScreen] = useState(false)
   const [auroraVeil, setAuroraVeil] = useState(false)
+  const [fairyAura, setFairyAura] = useState(false)
+  const [darkAura, setDarkAura] = useState(false)
+  const [auraBreak, setAuraBreak] = useState(false)
   const [progress, setProgress] = useState({ processed: 0, total: 0, threats_found: 0 })
   const [useStreaming, setUseStreaming] = useState(true)
   const [fullyEvolvedOnly, setFullyEvolvedOnly] = useState(false)
@@ -86,8 +89,10 @@ export default function Threats() {
       ko_mode: koMode,
       field: {
         weather: weather === 'none' ? null : weather,
-        terrain: terrain === 'none' ? null : terrain
-        ,
+        terrain: terrain === 'none' ? null : terrain,
+        fairy_aura: fairyAura || undefined,
+        dark_aura: darkAura || undefined,
+        aura_break: auraBreak || undefined,
         reflect: reflect || undefined,
         light_screen: lightScreen || undefined,
         aurora_veil: auroraVeil || undefined
@@ -196,6 +201,9 @@ export default function Threats() {
       field: {
         weather: weather === 'none' ? null : weather,
         terrain: terrain === 'none' ? null : terrain,
+        fairy_aura: fairyAura || undefined,
+        dark_aura: darkAura || undefined,
+        aura_break: auraBreak || undefined,
         reflect: reflect || undefined,
         light_screen: lightScreen || undefined,
         aurora_veil: auroraVeil || undefined
@@ -268,6 +276,9 @@ export default function Threats() {
       field: {
         weather: weather === 'none' ? null : weather,
         terrain: terrain === 'none' ? null : terrain,
+        fairy_aura: fairyAura || undefined,
+        dark_aura: darkAura || undefined,
+        aura_break: auraBreak || undefined,
         reflect: reflect || undefined,
         light_screen: lightScreen || undefined,
         aurora_veil: auroraVeil || undefined
@@ -414,6 +425,20 @@ export default function Threats() {
                   </option>
                 ))}
               </select>
+            </div>
+          </div>
+
+          <div className="form-group" role="group" aria-label={t('calculate.auras')}>
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <button type="button" className={`aura-button ${fairyAura ? 'active' : ''}`} onClick={() => setFairyAura(v => !v)}>
+                {t('auras.fairy') || 'Fairy Aura'}
+              </button>
+              <button type="button" className={`aura-button ${darkAura ? 'active' : ''}`} onClick={() => setDarkAura(v => !v)}>
+                {t('auras.dark') || 'Dark Aura'}
+              </button>
+              <button type="button" className={`aura-button ${auraBreak ? 'active' : ''}`} onClick={() => setAuraBreak(v => !v)}>
+                {t('auras.break') || 'Aura Break'}
+              </button>
             </div>
           </div>
 
