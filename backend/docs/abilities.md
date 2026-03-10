@@ -206,4 +206,11 @@ Note: `sniper` and other crit-related flags are set by ability handling and used
 
 **Legendaries/important abilities (with full damage calculations)**
 - Ogerpon (each of them)
+- friend guard
 - Chien pao / Ting Lu / Yu-yu / Chong jian
+
+- What's next after that ? Weather/Terrain/aura/treasures of ruin activating when:
+- We put a pokemon with one of these abilities in calculator (it sets it even in front, just Quality Of Life improvement)
+- We use deep threats/coverage analysis and if the Weather/Terrain you want to change isn't enabled
+  (if front weather == none, then ability of the defender/offender activates if it has a weather ability)
+  Aura or Treasures of ruin abilities can stack, so we keep the one we potentially chose AND the one of the other mon's ability
