@@ -236,7 +236,9 @@ export default function Coverage() {
         aura_break: auraBreak || undefined,
         reflect: reflect || undefined,
         light_screen: lightScreen || undefined,
-        aurora_veil: auroraVeil || undefined
+        aurora_veil: auroraVeil || undefined,
+        helping_hand: helpingHand || undefined,
+        friend_guard: friendGuard || undefined
       },
       fully_evolved_only: fullyEvolvedOnly
     }
