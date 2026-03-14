@@ -1,3 +1,6 @@
+:root {
+  --scrollbar-thumb: var(--scrollbar);
+}
 /* ======================================
    DROPDOWN & SELECTOR STYLES
    ====================================== */
