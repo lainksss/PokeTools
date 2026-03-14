@@ -69,6 +69,45 @@ Test coverage: ✅ Grassy and Misty terrain are used in unit tests (`backend/tes
 
 - **Tests**: ✅ Screens and Aurora Veil are exercised by `backend/test/test_screens_and_aurora.py` which asserts exact 16-roll tuples for representative Solar Beam / Razor Leaf cases under Light Screen, Reflect, and Aurora Veil in `battle_mode: "double"`.
 
+**Double Battle Effects**
+
+- **Files**: `backend/calculate_damages/calculate_damages.py` (Helping Hand logic at lines 953–956), `backend/calculate_damages/special_conditions.py` (function `compute_double_battle_multiplier` for Friend Guard).
+
+- **Field keys**: `helping_hand` (boolean), `friend_guard` (boolean).
+
+- **Behaviors implemented**:
+  - **Helping Hand (`helping_hand: true`)**: Applied as a 1.5× multiplier on the move's base power **before** damage formula execution. This ensures the boosted power flows through all downstream damage calculations (STAB, type effectiveness, item/ability modifiers, critical hit logic) with correct rounding via Smogon-style fixed-point arithmetic.
+    - Implementation: When `bool(fld.get('helping_hand') or fld.get('helping-hand'))` is true, the attacker's move power is multiplied by 6144/4096 (= 1.5) and stored back into `move['power']` before calling `compute_base`.
+    - Effect: attacker's ally uses the move "Helping Hand" (Coup d'Main in French), boosting the attacker's damage by ~50% regardless of move category.
+  
+  - **Friend Guard (`friend_guard: true`)**: Applied as a 0.75× final multiplier on the computed damage **after** all damage calculations (including critical hits, weather, terrain, abilities, items, screens). This models a defending Pokémon's ally reducing damage taken.
+    - Implementation: Function `compute_double_battle_multiplier(field)` returns 0.75 if `friend_guard` is true in the field dict, else 1.0. The multiplier is incorporated into the final damage chain via `final_mods` in `compute_damage_rolls`.
+    - Effect: defender's ally uses the move "Friend Guard" (Garde Ami in French), reducing incoming damage by 25%.
+  
+  - Both fields support underscore and hyphen variants (`helping_hand` / `helping-hand`, `friend_guard` / `friend-guard`).
+
+- **Interactions**:
+  - Helping Hand acts on the attacker (damage boost applied early, scales with all downstream multipliers).
+  - Friend Guard acts on the defender (damage reduction applied late, independent of move configuration).
+  - Both can be active simultaneously (independent effects).
+  - Unlike screens (which require `battle_mode: "double"` to apply 2/3 reduction), Helping Hand and Friend Guard always apply when their field flags are true, regardless of battle mode.
+  - These effects are **not** negated by abilities like Infiltrator (they are not comparable to screens).
+
+- **Expected effect chain** (illustration):
+  1. Attacker configures move with base power (e.g., 100).
+  2. If `helping_hand: true`: base power → 150 (1.5×).
+  3. STAB, type effectiveness, weather, terrain, abilities, items applied to 150 BP.
+  4. Critical hit applied (if applicable).
+  5. Final damage computed (e.g., 200 HP damage).
+  6. If `friend_guard: true`: 200 → 150 (0.75×).
+  7. Result: 150 HP damage to defender.
+
+- **Test coverage**: ✅ Helping Hand and Friend Guard are fully tested across `backend/test/test_case_8.py` through `backend/test/test_case_15.py`. These test cases validate:
+  - Helping Hand applies correctly with various move categories (physical, special, status).
+  - Friend Guard reduces final damage independently.
+  - Both effects interact correctly when active together.
+  - Edge cases (critical hits with Friend Guard, terastallized moves with Helping Hand, etc.).
+
 **Grounding / Gravity / Ungrounding**
 - **Files**: `backend/calculate_damages/calculate_grounded.py` (function `is_grounded`), consulted by terrain/weather logic and damage pipeline.
 
