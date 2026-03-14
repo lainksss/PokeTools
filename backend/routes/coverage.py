@@ -6,20 +6,25 @@ POST /api/analyze_type_coverage - analyse la couverture de types
 
 import json
 from flask import Blueprint, request, jsonify, Response, stream_with_context
+import logging
 
 # Support utils import either as top-level `utils` or as `backend.utils`
 try:
     from utils.data_loader import load_json
     from utils.helpers import build_actor_from_payload
+    from utils.mandatory_items import force_mandatory_item
 except Exception:
     from ..utils.data_loader import load_json
     from ..utils.helpers import build_actor_from_payload
+    from ..utils.mandatory_items import force_mandatory_item
 
 try:
     from calculate_damages.calculate_damages import calculate_damage
 except Exception:
     import importlib
     calculate_damage = importlib.import_module("calculate_damages.calculate_damages").calculate_damage
+
+logger = logging.getLogger(__name__)
 
 bp = Blueprint('coverage', __name__)
 
@@ -41,6 +46,7 @@ def analyze_coverage_stream():
     bulk_nature_mode = payload.get("bulk_nature_mode", "byMove")
     bulk_assault_vest = bool(payload.get("bulk_assault_vest", False))
     bulk_evoluroc = bool(payload.get("bulk_evoluroc", False))
+    fully_evolved_only = bool(payload.get("fully_evolved_only", False))
 
     if not attacker_data:
         return jsonify({"error": "attacker required"}), 400
@@ -48,13 +54,28 @@ def analyze_coverage_stream():
     if not moves_data or len(moves_data) == 0:
         return jsonify({"error": "at least one move required"}), 400
 
+    # Force mandatory item for attacker
+    attacker_data = force_mandatory_item(attacker_data)
+
     def generate():
         try:
             all_pokemon_data = load_json("all_pokemon.json") or {}
-            all_pokemon = [
-                {"name": name, **data} 
-                for name, data in all_pokemon_data.items()
-            ]
+            evo_map = load_json("pokemon_evolution.json") or {}
+
+            # Build list and optionally filter to fully-evolved only
+            all_pokemon = []
+            for name, data in all_pokemon_data.items():
+                if not data:
+                    continue
+                if fully_evolved_only:
+                    try:
+                        can_evolve = bool((evo_map.get(name) or {}).get('can_evolve', False))
+                    except Exception:
+                        can_evolve = False
+                    if can_evolve:
+                        continue
+                all_pokemon.append({"name": name, **data})
+
             total_pokemon = len(all_pokemon)
 
             attacker = build_actor_from_payload(attacker_data)
@@ -149,8 +170,11 @@ def analyze_coverage_stream():
                             "ability": None,
                             "item": item,
                             "is_terastallized": False,
-                            "tera_type": None
+                            "tera_type": None,
+                            "name": poke.get("name")
                         }
+                        # Force mandatory item for defender
+                        defender_payload = force_mandatory_item(defender_payload)
                         defender = build_actor_from_payload(defender_payload)
 
                         result = calculate_damage(
@@ -250,6 +274,238 @@ def analyze_coverage_stream():
     )
 
 
+@bp.route("/deep_analyze_coverage_stream", methods=["POST"])
+def deep_analyze_coverage_stream():
+    """Recherche approfondie: teste la couverture offensive en testant tous les talents/statuts des défenseurs.
+    
+    Logique:
+    - Pour chaque defense Pokémon
+    - Pour chaque attaque de l'attaquant
+    - Tester tous les talents du défenseur × 3 statuts (normal, brûlé, empoisonné)
+    - Garder le PIRE résultat (le plus bas KO%) pour cette attaque
+    - Afficher les 4 attaques avec leurs pires résultats
+    - Compter comme couverture positive si au moins une attaque peut tuer le défenseur dans le pire cas
+    """
+    payload = request.get_json() or {}
+    attacker_data = payload.get("attacker")
+    moves_data = payload.get("moves", [])
+    ko_mode = payload.get("ko_mode", "OHKO")
+    field_data = payload.get("field", {})
+    fully_evolved_only = bool(payload.get("fully_evolved_only", False))
+    include_no_ko = bool(payload.get("include_no_ko", False))
+
+    if not attacker_data:
+        return jsonify({"error": "attacker required"}), 400
+    
+    if not moves_data or len(moves_data) == 0:
+        return jsonify({"error": "at least one move required"}), 400
+
+    # Force mandatory item for attacker
+    attacker_data = force_mandatory_item(attacker_data)
+
+    def generate():
+        try:
+            all_pokemon_data = load_json("all_pokemon.json") or {}
+            evo_map = load_json("pokemon_evolution.json") or {}
+            pokemon_abilities_map = load_json("all_pokemon_abilities.json") or {}
+            all_moves = load_json("all_moves.json") or {}
+
+            # Build list of defenders and optionally filter to fully-evolved only
+            all_defenders = []
+            for name, data in all_pokemon_data.items():
+                if not data:
+                    continue
+                if fully_evolved_only:
+                    try:
+                        can_evolve = bool((evo_map.get(name) or {}).get('can_evolve', False))
+                    except Exception:
+                        can_evolve = False
+                    if can_evolve:
+                        continue
+                all_defenders.append({"name": name, **data})
+
+            total_defenders = len(all_defenders)
+            attacker = build_actor_from_payload(attacker_data)
+
+            yield f"data: {json.dumps({'type': 'init', 'total': total_defenders})}\n\n"
+
+            processed = 0
+            total_coverage = 0
+
+            for defender_poke in all_defenders:
+                poke_id = defender_poke.get("id")
+                poke_slug = defender_poke.get("name", "unknown")
+                poke_types = defender_poke.get("types", [])
+                base_stats = defender_poke.get("base_stats", {})
+                
+                # Get defender's abilities
+                defender_abilities = pokemon_abilities_map.get(str(poke_id), []) or [None]
+                
+                # For each move, calculate worst-case KO% across all abilities/statuses
+                move_results = []  # List of (move_name, worst_ko%, damage_info)
+
+                for move_data in moves_data:
+                    try:
+                        move_name = move_data.get("name")
+                        if move_name:
+                            complete_move_data = all_moves.get(move_name, {})
+                            full_move_data = {**complete_move_data, **move_data}
+                        else:
+                            full_move_data = move_data
+
+                        move_name = full_move_data.get("name", "unknown")
+                        move_type = full_move_data.get("type", "normal")
+                        
+                        # Track worst KO% for this move across all ability/status combos
+                        worst_ko_for_move = float('inf')  # Initialize to infinity to ensure first result is taken
+                        worst_damage_info = None
+
+                        # Get defender's abilities (or use [None] if no abilities)
+                        abilities_to_test = defender_abilities if defender_abilities else [None]
+
+                        for ability in abilities_to_test:
+                            for status in ['normal', 'burn', 'poison']:
+                                try:
+                                    defender_payload = {
+                                        "pokemon_id": poke_id,
+                                        "base_stats": base_stats,
+                                        "evs": {"hp": 0, "attack": 0, "defense": 0, "special_attack": 0, "special_defense": 0, "speed": 0},
+                                        "nature": "hardy",
+                                        "types": poke_types,
+                                        "ability": ability,
+                                        "item": None,
+                                        "is_terastallized": False,
+                                        "tera_type": None,
+                                        "status": status,
+                                        "name": poke_slug
+                                    }
+
+                                    # Force mandatory item for defender
+                                    defender_payload = force_mandatory_item(defender_payload)
+                                    defender = build_actor_from_payload(defender_payload)
+
+                                    result = calculate_damage(
+                                        full_move_data,
+                                        attacker,
+                                        defender,
+                                        field=field_data,
+                                        gen=9,
+                                        debug=False
+                                    )
+
+                                    damage_all = result.get("damage_all", [])
+                                    defender_hp = result.get("defender_hp", defender.get("hp", 1))
+                                    
+                                    # Debug: log if damage_all is empty
+                                    if not damage_all and full_move_data.get("power", 0) > 0:
+                                        logger.debug("Empty damage_all for %s vs %s", move_name, poke_slug)
+                                        logger.debug("  move: %s", full_move_data)
+                                        logger.debug("  defender_hp from result: %s", result.get("defender_hp"))
+                                        logger.debug("  defender dict: %s", defender)
+                                    
+                                    if ko_mode == "OHKO":
+                                        ko_count = sum(1 for dmg in damage_all if dmg >= defender_hp)
+                                    else:
+                                        ko_count = sum(1 for dmg in damage_all if dmg * 2 >= defender_hp)
+                                    
+                                    ko_percent = (ko_count / len(damage_all) * 100) if damage_all else 0
+
+                                    # compute damage range for this config
+                                    damage_min = min(damage_all) if damage_all else 0
+                                    damage_max = max(damage_all) if damage_all else 0
+
+                                    # Update worst-case: prefer lower ko%, and when equal choose lower damage
+                                    if (
+                                        ko_percent < worst_ko_for_move or
+                                        (ko_percent == worst_ko_for_move and (
+                                            worst_damage_info is None or damage_min < worst_damage_info.get("damage_min", float('inf'))
+                                        ))
+                                    ):
+                                        worst_ko_for_move = ko_percent
+                                        worst_damage_info = {
+                                            "damage_min": damage_min,
+                                            "damage_max": damage_max,
+                                            "defender_hp": defender_hp,
+                                            "worst_ability": ability,
+                                            "worst_status": status
+                                        }
+
+                                except Exception:
+                                    continue
+
+                        # Add this move result
+                        move_results.append({
+                            "move_name": move_name,
+                            "move_type": move_type,
+                            "worst_ko_percent": worst_ko_for_move,
+                            "damage_info": worst_damage_info
+                        })
+
+                    except Exception:
+                        continue
+
+                # Sort moves by worst KO% (descending) and take top 4
+                move_results.sort(key=lambda x: -x["worst_ko_percent"])
+                top_moves = move_results[:4]
+
+                # Prepare coverage entry
+                coverage_entry = None
+                has_any_ko = False
+
+                if top_moves:
+                    # Check if any move has a positive worst-case KO%
+                    for move_result in top_moves:
+                        if move_result["worst_ko_percent"] > 0:
+                            has_any_ko = True
+                            break
+
+                    # Always create coverage entry (whether it KOs or not)
+                    coverage_entry = {
+                        "defender_name": poke_slug.capitalize() if poke_slug else f"Pokemon_{poke_id}",
+                        "defender_id": poke_id,
+                        "defender_types": poke_types,
+                        "moves": [
+                            {
+                                "name": m["move_name"],
+                                "type": m["move_type"],
+                                "worst_ko_percent": round(m["worst_ko_percent"], 1),
+                                "damage_min": m["damage_info"]["damage_min"] if m["damage_info"] else 0,
+                                "damage_max": m["damage_info"]["damage_max"] if m["damage_info"] else 0,
+                                "defender_hp": m["damage_info"]["defender_hp"] if m["damage_info"] else 1,
+                                "worst_ability": m["damage_info"]["worst_ability"] if m["damage_info"] else None,
+                                "worst_status": m["damage_info"]["worst_status"] if m["damage_info"] else None
+                            }
+                            for m in top_moves
+                        ]
+                    }
+
+                if coverage_entry:
+                    if has_any_ko:
+                        total_coverage += 1
+                    yield f"data: {json.dumps({'type': 'coverage', 'data': coverage_entry})}\n\n"
+
+                processed += 1
+
+                if processed % 10 == 0:
+                    yield f"data: {json.dumps({'type': 'progress', 'processed': processed, 'total': total_defenders, 'coverage_found': total_coverage})}\n\n"
+
+            yield f"data: {json.dumps({'type': 'complete', 'total_coverage': total_coverage, 'total_processed': processed})}\n\n"
+
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
+            yield f"data: {json.dumps({'type': 'error', 'message': str(e)})}\n\n"
+
+    return Response(
+        stream_with_context(generate()),
+        mimetype='text/event-stream',
+        headers={
+            'Cache-Control': 'no-cache',
+            'X-Accel-Buffering': 'no'
+        }
+    )
+
+
 @bp.route("/analyze_type_coverage", methods=["POST"])
 def analyze_type_coverage():
     """Analyse la couverture de types : trouve les Pokémon qui ne sont PAS touchés en super efficace."""
@@ -260,8 +516,11 @@ def analyze_type_coverage():
     if not moves_data or len(moves_data) == 0:
         return jsonify({"error": "at least one move required"}), 400
 
+    fully_evolved_only = bool(payload.get('fully_evolved_only', False))
+
     try:
         all_pokemon_data = load_json("all_pokemon.json") or {}
+        evo_map = load_json("pokemon_evolution.json") or {}
         all_moves = load_json("all_moves.json") or {}
         type_chart = load_json("all_types.json") or {}
         
@@ -294,6 +553,13 @@ def analyze_type_coverage():
         not_super_effective = []
         
         for poke_name, poke_data in all_pokemon_data.items():
+            if fully_evolved_only:
+                try:
+                    can_evolve = bool((evo_map.get(poke_name) or {}).get('can_evolve', False))
+                except Exception:
+                    can_evolve = False
+                if can_evolve:
+                    continue
             poke_id = poke_data.get("id")
             poke_types = poke_data.get("types", [])
             

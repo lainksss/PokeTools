@@ -1,0 +1,102 @@
+/* ======================================
+   BADGES & LABELS
+   ====================================== */
+
+/* Type badges styling */
+.type-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin: 2px;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Type colors */
+.type-normal { background: #A8A878; }
+.type-fighting { background: #C03028; }
+.type-flying { background: #A890F0; }
+.type-poison { background: #A040A0; }
+.type-ground { background: #E0C068; }
+.type-rock { background: #B8A038; }
+.type-bug { background: #A8B820; }
+.type-ghost { background: #705898; }
+.type-steel { background: #B8B8D0; }
+.type-fire { background: #F08030; }
+.type-water { background: #6890F0; }
+.type-grass { background: #78C850; }
+.type-electric { background: #F8D030; color: #333; }
+.type-psychic { background: #F85888; }
+.type-ice { background: #98D8D8; }
+.type-dragon { background: #7038F8; }
+.type-dark { background: #705848; }
+.type-fairy { background: #EE99AC; }
+.type-stellar {
+  background: linear-gradient(135deg, #FFD700, #FFA500, #FF69B4, #9370DB);
+  animation: stellar-shimmer 3s ease-in-out infinite;
+}
+
+/* Damage class badges */
+.damage-class {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  margin: 2px;
+}
+
+.damage-class.physical {
+  background: rgba(192, 48, 40, 0.3);
+  color: #ff6b6b;
+  border: 1px solid rgba(192, 48, 40, 0.5);
+}
+
+.damage-class.special {
+  background: rgba(104, 144, 240, 0.3);
+  color: #7dd3fc;
+  border: 1px solid rgba(104, 144, 240, 0.5);
+}
+
+/* Attack power badge */
+.attack-power {
+  font-size: 12px;
+  padding: 3px 6px;
+  background: rgba(251, 191, 36, 0.2);
+  color: #fbbf24;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* Attack type badge */
+.attack-type {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: 600;
+  background: var(--accent);
+  color: white;
+}
+
+/* Selected item badge */
+.selected-item-badge {
+  margin-top: 8px;
+  padding: 6px 12px;
+  background: rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 6px;
+  font-size: 13px;
+  color: #60a5fa;
+  display: inline-block;
+  max-width: calc(100% - 24px);
+  /* Prevent very long descriptions from pushing the layout down */
+  max-height: 96px;
+  overflow-y: auto;
+  padding-right: 10px;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}

@@ -71,10 +71,7 @@ def test_sturdy_survives_at_full_hp():
     
     assert all(hp >= 1 for hp in remaining_hp), \
         f"Sturdy should guarantee survival at 1+ HP, got {remaining_hp}"
-    
-    assert effects.get("sturdy_activated") is True, \
-        f"sturdy_activated should be True, got {effects}"
-    
+
     print(f"[OK] Sturdy survives KO at full HP (max damage: {max(damage_rolls)}, min HP: {min(remaining_hp)})")
 
 

@@ -1,0 +1,437 @@
+/* ======================================
+   CARD & CONTAINER STYLES
+   ====================================== */
+
+/* Generic card container */
+.pokemon-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  max-height: calc(100vh - 140px);
+  padding-right: 8px;
+}
+
+.pokemon-panel h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--accent);
+}
+
+/* Results section - fixed at bottom (flush to viewport edges) */
+.results-section {
+  background: var(--card);
+  border-radius: 12px 12px 0 0;
+  border: 1px solid var(--border);
+  padding: 12px 16px;
+  max-height: 240px;
+  overflow-y: auto;
+  transition: max-height 220ms ease, padding 180ms ease, transform 150ms ease;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+  box-shadow: 0 -6px 24px rgba(2,6,23,0.6);
+}
+
+/* Collapsed state of results */
+.results-section.collapsed {
+  max-height: 56px;
+  padding: 10px 14px;
+  overflow: hidden;
+}
+
+/* Results header with collapse button */
+.results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.results-header .results-title {
+  font-size: 14px;
+  color: var(--accent);
+}
+
+/* Close button in results header */
+.close-results-btn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+.close-results-btn:hover { background: rgba(255,255,255,0.02); transform: scale(1.02); }
+
+.results-content {
+  transition: opacity 140ms ease, transform 160ms ease;
+}
+
+/* Results panel inside layout */
+.results-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.results-panel h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+/* Results statistics display */
+.results-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+/* OHKO guaranteed badge */
+.ohko-guaranteed {
+  padding: 6px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid #10b981;
+  border-radius: 6px;
+  color: #10b981;
+  font-weight: 600;
+  text-align: center;
+  font-size: 11px;
+}
+
+/* OHKO chance display */
+.ohko-chance {
+  padding: 6px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  color: var(--text);
+  text-align: center;
+  font-size: 11px;
+}
+
+/* No OHKO possible */
+.no-ohko {
+  padding: 6px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid #ef4444;
+  border-radius: 6px;
+  color: #ef4444;
+  text-align: center;
+  font-size: 11px;
+}
+
+/* Hits to KO display */
+.hits-to-ko {
+  padding: 6px;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid #fbbf24;
+  border-radius: 6px;
+  color: #fbbf24;
+  text-align: center;
+  font-size: 11px;
+}
+
+/* Result note callout */
+.result-note {
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* Move details info box */
+.move-details {
+  margin-top: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.move-details strong {
+  color: var(--accent);
+}
+
+/* EVs remaining indicator */
+.evs-remaining {
+  font-size: 14px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Threat card (used in threats page) */
+.threat-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.2s;
+}
+
+.threat-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent);
+}
+
+.threat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.threat-header h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.threat-best-ko {
+  font-size: 14px;
+  padding: 6px 12px;
+  background: #ef4444;
+  color: white;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+/* Individual attack info in threat card */
+.threat-attacks {
+  display: grid;
+  /* Force up to 3 columns on wide screens for consistent alignment */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+/* Responsive: 2 columns on medium screens, 1 column on small screens */
+@media (max-width: 1024px) {
+  .threat-attacks {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .threat-attacks {
+    grid-template-columns: 1fr;
+  }
+}
+
+.attack-info {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.attack-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.attack-name strong {
+  font-size: 15px;
+  color: var(--text);
+}
+
+/* Attack statistics grid */
+.attack-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.damage-range,
+.ko-info,
+.nature-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.damage-label,
+.nature-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.damage-values {
+  font-weight: 700;
+  color: #ef4444;
+  font-size: 14px;
+}
+
+.ko-info {
+  text-align: center;
+}
+
+.ko-rolls {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.ko-percent {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ef4444;
+}
+
+.ko-percent.guaranteed {
+  color: #10b981;
+}
+
+.nature-info {
+  text-align: right;
+}
+
+.nature-value {
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.guaranteed-badge {
+  margin-top: 8px;
+  padding: 6px 12px;
+  background: #10b981;
+  color: white;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Progress bar container */
+.progress-container {
+  width: 100%;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #2563eb);
+  transition: width 0.3s ease;
+  border-radius: 12px;
+}
+
+.progress-text {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Threat item in results list */
+.threat-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.2s;
+  margin-bottom: 8px;
+}
+
+.threat-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent);
+}
+
+.threat-pokemon {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.threat-pokemon strong {
+  font-size: 16px;
+  color: var(--text);
+}
+
+/* Type coverage info */
+.type-coverage-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.best-effectiveness {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.best-effectiveness strong {
+  color: var(--text);
+  font-size: 15px;
+  margin-left: 4px;
+}
+
+.best-move-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+/* Feature cards (home page) */
+.feature-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px;
+  text-align: left;
+}
+
+.feature-card h4 {
+  font-size: 16px;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.feature-card p {
+  color: var(--text-muted);
+  font-size: 14px;
+}

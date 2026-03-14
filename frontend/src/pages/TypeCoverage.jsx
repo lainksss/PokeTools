@@ -16,7 +16,9 @@ export default function TypeCoverage() {
       return
     }
 
-    if (!attacker.move) {
+    // Allow any of the 4 move slots to be used (slot 1..4)
+    const hasAnyMove = attacker && (attacker.move || attacker.move2 || attacker.move3 || attacker.move4)
+    if (!hasAnyMove) {
       alert('Veuillez sélectionner au moins une attaque')
       return
     }
@@ -69,10 +71,6 @@ export default function TypeCoverage() {
 
   return (
     <div className="threats-page">
-      <div className="threats-header">
-        <h2>{t('typeCoverage.title')}</h2>
-        <p>{t('typeCoverage.description')}</p>
-      </div>
 
       <div className="threats-container">
         <div className="threats-left">

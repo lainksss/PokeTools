@@ -4,6 +4,7 @@ import PokemonPanel from '../components/PokemonPanel'
 import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
 import { convertEvsToOld, newEvToOld } from '../utils/evs'
+import { getMandatoryItem } from '../utils/getMandatoryItem'
 
 export default function Coverage() {
   const { t, getPokemonName, getMoveName } = useTranslation()
@@ -19,6 +20,8 @@ export default function Coverage() {
   const [reflect, setReflect] = useState(false)
   const [lightScreen, setLightScreen] = useState(false)
   const [auroraVeil, setAuroraVeil] = useState(false)
+  const [helpingHand, setHelpingHand] = useState(false)
+  const [friendGuard, setFriendGuard] = useState(false)
   const [progress, setProgress] = useState({ processed: 0, total: 0, coverage_found: 0 })
   const [showOnlyGuaranteed, setShowOnlyGuaranteed] = useState(false)
   const [minRolls, setMinRolls] = useState(1)
@@ -29,6 +32,7 @@ export default function Coverage() {
   const [bulkAdaptNature, setBulkAdaptNature] = useState(true) // true => adapt nature by move, false => use Def
   const [bulkAssaultVest, setBulkAssaultVest] = useState(false)
   const [bulkEvoluroc, setBulkEvoluroc] = useState(false)
+  const [fullyEvolvedOnly, setFullyEvolvedOnly] = useState(false)
 
   const ALL_WEATHERS = ['none', 'sun', 'rain', 'sandstorm', 'snow']
   const ALL_TERRAINS = ['none', 'grassy', 'electric', 'misty', 'psychic']
@@ -39,7 +43,9 @@ export default function Coverage() {
       return
     }
 
-    if (!attacker.move) {
+      // Allow any of the 4 move slots to be used (slot 1..4)
+      const hasAnyMove = attacker && (attacker.move || attacker.move2 || attacker.move3 || attacker.move4)
+      if (!hasAnyMove) {
       alert('Veuillez sélectionner au moins une attaque')
       return
     }
@@ -73,7 +79,8 @@ export default function Coverage() {
         item: attacker.item || null,
         is_terastallized: attacker.is_terastallized,
         tera_type: attacker.tera_type,
-        stages: attacker.boosts || {}
+        stages: attacker.boosts || {},
+        name: attacker.name
       },
       moves: moves,
       ko_mode: koMode,
@@ -94,8 +101,18 @@ export default function Coverage() {
         aura_break: auraBreak || undefined,
         reflect: reflect || undefined,
         light_screen: lightScreen || undefined,
-        aurora_veil: auroraVeil || undefined
+        aurora_veil: auroraVeil || undefined,
+        helping_hand: helpingHand || undefined,
+        friend_guard: friendGuard || undefined
       }
+      ,
+      fully_evolved_only: fullyEvolvedOnly
+    }
+
+    // Force mandatory item for attacker (mega-gem, primal-gem)
+    const mandatoryItemCov = getMandatoryItem(payload.attacker.name)
+    if (mandatoryItemCov) {
+      payload.attacker.item = mandatoryItemCov
     }
 
     try {
@@ -164,33 +181,167 @@ export default function Coverage() {
     await analyzeCoverageWithMode(true)
   }
 
+  async function deepAnalyzeCoverageStreaming() {
+    if (!attacker) {
+      alert('Veuillez sélectionner un Pokémon attaquant')
+      return
+    }
+
+      // Allow any of the 4 move slots to be used (slot 1..4)
+      const hasAnyMove = attacker && (attacker.move || attacker.move2 || attacker.move3 || attacker.move4)
+      if (!hasAnyMove) {
+      alert('Veuillez sélectionner au moins une attaque')
+      return
+    }
+
+    setLoading(true)
+    setAllResults([])
+    setProgress({ processed: 0, total: 0, coverage_found: 0 })
+
+    // Récupérer les 4 attaques sélectionnées
+    const moves = [
+      attacker.move,
+      attacker.move2,
+      attacker.move3,
+      attacker.move4
+    ].filter(m => m !== null && m !== undefined)
+
+    if (moves.length === 0) {
+      alert('Veuillez sélectionner au moins une attaque')
+      setLoading(false)
+      return
+    }
+
+    const payload = {
+      attacker: {
+        pokemon_id: attacker.id,
+        base_stats: attacker.base_stats,
+        evs: convertEvsToOld(attacker.evs || {}),
+        nature: attacker.nature,
+        types: attacker.types,
+        ability: attacker.ability,
+        item: attacker.item || null,
+        is_terastallized: attacker.is_terastallized,
+        tera_type: attacker.tera_type,
+        stages: attacker.boosts || {},
+        name: attacker.name
+      },
+      moves: moves,
+      ko_mode: koMode,
+      field: {
+        weather: weather === 'none' ? null : weather,
+        terrain: terrain === 'none' ? null : terrain,
+        fairy_aura: fairyAura || undefined,
+        dark_aura: darkAura || undefined,
+        aura_break: auraBreak || undefined,
+        reflect: reflect || undefined,
+        light_screen: lightScreen || undefined,
+        aurora_veil: auroraVeil || undefined,
+        helping_hand: helpingHand || undefined,
+        friend_guard: friendGuard || undefined
+      },
+      fully_evolved_only: fullyEvolvedOnly
+    }
+
+    // Force mandatory item for attacker (mega-gem, primal-gem)
+    const mandatoryItemDeepCov = getMandatoryItem(payload.attacker.name)
+    if (mandatoryItemDeepCov) {
+      payload.attacker.item = mandatoryItemDeepCov
+    }
+
+    try {
+      const response = await fetch(`${API_URL}/api/deep_analyze_coverage_stream`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+
+      if (!response.ok) {
+        throw new Error('Erreur lors de la recherche approfondie')
+      }
+
+      const reader = response.body.getReader()
+      const decoder = new TextDecoder()
+      let buffer = ''
+      const foundCoverage = []
+
+      while (true) {
+        const { done, value } = await reader.read()
+        
+        if (done) break
+
+        buffer += decoder.decode(value, { stream: true })
+        const lines = buffer.split('\n')
+        buffer = lines.pop() || ''
+
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            const data = JSON.parse(line.slice(6))
+            
+            if (data.type === 'init') {
+              setProgress({ processed: 0, total: data.total, coverage_found: 0 })
+            } else if (data.type === 'coverage') {
+              foundCoverage.push(data.data)
+              setAllResults([...foundCoverage])
+              setProgress(prev => ({ ...prev, coverage_found: foundCoverage.length }))
+            } else if (data.type === 'progress') {
+              setProgress({
+                processed: data.processed,
+                total: data.total,
+                coverage_found: data.coverage_found
+              })
+            } else if (data.type === 'complete') {
+              setProgress(prev => ({ 
+                ...prev, 
+                processed: data.total_processed,
+                coverage_found: data.total_coverage 
+              }))
+            } else if (data.type === 'error') {
+              throw new Error(data.message)
+            }
+          }
+        }
+      }
+    } catch (e) {
+      console.error('Error:', e)
+      alert('Erreur: ' + e.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   // Filtrer les résultats selon le mode d'affichage
   const coverage = allResults.filter(item => {
-    // Si mode 'alive' : afficher ceux qui NE sont PAS KO
+    // Gérer les deux structures: analyze_coverage_stream (max_ko_chance) et deep_analyze_coverage_stream (moves[])
+    const maxKoChance = item.max_ko_chance !== undefined 
+      ? item.max_ko_chance 
+      : (item.moves?.some(m => (m.worst_ko_percent || 0) > 0) ? 
+          Math.max(...item.moves.map(m => m.worst_ko_percent || 0)) 
+          : 0)
+    
+    // Si mode 'alive' : afficher ceux qui NE sont PAS KO dans le pire cas
     if (viewMode === 'alive') {
-      // treat missing/null/0 as not KO-able
-      const chance = Number(item.max_ko_chance || 0)
-      return chance === 0
+      return maxKoChance <= 0
     }
-    // Si mode 'ko' : afficher ceux qui PEUVENT être KO
-    return Number(item.max_ko_chance || 0) > 0
+    // Si mode 'ko' : afficher ceux qui PEUVENT être KO dans le pire cas
+    return maxKoChance > 0
   })
 
   // Filtrer davantage selon les autres critères
   const filteredCoverage = coverage.filter(item => {
     // Si on veut voir seulement les KO garantis (seulement en mode 'ko')
-    if (viewMode === 'ko' && showOnlyGuaranteed && item.max_ko_chance < 100) return false
-    // Filtrer par nombre minimum de rolls (seulement en mode 'ko')
-    if (viewMode === 'ko' && item.max_rolls_that_ko < minRolls) return false
+    if (viewMode === 'ko' && showOnlyGuaranteed) {
+      // Gérer les deux structures
+      const maxKoChance = item.max_ko_chance !== undefined 
+        ? item.max_ko_chance 
+        : (item.moves?.length > 0 ? Math.max(...item.moves.map(m => m.worst_ko_percent || 0)) : 0)
+      return maxKoChance === 100
+    }
     return true
   })
 
   return (
     <div className="threats-page">
-      <div className="threats-header">
-        <h2>{t('coverage.title')}</h2>
-        <p>{t('coverage.description')}</p>
-      </div>
 
       <div className="threats-container">
         <div className="threats-left">
@@ -207,8 +358,7 @@ export default function Coverage() {
         <div className="threats-middle">
           <h3>{t('coverage.analysisSettings')}</h3>
           
-          <div className="form-group">
-            <label>{t('threats.koMode')}</label>
+          <div className="form-group" aria-label={t('threats.koMode')}>
             <div className="ko-mode-toggle">
               <button
                 type="button"
@@ -227,35 +377,38 @@ export default function Coverage() {
             </div>
           </div>
 
-          <div className="form-group">
-            <label>{t('coverage.bulkMode')}</label>
-            <div className="ko-mode-toggle">
-              <button
-                type="button"
-                className={`mode-button ${bulkMode === 'none' ? 'active' : ''}`}
-                onClick={() => setBulkMode('none')}
-                style={{ fontSize: '0.85em' }}
+          <div className="form-row">
+            <div className="form-group">
+              <select
+                aria-label={t('calculate.weather')}
+                value={weather}
+                onChange={e => setWeather(e.target.value)}
+                className="form-control"
               >
-                {t('coverage.bulkNone')}
-              </button>
-              <button
-                type="button"
-                className={`mode-button ${bulkMode === 'custom' ? 'active' : ''}`}
-                onClick={() => setBulkMode('custom')}
-                style={{ fontSize: '0.85em' }}
+                {ALL_WEATHERS.map(w => (
+                  <option key={w} value={w}>
+                    {t(`weather.${w}`)}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="form-group">
+              <select
+                aria-label={t('calculate.terrain')}
+                value={terrain}
+                onChange={e => setTerrain(e.target.value)}
+                className="form-control"
               >
-                {t('coverage.bulkCustom')}
-              </button>
-              <button
-                type="button"
-                className={`mode-button ${bulkMode === 'max' ? 'active' : ''}`}
-                onClick={() => setBulkMode('max')}
-                style={{ fontSize: '0.85em' }}
-              >
-                {t('coverage.bulkMax')}
-              </button>
+                {ALL_TERRAINS.map(ter => (
+                  <option key={ter} value={ter}>
+                    {t(`terrain.${ter}`)}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
+
 
           <div className="form-group" role="group" aria-label={t('calculate.auras')}>
             <div style={{ display: 'flex', gap: '8px' }}>
@@ -281,6 +434,57 @@ export default function Coverage() {
               </button>
               <button type="button" className={`aura-button ${auroraVeil ? 'active' : ''}`} onClick={() => setAuroraVeil(v => !v)}>
                 {t('screens.aurora') || 'Voile Aurore'}
+              </button>
+            </div>
+          </div>
+
+          <div className="form-group" role="group" aria-label={t('calculate.doubleEffects')}>
+            <div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
+              <button type="button" className={`aura-button ${helpingHand ? 'active' : ''}`} onClick={() => setHelpingHand(v => !v)}>
+                {t('doubleEffects.helpingHand') || 'Helping Hand'}
+              </button>
+              <button type="button" className={`aura-button ${friendGuard ? 'active' : ''}`} onClick={() => setFriendGuard(v => !v)}>
+                {t('doubleEffects.friendGuard') || 'Friend Guard'}
+              </button>
+            </div>
+          </div>
+
+          <div className="form-group" style={{ marginTop: 8 }}>
+            <button
+              type="button"
+              className={`tailwind-button option-button ${fullyEvolvedOnly ? 'active' : ''}`}
+              onClick={() => setFullyEvolvedOnly(v => !v)}
+            >
+              {t('coverage.fullyEvolvedOnly') || 'Fully evolved only'}
+            </button>
+          </div>
+
+          {/* Bulk mode selector moved under Fully Evolved Only and using aura-button CSS */}
+          <div className="form-group">
+            <label>{t('coverage.bulkMode')}</label>
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <button
+                type="button"
+                className={`aura-button ${bulkMode === 'none' ? 'active' : ''}`}
+                onClick={() => setBulkMode('none')}
+              >
+                {t('coverage.bulkNone')}
+              </button>
+
+              <button
+                type="button"
+                className={`aura-button ${bulkMode === 'custom' ? 'active' : ''}`}
+                onClick={() => setBulkMode('custom')}
+              >
+                {t('coverage.bulkCustom')}
+              </button>
+
+              <button
+                type="button"
+                className={`aura-button ${bulkMode === 'max' ? 'active' : ''}`}
+                onClick={() => setBulkMode('max')}
+              >
+                {t('coverage.bulkMax')}
               </button>
             </div>
           </div>
@@ -347,45 +551,26 @@ export default function Coverage() {
             </div>
           )}
 
-          <div className="form-row">
-            <div className="form-group">
-              <select
-                aria-label={t('calculate.weather')}
-                value={weather}
-                onChange={e => setWeather(e.target.value)}
-                className="form-control"
-              >
-                {ALL_WEATHERS.map(w => (
-                  <option key={w} value={w}>
-                    {t(`weather.${w}`)}
-                  </option>
-                ))}
-              </select>
-            </div>
+          
 
-            <div className="form-group">
-              <select
-                aria-label={t('calculate.terrain')}
-                value={terrain}
-                onChange={e => setTerrain(e.target.value)}
-                className="form-control"
-              >
-                {ALL_TERRAINS.map(ter => (
-                  <option key={ter} value={ter}>
-                    {t(`terrain.${ter}`)}
-                  </option>
-                ))}
-              </select>
-            </div>
+          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+            <button 
+              onClick={analyzeCoverageStreaming} 
+              disabled={loading || !attacker}
+              className="calculate-button"
+            >
+              {loading ? t('common.loading') : t('coverage.analyze')}
+            </button>
+
+            <button 
+              onClick={deepAnalyzeCoverageStreaming} 
+              disabled={loading || !attacker}
+              className="calculate-button"
+              title="Teste tous les talents et statuts des adversaires"
+            >
+              {loading ? t('common.loading') : 'Recherche approfondie'}
+            </button>
           </div>
-
-          <button 
-            onClick={analyzeCoverageStreaming} 
-            disabled={loading || !attacker}
-            className="calculate-button"
-          >
-            {loading ? t('common.loading') : t('coverage.analyze')}
-          </button>
 
           {loading && progress.total > 0 && (
             <div className="progress-container">
@@ -465,60 +650,124 @@ export default function Coverage() {
 }
 
 function CoverageItem({ item, koMode, t, getPokemonName, getMoveName }) {
-  const maxChance = item.max_ko_chance || 0
-  const isGuaranteed = item.max_rolls_that_ko === 16
+  // Gérer les deux structures: analyze_coverage_stream (max_ko_chance) et deep_analyze_coverage_stream (moves[])
+  const isDeepAnalysis = item.moves && item.moves.length > 0
+  
+  if (isDeepAnalysis) {
+    // Structure deep_analyze_coverage_stream
+    const maxChance = item.moves.length > 0 ? Math.max(...item.moves.map(m => m.worst_ko_percent || 0)) : 0
+    const isGuaranteed = maxChance === 100
 
-  return (
-    <div className="threat-card">
-      <div className="threat-header">
-        <div className="threat-name-types">
-          <h4>{getPokemonName(item.defender_id, item.defender_name)}</h4>
-          <div className="threat-types">
-            {item.defender_types?.map(type => (
-              <span key={type} className={`type-badge type-${type}`}>
-                {t(`types.${type}`)}
-              </span>
-            ))}
-          </div>
-        </div>
-        <span className="threat-best-ko">{maxChance.toFixed(1)}% {koMode}</span>
-      </div>
-
-      <div className="threat-attacks">
-        <div className="attack-info">
-          <div className="attack-name">
-            <strong>{getMoveName(item.best_move_name, item.best_move_name)}</strong>
-            <span className={`type-badge type-${item.best_move_type}`}>
-              {t(`types.${item.best_move_type}`)}
-            </span>
-          </div>
-
-          <div className="attack-stats">
-            <div className="damage-range">
-              <span className="damage-label">{t('threats.damage')}:</span>
-              <span className="damage-values">
-                {item.damage_range?.[0]} - {item.damage_range?.[item.damage_range.length - 1]}
-              </span>
-              {item.defender_hp && (
-                <span className="damage-percent">
-                  ({((item.damage_range?.[0] / item.defender_hp) * 100).toFixed(1)}% - {((item.damage_range?.[item.damage_range.length - 1] / item.defender_hp) * 100).toFixed(1)}%)
+    return (
+      <div className="threat-card">
+        <div className="threat-header">
+          <div className="threat-name-types">
+            <h4>{getPokemonName(item.defender_id, item.defender_name)}</h4>
+            <div className="threat-types">
+              {item.defender_types?.map(type => (
+                <span key={type} className={`type-badge type-${type}`}>
+                  {t(`types.${type}`)}
                 </span>
+              ))}
+            </div>
+          </div>
+          <span className="threat-best-ko">{maxChance.toFixed(1)}% {koMode}</span>
+        </div>
+
+        <div className="threat-attacks">
+          {item.moves.map((move, idx) => (
+            <div key={idx} className="attack-info">
+              <div className="attack-name">
+                <strong>{getMoveName(move.name, move.name)}</strong>
+                <span className={`type-badge type-${move.type}`}>
+                  {t(`types.${move.type}`)}
+                </span>
+              </div>
+
+              <div className="attack-stats">
+                <div className="damage-range">
+                  <span className="damage-label">{t('threats.damage')}:</span>
+                  <span className="damage-values">
+                    {move.damage_min} - {move.damage_max}
+                  </span>
+                  {move.defender_hp && (
+                    <span className="damage-percent">
+                      ({((move.damage_min / move.defender_hp) * 100).toFixed(1)}% - {((move.damage_max / move.defender_hp) * 100).toFixed(1)}%)
+                    </span>
+                  )}
+                </div>
+
+                <div className="ko-info">
+                  <span className={`ko-percent ${move.worst_ko_percent === 100 ? 'guaranteed' : ''}`}>
+                    {move.worst_ko_percent.toFixed(1)}% {koMode}
+                  </span>
+                </div>
+              </div>
+
+              {move.worst_ko_percent === 100 && (
+                <div className="guaranteed-badge">{koMode} {t('threats.guaranteedKO')}</div>
               )}
             </div>
-
-            <div className="ko-info">
-              <span className="ko-rolls">{item.max_rolls_that_ko}/16 {t('threats.rolls')}</span>
-              <span className={`ko-percent ${isGuaranteed ? 'guaranteed' : ''}`}>
-                {maxChance.toFixed(1)}%
-              </span>
-            </div>
-          </div>
-
-          {isGuaranteed && (
-            <div className="guaranteed-badge">{koMode} {t('threats.guaranteedKO')}</div>
-          )}
+          ))}
         </div>
       </div>
-    </div>
-  )
+    )
+  } else {
+    // Structure analyze_coverage_stream (structure plate)
+    const maxChance = item.max_ko_chance || 0
+    const isGuaranteed = maxChance === 100
+
+    return (
+      <div className="threat-card">
+        <div className="threat-header">
+          <div className="threat-name-types">
+            <h4>{getPokemonName(item.defender_id, item.defender_name)}</h4>
+            <div className="threat-types">
+              {item.defender_types?.map(type => (
+                <span key={type} className={`type-badge type-${type}`}>
+                  {t(`types.${type}`)}
+                </span>
+              ))}
+            </div>
+          </div>
+          <span className="threat-best-ko">{maxChance.toFixed(1)}% {koMode}</span>
+        </div>
+
+        <div className="threat-attacks">
+          <div className="attack-info">
+            <div className="attack-name">
+              <strong>{getMoveName(item.best_move_name, item.best_move_name)}</strong>
+              <span className={`type-badge type-${item.best_move_type}`}>
+                {t(`types.${item.best_move_type}`)}
+              </span>
+            </div>
+
+            <div className="attack-stats">
+              <div className="damage-range">
+                <span className="damage-label">{t('threats.damage')}:</span>
+                <span className="damage-values">
+                  {item.damage_range?.[0] !== undefined ? Math.min(...item.damage_range) : 0} - {item.damage_range?.[item.damage_range.length - 1] !== undefined ? Math.max(...item.damage_range) : 0}
+                </span>
+                {item.defender_hp && (
+                  <span className="damage-percent">
+                    ({item.damage_range?.[0] !== undefined ? ((Math.min(...item.damage_range) / item.defender_hp) * 100).toFixed(1) : 0}% - {item.damage_range?.[item.damage_range.length - 1] !== undefined ? ((Math.max(...item.damage_range) / item.defender_hp) * 100).toFixed(1) : 0}%)
+                  </span>
+                )}
+              </div>
+
+              <div className="ko-info">
+                <span className={`ko-percent ${isGuaranteed ? 'guaranteed' : ''}`}>
+                  {maxChance.toFixed(1)}% {koMode}
+                </span>
+              </div>
+            </div>
+
+            {isGuaranteed && (
+              <div className="guaranteed-badge">{koMode} {t('threats.guaranteedKO')}</div>
+            )}
+          </div>
+        </div>
+      </div>
+    )
+  }
 }

@@ -678,5 +678,37 @@
       "en": "Increases Fairy-type move power by 20%. Judgment becomes Fairy-type.",
       "fr": "Augmente de 20% la puissance des capacités de type Fée. Jugement devient de type Fée."
     }
+  },
+  "mega-gem": {
+    "en": "Mega Gem",
+    "fr": "Méga Gemme",
+    "description": {
+      "en": "Required for Mega Evolution. Cannot be changed.",
+      "fr": "Requis pour la Méga-Évolution. Ne peut pas être changé."
+    }
+  },
+  "primal-gem": {
+    "en": "Primal Gem",
+    "fr": "Gemme Primo",
+    "description": {
+      "en": "Required for Primal Reversion. Cannot be changed.",
+      "fr": "Requis pour la Réversion Primale. Ne peut pas être changé."
+    }
+  },
+  "rusted-sword": {
+    "en": "Rusted Sword",
+    "fr": "Épée Rouillée",
+    "description": {
+      "en": "Required for Zacian's Crowned Sword form. Cannot be changed.",
+      "fr": "Requis pour la forme Épée Suprême de Zacian. Ne peut pas être changé."
+    }
+  },
+  "rusted-shield": {
+    "en": "Rusted Shield",
+    "fr": "Bouclier Rouillé",
+    "description": {
+      "en": "Required for Zamazenta's Crowned Shield form. Cannot be changed.",
+      "fr": "Requis pour la forme Bouclier Suprême de Zamazenta. Ne peut pas être changé."
+    }
   }
 }

@@ -23,7 +23,7 @@ try:
     from .calculate_types import get_type_breakdown, type_effectiveness
     from .calculate_abilities import apply_ability_effects
     from .calculate_grounded import is_grounded
-    from .special_conditions import compute_aura_multiplier, compute_screen_multiplier, remove_screens_on_move
+    from .special_conditions import compute_aura_multiplier, compute_screen_multiplier, compute_double_battle_multiplier, remove_screens_on_move
     from ..items.items import apply_item_stat_modifiers, compute_item_damage_multiplier, get_item
 except Exception:
     # If relative imports fail (exec as script), fallback to local defs below
@@ -37,6 +37,7 @@ except Exception:
     apply_item_stat_modifiers = None
     compute_item_damage_multiplier = None
     get_item = None
+    compute_double_battle_multiplier = None  # type: ignore
     try:
         import importlib.util
         mod_path = Path(__file__).parent / "calculate_abilities.py"
@@ -52,6 +53,13 @@ except Exception:
             grounded_mod = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(grounded_mod)  # type: ignore
             is_grounded = getattr(grounded_mod, "is_grounded", None)
+        # Try to load special_conditions.py for double_battle_multiplier
+        special_cond_mod_path = Path(__file__).parent / "special_conditions.py"
+        if special_cond_mod_path.exists():
+            spec = importlib.util.spec_from_file_location("special_conditions", str(special_cond_mod_path))
+            special_cond_mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(special_cond_mod)  # type: ignore
+            compute_double_battle_multiplier = getattr(special_cond_mod, "compute_double_battle_multiplier", None)
         # Try to load items.py from parent/items/items.py
         items_mod_path = Path(__file__).parent.parent / "items" / "items.py"
         if items_mod_path.exists():
@@ -533,7 +541,12 @@ def compute_damage_rolls(
         screen_multiplier = float(multipliers.get("screen_mult", 1.0))
         if screen_multiplier != 1.0:
             final_mods.append(int(screen_multiplier * 4096))
-        
+
+        # Apply double battle multiplier (Helping Hand / Friend Guard)
+        double_battle_multiplier = float(multipliers.get("double_battle_mult", 1.0))
+        if double_battle_multiplier != 1.0:
+            final_mods.append(int(double_battle_multiplier * 4096))
+
         # Abilities and items go into final_mods
         # Life Orb, Expert Belt, etc.
         item_mult = multipliers.get("item_mult", 1.0)
@@ -726,7 +739,35 @@ def calculate_damage(
         # Defensive: never let this break damage calculation
         pass
 
+    # Transform Iron Head to Behemoth Blade/Bash for crowned forms (global for all endpoints)
+    try:
+        mv_name_raw = move.get("name") or ""
+        mv_name_norm = mv_name_raw.lower().replace(" ", "-").replace("_", "-")
+        attacker_species = attacker.get("species", "").lower() if attacker else ""
+        
+        if mv_name_norm == "iron-head":
+            if "zacian-crowned" in attacker_species:
+                # Transform to Behemoth Blade (phys, steel)
+                move["name"] = "behemoth-blade"
+                move_type = "steel"
+                power = 100
+                move["power"] = 100
+                category = "physical"
+                mv_name = "behemoth-blade"
+            elif "zamazenta-crowned" in attacker_species:
+                # Transform to Behemoth Bash (phys, steel)
+                move["name"] = "behemoth-bash"
+                move_type = "steel"
+                power = 100
+                move["power"] = 100
+                category = "physical"
+                mv_name = "behemoth-bash"
+    except Exception:
+        # Defensive: never let this break damage calculation
+        pass
+
     if category == "physical":
+
         # Special-case: Body Press (fr: Big Splash) uses the attacker's DEFENSE as its
         # attacking stat instead of ATTACK.
         if mv_name in ("body-press", "body press", "bodypress"):
@@ -800,8 +841,8 @@ def calculate_damage(
     # Ring Target
     if defender.get("ring_target") and type_mult == 0.0:
         type_mult = 1.0
-    # Scrappy
-    if attacker.get("ability") == "scrappy" and mv_type in ("normal", "fighting") and "ghost" in (defender.get("types") or []):
+    # Scrappy / Mind's Eye: allow Normal/Fighting moves to hit Ghosts neutrally
+    if attacker.get("ability") in ("scrappy", "minds-eye") and mv_type in ("normal", "fighting") and "ghost" in (defender.get("types") or []):
         type_mult = 1.0
     # Freeze-Dry
     if move.get("name") == "freeze-dry" and "water" in (defender.get("types") or []):
@@ -836,6 +877,12 @@ def calculate_damage(
         screen_mult = compute_screen_multiplier(attacker, defender, field, category, move, gen, crit_effective)
     except Exception:
         screen_mult = 1.0
+
+    # Double battle multiplier (Helping Hand / Friend Guard)
+    try:
+        double_battle_mult = compute_double_battle_multiplier(field)
+    except Exception:
+        double_battle_mult = 1.0
 
     burn_mult = compute_burn_mult(attacker, category, move, gen)
     other_mult, zmove_mult, terashield_mult = compute_other_z_terashield(attacker, defender, field)
@@ -899,6 +946,17 @@ def calculate_damage(
     except Exception:
         pass
 
+    # Apply Helping Hand as a base-power modifier (double battle effect)
+    # Helping Hand increases the attacker's move power by 50% (1.5x or 6144/4096)
+    try:
+        fld = field or {}
+        has_helping_hand = bool(fld.get("helping_hand") or fld.get("helping-hand"))
+        if has_helping_hand:
+            helping_hand_bp_mod = 6144  # 1.5x power modifier
+            power = OF16(max(1, pokeRound((power * helping_hand_bp_mod) / 4096)))
+    except Exception:
+        pass
+
     base = compute_base(level, power, A, D)
 
     multipliers = {
@@ -910,6 +968,7 @@ def calculate_damage(
         "burn_mult": burn_mult,
         "terrain_mult": terrain_mult,
         "screen_mult": screen_mult,
+        "double_battle_mult": double_battle_mult,
         "other_mult": other_mult,
         "zmove_mult": zmove_mult,
         "terashield_mult": terashield_mult,

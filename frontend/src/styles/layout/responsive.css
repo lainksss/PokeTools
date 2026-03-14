@@ -1,0 +1,293 @@
+/* ======================================
+   RESPONSIVE & PRESERVE-DESKTOP STYLES
+   ====================================== */
+
+/* Mobile layout scaling (large viewport override) */
+@media (max-width: 820px) {
+  .app-root {
+    width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-transform: scale(calc((100vw / 1100px) * 0.95));
+    transform: scale(calc((100vw / 1100px) * 0.95));
+    transform-origin: top center;
+    transition: transform 160ms ease;
+  }
+
+  @supports not (transform: scale(calc((100vw / 1100px) * 0.95))) {
+    .app-root {
+      -webkit-transform: scale(0.72);
+      transform: scale(0.72);
+      width: calc(100% / 0.72);
+    }
+  }
+
+  html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .home-blocks-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+  }
+
+  .home-block {
+    min-width: 140px;
+  }
+}
+
+/* Chart containers need extra height on scaled layouts */
+@media (max-width: 1000px) {
+  .app-root.preserve-desktop .chart,
+  .app-root.preserve-desktop .chart-container,
+  .app-root.preserve-desktop .graph,
+  .app-root.preserve-desktop .graph-container,
+  .app-root.preserve-desktop .results-section,
+  .app-root.preserve-desktop .results-panel,
+  .app-root.preserve-desktop .threats-results,
+  .app-root.preserve-desktop .threats-right,
+  .app-root.preserve-desktop .coverage-graph,
+  .app-root.preserve-desktop .type-coverage-info,
+  .app-root.preserve-desktop .speed-chart,
+  .app-root.preserve-desktop .chart-wrap,
+  .app-root.preserve-desktop canvas,
+  .app-root.preserve-desktop svg {
+    min-height: 120vh !important;
+  }
+}
+
+/* Portrait orientation scaling */
+@media (orientation: portrait) and (max-width: 820px) {
+  .app-root {
+    width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-transform: scale(calc(100vw / 1100px));
+    transform: scale(calc(100vw / 1100px));
+    transform-origin: top left;
+    transition: transform 160ms ease;
+  }
+
+  .app-main > * {
+    -webkit-transform: none !important;
+    transform: none !important;
+  }
+
+  html, body, .app-root {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .home-blocks-row {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+  }
+
+  .home-block {
+    min-width: 140px !important;
+  }
+}
+
+/* ======================================
+   PRESERVE DESKTOP LAYOUT ON MOBILE
+   (JS-controlled with .preserve-desktop class)
+   ====================================== */
+
+@media (max-width: 820px) {
+  /* Neutralize any prior transforms */
+  .app-root.preserve-desktop {
+    -webkit-transform: none !important;
+    transform: none !important;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100% !important;
+  }
+
+  /* Desktop baseline width for JS to scale */
+  .app-root.preserve-desktop .app-scale {
+    width: 1100px;
+    transform-origin: top left;
+    transition: transform 160ms ease;
+    margin: 0;
+    position: relative;
+  }
+
+  html, body {
+    overflow-x: auto;
+  }
+
+  .app-root.preserve-desktop .stats-table,
+  .app-root.preserve-desktop .stats-row,
+  .app-root.preserve-desktop .stats-header {
+    min-width: max-content;
+  }
+
+  /* Restore 3-column panel grid */
+  .app-root.preserve-desktop .panels-container {
+    grid-template-columns: 820px 440px 820px !important;
+    grid-template-rows: none !important;
+    gap: 24px !important;
+    min-height: auto !important;
+    align-items: start !important;
+    width: fit-content !important;
+  }
+
+  .app-root.preserve-desktop .panel-middle {
+    order: 0 !important;
+    min-width: 440px !important;
+    width: 440px !important;
+  }
+
+  .app-root.preserve-desktop .panel-left,
+  .app-root.preserve-desktop .panel-right {
+    min-width: 820px !important;
+    width: 820px !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .app-root.preserve-desktop .panels-container > * {
+    width: auto !important;
+    display: block !important;
+  }
+
+  /* Improve table touch targets */
+  .app-root.preserve-desktop .stats-header,
+  .app-root.preserve-desktop .stats-row {
+    grid-template-columns: 100px 80px 100px 90px 80px !important;
+    gap: 12px;
+    padding: 8px;
+  }
+
+  .app-root.preserve-desktop .panel-left,
+  .app-root.preserve-desktop .panel-right,
+  .app-root.preserve-desktop .panel-middle,
+  .app-root.preserve-desktop .pokemon-panel,
+  .app-root.preserve-desktop .results-panel {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+  }
+
+  .app-root.preserve-desktop .stats-row {
+    border-radius: 8px;
+  }
+
+  .app-root.preserve-desktop .stat-col {
+    font-size: 15px;
+  }
+
+  .app-root.preserve-desktop .stat-col input,
+  .app-root.preserve-desktop .stat-col select {
+    font-size: 15px;
+    padding: 8px 10px;
+    min-height: 40px;
+    border-radius: 6px;
+  }
+
+  .app-root.preserve-desktop .stats-table input[type="number"] {
+    min-width: 56px;
+  }
+
+  .app-root.preserve-desktop .stats-table {
+    gap: 8px;
+  }
+
+  /* Apply to threats/coverage/speed pages */
+  .app-root.preserve-desktop .threats-container,
+  .app-root.preserve-desktop .speed-checker-container {
+    display: grid !important;
+    grid-template-columns: 820px 440px 820px !important;
+    gap: 24px !important;
+    width: fit-content !important;
+    align-items: start !important;
+  }
+
+  .app-root.preserve-desktop .threats-left,
+  .app-root.preserve-desktop .speed-panel-left,
+  .app-root.preserve-desktop .pokemon-search-container {
+    min-width: 820px !important;
+    width: 820px !important;
+  }
+
+  .app-root.preserve-desktop .threats-middle,
+  .app-root.preserve-desktop .speed-panel,
+  .app-root.preserve-desktop .threats-middle {
+    min-width: 440px !important;
+    width: 440px !important;
+  }
+
+  .app-root.preserve-desktop .threats-right,
+  .app-root.preserve-desktop .speed-panel-right {
+    min-width: 820px !important;
+    width: 820px !important;
+  }
+
+  /* On mobile preserve-desktop, fill available height */
+  .app-root.preserve-desktop .calculate-page,
+  .app-root.preserve-desktop .threats-page {
+    min-height: calc(100vh - 80px);
+    height: auto;
+  }
+}
+
+/* ======================================
+   UI SCALE VARIANTS
+   ====================================== */
+
+/* Small scale */
+.app-main.scale-small > * {
+  transform: scale(0.88);
+  transform-origin: top center;
+  transition: transform 180ms ease;
+}
+
+.app-main.scale-small .calculate-page,
+.app-main.scale-small .threats-page,
+.app-main.scale-small .home-page,
+.app-main.scale-small .panels-container,
+.app-main.scale-small .results-panel,
+.app-main.scale-small .pokemon-panel {
+  --panel-min-width: 220px;
+  --panel-padding: 8px;
+}
+
+/* Normal scale (default) */
+.app-main.scale-normal > * {
+  transform: scale(1);
+  transform-origin: top center;
+  transition: transform 180ms ease;
+}
+
+.app-main.scale-normal .calculate-page,
+.app-main.scale-normal .threats-page,
+.app-main.scale-normal .home-page,
+.app-main.scale-normal .panels-container,
+.app-main.scale-normal .results-panel,
+.app-main.scale-normal .pokemon-panel {
+  --panel-min-width: 280px;
+  --panel-padding: 12px;
+}
+
+/* Large scale */
+.app-main.scale-large > * {
+  transform: scale(1.18);
+  transform-origin: top center;
+  transition: transform 180ms ease;
+}
+
+.app-main.scale-large .calculate-page,
+.app-main.scale-large .threats-page,
+.app-main.scale-large .home-page,
+.app-main.scale-large .panels-container,
+.app-main.scale-large .results-panel,
+.app-main.scale-large .pokemon-panel {
+  --panel-min-width: 340px;
+  --panel-padding: 18px;
+}

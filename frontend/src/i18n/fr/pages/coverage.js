@@ -1,0 +1,27 @@
+export const coverageFr = {
+  title: "Analyse de couverture offensive",
+  description: "Analysez quels Pokémon votre attaquant peut KO avec ses attaques",
+  analysisSettings: "Paramètres d'analyse",
+  analyze: "Analyser la couverture",
+  moves: "Attaques (max 4)",
+  found: "Trouvés",
+  results: "Résultats",
+  noCoverage: "Aucun Pokémon trouvé avec ces critères",
+  showAlive: "Afficher ceux qui survivent",
+  bulkMode: "Bulk des adversaires",
+  bulkNone: "Aucun bulk",
+  bulkCustom: "Bulk customisé",
+  bulkMax: "Bulk maximum",
+  customEvs: "EVs personnalisés: défenses | PV",
+  bulkNatureLabel: "Nature assignée pour la défense",
+  bulkNatureByMove: "Selon l'attaque",
+  bulkNatureDef: "Défense",
+  bulkNatureSpDef: "Déf. Spé.",
+  natureDefSpDef: "Nature def/spe def",
+  bulkNatureToggle: "Adapter/Fixer nature",
+  hpEvsLabel: "EVs en PV",
+  assaultVest: "Veste de Combat",
+  evoluroc: "Evoluroc"
+  ,
+  fullyEvolvedOnly: "Pleinement évolués uniquement"
+}

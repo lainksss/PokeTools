@@ -1,0 +1,65 @@
+/* ======================================
+   FOOTER STYLES
+   ====================================== */
+
+.app-footer {
+  text-align: center;
+  padding: 16px 12px;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  backdrop-filter: blur(8px);
+}
+
+.app-footer p {
+  margin: 2px 0;
+  color: var(--text-dim);
+}
+
+.app-footer strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.heart {
+  color: #f87171;
+  display: inline-block;
+  margin: 0 2px;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.15); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.15); }
+  70% { transform: scale(1); }
+}
+
+.footer-meta {
+  font-size: 0.72rem;
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 820px) {
+  .app-footer {
+    padding: 12px 8px;
+    font-size: 0.72rem;
+  }
+
+  .app-footer p {
+    margin: 1px 0;
+  }
+
+  .heart {
+    margin: 0 1px;
+  }
+}

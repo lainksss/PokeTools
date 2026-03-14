@@ -16,7 +16,7 @@ def compute_terrain_multiplier(field: Dict, mv_type: Optional[str], move: Dict, 
 
     t = str(terrain).lower()
 
-    if t in ("electric",):
+    if t in ("electric", "electric-terrain", "electric terrain"):
         if mv_type == "electric" and attacker.get("is_grounded", True):
             terrain_mult = 1.3
         effects["name"] = "electric"
@@ -35,7 +35,7 @@ def compute_terrain_multiplier(field: Dict, mv_type: Optional[str], move: Dict, 
         effects["name"] = "grassy"
         return terrain_mult, effects
 
-    if t in ("misty",):
+    if t in ("misty", "misty-terrain", "misty terrain"):
         # misty prevents status. Halve damage taken by grounded Pokémon from
         # Dragon-type moves: apply when the defender is grounded.
         if mv_type == "dragon" and defender.get("is_grounded", True):
@@ -45,7 +45,7 @@ def compute_terrain_multiplier(field: Dict, mv_type: Optional[str], move: Dict, 
         effects["prevent_status"] = True
         return terrain_mult, effects
 
-    if t in ("psychic",):
+    if t in ("psychic", "psychic-terrain", "psychic terrain"):
         if mv_type == "psychic" and attacker.get("is_grounded", True):
             terrain_mult = 1.3
         effects["name"] = "psychic"

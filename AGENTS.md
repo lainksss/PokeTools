@@ -79,6 +79,9 @@ All data import scripts are located in `backend/importation/`. They fetch from e
 
 ### Mega Evolution Move Handling
 
+*New feature:* when a Pokémon is given a `mega-gem` or `primal-gem` the frontend automatically switches it to its strongest Mega/Primal form (appending `-mega` or `-primal` to the slug) and the backend mirrors this behaviour so calculations use the correct base stats. Removing the gem will revert the species to its base form. This mirrors the existing logic for Zacian/Zamazenta crowned forms with rusted items.
+
+
 **Important:** Mega-evolution forms must inherit moves from their base forms to function correctly in the damage calculator.
 
 #### Validation & Auto-merge Script
@@ -707,6 +710,8 @@ Calculate damage from a move hit (normal or critical), including roll damage.
   "battle_mode": "singles",
   "screens": ["reflect"],
   "auras": ["dark-aura"],
+  "helping_hand": false,
+  "friend_guard": false,
   "trick_room": false,
   "tailwind": false
 }
@@ -718,6 +723,9 @@ Calculate damage from a move hit (normal or critical), including roll damage.
 - **Battle Mode:** `singles`, `doubles`
 - **Screens:** `reflect`, `light-screen`, `aurora-veil`
 - **Auras:** `dark-aura`, `fairy-aura`, `electric-surge`, etc.
+- **Double Battle Effects:**
+  - `helping_hand` (boolean): Attacker's ally uses Helping Hand (+50% damage / 1.5x multiplier on move power)
+  - `friend_guard` (boolean): Defender's ally uses Friend Guard (-25% damage / 0.75x multiplier on final damage)
 
 ---
 
@@ -1185,8 +1193,9 @@ data: {"type": "complete", "total_coverage": 120, "total_processed": 1025}
 
 ---
 
-**Last Updated:** 2026-03-02  
+**Last Updated:** 2026-03-14  
 **API Version:** 1.0 (Gen 9 Stable)  
 **Data Pipeline:** Automated via `run_all.py` with comprehensive logging  
 **Mega Evolution:** All mega forms automatically inherit base moves  
-**Screen Flags:** Reflect/Light Screen/Aurora Veil must be sent as explicit booleans (`true`/`false`) in `field`
+**Screen Flags:** Reflect/Light Screen/Aurora Veil must be sent as explicit booleans (`true`/`false`) in `field`  
+**Double Battle Support:** Helping Hand (+50% power boost) and Friend Guard (-25% damage reduction) are fully implemented, tested, and available in all threat analysis endpoints (`find_threats_stream`, `deep_find_threats_stream`, `analyze_coverage_stream`). Include `helping_hand` and `friend_guard` boolean flags in the `field` object to enable these effects. ✅ Test coverage: test_case_8 through test_case_15 validate all mechanics.

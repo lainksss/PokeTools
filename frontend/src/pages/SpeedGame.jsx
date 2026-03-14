@@ -111,9 +111,9 @@ export default function SpeedGame() {
           ) : <div>{t('common.loading') || 'Loading...'}</div>}
         </div>
 
-        <div className="game-center">
+          <div className="game-center">
           <div className="controls">
-            <button onClick={pickPair}>{t('speedGame.next') || 'Suivant'}</button>
+            <button className="next-btn" onClick={pickPair}>{t('speedGame.next') || 'Suivant'}</button>
           </div>
         </div>
 
@@ -141,8 +141,8 @@ export default function SpeedGame() {
                   <input type="number" placeholder={t('speedGame.guessPlaceholder') || 'Entrez la vitesse (base)'} value={guessValue} onChange={e => setGuessValue(e.target.value)} />
                 </div>
                 <div style={{marginTop:8}}>
-                  <button onClick={handleSubmitGuess} disabled={!guessValue}>{t('speedGame.submitGuess') || 'Valider'}</button>
-                  <button onClick={pickTarget} style={{marginLeft:8}}>{t('speedGame.pickNew') || 'Nouveau Pokémon'}</button>
+                  <button className="game-mode-btn" onClick={handleSubmitGuess} disabled={!guessValue}>{t('speedGame.submitGuess') || 'Valider'}</button>
+                  <button className="game-mode-btn" onClick={pickTarget} style={{marginLeft:8}}>{t('speedGame.pickNew') || 'Nouveau Pokémon'}</button>
                 </div>
               </>
             ) : <div>{t('common.loading') || 'Loading...'}</div>}
@@ -165,9 +165,9 @@ export default function SpeedGame() {
                 )}
               </div>
 
-              {guessResult.outcome === 'correct' ? (
+                {guessResult.outcome === 'correct' ? (
                 <div style={{marginTop:8}}>
-                  <button onClick={() => { setGuessResult(null); setGuessValue(''); pickTarget() }}>{t('speedGame.playAgain') || 'Rejouer'}</button>
+                  <button className="replay-btn" onClick={() => { setGuessResult(null); setGuessValue(''); pickTarget() }}>{t('speedGame.playAgain') || 'Rejouer'}</button>
                 </div>
               ) : null}
             </div>

@@ -4,6 +4,7 @@ import PokemonPanel from '../components/PokemonPanel'
 import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
 import { convertEvsToOld, newEvToOld } from '../utils/evs'
+import { getMandatoryItem } from '../utils/getMandatoryItem'
 
 export default function Threats() {
   const { t, getPokemonName, getMoveName } = useTranslation()
@@ -16,8 +17,14 @@ export default function Threats() {
   const [reflect, setReflect] = useState(false)
   const [lightScreen, setLightScreen] = useState(false)
   const [auroraVeil, setAuroraVeil] = useState(false)
+  const [fairyAura, setFairyAura] = useState(false)
+  const [darkAura, setDarkAura] = useState(false)
+  const [auraBreak, setAuraBreak] = useState(false)
+  const [helpingHand, setHelpingHand] = useState(false)
+  const [friendGuard, setFriendGuard] = useState(false)
   const [progress, setProgress] = useState({ processed: 0, total: 0, threats_found: 0 })
   const [useStreaming, setUseStreaming] = useState(true)
+  const [fullyEvolvedOnly, setFullyEvolvedOnly] = useState(false)
   const [showOnlyGuaranteed, setShowOnlyGuaranteed] = useState(false)
   const [minRolls, setMinRolls] = useState(1) // Minimum de rolls pour afficher (1-16)
 
@@ -78,16 +85,21 @@ export default function Threats() {
         ability: defender.ability,
         item: defender.item || null,
         is_terastallized: defender.is_terastallized,
-        tera_type: defender.tera_type
+        tera_type: defender.tera_type,
+        name: defender.name
       },
       ko_mode: koMode,
       field: {
         weather: weather === 'none' ? null : weather,
-        terrain: terrain === 'none' ? null : terrain
-        ,
+        terrain: terrain === 'none' ? null : terrain,
+        fairy_aura: fairyAura || undefined,
+        dark_aura: darkAura || undefined,
+        aura_break: auraBreak || undefined,
         reflect: reflect || undefined,
         light_screen: lightScreen || undefined,
-        aurora_veil: auroraVeil || undefined
+        aurora_veil: auroraVeil || undefined,
+        helping_hand: helpingHand || undefined,
+        friend_guard: friendGuard || undefined
       }
       ,
       analysis_options: {
@@ -97,6 +109,14 @@ export default function Threats() {
         item_choice: customItemChoice,
         life_orb: customLifeOrb
       }
+      ,
+      fully_evolved_only: fullyEvolvedOnly
+    }
+
+    // Force mandatory item for defender (mega-gem, primal-gem)
+    const mandatoryItem = getMandatoryItem(payload.defender.name)
+    if (mandatoryItem) {
+      payload.defender.item = mandatoryItem
     }
 
     try {
@@ -185,9 +205,14 @@ export default function Threats() {
       field: {
         weather: weather === 'none' ? null : weather,
         terrain: terrain === 'none' ? null : terrain,
+        fairy_aura: fairyAura || undefined,
+        dark_aura: darkAura || undefined,
+        aura_break: auraBreak || undefined,
         reflect: reflect || undefined,
         light_screen: lightScreen || undefined,
-        aurora_veil: auroraVeil || undefined
+        aurora_veil: auroraVeil || undefined,
+        helping_hand: helpingHand || undefined,
+        friend_guard: friendGuard || undefined
       }
       ,
       analysis_options: {
@@ -197,6 +222,8 @@ export default function Threats() {
         item_choice: customItemChoice,
         life_orb: customLifeOrb
       }
+      ,
+      fully_evolved_only: fullyEvolvedOnly
     }
 
     try {
@@ -229,12 +256,120 @@ export default function Threats() {
     }
   }
 
+  async function deepFindThreatsStreaming() {
+    if (!defender) {
+      alert(t('threats.noThreats'))
+      return
+    }
+
+    setLoading(true)
+    setThreats([])
+    setProgress({ processed: 0, total: 0, threats_found: 0 })
+
+    const payload = {
+      defender: {
+        pokemon_id: defender.id,
+        base_stats: defender.base_stats,
+        evs: convertEvsToOld(defender.evs || {}),
+        nature: defender.nature,
+        types: defender.types,
+        ability: defender.ability,
+        item: defender.item || null,
+        is_terastallized: defender.is_terastallized,
+        tera_type: defender.tera_type,
+        name: defender.name
+      },
+      field: {
+        weather: weather === 'none' ? null : weather,
+        terrain: terrain === 'none' ? null : terrain,
+        fairy_aura: fairyAura || undefined,
+        dark_aura: darkAura || undefined,
+        aura_break: auraBreak || undefined,
+        reflect: reflect || undefined,
+        light_screen: lightScreen || undefined,
+        aurora_veil: auroraVeil || undefined,
+        helping_hand: helpingHand || undefined,
+        friend_guard: friendGuard || undefined
+      },
+      fully_evolved_only: fullyEvolvedOnly,
+      analysis_options: {
+        attack_mode: attackMode,
+        custom_evs: newEvToOld(customAttackEV),
+        nature_boost: customNatureBoost,
+        item_choice: customItemChoice,
+        life_orb: customLifeOrb
+      }
+    }
+
+    // Force mandatory item for defender (mega-gem, primal-gem)
+    const mandatoryItemDeep = getMandatoryItem(payload.defender.name)
+    if (mandatoryItemDeep) {
+      payload.defender.item = mandatoryItemDeep
+    }
+
+    try {
+      const response = await fetch(`${API_URL}/api/deep_find_threats_stream`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+
+      if (!response.ok) {
+        throw new Error('Erreur lors de la recherche approfondie')
+      }
+
+      const reader = response.body.getReader()
+      const decoder = new TextDecoder()
+      let buffer = ''
+      const foundThreats = []
+
+      while (true) {
+        const { done, value } = await reader.read()
+        
+        if (done) break
+
+        buffer += decoder.decode(value, { stream: true })
+        const lines = buffer.split('\n')
+        buffer = lines.pop() || ''
+
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            const data = JSON.parse(line.slice(6))
+            
+            if (data.type === 'init') {
+              setProgress({ processed: 0, total: data.total, threats_found: 0 })
+            } else if (data.type === 'threat') {
+              foundThreats.push(data.data)
+              setThreats([...foundThreats])
+              setProgress(prev => ({ ...prev, threats_found: foundThreats.length }))
+            } else if (data.type === 'progress') {
+              setProgress({
+                processed: data.processed,
+                total: data.total,
+                threats_found: data.threats_found
+              })
+            } else if (data.type === 'complete') {
+              setProgress(prev => ({ 
+                ...prev, 
+                processed: data.total_processed,
+                threats_found: data.total_threats 
+              }))
+            } else if (data.type === 'error') {
+              throw new Error(data.message)
+            }
+          }
+        }
+      }
+    } catch (e) {
+      console.error('Error:', e)
+      alert('Erreur: ' + e.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <div className="threats-page">
-      <div className="threats-header">
-        <h2>{t('threats.title')}</h2>
-        <p>{t('threats.subtitle')}</p>
-      </div>
 
       <div className="threats-container">
         <div className="threats-left">
@@ -251,7 +386,6 @@ export default function Threats() {
           <h3>{t('threats.conditions')}</h3>
           
           <div className="form-group">
-            <label>{t('threats.koMode')}</label>
             <div className="ko-mode-toggle">
               <button
                 type="button"
@@ -302,6 +436,20 @@ export default function Threats() {
             </div>
           </div>
 
+          <div className="form-group" role="group" aria-label={t('calculate.auras')}>
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <button type="button" className={`aura-button ${fairyAura ? 'active' : ''}`} onClick={() => setFairyAura(v => !v)}>
+                {t('auras.fairy') || 'Fairy Aura'}
+              </button>
+              <button type="button" className={`aura-button ${darkAura ? 'active' : ''}`} onClick={() => setDarkAura(v => !v)}>
+                {t('auras.dark') || 'Dark Aura'}
+              </button>
+              <button type="button" className={`aura-button ${auraBreak ? 'active' : ''}`} onClick={() => setAuraBreak(v => !v)}>
+                {t('auras.break') || 'Aura Break'}
+              </button>
+            </div>
+          </div>
+
           <div className="form-group" role="group" aria-label={t('calculate.screens')}>
             <div style={{ display: 'flex', gap: '8px' }}>
               <button type="button" className={`aura-button ${reflect ? 'active' : ''}`} onClick={() => setReflect(v => !v)}>
@@ -316,44 +464,65 @@ export default function Threats() {
             </div>
           </div>
 
+          <div className="form-group" role="group" aria-label={t('calculate.doubleEffects')}>
+            <div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
+              <button type="button" className={`aura-button ${helpingHand ? 'active' : ''}`} onClick={() => setHelpingHand(v => !v)}>
+                {t('doubleEffects.helpingHand') || 'Helping Hand'}
+              </button>
+              <button type="button" className={`aura-button ${friendGuard ? 'active' : ''}`} onClick={() => setFriendGuard(v => !v)}>
+                {t('doubleEffects.friendGuard') || 'Friend Guard'}
+              </button>
+            </div>
+          </div>
+
+          <div className="form-group" style={{ marginTop: 8 }}>
+            <button
+              type="button"
+              className={`tailwind-button option-button ${fullyEvolvedOnly ? 'active' : ''}`}
+              onClick={() => setFullyEvolvedOnly(v => !v)}
+            >
+              {t('threats.fullyEvolvedOnly') || 'Fully evolved only'}
+            </button>
+          </div>
+
           {/* Analysis options: horizontal buttons inspired by SpeedChecker */}
           <div className="form-group">
             <label>{t('threats.attackOptions') || 'Attacker Options'}</label>
-            <div className="analysis-options">
-              <button
-                type="button"
-                className={`tailwind-button small option-button ${attackMode === 'none' ? 'active' : ''}`}
-                onClick={() => {
-                  setAttackMode('none')
-                  setCustomAttackEV(0)
-                  setCustomNatureBoost(false)
-                  setCustomItemChoice(false)
-                  setCustomLifeOrb(false)
-                }}
-              >
-                {t('threats.noAttack') || "Pas d'attaque"}
-              </button>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <button
+                  type="button"
+                  className={`aura-button ${attackMode === 'none' ? 'active' : ''}`}
+                  onClick={() => {
+                    setAttackMode('none')
+                    setCustomAttackEV(0)
+                    setCustomNatureBoost(false)
+                    setCustomItemChoice(false)
+                    setCustomLifeOrb(false)
+                  }}
+                >
+                  {t('threats.noAttack') || "Pas d'attaque"}
+                </button>
 
-              <button
-                type="button"
-                className={`tailwind-button large option-button ${attackMode === 'custom' ? 'active' : ''}`}
-                onClick={() => setAttackMode(prev => prev === 'custom' ? 'default' : 'custom')}
-              >
-                {t('threats.custom') || 'Personnalisé'}
-              </button>
+                <button
+                  type="button"
+                  className={`aura-button ${attackMode === 'custom' ? 'active' : ''}`}
+                  onClick={() => setAttackMode(prev => prev === 'custom' ? 'default' : 'custom')}
+                >
+                  {t('threats.custom') || 'Personnalisé'}
+                </button>
 
-              <button
-                type="button"
-                className={`tailwind-button small option-button ${attackMode === 'max' ? 'active' : ''}`}
-                onClick={() => {
-                  setAttackMode('max')
-                  setCustomAttackEV(252)
-                  setCustomNatureBoost(true)
-                }}
-              >
-                {t('threats.maxAtk') || 'Max Atk/SpA'}
-              </button>
-            </div>
+                <button
+                  type="button"
+                  className={`aura-button ${attackMode === 'max' ? 'active' : ''}`}
+                  onClick={() => {
+                    setAttackMode('max')
+                    setCustomAttackEV(32)
+                    setCustomNatureBoost(true)
+                  }}
+                >
+                  {t('threats.maxAtk') || 'Max Atk/SpA'}
+                </button>
+              </div>
 
             {/* Custom sub-options shown only when 'custom' is active */}
             {attackMode === 'custom' && (
@@ -363,9 +532,9 @@ export default function Threats() {
                   <input
                     type="number"
                     min="0"
-                    max="252"
+                    max="32"
                     value={customAttackEV}
-                    onChange={(e) => setCustomAttackEV(Math.max(0, Math.min(252, parseInt(e.target.value) || 0)))}
+                    onChange={(e) => setCustomAttackEV(Math.max(0, Math.min(32, parseInt(e.target.value) || 0)))}
                   />
                 </div>
 
@@ -405,13 +574,24 @@ export default function Threats() {
 
           </div>
 
-          <button 
-            onClick={handleSearch} 
-            disabled={loading || !defender}
-            className="calculate-button"
-          >
-            {loading ? t('threats.searching') : t('threats.findThreats')}
-          </button>
+          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+            <button 
+              onClick={handleSearch} 
+              disabled={loading || !defender}
+              className="calculate-button"
+            >
+              {loading ? t('threats.searching') : t('threats.findThreats')}
+            </button>
+
+            <button 
+              onClick={deepFindThreatsStreaming} 
+              disabled={loading || !defender}
+              className="calculate-button whitemode"
+              title="Teste tous les talents, tous les statuts, et toutes les attaques"
+            >
+              {loading ? t('threats.searching') : 'Recherche approfondie'}
+            </button>
+          </div>
 
           {loading && progress.total > 0 && (
             <div className="progress-container">

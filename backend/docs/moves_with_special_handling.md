@@ -40,6 +40,12 @@ This document lists moves that have explicit special-case handling in the backen
   - Behavior: `flying-press` is treated as applying both Fighting and Flying effectiveness (effectively combining type multipliers to emulate a dual-type move for effectiveness purposes).
   - Test: ❌ Not directly tested.
 
+- **Iron Head → Behemoth Blade / Bash transformation**
+  - Files: `backend/calculate_damages/calculate_damages.py`, various route handlers (`routes/threats.py`, `routes/coverage.py`).
+  - Location: A dedicated block in `calculate_damages.py` that normalizes any incoming move named `iron-head` when the attacking species string contains `zacian-crowned` or `zamazenta-crowned`. Several route handlers also manually rewrite `move_slug` and `move_data` before invoking `calculate_damage` to ensure coverage/threat queries receive a full Behemoth move object.
+  - Behavior: The frontend sends `iron-head` for move selection, but crowned Zacian/Zamazenta automatically receive a transformed move. The backend patch ensures the move object’s `name`, `power` (100), and `type` are updated so that all calculations (threats, coverage, damage) operate on Behemoth Blade/Bash just like the main calculator page. This dual‑layer approach keeps the transformation universal and prevents inconsistent results when moves originate from different sources.
+  - Test: ✅ Covered indirectly by existing tests for armed calculations; additional unit tests may be added (none at present).
+
 - **Earthquake / Bulldoze / Magnitude**
   - File: `backend/calculate_damages/calculate_damages.py` (terrain interaction)
   - Location: Grassy Terrain handling

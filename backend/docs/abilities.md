@@ -52,6 +52,22 @@ Note: the `recoil` attribute is not universally present in `moves_with_flags.jso
 - `solar-power`: +50% Special Attack in harsh sunlight for special moves.
 	- Test: ✅ Unit tests reference `solar-power` in `backend/test/test_calcs.py`.
 
+- `hadron-engine`: +33% (factor 5461/4096) Special Attack in Electric Terrain for special moves. Signature ability of Miraidon.
+	- Implementation: checks if the user has the ability, terrain is Electric/Electric-Terrain, and move is special. When all conditions are met, the Special Attack stat is multiplied by 5461/4096 using `pokeRound()` for precise rounding.
+	- Test: ✅ `hadron-engine` covered by `backend/test/test_hadron_engine.py` (Volt Switch & Draco Meteor cases with/without Electric Terrain).
+
+- `orichalcum-pulse`: +33% (factor 5461/4096) Attack in harsh sunlight for physical moves. Signature ability of Koraidon. Boost applies even with Utility Umbrella active.
+	- Implementation: checks if the user has the ability, weather is harsh sunlight (sun/harsh-sunshine/harsh-sunlight/desolate-land), and move is physical. When all conditions are met, the Attack stat is multiplied by 5461/4096 using `pokeRound()` for precise rounding.
+	- Test: ✅ `orichalcum-pulse` covered by `backend/test/test_orichalcum_pulse.py` (Close Combat & Fire Punch cases with/without harsh sunlight and ability).
+
+- `protosynthesis`: boosts the user's highest non-HP stat by +30% (or +50% for Speed stat) in harsh sunlight or while holding Booster Energy. Signature ability of Flutter Mane. 
+	- Implementation: determines the highest non-HP stat using stage multipliers (positive stage: 1.0 + min(stage×0.5, 4.0), negative stage: 1.0 + min(|stage|×0.33, 2.0)). Applies priority tie-breaker: attack > defense > special_attack > special_defense > speed. Boosts the corresponding attacking stat (Attack for physical moves, Special Attack for special moves) by +30% or +50% for Speed using `pokeRound()` for precise rounding. Activation requires harsh sunlight or Booster Energy (weather takes priority if both present). Boost only applies to the applicable stat for the move category.
+	- Test: ✅ `protosynthesis` covered by `backend/test/test_protosynthesis.py` (5 tests: Dazzling Gleam/Shadow Ball with/without harsh sunlight, multi-target move reduction verified).
+
+- `quark-drive`: boosts the user's highest non-HP stat by +30% (or +50% for Speed stat) in Electric Terrain or while holding Booster Energy. Signature ability of Iron Bundle. Also boosts the defender's Defense or Special Defense (if either is the highest stat) by +30% to reduce incoming damage.
+	- Implementation: **Attacker-side**: determines the highest non-HP stat using stage multipliers (positive stage: 1.0 + min(stage×0.5, 4.0), negative stage: 1.0 + min(|stage|×0.33, 2.0)). Applies priority tie-breaker: attack > defense > special_attack > special_defense > speed. Boosts the corresponding attacking stat (Attack for physical moves, Special Attack for special moves) by +30% or +50% for Speed using `pokeRound()` for precise rounding. Activation requires Electric Terrain or Booster Energy (terrain takes priority if both present). **Defender-side**: applies identical stat detection logic to the defender. When Defense or Special Defense is the highest stat, boosts the corresponding defensive stat by +30% to reduce incoming damage. Both attacker and defender boosts apply independently; in battles with Electric Terrain, both can activate simultaneously, potentially offsetting each other's effects.
+	- Test: ✅ `quark-drive` covered by `backend/test/test_quark_drive.py` (5 tests: Icy Wind/Volt Switch with Electric Terrain demonstrating attacker boost, Spark with terrain + defender boost showing mutual cancellation, baseline tests without terrain).
+
 - `aerilate` / `pixilate` / `refrigerate` / `galvanize` / `normalize`: convert Normal moves to another type and apply ~20% boost (e.g., Aerilate turns Normal → Flying).
 	- Implementation: these are applied as base-power modifications (they mutate `move["type"]` and `move["power"]`) so type-effectiveness and STAB are recalculated using the mutated move and rounding matches tests.
 	- Test: ✅ `abilities` covered in `backend/test/test_aerilate_family.py`.
@@ -148,7 +164,7 @@ Note: the `recoil` attribute is not universally present in `moves_with_flags.jso
 	- Implementation: checks `move['type'] in ('fire', 'ice')` and applies 0.5× multiplier to other_mult if true.
 	- Test: ✅ `thick-fat` covered by `backend/test/test_thick_fat.py` (Ice Beam / Flamethrower with 50% reduction, baseline comparison).
 
-- `scrappy`: ignores Ghost immunities for Normal/Fighting moves (handled in damage calculations).
+- `scrappy` / `minds-eye`: ignores Ghost immunities for Normal/Fighting moves (handled in damage calculations).
 	- Test: ❌
 
 - `merciless`: forces critical hits when the target is poisoned.
@@ -159,20 +175,41 @@ Note: the `recoil` attribute is not universally present in `moves_with_flags.jso
 	- Implementation: checks if defender has this ability and sets `is_critical = False` if a critical would have been triggered. Note: cannot block crits forced by ability effects like Merciless.
 	- Test: ✅ `battle-armor`/`shell-armor` covered by `backend/test/test_battle_armor.py` (demonstrates that Merciless-forced crits cannot be blocked).
 
+- `intrepid-sword` / `dauntless-shield`
+	- Dauntless Shield (Zamazenta-Crowned) / Intrepid Sword (Zacian-Crowned): attacker-side transformation behaviour and stat boosts.
+	- Implementation detail: `dauntless-shield` applies an attacker-side +1 Defense stage (1.5×) but is only applied for physical moves so that Special Attack moves are not incorrectly affected. See `backend/docs/moves_with_special_handling.md` for related move transforms (`iron-head` → `behemoth-blade`/`bash`).
+	- Tests: ✅ covered by `backend/test/test_zamazenta_zacian.py` and `backend/test/test_zamazenta_crowned.py`.
+
 Note: `sniper` and other crit-related flags are set by ability handling and used in the main damage calculation to modify the critical multiplier.
+
+- `marvel-scale`: increases the holder's physical `Defense` by 50% while it has a non-volatile status condition (e.g., `brn`, `par`, `psn`).
+	- Implementation: when `defender['ability'] == 'marvel-scale'` and `defender.get('status')` is truthy, the physical defense multiplier `D` is multiplied by 1.5 in `apply_ability_effects()` so incoming physical damage is reduced accordingly.
+	- Notes: this ability affects only physical `Defense` (not Special Defense).
+	- Tests: ✅ covered by `backend/test/test_marvel_scale_milotic.py` (Milotic burned / not burned cases).
 
 ## Test Coverage Summary
 
-**Recently Tested (17 tests, ✅):**
+**Recently Tested (25 tests, ✅):**
 - Damage reduction abilities: `multiscale`, `shadow-shield`, `thick-fat`, `tera-shell`, `solid-rock`, `filter`, `prism-armor`
 - Critical mechanics: `merciless`, `battle-armor`, `shell-armor`
+- Stat-boosting abilities: `hadron-engine`, `orichalcum-pulse`, `protosynthesis`, `quark-drive` (Flutter Mane, Iron Bundle; multi-target move mechanics validated; defender-side stat boosts for Quark Drive)
 
 **Other Fully Tested (✅):**
 - Power modifiers: `huge-power`, `sheer-force`, `tough-claws`, `strong-jaw`, `technician`, `iron-fist`, `reckless`, `steelworker`, `steely-spirit`
 - Type conversions: `aerilate`, `pixilate`, `refrigerate`, `galvanize`, `normalize`
 - Type immunity/absorption: `water-absorb`, `volt-absorb`, `dry-skin`, `flash-fire`, `lightning-rod`, `storm-drain`, `earth-eater`, `sap-sipper`, `bulletproof`, `motor-drive`, `soundproof`, `cacophony`, `wind-rider`
-- Special mechanics: `levitate`, `protean`, `libero`, `wonder-guard`, `sturdy`, `solar-power`, `guts`
+- Special mechanics: `levitate`, `protean`, `libero`, `wonder-guard`, `sturdy`, `solar-power`, `guts`, `hadron-engine`, `orichalcum-pulse`
 
 **Not Yet Tested (❌):**
 - Type boost at low HP: `blaze`, `torrent`, `overgrow`, `swarm`
-- Other: `victory-star`, `sniper`, `scrappy`
+- Other: `victory-star`
+
+**Legendaries/important abilities (with full damage calculations)**
+- Ogerpon (each of them)
+- Chien pao / Ting Lu / Yu-yu / Chong jian
+
+- What's next after that ? Weather/Terrain/aura/treasures of ruin activating when:
+- We put a pokemon with one of these abilities in calculator (it sets it even in front, just Quality Of Life improvement)
+- We use deep threats/coverage analysis and if the Weather/Terrain you want to change isn't enabled
+  (if front weather == none, then ability of the defender/offender activates if it has a weather ability)
+  Aura or Treasures of ruin abilities can stack, so we keep the one we potentially chose AND the one of the other mon's ability

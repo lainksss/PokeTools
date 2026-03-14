@@ -1,0 +1,412 @@
+/* ======================================
+   MAIN LAYOUT STYLES
+   ====================================== */
+
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main page container */
+.calculate-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: var(--gap);
+  gap: var(--gap);
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Panels grid container - 3 columns (left, middle, right) */
+.panels-container {
+  flex: 1;
+  display: grid;
+  /* Increase default panel min width to make panels wider on desktop */
+  grid-template-columns: minmax(var(--panel-min-width, 340px), 1fr) auto minmax(var(--panel-min-width, 340px), 1fr);
+  gap: 28px;
+  min-height: 0;
+  align-items: start;
+}
+
+/* Stacking context for panels */
+.panels-container,
+.panel-left,
+.panel-middle,
+.panel-right {
+  position: relative;
+  z-index: 0;
+}
+
+/* Left and right panels (pokemon setup & results) */
+.panel-left,
+.panel-right {
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  /* Increase padding for more breathing room */
+  padding: var(--panel-padding, 24px);
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-height: 0;
+  /* Allow taller panels on desktop while keeping mobile safe */
+  max-height: calc(100vh - 140px);
+}
+
+/* Middle panel (battle conditions & calculate button) */
+.panel-middle {
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: var(--panel-padding, 24px);
+  /* Give a wider middle panel minimum to match larger side panels */
+  min-width: 320px;
+  gap: 14px;
+  overflow-y: auto;
+  min-height: 0;
+  max-height: calc(100vh - 120px);
+}
+
+.panel-middle h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0;
+  align-self: center;
+}
+
+/* Battle mode toggle container */
+.battle-mode-toggle {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Stats and selectors */
+.stats-and-selectors {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  width: 100%;
+  overflow-y: auto;
+}
+
+/* Stats container */
+.stats-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Stats table grid layout */
+.stats-table {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stats-header,
+.stats-row {
+  display: grid;
+  /* Flexible label column, fixed-ish small columns for numbers/selectors, final column fixed to avoid wrapping */
+  grid-template-columns: minmax(120px, 1fr) 64px 64px 72px 80px;
+  gap: 12px;
+  align-items: center;
+  padding: 6px 4px;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+.stats-header {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+  position: sticky;
+  top: 0;
+  background: var(--card);
+  z-index: 1;
+}
+
+.stats-row {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.stats-row:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Stat column styling */
+.stat-label {
+  font-weight: 500;
+  text-align: left;
+}
+
+.stat-col {
+  text-align: center;
+  font-size: 14px;
+}
+
+.stat-base,
+.stat-final {
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Nature modifier colors */
+.nature-boosted {
+  color: #10b981 !important;
+  font-weight: 700 !important;
+}
+
+.nature-nerfed {
+  color: #ef4444 !important;
+  font-weight: 700 !important;
+}
+
+.item-boosted {
+  color: #f59e0b !important;
+  font-weight: 700 !important;
+}
+
+/* Stat EV column */
+.stat-ev {
+  display: flex;
+  justify-content: center;
+}
+
+/* EV input and boost select sizing to prevent layout break */
+.ev-input {
+  width: 56px;
+  padding: 6px 8px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.boost-select {
+  width: 56px;
+  padding: 6px 8px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.stat-final { text-align: center; }
+
+/* Selectors container (ability, nature, item, etc) */
+.selectors-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Form groups inside selectors container should be equal width */
+.selectors-container .form-group {
+  flex: 1;
+  min-width: 140px;
+}
+
+/* Types and tera on same row */
+.types-tera-row {
+  display: flex;
+  gap: 12px;
+}
+
+.types-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.types-display {
+  font-size: 14px;
+}
+
+/* Tera section */
+.tera-section-block {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.tera-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tera-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Damage rolls display */
+.damage-rolls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.damage-rolls h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+/* Inline damage rolls */
+.rolls-inline {
+  display: flex;
+  /* allow rolls to wrap to the next visual line instead of forcing horizontal scroll */
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  overflow-x: visible;
+  padding-bottom: 6px;
+}
+
+.roll-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 8px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  transition: background 0.2s;
+  font-size: 11px;
+}
+
+.roll-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.roll-item.roll-ko {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.roll-item.roll-ko:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.roll-damage {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.roll-percent {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.roll-remaining {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-left: 4px;
+}
+
+.roll-item.roll-ko .roll-remaining {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+/* Old rolls display format (fallback) */
+.rolls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.roll {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  min-width: 60px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+
+/* No results message */
+.no-results {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* Move selection rows */
+.move-select-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.move-select-row:last-child {
+  margin-bottom: 0;
+}
+
+.move-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  min-width: 24px;
+  text-align: right;
+}
+
+.move-select {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .panels-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .panel-middle {
+    order: 2;
+  }
+}

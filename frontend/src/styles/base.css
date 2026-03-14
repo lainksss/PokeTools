@@ -1,0 +1,137 @@
+/* ======================================
+   BASE STYLES & RESET
+   ====================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 13px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Outfit', 'Inter', 'Segoe UI', 'Roboto', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- Typography ---- */
+h1 { font-size: 1.8rem; font-weight: 800; }
+h2 { font-size: 1.4rem; font-weight: 700; }
+h3 { font-size: 1.1rem; font-weight: 600; }
+h4 { font-size: 0.95rem; font-weight: 600; }
+p  { color: var(--text-muted); }
+
+strong { font-weight: 600; }
+
+/* ---- App Layout ---- */
+.app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+.app-main {
+  flex: 1;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 20px 16px;
+}
+
+/* ---- Scrollbar Styling ---- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar);
+  border-radius: 99px;
+}
+
+/* ---- Select Styling ---- */
+select {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 6px 8px;
+  font-family: inherit;
+  font-size: 0.92rem;
+  transition: border-color var(--transition);
+}
+
+select:hover {
+  border-color: var(--accent);
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-dim);
+}
+
+select option {
+  background: var(--card);
+  color: var(--text);
+  padding: 8px;
+}
+
+select option:checked {
+  background: var(--accent);
+  color: #fff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ======================================
+   MOBILE LAYOUT PRESERVATION (16:9)
+   ====================================== */
+
+/* Mobile: keep a 16:9 visual layout and avoid items reflowing by applying
+   a global visual scale and constraining the app width relative to viewport height. */
+@media (max-width: 480px) {
+  .app-root {
+    max-width: calc(100vh * (16/9));
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+  }
+
+  .app-main > * {
+    transform: scale(0.5);
+    transform-origin: top center;
+    transition: transform 160ms ease;
+  }
+
+  .home-blocks-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+  }
+
+  .home-block {
+    min-width: 150px;
+  }
+}
