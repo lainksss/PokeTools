@@ -6,6 +6,7 @@ POST /api/analyze_type_coverage - analyse la couverture de types
 
 import json
 from flask import Blueprint, request, jsonify, Response, stream_with_context
+import logging
 
 # Support utils import either as top-level `utils` or as `backend.utils`
 try:
@@ -22,6 +23,8 @@ try:
 except Exception:
     import importlib
     calculate_damage = importlib.import_module("calculate_damages.calculate_damages").calculate_damage
+
+logger = logging.getLogger(__name__)
 
 bp = Blueprint('coverage', __name__)
 
@@ -395,11 +398,10 @@ def deep_analyze_coverage_stream():
                                     
                                     # Debug: log if damage_all is empty
                                     if not damage_all and full_move_data.get("power", 0) > 0:
-                                        import sys
-                                        print(f"DEBUG: Empty damage_all for {move_name} vs {poke_slug}", file=sys.stderr)
-                                        print(f"  move: {full_move_data}", file=sys.stderr)
-                                        print(f"  defender_hp from result: {result.get('defender_hp')}", file=sys.stderr)
-                                        print(f"  defender dict: {defender}", file=sys.stderr)
+                                        logger.debug("Empty damage_all for %s vs %s", move_name, poke_slug)
+                                        logger.debug("  move: %s", full_move_data)
+                                        logger.debug("  defender_hp from result: %s", result.get("defender_hp"))
+                                        logger.debug("  defender dict: %s", defender)
                                     
                                     if ko_mode == "OHKO":
                                         ko_count = sum(1 for dmg in damage_all if dmg >= defender_hp)
