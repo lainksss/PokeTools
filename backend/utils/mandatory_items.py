@@ -9,6 +9,8 @@ and ability and optionally adds stage boosts for abilities like Intrepid Sword a
 Shield.  It does *not* double‑apply the transformation logic.
 """
 
+from .data_loader import load_json
+
 # Mandatory configuration per exact Pokémon slug (checked before suffix patterns)
 _MANDATORY_CONFIGS_EXACT = {
     'zacian-crowned': {
