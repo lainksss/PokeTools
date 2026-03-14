@@ -206,7 +206,6 @@ Note: `sniper` and other crit-related flags are set by ability handling and used
 
 **Legendaries/important abilities (with full damage calculations)**
 - Ogerpon (each of them)
-- friend guard
 - Chien pao / Ting Lu / Yu-yu / Chong jian
 
 - What's next after that ? Weather/Terrain/aura/treasures of ruin activating when:

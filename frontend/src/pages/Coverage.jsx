@@ -310,23 +310,30 @@ export default function Coverage() {
 
   // Filtrer les résultats selon le mode d'affichage
   const coverage = allResults.filter(item => {
-    // Vérifier si l'un des moves a un KO% positif (pire cas)
-    const hasAnyKO = item.moves?.some(m => (m.worst_ko_percent || 0) > 0)
+    // Gérer les deux structures: analyze_coverage_stream (max_ko_chance) et deep_analyze_coverage_stream (moves[])
+    const maxKoChance = item.max_ko_chance !== undefined 
+      ? item.max_ko_chance 
+      : (item.moves?.some(m => (m.worst_ko_percent || 0) > 0) ? 
+          Math.max(...item.moves.map(m => m.worst_ko_percent || 0)) 
+          : 0)
     
     // Si mode 'alive' : afficher ceux qui NE sont PAS KO dans le pire cas
     if (viewMode === 'alive') {
-      return !hasAnyKO
+      return maxKoChance <= 0
     }
     // Si mode 'ko' : afficher ceux qui PEUVENT être KO dans le pire cas
-    return hasAnyKO
+    return maxKoChance > 0
   })
 
   // Filtrer davantage selon les autres critères
   const filteredCoverage = coverage.filter(item => {
     // Si on veut voir seulement les KO garantis (seulement en mode 'ko')
     if (viewMode === 'ko' && showOnlyGuaranteed) {
-      const hasGuaranteed = item.moves?.some(m => m.worst_ko_percent === 100)
-      return hasGuaranteed
+      // Gérer les deux structures
+      const maxKoChance = item.max_ko_chance !== undefined 
+        ? item.max_ko_chance 
+        : (item.moves?.length > 0 ? Math.max(...item.moves.map(m => m.worst_ko_percent || 0)) : 0)
+      return maxKoChance === 100
     }
     return true
   })
@@ -641,34 +648,95 @@ export default function Coverage() {
 }
 
 function CoverageItem({ item, koMode, t, getPokemonName, getMoveName }) {
-  // Get the best move (highest worst_ko_percent)
-  const bestMove = item.moves?.length > 0 ? item.moves[0] : null
-  const maxChance = bestMove?.worst_ko_percent || 0
-  const isGuaranteed = maxChance === 100
+  // Gérer les deux structures: analyze_coverage_stream (max_ko_chance) et deep_analyze_coverage_stream (moves[])
+  const isDeepAnalysis = item.moves && item.moves.length > 0
+  
+  if (isDeepAnalysis) {
+    // Structure deep_analyze_coverage_stream
+    const maxChance = item.moves.length > 0 ? Math.max(...item.moves.map(m => m.worst_ko_percent || 0)) : 0
+    const isGuaranteed = maxChance === 100
 
-  return (
-    <div className="threat-card">
-      <div className="threat-header">
-        <div className="threat-name-types">
-          <h4>{getPokemonName(item.defender_id, item.defender_name)}</h4>
-          <div className="threat-types">
-            {item.defender_types?.map(type => (
-              <span key={type} className={`type-badge type-${type}`}>
-                {t(`types.${type}`)}
-              </span>
-            ))}
+    return (
+      <div className="threat-card">
+        <div className="threat-header">
+          <div className="threat-name-types">
+            <h4>{getPokemonName(item.defender_id, item.defender_name)}</h4>
+            <div className="threat-types">
+              {item.defender_types?.map(type => (
+                <span key={type} className={`type-badge type-${type}`}>
+                  {t(`types.${type}`)}
+                </span>
+              ))}
+            </div>
           </div>
+          <span className="threat-best-ko">{maxChance.toFixed(1)}% {koMode}</span>
         </div>
-        <span className="threat-best-ko">{maxChance.toFixed(1)}% {koMode}</span>
-      </div>
 
-      <div className="threat-attacks">
-        {item.moves?.map((move, idx) => (
-          <div key={idx} className="attack-info">
+        <div className="threat-attacks">
+          {item.moves.map((move, idx) => (
+            <div key={idx} className="attack-info">
+              <div className="attack-name">
+                <strong>{getMoveName(move.name, move.name)}</strong>
+                <span className={`type-badge type-${move.type}`}>
+                  {t(`types.${move.type}`)}
+                </span>
+              </div>
+
+              <div className="attack-stats">
+                <div className="damage-range">
+                  <span className="damage-label">{t('threats.damage')}:</span>
+                  <span className="damage-values">
+                    {move.damage_min} - {move.damage_max}
+                  </span>
+                  {move.defender_hp && (
+                    <span className="damage-percent">
+                      ({((move.damage_min / move.defender_hp) * 100).toFixed(1)}% - {((move.damage_max / move.defender_hp) * 100).toFixed(1)}%)
+                    </span>
+                  )}
+                </div>
+
+                <div className="ko-info">
+                  <span className={`ko-percent ${move.worst_ko_percent === 100 ? 'guaranteed' : ''}`}>
+                    {move.worst_ko_percent.toFixed(1)}% {koMode}
+                  </span>
+                </div>
+              </div>
+
+              {move.worst_ko_percent === 100 && (
+                <div className="guaranteed-badge">{koMode} {t('threats.guaranteedKO')}</div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  } else {
+    // Structure analyze_coverage_stream (structure plate)
+    const maxChance = item.max_ko_chance || 0
+    const isGuaranteed = maxChance === 100
+
+    return (
+      <div className="threat-card">
+        <div className="threat-header">
+          <div className="threat-name-types">
+            <h4>{getPokemonName(item.defender_id, item.defender_name)}</h4>
+            <div className="threat-types">
+              {item.defender_types?.map(type => (
+                <span key={type} className={`type-badge type-${type}`}>
+                  {t(`types.${type}`)}
+                </span>
+              ))}
+            </div>
+          </div>
+          <span className="threat-best-ko">{maxChance.toFixed(1)}% {koMode}</span>
+        </div>
+
+        <div className="threat-attacks">
+          <div className="attack-info">
             <div className="attack-name">
-              <strong>{getMoveName(move.name, move.name)}</strong>
-              <span className={`type-badge type-${move.type}`}>
-                {t(`types.${move.type}`)}
+              <strong>{getMoveName(item.best_move_name, item.best_move_name)}</strong>
+              <span className={`type-badge type-${item.best_move_type}`}>
+                {t(`types.${item.best_move_type}`)}
               </span>
             </div>
 
@@ -676,28 +744,28 @@ function CoverageItem({ item, koMode, t, getPokemonName, getMoveName }) {
               <div className="damage-range">
                 <span className="damage-label">{t('threats.damage')}:</span>
                 <span className="damage-values">
-                  {move.damage_min} - {move.damage_max}
+                  {item.damage_range?.[0] !== undefined ? Math.min(...item.damage_range) : 0} - {item.damage_range?.[item.damage_range.length - 1] !== undefined ? Math.max(...item.damage_range) : 0}
                 </span>
-                {move.defender_hp && (
+                {item.defender_hp && (
                   <span className="damage-percent">
-                    ({((move.damage_min / move.defender_hp) * 100).toFixed(1)}% - {((move.damage_max / move.defender_hp) * 100).toFixed(1)}%)
+                    ({item.damage_range?.[0] !== undefined ? ((Math.min(...item.damage_range) / item.defender_hp) * 100).toFixed(1) : 0}% - {item.damage_range?.[item.damage_range.length - 1] !== undefined ? ((Math.max(...item.damage_range) / item.defender_hp) * 100).toFixed(1) : 0}%)
                   </span>
                 )}
               </div>
 
               <div className="ko-info">
-                <span className={`ko-percent ${move.worst_ko_percent === 100 ? 'guaranteed' : ''}`}>
-                  {move.worst_ko_percent.toFixed(1)}% {koMode}
+                <span className={`ko-percent ${isGuaranteed ? 'guaranteed' : ''}`}>
+                  {maxChance.toFixed(1)}% {koMode}
                 </span>
               </div>
             </div>
 
-            {move.worst_ko_percent === 100 && (
+            {isGuaranteed && (
               <div className="guaranteed-badge">{koMode} {t('threats.guaranteedKO')}</div>
             )}
           </div>
-        ))}
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
