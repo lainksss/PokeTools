@@ -197,3 +197,30 @@ def handle_screen_cleaner_on_switch(field: Optional[Dict], pokemon: Dict) -> boo
             removed = True
 
     return removed
+
+
+def compute_double_battle_multiplier(field: Optional[Dict]) -> float:
+    """Compute the multiplier for Friend Guard only (final damage modifier).
+
+    Helping Hand is now handled as a base-power modifier (see calculate_damages.py).
+    Friend Guard: -25% damage (multiplier 0.75) — applied to the defender as final multiplier
+
+    Supported field keys (boolean or truthy values):
+      - `friend_guard` or `friend-guard` -> The defender's ally uses Friend Guard (-25%)
+
+    Returns float multiplier (for final damage calculation).
+    """
+    try:
+        fld = field or {}
+
+        mult = 1.0
+
+        # Friend Guard: defender's ally reduces damage by 25%
+        has_friend_guard = bool(fld.get("friend_guard") or fld.get("friend-guard"))
+        if has_friend_guard:
+            mult *= 0.75
+
+        return float(mult)
+
+    except Exception:
+        return 1.0

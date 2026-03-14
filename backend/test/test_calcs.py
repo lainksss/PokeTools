@@ -516,6 +516,398 @@ def test_case_7():
     assert actual == expected
 
 
+def test_case_8():
+    """0 Atk Bulbasaur Fire Fang vs. 0 HP / 0 Def Bulbasaur (no modifiers)"""
+    print("\n" + "="*80)
+    print("TEST 8: 0 Atk Bulbasaur Fire Fang vs. 0 HP / 0 Def Bulbasaur (no modifiers)")
+    print("="*80)
+    
+    attacker = get_pokemon_stats(
+        species="bulbasaur",
+        level=50,
+        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0},
+    )
+    
+    defender = get_pokemon_stats(
+        species="bulbasaur",
+        level=50,
+        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0},
+    )
+    
+    move = {
+        "name": "fire-fang",
+        "power": 65,
+        "type": "fire",
+        "damage_class": "physical",
+    }
+    
+    result = calculate_damage(
+        move=move,
+        attacker=attacker,
+        defender=defender,
+        level=50,
+        random_range=range(85, 101),
+        debug=True,
+    )
+    
+    expected = (50, 50, 52, 52, 52, 54, 54, 54, 54, 56, 56, 56, 58, 58, 58, 60)
+    actual = tuple(result['damage_all'])
+    
+    print(f"Expected: {expected}")
+    print(f"Actual:   {actual}")
+    print(f"Match: {actual == expected}")
+    print(f"Base: {result.get('base_val')}")
+    
+    assert actual == expected
+
+
+def test_case_9():
+    """0 Atk Bulbasaur Solar Blade vs. 0 HP / 0 Def Bulbasaur (no modifiers)"""
+    print("\n" + "="*80)
+    print("TEST 9: 0 Atk Bulbasaur Solar Blade vs. 0 HP / 0 Def Bulbasaur (no modifiers)")
+    print("="*80)
+    
+    attacker = get_pokemon_stats(
+        species="bulbasaur",
+        level=50,
+        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0},
+    )
+    
+    defender = get_pokemon_stats(
+        species="bulbasaur",
+        level=50,
+        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0},
+    )
+    
+    move = {
+        "name": "solar-blade",
+        "power": 125,
+        "type": "grass",
+        "damage_class": "physical",
+    }
+    
+    result = calculate_damage(
+        move=move,
+        attacker=attacker,
+        defender=defender,
+        level=50,
+        random_range=range(85, 101),
+        debug=True,
+    )
+    
+    expected = (18, 18, 18, 18, 18, 19, 19, 19, 19, 19, 20, 20, 20, 20, 21, 21)
+    actual = tuple(result['damage_all'])
+    
+    print(f"Expected: {expected}")
+    print(f"Actual:   {actual}")
+    print(f"Match: {actual == expected}")
+    print(f"Base: {result.get('base_val')}")
+    
+    assert actual == expected
+
+
+def test_case_10():
+    """0 Atk Bulbasaur Helping Hand Fire Fang vs. 0 HP / 0 Def Bulbasaur"""
+    print("\n" + "="*80)
+    print("TEST 10: 0 Atk Bulbasaur Helping Hand Fire Fang vs. 0 HP / 0 Def Bulbasaur")
+    print("="*80)
+    
+    attacker = get_pokemon_stats(
+        species="bulbasaur",
+        level=50,
+        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0},
+    )
+    
+    defender = get_pokemon_stats(
+        species="bulbasaur",
+        level=50,
+        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0},
+    )
+    
+    move = {
+        "name": "fire-fang",
+        "power": 65,
+        "type": "fire",
+        "damage_class": "physical",
+    }
+    
+    field = {
+        "helping_hand": True,
+    }
+    
+    result = calculate_damage(
+        move=move,
+        attacker=attacker,
+        defender=defender,
+        level=50,
+        field=field,
+        random_range=range(85, 101),
+        debug=True,
+    )
+    
+    expected = (74, 74, 76, 76, 78, 78, 80, 80, 80, 82, 82, 84, 84, 86, 86, 88)
+    actual = tuple(result['damage_all'])
+    
+    print(f"Expected: {expected}")
+    print(f"Actual:   {actual}")
+    print(f"Match: {actual == expected}")
+    print(f"Base: {result.get('base_val')}")
+    
+    assert actual == expected
+
+
+def test_case_11():
+    """0 Atk Bulbasaur Helping Hand Solar Blade vs. 0 HP / 0 Def Bulbasaur"""
+    print("\n" + "="*80)
+    print("TEST 11: 0 Atk Bulbasaur Helping Hand Solar Blade vs. 0 HP / 0 Def Bulbasaur")
+    print("="*80)
+    
+    attacker = get_pokemon_stats(
+        species="bulbasaur",
+        level=50,
+        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0},
+    )
+    
+    defender = get_pokemon_stats(
+        species="bulbasaur",
+        level=50,
+        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0},
+    )
+    
+    move = {
+        "name": "solar-blade",
+        "power": 125,
+        "type": "grass",
+        "damage_class": "physical",
+    }
+    
+    field = {
+        "helping_hand": True,
+    }
+    
+    result = calculate_damage(
+        move=move,
+        attacker=attacker,
+        defender=defender,
+        level=50,
+        field=field,
+        random_range=range(85, 101),
+        debug=True,
+    )
+    
+    expected = (26, 27, 27, 27, 27, 28, 28, 28, 29, 29, 29, 30, 30, 30, 31, 31)
+    actual = tuple(result['damage_all'])
+    
+    print(f"Expected: {expected}")
+    print(f"Actual:   {actual}")
+    print(f"Match: {actual == expected}")
+    print(f"Base: {result.get('base_val')}")
+    
+    assert actual == expected
+
+
+def test_case_12():
+    """0 Atk Bulbasaur Fire Fang vs. 0 HP / 0 Def Bulbasaur with Friend Guard"""
+    print("\n" + "="*80)
+    print("TEST 12: 0 Atk Bulbasaur Fire Fang vs. 0 HP / 0 Def Bulbasaur with Friend Guard")
+    print("="*80)
+    
+    attacker = get_pokemon_stats(
+        species="bulbasaur",
+        level=50,
+        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0},
+    )
+    
+    defender = get_pokemon_stats(
+        species="bulbasaur",
+        level=50,
+        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0},
+    )
+    
+    move = {
+        "name": "fire-fang",
+        "power": 65,
+        "type": "fire",
+        "damage_class": "physical",
+    }
+    
+    field = {
+        "friend_guard": True,
+    }
+    
+    result = calculate_damage(
+        move=move,
+        attacker=attacker,
+        defender=defender,
+        level=50,
+        field=field,
+        random_range=range(85, 101),
+        debug=True,
+    )
+    
+    expected = (37, 37, 39, 39, 39, 40, 40, 40, 40, 42, 42, 42, 43, 43, 43, 45)
+    actual = tuple(result['damage_all'])
+    
+    print(f"Expected: {expected}")
+    print(f"Actual:   {actual}")
+    print(f"Match: {actual == expected}")
+    print(f"Base: {result.get('base_val')}")
+    
+    assert actual == expected
+
+
+def test_case_13():
+    """0 Atk Bulbasaur Solar Blade vs. 0 HP / 0 Def Bulbasaur with Friend Guard"""
+    print("\n" + "="*80)
+    print("TEST 13: 0 Atk Bulbasaur Solar Blade vs. 0 HP / 0 Def Bulbasaur with Friend Guard")
+    print("="*80)
+    
+    attacker = get_pokemon_stats(
+        species="bulbasaur",
+        level=50,
+        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0},
+    )
+    
+    defender = get_pokemon_stats(
+        species="bulbasaur",
+        level=50,
+        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0},
+    )
+    
+    move = {
+        "name": "solar-blade",
+        "power": 125,
+        "type": "grass",
+        "damage_class": "physical",
+    }
+    
+    field = {
+        "friend_guard": True,
+    }
+    
+    result = calculate_damage(
+        move=move,
+        attacker=attacker,
+        defender=defender,
+        level=50,
+        field=field,
+        random_range=range(85, 101),
+        debug=True,
+    )
+    
+    expected = (13, 13, 13, 13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 16, 16)
+    actual = tuple(result['damage_all'])
+    
+    print(f"Expected: {expected}")
+    print(f"Actual:   {actual}")
+    print(f"Match: {actual == expected}")
+    print(f"Base: {result.get('base_val')}")
+    
+    assert actual == expected
+
+
+def test_case_14():
+    """0 Atk Bulbasaur Helping Hand Fire Fang vs. 0 HP / 0 Def Bulbasaur with Friend Guard"""
+    print("\n" + "="*80)
+    print("TEST 14: 0 Atk Bulbasaur Helping Hand Fire Fang vs. 0 HP / 0 Def Bulbasaur with Friend Guard")
+    print("="*80)
+    
+    attacker = get_pokemon_stats(
+        species="bulbasaur",
+        level=50,
+        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0},
+    )
+    
+    defender = get_pokemon_stats(
+        species="bulbasaur",
+        level=50,
+        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0},
+    )
+    
+    move = {
+        "name": "fire-fang",
+        "power": 65,
+        "type": "fire",
+        "damage_class": "physical",
+    }
+    
+    field = {
+        "helping_hand": True,
+        "friend_guard": True,
+    }
+    
+    result = calculate_damage(
+        move=move,
+        attacker=attacker,
+        defender=defender,
+        level=50,
+        field=field,
+        random_range=range(85, 101),
+        debug=True,
+    )
+    
+    expected = (55, 55, 57, 57, 58, 58, 60, 60, 60, 61, 61, 63, 63, 64, 64, 66)
+    actual = tuple(result['damage_all'])
+    
+    print(f"Expected: {expected}")
+    print(f"Actual:   {actual}")
+    print(f"Match: {actual == expected}")
+    print(f"Base: {result.get('base_val')}")
+    
+    assert actual == expected
+
+
+def test_case_15():
+    """0 Atk Bulbasaur Helping Hand Solar Blade vs. 0 HP / 0 Def Bulbasaur with Friend Guard"""
+    print("\n" + "="*80)
+    print("TEST 15: 0 Atk Bulbasaur Helping Hand Solar Blade vs. 0 HP / 0 Def Bulbasaur with Friend Guard")
+    print("="*80)
+    
+    attacker = get_pokemon_stats(
+        species="bulbasaur",
+        level=50,
+        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0},
+    )
+    
+    defender = get_pokemon_stats(
+        species="bulbasaur",
+        level=50,
+        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0},
+    )
+    
+    move = {
+        "name": "solar-blade",
+        "power": 125,
+        "type": "grass",
+        "damage_class": "physical",
+    }
+    
+    field = {
+        "helping_hand": True,
+        "friend_guard": True,
+    }
+    
+    result = calculate_damage(
+        move=move,
+        attacker=attacker,
+        defender=defender,
+        level=50,
+        field=field,
+        random_range=range(85, 101),
+        debug=True,
+    )
+    
+    expected = (19, 20, 20, 20, 20, 21, 21, 21, 22, 22, 22, 22, 22, 22, 23, 23)
+    actual = tuple(result['damage_all'])
+    
+    print(f"Expected: {expected}")
+    print(f"Actual:   {actual}")
+    print(f"Match: {actual == expected}")
+    print(f"Base: {result.get('base_val')}")
+    
+    assert actual == expected
+
+
 if __name__ == "__main__":
     results = []
     
@@ -526,6 +918,14 @@ if __name__ == "__main__":
     results.append(("Test 5 - Tera Fire + Choice Band + Sun", test_case_5()))
     results.append(("Test 6 - Choice Specs + Grassy Terrain", test_case_6()))
     results.append(("Test 7 - Solar Power + Tera Fire + Sun + Grassy Terrain", test_case_7()))
+    results.append(("Test 8 - Fire Fang (no modifiers)", test_case_8()))
+    results.append(("Test 9 - Solar Blade (no modifiers)", test_case_9()))
+    results.append(("Test 10 - Fire Fang + Helping Hand", test_case_10()))
+    results.append(("Test 11 - Solar Blade + Helping Hand", test_case_11()))
+    results.append(("Test 12 - Fire Fang + Friend Guard", test_case_12()))
+    results.append(("Test 13 - Solar Blade + Friend Guard", test_case_13()))
+    results.append(("Test 14 - Fire Fang + Helping Hand + Friend Guard", test_case_14()))
+    results.append(("Test 15 - Solar Blade + Helping Hand + Friend Guard", test_case_15()))
     
     print("\n" + "="*80)
     print("SUMMARY")

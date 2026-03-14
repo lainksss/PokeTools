@@ -24,5 +24,9 @@ export const frTranslations = {
   natures: headerFr.natures,
   common: headerFr.common,
   types: headerFr.types,
-  pokemon: headerFr.pokemon
+  pokemon: headerFr.pokemon,
+  doubleEffects: {
+    helpingHand: "Coup d'Main",
+    friendGuard: 'Garde Ami'
+  }
 }

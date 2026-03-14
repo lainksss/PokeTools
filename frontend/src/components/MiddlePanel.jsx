@@ -31,6 +31,8 @@ export default function MiddlePanel({ left, right, setLeft, setRight, setResult 
   const [reflect, setReflect] = useState(false)
   const [lightScreen, setLightScreen] = useState(false)
   const [auroraVeil, setAuroraVeil] = useState(false)
+  const [helpingHand, setHelpingHand] = useState(false)
+  const [friendGuard, setFriendGuard] = useState(false)
 
   // Keep local selectors synced with parent left/right values when available
   React.useEffect(() => {
@@ -108,7 +110,9 @@ export default function MiddlePanel({ left, right, setLeft, setRight, setResult 
         aura_break: auraBreak || undefined,
         reflect: reflect || undefined,
         light_screen: lightScreen || undefined,
-        aurora_veil: auroraVeil || undefined
+        aurora_veil: auroraVeil || undefined,
+        helping_hand: helpingHand || undefined,
+        friend_guard: friendGuard || undefined
       },
       is_critical: isCritical,
       battle_mode: battleMode,
@@ -237,6 +241,28 @@ export default function MiddlePanel({ left, right, setLeft, setRight, setResult 
             aria-pressed={auroraVeil}
           >
             {t('screens.aurora') || 'Voile Aurore'}
+          </button>
+        </div>
+      </div>
+
+      <div className="form-group" role="group" aria-label={t('calculate.doubleEffects')}>
+        <div className="auras-toggle" style={{ display: 'flex', gap: '8px' }}>
+          <button
+            type="button"
+            className={`aura-button ${helpingHand ? 'active' : ''}`}
+            onClick={() => setHelpingHand(v => !v)}
+            aria-pressed={helpingHand}
+          >
+            {t('doubleEffects.helpingHand') || 'Helping Hand'}
+          </button>
+
+          <button
+            type="button"
+            className={`aura-button ${friendGuard ? 'active' : ''}`}
+            onClick={() => setFriendGuard(v => !v)}
+            aria-pressed={friendGuard}
+          >
+            {t('doubleEffects.friendGuard') || 'Friend Guard'}
           </button>
         </div>
       </div>

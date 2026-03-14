@@ -242,8 +242,15 @@ def find_threats():
                     is_critical=is_crit
                 )
 
-                damage_min = dmg_result.get("damage_min") or 0
-                damage_max = dmg_result.get("damage_max") or 0
+                # calculate_damage returns detailed rolls in `damage_all`.
+                # Keep backward compatibility with older keys if needed.
+                damage_all = dmg_result.get("damage_all") or []
+                if damage_all:
+                    damage_min = min(damage_all)
+                    damage_max = max(damage_all)
+                else:
+                    damage_min = dmg_result.get("damage_min") or dmg_result.get("min_damage") or 0
+                    damage_max = dmg_result.get("damage_max") or dmg_result.get("max_damage") or 0
 
                 # Vérifier si c'est un KO
                 is_ko = False

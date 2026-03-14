@@ -20,6 +20,8 @@ export default function Coverage() {
   const [reflect, setReflect] = useState(false)
   const [lightScreen, setLightScreen] = useState(false)
   const [auroraVeil, setAuroraVeil] = useState(false)
+  const [helpingHand, setHelpingHand] = useState(false)
+  const [friendGuard, setFriendGuard] = useState(false)
   const [progress, setProgress] = useState({ processed: 0, total: 0, coverage_found: 0 })
   const [showOnlyGuaranteed, setShowOnlyGuaranteed] = useState(false)
   const [minRolls, setMinRolls] = useState(1)
@@ -99,7 +101,9 @@ export default function Coverage() {
         aura_break: auraBreak || undefined,
         reflect: reflect || undefined,
         light_screen: lightScreen || undefined,
-        aurora_veil: auroraVeil || undefined
+        aurora_veil: auroraVeil || undefined,
+        helping_hand: helpingHand || undefined,
+        friend_guard: friendGuard || undefined
       }
       ,
       fully_evolved_only: fullyEvolvedOnly
@@ -421,6 +425,17 @@ export default function Coverage() {
               </button>
               <button type="button" className={`aura-button ${auroraVeil ? 'active' : ''}`} onClick={() => setAuroraVeil(v => !v)}>
                 {t('screens.aurora') || 'Voile Aurore'}
+              </button>
+            </div>
+          </div>
+
+          <div className="form-group" role="group" aria-label={t('calculate.doubleEffects')}>
+            <div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
+              <button type="button" className={`aura-button ${helpingHand ? 'active' : ''}`} onClick={() => setHelpingHand(v => !v)}>
+                {t('doubleEffects.helpingHand') || 'Helping Hand'}
+              </button>
+              <button type="button" className={`aura-button ${friendGuard ? 'active' : ''}`} onClick={() => setFriendGuard(v => !v)}>
+                {t('doubleEffects.friendGuard') || 'Friend Guard'}
               </button>
             </div>
           </div>
