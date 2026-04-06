@@ -841,8 +841,8 @@ def calculate_damage(
     # Ring Target
     if defender.get("ring_target") and type_mult == 0.0:
         type_mult = 1.0
-    # Scrappy
-    if attacker.get("ability") == "scrappy" or attacker.get("ability") == "minds-eye" and mv_type in ("normal", "fighting") and "ghost" in (defender.get("types") or []):
+    # Scrappy / Mind's Eye: allow Normal/Fighting moves to hit Ghosts neutrally
+    if attacker.get("ability") in ("scrappy", "minds-eye") and mv_type in ("normal", "fighting") and "ghost" in (defender.get("types") or []):
         type_mult = 1.0
     # Freeze-Dry
     if move.get("name") == "freeze-dry" and "water" in (defender.get("types") or []):

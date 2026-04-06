@@ -9,6 +9,8 @@ and ability and optionally adds stage boosts for abilities like Intrepid Sword a
 Shield.  It does *not* double‑apply the transformation logic.
 """
 
+from .data_loader import load_json
+
 # Mandatory configuration per exact Pokémon slug (checked before suffix patterns)
 _MANDATORY_CONFIGS_EXACT = {
     'zacian-crowned': {
@@ -76,11 +78,15 @@ def has_mandatory_item(pokemon_name):
 
 def force_mandatory_item(actor_data):
     """
-    Force the mandatory item, ability, and entry stage boosts on an actor if applicable.
+    Force the mandatory item, ability, and any configured entry stage boosts on an actor if applicable.
 
     For Mega/Primal forms: forces their gem item.
-    For Zacian-Crowned: forces rusted-sword + intrepid-sword ability + +1 Attack stage.
-    For Zamazenta-Crowned: forces rusted-shield + dauntless-shield ability + +1 Defense stage.
+    For Zacian-Crowned: forces rusted-sword and the Intrepid Sword ability.
+    For Zamazenta-Crowned: forces rusted-shield and the Dauntless Shield ability.
+
+    Note that any stat stage boosts granted by abilities (such as Intrepid Sword or Dauntless Shield)
+    are handled by those abilities themselves, not by this function, unless explicit `entry_stages`
+    are present in the mandatory configuration.
 
     Args:
         actor_data (dict): The actor payload (must contain 'name' key)
