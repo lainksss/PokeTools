@@ -90,6 +90,7 @@ export default function Threats() {
       },
       ko_mode: koMode,
       field: {
+        battle_mode: "double",
         weather: weather === 'none' ? null : weather,
         terrain: terrain === 'none' ? null : terrain,
         fairy_aura: fairyAura || undefined,
@@ -203,6 +204,7 @@ export default function Threats() {
       },
       ko_mode: koMode,
       field: {
+        battle_mode: "double",
         weather: weather === 'none' ? null : weather,
         terrain: terrain === 'none' ? null : terrain,
         fairy_aura: fairyAura || undefined,
@@ -280,6 +282,7 @@ export default function Threats() {
         name: defender.name
       },
       field: {
+        battle_mode: "double",
         weather: weather === 'none' ? null : weather,
         terrain: terrain === 'none' ? null : terrain,
         fairy_aura: fairyAura || undefined,
