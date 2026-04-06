@@ -1,4 +1,4 @@
-# Collects all nature and saves them to a JSON file.
+# Collects all natures and saves them to a JSON file.
 # Each nature includes which stat it boosts and which stat it lowers.
 
 # Example output (excerpt of `data/all_natures.json`):
@@ -15,58 +15,56 @@
 
 import requests
 import json
+import os
 from pathlib import Path
 import time
 
-BASE = "https://pokeapi.co/api/v2"
-NATURE_ENDPOINT = f"{BASE}/nature/"
+BASE_URL = 'https://pokeapi.co/api/v2'
+OUTPUT_PATH = 'data/all_natures.json'
 
 SESSION = requests.Session()
-SESSION.headers.update({"User-Agent": "pokemon-natures/1.0"})
+SESSION.headers.update({"User-Agent": "pokemon-natures-script/2.0"})
 
 def fetch_all_natures():
-    """Récupère la liste de toutes les natures avec leurs URLs"""
-    r = SESSION.get(NATURE_ENDPOINT, timeout=15)
-    r.raise_for_status()
-    data = r.json()
-    return data['results']
+    os.makedirs('data', exist_ok=True)
+    print("Fetching the exact number of natures...")
 
-def fetch_nature_detail(url):
-    """Récupère le buff et le nerf d'une nature à partir de son URL"""
-    r = SESSION.get(url, timeout=15)
-    r.raise_for_status()
-    data = r.json()
-    return {
-        "name": data['name'],
-        "increased_stat": data['increased_stat']['name'] if data['increased_stat'] else None,
-        "decreased_stat": data['decreased_stat']['name'] if data['decreased_stat'] else None
-    }
+    response = SESSION.get(f'{BASE_URL}/nature', timeout=15)
+    response.raise_for_status()
+    initial_request = response.json()
+    total_count = initial_request['count']
+    print(f"Found {total_count} natures. Starting data collection...")
 
-def build_natures_json(save_to="data/all_natures.json"):
-    Path("data").mkdir(exist_ok=True)
-    natures_list = fetch_all_natures()
-    print(f"Found {len(natures_list)} natures. Fetching details...")
+    response = SESSION.get(f'{BASE_URL}/nature?limit={total_count}', timeout=15)
+    response.raise_for_status()
+    data = response.json()
+    
+    natures_data = {}
 
-    natures = {}
-    for i, n in enumerate(natures_list, start=1):
-        try:
-            detail = fetch_nature_detail(n['url'])
-        except Exception as e:
-            print(f"[WARN] failed for {n['name']}: {e}. Retrying once...")
-            time.sleep(1)
-            detail = fetch_nature_detail(n['url'])
-        natures[detail['name']] = {
-            "increase": detail['increased_stat'],
-            "decrease": detail['decreased_stat']
+    for index, item in enumerate(data['results']):
+        nature_url = item['url']
+        nature_response = SESSION.get(nature_url, timeout=15)
+        nature_response.raise_for_status()
+        nature_info = nature_response.json()
+        
+        # Handle modified stats (can be None if the nature is neutral)
+        inc_stat = nature_info['increased_stat']['name'] if nature_info['increased_stat'] else None
+        dec_stat = nature_info['decreased_stat']['name'] if nature_info['decreased_stat'] else None
+
+        nature_dict = {
+            "increase": inc_stat,
+            "decrease": dec_stat
         }
-        if i % 10 == 0:
-            print(f"  -> Processed {i}/{len(natures_list)} natures")
+        natures_data[nature_info['name']] = nature_dict
+        print(f"Fetched nature: {item['name']}")
         time.sleep(0.05)
 
-    with open(save_to, "w", encoding="utf-8") as f:
-        json.dump(natures, f, indent=2, ensure_ascii=False)
-    print(f"Saved {len(natures)} natures to {save_to}")
-    return natures
+    with open(OUTPUT_PATH, 'w', encoding='utf-8') as f:
+        json.dump(natures_data, f, ensure_ascii=False, indent=2)
+    print(f"✅ All natures saved in {OUTPUT_PATH}")
 
 if __name__ == "__main__":
-    build_natures_json()
+    try:
+        fetch_all_natures()
+    except KeyboardInterrupt:
+        print("\n[INFO] Interrupted by user.")

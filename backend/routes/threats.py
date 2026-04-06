@@ -213,7 +213,8 @@ def find_threats():
                     "name": move_slug,
                     "type": move_data.get("type"),
                     "power": power,
-                    "damage_class": damage_class
+                    "damage_class": damage_class,
+                    "targets": move_data.get("targets", 1)
                 },
                 "field": field,
                 "is_critical": False
@@ -480,7 +481,8 @@ def find_threats_stream():
                         "name": move_slug,
                         "type": move_data.get("type"),
                         "power": move_data.get("power"),
-                        "damage_class": damage_class
+                        "damage_class": damage_class,
+                        "targets": move_data.get("targets", 1)
                     }
                     
                     try:
@@ -820,7 +822,8 @@ def deep_find_threats_stream():
                                     "name": move_slug,
                                     "type": move_data.get("type"),
                                     "power": power,
-                                    "damage_class": damage_class
+                                    "damage_class": damage_class,
+                                    "targets": move_data.get("targets", 1)
                                 }
 
                                 from copy import deepcopy

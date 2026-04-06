@@ -78,5 +78,25 @@
   "naive": {
     "increase": "speed",
     "decrease": "special-defense"
+  },
+  "brave": {
+    "increase": "attack",
+    "decrease": "speed"
+  },
+  "relaxed": {
+    "increase": "defense",
+    "decrease": "speed"
+  },
+  "quiet": {
+    "increase": "special-attack",
+    "decrease": "speed"
+  },
+  "sassy": {
+    "increase": "special-defense",
+    "decrease": "speed"
+  },
+  "serious": {
+    "increase": null,
+    "decrease": null
   }
 }

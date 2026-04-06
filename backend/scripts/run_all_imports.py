@@ -46,15 +46,23 @@ POST_SCRIPTS: List[Path] = [
 	SCRIPTS_DIR / "validate_mega_moves.py",
 ]
 
+# Scripts that need special arguments
+SCRIPTS_WITH_ARGS = {
+	SCRIPTS_DIR / "validate_mega_moves.py": ["--merge-mega"],
+}
+
 
 def find_existing(paths: List[Path]) -> List[Path]:
 	return [p for p in paths if p.exists()]
 
 
-def run_script(path: Path) -> int:
+def run_script(path: Path, extra_args: list | None = None) -> int:
+	cmd = [sys.executable, str(path)]
+	if extra_args:
+		cmd.extend(extra_args)
 	print(f"\n=== Running: {path.relative_to(ROOT.parent)} ===")
 	try:
-		res = subprocess.run([sys.executable, str(path)], check=False)
+		res = subprocess.run(cmd, check=False)
 		print(f"Exit code: {res.returncode}")
 		return res.returncode
 	except Exception as e:
@@ -95,7 +103,8 @@ def main(argv: List[str] | None = None) -> int:
 
 	# Run post-processing scripts
 	for p in post:
-		code = run_script(p)
+		extra_args = SCRIPTS_WITH_ARGS.get(p)
+		code = run_script(p, extra_args)
 		if code != 0:
 			print(f"Post-script failed: {p} (code {code})")
 			if not args.cont:
