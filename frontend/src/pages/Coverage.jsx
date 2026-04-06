@@ -93,6 +93,7 @@ export default function Coverage() {
       bulk_assault_vest: bulkAssaultVest,
       bulk_evoluroc: bulkEvoluroc,
       field: {
+        battle_mode: "double",
         weather: weather === 'none' ? null : weather,
         terrain: terrain === 'none' ? null : terrain
         ,
@@ -229,6 +230,7 @@ export default function Coverage() {
       moves: moves,
       ko_mode: koMode,
       field: {
+        battle_mode: "double",
         weather: weather === 'none' ? null : weather,
         terrain: terrain === 'none' ? null : terrain,
         fairy_aura: fairyAura || undefined,
