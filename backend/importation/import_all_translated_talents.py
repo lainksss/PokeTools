@@ -1,96 +1,60 @@
-# It gets all Pokémon abilities with all localized names and descriptions.
-# Exemple export (sample structure saved to data/all_ability_translations.json):
-# {
-#   "strong-jaw": {
-#     "names": {
-#       "en": "Strong Jaw",
-#       "fr": "Prognathe",
-#       "ja-Hrkt": "がんじょうあご",
-#       "de": "Titankiefer"
-#     },
-#     "descriptions": {
-#       "en": "Boosts the power of biting moves.",
-#       "fr": "Augmente la puissance des attaques de type morsure.",
-#       "es": "Aumenta la potencia de los ataques de tipo mordisco.",
-#       "ja-Hrkt": "かみつく こうげきの いりょくが あがる。"
-#     }
-#   },
-#   ...
-# }
-
-import requests
-import time
-import json
+import asyncio, json, sys
 from pathlib import Path
+import aiohttp
 
-BASE = "https://pokeapi.co/api/v2"
-ABILITY_ENDPOINT = f"{BASE}/ability?limit=200&offset=0"
-SESSION = requests.Session()
-SESSION.headers.update({"User-Agent": "pokemon-ability-translations/1.0"})
+BASE, MAX_CONCURRENT, MAX_RETRIES, BACKOFF_BASE, TIMEOUT_SECS = "https://pokeapi.co/api/v2", 25, 4, 1.5, 20
+HEADERS = {"User-Agent": "pokemon-script/3.0", "Cache-Control": "no-cache"}
 
-def fetch_all_ability_urls():
-    """Collect all ability URLs from paginated /ability endpoint."""
-    url = ABILITY_ENDPOINT
-    urls = []
-    while url:
-        r = SESSION.get(url, timeout=15)
-        r.raise_for_status()
-        data = r.json()
-        urls.extend([a["url"] for a in data["results"]])
-        url = data.get("next")
-        time.sleep(0.1)
+async def fetch_all_urls(session: aiohttp.ClientSession):
+    async with session.get(f"{BASE}/ability?limit=100000") as r: data = await r.json()
+    urls = data.get("results", [])
+    print(f"API total count : {data.get('count', len(urls))}\nURLs retrieved  : {len(urls)}")
     return urls
 
-def fetch_ability_translations(ability_url):
-    """Fetch all localized names and flavor texts for an ability."""
-    r = SESSION.get(ability_url, timeout=15)
-    r.raise_for_status()
-    data = r.json()
-
-    names = {entry["language"]["name"]: entry["name"] for entry in data["names"]}
-    descriptions = {}
-
-    # flavor_text_entries contains the translated descriptions
-    for entry in data["flavor_text_entries"]:
-        lang = entry["language"]["name"]
-        text = entry["flavor_text"].replace("\n", " ").replace("\f", " ").strip()
-        # Keep only one description per language (avoid duplicates across versions)
-        if lang not in descriptions:
-            descriptions[lang] = text
-
-    return {"names": names, "descriptions": descriptions}
-
-def build_all_ability_translations(save_to="data/all_ability_translations.json"):
-    Path("data").mkdir(exist_ok=True)
-    urls = fetch_all_ability_urls()
-    print(f"Found {len(urls)} abilities. Fetching translations...")
-
-    all_abilities = {}
-    for i, url in enumerate(urls, start=1):
-        ability_key = url.split("/")[-2]
+async def fetch_ability_translations(session: aiohttp.ClientSession, sem: asyncio.Semaphore, entry: dict):
+    url = entry["url"]
+    ability_id_str = url.rstrip("/").split("/")[-1]
+    sort_id = int(ability_id_str)
+    
+    for attempt in range(MAX_RETRIES):
         try:
-            translations = fetch_ability_translations(url)
-        except Exception as e:
-            print(f"[WARN] failed for {url}: {e}. Retrying once...")
-            time.sleep(1)
-            try:
-                translations = fetch_ability_translations(url)
-            except Exception as e2:
-                print(f"[ERROR] Skipping {ability_key}: {e2}")
-                translations = None
+            async with sem, session.get(url) as r: data = await r.json()
+            names = {e["language"]["name"]: e["name"] for e in data["names"]}
+            descriptions = {}
+            for e in data["flavor_text_entries"]:
+                lang = e["language"]["name"]
+                if lang not in descriptions: descriptions[lang] = e["flavor_text"].replace("\n", " ").replace("\f", " ").strip()
+            return sort_id, ability_id_str, {"names": names, "descriptions": descriptions}
+        except Exception: await asyncio.sleep(BACKOFF_BASE * (2 ** attempt))
+    return None
 
-        if translations:
-            all_abilities[ability_key] = translations
-        else:
-            print(f"[SKIP] No data for {ability_key}")
+async def build(save_to="data/all_ability_translations.json"):
+    Path("data").mkdir(exist_ok=True)
+    async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=TIMEOUT_SECS), headers=HEADERS) as session:
+        entries = await fetch_all_urls(session)
+        
+        # --- LA FAMEUSE CORRECTION EST ICI ---
+        sem = asyncio.Semaphore(MAX_CONCURRENT)
+        tasks = [fetch_ability_translations(session, sem, e) for e in entries]
+        # ------------------------------------
+        
+        results, done, total = {}, 0, len(tasks)
 
-        if i % 50 == 0:
-            print(f"  -> Processed {i}/{len(urls)} abilities")
-        time.sleep(0.07)
+        for coro in asyncio.as_completed(tasks):
+            res = await coro
+            done += 1
+            if res: results[res[0]] = (res[1], res[2])
+            if done % 50 == 0 or done == total: print(f"  → {done}/{total} done  ({len(results)} ok)")
 
-    with open(save_to, "w", encoding="utf-8") as f:
-        json.dump(all_abilities, f, indent=2, ensure_ascii=False)
-    print(f"Saved all ability translations to {save_to}")
+    sorted_results = dict(sorted(results.items(), key=lambda kv: kv[0]))
+    final_dict = {val[0]: val[1] for val in sorted_results.values()}
+    with open(save_to, "w", encoding="utf-8") as f: json.dump(final_dict, f, indent=2, ensure_ascii=False)
+    print(f"\n✓ Saved {len(final_dict)} ability translations → {save_to}")
+
+    for check_key, label in [("1", "ID 1"), ("2", "ID 2")]:
+        val = str(final_dict.get(check_key, "MISSING"))
+        print(f"  {label:20s} ({check_key:>12}) : {val[:55] + '...' if len(val) > 55 else val}")
 
 if __name__ == "__main__":
-    build_all_ability_translations()
+    if sys.platform == 'win32': asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    asyncio.run(build())

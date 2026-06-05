@@ -143,12 +143,12 @@
       "zh-hans": "湿气"
     },
     "descriptions": {
+      "de": "Hält alle Pokémon davon ab, zu explodieren.",
+      "es": "Evita que un Pokémon pueda autodestruirse.",
       "fr": "Empêche auto-destruction.",
       "en": "Prevents self-destruction.",
       "ja-hrkt": "だれも　ばくはつが できなくなる。",
       "ko": "누구도 폭발 할 수 없게 된다.",
-      "de": "Hält alle Pokémon davon ab, zu explodieren.",
-      "es": "Evita que un Pokémon pueda autodestruirse.",
       "it": "Impedisce le mosse autodistruttive.",
       "ja": "だれも　爆発が できなくなる。",
       "zh-hant": "透過把周圍都弄濕， 使誰都無法使用自爆等爆炸類的招式。",
@@ -273,8 +273,8 @@
       "zh-hans": "储水"
     },
     "descriptions": {
-      "en": "Restores HP if hit by a Water-type move.",
       "fr": "Change l'eau en PV.",
+      "en": "Changes water into HP.",
       "ja-hrkt": "みずを　うけると かいふくする。",
       "ko": "물을 받으면 회복한다.",
       "de": "Treffer durch Wasser-Attacken regenerieren KP.",
@@ -455,13 +455,13 @@
       "zh-hans": "引火"
     },
     "descriptions": {
-      "it": "Potenzia le proprie mosse Fuoco se se ne subisce una.",
       "fr": "Puissance monte si brûlé.",
       "en": "Powers up if hit by fire.",
       "ja-hrkt": "ほのおを　うけると ほのおわざが　つよくなる。",
       "ko": "불꽃을 받으면 불꽃 기술이 강해진다.",
       "de": "Verstärkt Feuer-Attacken, wenn von Feuer-Attacken getroffen.",
       "es": "Potencia movimientos de tipo Fuego si ha sufrido antes alguno.",
+      "it": "Potenzia le proprie mosse Fuoco se se ne subisce una.",
       "ja": "ほのおを　受けると ほのお技が　強くなる。",
       "zh-hant": "受到火屬性的招式攻擊時， 吸收火焰，讓自己使出的 火屬性招式變強。",
       "zh-hans": "受到火属性的招式攻击时， 吸收火焰，自己使出的 火属性招式会变强。"
@@ -481,14 +481,14 @@
       "zh-hans": "鳞粉"
     },
     "descriptions": {
-      "fr": "Annule les effets cumulés d'une attaque ennemie.",
+      "ja": "りんぷんに　守られて 技の　追加効果を　受けなくなる。",
+      "fr": "Empêche le cumul d'effets.",
       "en": "Prevents added effects.",
       "ja-hrkt": "わざの　ついかこうかを うけない。",
       "ko": "기술의 추가 효과를 받지 않는다.",
       "de": "Blockiert Zusatz-Effekte gegnerischer Angriffe.",
       "es": "Anula el efecto secundario del ataque sufrido.",
       "it": "Annulla gli effetti secondari delle mosse subite.",
-      "ja": "技の　追加効果を 受けない。",
       "zh-hant": "被鱗粉守護著， 不會受到招式的追加效果影響。",
       "zh-hans": "被鳞粉守护着， 不会受到招式的追加效果影响。"
     }
@@ -637,7 +637,6 @@
       "zh-hans": "神奇守护"
     },
     "descriptions": {
-      "ja": "効果バツグン　しか 当たらない。",
       "fr": "Reçoit seul. \"sup. eff.\".",
       "en": "“Super effective” hits.",
       "ja-hrkt": "こうかばつぐん　しか あたらない。",
@@ -645,6 +644,7 @@
       "de": "Nur sehr effektive Treffer richten Schaden an.",
       "es": "Solo le hacen daño los movimientos supereficaces.",
       "it": "Rende vulnerabili solo alle mosse superefficaci.",
+      "ja": "効果バツグン　しか 当たらない。",
       "zh-hant": "不可思議的力量， 只有效果絕佳的招式才會擊中自己。",
       "zh-hans": "不可思议的力量， 只有效果绝佳的招式才能击中。"
     }
@@ -663,13 +663,13 @@
       "zh-hans": "飘浮"
     },
     "descriptions": {
-      "en": "Gives full immunity to all Ground-type moves.",
+      "it": "Conferisce immunità agli attacchi  di tipo Terra.",
       "fr": "Ignore les attaques SOL.",
+      "en": "Not hit by GROUND attacks.",
       "ja-hrkt": "じめんタイプの　わざを うけない。",
       "ko": "땅타입의 기술을 받지 않는다.",
       "de": "Volle Immunität gegen alle Boden-Attacken.",
       "es": "Proporciona inmunidad frente a los ataques de tipo Tierra.",
-      "it": "Conferisce immunità dagli attacchi di tipo Terra.",
       "ja": "じめんタイプの　技を 受けない。",
       "zh-hant": "從地面浮起， 從而不會受到地面屬性招式的攻擊。",
       "zh-hans": "从地面浮起， 从而不会受到地面属性招式的攻击。"
@@ -819,10 +819,10 @@
       "zh-hans": "天恩"
     },
     "descriptions": {
-      "ko": "기술의 추가 효과가 나오기 쉽다.",
       "fr": "Favorise le cumul d'effet.",
       "en": "Promotes added effects.",
       "ja-hrkt": "わざの　ついかこうかが でやすい。",
+      "ko": "기술의 추가 효과가 나오기 쉽다.",
       "de": "Erhöht Chance auf Zusatz-Effekte.",
       "es": "Aumenta la probabilidad de que haya efectos secundarios.",
       "it": "Gli effetti secondari delle mosse sono più probabili.",
@@ -871,8 +871,8 @@
       "zh-hans": "叶绿素"
     },
     "descriptions": {
+      "en": "Boosts the Pokémon’s Speed in sunshine.",
       "fr": "Augmente vitesse au soleil.",
-      "en": "Raises SPEED in sunshine.",
       "ja-hrkt": "はれのとき　すばやさが あがる。",
       "ko": "맑을 때 스피드가 올라간다.",
       "de": "Steigert bei Sonnenschein die Initiative.",
@@ -1235,13 +1235,13 @@
       "zh-hans": "早起"
     },
     "descriptions": {
+      "it": "Il Pokémon impiega metà del tempo per risvegliarsi dal sonno rispetto agli altri.",
       "fr": "Se réveille rapidement.",
       "en": "Awakens quickly from sleep.",
       "ja-hrkt": "おきるのが　はやくなる。",
       "ko": "잠듦 상태에서 빨리 깨어난다.",
       "de": "Bewirkt, dass das Pokémon schneller wieder aufwacht.",
       "es": "El Pokémon se despierta rápidamente.",
-      "it": "Il Pokémon si risveglia rapidamente dal sonno.",
       "ja": "起きるのが　早くなる。",
       "zh-hant": "即使陷入睡眠狀態， 也能以２倍的速度提早醒來。",
       "zh-hans": "即使变为睡眠状态， 也能以２倍的速度提早醒来。"
@@ -1287,8 +1287,8 @@
       "zh-hans": "逃跑"
     },
     "descriptions": {
+      "en": "Enables a sure getaway from wild Pokémon.",
       "fr": "Améliore chances de fuite.",
-      "en": "Makes escaping easier.",
       "ja-hrkt": "やせいの　ポケモンから かならず　にげられる。",
       "ko": "야생 포켓몬으로부터 반드시 도망칠 수 있다.",
       "de": "Die Flucht vor wilden Pokémon gelingt immer.",
@@ -1391,7 +1391,7 @@
       "zh-hans": "懒惰"
     },
     "descriptions": {
-      "fr": "Lorsque le Pokémon utilise une capacité, il passe le tour suivant à paresser.",
+      "fr": "Frappe tous les 2 tours.",
       "en": "Moves only every two turns.",
       "ja-hrkt": "こうげきが　れんぞくで だせない。",
       "ko": "연속으로 공격할 수 없다.",
@@ -1443,8 +1443,8 @@
       "zh-hans": "迷人之躯"
     },
     "descriptions": {
-      "fr": "Séduit quand touché.",
       "en": "Infatuates on contact.",
+      "fr": "Séduit parfois l'ennemi au contact.",
       "ja-hrkt": "ふれると　メロメロに することがある。",
       "ko": "스치면 헤롱헤롱 상태가 될 때가 있다.",
       "de": "Kann bei Kontakt betörend wirken.",
@@ -1495,12 +1495,12 @@
       "zh-hans": "负电"
     },
     "descriptions": {
-      "es": "Potencia el At. Esp. si algún otro Pokémon tiene Más o Menos.",
       "fr": "Puissance + avec PLUS.",
       "en": "Powers up with PLUS.",
       "ja-hrkt": "プラスかマイナスがいると とくこうが　あがる。",
       "ko": "플러스나 마이너스가 있으면 특수공격이 올라간다.",
       "de": "Erhöht den Spezial-Angriff, wenn Plus oder Minus vertreten sind.",
+      "es": "Potencia el At. Esp. si algún otro Pokémon tiene Más o Menos.",
       "it": "Aumenta l’Attacco Speciale se ci sono Pokémon con Meno o Più.",
       "ja": "プラスかマイナスがいると 特攻が　あがる。",
       "zh-hant": "場上的夥伴之中， 如果有正電或負電特性的寶可夢， 自己的特攻會提高。",
@@ -1677,12 +1677,12 @@
       "zh-hans": "茂盛"
     },
     "descriptions": {
-      "en": "Powers up Grass-type moves in a pinch.",
+      "es": "Potencia los ataques de tipo Planta en un apuro.",
       "fr": "Augmente attaques PLANTE.",
+      "en": "Ups GRASS moves in a pinch.",
       "ja-hrkt": "ピンチのとき　くさの いりょくが　あがる。",
       "ko": "위급할 때 풀타입의 위력이 올라간다.",
       "de": "Erhöht in Notfällen die Stärke von Pflanzen-Attacken.",
-      "es": "Potencia los ataques de tipo Planta en un apuro.",
       "it": "Quando si è in difficoltà, potenzia le mosse di tipo Erba.",
       "ja": "ピンチのとき　くさの 威力が　あがる。",
       "zh-hant": "ＨＰ減少的時候， 草屬性的招式威力會提高。",
@@ -1703,11 +1703,11 @@
       "zh-hans": "猛火"
     },
     "descriptions": {
+      "de": "Erhöht in Notfällen die Stärke von Feuer-Attacken.",
       "fr": "Augmente attaques feu.",
       "en": "Ups FIRE moves in a pinch.",
       "ja-hrkt": "ピンチのとき　ほのおの いりょくが　あがる。",
       "ko": "위급할 때 불꽃타입의 위력이 올라간다.",
-      "de": "Erhöht in Notfällen die Stärke von Feuer-Attacken.",
       "es": "Potencia los ataques de tipo Fuego en un apuro.",
       "it": "Quando si è in difficoltà, potenzia le mosse di tipo Fuoco.",
       "ja": "ピンチのとき　ほのおの 威力が　あがる。",
@@ -1781,13 +1781,13 @@
       "zh-hans": "坚硬脑袋"
     },
     "descriptions": {
-      "it": "Protegge il Pokémon dai contraccolpi.",
-      "en": "Protects the Pokémon from recoil damage.",
       "fr": "Empêche dégâts du recul.",
+      "en": "Prevents recoil damage.",
       "ja-hrkt": "ぶつかっても はんどうを　うけない。",
       "ko": "부딪쳐도 반동을 받지 않는다.",
       "de": "Verhindert Schaden, der durch Rückstoß entsteht.",
       "es": "Impide que el Pokémon se dañe con sus movimientos.",
+      "it": "Protegge il Pokémon dai contraccolpi.",
       "ja": "ぶつかっても 反動を　受けない。",
       "zh-hant": "即使使出會受反作用力傷害的招式， ＨＰ也不會減少。",
       "zh-hans": "即使使出会受反作用力伤害的招式， ＨＰ也不会减少。"
@@ -1963,16 +1963,16 @@
       "zh-hans": "气闸"
     },
     "descriptions": {
-      "zh-hans": "所有天气的影响都会消失。",
+      "ko": "모든 날씨의 영향이 없어진다.",
       "fr": "Ignore les effets du climat.",
       "en": "Negates weather effects.",
       "ja-hrkt": "てんきの　えいきょうが なくなる。",
-      "ko": "날씨의 영향이 없어진다.",
       "de": "Hebt Wetter-Effekte auf.",
       "es": "Anula los efectos del tiempo atmosférico.",
       "it": "Neutralizza gli effetti delle condizioni atmosferiche.",
       "ja": "天気の　影響が なくなる。",
-      "zh-hant": "所有天氣的影響都會消失。"
+      "zh-hant": "所有天氣的影響都會消失。",
+      "zh-hans": "所有天气的影响都会消失。"
     }
   },
   "77": {
@@ -2093,6 +2093,7 @@
       "zh-hans": "雪隐"
     },
     "descriptions": {
+      "zh-hans": "冰雹天气时， 闪避率会提高。",
       "fr": "Augmente l'Esquive durant les tempêtes de grêle.",
       "en": "Raises evasion in a hailstorm.",
       "ja-hrkt": "てんきが　あられのとき かいひりつが　あがる。",
@@ -2101,8 +2102,7 @@
       "es": "Sube la Evasión durante una tormenta de granizo.",
       "it": "Aumenta l’elusione quando grandina.",
       "ja": "天気が　あられのとき 回避率が　あがる。",
-      "zh-hant": "天氣是冰雹時， 閃避率會提高。",
-      "zh-hans": "冰雹天气时， 闪避率会提高。"
+      "zh-hant": "天氣是冰雹時， 閃避率會提高。"
     }
   },
   "82": {
@@ -2119,10 +2119,10 @@
       "zh-hans": "贪吃鬼"
     },
     "descriptions": {
-      "ko": "나무열매를 여느 때보다 빨리 사용한다.",
-      "fr": "Permet d'utiliser plus rapidement une Baie tenue.",
+      "fr": "Encourage l'utilisation d'une Baie tenue.",
       "en": "Encourages the early use of a held Berry.",
       "ja-hrkt": "きのみを　いつもより はやく　つかう。",
+      "ko": "나무열매를 여느 때보다 빨리 사용한다.",
       "de": "Ermutigt zum frühzeitigen Einsatz von Beeren.",
       "es": "Fomenta el uso rápido de la baya que porte.",
       "it": "Favorisce l’uso anticipato di una bacca tenuta dal Pokémon.",
@@ -2301,6 +2301,8 @@
       "zh-hans": "铁拳"
     },
     "descriptions": {
+      "ja": "パンチを　使う　技の 威力が　上がる。",
+      "zh-hans": "使用拳类招式的威力会提高。",
       "fr": "Augmente la puissance des capacités coups de poing.",
       "en": "Boosts the power of punching moves.",
       "ja-hrkt": "パンチを　つかう　わざの いりょくが　あがる。",
@@ -2308,9 +2310,7 @@
       "de": "Steigert die Effektivität von Box- und Hieb-Attacken.",
       "es": "Aumenta la fuerza de los puñetazos.",
       "it": "Potenzia le mosse che utilizzano pugni.",
-      "ja": "パンチを　使う　技の 威力が　あがる。",
-      "zh-hant": "使用到拳頭的招式 威力會提高。",
-      "zh-hans": "使用拳类招式的威力会提高。"
+      "zh-hant": "使用到拳頭的招式 威力會提高。"
     }
   },
   "90": {
@@ -2613,8 +2613,8 @@
       "zh-hans": "技术高手"
     },
     "descriptions": {
-      "en": "Powers up the Pokémon’s weaker moves.",
       "fr": "Augmente la puissance des capacités les plus faibles.",
+      "en": "Powers up the Pokémon’s weaker moves.",
       "ja-hrkt": "よわい　わざの いりょくが　あがる。",
       "ko": "약한 기술의 위력이 올라간다.",
       "de": "Steigert die Effektivität von schwächeren Attacken.",
@@ -3289,12 +3289,12 @@
       "zh-hans": "紧张感"
     },
     "descriptions": {
+      "de": "Erzeugt beim Gegner Stress und hindert ihn so daran, Beeren zu konsumieren.",
+      "es": "Pone nervioso al rival y le impide usar bayas.",
       "fr": "L’ennemi stresse et ne peut plus manger de Baies.",
       "en": "Makes the foe nervous and unable to eat Berries.",
       "ja-hrkt": "あいてを　きんちょうさせ きのみを　たべさせない。",
       "ko": "상대를 긴장시켜 나무열매를 먹지 못하게 한다.",
-      "de": "Hindert den Gegner durch Stress am Beerenkonsum.",
-      "es": "Pone nervioso al rival y le impide usar bayas.",
       "it": "Il nemico viene intimidito e non può mangiare bacche.",
       "ja": "相手を　緊張させ きのみを　食べさせない。",
       "zh-hant": "讓對手感到緊張， 無法吃樹果。",
@@ -3471,9 +3471,9 @@
       "zh-hans": "重金属"
     },
     "descriptions": {
+      "ja-hrkt": "じぶんの　おもさが ２ばいに　なる。",
       "fr": "Double le poids du Pokémon.",
       "en": "Doubles the Pokémon’s weight.",
-      "ja-hrkt": "じぶんの　おもさが ２ばいに　なる。",
       "ko": "자신의 무게가 2배가 된다.",
       "de": "Verdoppelt das eigene Gewicht.",
       "es": "Duplica el peso del Pokémon.",
@@ -3783,13 +3783,13 @@
       "zh-hans": "拨沙"
     },
     "descriptions": {
-      "it": "Se c’è una tempeste di sabbia, la Velocità aumenta.",
       "fr": "Augmente la Vitesse lors des tempêtes de sable.",
       "en": "Boosts the Pokémon’s Speed in a sandstorm.",
       "ja-hrkt": "すなあらしで すばやさが　あがる。",
       "ko": "모래바람으로 스피드가 올라간다.",
       "de": "Erhöht in Sandstürmen die Initiative.",
       "es": "Aumenta la Velocidad durante las tormentas de arena.",
+      "it": "La Velocità aumenta nelle tempeste di sabbia.",
       "ja": "砂あらしで 素早さが　あがる。",
       "zh-hant": "天氣為沙暴時， 速度會提高。",
       "zh-hans": "沙暴天气时， 速度会提高。"
@@ -3887,7 +3887,6 @@
       "zh-hans": "变身者"
     },
     "descriptions": {
-      "ja": "目の前の　ポケモンに 変身　してしまう。",
       "fr": "Adopte l’apparence du Pokémon adverse.",
       "en": "It transforms itself into the Pokémon it is facing.",
       "ja-hrkt": "めのまえの　ポケモンに へんしん　してしまう。",
@@ -3895,6 +3894,7 @@
       "de": "Kämpft als Kopie seines Gegenübers.",
       "es": "Se transforma en el Pokémon que tiene enfrente.",
       "it": "Si trasforma nel Pokémon che ha davanti.",
+      "ja": "目の前の　ポケモンに 変身してしまう。",
       "zh-hant": "變身為當前面對的寶可夢。",
       "zh-hans": "变身为当前面对的宝可梦。"
     }
@@ -4329,8 +4329,8 @@
       "zh-hans": "颊囊"
     },
     "descriptions": {
-      "ko": "어떤 나무열매라도 먹으면 HP도 회복한다.",
       "ja-hrkt": "きのみを　たべると ＨＰも　かいふくする。",
+      "ko": "나무열매를 먹으면 HP도 회복한다.",
       "fr": "Rend des PV lorsque le Pokémon consomme une Baie.",
       "de": "Heilt beim Konsum von Beeren KP.",
       "es": "Recupera PS al comer bayas.",
@@ -4355,11 +4355,11 @@
       "zh-hans": "变幻自如"
     },
     "descriptions": {
+      "es": "Cambia su tipo al del movimiento que acaba de usar.",
       "ja-hrkt": "だした　わざと　おなじ タイプに　へんかする。",
       "ko": "사용한 기술과 같은 타입으로 변화한다.",
       "fr": "Le Pokémon prend le type de sa dernière capacité lancée.",
       "de": "Das Pokémon nimmt bei Einsatz einer Attacke deren Typ an.",
-      "es": "Cambia su tipo al del movimiento que acaba de usar.",
       "it": "Cambia il tipo del Pokémon in quello della mossa usata.",
       "en": "Changes the Pokémon’s type to the type of the move it’s using.",
       "ja": "だした　技と　同じ タイプに　変化する。",
@@ -4433,12 +4433,12 @@
       "zh-hans": "防弹"
     },
     "descriptions": {
+      "it": "Protegge da alcune mosse a base di proiettili e bombe.",
       "ja-hrkt": "たまや　ばくだんに あたらない。",
       "ko": "구슬이나 폭탄에 맞지 않는다.",
       "fr": "Protège de certaines capacités projetant des bombes, balles…",
       "de": "Schützt das Pokémon vor geworfenen Bomben und Kugeln.",
       "es": "No le afectan las bombas ni algunos proyectiles.",
-      "it": "Protegge da alcune mosse a base di proiettili e bombe.",
       "en": "Protects the Pokémon from some ball and bomb moves.",
       "ja": "たまや　ばくだんに 当たらない。",
       "zh-hant": "可防住對手的 球和彈類的招式。",
@@ -4589,7 +4589,7 @@
       "zh-hans": "疾风之翼"
     },
     "descriptions": {
-      "zh-hans": "ＨＰ全满时， 飞行属性的招式可以率先使出。",
+      "ja": "ＨＰが　満タン　だと ひこうタイプの　技を 先制で　出すことが　できる。",
       "ja-hrkt": "ひこうタイプの　わざが せんせいで　だせる。",
       "ko": "비행타입의 기술이 먼저 나오게 된다.",
       "fr": "Les attaques de type Vol sont prioritaires.",
@@ -4597,8 +4597,8 @@
       "es": "Da prioridad a los movimientos de tipo Volador.",
       "it": "Dà priorità alle mosse di tipo Volante.",
       "en": "Gives priority to Flying-type moves.",
-      "ja": "ひこうタイプの　技が 先制で　だせる。",
-      "zh-hant": "ＨＰ全滿時， 可以搶先在對手之前 使出飛行屬性的招式。"
+      "zh-hant": "ＨＰ全滿時， 可以搶先在對手之前 使出飛行屬性的招式。",
+      "zh-hans": "ＨＰ全满时， 飞行属性的招式可以率先使出。"
     }
   },
   "178": {
@@ -4797,11 +4797,11 @@
       "zh-hans": "亲子爱"
     },
     "descriptions": {
-      "ja-hrkt": "おやこ　２ひきで こうげきする。",
-      "ko": "부모와 자식 2마리가 공격한다.",
       "fr": "Attaque en famille.",
       "de": "Zwei Generationen setzen gemeinsam zum Angriff an.",
       "es": "Ataque en familia.",
+      "ja-hrkt": "おやこ　２ひきで こうげきする。",
+      "ko": "부모와 자식 2마리가 공격한다.",
       "it": "Il Pokémon e il suo piccolo attaccano insieme.",
       "en": "Parent and child attack together.",
       "ja": "親子　２匹で 攻撃する。",
@@ -5239,12 +5239,12 @@
       "zh-hans": "拨雪"
     },
     "descriptions": {
-      "de": "Erhöht bei Hagel die Initiative.",
-      "es": "Aumenta su Velocidad si está granizando.",
       "ja-hrkt": "てんきが　あられ　のとき すばやさが　あがる。",
       "ko": "날씨가 싸라기눈일 때 스피드가 올라간다.",
       "zh-hant": "天氣為冰雹時， 速度會提高。",
       "fr": "Augmente la Vitesse du Pokémon quand il grêle.",
+      "de": "Erhöht bei Hagel die Initiative.",
+      "es": "Aumenta su Velocidad si está granizando.",
       "it": "Se grandina, la Velocità aumenta.",
       "en": "Boosts the Pokémon’s Speed stat in a hailstorm.",
       "ja": "天気が　あられ　のとき 素早さが　上がる。",
@@ -5291,6 +5291,7 @@
       "zh-hans": "湿润之声"
     },
     "descriptions": {
+      "ja": "すべての　音技が みずタイプに　なる。",
       "ja-hrkt": "すべての　おとわざが みずタイプに　なる。",
       "ko": "모든 소리 기술이 물타입이 된다.",
       "zh-hant": "所有的聲音招式 都變為水屬性。",
@@ -5299,7 +5300,6 @@
       "es": "Hace que todos los movimientos del Pokémon basados en sonido pasen a ser de tipo Agua.",
       "it": "Le mosse basate sul suono del Pokémon con questa abilità diventano di tipo Acqua.",
       "en": "All sound-based moves become Water-type moves.",
-      "ja": "すべての　音技が みずタイプに　なる。",
       "zh-hans": "所有的声音招式 都变为水属性。"
     }
   },
@@ -5606,7 +5606,7 @@
       "ja-hrkt": "だれかが　おどりわざを　つかうと じぶんも　それに　つづいて おどりわざを　だすことが　できる。",
       "ko": "누군가 춤 기술을 쓰면 자신도 이어서 춤 기술을 쓸 수 있다.",
       "zh-hant": "當有誰使出跳舞招式時， 自己也能接著使出跳舞招式。",
-      "fr": "Augmente l'Attaque Spéciale du Pokémon lorsqu'il tombe à la moitié de ses PV à cause d'une attaque.",
+      "fr": "Si n’importe quel Pokémon utilise une capacité dansante, ce Pokémon peut se mettre aussi à danser.",
       "de": "Kann direkt im Anschluss an die Tanz-Attacke eines anderen Pokémon ebenfalls eine solche einsetzen.",
       "es": "Permite copiar inmediatamente cualquier movimiento de baile que haya usado otro Pokémon presente en el combate.",
       "it": "Permette al Pokémon di copiare immediatamente qualsiasi mossa basata sulla danza usata da un altro Pokémon in campo.",
@@ -5707,13 +5707,13 @@
       "zh-hans": "魂心"
     },
     "descriptions": {
-      "es": "Aumenta el Ataque Especial cada vez que un Pokémon cae debilitado.",
-      "it": "Aumenta l’Attacco Speciale ogni volta che un Pokémon va KO.",
       "ja-hrkt": "ポケモンが　ひんしに　なるたびに とくこうが　あがる。",
       "ko": "포켓몬이 기절할 때마다 특수공격이 올라간다.",
       "zh-hant": "每當場上有寶可夢 陷入瀕死狀態時， 特攻就會提高。",
       "fr": "Augmente l’Attaque Spéciale du Pokémon lorsqu’un autre Pokémon est mis K.O.",
       "de": "Erhöht jedes Mal, wenn ein Pokémon besiegt wird, den eigenen Spezial-Angriff.",
+      "es": "Aumenta el Ataque Especial cada vez que un Pokémon cae debilitado.",
+      "it": "Aumenta l’Attacco Speciale ogni volta che un Pokémon va KO.",
       "en": "Boosts its Sp. Atk stat every time a Pokémon faints.",
       "ja": "ポケモンが　ひんしに　なるたびに 特攻が　上がる。",
       "zh-hans": "宝可梦每次变为濒死状态时， 特攻会提高。"
@@ -5733,9 +5733,9 @@
       "zh-hans": "卷发"
     },
     "descriptions": {
-      "ja-hrkt": "こうげきで　じぶんに　ふれた　あいての すばやさを　さげる。",
       "ko": "공격으로 자신과 접촉한 상대의 스피드를 떨어뜨린다.",
       "zh-hant": "對手用攻擊接觸到自己時， 降低此對手的速度。",
+      "ja-hrkt": "こうげきで　じぶんに　ふれた　あいての すばやさを　さげる。",
       "fr": "Baisse la Vitesse de l’attaquant lorsque le Pokémon subit une attaque directe.",
       "de": "Senkt bei Berührung im Zuge eines Angriffs die Initiative des Angreifers.",
       "es": "Baja la Velocidad del rival cuando este ataca al Pokémon con un movimiento de contacto.",
@@ -5889,9 +5889,9 @@
       "zh-hans": "精神制造者"
     },
     "descriptions": {
-      "zh-hant": "出場時， 會布下精神場地。",
       "ja-hrkt": "とうじょう　したときに サイコフィールドを　はりめぐらせる。",
       "ko": "등장했을 때 사이코필드를 사용한다.",
+      "zh-hant": "出場時， 會布下精神場地。",
       "fr": "Le Pokémon crée un Champ Psychique au moment où il entre au combat.",
       "de": "Erzeugt bei Kampfantritt ein Psychofeld.",
       "es": "Crea un campo psíquico al entrar en combate.",
@@ -5915,9 +5915,9 @@
       "zh-hans": "薄雾制造者"
     },
     "descriptions": {
-      "ja-hrkt": "とうじょう　したときに ミストフィールドを　はりめぐらせる。",
       "ko": "등장했을 때 미스트필드를 사용한다.",
       "zh-hant": "出場時， 會布下薄霧場地。",
+      "ja-hrkt": "とうじょう　したときに ミストフィールドを　はりめぐらせる。",
       "fr": "Le Pokémon crée un Champ Brumeux au moment où il entre au combat.",
       "de": "Erzeugt bei Kampfantritt ein Nebelfeld.",
       "es": "Crea un campo de niebla al entrar en combate.",
@@ -5941,12 +5941,12 @@
       "zh-hans": "青草制造者"
     },
     "descriptions": {
-      "es": "Crea un campo de hierba al entrar en combate.",
       "ja-hrkt": "とうじょう　したときに グラスフィールドを　はりめぐらせる。",
       "ko": "등장했을 때 그래스필드를 사용한다.",
       "zh-hant": "出場時， 會布下青草場地。",
       "fr": "Le Pokémon crée un Champ Herbu au moment où il entre au combat.",
       "de": "Erzeugt bei Kampfantritt ein Grasfeld.",
+      "es": "Crea un campo de hierba al entrar en combate.",
       "it": "Quando il Pokémon entra in campo, lo trasforma in un Campo Erboso.",
       "en": "Turns the ground into Grassy Terrain when the Pokémon enters a battle.",
       "ja": "登場　したときに グラスフィールドを　はりめぐらせる。",
@@ -6019,9 +6019,9 @@
       "zh-hans": "棱镜装甲"
     },
     "descriptions": {
-      "zh-hant": "受到效果絕佳的攻擊時， 可減弱其威力。",
       "ja-hrkt": "こうかばつぐんに　なってしまう こうげきの　いりょくを よわめる　ことが　できる。",
       "ko": "효과가 굉장한 공격의 위력을 약하게 만든다.",
+      "zh-hant": "受到效果絕佳的攻擊時， 可減弱其威力。",
       "fr": "Réduit les dégâts subis lorsque le Pokémon est touché par une capacité super efficace.",
       "de": "Reduziert die Stärke von sehr effektiven Attacken und verringert damit den Schaden, den das Pokémon durch sie erleidet.",
       "es": "Mitiga el daño que le infligen los movimientos supereficaces.",
@@ -6123,9 +6123,9 @@
       "zh-hans": "自由者"
     },
     "descriptions": {
-      "zh-hant": "變為與自己使出的招式 相同的屬性。",
       "ja-hrkt": "じぶんが　だす　わざと おなじ　タイプに　へんかする。",
       "ko": "자신이 사용한 기술과 같은 타입으로 변화한다.",
+      "zh-hant": "變為與自己使出的招式 相同的屬性。",
       "fr": "Le Pokémon prend le type de la capacité qu’il utilise.",
       "de": "Das Pokémon nimmt bei Einsatz einer Attacke deren Typ an.",
       "es": "Cambia su tipo al del movimiento que va a usar.",
@@ -6357,10 +6357,10 @@
       "zh-hans": "吐沙"
     },
     "descriptions": {
-      "fr": "Le Pokémon déclenche une tempête de sable\\nquand il subit une attaque.",
       "ja-hrkt": "こうげきを　うけると すなあらしを　おこす。",
       "ko": "공격을 받으면 모래바람을 일으킨다.",
       "zh-hant": "受到攻擊時， 會刮起沙暴。",
+      "fr": "Le Pokémon déclenche une tempête de sable quand il subit une attaque.",
       "de": "Löst einen Sandsturm aus, wenn das Pokémon von einer Attacke erfasst wird.",
       "es": "Provoca una tormenta de arena al recibir un ataque.",
       "it": "Quando il Pokémon viene colpito da un attacco, scatena una tempesta di sabbia.",
@@ -6409,14 +6409,14 @@
       "zh-hans": "熟成"
     },
     "descriptions": {
+      "en": "Ripens Berries and doubles their effect.",
+      "fr": "Le Pokémon fait mûrir la Baie qu’il tient\\net double ainsi son effet.",
       "ja-hrkt": "じゅくせい　させることで きのみの　こうかが ばいに　なる。",
       "ko": "나무열매를 숙성시켜서 효과가 2배가 된다.",
       "zh-hant": "讓樹果成熟， 使效果變為２倍。",
-      "fr": "Le Pokémon fait mûrir la Baie qu’il tient et double ainsi son effet.",
       "de": "Verdoppelt den Effekt von Beeren, indem es sie heranreifen lässt.",
       "es": "Hace madurar las bayas, por lo que duplica sus efectos.",
       "it": "Fa maturare le bacche raddoppiandone gli effetti.",
-      "en": "Ripens Berries and doubles their effect.",
       "ja": "熟成　させることで きのみの　効果が 倍に　なる。",
       "zh-hans": "使树果成熟， 效果变为２倍。"
     }
@@ -6799,13 +6799,13 @@
       "zh-hans": "电晶体"
     },
     "descriptions": {
+      "es": "Potencia los movimientos de tipo Eléctrico.",
+      "it": "Potenzia le mosse di tipo Elettro.",
       "ja-hrkt": "でんきタイプの　わざの いりょくが　あがる。",
       "ko": "전기타입 기술의 위력이 올라간다.",
       "zh-hant": "電屬性的招式威力會提高。",
       "fr": "Augmente la puissance des attaques de type Électrik.",
       "de": "Erhöht die Stärke von Elektro-Attacken.",
-      "es": "Potencia los movimientos de tipo Eléctrico.",
-      "it": "Potenzia le mosse di tipo Elettro.",
       "en": "Powers up Electric-type moves.",
       "ja": "でんきタイプの　技の 威力が　上がる。",
       "zh-hans": "电属性的招式威力会提高。"
@@ -6953,7 +6953,8 @@
     },
     "descriptions": {
       "fr": "Lorsque le Pokémon subit une attaque directe, le talent\\nde l’attaquant est remplacé par Odeur Tenace.",
-      "en": "Contact with the Pokémon changes the attacker's Ability to Lingering Aroma."
+      "en": "Contact with the Pokémon changes the attacker's Ability to Lingering Aroma.",
+      "ja": "相手に　触られると とれないにおいが 相手に　うつってしまう。"
     }
   },
   "269": {
@@ -6968,7 +6969,8 @@
     },
     "descriptions": {
       "fr": "Le Pokémon crée un champ herbu quand\\nil subit une attaque.",
-      "en": "Turns the ground into Grassy Terrain when the Pokémon is hit by an attack."
+      "en": "Turns the ground into Grassy Terrain when the Pokémon is hit by an attack.",
+      "ja": "攻撃を　受けると グラスフィールドに　する。"
     }
   },
   "270": {
@@ -6983,7 +6985,8 @@
     },
     "descriptions": {
       "fr": "Lorsque le Pokémon est touché par une capacité de type\\nFeu, son Attaque augmente. Il ne peut pas être brûlé.",
-      "en": "Boosts the Attack stat when the Pokémon is hit by a Fire-type move. The Pokémon also cannot be burned."
+      "en": "Boosts the Attack stat when the Pokémon is hit by a Fire-type move. The Pokémon also cannot be burned.",
+      "ja": "ほのおタイプの　技を　受けると 攻撃が　上がる。 やけど状態に　ならない。"
     }
   },
   "271": {
@@ -6998,7 +7001,8 @@
     },
     "descriptions": {
       "fr": "Le Pokémon enrage s’il a moins de la moitié de ses PV\\naprès avoir subi une attaque. Sa Déf. et sa Déf. Spé.\\nbaissent, et son Atq., son Atq. Spé. et sa Vit. augmentent.",
-      "en": "When an attack causes its HP to drop to half or less, the Pokémon gets angry. This lowers its Defense and Sp. Def stats but boosts its Attack, Sp. Atk, and Speed stats."
+      "en": "When an attack causes its HP to drop to half or less, the Pokémon gets angry. This lowers its Defense and Sp. Def stats but boosts its Attack, Sp. Atk, and Speed stats.",
+      "ja": "相手の攻撃で　HPが　半分に　なると 怒りで　防御と　特防が　下がるが 攻撃　特攻　素早さが　上がる。"
     }
   },
   "272": {
@@ -7013,7 +7017,8 @@
     },
     "descriptions": {
       "fr": "Le sel pur immunise le Pokémon contre les altérations\\nde statut, et diminue de moitié les dégâts des capacités\\nde type Spectre.",
-      "en": "The Pokémon's pure salt protects it from status conditions and halves the damage taken from Ghost-type moves."
+      "en": "The Pokémon's pure salt protects it from status conditions and halves the damage taken from Ghost-type moves.",
+      "ja": "清らかな塩で　状態異常に　ならない。 ゴーストタイプの　技の ダメージを　半減させる。"
     }
   },
   "273": {
@@ -7028,7 +7033,8 @@
     },
     "descriptions": {
       "fr": "Si le Pokémon est touché par une capacité de type Feu,\\nil ne subit aucun dégât et sa Défense augmente\\nbeaucoup.",
-      "en": "The Pokémon takes no damage when hit by Fire-type moves. Instead, its Defense stat is sharply boosted."
+      "en": "The Pokémon takes no damage when hit by Fire-type moves. Instead, its Defense stat is sharply boosted.",
+      "ja": "ほのおタイプの　技を　受けると ダメージを　受けずに 防御が　ぐーんと　上がる。"
     }
   },
   "274": {
@@ -7043,7 +7049,8 @@
     },
     "descriptions": {
       "fr": "L’Attaque du Pokémon augmente si un vent arrière souffle\\nou s’il est touché par une capacité faisant appel au vent.\\nDans ce dernier cas, il ne subit aucun dégât.",
-      "en": "Boosts the Pokémon's Attack stat if Tailwind takes effect or if the Pokémon is hit by a wind move. The Pokémon also takes no damage from wind moves."
+      "en": "Boosts the Pokémon's Attack stat if Tailwind takes effect or if the Pokémon is hit by a wind move. The Pokémon also takes no damage from wind moves.",
+      "ja": "おいかぜが　吹いたり　風技を　受けると ダメージを　受けずに 攻撃が　上がる。"
     }
   },
   "275": {
@@ -7058,7 +7065,8 @@
     },
     "descriptions": {
       "fr": "L’Attaque du Pokémon augmente s’il subit l’effet du\\ntalent Intimidation. Les capacités ou objets qui font\\nchanger de Pokémon n’ont aucun effet sur lui.",
-      "en": "Boosts the Pokémon’s Attack stat if intimidated. Moves and items that would force the Pokémon to switch out also fail to work."
+      "en": "Boosts the Pokémon’s Attack stat if intimidated. Moves and items that would force the Pokémon to switch out also fail to work.",
+      "ja": "いかく　されると　攻撃が　上がる。 ポケモンを　入れ替えさせる 技や　道具が　効かない。"
     }
   },
   "276": {
@@ -7073,7 +7081,8 @@
     },
     "descriptions": {
       "fr": "Augmente la puissance des capacités de type Roche.",
-      "en": "Powers up Rock-type moves."
+      "en": "Powers up Rock-type moves.",
+      "ja": "いわタイプの　技の 威力が　上がる。"
     }
   },
   "277": {
@@ -7088,7 +7097,8 @@
     },
     "descriptions": {
       "fr": "Si le Pokémon est touché par une capacité faisant appel\\nau vent, il se charge en électricité.",
-      "en": "The Pokémon becomes charged when it is hit by a wind move, boosting the power of the next Electric-type move the Pokémon uses."
+      "en": "The Pokémon becomes charged when it is hit by a wind move, boosting the power of the next Electric-type move the Pokémon uses.",
+      "ja": "風技を　受けると じゅうでん　状態に　なる。"
     }
   },
   "278": {
@@ -7103,7 +7113,8 @@
     },
     "descriptions": {
       "fr": "Le Pokémon prend sa Forme Super en quittant\\nle combat.",
-      "en": "The Pokémon transforms into its Hero Form when it switches out."
+      "en": "The Pokémon transforms into its Hero Form when it switches out.",
+      "ja": "手持ちに　ひっこむと マイティフォルムに　変化する。"
     }
   },
   "279": {
@@ -7118,7 +7129,8 @@
     },
     "descriptions": {
       "fr": "Si un Oyacata allié est sur le terrain quand ce Pokémon\\nrejoint le combat, ce dernier entre dans sa bouche et\\ndevient son commandant.",
-      "en": "When the Pokémon enters a battle, it goes inside the mouth of an ally Dondozo if one is on the field. The Pokémon then issues commands from there."
+      "en": "When the Pokémon enters a battle, it goes inside the mouth of an ally Dondozo if one is on the field. The Pokémon then issues commands from there.",
+      "ja": "登場したとき　味方に ヘイラッシャが　いると　口の中に 入って　そこから　指令を　だす。"
     }
   },
   "280": {
@@ -7133,7 +7145,8 @@
     },
     "descriptions": {
       "fr": "Si le Pokémon subit des dégâts, il se charge\\nen électricité.",
-      "en": "The Pokémon becomes charged when it takes damage, boosting the power of the next Electric-type move the Pokémon uses."
+      "en": "The Pokémon becomes charged when it takes damage, boosting the power of the next Electric-type move the Pokémon uses.",
+      "ja": "ダメージを　受けると じゅうでん　状態に　なる。"
     }
   },
   "281": {
@@ -7148,7 +7161,8 @@
     },
     "descriptions": {
       "fr": "Quand le soleil brille ou que le Pokémon tient\\nune capsule d’Énergie Booster, sa stat la plus élevée\\naugmente.",
-      "en": "Boosts the Pokémon's most proficient stat in harsh sunlight or if the Pokémon is holding Booster Energy."
+      "en": "Boosts the Pokémon's most proficient stat in harsh sunlight or if the Pokémon is holding Booster Energy.",
+      "ja": "ブーストエナジーを　持たせるか 天気が　晴れのとき いちばん　高い能力が　上がる。"
     }
   },
   "282": {
@@ -7163,7 +7177,8 @@
     },
     "descriptions": {
       "fr": "Quand un champ électrifié est actif ou que le Pokémon\\ntient une capsule d’Énergie Booster, sa stat la plus élevée\\naugmente.",
-      "en": "Boosts the Pokémon's most proficient stat on Electric Terrain or if the Pokémon is holding Booster Energy."
+      "en": "Boosts the Pokémon's most proficient stat on Electric Terrain or if the Pokémon is holding Booster Energy.",
+      "ja": "ブーストエナジーを　持たせるか エレキフィールドのとき いちばん　高い能力が　上がる。"
     }
   },
   "283": {
@@ -7178,7 +7193,8 @@
     },
     "descriptions": {
       "fr": "Le corps en or pur et robuste du Pokémon l’immunise\\ncontre les capacités de statut des autres Pokémon.",
-      "en": "A body of pure, solid gold gives the Pokémon full immunity to other Pokémon's status moves."
+      "en": "A body of pure, solid gold gives the Pokémon full immunity to other Pokémon's status moves.",
+      "ja": "酸化せず　丈夫な　黄金の体は 相手からの　変化技を　受けない。"
     }
   },
   "284": {
@@ -7193,7 +7209,8 @@
     },
     "descriptions": {
       "fr": "Le pouvoir de l’urne qui appelle le fléau affaiblit\\nl’Attaque Spéciale de tous les autres Pokémon.",
-      "en": "The power of the Pokémon's ruinous vessel lowers the Sp. Atk stats of all Pokémon except itself."
+      "en": "The power of the Pokémon's ruinous vessel lowers the Sp. Atk stats of all Pokémon except itself.",
+      "ja": "災厄を　呼ぶ　器の力で 自分以外の　特攻が　弱くなる。"
     }
   },
   "285": {
@@ -7208,7 +7225,8 @@
     },
     "descriptions": {
       "fr": "Le pouvoir de l’épée qui appelle le fléau affaiblit\\nla Défense de tous les autres Pokémon.",
-      "en": "The power of the Pokémon's ruinous sword lowers the Defense stats of all Pokémon except itself."
+      "en": "The power of the Pokémon's ruinous sword lowers the Defense stats of all Pokémon except itself.",
+      "ja": "災厄を　呼ぶ　剣の力で 自分以外の　防御が　弱くなる。"
     }
   },
   "286": {
@@ -7223,7 +7241,8 @@
     },
     "descriptions": {
       "fr": "Le pouvoir du bois qui appelle le fléau affaiblit\\nl’Attaque de tous les autres Pokémon.",
-      "en": "The power of the Pokémon's ruinous wooden tablets lowers the Attack stats of all Pokémon except itself."
+      "en": "The power of the Pokémon's ruinous wooden tablets lowers the Attack stats of all Pokémon except itself.",
+      "ja": "災厄を　呼ぶ　木札の力で 自分以外の　攻撃が　弱くなる。"
     }
   },
   "287": {
@@ -7238,7 +7257,8 @@
     },
     "descriptions": {
       "fr": "Le pouvoir des perles qui appellent le fléau affaiblit\\nla Défense Spéciale de tous les autres Pokémon.",
-      "en": "The power of the Pokémon's ruinous beads lowers the Sp. Def stats of all Pokémon except itself."
+      "en": "The power of the Pokémon's ruinous beads lowers the Sp. Def stats of all Pokémon except itself.",
+      "ja": "災厄を　呼ぶ　勾玉の力で 自分以外の　特防が　弱くなる。"
     }
   },
   "288": {
@@ -7253,7 +7273,8 @@
     },
     "descriptions": {
       "fr": "Le Pokémon invoque le soleil quand il rejoint le combat.\\nQuand le soleil brille, une pulsation primitive augmente\\nson Attaque.",
-      "en": "Turns the sunlight harsh when the Pokémon enters a battle. The ancient pulse thrumming through the Pokémon also boosts its Attack stat in harsh sunlight."
+      "en": "Turns the sunlight harsh when the Pokémon enters a battle. The ancient pulse thrumming through the Pokémon also boosts its Attack stat in harsh sunlight.",
+      "ja": "登場したとき　天気を　晴れにする。 日差しが　強いと　古代の 鼓動により　攻撃が　高まる。"
     }
   },
   "289": {
@@ -7268,7 +7289,8 @@
     },
     "descriptions": {
       "fr": "Le Pokémon crée un champ électrifié quand il rejoint\\nle combat. Une machine du futur fait monter son Attaque\\nSpéciale si un champ électrifié est actif.",
-      "en": "Turns the ground into Electric Terrain when the Pokémon enters a battle. The futuristic engine within the Pokémon also boosts its Sp. Atk stat on Electric Terrain."
+      "en": "Turns the ground into Electric Terrain when the Pokémon enters a battle. The futuristic engine within the Pokémon also boosts its Sp. Atk stat on Electric Terrain.",
+      "ja": "登場したとき　エレキフィールドを　はる。 エレキフィールドだと　未来の 機関により　特攻が　高まる。"
     }
   },
   "290": {
@@ -7283,7 +7305,8 @@
     },
     "descriptions": {
       "fr": "Quand les stats de l’ennemi augmentent, le Pokémon\\nen profite pour augmenter ses stats de la même manière.",
-      "en": "If an opponent's stat is boosted, the Pokémon seizes the opportunity to boost the same stat for itself."
+      "en": "If an opponent's stat is boosted, the Pokémon seizes the opportunity to boost the same stat for itself.",
+      "ja": "相手の　能力が　上がったとき 自分も　便乗して 同じように　能力を　上げる。"
     }
   },
   "291": {
@@ -7298,7 +7321,8 @@
     },
     "descriptions": {
       "fr": "Quand le Pokémon mange une Baie, il la régurgite\\nà la fin du tour suivant et la mange une nouvelle fois.",
-      "en": "When the Pokémon eats a Berry, it will regurgitate that Berry at the end of the next turn and eat it one more time."
+      "en": "When the Pokémon eats a Berry, it will regurgitate that Berry at the end of the next turn and eat it one more time.",
+      "ja": "きのみを　食べると 次のターンの　終わりに　胃から 出して　もう1回だけ　食べる。"
     }
   },
   "292": {
@@ -7313,7 +7337,8 @@
     },
     "descriptions": {
       "fr": "Augmente la puissance des capacités tranchantes.",
-      "en": "Powers up slicing moves."
+      "en": "Powers up slicing moves.",
+      "ja": "相手を　切る技の 威力が　上がる。"
     }
   },
   "293": {
@@ -7328,7 +7353,8 @@
     },
     "descriptions": {
       "fr": "Quand le Pokémon entre sur le terrain, son Attaque\\net son Attaque Spéciale augmentent légèrement\\npour chaque allié mis K.O. auparavant.",
-      "en": "When the Pokémon enters a battle, its Attack and Sp. Atk stats are slightly boosted for each of the allies in its party that have already been defeated."
+      "en": "When the Pokémon enters a battle, its Attack and Sp. Atk stats are slightly boosted for each of the allies in its party that have already been defeated.",
+      "ja": "登場したとき　今まで　倒された 味方の　数が　多いほど 少しずつ　攻撃と　特攻が　上がる。"
     }
   },
   "294": {
@@ -7343,7 +7369,8 @@
     },
     "descriptions": {
       "fr": "Quand le Pokémon entre sur le terrain, il copie\\nles changements de stats de son allié.",
-      "en": "When the Pokémon enters a battle, it copies an ally's stat changes."
+      "en": "When the Pokémon enters a battle, it copies an ally's stat changes.",
+      "ja": "登場　したときに 味方の　能力変化を　コピーする。"
     }
   },
   "295": {
@@ -7358,7 +7385,8 @@
     },
     "descriptions": {
       "fr": "Quand le Pokémon est touché par une capacité\\nphysique, il répand des pics toxiques dans le camp\\nadverse.",
-      "en": "Scatters poison spikes at the feet of the opposing team when the Pokémon takes damage from physical moves."
+      "en": "Scatters poison spikes at the feet of the opposing team when the Pokémon takes damage from physical moves.",
+      "ja": "物理技で　ダメージを　受けると 相手の　足下に どくびしが　ちらばる。"
     }
   },
   "296": {
@@ -7373,7 +7401,8 @@
     },
     "descriptions": {
       "fr": "Une étrange queue recouvre la tête du Pokémon,\\nce qui empêche ce dernier et ses alliés d’être visés\\npar une capacité prioritaire.",
-      "en": "The mysterious tail covering the Pokémon's head makes opponents unable to use priority moves against the Pokémon or its allies."
+      "en": "The mysterious tail covering the Pokémon's head makes opponents unable to use priority moves against the Pokémon or its allies.",
+      "ja": "頭を包む　謎のしっぽが こちらに　むかって　先制技を 出せない　ようにする。"
     }
   },
   "297": {
@@ -7388,7 +7417,8 @@
     },
     "descriptions": {
       "fr": "Si le Pokémon est touché par une capacité de type Sol,\\nil regagne des PV au lieu de subir des dégâts.",
-      "en": "If hit by a Ground-type move, the Pokémon has its HP restored instead of taking damage."
+      "en": "If hit by a Ground-type move, the Pokémon has its HP restored instead of taking damage.",
+      "ja": "じめんタイプの　技を　受けると ダメージを　受けずに　回復する。"
     }
   },
   "298": {
@@ -7403,7 +7433,8 @@
     },
     "descriptions": {
       "fr": "Le Pokémon agit toujours plus lentement quand il utilise\\nune capacité de statut, mais il ignore les talents adverses.",
-      "en": "The Pokémon will always act more slowly when using status moves, but these moves will be unimpeded by the Ability of the target."
+      "en": "The Pokémon will always act more slowly when using status moves, but these moves will be unimpeded by the Ability of the target.",
+      "ja": "変化技を　出すとき 必ず　行動が　遅くなるが 相手の　特性に　ジャマされない。"
     }
   },
   "299": {
@@ -7420,7 +7451,8 @@
     },
     "descriptions": {
       "fr": "Le Pokémon ignore les changements d’Esquive des cibles\\net peut toucher les Pokémon Spectre avec des capacités\\nNormal ou Combat. Sa Précision ne peut pas baisser.",
-      "en": "The Pokémon ignores changes to opponents' evasiveness, its accuracy can't be lowered, and it can hit Ghost types with Normal-type and Fighting-type moves"
+      "en": "The Pokémon ignores changes to opponents' evasiveness, its accuracy can't be lowered, and it can hit Ghost types with Normal-type and Fighting-type moves",
+      "ja": "ノーマル　かくとうタイプの技を　ゴーストタイプに 当てることが　できる。　相手の　回避率の 変化を　無視し　命中率も　下げられない。"
     }
   },
   "300": {
@@ -7433,11 +7465,13 @@
       "es": "Néctar Dulce",
       "it": "Sciroppo Sublime",
       "en": "Supersweet Syrup",
+      "ja": "かんろなミツ",
       "zh-hans": "甘露之蜜"
     },
     "descriptions": {
       "fr": "La première fois que le Pokémon entre au combat,\\nune odeur de nectar sucré se répand sur le terrain,\\nce qui baisse l’Esquive de l’adversaire.",
-      "en": "Lowers the evasion of opposing Pokémon by 1 stage when first sent into battle"
+      "en": "Lowers the evasion of opposing Pokémon by 1 stage when first sent into battle",
+      "ja": "最初に　登場　したとき 甘ったるい　蜜の香りを　ふりまいて 相手の　回避率を　下げる。"
     }
   },
   "301": {
@@ -7455,7 +7489,8 @@
     },
     "descriptions": {
       "fr": "Quand il rejoint le combat, ce Pokémon est aux petits\\nsoins avec son allié et restaure quelques PV.",
-      "en": "When the Pokémon enters a battle, it showers its ally with hospitality, restoring a small amount of the ally's HP"
+      "en": "When the Pokémon enters a battle, it showers its ally with hospitality, restoring a small amount of the ally's HP",
+      "ja": "登場したとき　味方を　もてなして HPを　少しだけ　回復してあげる。"
     }
   },
   "302": {
@@ -7473,7 +7508,8 @@
     },
     "descriptions": {
       "fr": "Grâce aux pouvoirs de sa chaîne imprégnée de toxines,\\nle Pokémon peut empoisonner gravement sa cible\\nen la touchant avec une capacité.",
-      "en": "The power of the Pokémon's toxic chain may badly poison any target the Pokémon hits with a move"
+      "en": "The power of the Pokémon's toxic chain may badly poison any target the Pokémon hits with a move",
+      "ja": "毒素を　ふくんだ　鎖の力で 技を　当てた　相手を 猛毒の状態に　することが　ある。"
     }
   },
   "303": {
@@ -7491,7 +7527,8 @@
     },
     "descriptions": {
       "fr": "Le Pokémon fait briller le Masque en puisant dans ses souvenirs, ce qui augmente ses stats.",
-      "en": "The Pokémon's heart fills with memories, causing the Mask to shine and one of the Pokémon's stats to be boosted."
+      "en": "The Pokémon's heart fills with memories, causing the Mask to shine and one of the Pokémon's stats to be boosted.",
+      "ja": "思い出を 心に 宿すことで おめんを かがやかせ 自分の 能力を 上げる。"
     }
   },
   "304": {
@@ -7509,7 +7546,8 @@
     },
     "descriptions": {
       "fr": "Quand le Pokémon rejoint le combat, il absorbe\\nl’énergie alentour et prend sa Forme Téracristal.",
-      "en": "When the Pokémon enters a battle, it absorbs the energy around itself and transforms into its Terastal Form."
+      "en": "When the Pokémon enters a battle, it absorbs the energy around itself and transforms into its Terastal Form.",
+      "ja": "登場したとき　周囲の エネルギーを　吸収し テラスタルフォルムに　変化する。"
     }
   },
   "305": {
@@ -7527,7 +7565,8 @@
     },
     "descriptions": {
       "fr": "Grâce à sa carapace qui renferme l’énergie de tous\\nles types, les capacités subies par ce Pokémon quand\\nses PV sont au maximum ne sont pas très efficaces.",
-      "en": "The Pokémon's shell contains the powers of each type. All damage-dealing moves that hit the Pokémon when its HP is full will not be very effective."
+      "en": "The Pokémon's shell contains the powers of each type. All damage-dealing moves that hit the Pokémon when its HP is full will not be very effective.",
+      "ja": "全タイプの力を　秘めた甲羅は HPが　満タンの　ときに　受ける ダメージを　すべて　今ひとつに　する。"
     }
   },
   "306": {
@@ -7545,7 +7584,8 @@
     },
     "descriptions": {
       "fr": "Lorsque Terapagos prend sa Forme Stellaire, il utilise\\nson pouvoir enfoui pour annuler les effets de la météo\\net des champs actifs.",
-      "en": "When Terapagos changes into its Stellar Form, it uses its hidden powers to eliminate all effects of weather and terrain, reducing them to zero."
+      "en": "When Terapagos changes into its Stellar Form, it uses its hidden powers to eliminate all effects of weather and terrain, reducing them to zero.",
+      "ja": "テラパゴスが　ステラフォルムに　なったとき 秘められた力で　天気と　フィールドの 影響を　すべて　ゼロにする。"
     }
   },
   "307": {
@@ -7563,7 +7603,52 @@
     },
     "descriptions": {
       "fr": "Lorsque Pêchaminus empoisonne un Pokémon grâce\\nà l’une de ses capacités, ce dernier devient également\\nconfus.",
-      "en": "Pokémon poisoned by Pecharunt's moves will also become confused."
+      "en": "Pokémon poisoned by Pecharunt's moves will also become confused.",
+      "ja": "モモワロウの　技によって どく状態に　なった　相手は こんらん状態にも　なってしまう。"
+    }
+  },
+  "308": {
+    "names": {
+      "ja-hrkt": "かんつうドリル",
+      "en": "Piercing Drill",
+      "ja": "かんつうドリル"
+    },
+    "descriptions": {
+      "en": "When the Pokémon uses contact moves, it can hit even targets that are protecting themselves, dealing 1/4 of the damage that the move would otherwise deal. Everything aside from the target's protective effects is still triggered.",
+      "ja": "接触技を使う時 相手の守りの効果を無視して 本来の1/4のダメージを与える。 相手の守りの効果以外は発動される。"
+    }
+  },
+  "309": {
+    "names": {
+      "ja-hrkt": "ドラゴンスキン",
+      "en": "Dragonize",
+      "ja": "ドラゴンスキン"
+    },
+    "descriptions": {
+      "en": "The Pokémon's Normal-type moves become Dragon-type moves and their power is boosted by 20%.",
+      "ja": "ノーマルタイプの技がドラゴンタイプになり 威力が1.2倍になる。"
+    }
+  },
+  "310": {
+    "names": {
+      "ja-hrkt": "メガソーラー",
+      "en": "Mega Sol",
+      "ja": "メガソーラー"
+    },
+    "descriptions": {
+      "en": "Even when the sunlight has not turned harsh, the Pokémon can use its moves as if the weather were harsh sunlight.",
+      "ja": "天気が　にほんばれ状態でなくても にほんばれ状態として 技を使うことができる。"
+    }
+  },
+  "311": {
+    "names": {
+      "ja-hrkt": "とびだすハバネロ",
+      "en": "Spicy Spray",
+      "ja": "とびだすハバネロ"
+    },
+    "descriptions": {
+      "en": "When the Pokémon takes damage from a move, it burns the attacker.",
+      "ja": "技のダメージを受けると 相手をやけど状態にする。"
     }
   },
   "10001": {

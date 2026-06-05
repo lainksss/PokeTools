@@ -1,73 +1,52 @@
-import requests
-import json
-import time
-import random
-import string
+import asyncio, json, sys
 from pathlib import Path
+import aiohttp
 
 BASE = "https://pokeapi.co/api/v2"
-MOVE_ENDPOINT = f"{BASE}/move?limit=10000"
-SESSION = requests.Session()
-SESSION.headers.update({"User-Agent": "weight-moves-exporter/1.0"})
 
-def fetch_all_moves():
-    r = SESSION.get(MOVE_ENDPOINT, timeout=15)
-    r.raise_for_status()
-    data = r.json()
-    return data.get("results", [])
+async def fetch_all_urls(session: aiohttp.ClientSession):
+    async with session.get(f"{BASE}/move?limit=100000") as r:
+        return (await r.json()).get("results", [])
 
-def fetch_move_detail(url):
-    r = SESSION.get(url, timeout=15)
-    r.raise_for_status()
-    return r.json()
+async def fetch_weight_move(session: aiohttp.ClientSession, sem: asyncio.Semaphore, entry: dict):
+    url, name = entry["url"], entry["name"]
+    move_id = int(url.rstrip("/").split("/")[-1])
+    if name.lower() == "transform": return None
 
-def is_weight_move(move_detail):
-    """Check if the move description in English mentions 'weight'"""
-    for entry in move_detail.get("effect_entries", []):
-        if entry["language"]["name"] == "en" and "weight" in entry["effect"].lower():
-            return True
-    return False
-
-def export_weight_moves():
-    Path("data").mkdir(exist_ok=True)
-    all_moves = fetch_all_moves()
-    weight_moves = {}
-
-    print(f"Checking {len(all_moves)} moves for 'weight' scaling...")
-    for i, move in enumerate(all_moves, start=1):
+    for attempt in range(4):
         try:
-            detail = fetch_move_detail(move["url"])
-        except Exception as e:
-            print(f"[WARN] failed for {move['name']}: {e}. Retrying once...")
-            time.sleep(1)
-            detail = fetch_move_detail(move["url"])
-        
-        # Exclude "transform"
-        if detail["name"].lower() == "transform":
-            continue
+            async with sem, session.get(url) as r:
+                detail = await r.json()
+            
+            for effect_entry in detail.get("effect_entries", []):
+                if effect_entry["language"]["name"] == "en" and "weight" in effect_entry["effect"].lower():
+                    return move_id, name, {
+                        "id": detail["id"], "power": detail["power"], "type": detail["type"]["name"],
+                        "pp": detail["pp"], "accuracy": detail["accuracy"], "effect": effect_entry["effect"]
+                    }
+            return None
+        except Exception:
+            await asyncio.sleep(1.5 * (2 ** attempt))
+    return None
 
-        if is_weight_move(detail):
-            weight_moves[detail["name"]] = {
-                "id": detail["id"],
-                "power": detail["power"],
-                "type": detail["type"]["name"],
-                "pp": detail["pp"],
-                "accuracy": detail["accuracy"],
-                "effect": [e["effect"] for e in detail.get("effect_entries", []) if e["language"]["name"]=="en"][0]
-            }
+async def build(save_to="data/all_pokemon_weight_moves.json"):
+    Path("data").mkdir(exist_ok=True)
+    async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=20), headers={"Cache-Control": "no-cache"}) as session:
+        entries = await fetch_all_urls(session)
+        sem = asyncio.Semaphore(25)
+        tasks = [fetch_weight_move(session, sem, e) for e in entries]
 
-        if i % 50 == 0:
-            print(f"  -> Processed {i}/{len(all_moves)} moves")
-        time.sleep(0.05)
+        results_list = []
+        for coro in asyncio.as_completed(tasks):
+            res = await coro
+            if res: results_list.append(res)
 
-    filename = Path("data") / "all_pokemon_weight_moves.json"
-    with open(filename, "w", encoding="utf-8") as f:
-        json.dump(weight_moves, f, indent=2, ensure_ascii=False)
+        results_list.sort(key=lambda x: x[0])
+        final_dict = {name: data for _, name, data in results_list}
 
-    print(f"Saved {len(weight_moves)} weight-based moves to {filename}")
-
-
-    print(f"Saved {len(weight_moves)} weight-based moves to {filename}")
+    with open(save_to, "w", encoding="utf-8") as f:
+        json.dump(final_dict, f, indent=2, ensure_ascii=False)
 
 if __name__ == "__main__":
-    export_weight_moves()
+    if sys.platform == 'win32': asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    asyncio.run(build())
