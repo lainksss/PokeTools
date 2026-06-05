@@ -483,5 +483,13 @@
     "strong_against": [],
     "weak_against": [],
     "no_damage_to": []
+  },
+  "shadow": {
+    "weak_to": [],
+    "resistant_to": [],
+    "immune_to": [],
+    "strong_against": [],
+    "weak_against": [],
+    "no_damage_to": []
   }
 }
