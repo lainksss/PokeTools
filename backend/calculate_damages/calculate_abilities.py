@@ -405,6 +405,7 @@ def apply_ability_effects(
         "pixilate": "fairy",
         "refrigerate": "ice",
         "galvanize": "electric",
+        "dragonize": "dragon",
     }
     if atk_ability in mapping and mv_type == "normal":
         new_type = mapping[atk_ability]

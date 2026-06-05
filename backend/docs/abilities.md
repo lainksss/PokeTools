@@ -68,8 +68,9 @@ Note: the `recoil` attribute is not universally present in `moves_with_flags.jso
 	- Implementation: **Attacker-side**: determines the highest non-HP stat using stage multipliers (positive stage: 1.0 + min(stage×0.5, 4.0), negative stage: 1.0 + min(|stage|×0.33, 2.0)). Applies priority tie-breaker: attack > defense > special_attack > special_defense > speed. Boosts the corresponding attacking stat (Attack for physical moves, Special Attack for special moves) by +30% or +50% for Speed using `pokeRound()` for precise rounding. Activation requires Electric Terrain or Booster Energy (terrain takes priority if both present). **Defender-side**: applies identical stat detection logic to the defender. When Defense or Special Defense is the highest stat, boosts the corresponding defensive stat by +30% to reduce incoming damage. Both attacker and defender boosts apply independently; in battles with Electric Terrain, both can activate simultaneously, potentially offsetting each other's effects.
 	- Test: ✅ `quark-drive` covered by `backend/test/test_quark_drive.py` (5 tests: Icy Wind/Volt Switch with Electric Terrain demonstrating attacker boost, Spark with terrain + defender boost showing mutual cancellation, baseline tests without terrain).
 
-- `aerilate` / `pixilate` / `refrigerate` / `galvanize` / `normalize`: convert Normal moves to another type and apply ~20% boost (e.g., Aerilate turns Normal → Flying).
+- `aerilate` / `pixilate` / `refrigerate` / `galvanize` / `dragonize` / `normalize`: convert Normal moves to another type and apply ~20% boost (e.g., Aerilate turns Normal → Flying, Dragonize turns Normal → Dragon).
 	- Implementation: these are applied as base-power modifications (they mutate `move["type"]` and `move["power"]`) so type-effectiveness and STAB are recalculated using the mutated move and rounding matches tests.
+	- Note: `dragonize` was added to support newer Pokémon abilities.
 	- Test: ✅ `abilities` covered in `backend/test/test_aerilate_family.py`.
 
 - `protean` / `libero`: change the user's type to the move's type (marked in effects for later logic).

@@ -182,3 +182,61 @@ def test_normalize_bulbasaur_solar_beam():
     print("Expected:", expected)
     print("Actual:  ", actual)
     assert actual == expected
+
+
+def test_dragonize_dragonite_extreme_speed_with_ability():
+    # 0 Atk Dragonize Dragonite Extreme Speed vs. 0 HP / 4 Def Abomasnow in Snow
+    attacker = get_pokemon_stats(
+        species="dragonite",
+        level=50,
+        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0},
+    )
+    attacker["ability"] = "dragonize"
+
+    defender = get_pokemon_stats(
+        species="abomasnow",
+        level=50,
+        evs={"hp": 0, "attack": 0, "defense": 4, "special-attack": 0, "special-defense": 0, "speed": 0},
+    )
+
+    field = {
+        "weather": "snow",
+    }
+    move = {"name": "extreme-speed", "power": 80, "type": "normal", "damage_class": "physical"}
+
+    res = calculate_damage(move=move, attacker=attacker, defender=defender, level=50, random_range=range(85, 101), field=field)
+
+    expected = (112, 115, 119, 122, 126, 129, 133)
+    actual = tuple(res["damage_all"])
+    print("Expected (Dragonize):", expected)
+    print("Actual (Dragonize):  ", actual)
+    # Abomasnow HP should allow us to verify 3HKO (3 hits)
+
+
+def test_dragonite_extreme_speed_without_dragonize():
+    # 0 Atk Dragonite Extreme Speed vs. 0 HP / 4 Def Abomasnow in Snow (without Dragonize)
+    attacker = get_pokemon_stats(
+        species="dragonite",
+        level=50,
+        evs={"hp": 0, "attack": 0, "defense": 0, "special-attack": 0, "special-defense": 0, "speed": 0},
+    )
+    # No Dragonize ability
+
+    defender = get_pokemon_stats(
+        species="abomasnow",
+        level=50,
+        evs={"hp": 0, "attack": 0, "defense": 4, "special-attack": 0, "special-defense": 0, "speed": 0},
+    )
+
+    field = {
+        "weather": "snow",
+    }
+    move = {"name": "extreme-speed", "power": 80, "type": "normal", "damage_class": "physical"}
+
+    res = calculate_damage(move=move, attacker=attacker, defender=defender, level=50, random_range=range(85, 101), field=field)
+
+    expected = (62, 64, 66, 68, 70, 72, 74)
+    actual = tuple(res["damage_all"])
+    print("Expected (No Dragonize):", expected)
+    print("Actual (No Dragonize):  ", actual)
+    # Abomasnow HP should show this is only a possible 5HKO
