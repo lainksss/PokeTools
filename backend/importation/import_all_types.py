@@ -1,62 +1,54 @@
-# Fetch all Pokémon type relations from the PokeAPI and save them to JSON
-#
-# Example export (sample structure saved to data/all_types.json):
-# {
-#   "fire": {
-#     "weak_to": ["water", "ground", "rock"],
-#     "resistant_to": ["fire", "grass", "ice", "bug", "steel", "fairy"],
-#     "immune_to": [],
-#     "strong_against": ["grass", "ice", "bug", "steel"],
-#     "weak_against": ["water", "ground", "rock"],
-#     "no_damage_to": []
-#   },
-#   "water": {
-#     "weak_to": ["electric", "grass"],
-#     "resistant_to": ["fire", "water", "ice", "steel"],
-#     "immune_to": [],
-#     "strong_against": ["fire", "ground", "rock"],
-#     "weak_against": ["electric", "grass"],
-#     "no_damage_to": []
-#   }
-# }
-import requests
-import json
+import asyncio, json, sys
 from pathlib import Path
+import aiohttp
 
 BASE = "https://pokeapi.co/api/v2"
-TYPES_ENDPOINT = f"{BASE}/type"
 
-SESSION = requests.Session()
-SESSION.headers.update({"User-Agent": "pokemon-type-fetcher/1.0 (by you)"})
+async def fetch_all_type_entries(session: aiohttp.ClientSession):
+    async with session.get(f"{BASE}/type?limit=1000") as r:
+        return (await r.json()).get("results", [])
 
-def fetch_all_types() -> dict:
-    """Fetch all types and their offensive/defensive relations."""
-    r = SESSION.get(TYPES_ENDPOINT, timeout=15)
-    r.raise_for_status()
-    all_types = [t["name"] for t in r.json()["results"]]
+async def fetch_type_relation(session: aiohttp.ClientSession, sem: asyncio.Semaphore, entry: dict):
+    url, type_name = entry["url"], entry["name"]
+    type_id = int(url.rstrip("/").split("/")[-1])
 
-    type_chart = {}
-    for t in all_types:
-        r = SESSION.get(f"{TYPES_ENDPOINT}/{t}", timeout=15)
-        r.raise_for_status()
-        data = r.json()
-        rel = data["damage_relations"]
-        type_chart[t] = {
-            "weak_to": [d["name"] for d in rel["double_damage_from"]],
-            "resistant_to": [d["name"] for d in rel["half_damage_from"]],
-            "immune_to": [d["name"] for d in rel["no_damage_from"]],
-            "strong_against": [d["name"] for d in rel["double_damage_to"]],
-            "weak_against": [d["name"] for d in rel["half_damage_to"]],
-            "no_damage_to": [d["name"] for d in rel["no_damage_to"]],
-        }
-    return type_chart
+    for attempt in range(4):
+        try:
+            async with sem, session.get(url) as r:
+                data = await r.json()
 
-def save_to_json(data: dict, path="data/all_types.json"):
+            rel = data["damage_relations"]
+            relations = {
+                "weak_to": [d["name"] for d in rel["double_damage_from"]],
+                "resistant_to": [d["name"] for d in rel["half_damage_from"]],
+                "immune_to": [d["name"] for d in rel["no_damage_from"]],
+                "strong_against": [d["name"] for d in rel["double_damage_to"]],
+                "weak_against": [d["name"] for d in rel["half_damage_to"]],
+                "no_damage_to": [d["name"] for d in rel["no_damage_to"]],
+            }
+            return type_id, type_name, relations
+        except Exception:
+            await asyncio.sleep(1.5 * (2 ** attempt))
+    return None
+
+async def build(save_to="data/all_types.json"):
     Path("data").mkdir(exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-    print(f"Saved {len(data)} types to {path}")
+    async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=20), headers={"Cache-Control": "no-cache"}) as session:
+        entries = await fetch_all_type_entries(session)
+        sem = asyncio.Semaphore(20)
+        tasks = [fetch_type_relation(session, sem, e) for e in entries]
+
+        results_list = []
+        for coro in asyncio.as_completed(tasks):
+            res = await coro
+            if res: results_list.append(res)
+
+        results_list.sort(key=lambda x: x[0])
+        final_dict = {name: data for _, name, data in results_list}
+
+    with open(save_to, "w", encoding="utf-8") as f:
+        json.dump(final_dict, f, indent=2, ensure_ascii=False)
 
 if __name__ == "__main__":
-    types_data = fetch_all_types()
-    save_to_json(types_data)
+    if sys.platform == 'win32': asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    asyncio.run(build())

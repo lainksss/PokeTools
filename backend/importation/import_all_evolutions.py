@@ -1,101 +1,59 @@
-# Script to fetch all Pokémon and determine if they can evolve, saving the data to a JSON file.
-#
-# Example output:
-# {
-#   "bulbasaur": {
-#     "id": 1,
-#     "can_evolve": true
-#   },
-#   "pikachu": {
-#     "id": 25,
-#     "can_evolve": true
-#   },
-#   "mew": {
-#     "id": 151,
-#     "can_evolve": false
-#   }
-# }
-
-import requests
-import time
-import json
+import asyncio, json, sys
 from pathlib import Path
+import aiohttp
 
 BASE = "https://pokeapi.co/api/v2"
-POKEMON_ENDPOINT = f"{BASE}/pokemon?limit=100&offset=0"
-SESSION = requests.Session()
-SESSION.headers.update({"User-Agent": "pokemon-evolution-checker/1.2"})
+HEADERS = {"User-Agent": "pokemon-evolution-async/3.0", "Cache-Control": "no-cache"}
 
-def fetch_all_pokemon_urls():
-    url = POKEMON_ENDPOINT
-    urls = []
-    while url:
-        r = SESSION.get(url, timeout=15)
-        r.raise_for_status()
-        data = r.json()
-        urls.extend(data["results"])  # contient { "name": "bulbasaur", "url": "..." }
-        url = data.get("next")
-        time.sleep(0.1)
-    return urls
+async def fetch_all_urls(session: aiohttp.ClientSession):
+    async with session.get(f"{BASE}/pokemon?limit=100000") as r:
+        return (await r.json()).get("results", [])
 
-def can_pokemon_evolve(pokemon_name):
-    """Retourne True/False si le Pokémon peut évoluer."""
-    species_url = f"{BASE}/pokemon-species/{pokemon_name}/"
-    r = SESSION.get(species_url, timeout=15)
-    if r.status_code == 404:
-        return None  # forme alternative
-    r.raise_for_status()
-    species_data = r.json()
+def check_evolution(chain, name):
+    if chain["species"]["name"] == name: return bool(chain["evolves_to"])
+    for evo in chain["evolves_to"]:
+        res = check_evolution(evo, name)
+        if res is not None: return res
+    return None
 
-    # si aucune chaîne d’évolution n’est fournie
-    if not species_data.get("evolution_chain"):
-        return False
-
-    evo_chain_url = species_data["evolution_chain"]["url"]
-    r = SESSION.get(evo_chain_url, timeout=15)
-    r.raise_for_status()
-    chain = r.json()["chain"]
-
-    def check(chain, name):
-        if chain["species"]["name"] == name:
-            return bool(chain["evolves_to"])
-        for evo in chain["evolves_to"]:
-            res = check(evo, name)
-            if res is not None:
-                return res
-        return None
-
-    evolves = check(chain, pokemon_name)
-    return bool(evolves)
-
-def build_evolution_json(save_to="data/pokemon_evolution.json"):
-    Path("data").mkdir(exist_ok=True)
-    urls = fetch_all_pokemon_urls()
-    print(f"Found {len(urls)} Pokémon. Checking evolutions...")
-
-    all_data = {}
-    for i, entry in enumerate(urls, start=1):
-        name = entry["name"]
+async def check_can_evolve(session: aiohttp.ClientSession, sem: asyncio.Semaphore, entry: dict):
+    name, pk_id = entry["name"], int(entry["url"].rstrip("/").split("/")[-1])
+    
+    for attempt in range(4):
         try:
-            evolves = can_pokemon_evolve(name)
-            if evolves is None:
-                print(f"[SKIP] {name} (no species entry)")
-                continue
-        except Exception as e:
-            print(f"[WARN] failed for {name}: {e}. Skipping.")
-            continue
+            async with sem, session.get(f"{BASE}/pokemon-species/{name}/") as r:
+                if r.status == 404: return None
+                species_data = await r.json()
+                
+            if not species_data.get("evolution_chain"):
+                return pk_id, name, {"id": pk_id, "can_evolve": False}
+                
+            async with session.get(species_data["evolution_chain"]["url"]) as r:
+                chain_data = await r.json()
+            
+            return pk_id, name, {"id": pk_id, "can_evolve": bool(check_evolution(chain_data["chain"], name))}
+        except Exception:
+            await asyncio.sleep(1.5 * (2 ** attempt))
+    return None
 
-        all_data[name] = {
-            "id": i,
-            "can_evolve": evolves
-        }
-        if i % 50 == 0:
-            print(f"  -> Processed {i}/{len(urls)} Pokémon")
-        time.sleep(0.07)
+async def build(save_to="data/pokemon_evolution.json"):
+    Path("data").mkdir(exist_ok=True)
+    async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=20), headers=HEADERS) as session:
+        entries = await fetch_all_urls(session)
+        sem = asyncio.Semaphore(25)
+        tasks = [check_can_evolve(session, sem, e) for e in entries]
+
+        results_list = []
+        for coro in asyncio.as_completed(tasks):
+            res = await coro
+            if res: results_list.append(res)
+
+        results_list.sort(key=lambda x: x[0])
+        final_dict = {name: data for _, name, data in results_list}
 
     with open(save_to, "w", encoding="utf-8") as f:
-        json.dump(all_data, f, indent=2, ensure_ascii=False)
-    print(f"Saved Pokémon evolution data to {save_to}")
+        json.dump(final_dict, f, indent=2, ensure_ascii=False)
 
 if __name__ == "__main__":
-    build_evolution_json()
+    if sys.platform == 'win32': asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    asyncio.run(build())

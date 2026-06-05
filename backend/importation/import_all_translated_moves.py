@@ -1,80 +1,51 @@
-# It gets all the localized names for each Pokémon move (from /move endpoint).
-# Exemple export (sample structure saved to data/all_move_names_multilang.json):
-# {
-#   "tackle": {
-#     "en": "Tackle",
-#     "fr": "Charge",
-#     "ja-Hrkt": "たいあたり",
-#     "de": "Tackle"
-#   },
-#   "vine-whip": {
-#     "en": "Vine Whip",
-#     "fr": "Fouet Lianes",
-#     "ja-Hrkt": "つるのムチ"
-#   }
-# }
-
-import requests
-import time
-import json
+import asyncio, json, sys
 from pathlib import Path
+import aiohttp
 
-BASE = "https://pokeapi.co/api/v2"
-MOVE_ENDPOINT = f"{BASE}/move?limit=200&offset=0"
-SESSION = requests.Session()
-SESSION.headers.update({"User-Agent": "pokemon-move-names-multilang/1.0"})
+BASE, MAX_CONCURRENT, MAX_RETRIES, BACKOFF_BASE, TIMEOUT_SECS = "https://pokeapi.co/api/v2", 25, 4, 1.5, 20
+HEADERS = {"User-Agent": "pokemon-script/3.0", "Cache-Control": "no-cache"}
 
-def fetch_all_move_urls():
-    """Collect all move URLs from paginated /move endpoint."""
-    url = MOVE_ENDPOINT
-    urls = []
-    while url:
-        r = SESSION.get(url, timeout=15)
-        r.raise_for_status()
-        data = r.json()
-        urls.extend([m["url"] for m in data["results"]])
-        url = data.get("next")
-        time.sleep(0.1)
+async def fetch_all_urls(session: aiohttp.ClientSession):
+    async with session.get(f"{BASE}/move?limit=100000") as r: data = await r.json()
+    urls = data.get("results", [])
+    print(f"API total count : {data.get('count', len(urls))}\nURLs retrieved  : {len(urls)}")
     return urls
 
-def fetch_move_names_in_all_languages(move_url):
-    """Fetch all localized move names."""
-    r = SESSION.get(move_url, timeout=15)
-    r.raise_for_status()
-    data = r.json()
-    return {entry["language"]["name"]: entry["name"] for entry in data["names"]}
-
-def build_all_move_names(save_to="data/all_move_names_multilang.json"):
-    Path("data").mkdir(exist_ok=True)
-    urls = fetch_all_move_urls()
-    print(f"Found {len(urls)} moves. Fetching translations...")
-
-    all_moves = {}
-    for i, url in enumerate(urls, start=1):
-        move_key = url.split("/")[-2]
+async def fetch_move_names(session: aiohttp.ClientSession, sem: asyncio.Semaphore, entry: dict):
+    url = entry["url"]
+    move_id_str = url.rstrip("/").split("/")[-1]
+    sort_id = int(move_id_str)
+    
+    for attempt in range(MAX_RETRIES):
         try:
-            names = fetch_move_names_in_all_languages(url)
-        except Exception as e:
-            print(f"[WARN] failed for {url}: {e}. Retrying once...")
-            time.sleep(1)
-            try:
-                names = fetch_move_names_in_all_languages(url)
-            except Exception as e2:
-                print(f"[ERROR] Skipping {move_key}: {e2}")
-                names = None
+            async with sem, session.get(url) as r: data = await r.json()
+            return sort_id, move_id_str, {e["language"]["name"]: e["name"] for e in data["names"]}
+        except Exception: await asyncio.sleep(BACKOFF_BASE * (2 ** attempt))
+    return None
 
-        if names:
-            all_moves[move_key] = names
-        else:
-            print(f"[SKIP] No data for {move_key}")
+async def build(save_to="data/all_move_names_multilang.json"):
+    Path("data").mkdir(exist_ok=True)
+    async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=TIMEOUT_SECS), headers=HEADERS) as session:
+        entries = await fetch_all_urls(session)
+        sem = asyncio.Semaphore(MAX_CONCURRENT)
+        tasks = [fetch_move_names(session, sem, e) for e in entries]
+        results, done, total = {}, 0, len(tasks)
 
-        if i % 50 == 0:
-            print(f"  -> Processed {i}/{len(urls)} moves")
-        time.sleep(0.07)
+        for coro in asyncio.as_completed(tasks):
+            res = await coro
+            done += 1
+            if res: results[res[0]] = (res[1], res[2])
+            if done % 100 == 0 or done == total: print(f"  → {done}/{total} done  ({len(results)} ok)")
 
-    with open(save_to, "w", encoding="utf-8") as f:
-        json.dump(all_moves, f, indent=2, ensure_ascii=False)
-    print(f"Saved all move translations to {save_to}")
+    sorted_results = dict(sorted(results.items(), key=lambda kv: kv[0]))
+    final_dict = {val[0]: val[1] for val in sorted_results.values()}
+    with open(save_to, "w", encoding="utf-8") as f: json.dump(final_dict, f, indent=2, ensure_ascii=False)
+    print(f"\n✓ Saved {len(final_dict)} move translations → {save_to}")
+
+    for check_key, label in [("1", "ID 1"), ("2", "ID 2")]:
+        val = str(final_dict.get(check_key, "MISSING"))
+        print(f"  {label:20s} ({check_key:>12}) : {val[:55] + '...' if len(val) > 55 else val}")
 
 if __name__ == "__main__":
-    build_all_move_names()
+    if sys.platform == 'win32': asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    asyncio.run(build())
