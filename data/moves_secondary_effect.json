@@ -5412,10 +5412,10 @@
     "has_stat_change": false
   },
   "syrup-bomb": {
-    "has_secondary": false,
+    "has_secondary": true,
     "has_flinch": false,
     "has_ailment": false,
-    "has_stat_change": false
+    "has_stat_change": true
   },
   "ivy-cudgel": {
     "has_secondary": false,
