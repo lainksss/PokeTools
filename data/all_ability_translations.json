@@ -6944,12 +6944,15 @@
   "268": {
     "names": {
       "ja-hrkt": "とれないにおい",
+      "ko": "가시지않는향기",
+      "zh-hant": "甩不掉的氣味",
       "fr": "Odeur Tenace",
       "de": "Duftschwade",
       "es": "Olor Persistente",
       "it": "Odore Tenace",
       "en": "Lingering Aroma",
-      "ja": "とれないにおい"
+      "ja": "とれないにおい",
+      "zh-hans": "甩不掉的气味"
     },
     "descriptions": {
       "fr": "Lorsque le Pokémon subit une attaque directe, le talent\\nde l’attaquant est remplacé par Odeur Tenace.",
@@ -6960,12 +6963,17 @@
   "269": {
     "names": {
       "ja-hrkt": "こぼれダネ",
+      "ko": "넘치는씨",
+      "zh-hant": "掉出種子",
       "fr": "Semencier",
       "de": "Streusaat",
       "es": "Disemillar",
       "it": "Spargisemi",
       "en": "Seed Sower",
-      "ja": "こぼれダネ"
+      "cs": "Rozsévání",
+      "ja": "こぼれダネ",
+      "zh-hans": "掉出种子",
+      "pt-br": "Semear"
     },
     "descriptions": {
       "fr": "Le Pokémon crée un champ herbu quand\\nil subit une attaque.",
@@ -6992,12 +7000,15 @@
   "271": {
     "names": {
       "ja-hrkt": "いかりのこうら",
+      "ko": "분노의껍질",
+      "zh-hant": "憤怒甲殼",
       "fr": "Courroupace",
       "de": "Wutpanzer",
       "es": "Coraza Ira",
       "it": "Iraguscio",
       "en": "Anger Shell",
-      "ja": "いかりのこうら"
+      "ja": "いかりのこうら",
+      "zh-hans": "愤怒甲壳"
     },
     "descriptions": {
       "fr": "Le Pokémon enrage s’il a moins de la moitié de ses PV\\naprès avoir subi une attaque. Sa Déf. et sa Déf. Spé.\\nbaissent, et son Atq., son Atq. Spé. et sa Vit. augmentent.",
@@ -7008,12 +7019,15 @@
   "272": {
     "names": {
       "ja-hrkt": "きよめのしお",
+      "ko": "정화의소금",
+      "zh-hant": "潔淨之鹽",
       "fr": "Sel Purificateur",
       "de": "Läutersalz",
       "es": "Sal Purificadora",
       "it": "Sale Purificante",
       "en": "Purifying Salt",
-      "ja": "きよめのしお"
+      "ja": "きよめのしお",
+      "zh-hans": "洁净之盐"
     },
     "descriptions": {
       "fr": "Le sel pur immunise le Pokémon contre les altérations\\nde statut, et diminue de moitié les dégâts des capacités\\nde type Spectre.",
@@ -7040,12 +7054,15 @@
   "274": {
     "names": {
       "ja-hrkt": "かぜのり",
+      "ko": "바람타기",
+      "zh-hant": "乘風",
       "fr": "Aéroporté",
       "de": "Windreiter",
       "es": "Surcavientos",
       "it": "Vento Propizio",
       "en": "Wind Rider",
-      "ja": "かぜのり"
+      "ja": "かぜのり",
+      "zh-hans": "乘风"
     },
     "descriptions": {
       "fr": "L’Attaque du Pokémon augmente si un vent arrière souffle\\nou s’il est touché par une capacité faisant appel au vent.\\nDans ce dernier cas, il ne subit aucun dégât.",
@@ -7056,12 +7073,16 @@
   "275": {
     "names": {
       "ja-hrkt": "ばんけん",
+      "ko": "파수견",
+      "zh-hant": "看門犬",
       "fr": "Chien de Garde",
       "de": "Wachhund",
       "es": "Perro Guardián",
       "it": "Cane da Guardia",
       "en": "Guard Dog",
-      "ja": "ばんけん"
+      "ja": "ばんけん",
+      "zh-hans": "看门犬",
+      "pt-br": "Cão de Guarda"
     },
     "descriptions": {
       "fr": "L’Attaque du Pokémon augmente s’il subit l’effet du\\ntalent Intimidation. Les capacités ou objets qui font\\nchanger de Pokémon n’ont aucun effet sur lui.",
@@ -7072,12 +7093,15 @@
   "276": {
     "names": {
       "ja-hrkt": "いわはこび",
+      "ko": "바위나르기",
+      "zh-hant": "搬岩",
       "fr": "Porte-Roche",
       "de": "Steinträger",
       "es": "Transportarrocas",
       "it": "Portamassi",
       "en": "Rocky Payload",
-      "ja": "いわはこび"
+      "ja": "いわはこび",
+      "zh-hans": "搬岩"
     },
     "descriptions": {
       "fr": "Augmente la puissance des capacités de type Roche.",
@@ -7088,12 +7112,15 @@
   "277": {
     "names": {
       "ja-hrkt": "ふうりょくでんき",
+      "ko": "풍력발전",
+      "zh-hant": "風力發電",
       "fr": "Turbine Éolienne",
       "de": "Windkraft",
       "es": "Energía Eólica",
       "it": "Energia Eolica",
       "en": "Wind Power",
-      "ja": "ふうりょくでんき"
+      "ja": "ふうりょくでんき",
+      "zh-hans": "风力发电"
     },
     "descriptions": {
       "fr": "Si le Pokémon est touché par une capacité faisant appel\\nau vent, il se charge en électricité.",
@@ -7104,12 +7131,16 @@
   "278": {
     "names": {
       "ja-hrkt": "マイティチェンジ",
+      "ko": "마이티체인지",
+      "zh-hant": "全能變身",
       "fr": "Supermutation",
       "de": "Superwechsel",
       "es": "Cambio Heroico",
       "it": "Supercambio",
       "en": "Zero to Hero",
-      "ja": "マイティチェンジ"
+      "ja": "マイティチェンジ",
+      "zh-hans": "全能变身",
+      "pt-br": "Do Abismo ao Heroísmo"
     },
     "descriptions": {
       "fr": "Le Pokémon prend sa Forme Super en quittant\\nle combat.",
@@ -7120,12 +7151,15 @@
   "279": {
     "names": {
       "ja-hrkt": "しれいとう",
+      "ko": "사령탑",
+      "zh-hant": "發號施令",
       "fr": "Commandant",
       "de": "Kommandant",
       "es": "Comandar",
       "it": "Torre di Comando",
       "en": "Commander",
-      "ja": "しれいとう"
+      "ja": "しれいとう",
+      "zh-hans": "发号施令"
     },
     "descriptions": {
       "fr": "Si un Oyacata allié est sur le terrain quand ce Pokémon\\nrejoint le combat, ce dernier entre dans sa bouche et\\ndevient son commandant.",
@@ -7136,12 +7170,17 @@
   "280": {
     "names": {
       "ja-hrkt": "でんきにかえる",
+      "ko": "전기로바꾸기",
+      "zh-hant": "電力轉換",
       "fr": "Grecharge",
       "de": "Dynamo",
       "es": "Dinamo",
       "it": "Convertivolt",
       "en": "Electromorphosis",
-      "ja": "でんきにかえる"
+      "cs": "Elektromorfóza",
+      "ja": "でんきにかえる",
+      "zh-hans": "电力转换",
+      "pt-br": "Eletromorfose"
     },
     "descriptions": {
       "fr": "Si le Pokémon subit des dégâts, il se charge\\nen électricité.",
@@ -7152,12 +7191,16 @@
   "281": {
     "names": {
       "ja-hrkt": "こだいかっせい",
+      "ko": "고대활성",
+      "zh-hant": "古代活性",
       "fr": "Paléosynthèse",
       "de": "Paläosynthese",
       "es": "Paleosíntesis",
       "it": "Paleoattivazione",
       "en": "Protosynthesis",
-      "ja": "こだいかっせい"
+      "ja": "こだいかっせい",
+      "zh-hans": "古代活性",
+      "pt-br": "Protossíntese"
     },
     "descriptions": {
       "fr": "Quand le soleil brille ou que le Pokémon tient\\nune capsule d’Énergie Booster, sa stat la plus élevée\\naugmente.",
@@ -7184,12 +7227,15 @@
   "283": {
     "names": {
       "ja-hrkt": "おうごんのからだ",
+      "ko": "황금몸",
+      "zh-hant": "黃金之軀",
       "fr": "Corps en Or",
       "de": "Goldkörper",
       "es": "Cuerpo Áureo",
       "it": "Corpo Aureo",
       "en": "Good as Gold",
-      "ja": "おうごんのからだ"
+      "ja": "おうごんのからだ",
+      "zh-hans": "黄金之躯"
     },
     "descriptions": {
       "fr": "Le corps en or pur et robuste du Pokémon l’immunise\\ncontre les capacités de statut des autres Pokémon.",
@@ -7200,12 +7246,15 @@
   "284": {
     "names": {
       "ja-hrkt": "わざわいのうつわ",
+      "ko": "재앙의그릇",
+      "zh-hant": "災禍之鼎",
       "fr": "Urne du Fléau",
       "de": "Unheilsgefäß",
       "es": "Caldero Debacle",
       "it": "Vaso Nefasto",
       "en": "Vessel of Ruin",
-      "ja": "わざわいのうつわ"
+      "ja": "わざわいのうつわ",
+      "zh-hans": "灾祸之鼎"
     },
     "descriptions": {
       "fr": "Le pouvoir de l’urne qui appelle le fléau affaiblit\\nl’Attaque Spéciale de tous les autres Pokémon.",
@@ -7216,12 +7265,15 @@
   "285": {
     "names": {
       "ja-hrkt": "わざわいのつるぎ",
+      "ko": "재앙의검",
+      "zh-hant": "災禍之劍",
       "fr": "Épée du Fléau",
       "de": "Unheilsschwert",
       "es": "Espada Debacle",
       "it": "Spada Nefasta",
       "en": "Sword of Ruin",
-      "ja": "わざわいのつるぎ"
+      "ja": "わざわいのつるぎ",
+      "zh-hans": "灾祸之剑"
     },
     "descriptions": {
       "fr": "Le pouvoir de l’épée qui appelle le fléau affaiblit\\nla Défense de tous les autres Pokémon.",
@@ -7232,12 +7284,15 @@
   "286": {
     "names": {
       "ja-hrkt": "わざわいのおふだ",
+      "ko": "재앙의목간",
+      "zh-hant": "災禍之簡",
       "fr": "Bois du Fléau",
       "de": "Unheilstafeln",
       "es": "Tablilla Debacle",
       "it": "Amuleto Nefasto",
       "en": "Tablets of Ruin",
-      "ja": "わざわいのおふだ"
+      "ja": "わざわいのおふだ",
+      "zh-hans": "灾祸之简"
     },
     "descriptions": {
       "fr": "Le pouvoir du bois qui appelle le fléau affaiblit\\nl’Attaque de tous les autres Pokémon.",
@@ -7248,12 +7303,15 @@
   "287": {
     "names": {
       "ja-hrkt": "わざわいのたま",
+      "ko": "재앙의구슬",
+      "zh-hant": "災禍之玉",
       "fr": "Perles du Fléau",
       "de": "Unheilsjuwelen",
       "es": "Abalorio Debacle",
       "it": "Monile Nefasto",
       "en": "Beads of Ruin",
-      "ja": "わざわいのたま"
+      "ja": "わざわいのたま",
+      "zh-hans": "灾祸之玉"
     },
     "descriptions": {
       "fr": "Le pouvoir des perles qui appellent le fléau affaiblit\\nla Défense Spéciale de tous les autres Pokémon.",
@@ -7280,12 +7338,16 @@
   "289": {
     "names": {
       "ja-hrkt": "ハドロンエンジン",
+      "ko": "하드론엔진",
+      "zh-hant": "強子引擎",
       "fr": "Moteur à Hadrons",
       "de": "Hadronen-Motor",
       "es": "Motor Hadrónico",
       "it": "Motore Adronico",
       "en": "Hadron Engine",
-      "ja": "ハドロンエンジン"
+      "ja": "ハドロンエンジン",
+      "zh-hans": "强子引擎",
+      "pt-br": "Motor Hadrônico"
     },
     "descriptions": {
       "fr": "Le Pokémon crée un champ électrifié quand il rejoint\\nle combat. Une machine du futur fait monter son Attaque\\nSpéciale si un champ électrifié est actif.",
@@ -7312,12 +7374,15 @@
   "291": {
     "names": {
       "ja-hrkt": "はんすう",
+      "ko": "되새김질",
+      "zh-hant": "反芻",
       "fr": "Ruminant",
       "de": "Wiederkäuer",
       "es": "Rumia",
       "it": "Ruminante",
       "en": "Cud Chew",
-      "ja": "はんすう"
+      "ja": "はんすう",
+      "zh-hans": "反刍"
     },
     "descriptions": {
       "fr": "Quand le Pokémon mange une Baie, il la régurgite\\nà la fin du tour suivant et la mange une nouvelle fois.",
@@ -7328,12 +7393,15 @@
   "292": {
     "names": {
       "ja-hrkt": "きれあじ",
+      "ko": "예리함",
+      "zh-hant": "鋒銳",
       "fr": "Incisif",
       "de": "Scharfkantig",
       "es": "Cortante",
       "it": "Affilama",
       "en": "Sharpness",
-      "ja": "きれあじ"
+      "ja": "きれあじ",
+      "zh-hans": "锋锐"
     },
     "descriptions": {
       "fr": "Augmente la puissance des capacités tranchantes.",
@@ -7344,12 +7412,16 @@
   "293": {
     "names": {
       "ja-hrkt": "そうだいしょう",
+      "ko": "총대장",
+      "zh-hant": "大將",
       "fr": "Général Suprême",
       "de": "Feldherr",
       "es": "General Supremo",
       "it": "Generale Supremo",
       "en": "Supreme Overlord",
-      "ja": "そうだいしょう"
+      "ja": "そうだいしょう",
+      "zh-hans": "大将",
+      "pt-br": "General Supremo"
     },
     "descriptions": {
       "fr": "Quand le Pokémon entre sur le terrain, son Attaque\\net son Attaque Spéciale augmentent légèrement\\npour chaque allié mis K.O. auparavant.",
@@ -7360,12 +7432,15 @@
   "294": {
     "names": {
       "ja-hrkt": "きょうえん",
+      "ko": "협연",
+      "zh-hant": "同台共演",
       "fr": "Collab",
       "de": "Synchronauftritt",
       "es": "Unísono",
       "it": "Coprotagonismo",
       "en": "Costar",
-      "ja": "きょうえん"
+      "ja": "きょうえん",
+      "zh-hans": "同台共演"
     },
     "descriptions": {
       "fr": "Quand le Pokémon entre sur le terrain, il copie\\nles changements de stats de son allié.",
@@ -7376,12 +7451,16 @@
   "295": {
     "names": {
       "ja-hrkt": "どくげしょう",
+      "ko": "독치장",
+      "zh-hant": "毒滿地",
       "fr": "Dépôt Toxique",
       "de": "Giftbelag",
       "es": "Capa Tóxica",
       "it": "Mantossina",
       "en": "Toxic Debris",
-      "ja": "どくげしょう"
+      "ja": "どくげしょう",
+      "zh-hans": "毒满地",
+      "pt-br": "Detritos Tóxicos"
     },
     "descriptions": {
       "fr": "Quand le Pokémon est touché par une capacité\\nphysique, il répand des pics toxiques dans le camp\\nadverse.",
@@ -7392,12 +7471,16 @@
   "296": {
     "names": {
       "ja-hrkt": "テイルアーマー",
+      "ko": "테일아머",
+      "zh-hant": "尾甲",
       "fr": "Armure Caudale",
       "de": "Schweifrüstung",
       "es": "Cola Armadura",
       "it": "Codarmatura",
       "en": "Armor Tail",
-      "ja": "テイルアーマー"
+      "ja": "テイルアーマー",
+      "zh-hans": "尾甲",
+      "pt-br": "Cauda de Armadura"
     },
     "descriptions": {
       "fr": "Une étrange queue recouvre la tête du Pokémon,\\nce qui empêche ce dernier et ses alliés d’être visés\\npar une capacité prioritaire.",
@@ -7408,12 +7491,15 @@
   "297": {
     "names": {
       "ja-hrkt": "どしょく",
+      "ko": "흙먹기",
+      "zh-hant": "食土",
       "fr": "Absorbe-Terre",
       "de": "Bodenschmaus",
       "es": "Geofagia",
       "it": "Mangiaterra",
       "en": "Earth Eater",
-      "ja": "どしょく"
+      "ja": "どしょく",
+      "zh-hans": "食土"
     },
     "descriptions": {
       "fr": "Si le Pokémon est touché par une capacité de type Sol,\\nil regagne des PV au lieu de subir des dégâts.",
@@ -7424,12 +7510,15 @@
   "298": {
     "names": {
       "ja-hrkt": "きんしのちから",
+      "ko": "균사의힘",
+      "zh-hant": "菌絲之力",
       "fr": "Force Fongique",
       "de": "Myzelienkraft",
       "es": "Poder Fúngico",
       "it": "Micoforza",
       "en": "Mycelium Might",
-      "ja": "きんしのちから"
+      "ja": "きんしのちから",
+      "zh-hans": "菌丝之力"
     },
     "descriptions": {
       "fr": "Le Pokémon agit toujours plus lentement quand il utilise\\nune capacité de statut, mais il ignore les talents adverses.",
@@ -7443,8 +7532,9 @@
       "ko": "심안",
       "zh-hant": "心眼",
       "fr": "Œil Révélateur",
-      "es": "Ojo Mental ",
-      "it": "Occhio Interiore ",
+      "de": "Geistiges Auge",
+      "es": "Ojo Mental",
+      "it": "Occhio Interiore",
       "en": "Mind’s Eye",
       "ja": "しんがん",
       "zh-hans": "心眼"
@@ -7610,8 +7700,16 @@
   "308": {
     "names": {
       "ja-hrkt": "かんつうドリル",
+      "ko": "관통드릴",
+      "zh-hant": "貫穿鑽",
+      "fr": "Transperceuse",
+      "de": "Stichbohrer",
+      "es": "Turbotaladro",
+      "it": "Punta Perforante",
       "en": "Piercing Drill",
-      "ja": "かんつうドリル"
+      "ja": "かんつうドリル",
+      "zh-hans": "贯穿钻",
+      "pt-br": "Broca Pervasiva"
     },
     "descriptions": {
       "en": "When the Pokémon uses contact moves, it can hit even targets that are protecting themselves, dealing 1/4 of the damage that the move would otherwise deal. Everything aside from the target's protective effects is still triggered.",
@@ -7621,8 +7719,15 @@
   "309": {
     "names": {
       "ja-hrkt": "ドラゴンスキン",
+      "ko": "드래곤스킨",
+      "zh-hant": "龍皮膚",
+      "fr": "Peau Draconique",
+      "de": "Drachenschicht",
+      "es": "Piel Dragontina",
+      "it": "Pelledrago",
       "en": "Dragonize",
-      "ja": "ドラゴンスキン"
+      "ja": "ドラゴンスキン",
+      "zh-hans": "龙皮肤"
     },
     "descriptions": {
       "en": "The Pokémon's Normal-type moves become Dragon-type moves and their power is boosted by 20%.",
@@ -7632,8 +7737,15 @@
   "310": {
     "names": {
       "ja-hrkt": "メガソーラー",
+      "ko": "메가솔라",
+      "zh-hant": "超級日光",
+      "fr": "Méga-Soleil",
+      "de": "Mega-Solarladung",
+      "es": "Megasolar",
+      "it": "Megasolar",
       "en": "Mega Sol",
-      "ja": "メガソーラー"
+      "ja": "メガソーラー",
+      "zh-hans": "超级日光"
     },
     "descriptions": {
       "en": "Even when the sunlight has not turned harsh, the Pokémon can use its moves as if the weather were harsh sunlight.",
@@ -7643,8 +7755,15 @@
   "311": {
     "names": {
       "ja-hrkt": "とびだすハバネロ",
+      "ko": "하바네로분출",
+      "zh-hant": "辣椒噴發",
+      "fr": "Habanéruption",
+      "de": "Chilispritzer",
+      "es": "Salpicante",
+      "it": "Spargipiccante",
       "en": "Spicy Spray",
-      "ja": "とびだすハバネロ"
+      "ja": "とびだすハバネロ",
+      "zh-hans": "辣椒喷发"
     },
     "descriptions": {
       "en": "When the Pokémon takes damage from a move, it burns the attacker.",
