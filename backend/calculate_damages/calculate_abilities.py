@@ -244,6 +244,11 @@ def apply_ability_effects(
             A = float(A) * 1.5
             effects["solar_power"] = True
 
+    # Fire Mane: Fire-type moves use 1.5x Attack or Special Attack.
+    if atk_ability == "fire-mane" and str(mv_type or "").lower() == "fire":
+        A = float(A) * 1.5
+        effects["fire_mane"] = True
+
     # Orichalcum Pulse: boost Attack by 5461/4096 (~1.333) under harsh sunlight for physical moves
     # This boost applies even with Utility Umbrella
     if atk_ability == "orichalcum-pulse" and category == "physical":

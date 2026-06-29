@@ -19486,7 +19486,7 @@
       "speed": 55
     }
   },
-  "meowstic-mega": {
+  "meowstic-male-mega": {
     "id": 10314,
     "types": [
       "psychic"
@@ -19663,5 +19663,10 @@
       "special-defense": 101,
       "speed": 87
     }
+  },
+  "meowstic-female-mega": {
+    "id": 10326,
+    "types": [],
+    "base_stats": {}
   }
 }

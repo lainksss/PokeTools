@@ -52,6 +52,10 @@ Note: the `recoil` attribute is not universally present in `moves_with_flags.jso
 - `solar-power`: +50% Special Attack in harsh sunlight for special moves.
 	- Test: ✅ Unit tests reference `solar-power` in `backend/test/test_calcs.py`.
 
+- `fire-mane`: +50% Attack or Special Attack for Fire-type moves.
+	- Implementation: applied as a direct attacking stat modifier (`A *= 1.5`) before base damage is computed, so the boost affects physical and special Fire moves through the standard Attack/Special Attack damage path.
+	- Test: covered by `backend/test/test_fire_mane.py` (Mega Pyroar Heat Wave vs. Aegislash-Shield with/without Fire Mane in sun).
+
 - `hadron-engine`: +33% (factor 5461/4096) Special Attack in Electric Terrain for special moves. Signature ability of Miraidon.
 	- Implementation: checks if the user has the ability, terrain is Electric/Electric-Terrain, and move is special. When all conditions are met, the Special Attack stat is multiplied by 5461/4096 using `pokeRound()` for precise rounding.
 	- Test: ✅ `hadron-engine` covered by `backend/test/test_hadron_engine.py` (Volt Switch & Draco Meteor cases with/without Electric Terrain).
@@ -193,13 +197,13 @@ Note: `sniper` and other crit-related flags are set by ability handling and used
 **Recently Tested (25 tests, ✅):**
 - Damage reduction abilities: `multiscale`, `shadow-shield`, `thick-fat`, `tera-shell`, `solid-rock`, `filter`, `prism-armor`
 - Critical mechanics: `merciless`, `battle-armor`, `shell-armor`
-- Stat-boosting abilities: `hadron-engine`, `orichalcum-pulse`, `protosynthesis`, `quark-drive` (Flutter Mane, Iron Bundle; multi-target move mechanics validated; defender-side stat boosts for Quark Drive)
+- Stat-boosting abilities: `fire-mane`, `hadron-engine`, `orichalcum-pulse`, `protosynthesis`, `quark-drive` (Flutter Mane, Iron Bundle; multi-target move mechanics validated; defender-side stat boosts for Quark Drive)
 
 **Other Fully Tested (✅):**
 - Power modifiers: `huge-power`, `sheer-force`, `tough-claws`, `strong-jaw`, `technician`, `iron-fist`, `reckless`, `steelworker`, `steely-spirit`
 - Type conversions: `aerilate`, `pixilate`, `refrigerate`, `galvanize`, `normalize`
 - Type immunity/absorption: `water-absorb`, `volt-absorb`, `dry-skin`, `flash-fire`, `lightning-rod`, `storm-drain`, `earth-eater`, `sap-sipper`, `bulletproof`, `motor-drive`, `soundproof`, `cacophony`, `wind-rider`
-- Special mechanics: `levitate`, `protean`, `libero`, `wonder-guard`, `sturdy`, `solar-power`, `guts`, `hadron-engine`, `orichalcum-pulse`
+- Special mechanics: `levitate`, `protean`, `libero`, `wonder-guard`, `sturdy`, `solar-power`, `fire-mane`, `guts`, `hadron-engine`, `orichalcum-pulse`
 
 **Not Yet Tested (❌):**
 - Type boost at low HP: `blaze`, `torrent`, `overgrow`, `swarm`
