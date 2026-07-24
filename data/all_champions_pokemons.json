@@ -1,0 +1,3772 @@
+[
+  {
+    "ndex": "3",
+    "name": "Venusaur",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "6",
+    "name": "Charizard",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "9",
+    "name": "Blastoise",
+    "form": "",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "15",
+    "name": "Beedrill",
+    "form": "",
+    "type1": "Bug",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "18",
+    "name": "Pidgeot",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "24",
+    "name": "Arbok",
+    "form": "",
+    "type1": "Poison",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "25",
+    "name": "Pikachu",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Yes (Regular form only)",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "26",
+    "name": "Raichu",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "26",
+    "name": "Raichu",
+    "form": "Alolan Form",
+    "type1": "Electric",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "36",
+    "name": "Clefable",
+    "form": "",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "38",
+    "name": "Ninetales",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "38",
+    "name": "Ninetales",
+    "form": "Alolan Form",
+    "type1": "Ice",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "45",
+    "name": "Vileplume",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main"
+  },
+  {
+    "ndex": "59",
+    "name": "Arcanine",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "59",
+    "name": "Arcanine",
+    "form": "Hisuian Form",
+    "type1": "Fire",
+    "type2": "Rock",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "65",
+    "name": "Alakazam",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "68",
+    "name": "Machamp",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "71",
+    "name": "Victreebel",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "80",
+    "name": "Slowbro",
+    "form": "",
+    "type1": "Water",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "80",
+    "name": "Slowbro",
+    "form": "Galarian Form",
+    "type1": "Poison",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "94",
+    "name": "Gengar",
+    "form": "",
+    "type1": "Ghost",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "115",
+    "name": "Kangaskhan",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "121",
+    "name": "Starmie",
+    "form": "",
+    "type1": "Water",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "127",
+    "name": "Pinsir",
+    "form": "",
+    "type1": "Bug",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "128",
+    "name": "Tauros",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "128",
+    "name": "Tauros",
+    "form": "Paldean Form(Combat Breed)",
+    "type1": "Fighting",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "128",
+    "name": "Tauros",
+    "form": "Paldean Form(Blaze Breed)",
+    "type1": "Fighting",
+    "type2": "Fire",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "128",
+    "name": "Tauros",
+    "form": "Paldean Form(Aqua Breed)",
+    "type1": "Fighting",
+    "type2": "Water",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "130",
+    "name": "Gyarados",
+    "form": "",
+    "type1": "Water",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "132",
+    "name": "Ditto",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "134",
+    "name": "Vaporeon",
+    "form": "",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "135",
+    "name": "Jolteon",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "136",
+    "name": "Flareon",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "142",
+    "name": "Aerodactyl",
+    "form": "",
+    "type1": "Rock",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "143",
+    "name": "Snorlax",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "149",
+    "name": "Dragonite",
+    "form": "",
+    "type1": "Dragon",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "154",
+    "name": "Meganium",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "157",
+    "name": "Typhlosion",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "157",
+    "name": "Typhlosion",
+    "form": "Hisuian Form",
+    "type1": "Fire",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "160",
+    "name": "Feraligatr",
+    "form": "",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "168",
+    "name": "Ariados",
+    "form": "",
+    "type1": "Bug",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "181",
+    "name": "Ampharos",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "184",
+    "name": "Azumarill",
+    "form": "",
+    "type1": "Water",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "186",
+    "name": "Politoed",
+    "form": "",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "196",
+    "name": "Espeon",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "197",
+    "name": "Umbreon",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "199",
+    "name": "Slowking",
+    "form": "",
+    "type1": "Water",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "199",
+    "name": "Slowking",
+    "form": "Galarian Form",
+    "type1": "Poison",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "205",
+    "name": "Forretress",
+    "form": "",
+    "type1": "Bug",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "208",
+    "name": "Steelix",
+    "form": "",
+    "type1": "Steel",
+    "type2": "Ground",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "211",
+    "name": "Qwilfish",
+    "form": "",
+    "type1": "Water",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main"
+  },
+  {
+    "ndex": "212",
+    "name": "Scizor",
+    "form": "",
+    "type1": "Bug",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "214",
+    "name": "Heracross",
+    "form": "",
+    "type1": "Bug",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "227",
+    "name": "Skarmory",
+    "form": "",
+    "type1": "Steel",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "229",
+    "name": "Houndoom",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Fire",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "248",
+    "name": "Tyranitar",
+    "form": "",
+    "type1": "Rock",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "254",
+    "name": "Sceptile",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main"
+  },
+  {
+    "ndex": "257",
+    "name": "Blaziken",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main"
+  },
+  {
+    "ndex": "260",
+    "name": "Swampert",
+    "form": "",
+    "type1": "Water",
+    "type2": "Ground",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main"
+  },
+  {
+    "ndex": "279",
+    "name": "Pelipper",
+    "form": "",
+    "type1": "Water",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "282",
+    "name": "Gardevoir",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "302",
+    "name": "Sableye",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "303",
+    "name": "Mawile",
+    "form": "",
+    "type1": "Steel",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main"
+  },
+  {
+    "ndex": "306",
+    "name": "Aggron",
+    "form": "",
+    "type1": "Steel",
+    "type2": "Rock",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "308",
+    "name": "Medicham",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "310",
+    "name": "Manectric",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "319",
+    "name": "Sharpedo",
+    "form": "",
+    "type1": "Water",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "323",
+    "name": "Camerupt",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Ground",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "324",
+    "name": "Torkoal",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "334",
+    "name": "Altaria",
+    "form": "",
+    "type1": "Dragon",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "350",
+    "name": "Milotic",
+    "form": "",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "351",
+    "name": "Castform",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "354",
+    "name": "Banette",
+    "form": "",
+    "type1": "Ghost",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "358",
+    "name": "Chimecho",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "359",
+    "name": "Absol",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "362",
+    "name": "Glalie",
+    "form": "",
+    "type1": "Ice",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "376",
+    "name": "Metagross",
+    "form": "",
+    "type1": "Steel",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main"
+  },
+  {
+    "ndex": "389",
+    "name": "Torterra",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Ground",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "392",
+    "name": "Infernape",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "395",
+    "name": "Empoleon",
+    "form": "",
+    "type1": "Water",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "398",
+    "name": "Staraptor",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main"
+  },
+  {
+    "ndex": "405",
+    "name": "Luxray",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "407",
+    "name": "Roserade",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "409",
+    "name": "Rampardos",
+    "form": "",
+    "type1": "Rock",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "411",
+    "name": "Bastiodon",
+    "form": "",
+    "type1": "Rock",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "428",
+    "name": "Lopunny",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "442",
+    "name": "Spiritomb",
+    "form": "",
+    "type1": "Ghost",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "445",
+    "name": "Garchomp",
+    "form": "",
+    "type1": "Dragon",
+    "type2": "Ground",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "448",
+    "name": "Lucario",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "450",
+    "name": "Hippowdon",
+    "form": "",
+    "type1": "Ground",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "454",
+    "name": "Toxicroak",
+    "form": "",
+    "type1": "Poison",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "460",
+    "name": "Abomasnow",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Ice",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "461",
+    "name": "Weavile",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Ice",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "464",
+    "name": "Rhyperior",
+    "form": "",
+    "type1": "Ground",
+    "type2": "Rock",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "470",
+    "name": "Leafeon",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "471",
+    "name": "Glaceon",
+    "form": "",
+    "type1": "Ice",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "472",
+    "name": "Gliscor",
+    "form": "",
+    "type1": "Ground",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "473",
+    "name": "Mamoswine",
+    "form": "",
+    "type1": "Ice",
+    "type2": "Ground",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "475",
+    "name": "Gallade",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "478",
+    "name": "Froslass",
+    "form": "",
+    "type1": "Ice",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "479",
+    "name": "Rotom",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "497",
+    "name": "Serperior",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "500",
+    "name": "Emboar",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "503",
+    "name": "Samurott",
+    "form": "",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "503",
+    "name": "Samurott",
+    "form": "Hisuian Form",
+    "type1": "Water",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "505",
+    "name": "Watchog",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "510",
+    "name": "Liepard",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "512",
+    "name": "Simisage",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "514",
+    "name": "Simisear",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "516",
+    "name": "Simipour",
+    "form": "",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "518",
+    "name": "Musharna",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main"
+  },
+  {
+    "ndex": "530",
+    "name": "Excadrill",
+    "form": "",
+    "type1": "Ground",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "531",
+    "name": "Audino",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "534",
+    "name": "Conkeldurr",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "545",
+    "name": "Scolipede",
+    "form": "",
+    "type1": "Bug",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main"
+  },
+  {
+    "ndex": "547",
+    "name": "Whimsicott",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "553",
+    "name": "Krookodile",
+    "form": "",
+    "type1": "Ground",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "560",
+    "name": "Scrafty",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main"
+  },
+  {
+    "ndex": "563",
+    "name": "Cofagrigus",
+    "form": "",
+    "type1": "Ghost",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "569",
+    "name": "Garbodor",
+    "form": "",
+    "type1": "Poison",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "571",
+    "name": "Zoroark",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "571",
+    "name": "Zoroark",
+    "form": "Hisuian Form",
+    "type1": "Normal",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "579",
+    "name": "Reuniclus",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "584",
+    "name": "Vanilluxe",
+    "form": "",
+    "type1": "Ice",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "587",
+    "name": "Emolga",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "604",
+    "name": "Eelektross",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main"
+  },
+  {
+    "ndex": "609",
+    "name": "Chandelure",
+    "form": "",
+    "type1": "Ghost",
+    "type2": "Fire",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "614",
+    "name": "Beartic",
+    "form": "",
+    "type1": "Ice",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "618",
+    "name": "Stunfisk",
+    "form": "",
+    "type1": "Ground",
+    "type2": "Electric",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "618",
+    "name": "Stunfisk",
+    "form": "Galarian Form",
+    "type1": "Ground",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "623",
+    "name": "Golurk",
+    "form": "",
+    "type1": "Ground",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "635",
+    "name": "Hydreigon",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "637",
+    "name": "Volcarona",
+    "form": "",
+    "type1": "Bug",
+    "type2": "Fire",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "652",
+    "name": "Chesnaught",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "655",
+    "name": "Delphox",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "658",
+    "name": "Greninja",
+    "form": "",
+    "type1": "Water",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "660",
+    "name": "Diggersby",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Ground",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "663",
+    "name": "Talonflame",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "668",
+    "name": "Pyroar",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Normal",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main"
+  },
+  {
+    "ndex": "670",
+    "name": "Floette",
+    "form": "Eternal Flower",
+    "type1": "Fairy",
+    "type2": "Transfer only",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "671",
+    "name": "Florges",
+    "form": "",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "675",
+    "name": "Pangoro",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "676",
+    "name": "Furfrou",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "678",
+    "name": "Meowstic",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "681",
+    "name": "Aegislash",
+    "form": "",
+    "type1": "Steel",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "683",
+    "name": "Aromatisse",
+    "form": "",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "685",
+    "name": "Slurpuff",
+    "form": "",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "687",
+    "name": "Malamar",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main"
+  },
+  {
+    "ndex": "689",
+    "name": "Barbaracle",
+    "form": "",
+    "type1": "Rock",
+    "type2": "Water",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main"
+  },
+  {
+    "ndex": "691",
+    "name": "Dragalge",
+    "form": "",
+    "type1": "Poison",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main"
+  },
+  {
+    "ndex": "693",
+    "name": "Clawitzer",
+    "form": "",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "695",
+    "name": "Heliolisk",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Normal",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "697",
+    "name": "Tyrantrum",
+    "form": "",
+    "type1": "Rock",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "699",
+    "name": "Aurorus",
+    "form": "",
+    "type1": "Rock",
+    "type2": "Ice",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "700",
+    "name": "Sylveon",
+    "form": "",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "701",
+    "name": "Hawlucha",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "702",
+    "name": "Dedenne",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "706",
+    "name": "Goodra",
+    "form": "",
+    "type1": "Dragon",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "706",
+    "name": "Goodra",
+    "form": "Hisuian Form",
+    "type1": "Steel",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "707",
+    "name": "Klefki",
+    "form": "",
+    "type1": "Steel",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "709",
+    "name": "Trevenant",
+    "form": "",
+    "type1": "Ghost",
+    "type2": "Grass",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "711",
+    "name": "Gourgeist",
+    "form": "",
+    "type1": "Ghost",
+    "type2": "Grass",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "713",
+    "name": "Avalugg",
+    "form": "",
+    "type1": "Ice",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "713",
+    "name": "Avalugg",
+    "form": "Hisuian Form",
+    "type1": "Ice",
+    "type2": "Rock",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "715",
+    "name": "Noivern",
+    "form": "",
+    "type1": "Flying",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "724",
+    "name": "Decidueye",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "724",
+    "name": "Decidueye",
+    "form": "Hisuian Form",
+    "type1": "Grass",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "727",
+    "name": "Incineroar",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "730",
+    "name": "Primarina",
+    "form": "",
+    "type1": "Water",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "733",
+    "name": "Toucannon",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "740",
+    "name": "Crabominable",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Ice",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "745",
+    "name": "Lycanroc",
+    "form": "",
+    "type1": "Rock",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "748",
+    "name": "Toxapex",
+    "form": "",
+    "type1": "Poison",
+    "type2": "Water",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "750",
+    "name": "Mudsdale",
+    "form": "",
+    "type1": "Ground",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "752",
+    "name": "Araquanid",
+    "form": "",
+    "type1": "Water",
+    "type2": "Bug",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "758",
+    "name": "Salazzle",
+    "form": "",
+    "type1": "Poison",
+    "type2": "Fire",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "763",
+    "name": "Tsareena",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "765",
+    "name": "Oranguru",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "766",
+    "name": "Passimian",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "778",
+    "name": "Mimikyu",
+    "form": "",
+    "type1": "Ghost",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "780",
+    "name": "Drampa",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "784",
+    "name": "Kommo-o",
+    "form": "",
+    "type1": "Dragon",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "823",
+    "name": "Corviknight",
+    "form": "",
+    "type1": "Flying",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "841",
+    "name": "Flapple",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "842",
+    "name": "Appletun",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "844",
+    "name": "Sandaconda",
+    "form": "",
+    "type1": "Ground",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "855",
+    "name": "Polteageist",
+    "form": "",
+    "type1": "Ghost",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "858",
+    "name": "Hatterene",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "861",
+    "name": "Grimmsnarl",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main"
+  },
+  {
+    "ndex": "866",
+    "name": "Mr. Rime",
+    "form": "",
+    "type1": "Ice",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "867",
+    "name": "Runerigus",
+    "form": "",
+    "type1": "Ground",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "869",
+    "name": "Alcremie",
+    "form": "",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "870",
+    "name": "Falinks",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main"
+  },
+  {
+    "ndex": "877",
+    "name": "Morpeko",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "887",
+    "name": "Dragapult",
+    "form": "",
+    "type1": "Dragon",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "899",
+    "name": "Wyrdeer",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "900",
+    "name": "Kleavor",
+    "form": "",
+    "type1": "Bug",
+    "type2": "Rock",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "902",
+    "name": "Basculegion",
+    "form": "",
+    "type1": "Water",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "903",
+    "name": "Sneasler",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "904",
+    "name": "Overqwil",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main"
+  },
+  {
+    "ndex": "908",
+    "name": "Meowscarada",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "911",
+    "name": "Skeledirge",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "914",
+    "name": "Quaquaval",
+    "form": "",
+    "type1": "Water",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "925",
+    "name": "Maushold",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "934",
+    "name": "Garganacl",
+    "form": "",
+    "type1": "Rock",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "936",
+    "name": "Armarouge",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "937",
+    "name": "Ceruledge",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "939",
+    "name": "Bellibolt",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "952",
+    "name": "Scovillain",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Fire",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "956",
+    "name": "Espathra",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "959",
+    "name": "Tinkaton",
+    "form": "",
+    "type1": "Fairy",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "964",
+    "name": "Palafin",
+    "form": "",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "968",
+    "name": "Orthworm",
+    "form": "",
+    "type1": "Steel",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "970",
+    "name": "Glimmora",
+    "form": "",
+    "type1": "Rock",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "972",
+    "name": "Houndstone",
+    "form": "",
+    "type1": "Ghost",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main"
+  },
+  {
+    "ndex": "979",
+    "name": "Annihilape",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main"
+  },
+  {
+    "ndex": "981",
+    "name": "Farigiraf",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "983",
+    "name": "Kingambit",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "1000",
+    "name": "Gholdengo",
+    "form": "",
+    "type1": "Steel",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main"
+  },
+  {
+    "ndex": "1013",
+    "name": "Sinistcha",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "1018",
+    "name": "Archaludon",
+    "form": "",
+    "type1": "Steel",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "1019",
+    "name": "Hydrapple",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main"
+  },
+  {
+    "ndex": "3",
+    "name": "Venusaur",
+    "form": "Mega Venusaur",
+    "type1": "Grass",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "6",
+    "name": "Charizard",
+    "form": "Mega Charizard X",
+    "type1": "Fire",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "6",
+    "name": "Charizard",
+    "form": "Mega Charizard Y",
+    "type1": "Fire",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "9",
+    "name": "Blastoise",
+    "form": "Mega Blastoise",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "15",
+    "name": "Beedrill",
+    "form": "Mega Beedrill",
+    "type1": "Bug",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "18",
+    "name": "Pidgeot",
+    "form": "Mega Pidgeot",
+    "type1": "Normal",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "26",
+    "name": "Raichu",
+    "form": "Mega Raichu X",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega"
+  },
+  {
+    "ndex": "26",
+    "name": "Raichu",
+    "form": "Mega Raichu Y",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega"
+  },
+  {
+    "ndex": "36",
+    "name": "Clefable",
+    "form": "Mega Clefable",
+    "type1": "Fairy",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "65",
+    "name": "Alakazam",
+    "form": "Mega Alakazam",
+    "type1": "Psychic",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "71",
+    "name": "Victreebel",
+    "form": "Mega Victreebel",
+    "type1": "Grass",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "80",
+    "name": "Slowbro",
+    "form": "Mega Slowbro",
+    "type1": "Water",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "94",
+    "name": "Gengar",
+    "form": "Mega Gengar",
+    "type1": "Ghost",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "115",
+    "name": "Kangaskhan",
+    "form": "Mega Kangaskhan",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "121",
+    "name": "Starmie",
+    "form": "Mega Starmie",
+    "type1": "Water",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "127",
+    "name": "Pinsir",
+    "form": "Mega Pinsir",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "130",
+    "name": "Gyarados",
+    "form": "Mega Gyarados",
+    "type1": "Water",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "142",
+    "name": "Aerodactyl",
+    "form": "Mega Aerodactyl",
+    "type1": "Rock",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "149",
+    "name": "Dragonite",
+    "form": "Mega Dragonite",
+    "type1": "Dragon",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "154",
+    "name": "Meganium",
+    "form": "Mega Meganium",
+    "type1": "Grass",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "160",
+    "name": "Feraligatr",
+    "form": "Mega Feraligatr",
+    "type1": "Water",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "181",
+    "name": "Ampharos",
+    "form": "Mega Ampharos",
+    "type1": "Electric",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "208",
+    "name": "Steelix",
+    "form": "Mega Steelix",
+    "type1": "Steel",
+    "type2": "Ground",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "212",
+    "name": "Scizor",
+    "form": "Mega Scizor",
+    "type1": "Bug",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "214",
+    "name": "Heracross",
+    "form": "Mega Heracross",
+    "type1": "Bug",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "227",
+    "name": "Skarmory",
+    "form": "Mega Skarmory",
+    "type1": "Steel",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "229",
+    "name": "Houndoom",
+    "form": "Mega Houndoom",
+    "type1": "Dark",
+    "type2": "Fire",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "248",
+    "name": "Tyranitar",
+    "form": "Mega Tyranitar",
+    "type1": "Rock",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "254",
+    "name": "Sceptile",
+    "form": "Mega Sceptile",
+    "type1": "Grass",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega"
+  },
+  {
+    "ndex": "257",
+    "name": "Blaziken",
+    "form": "Mega Blaziken",
+    "type1": "Fire",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega"
+  },
+  {
+    "ndex": "260",
+    "name": "Swampert",
+    "form": "Mega Swampert",
+    "type1": "Water",
+    "type2": "Ground",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega"
+  },
+  {
+    "ndex": "282",
+    "name": "Gardevoir",
+    "form": "Mega Gardevoir",
+    "type1": "Psychic",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "302",
+    "name": "Sableye",
+    "form": "Mega Sableye",
+    "type1": "Dark",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "303",
+    "name": "Mawile",
+    "form": "Mega Mawile",
+    "type1": "Steel",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega"
+  },
+  {
+    "ndex": "306",
+    "name": "Aggron",
+    "form": "Mega Aggron",
+    "type1": "Steel",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "308",
+    "name": "Medicham",
+    "form": "Mega Medicham",
+    "type1": "Fighting",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "310",
+    "name": "Manectric",
+    "form": "Mega Manectric",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "319",
+    "name": "Sharpedo",
+    "form": "Mega Sharpedo",
+    "type1": "Water",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "323",
+    "name": "Camerupt",
+    "form": "Mega Camerupt",
+    "type1": "Fire",
+    "type2": "Ground",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "334",
+    "name": "Altaria",
+    "form": "Mega Altaria",
+    "type1": "Dragon",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "354",
+    "name": "Banette",
+    "form": "Mega Banette",
+    "type1": "Ghost",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "358",
+    "name": "Chimecho",
+    "form": "Mega Chimecho",
+    "type1": "Psychic",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "359",
+    "name": "Absol",
+    "form": "Mega Absol",
+    "type1": "Dark",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "362",
+    "name": "Glalie",
+    "form": "Mega Glalie",
+    "type1": "Ice",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "376",
+    "name": "Metagross",
+    "form": "Mega Metagross",
+    "type1": "Steel",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega"
+  },
+  {
+    "ndex": "398",
+    "name": "Staraptor",
+    "form": "Mega Staraptor",
+    "type1": "Fighting",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega"
+  },
+  {
+    "ndex": "428",
+    "name": "Lopunny",
+    "form": "Mega Lopunny",
+    "type1": "Normal",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "445",
+    "name": "Garchomp",
+    "form": "Mega Garchomp",
+    "type1": "Dragon",
+    "type2": "Ground",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "448",
+    "name": "Lucario",
+    "form": "Mega Lucario",
+    "type1": "Fighting",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "460",
+    "name": "Abomasnow",
+    "form": "Mega Abomasnow",
+    "type1": "Grass",
+    "type2": "Ice",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "475",
+    "name": "Gallade",
+    "form": "Mega Gallade",
+    "type1": "Psychic",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "478",
+    "name": "Froslass",
+    "form": "Mega Froslass",
+    "type1": "Ice",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "500",
+    "name": "Emboar",
+    "form": "Mega Emboar",
+    "type1": "Fire",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "530",
+    "name": "Excadrill",
+    "form": "Mega Excadrill",
+    "type1": "Ground",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "531",
+    "name": "Audino",
+    "form": "Mega Audino",
+    "type1": "Normal",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "545",
+    "name": "Scolipede",
+    "form": "Mega Scolipede",
+    "type1": "Bug",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega"
+  },
+  {
+    "ndex": "560",
+    "name": "Scrafty",
+    "form": "Mega Scrafty",
+    "type1": "Dark",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega"
+  },
+  {
+    "ndex": "604",
+    "name": "Eelektross",
+    "form": "Mega Eelektross",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega"
+  },
+  {
+    "ndex": "609",
+    "name": "Chandelure",
+    "form": "Mega Chandelure",
+    "type1": "Ghost",
+    "type2": "Fire",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "623",
+    "name": "Golurk",
+    "form": "Mega Golurk",
+    "type1": "Ground",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "652",
+    "name": "Chesnaught",
+    "form": "Mega Chesnaught",
+    "type1": "Grass",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "655",
+    "name": "Delphox",
+    "form": "Mega Delphox",
+    "type1": "Fire",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "658",
+    "name": "Greninja",
+    "form": "Mega Greninja",
+    "type1": "Water",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "668",
+    "name": "Pyroar",
+    "form": "Mega Pyroar",
+    "type1": "Fire",
+    "type2": "Normal",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega"
+  },
+  {
+    "ndex": "670",
+    "name": "Floette",
+    "form": "Mega Floette",
+    "type1": "Fairy",
+    "type2": "Event only",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "678",
+    "name": "Meowstic",
+    "form": "Mega Meowstic",
+    "type1": "Psychic",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "687",
+    "name": "Malamar",
+    "form": "Mega Malamar",
+    "type1": "Dark",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega"
+  },
+  {
+    "ndex": "689",
+    "name": "Barbaracle",
+    "form": "Mega Barbaracle",
+    "type1": "Rock",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega"
+  },
+  {
+    "ndex": "691",
+    "name": "Dragalge",
+    "form": "Mega Dragalge",
+    "type1": "Poison",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega"
+  },
+  {
+    "ndex": "701",
+    "name": "Hawlucha",
+    "form": "Mega Hawlucha",
+    "type1": "Fighting",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "740",
+    "name": "Crabominable",
+    "form": "Mega Crabominable",
+    "type1": "Fighting",
+    "type2": "Ice",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "780",
+    "name": "Drampa",
+    "form": "Mega Drampa",
+    "type1": "Normal",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "870",
+    "name": "Falinks",
+    "form": "Mega Falinks",
+    "type1": "Fighting",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega"
+  },
+  {
+    "ndex": "952",
+    "name": "Scovillain",
+    "form": "Mega Scovillain",
+    "type1": "Grass",
+    "type2": "Fire",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "970",
+    "name": "Glimmora",
+    "form": "Mega Glimmora",
+    "type1": "Rock",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega"
+  },
+  {
+    "ndex": "351",
+    "name": "Castform",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "351",
+    "name": "Castform",
+    "form": "Sunny Form",
+    "type1": "Fire",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "351",
+    "name": "Castform",
+    "form": "Rainy Form",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "351",
+    "name": "Castform",
+    "form": "Snowy Form",
+    "type1": "Ice",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "479",
+    "name": "Rotom",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "479",
+    "name": "Rotom",
+    "form": "Heat Rotom",
+    "type1": "Electric",
+    "type2": "Fire",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "479",
+    "name": "Rotom",
+    "form": "Wash Rotom",
+    "type1": "Electric",
+    "type2": "Water",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "479",
+    "name": "Rotom",
+    "form": "Frost Rotom",
+    "type1": "Electric",
+    "type2": "Ice",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "479",
+    "name": "Rotom",
+    "form": "Fan Rotom",
+    "type1": "Electric",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "479",
+    "name": "Rotom",
+    "form": "Mow Rotom",
+    "type1": "Electric",
+    "type2": "Grass",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Icy Snow Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Polar Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Tundra Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Continental Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Garden Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Elegant Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Meadow Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Modern Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Marine Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Archipelago Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "High Plains Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Sandstorm Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "River Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Monsoon Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Savanna Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Sun Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Ocean Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Jungle Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Fancy Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Poké Ball Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "668",
+    "name": "Pyroar",
+    "form": "Male",
+    "type1": "Fire",
+    "type2": "Normal",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "other"
+  },
+  {
+    "ndex": "668",
+    "name": "Pyroar",
+    "form": "Female",
+    "type1": "Fire",
+    "type2": "Normal",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "other"
+  },
+  {
+    "ndex": "671",
+    "name": "Florges",
+    "form": "Red Flower",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "671",
+    "name": "Florges",
+    "form": "Yellow Flower",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "671",
+    "name": "Florges",
+    "form": "Orange Flower",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "671",
+    "name": "Florges",
+    "form": "Blue Flower",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "671",
+    "name": "Florges",
+    "form": "White Flower",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "676",
+    "name": "Furfrou",
+    "form": "Natural Form",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "676",
+    "name": "Furfrou",
+    "form": "Heart Trim",
+    "type1": "Normal",
+    "type2": "Transfer only",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "676",
+    "name": "Furfrou",
+    "form": "Star Trim",
+    "type1": "Normal",
+    "type2": "Transfer only",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "676",
+    "name": "Furfrou",
+    "form": "Diamond Trim",
+    "type1": "Normal",
+    "type2": "Transfer only",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "676",
+    "name": "Furfrou",
+    "form": "Debutante Trim",
+    "type1": "Normal",
+    "type2": "Transfer only",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "676",
+    "name": "Furfrou",
+    "form": "Matron Trim",
+    "type1": "Normal",
+    "type2": "Transfer only",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "676",
+    "name": "Furfrou",
+    "form": "Dandy Trim",
+    "type1": "Normal",
+    "type2": "Transfer only",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "676",
+    "name": "Furfrou",
+    "form": "La Reine Trim",
+    "type1": "Normal",
+    "type2": "Transfer only",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "676",
+    "name": "Furfrou",
+    "form": "Kabuki Trim",
+    "type1": "Normal",
+    "type2": "Transfer only",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "676",
+    "name": "Furfrou",
+    "form": "Pharaoh Trim",
+    "type1": "Normal",
+    "type2": "Transfer only",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "678",
+    "name": "Meowstic",
+    "form": "Male",
+    "type1": "Psychic",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "678",
+    "name": "Meowstic",
+    "form": "Female",
+    "type1": "Psychic",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "681",
+    "name": "Aegislash",
+    "form": "Shield Forme",
+    "type1": "Steel",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "681",
+    "name": "Aegislash",
+    "form": "Blade Forme",
+    "type1": "Steel",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "711",
+    "name": "Gourgeist",
+    "form": "Small Variety",
+    "type1": "Ghost",
+    "type2": "Grass",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "711",
+    "name": "Gourgeist",
+    "form": "Medium Variety",
+    "type1": "Ghost",
+    "type2": "Grass",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "711",
+    "name": "Gourgeist",
+    "form": "Large Variety",
+    "type1": "Ghost",
+    "type2": "Grass",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "711",
+    "name": "Gourgeist",
+    "form": "Jumbo Variety",
+    "type1": "Ghost",
+    "type2": "Grass",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "745",
+    "name": "Lycanroc",
+    "form": "Midday Form",
+    "type1": "Rock",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "745",
+    "name": "Lycanroc",
+    "form": "Midnight Form",
+    "type1": "Rock",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "745",
+    "name": "Lycanroc",
+    "form": "Dusk Form",
+    "type1": "Rock",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "855",
+    "name": "Polteageist",
+    "form": "Phony Form",
+    "type1": "Ghost",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "855",
+    "name": "Polteageist",
+    "form": "Antique Form",
+    "type1": "Ghost",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "869",
+    "name": "Alcremie",
+    "form": "Vanilla Cream",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "869",
+    "name": "Alcremie",
+    "form": "Ruby Cream",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "869",
+    "name": "Alcremie",
+    "form": "Matcha Cream",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "869",
+    "name": "Alcremie",
+    "form": "Mint Cream",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "869",
+    "name": "Alcremie",
+    "form": "Lemon Cream",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "869",
+    "name": "Alcremie",
+    "form": "Salted Cream",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "869",
+    "name": "Alcremie",
+    "form": "Ruby Swirl",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "869",
+    "name": "Alcremie",
+    "form": "Caramel Swirl",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "869",
+    "name": "Alcremie",
+    "form": "Rainbow Swirl",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "877",
+    "name": "Morpeko",
+    "form": "Full Belly Mode",
+    "type1": "Electric",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "877",
+    "name": "Morpeko",
+    "form": "Hangry Mode",
+    "type1": "Electric",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "902",
+    "name": "Basculegion",
+    "form": "Male",
+    "type1": "Water",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "902",
+    "name": "Basculegion",
+    "form": "Female",
+    "type1": "Water",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "925",
+    "name": "Maushold",
+    "form": "Family of Four",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "925",
+    "name": "Maushold",
+    "form": "Family of Three",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "964",
+    "name": "Palafin",
+    "form": "Zero Form",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "964",
+    "name": "Palafin",
+    "form": "Hero Form",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "1013",
+    "name": "Sinistcha",
+    "form": "Unremarkable Form",
+    "type1": "Grass",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  },
+  {
+    "ndex": "1013",
+    "name": "Sinistcha",
+    "form": "Masterpiece Form",
+    "type1": "Grass",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other"
+  }
+]
