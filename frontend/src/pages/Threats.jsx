@@ -5,9 +5,11 @@ import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
 import { convertEvsToOld, newEvToOld } from '../utils/evs'
 import { getMandatoryItem } from '../utils/getMandatoryItem'
+import { useChampions } from '../ChampionsContext'
 
 export default function Threats() {
   const { t, getPokemonName, getMoveName } = useTranslation()
+  const { championsOnly, championIds } = useChampions()
   const [defender, setDefender] = useState(null)
   const [koMode, setKoMode] = useState('OHKO') // 'OHKO' or '2HKO'
   const [threats, setThreats] = useState([])
@@ -111,7 +113,9 @@ export default function Threats() {
         life_orb: customLifeOrb
       }
       ,
-      fully_evolved_only: fullyEvolvedOnly
+      fully_evolved_only: fullyEvolvedOnly,
+      champions_only: championsOnly,
+      champion_ids: championsOnly ? Array.from(championIds) : []
     }
 
     // Force mandatory item for defender (mega-gem, primal-gem)
@@ -225,7 +229,9 @@ export default function Threats() {
         life_orb: customLifeOrb
       }
       ,
-      fully_evolved_only: fullyEvolvedOnly
+      fully_evolved_only: fullyEvolvedOnly,
+      champions_only: championsOnly,
+      champion_ids: championsOnly ? Array.from(championIds) : []
     }
 
     try {
@@ -301,7 +307,9 @@ export default function Threats() {
         nature_boost: customNatureBoost,
         item_choice: customItemChoice,
         life_orb: customLifeOrb
-      }
+      },
+      champions_only: championsOnly,
+      champion_ids: championsOnly ? Array.from(championIds) : []
     }
 
     // Force mandatory item for defender (mega-gem, primal-gem)

@@ -3,9 +3,11 @@ import React, { useState } from 'react'
 import PokemonPanel from '../components/PokemonPanel'
 import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
+import { useChampions } from '../ChampionsContext'
 
 export default function TypeCoverage() {
   const { t, getPokemonName } = useTranslation()
+  const { championsOnly, championIds } = useChampions()
   const [attacker, setAttacker] = useState(null)
   const [results, setResults] = useState([])
   const [loading, setLoading] = useState(false)
@@ -45,7 +47,9 @@ export default function TypeCoverage() {
       attacker: {
         is_terastallized: attacker.is_terastallized || false,
         tera_type: attacker.tera_type || null
-      }
+      },
+      champions_only: championsOnly,
+      champion_ids: championsOnly ? Array.from(championIds) : []
     }
 
     try {

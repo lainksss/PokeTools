@@ -47,6 +47,8 @@ def analyze_coverage_stream():
     bulk_assault_vest = bool(payload.get("bulk_assault_vest", False))
     bulk_evoluroc = bool(payload.get("bulk_evoluroc", False))
     fully_evolved_only = bool(payload.get("fully_evolved_only", False))
+    champions_only = bool(payload.get("champions_only", False))
+    champion_ids = set(payload.get("champion_ids", []) or [])
 
     if not attacker_data:
         return jsonify({"error": "attacker required"}), 400
@@ -62,10 +64,14 @@ def analyze_coverage_stream():
             all_pokemon_data = load_json("all_pokemon.json") or {}
             evo_map = load_json("pokemon_evolution.json") or {}
 
-            # Build list and optionally filter to fully-evolved only
+            # Build list and optionally filter (fully-evolved and/or champions only)
             all_pokemon = []
             for name, data in all_pokemon_data.items():
                 if not data:
+                    continue
+                poke_id = data.get("id")
+                # Filtrer par champions si le mode est actif
+                if champions_only and champion_ids and poke_id not in champion_ids:
                     continue
                 if fully_evolved_only:
                     try:
@@ -517,6 +523,8 @@ def analyze_type_coverage():
         return jsonify({"error": "at least one move required"}), 400
 
     fully_evolved_only = bool(payload.get('fully_evolved_only', False))
+    champions_only = bool(payload.get('champions_only', False))
+    champion_ids = set(payload.get('champion_ids', []) or [])
 
     try:
         all_pokemon_data = load_json("all_pokemon.json") or {}
@@ -553,6 +561,10 @@ def analyze_type_coverage():
         not_super_effective = []
         
         for poke_name, poke_data in all_pokemon_data.items():
+            poke_id = poke_data.get("id")
+            # Filtrer par champions si le mode est actif
+            if champions_only and champion_ids and poke_id not in champion_ids:
+                continue
             if fully_evolved_only:
                 try:
                     can_evolve = bool((evo_map.get(poke_name) or {}).get('can_evolve', False))
@@ -560,7 +572,6 @@ def analyze_type_coverage():
                     can_evolve = False
                 if can_evolve:
                     continue
-            poke_id = poke_data.get("id")
             poke_types = poke_data.get("types", [])
             
             best_effectiveness = 0.0

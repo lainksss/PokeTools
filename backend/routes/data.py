@@ -289,3 +289,30 @@ def natures():
     # Trier alphabétiquement
     results.sort(key=lambda x: x.get("name", ""))
     return jsonify({"count": len(results), "natures": results})
+
+
+@bp.route("/champions", methods=["GET"])
+def champions():
+    """Retourne la liste des IDs de Pokémon disponibles en mode Champions.
+
+    Lit `all_champions_pokemons.json` (pré-enrichi avec pokemon_ids) et retourne
+    directement tous les IDs numériques de toutes les formes disponibles.
+    """
+    champions_data = load_json("all_champions_pokemons.json") or []
+
+    champion_ids: set[int] = set()
+
+    for entry in champions_data:
+        # Chaque entrée peut avoir un ou plusieurs pokemon_ids (liste d'ints)
+        ids = entry.get("pokemon_ids")
+        if ids:
+            for pid in ids:
+                try:
+                    champion_ids.add(int(pid))
+                except (ValueError, TypeError):
+                    pass
+
+    return jsonify({
+        "champion_ids": sorted(list(champion_ids)),
+        "count": len(champion_ids)
+    })

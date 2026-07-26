@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from '../i18n/LanguageContext'
 import { useTheme } from '../ThemeContext'
+import { useChampions } from '../ChampionsContext'
 
 export default function Header() {
   const { t, language, changeLanguage } = useTranslation()
   const { theme, toggleTheme } = useTheme()
+  const { championsOnly, toggleChampionsOnly } = useChampions()
   const [menuOpen, setMenuOpen] = useState(false)
 
   const navLinks = [
@@ -22,7 +24,7 @@ export default function Header() {
   const toggleMenu = () => setMenuOpen(v => !v)
 
   return (
-    <header className="app-header">
+    <header className={`app-header${championsOnly ? ' champions-mode-on' : ''}`}>
       <div className="header-inner">
         {/* Logo */}
         <div className="header-logo">
@@ -71,6 +73,18 @@ export default function Header() {
             aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
           >
             {theme === 'dark' ? '☀' : '☾'}
+          </button>
+
+          {/* Champions Toggle */}
+          <button
+            id="champions-toggle-btn"
+            className={`champions-btn${championsOnly ? ' active' : ''}`}
+            onClick={toggleChampionsOnly}
+            title={championsOnly ? (t('champions.all') || 'All Pokémon') : (t('champions.only') || 'Champions only')}
+            aria-label={championsOnly ? 'Switch to all Pokémon' : 'Switch to champions only'}
+            aria-pressed={championsOnly}
+          >
+            🏆
           </button>
 
           {/* Mobile Hamburger */}

@@ -4,9 +4,11 @@ import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
 import { convertEvsToOld } from '../utils/evs'
 import { getMandatoryItem, getMandatoryAbility, hasMandatoryItem } from '../utils/getMandatoryItem'
+import { useChampions } from '../ChampionsContext'
 
 export default function PokemonPanel({ side, value, onChange, showMultipleMoves = false, showTitle = true, showItem = true }) {
   const { t, getPokemonName, matchesPokemonName, language } = useTranslation()
+  const { championsOnly, championIds } = useChampions()
   // Refs for inputs (for dropdown positioning)
   const panelRef = useRef(null)
   const pokemonInputRef = useRef(null)
@@ -127,6 +129,8 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
   const [showMoveDropdowns, setShowMoveDropdowns] = useState({1: false, 2: false, 3: false, 4: false})
   // Transformation moves (Iron Head -> Behemoth)
   const [transformationMoves, setTransformationMoves] = useState({})
+  // Store the unfiltered list so we can re-apply champions filter without a re-fetch
+  const [fullPokemonList, setFullPokemonList] = useState([])
 
   // Load pokemon list on mount
   useEffect(() => {
@@ -144,8 +148,14 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
       fetch(`${API_URL}/api/move-names`).then(r => r.json())
     ]).then(([pokemonData, typesData, naturesData, itemsData, abilitiesData, beheBladeData, beheBashData, moveNamesData]) => {
       if (!mounted) return
-      setAllPokemon(pokemonData.results || [])
-      setFilteredPokemon(pokemonData.results || [])
+      const fullList = pokemonData.results || []
+      setFullPokemonList(fullList)
+      // Filter by champions if mode is active
+      const pokemonList = (championsOnly && championIds.size > 0)
+        ? fullList.filter(p => championIds.has(p.id))
+        : fullList
+      setAllPokemon(pokemonList)
+      setFilteredPokemon(pokemonList)
       setAllTypes(typesData.types || [])
       setAllNatures(naturesData.natures || [])
       setAllItems(itemsData.items || [])
@@ -198,6 +208,16 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
 
     return () => { mounted = false }
   }, [])
+
+  // Re-apply champions filter when the toggle changes mid-session
+  useEffect(() => {
+    if (fullPokemonList.length === 0) return
+    const filtered = (championsOnly && championIds.size > 0)
+      ? fullPokemonList.filter(p => championIds.has(p.id))
+      : fullPokemonList
+    setAllPokemon(filtered)
+    setFilteredPokemon(filtered)
+  }, [championsOnly, championIds])
 
   // Filter items when search changes
   useEffect(() => {
