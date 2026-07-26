@@ -1,4 +1,15 @@
-import asyncio, json, sys
+"""import_all_champions_pokemons.py
+
+Récupère la liste des Pokémon disponibles dans Pokémon Champions depuis Bulbapedia,
+puis enrichit chaque entrée avec un champ `pokemon_ids` contenant les IDs numériques
+exacts (depuis all_pokemon.json) pour TOUTES les formes :
+  - formes de base
+  - formes régionales (Alolan, Galarian, Hisuian, Paldean…)
+  - méga-évolutions (Mega X, Mega Y, etc.)
+  - primals
+  - toutes les autres formes alternatives (Rotom, Castform, Lycanroc…)
+"""
+import asyncio, json, re, sys
 from pathlib import Path
 import aiohttp
 from bs4 import BeautifulSoup
@@ -25,7 +36,6 @@ SECTION_MAP = {
 }
 
 def clean(t: str) -> str:
-    import re
     return re.sub(r"\s+", " ", t).strip()
 
 def parse_page(html: str) -> list[dict]:
@@ -42,7 +52,6 @@ def parse_page(html: str) -> list[dict]:
       col N-1 : td — Version added  e.g. "1.0.2"
       col N   : td — Learnset link  (skip)
     """
-    import re
     soup = BeautifulSoup(html, "html.parser")
     entries, seen = [], set()
     current_section = "main"
@@ -132,6 +141,133 @@ def parse_page(html: str) -> list[dict]:
     return entries
 
 
+# ── Mots à ignorer lors de la construction du suffixe de slug ─────────────────
+# Le nom du Pokémon, "form", "forme", "mode", "pattern", "variety", "trim", etc.
+STOP_WORDS = {
+    "form", "forme", "mode", "pattern", "variety", "trim",
+    "regional", "breed",
+}
+
+
+def form_to_slug_suffix(name_slug: str, form_str: str) -> str | None:
+    """Convertit le champ 'form' en suffixe de slug à ajouter après le nom de base.
+
+    Exemples:
+      name='venusaur',  form='Mega Venusaur'   -> 'mega'
+      name='charizard', form='Mega Charizard X' -> 'mega-x'
+      name='raichu',    form='Alolan Form'      -> 'alolan'
+      name='aegislash', form='Blade Forme'      -> 'blade'
+      name='rotom',     form='Heat Rotom'       -> 'heat'
+      name='maushold',  form='Family of Four'   -> 'family-of-four'
+      name='lycanroc',  form='Midday Form'      -> 'midday'
+    """
+    raw = form_str.strip().lower()
+    # Split en tokens (mots séparés par espaces/ponctuation)
+    tokens = re.split(r"[\s\-_/()]+", raw)
+
+    # Retire les parties du nom de base et les stop words
+    name_parts = set(name_slug.split("-"))
+    suffix_tokens = [
+        t for t in tokens
+        if t and t not in STOP_WORDS and t not in name_parts
+    ]
+
+    if not suffix_tokens:
+        return None
+
+    return "-".join(suffix_tokens)
+
+
+def resolve_pokemon_ids(entries: list[dict]) -> list[dict]:
+    """Enrichit chaque entrée avec un champ `pokemon_ids` contenant les IDs
+    Pokémon résolus depuis all_pokemon.json.
+
+    Stratégie :
+      - Si form == "" : chercher le slug exact du nom de base (id == ndex)
+      - Si form != "" : construire un slug candidat (nom + suffixe de forme)
+        et chercher dans all_pokemon.json. Recherche partielle en fallback.
+    """
+    # Chemin vers all_pokemon.json (relatif à la racine du projet)
+    root = Path(__file__).parent.parent.parent
+    pokemon_path = root / "data" / "all_pokemon.json"
+    if not pokemon_path.exists():
+        print(f"[WARN] {pokemon_path} not found — pokemon_ids will be empty")
+        for entry in entries:
+            entry["pokemon_ids"] = []
+        return entries
+
+    with open(pokemon_path, encoding="utf-8") as f:
+        all_pokemon: dict = json.load(f)
+
+    # Index : ndex_id -> liste de (slug, poke_id)
+    id_to_slugs: dict[int, list] = {}
+    for slug, data in all_pokemon.items():
+        if not data:
+            continue
+        poke_id = data.get("id")
+        if poke_id:
+            id_to_slugs.setdefault(poke_id, []).append((slug, poke_id))
+
+    for entry in entries:
+        try:
+            ndex = int(entry.get("ndex", 0))
+        except (ValueError, TypeError):
+            entry["pokemon_ids"] = []
+            continue
+        if not ndex:
+            entry["pokemon_ids"] = []
+            continue
+
+        form = (entry.get("form") or "").strip()
+        name_slug = (entry.get("name") or "").strip().lower().replace(" ", "-")
+
+        resolved: list[int] = []
+
+        if not form:
+            # Forme de base : slug exact = nom de base
+            matched = False
+            for slug, poke_id in id_to_slugs.get(ndex, []):
+                if slug == name_slug:
+                    resolved.append(poke_id)
+                    matched = True
+                    break
+            if not matched:
+                # Fallback : n'importe quel slug avec le bon ndex
+                for slug, poke_id in id_to_slugs.get(ndex, []):
+                    resolved.append(poke_id)
+                    break
+        else:
+            # Forme alternative : construire le slug candidat
+            suffix = form_to_slug_suffix(name_slug, form)
+
+            if suffix:
+                candidate = f"{name_slug}-{suffix}"
+                # 1. Correspondance exacte
+                if candidate in all_pokemon and all_pokemon[candidate]:
+                    resolved.append(all_pokemon[candidate]["id"])
+                else:
+                    # 2. Recherche partielle : slug contient le nom ET tous les tokens du suffixe
+                    suffix_tokens = suffix.split("-")
+                    for slug, data in all_pokemon.items():
+                        if (data and name_slug in slug and
+                                all(tok in slug for tok in suffix_tokens)):
+                            resolved.append(data["id"])
+                    if not resolved:
+                        # 3. Dernier fallback : forme de base (id == ndex)
+                        for slug, poke_id in id_to_slugs.get(ndex, []):
+                            resolved.append(poke_id)
+                            break
+            else:
+                # Suffixe vide → forme de base
+                for slug, poke_id in id_to_slugs.get(ndex, []):
+                    resolved.append(poke_id)
+                    break
+
+        entry["pokemon_ids"] = sorted(set(resolved))
+
+    return entries
+
+
 async def fetch_page(session: aiohttp.ClientSession) -> str:
     """Fetch rendered HTML via the MediaWiki JSON API (no Cloudflare protection)."""
     for attempt in range(4):
@@ -161,17 +297,66 @@ async def build(save_to: str = "data/all_champions_pokemons.json") -> None:
 
     entries = parse_page(html)
 
+    # Enrichir chaque entrée avec les IDs Pokémon résolus
+    print("Resolving pokemon_ids from all_pokemon.json…")
+    entries = resolve_pokemon_ids(entries)
+
+    # Statistiques rapides
+    with_ids = sum(1 for e in entries if e.get("pokemon_ids"))
+    without_ids = len(entries) - with_ids
+    if without_ids:
+        print(f"  [WARN] {without_ids} entries could not be resolved to a pokemon_id")
+        for e in entries:
+            if not e.get("pokemon_ids"):
+                print(f"    - ndex={e['ndex']} name={e['name']!r} form={e['form']!r}")
+
     with open(save_to, "w", encoding="utf-8") as f:
         json.dump(entries, f, indent=2, ensure_ascii=False)
 
     from collections import Counter
     by_sec = Counter(e["section"] for e in entries)
-    print(f"[OK] Saved {len(entries)} entries -> {save_to}")
+    print(f"[OK] Saved {len(entries)} entries ({with_ids} with pokemon_ids) -> {save_to}")
     for sec, n in by_sec.items():
         print(f"  {sec:8s}: {n}")
 
 
+def enrich_existing(save_to: str = "data/all_champions_pokemons.json") -> None:
+    """Enrichit le fichier JSON existant avec pokemon_ids sans ré-importer depuis Bulbapedia."""
+    path = Path(save_to)
+    if not path.exists():
+        # Essai avec chemin relatif à la racine du projet
+        root = Path(__file__).parent.parent.parent
+        path = root / save_to
+    if not path.exists():
+        print(f"[ERROR] {save_to} not found — run the full import first")
+        sys.exit(1)
+
+    with open(path, encoding="utf-8") as f:
+        entries = json.load(f)
+
+    print(f"Loaded {len(entries)} entries from {path}")
+    print("Resolving pokemon_ids from all_pokemon.json…")
+    entries = resolve_pokemon_ids(entries)
+
+    with_ids = sum(1 for e in entries if e.get("pokemon_ids"))
+    without_ids = len(entries) - with_ids
+    if without_ids:
+        print(f"  [WARN] {without_ids} entries could not be resolved to a pokemon_id")
+        for e in entries:
+            if not e.get("pokemon_ids"):
+                print(f"    - ndex={e['ndex']:>4s}  name={e['name']!r:20s}  form={e['form']!r}")
+
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(entries, f, indent=2, ensure_ascii=False)
+
+    print(f"[OK] Enriched {len(entries)} entries ({with_ids} with pokemon_ids) -> {path}")
+
+
 if __name__ == "__main__":
-    if sys.platform == "win32":
-        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-    asyncio.run(build())
+    if "--enrich-only" in sys.argv:
+        # Mode sans import réseau : enrichit le fichier existant
+        enrich_existing()
+    else:
+        if sys.platform == "win32":
+            asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+        asyncio.run(build())
