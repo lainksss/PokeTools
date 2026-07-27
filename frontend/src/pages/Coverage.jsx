@@ -82,7 +82,8 @@ export default function Coverage() {
         is_terastallized: attacker.is_terastallized,
         tera_type: attacker.tera_type,
         stages: attacker.boosts || {},
-        name: attacker.name
+        name: attacker.name,
+        special_form: attacker.special_form || null
       },
       moves: moves,
       ko_mode: koMode,
@@ -229,7 +230,8 @@ export default function Coverage() {
         is_terastallized: attacker.is_terastallized,
         tera_type: attacker.tera_type,
         stages: attacker.boosts || {},
-        name: attacker.name
+        name: attacker.name,
+        special_form: attacker.special_form || null
       },
       moves: moves,
       ko_mode: koMode,

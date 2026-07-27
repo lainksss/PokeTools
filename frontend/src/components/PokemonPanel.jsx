@@ -416,21 +416,25 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
 
     const updates = {}
 
-    // helper: pick best form (highest BST) matching the given suffix
-    const findBestForm = (base, suffix) => {
-      const candidates = allPokemon.filter(p => p.name.startsWith(base + suffix))
-      if (!candidates || candidates.length === 0) return null
-      let best = candidates[0]
-      let bestSum = Object.values(best.base_stats || {}).reduce((a, b) => a + b, 0)
-      for (let i = 1; i < candidates.length; i++) {
-        const c = candidates[i]
-        const sum = Object.values(c.base_stats || {}).reduce((a, b) => a + b, 0)
-        if (sum > bestSum) {
-          best = c
-          bestSum = sum
-        }
+    // Determine the simple base name (strip any existing suffix)
+    const baseName = value.name.split(/-mega|-primal|-crowned/)[0]
+
+    const resolveSpecialForm = (suffix) => {
+      const candidates = allPokemon
+        .filter(p => p.name.startsWith(baseName + suffix))
+        .slice()
+        .sort((a, b) => a.name.localeCompare(b.name))
+      if (candidates.length === 0) return null
+
+      if (value?.special_form) {
+        const hinted = candidates.find(p => p.name === value.special_form)
+        if (hinted) return hinted
       }
-      return best
+
+      const current = candidates.find(p => p.name === value.name)
+      if (current) return current
+
+      return candidates[0]
     }
 
     // Transform base forms to crowned when rusted item is selected
@@ -475,20 +479,18 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
     }
 
     // Mega / Primal gem transformation logic
-    // Determine the simple base name (strip any existing suffix)
-    const baseName = value.name.split(/-mega|-primal|-crowned/)[0]
 
     // Apply gem when appropriate and not already in a special form
     if (value.item === 'mega-gem' &&
-        !value.name.includes('-mega') &&
         !value.name.includes('-primal') &&
         !value.name.includes('crowned')) {
-      const bestMega = findBestForm(baseName, '-mega')
-      if (bestMega) {
-        updates.name = bestMega.name
-        updates.id = bestMega.id
-        updates.base_stats = bestMega.base_stats
-        updates.types = bestMega.types
+      const selectedMega = resolveSpecialForm('-mega')
+      if (selectedMega && value.name !== selectedMega.name) {
+        updates.name = selectedMega.name
+        updates.id = selectedMega.id
+        updates.base_stats = selectedMega.base_stats
+        updates.types = selectedMega.types
+        updates.special_form = selectedMega.name
       }
     } else if (value.item !== 'mega-gem' && value.name.includes('-mega')) {
       // revert when mega-gem removed
@@ -502,15 +504,15 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
     }
 
     if (value.item === 'primal-gem' &&
-        !value.name.includes('-primal') &&
         !value.name.includes('-mega') &&
         !value.name.includes('crowned')) {
-      const bestPrimal = findBestForm(baseName, '-primal')
-      if (bestPrimal) {
-        updates.name = bestPrimal.name
-        updates.id = bestPrimal.id
-        updates.base_stats = bestPrimal.base_stats
-        updates.types = bestPrimal.types
+      const selectedPrimal = resolveSpecialForm('-primal')
+      if (selectedPrimal && value.name !== selectedPrimal.name) {
+        updates.name = selectedPrimal.name
+        updates.id = selectedPrimal.id
+        updates.base_stats = selectedPrimal.base_stats
+        updates.types = selectedPrimal.types
+        updates.special_form = selectedPrimal.name
       }
     } else if (value.item !== 'primal-gem' && value.name.includes('-primal')) {
       const base = allPokemon.find(p => p.name === baseName)
@@ -532,7 +534,7 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
     if (Object.keys(updates).length > 0) {
       onChange && onChange({ ...value, ...updates })
     }
-  }, [value?.name, value?.item, allPokemon])
+  }, [value?.name, value?.item, value?.special_form, allPokemon])
 
   // Calculate final stats when base_stats, evs, nature, or item change
   useEffect(() => {
@@ -638,7 +640,8 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
         move3: null,
         move4: null,
         is_terastallized: false,
-        tera_type: null
+        tera_type: null,
+        special_form: pokemon.name.includes('-mega') || pokemon.name.includes('-primal') ? pokemon.name : null
       })
       // also clear the local search strings so the inputs do not still show
       // the previous selections
@@ -686,6 +689,35 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
 
   const handleItemChange = (itemSlug) => {
     onChange && onChange({ ...value, item: itemSlug || null })
+  }
+
+  const specialBaseName = value?.name?.split(/-mega|-primal|-crowned/)[0] || ''
+  const megaForms = specialBaseName
+    ? allPokemon.filter(p => p.name.startsWith(specialBaseName + '-mega')).slice().sort((a, b) => a.name.localeCompare(b.name))
+    : []
+  const primalForms = specialBaseName
+    ? allPokemon.filter(p => p.name.startsWith(specialBaseName + '-primal')).slice().sort((a, b) => a.name.localeCompare(b.name))
+    : []
+  const activeSpecialCandidates = value?.item === 'mega-gem' || value?.name?.includes('-mega')
+    ? megaForms
+    : (value?.item === 'primal-gem' || value?.name?.includes('-primal')
+      ? primalForms
+      : [])
+  const activeSpecialLabel = value?.item === 'primal-gem' || value?.name?.includes('-primal')
+    ? (t('calculate.primalForm') || 'Forme Primal')
+    : (t('calculate.megaForm') || 'Forme Méga')
+
+  const handleSpecialFormChange = (formSlug) => {
+    const selected = allPokemon.find(p => p.name === formSlug)
+    if (!selected) return
+    onChange && onChange({
+      ...value,
+      id: selected.id,
+      name: selected.name,
+      base_stats: selected.base_stats,
+      types: selected.types,
+      special_form: selected.name
+    })
   }
 
   const handleMoveChange = (moveName, moveNumber = 1) => {
@@ -1282,6 +1314,26 @@ export default function PokemonPanel({ side, value, onChange, showMultipleMoves 
                           const description = language === 'fr' ? selectedItem.description_fr : selectedItem.description_en
                           return description || (language === 'fr' ? selectedItem.fr : selectedItem.en)
                         })()}
+                      </div>
+                    )}
+
+                    {activeSpecialCandidates.length > 1 && (value?.item === 'mega-gem' || value?.item === 'primal-gem' || value?.name?.includes('-mega') || value?.name?.includes('-primal')) && (
+                      <div className="form-group" style={{ marginTop: 8 }}>
+                        <label>{activeSpecialLabel}</label>
+                        <select
+                          value={value?.special_form || value?.name || ''}
+                          onChange={e => handleSpecialFormChange(e.target.value)}
+                          className="form-control"
+                        >
+                          {activeSpecialCandidates.map(form => {
+                            const displayName = getPokemonName(form.id, form.name.charAt(0).toUpperCase() + form.name.slice(1))
+                            return (
+                              <option key={form.name} value={form.name}>
+                                {displayName}
+                              </option>
+                            )
+                          })}
+                        </select>
                       </div>
                     )}
                   </>

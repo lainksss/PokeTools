@@ -88,7 +88,8 @@ export default function Threats() {
         item: defender.item || null,
         is_terastallized: defender.is_terastallized,
         tera_type: defender.tera_type,
-        name: defender.name
+        name: defender.name,
+        special_form: defender.special_form || null
       },
       ko_mode: koMode,
       field: {
@@ -204,7 +205,8 @@ export default function Threats() {
         types: defender.types,
         ability: defender.ability,
         is_terastallized: defender.is_terastallized,
-        tera_type: defender.tera_type
+        tera_type: defender.tera_type,
+        special_form: defender.special_form || null
       },
       ko_mode: koMode,
       field: {
@@ -285,7 +287,8 @@ export default function Threats() {
         item: defender.item || null,
         is_terastallized: defender.is_terastallized,
         tera_type: defender.tera_type,
-        name: defender.name
+        name: defender.name,
+        special_form: defender.special_form || null
       },
       field: {
         battle_mode: "double",
