@@ -29,6 +29,32 @@ logger = logging.getLogger(__name__)
 bp = Blueprint('coverage', __name__)
 
 
+def _resolve_champion_ids(payload_ids=None):
+    """Return the champion ID set from the payload or, if missing, from local data."""
+    champion_ids = set()
+
+    if payload_ids:
+        for pid in payload_ids:
+            try:
+                champion_ids.add(int(pid))
+            except (ValueError, TypeError):
+                pass
+
+    if champion_ids:
+        return champion_ids
+
+    champions_data = load_json("all_champions_pokemons.json") or []
+    for entry in champions_data:
+        ids = entry.get("pokemon_ids") or []
+        for pid in ids:
+            try:
+                champion_ids.add(int(pid))
+            except (ValueError, TypeError):
+                pass
+
+    return champion_ids
+
+
 @bp.route("/analyze_coverage_stream", methods=["POST"])
 def analyze_coverage_stream():
     """Analyse la couverture offensive d'un attaquant avec plusieurs attaques (streaming)."""
@@ -48,7 +74,7 @@ def analyze_coverage_stream():
     bulk_evoluroc = bool(payload.get("bulk_evoluroc", False))
     fully_evolved_only = bool(payload.get("fully_evolved_only", False))
     champions_only = bool(payload.get("champions_only", False))
-    champion_ids = set(payload.get("champion_ids", []) or [])
+    champion_ids = _resolve_champion_ids(payload.get("champion_ids", []))
 
     if not attacker_data:
         return jsonify({"error": "attacker required"}), 400
@@ -298,6 +324,8 @@ def deep_analyze_coverage_stream():
     ko_mode = payload.get("ko_mode", "OHKO")
     field_data = payload.get("field", {})
     fully_evolved_only = bool(payload.get("fully_evolved_only", False))
+    champions_only = bool(payload.get("champions_only", False))
+    champion_ids = _resolve_champion_ids(payload.get("champion_ids", []))
     include_no_ko = bool(payload.get("include_no_ko", False))
 
     if not attacker_data:
@@ -316,10 +344,13 @@ def deep_analyze_coverage_stream():
             pokemon_abilities_map = load_json("all_pokemon_abilities.json") or {}
             all_moves = load_json("all_moves.json") or {}
 
-            # Build list of defenders and optionally filter to fully-evolved only
+            # Build list of defenders and optionally filter to fully-evolved only / champions only
             all_defenders = []
             for name, data in all_pokemon_data.items():
                 if not data:
+                    continue
+                poke_id = data.get("id")
+                if champions_only and champion_ids and poke_id not in champion_ids:
                     continue
                 if fully_evolved_only:
                     try:
@@ -524,7 +555,7 @@ def analyze_type_coverage():
 
     fully_evolved_only = bool(payload.get('fully_evolved_only', False))
     champions_only = bool(payload.get('champions_only', False))
-    champion_ids = set(payload.get('champion_ids', []) or [])
+    champion_ids = _resolve_champion_ids(payload.get('champion_ids', []))
 
     try:
         all_pokemon_data = load_json("all_pokemon.json") or {}

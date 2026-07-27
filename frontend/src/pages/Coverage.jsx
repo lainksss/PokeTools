@@ -246,7 +246,9 @@ export default function Coverage() {
         helping_hand: helpingHand || undefined,
         friend_guard: friendGuard || undefined
       },
-      fully_evolved_only: fullyEvolvedOnly
+      fully_evolved_only: fullyEvolvedOnly,
+      champions_only: championsOnly,
+      champion_ids: championsOnly ? Array.from(championIds) : []
     }
 
     // Force mandatory item for attacker (mega-gem, primal-gem)
