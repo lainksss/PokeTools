@@ -194,6 +194,18 @@ Note: `sniper` and other crit-related flags are set by ability handling and used
 
 ---
 
+## Weather-forcing Abilities
+
+### `mega-sol` (attacker-side)
+
+A Pokémon with Mega Sol generates harsh sunlight for the duration of battle, acting as a permanent **Drought** effect in the damage calculator.
+
+- Implementation: `field["weather"]` is set to `"sun"` at the **very start** of the attacker-ability block, before any weather-sensitive logic is evaluated. This means all downstream effects (Fire move boost ×1.5, Water move reduction ×0.5, Solar Power, Orichalcum Pulse, Protosynthesis activation, etc.) automatically apply.
+- Effects key: `"mega_sol": True`
+- Test: ✅ backend/test/test_mega-sol_ability.py
+
+---
+
 ## Contact-based Defensive Abilities
 
 ### `long-reach` (attacker-side prerequisite)
