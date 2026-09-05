@@ -192,12 +192,67 @@ Note: `sniper` and other crit-related flags are set by ability handling and used
 	- Notes: this ability affects only physical `Defense` (not Special Defense).
 	- Tests: ✅ covered by `backend/test/test_marvel_scale_milotic.py` (Milotic burned / not burned cases).
 
+---
+
+## Contact-based Defensive Abilities
+
+### `long-reach` (attacker-side prerequisite)
+
+A Pokémon with Long Reach uses its moves as if they never make direct contact. This suppresses **all** contact-triggered defender mechanics in the damage calculator (Fluffy, Aura Guard, Static, Rough Skin, Iron Barbs, etc.).
+
+- Implementation: `make_contact` is set to `False` on the move dict at the **very start** of the attacker-ability block, before any defender ability is evaluated. All subsequent checks therefore see the corrected flag automatically.
+- Interaction with Fluffy:
+  - Long Reach + contact move (non-Fire) → ×1.0 (contact negated, no halving)
+  - Long Reach + Fire contact move → ×2.0 (contact negated, but Fire bonus still applies)
+
+---
+
+### `fluffy` (defender-side)
+
+A Pokémon with Fluffy takes reduced damage from contact moves but increased damage from Fire-type moves. Fire contact moves cancel each other out.
+
+| Situation | Multiplier |
+|---|---|
+| Contact move (non-Fire) | ×0.5 (halved) |
+| Fire-type move (no contact) | ×2.0 (doubled) |
+| Fire-type **+** contact | ×0.5 × ×2.0 = **×1.0** (regular damage) |
+| Long Reach + contact (non-Fire) | ×1.0 (contact negated) |
+| Long Reach + Fire contact | ×2.0 (contact negated, Fire bonus kept) |
+| Non-contact, non-Fire | ×1.0 (unaffected) |
+
+- Implementation: uses `other_mult` (applied via `chainMods` at the final stage). The contact flag is checked **after** Long Reach has already cleared it.
+- Effects keys: `fluffy_contact` (halving triggered) / `fluffy_fire` (doubling triggered).
+- Tests: ✅ covered by `backend/test/test_fluffly_ability.py`:
+  - `test_double_edge_with_fluffy` — Aerilate Double-Edge (contact, Flying): halved
+  - `test_double_edge_without_fluffy` — baseline without Fluffy
+  - `test_fire_punch_with_fluffy` — Fire Punch (Fire + contact): regular damage (×1.0)
+  - `test_fire_punch_without_fluffy` — baseline Fire Punch without Fluffy
+  - `test_earthquake_with_fluffy` — Earthquake (no contact, double battle spread): unaffected
+  - `test_flamethrower_with_fluffy` — Flamethrower (Fire, no contact): doubled
+  - `test_flamethrower_without_fluffy` — baseline Flamethrower without Fluffy
+
+---
+
+### `aura-guard` (defender-side)
+
+A Pokémon with Aura Guard takes half damage from contact moves. Unlike Fluffy, it has **no special interaction with Fire-type moves**.
+
+| Situation | Multiplier |
+|---|---|
+| Contact move | ×0.5 (halved) |
+| Fire-type move (any) | ×1.0 (unaffected) |
+| Long Reach contact | ×1.0 (contact negated) |
+
+> **Key difference from Fluffy:** Fire Punch vs Aura Guard is halved (contact). Flamethrower vs Aura Guard is regular damage. Fire Punch vs Fluffy is regular damage (×1.0 cancellation).
+
+- Implementation: `other_mult *= 0.5` when `makes_contact` is True.
+- Effects key: `aura_guard` (halving triggered).
+- Tests: ✅ covered by `backend/test/test_fluffly_ability.py` (Fluffy scenarios, i'll just need to update it if it's not working on the fire type damage part)
+
+
 ## Test Coverage Summary
 
-**Recently Tested (25 tests, ✅):**
-- Damage reduction abilities: `multiscale`, `shadow-shield`, `thick-fat`, `tera-shell`, `solid-rock`, `filter`, `prism-armor`
-- Critical mechanics: `merciless`, `battle-armor`, `shell-armor`
-- Stat-boosting abilities: `fire-mane`, `hadron-engine`, `orichalcum-pulse`, `protosynthesis`, `quark-drive` (Flutter Mane, Iron Bundle; multi-target move mechanics validated; defender-side stat boosts for Quark Drive)
+- **Contact-based defensive abilities: `fluffy`, `aura-guard` (+ `long-reach` attacker interaction)**
 
 **Other Fully Tested (✅):**
 - Power modifiers: `huge-power`, `sheer-force`, `tough-claws`, `strong-jaw`, `technician`, `iron-fist`, `reckless`, `steelworker`, `steely-spirit`
