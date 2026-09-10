@@ -210,11 +210,11 @@
       "es-419": "Velo de Arena"
     },
     "descriptions": {
-      "de": "Erhöht in Sandstürmen den Fluchtwert.",
       "fr": "Evasion si tempête sable.",
       "en": "Ups evasion in a sandstorm.",
       "ja-hrkt": "すなあらしで かいひりつが　あがる。",
       "ko": "모래바람으로 회피율이 올라간다.",
+      "de": "Erhöht in Sandstürmen den Fluchtwert.",
       "es": "Aumenta la Evasión en las tormentas de arena.",
       "it": "L’elusione aumenta durante le tempeste di sabbia.",
       "ja": "砂あらしで 回避率が　あがる。",
@@ -630,7 +630,7 @@
       "es-419": "Sombra Trampa"
     },
     "descriptions": {
-      "fr": "Empêche le Pokémon ennemi de quitter le combat.",
+      "fr": "Empêche la fuite ennemie.",
       "en": "Prevents the foe’s escape.",
       "ja-hrkt": "あいての　かげをふみ にげられなくする。",
       "ko": "상대의 그림자를 밟아 도망칠 수 없게 한다.",
@@ -714,7 +714,7 @@
       "es-419": "Levitación"
     },
     "descriptions": {
-      "fr": "Immunise contre toutes les capacités de type Sol.",
+      "fr": "Ignore les attaques SOL.",
       "en": "Not hit by GROUND attacks.",
       "ja-hrkt": "じめんタイプの　わざを うけない。",
       "ko": "땅타입의 기술을 받지 않는다.",
@@ -1190,7 +1190,7 @@
       "es-419": "Insonorización"
     },
     "descriptions": {
-      "fr": "Protège de toutes les capacités sonores.",
+      "fr": "Évite les attaques sonores.",
       "en": "Avoids sound-based moves.",
       "ja-hrkt": "おとの　わざを うけない。",
       "ko": "소리 기술을 받지 않는다.",
@@ -1302,12 +1302,12 @@
       "es-419": "Sebo"
     },
     "descriptions": {
-      "es": "Atenúa los ataques de tipo Fuego y Hielo.",
       "fr": "Contre chaleur et froid.",
       "en": "Heat-and-cold protection.",
       "ja-hrkt": "ほのおと　こおりタイプの わざに　つよい。",
       "ko": "불꽃과 얼음타입의 기술에 강하다.",
       "de": "Stark gegen Attacken der Typen Feuer und Eis.",
+      "es": "Atenúa los ataques de tipo Fuego y Hielo.",
       "it": "Aumenta la resistenza alle mosse di tipo Fuoco e Ghiaccio.",
       "ja": "ほのおと　こおりタイプの 技に　強い。",
       "es-419": "Atenúa los ataques de tipo Fuego y Hielo.",
@@ -1330,12 +1330,12 @@
       "es-419": "Madrugador"
     },
     "descriptions": {
-      "es": "Si se duerme, tardará la mitad de tiempo en despertarse.",
       "fr": "Se réveille rapidement.",
       "en": "Awakens quickly from sleep.",
       "ja-hrkt": "おきるのが　はやくなる。",
       "ko": "잠듦 상태에서 빨리 깨어난다.",
       "de": "Bewirkt, dass das Pokémon schneller wieder aufwacht.",
+      "es": "El Pokémon se despierta rápidamente.",
       "it": "Il Pokémon si risveglia rapidamente dal sonno.",
       "ja": "起きるのが　早くなる。",
       "es-419": "El Pokémon se despierta rápidamente.",
@@ -1498,8 +1498,6 @@
       "es-419": "Ausente"
     },
     "descriptions": {
-      "zh-hans": "如果使出招式， 下一回合就会休息。",
-      "ja": "技を　出すと つぎの　ターンは　休んでしまう。",
       "fr": "Frappe tous les 2 tours.",
       "en": "Moves only every two turns.",
       "ja-hrkt": "こうげきが　れんぞくで だせない。",
@@ -1507,8 +1505,10 @@
       "de": "Greift nur alle zwei Runden an.",
       "es": "El Pokémon no atacará en turnos consecutivos.",
       "it": "Il Pokémon attacca un turno sì e uno no.",
+      "ja": "攻撃が　連続で だせない。",
       "es-419": "El Pokémon no atacará en turnos consecutivos.",
-      "zh-hant": "如果使出招式， 下一回合就需要休息。"
+      "zh-hant": "如果使出招式， 下一回合就需要休息。",
+      "zh-hans": "如果使出招式， 下一回合就会休息。"
     }
   },
   "55": {
@@ -1806,10 +1806,10 @@
       "es-419": "Espesura"
     },
     "descriptions": {
-      "ko": "위급할 때 풀타입의 위력이 올라간다.",
       "fr": "Augmente attaques PLANTE.",
       "en": "Ups GRASS moves in a pinch.",
       "ja-hrkt": "ピンチのとき　くさの いりょくが　あがる。",
+      "ko": "위급할 때 풀타입의 위력이 올라간다.",
       "de": "Erhöht in Notfällen die Stärke von Pflanzen-Attacken.",
       "es": "Potencia los ataques de tipo Planta en un apuro.",
       "it": "Quando si è in difficoltà, potenzia le mosse di tipo Erba.",
@@ -1974,16 +1974,16 @@
       "es-419": "Trampa Arena"
     },
     "descriptions": {
-      "ko": "배틀에서 상대를 도망칠 수 없게 한다.",
-      "zh-hant": "在戰鬥中讓對手無法逃走。",
       "fr": "Empêche la fuite.",
       "en": "Prevents fleeing.",
       "ja-hrkt": "せんとうで　あいてを にげられなくする。",
+      "ko": "배틀에서 상대를 도망칠 수 없게 한다.",
       "de": "Hindert den Gegner im Kampf an der Flucht.",
       "es": "Evita que el rival huya.",
       "it": "Impedisce la fuga al nemico.",
       "ja": "戦闘で　相手を 逃げられなくする。",
       "es-419": "Evita que el rival huya.",
+      "zh-hant": "在戰鬥中讓對手無法逃走。",
       "zh-hans": "在战斗中让对手无法逃走。"
     }
   },
@@ -2226,11 +2226,11 @@
       "es-419": "Impasible"
     },
     "descriptions": {
-      "de": "Sein eiserner Wille erhöht die Initiative, wann immer das Pokémon zurückschreckt.",
       "fr": "Augmente la Vitesse quand le Pokémon a peur.",
       "en": "Raises Speed each time the Pokémon flinches.",
       "ja-hrkt": "ひるむ　たびに すばやさが　あがる。",
       "ko": "풀죽을 때마다 스피드가 올라간다.",
+      "de": "Erhöht die Initiative, sobald das Pokémon zurückschreckt.",
       "es": "Cada vez que retrocede sube su Velocidad.",
       "it": "Aumenta la Velocità se il Pokémon tentenna.",
       "ja": "ひるむ　たびに 素早さが　あがる。",
@@ -2310,7 +2310,6 @@
       "es-419": "Irascible"
     },
     "descriptions": {
-      "ja": "急所に　受けると 攻撃が　あがる。",
       "en": "Raises Attack upon taking a critical hit.",
       "fr": "Monte l’Attaque au max après un coup critique.",
       "ja-hrkt": "きゅうしょに　うけると こうげきが　あがる。",
@@ -2318,6 +2317,7 @@
       "de": "Maximiert nach Einstecken eines Volltreffers den Angriffs-Wert.",
       "es": "Sube el Ataque al máximo tras un golpe crítico.",
       "it": "Massimizza l’Attacco se si subisce un brutto colpo.",
+      "ja": "急所に　受けると 攻撃が　あがる。",
       "es-419": "Sube el Ataque al máximo tras un golpe crítico.",
       "zh-hant": "要害被擊中時會大發雷霆。 攻擊力會提高到最大。",
       "zh-hans": "要害被击中时， 会大发雷霆， 攻击力变为最大。"
@@ -2478,13 +2478,13 @@
       "es-419": "Puño Férreo"
     },
     "descriptions": {
-      "de": "Steigert die Effektivität von Box- und Hieb-Attacken.",
-      "es": "Aumenta la fuerza de los puñetazos.",
-      "it": "Potenzia le mosse che utilizzano pugni.",
       "fr": "Augmente la puissance des capacités coups de poing.",
       "en": "Boosts the power of punching moves.",
       "ja-hrkt": "パンチを　つかう　わざの いりょくが　あがる。",
       "ko": "펀치를 사용하는 기술의 위력이 올라간다.",
+      "de": "Steigert die Effektivität von Box- und Hieb-Attacken.",
+      "es": "Aumenta la fuerza de los puñetazos.",
+      "it": "Potenzia le mosse che utilizzano pugni.",
       "ja": "パンチを　使う　技の 威力が　あがる。",
       "es-419": "Aumenta la fuerza de los puñetazos.",
       "zh-hant": "使用到拳頭的招式 威力會提高。",
@@ -3514,7 +3514,6 @@
       "es-419": "Respondón"
     },
     "descriptions": {
-      "es-419": "Invierte los cambios en las características.",
       "fr": "Inverse les variations de stats.",
       "en": "Makes stat changes have an opposite effect.",
       "ja-hrkt": "のうりょくの　へんかが ぎゃくてんする。",
@@ -3523,6 +3522,7 @@
       "es": "Invierte los cambios en las características.",
       "it": "Le modifiche alle statistiche hanno effetto inverso.",
       "ja": "能力の　変化が 逆転する。",
+      "es-419": "Invierte los cambios en las características.",
       "zh-hant": "能力的變化會逆轉， 原本提高時會降低， 原本降低時會提高。",
       "zh-hans": "能力的变化发生逆转， 原本提高时会降低， 而原本降低时会提高。"
     }
@@ -3682,7 +3682,6 @@
       "es-419": "Compiescolta"
     },
     "descriptions": {
-      "es-419": "Reduce el daño que sufren los aliados.",
       "fr": "Diminue les dégâts subis par les alliés.",
       "en": "Reduces damage done to allies.",
       "ja-hrkt": "みかたの　ダメージを へらすことができる。",
@@ -3691,6 +3690,7 @@
       "es": "Reduce el daño que sufren los aliados.",
       "it": "Riduce il danno subito dagli alleati.",
       "ja": "味方の　ダメージを 減らすことができる。",
+      "es-419": "Reduce el daño que sufren los aliados.",
       "zh-hant": "可以減少我方受到的傷害。",
       "zh-hans": "可以减少我方的伤害。"
     }
@@ -3738,12 +3738,12 @@
       "es-419": "Metal Pesado"
     },
     "descriptions": {
-      "es": "Duplica su peso.",
       "fr": "Double le poids du Pokémon.",
       "en": "Doubles the Pokémon’s weight.",
       "ja-hrkt": "じぶんの　おもさが ２ばいに　なる。",
       "ko": "자신의 무게가 2배가 된다.",
       "de": "Verdoppelt das eigene Gewicht.",
+      "es": "Duplica el peso del Pokémon.",
       "it": "Raddoppia il peso del Pokémon.",
       "ja": "自分の　重さが ２倍に　なる。",
       "es-419": "Duplica el peso del Pokémon.",
@@ -3990,7 +3990,6 @@
       "es-419": "Contacto Tóxico"
     },
     "descriptions": {
-      "es-419": "Puede envenenar al objetivo con solo tocarlo.",
       "fr": "Peut empoisonner l’ennemi par simple contact.",
       "en": "May poison targets when a Pokémon makes contact.",
       "ja-hrkt": "さわるだけで　あいてを どくにすることがある。",
@@ -3999,6 +3998,7 @@
       "es": "Puede envenenar al objetivo con solo tocarlo.",
       "it": "Può avvelenare il nemico al solo contatto fisico.",
       "ja": "触るだけで　相手を どくにすることがある。",
+      "es-419": "Puede envenenar al objetivo con solo tocarlo.",
       "zh-hant": "有時僅是接觸 就能讓對手中毒。",
       "zh-hans": "只通过接触就有可能 让对手变为中毒状态。"
     }
@@ -4186,7 +4186,6 @@
       "es-419": "Impostor"
     },
     "descriptions": {
-      "zh-hans": "变身为当前面对的宝可梦。",
       "fr": "Adopte l’apparence du Pokémon adverse.",
       "en": "It transforms itself into the Pokémon it is facing.",
       "ja-hrkt": "めのまえの　ポケモンに へんしん　してしまう。",
@@ -4196,7 +4195,8 @@
       "it": "Si trasforma nel Pokémon che ha davanti.",
       "ja": "目の前の　ポケモンに 変身してしまう。",
       "es-419": "Se transforma en el Pokémon que tiene enfrente.",
-      "zh-hant": "變身為當前面對的寶可夢。"
+      "zh-hant": "變身為當前面對的寶可夢。",
+      "zh-hans": "变身为当前面对的宝可梦。"
     }
   },
   "151": {
@@ -4438,9 +4438,9 @@
       "es-419": "Poder Arenoso"
     },
     "descriptions": {
-      "ja-hrkt": "すなあらしで　いりょくが あがる　わざがある。",
       "fr": "Renforce des capacités en cas de tempête de sable.",
       "en": "Boosts certain moves’ power in a sandstorm.",
+      "ja-hrkt": "すなあらしで　いりょくが あがる　わざがある。",
       "ko": "모래바람으로 위력이 올라가는 기술이 있다.",
       "de": "Manche Attacken wirken in Sandstürmen besser.",
       "es": "Potencia algunos movimientos durante las tormentas de arena.",
@@ -4774,13 +4774,13 @@
       "es-419": "Antibalas"
     },
     "descriptions": {
-      "en": "Protects the Pokémon from some ball and bomb moves.",
       "ja-hrkt": "たまや　ばくだんに あたらない。",
       "ko": "구슬이나 폭탄에 맞지 않는다.",
       "fr": "Protège de certaines capacités projetant des bombes, balles…",
       "de": "Schützt das Pokémon vor geworfenen Bomben und Kugeln.",
       "es": "No le afectan las bombas ni algunos proyectiles.",
       "it": "Protegge da alcune mosse a base di proiettili e bombe.",
+      "en": "Protects the Pokémon from some ball and bomb moves.",
       "ja": "たまや　ばくだんに 当たらない。",
       "es-419": "No le afectan las bombas ni algunos proyectiles.",
       "zh-hant": "可防住對手的 球和彈類的招式。",
@@ -4886,13 +4886,13 @@
       "es-419": "Velo Dulce"
     },
     "descriptions": {
-      "en": "Prevents itself and ally Pokémon from falling asleep.",
       "ja-hrkt": "みかたの　ポケモンは ねむらなくなる。",
       "ko": "같은 편의 포켓몬이 잠들지 않게 된다.",
       "fr": "Les Pokémon de l’équipe ne peuvent pas s’endormir.",
       "de": "Alle Pokémon im Team können nicht einschlafen.",
       "es": "Evita que tu equipo Pokémon se duerma.",
       "it": "Impedisce a sé e agli alleati di addormentarsi.",
+      "en": "Prevents itself and ally Pokémon from falling asleep.",
       "ja": "味方の　ポケモンは 眠らなくなる。",
       "es-419": "Evita que tu equipo Pokémon se duerma.",
       "zh-hant": "我方的寶可夢 不會陷入睡眠狀態。",
@@ -5283,7 +5283,7 @@
       "fr": "Altère les conditions météo et rend inefficaces les attaques Feu.",
       "de": "Ändert das Wetter. Unterbindet direkte Feuer-Attacken.",
       "es": "Altera el clima para anular los ataques de tipo Fuego.",
-      "it": "Crea un clima che rende inefficaci   gli attacchi di tipo Fuoco.",
+      "it": "Crea un clima che rende inefficaci gli attacchi di tipo Fuoco.",
       "en": "Affects weather and nullifies any Fire-type attacks.",
       "ja": "ほのおタイプの　攻撃を 受けない　天気にする。",
       "es-419": "Altera el clima para anular los ataques de tipo Fuego.",
@@ -5311,7 +5311,7 @@
       "fr": "Altère les conditions météo et rend inefficaces les attaques Eau.",
       "de": "Ändert das Wetter. Unterbindet direkte Wasser-Attacken.",
       "es": "Altera el clima para anular los ataques de tipo Agua.",
-      "it": "Crea un clima che rende inefficaci   gli attacchi di tipo Acqua.",
+      "it": "Crea un clima che rende inefficaci gli attacchi di tipo Acqua.",
       "en": "Affects weather and nullifies any Water-type attacks.",
       "ja": "ずタイプの　攻撃を 受けない　天気にする。",
       "es-419": "Altera el clima para anular los ataques de tipo Agua.",
@@ -5621,7 +5621,7 @@
       "de": "Fallen seine KP nach einem Angriff auf die Hälfte des Maximalwerts oder weniger, steigt sein Spezial-Angriff.",
       "es": "Aumenta el Ataque Especial si los ataques del oponente le reducen los PS a la mitad.",
       "it": "Se i PS scendono a metà o meno a causa di un attacco, l’Attacco Speciale aumenta.",
-      "en": "Boosts the Pokémon’s Sp. Atk stat when it takes a  hit that causes its HP to become half or less.",
+      "en": "Boosts the Pokémon’s Sp. Atk stat when it takes a hit that causes its HP to become half or less.",
       "ja": "相手の　攻撃で ＨＰが　半分に　なると 特攻が　上がる。",
       "zh-hans": "因对手的攻击 ＨＰ变为一半时， 特攻会提高。",
       "es-419": "Aumenta el Ataque Especial si los ataques del oponente le reducen los PS a la mitad."
@@ -5698,7 +5698,6 @@
       "es-419": "Voz Fluida"
     },
     "descriptions": {
-      "zh-hans": "所有的声音招式 都变为水属性。",
       "ja-hrkt": "すべての　おとわざが みずタイプに　なる。",
       "ko": "모든 소리 기술이 물타입이 된다.",
       "zh-hant": "所有的聲音招式 都變為水屬性。",
@@ -5708,6 +5707,7 @@
       "it": "Le mosse basate sul suono del Pokémon con questa abilità diventano di tipo Acqua.",
       "en": "All sound-based moves become Water-type moves.",
       "ja": "すべての　音技が みずタイプに　なる。",
+      "zh-hans": "所有的声音招式 都变为水属性。",
       "es-419": "Hace que todos los movimientos del Pokémon basados en sonido pasen a ser de tipo Agua."
     }
   },
@@ -5922,7 +5922,6 @@
       "es-419": "Corrosión"
     },
     "descriptions": {
-      "en": "The Pokémon can poison the target even if it’s a Steel or Poison type.",
       "ja-hrkt": "はがねタイプや　どくタイプも どく　じょうたいに　することが　できる。",
       "ko": "강철타입이나 독타입도 독 상태로 만들 수 있다.",
       "zh-hant": "就算對方是鋼屬性或毒屬性寶可夢， 也可讓對方陷入中毒狀態。",
@@ -5930,6 +5929,7 @@
       "de": "Kann selbst Pokémon vom Typ Stahl oder Gift vergiften.",
       "es": "Permite envenenar incluso a rivales de tipo Acero o Veneno.",
       "it": "Il Pokémon è in grado di avvelenare il bersaglio anche se questo è di tipo Acciaio o Veleno.",
+      "en": "The Pokémon can poison the target even if it’s a Steel or Poison type.",
       "ja": "はがねタイプや　どくタイプも どく状態に　することが　できる。",
       "zh-hans": "可以使钢属性和毒属性的宝可梦 也陷入中毒状态。",
       "es-419": "Permite envenenar incluso a rivales de tipo Acero o Veneno."
@@ -5955,7 +5955,7 @@
       "zh-hant": "總是半夢半醒的狀態， 絕對不會醒來。 可在睡著的狀況下進行攻擊。",
       "fr": "Le Pokémon rêve en permanence et ne se réveille jamais. Il est capable d’attaquer normalement tout en dormant.",
       "de": "Das Pokémon befindet sich ununterbrochen im Halbschlaf und wacht nie vollständig auf. Es kann jedoch im Schlaf angreifen.",
-      "es": "No despierta jamás de su profundo letargo  e incluso ataca dormido.",
+      "es": "No despierta jamás de su profundo letargo e incluso ataca dormido.",
       "it": "Il Pokémon si trova in un costante stato di dormiveglia che gli impedisce di svegliarsi. Può attaccare anche da addormentato.",
       "en": "It’s always drowsing and will never wake up. It can attack without waking up.",
       "ja": "つねに　夢うつつの　状態で 絶対に　目覚めない。 眠ったまま　攻撃が　できる。",
@@ -5978,7 +5978,6 @@
       "es-419": "Regia Presencia"
     },
     "descriptions": {
-      "es-419": "Intimida al rival y le impide usar movimientos con prioridad dirigidos al Pokémon.",
       "ja-hrkt": "あいてに　いあつかんを　あたえ こちらに　むかって　せんせいわざを だせない　ようにする。",
       "ko": "상대에게 위압감을 줘서 이쪽을 향한 선제 기술을 사용할 수 없게 한다.",
       "zh-hant": "向對手施加威懾力， 使其無法對我方使出先制招式。",
@@ -5988,7 +5987,8 @@
       "it": "L’aura di regalità del Pokémon impedisce al nemico di attaccarlo con mosse che hanno priorità alta.",
       "en": "Its majesty pressures the opposing Pokémon, making it unable to attack using priority moves.",
       "ja": "相手に　威圧感を　あたえ こちらに　むかって　先制技を 出せない　ようにする。",
-      "zh-hans": "向对手施加威慑力， 使其无法对我方使出先制招式。"
+      "zh-hans": "向对手施加威慑力， 使其无法对我方使出先制招式。",
+      "es-419": "Intimida al rival y le impide usar movimientos con prioridad dirigidos al Pokémon."
     }
   },
   "215": {
@@ -6062,9 +6062,9 @@
       "es-419": "Batería"
     },
     "descriptions": {
-      "zh-hant": "會提高我方的 特殊招式的威力。",
       "ja-hrkt": "みかたの　とくしゅわざの いりょくを　あげる。",
       "ko": "같은 편 특수 기술의 위력을 올린다.",
+      "zh-hant": "會提高我方的 特殊招式的威力。",
       "fr": "Augmente la puissance des capacités spéciales des alliés.",
       "de": "Erhöht die Stärke der Spezial-Attacken seiner Mitstreiter.",
       "es": "Potencia los movimientos especiales de los aliados.",
@@ -6202,7 +6202,6 @@
       "es-419": "Receptor"
     },
     "descriptions": {
-      "es-419": "Adquiere la habilidad de un aliado debilitado.",
       "ja-hrkt": "たおされた　みかたの　とくせいを うけついで　おなじ　とくせいに　なる。",
       "ko": "쓰러진 같은 편의 특성을 이어받아 같은 특성이 된다.",
       "zh-hant": "繼承被打倒的同伴的特性， 變為相同的特性。",
@@ -6212,7 +6211,8 @@
       "it": "Il Pokémon acquisisce l’abilità di un alleato andato KO.",
       "en": "The Pokémon copies the Ability of a defeated ally.",
       "ja": "倒された　味方の　特性を 受け継いで　同じ　特性に　なる。",
-      "zh-hans": "继承被打倒的同伴的特性， 变为相同的特性。"
+      "zh-hans": "继承被打倒的同伴的特性， 变为相同的特性。",
+      "es-419": "Adquiere la habilidad de un aliado debilitado."
     }
   },
   "223": {
@@ -6286,8 +6286,6 @@
       "es-419": "Sistema Alfa"
     },
     "descriptions": {
-      "zh-hans": "根据持有的存储碟， 自己的属性会改变。",
-      "ja": "持っている　メモリで 自分の　タイプが　変わる。",
       "ja-hrkt": "もっている　メモリで じぶんの　タイプが　かわる。",
       "ko": "지니고 있는 메모리로 자신의 타입이 변한다.",
       "zh-hant": "根據持有的記憶碟， 自己的屬性會改變。",
@@ -6296,6 +6294,8 @@
       "es": "Cambia su tipo según el disco que lleve instalado.",
       "it": "Il tipo del Pokémon cambia in base alla ROM installata.",
       "en": "Changes the Pokémon’s type to match the memory disc it holds.",
+      "ja": "持っている　メモリで 自分の　タイプが　変わる。",
+      "zh-hans": "根据持有的存储碟， 自己的属性会改变。",
       "es-419": "Cambia su tipo según el disco que lleve instalado."
     }
   },
@@ -6454,7 +6454,6 @@
       "es-419": "Guardia Espectro"
     },
     "descriptions": {
-      "es-419": "Reduce el daño que sufre si sus PS están al máximo.",
       "ja-hrkt": "ＨＰが　まんたんの　ときに うける　ダメージが　すくなくなる。",
       "ko": "HP가 꽉 찼을 때 받는 데미지가 줄어든다.",
       "zh-hant": "ＨＰ全滿時， 受到的傷害會變少。",
@@ -6464,7 +6463,8 @@
       "it": "Se i PS sono al massimo, riduce il danno subito.",
       "en": "Reduces the amount of damage the Pokémon takes while its HP is full.",
       "ja": "ＨＰが　満タンの　ときに 受ける　ダメージが　少なくなる。",
-      "zh-hans": "ＨＰ全满时， 受到的伤害会变少。"
+      "zh-hans": "ＨＰ全满时， 受到的伤害会变少。",
+      "es-419": "Reduce el daño sufrido si los PS están al máximo."
     }
   },
   "232": {
@@ -6902,13 +6902,13 @@
       "es-419": "Maduración"
     },
     "descriptions": {
-      "it": "Fa maturare le bacche raddoppiandone gli effetti.",
       "ja-hrkt": "じゅくせい　させることで きのみの　こうかが ばいに　なる。",
       "ko": "나무열매를 숙성시켜서 효과가 2배가 된다.",
       "zh-hant": "讓樹果成熟， 使效果變為２倍。",
       "fr": "Le Pokémon fait mûrir la Baie qu’il tient et double ainsi son effet.",
       "de": "Verdoppelt den Effekt von Beeren, indem es sie heranreifen lässt.",
       "es": "Hace madurar las bayas, por lo que duplica sus efectos.",
+      "it": "Fa maturare le bacche raddoppiandone gli effetti.",
       "en": "Ripens Berries and doubles their effect.",
       "ja": "熟成　させることで きのみの　効果が 倍に　なる。",
       "zh-hans": "使树果成熟， 效果变为２倍。",
@@ -7486,8 +7486,8 @@
       "it": "Odore Tenace",
       "en": "Lingering Aroma",
       "ja": "とれないにおい",
-      "es-419": "Olor Persistente",
-      "zh-hans": "甩不掉的气味"
+      "zh-hans": "甩不掉的气味",
+      "es-419": "Olor Persistente"
     },
     "descriptions": {
       "fr": "Lorsque le Pokémon subit une attaque directe, le talent\\nde l’attaquant est remplacé par Odeur Tenace.",
@@ -7507,9 +7507,9 @@
       "en": "Seed Sower",
       "cs": "Rozsévání",
       "ja": "こぼれダネ",
-      "es-419": "Disemillar",
       "zh-hans": "掉出种子",
-      "pt-br": "Semear"
+      "pt-br": "Semear",
+      "es-419": "Disemillar"
     },
     "descriptions": {
       "fr": "Le Pokémon crée un champ herbu quand\\nil subit une attaque.",
@@ -7529,9 +7529,9 @@
       "en": "Thermal Exchange",
       "cs": "Tepelná výměna",
       "ja": "ねつこうかん",
-      "es-419": "Termoscambio",
       "zh-hans": "热交换",
-      "pt-br": "Termoconversão"
+      "pt-br": "Termoconversão",
+      "es-419": "Termoscambio"
     },
     "descriptions": {
       "fr": "Lorsque le Pokémon est touché par une capacité de type\\nFeu, son Attaque augmente. Il ne peut pas être brûlé.",
@@ -7550,8 +7550,8 @@
       "it": "Iraguscio",
       "en": "Anger Shell",
       "ja": "いかりのこうら",
-      "es-419": "Coraza Ira",
-      "zh-hans": "愤怒甲壳"
+      "zh-hans": "愤怒甲壳",
+      "es-419": "Coraza Ira"
     },
     "descriptions": {
       "fr": "Le Pokémon enrage s’il a moins de la moitié de ses PV\\naprès avoir subi une attaque. Sa Déf. et sa Déf. Spé.\\nbaissent, et son Atq., son Atq. Spé. et sa Vit. augmentent.",
@@ -7570,8 +7570,8 @@
       "it": "Sale Purificante",
       "en": "Purifying Salt",
       "ja": "きよめのしお",
-      "es-419": "Sal Purificadora",
-      "zh-hans": "洁净之盐"
+      "zh-hans": "洁净之盐",
+      "es-419": "Sal Purificadora"
     },
     "descriptions": {
       "fr": "Le sel pur immunise le Pokémon contre les altérations\\nde statut, et diminue de moitié les dégâts des capacités\\nde type Spectre.",
@@ -7590,9 +7590,9 @@
       "it": "Bentostato",
       "en": "Well-Baked Body",
       "ja": "こんがりボディ",
-      "es-419": "Cuerpo Horneado",
       "zh-hans": "焦香之躯",
-      "pt-br": "Corpo Bem-passado"
+      "pt-br": "Corpo Bem-passado",
+      "es-419": "Cuerpo Horneado"
     },
     "descriptions": {
       "fr": "Si le Pokémon est touché par une capacité de type Feu,\\nil ne subit aucun dégât et sa Défense augmente\\nbeaucoup.",
@@ -7611,8 +7611,8 @@
       "it": "Vento Propizio",
       "en": "Wind Rider",
       "ja": "かぜのり",
-      "es-419": "Surcavientos",
-      "zh-hans": "乘风"
+      "zh-hans": "乘风",
+      "es-419": "Surcavientos"
     },
     "descriptions": {
       "fr": "L’Attaque du Pokémon augmente si un vent arrière souffle\\nou s’il est touché par une capacité faisant appel au vent.\\nDans ce dernier cas, il ne subit aucun dégât.",
@@ -7631,9 +7631,9 @@
       "it": "Cane da Guardia",
       "en": "Guard Dog",
       "ja": "ばんけん",
-      "es-419": "Perro Guardián",
       "zh-hans": "看门犬",
-      "pt-br": "Cão de Guarda"
+      "pt-br": "Cão de Guarda",
+      "es-419": "Perro Guardián"
     },
     "descriptions": {
       "fr": "L’Attaque du Pokémon augmente s’il subit l’effet du\\ntalent Intimidation. Les capacités ou objets qui font\\nchanger de Pokémon n’ont aucun effet sur lui.",
@@ -7652,8 +7652,8 @@
       "it": "Portamassi",
       "en": "Rocky Payload",
       "ja": "いわはこび",
-      "es-419": "Transportarrocas",
-      "zh-hans": "搬岩"
+      "zh-hans": "搬岩",
+      "es-419": "Transportarrocas"
     },
     "descriptions": {
       "fr": "Augmente la puissance des capacités de type Roche.",
@@ -7672,8 +7672,8 @@
       "it": "Energia Eolica",
       "en": "Wind Power",
       "ja": "ふうりょくでんき",
-      "es-419": "Energía Eólica",
-      "zh-hans": "风力发电"
+      "zh-hans": "风力发电",
+      "es-419": "Energía Eólica"
     },
     "descriptions": {
       "fr": "Si le Pokémon est touché par une capacité faisant appel\\nau vent, il se charge en électricité.",
@@ -7692,9 +7692,9 @@
       "it": "Supercambio",
       "en": "Zero to Hero",
       "ja": "マイティチェンジ",
-      "es-419": "Cambio Heroico",
       "zh-hans": "全能变身",
-      "pt-br": "Do Abismo ao Heroísmo"
+      "pt-br": "Do Abismo ao Heroísmo",
+      "es-419": "Cambio Heroico"
     },
     "descriptions": {
       "fr": "Le Pokémon prend sa Forme Super en quittant\\nle combat.",
@@ -7713,8 +7713,8 @@
       "it": "Torre di Comando",
       "en": "Commander",
       "ja": "しれいとう",
-      "es-419": "Comandar",
-      "zh-hans": "发号施令"
+      "zh-hans": "发号施令",
+      "es-419": "Comandar"
     },
     "descriptions": {
       "fr": "Si un Oyacata allié est sur le terrain quand ce Pokémon\\nrejoint le combat, ce dernier entre dans sa bouche et\\ndevient son commandant.",
@@ -7734,9 +7734,9 @@
       "en": "Electromorphosis",
       "cs": "Elektromorfóza",
       "ja": "でんきにかえる",
-      "es-419": "Dínamo",
       "zh-hans": "电力转换",
-      "pt-br": "Eletromorfose"
+      "pt-br": "Eletromorfose",
+      "es-419": "Dínamo"
     },
     "descriptions": {
       "fr": "Si le Pokémon subit des dégâts, il se charge\\nen électricité.",
@@ -7755,9 +7755,9 @@
       "it": "Paleoattivazione",
       "en": "Protosynthesis",
       "ja": "こだいかっせい",
-      "es-419": "Paleosíntesis",
       "zh-hans": "古代活性",
-      "pt-br": "Protossíntese"
+      "pt-br": "Protossíntese",
+      "es-419": "Paleosíntesis"
     },
     "descriptions": {
       "fr": "Quand le soleil brille ou que le Pokémon tient\\nune capsule d’Énergie Booster, sa stat la plus élevée\\naugmente.",
@@ -7776,8 +7776,8 @@
       "it": "Carica Quark",
       "en": "Quark Drive",
       "ja": "クォークチャージ",
-      "es-419": "Carga Cuark",
-      "zh-hans": "夸克充能"
+      "zh-hans": "夸克充能",
+      "es-419": "Carga Cuark"
     },
     "descriptions": {
       "fr": "Quand un champ électrifié est actif ou que le Pokémon\\ntient une capsule d’Énergie Booster, sa stat la plus élevée\\naugmente.",
@@ -7796,8 +7796,8 @@
       "it": "Corpo Aureo",
       "en": "Good as Gold",
       "ja": "おうごんのからだ",
-      "es-419": "Cuerpo Áureo",
-      "zh-hans": "黄金之躯"
+      "zh-hans": "黄金之躯",
+      "es-419": "Cuerpo Áureo"
     },
     "descriptions": {
       "fr": "Le corps en or pur et robuste du Pokémon l’immunise\\ncontre les capacités de statut des autres Pokémon.",
@@ -7816,8 +7816,8 @@
       "it": "Vaso Nefasto",
       "en": "Vessel of Ruin",
       "ja": "わざわいのうつわ",
-      "es-419": "Caldero Debacle",
-      "zh-hans": "灾祸之鼎"
+      "zh-hans": "灾祸之鼎",
+      "es-419": "Caldero Debacle"
     },
     "descriptions": {
       "fr": "Le pouvoir de l’urne qui appelle le fléau affaiblit\\nl’Attaque Spéciale de tous les autres Pokémon.",
@@ -7836,8 +7836,8 @@
       "it": "Spada Nefasta",
       "en": "Sword of Ruin",
       "ja": "わざわいのつるぎ",
-      "es-419": "Espada Debacle",
-      "zh-hans": "灾祸之剑"
+      "zh-hans": "灾祸之剑",
+      "es-419": "Espada Debacle"
     },
     "descriptions": {
       "fr": "Le pouvoir de l’épée qui appelle le fléau affaiblit\\nla Défense de tous les autres Pokémon.",
@@ -7856,8 +7856,8 @@
       "it": "Amuleto Nefasto",
       "en": "Tablets of Ruin",
       "ja": "わざわいのおふだ",
-      "es-419": "Tablilla Debacle",
-      "zh-hans": "灾祸之简"
+      "zh-hans": "灾祸之简",
+      "es-419": "Tablilla Debacle"
     },
     "descriptions": {
       "fr": "Le pouvoir du bois qui appelle le fléau affaiblit\\nl’Attaque de tous les autres Pokémon.",
@@ -7876,8 +7876,8 @@
       "it": "Monile Nefasto",
       "en": "Beads of Ruin",
       "ja": "わざわいのたま",
-      "es-419": "Abalorio Debacle",
-      "zh-hans": "灾祸之玉"
+      "zh-hans": "灾祸之玉",
+      "es-419": "Abalorio Debacle"
     },
     "descriptions": {
       "fr": "Le pouvoir des perles qui appellent le fléau affaiblit\\nla Défense Spéciale de tous les autres Pokémon.",
@@ -7896,8 +7896,8 @@
       "it": "Ritmo d’Oricalco",
       "en": "Orichalcum Pulse",
       "ja": "ひひいろのこどう",
-      "es-419": "Latido Oricalco",
-      "zh-hans": "绯红脉动"
+      "zh-hans": "绯红脉动",
+      "es-419": "Latido Oricalco"
     },
     "descriptions": {
       "fr": "Le Pokémon invoque le soleil quand il rejoint le combat.\\nQuand le soleil brille, une pulsation primitive augmente\\nson Attaque.",
@@ -7916,9 +7916,9 @@
       "it": "Motore Adronico",
       "en": "Hadron Engine",
       "ja": "ハドロンエンジン",
-      "es-419": "Motor Hadrónico",
       "zh-hans": "强子引擎",
-      "pt-br": "Motor Hadrônico"
+      "pt-br": "Motor Hadrônico",
+      "es-419": "Motor Hadrónico"
     },
     "descriptions": {
       "fr": "Le Pokémon crée un champ électrifié quand il rejoint\\nle combat. Une machine du futur fait monter son Attaque\\nSpéciale si un champ électrifié est actif.",
@@ -7937,8 +7937,8 @@
       "it": "Scrocco",
       "en": "Opportunist",
       "ja": "びんじょう",
-      "es-419": "Oportunista",
-      "zh-hans": "跟风"
+      "zh-hans": "跟风",
+      "es-419": "Oportunista"
     },
     "descriptions": {
       "fr": "Quand les stats de l’ennemi augmentent, le Pokémon\\nen profite pour augmenter ses stats de la même manière.",
@@ -7957,8 +7957,8 @@
       "it": "Ruminante",
       "en": "Cud Chew",
       "ja": "はんすう",
-      "es-419": "Rumia",
-      "zh-hans": "反刍"
+      "zh-hans": "反刍",
+      "es-419": "Rumia"
     },
     "descriptions": {
       "fr": "Quand le Pokémon mange une Baie, il la régurgite\\nà la fin du tour suivant et la mange une nouvelle fois.",
@@ -7977,8 +7977,8 @@
       "it": "Affilama",
       "en": "Sharpness",
       "ja": "きれあじ",
-      "es-419": "Cortante",
-      "zh-hans": "锋锐"
+      "zh-hans": "锋锐",
+      "es-419": "Cortante"
     },
     "descriptions": {
       "fr": "Augmente la puissance des capacités tranchantes.",
@@ -7997,9 +7997,9 @@
       "it": "Generale Supremo",
       "en": "Supreme Overlord",
       "ja": "そうだいしょう",
-      "es-419": "General Supremo",
       "zh-hans": "大将",
-      "pt-br": "General Supremo"
+      "pt-br": "General Supremo",
+      "es-419": "General Supremo"
     },
     "descriptions": {
       "fr": "Quand le Pokémon entre sur le terrain, son Attaque\\net son Attaque Spéciale augmentent légèrement\\npour chaque allié mis K.O. auparavant.",
@@ -8018,8 +8018,8 @@
       "it": "Coprotagonismo",
       "en": "Costar",
       "ja": "きょうえん",
-      "es-419": "Unísono",
-      "zh-hans": "同台共演"
+      "zh-hans": "同台共演",
+      "es-419": "Unísono"
     },
     "descriptions": {
       "fr": "Quand le Pokémon entre sur le terrain, il copie\\nles changements de stats de son allié.",
@@ -8038,9 +8038,9 @@
       "it": "Mantossina",
       "en": "Toxic Debris",
       "ja": "どくげしょう",
-      "es-419": "Capa Tóxica",
       "zh-hans": "毒满地",
-      "pt-br": "Detritos Tóxicos"
+      "pt-br": "Detritos Tóxicos",
+      "es-419": "Capa Tóxica"
     },
     "descriptions": {
       "fr": "Quand le Pokémon est touché par une capacité\\nphysique, il répand des pics toxiques dans le camp\\nadverse.",
@@ -8059,9 +8059,9 @@
       "it": "Codarmatura",
       "en": "Armor Tail",
       "ja": "テイルアーマー",
-      "es-419": "Cola Armadura",
       "zh-hans": "尾甲",
-      "pt-br": "Cauda de Armadura"
+      "pt-br": "Cauda de Armadura",
+      "es-419": "Cola Armadura"
     },
     "descriptions": {
       "fr": "Une étrange queue recouvre la tête du Pokémon,\\nce qui empêche ce dernier et ses alliés d’être visés\\npar une capacité prioritaire.",
@@ -8080,8 +8080,8 @@
       "it": "Mangiaterra",
       "en": "Earth Eater",
       "ja": "どしょく",
-      "es-419": "Geofagia",
-      "zh-hans": "食土"
+      "zh-hans": "食土",
+      "es-419": "Geofagia"
     },
     "descriptions": {
       "fr": "Si le Pokémon est touché par une capacité de type Sol,\\nil regagne des PV au lieu de subir des dégâts.",
@@ -8100,8 +8100,8 @@
       "it": "Micoforza",
       "en": "Mycelium Might",
       "ja": "きんしのちから",
-      "es-419": "Poder Fúngico",
-      "zh-hans": "菌丝之力"
+      "zh-hans": "菌丝之力",
+      "es-419": "Poder Fúngico"
     },
     "descriptions": {
       "fr": "Le Pokémon agit toujours plus lentement quand il utilise\\nune capacité de statut, mais il ignore les talents adverses.",
@@ -8300,9 +8300,9 @@
       "it": "Punta Perforante",
       "en": "Piercing Drill",
       "ja": "かんつうドリル",
-      "es-419": "Turbotaladro",
       "zh-hans": "贯穿钻",
-      "pt-br": "Broca Pervasiva"
+      "pt-br": "Broca Pervasiva",
+      "es-419": "Turbotaladro"
     },
     "descriptions": {
       "en": "When the Pokémon uses contact moves, it can hit even targets that are protecting themselves, dealing 1/4 of the damage that the move would otherwise deal. Everything aside from the target's protective effects is still triggered.",
@@ -8320,8 +8320,8 @@
       "it": "Pelledrago",
       "en": "Dragonize",
       "ja": "ドラゴンスキン",
-      "es-419": "Piel Dracónica",
-      "zh-hans": "龙皮肤"
+      "zh-hans": "龙皮肤",
+      "es-419": "Piel Dracónica"
     },
     "descriptions": {
       "en": "The Pokémon's Normal-type moves become Dragon-type moves and their power is boosted by 20%.",
@@ -8339,8 +8339,8 @@
       "it": "Megasolar",
       "en": "Mega Sol",
       "ja": "メガソーラー",
-      "es-419": "Megasolar",
-      "zh-hans": "超级日光"
+      "zh-hans": "超级日光",
+      "es-419": "Megasolar"
     },
     "descriptions": {
       "en": "Even when the sunlight has not turned harsh, the Pokémon can use its moves as if the weather were harsh sunlight.",
@@ -8358,8 +8358,8 @@
       "it": "Spargipiccante",
       "en": "Spicy Spray",
       "ja": "とびだすハバネロ",
-      "es-419": "Salpicante",
-      "zh-hans": "辣椒喷发"
+      "zh-hans": "辣椒喷发",
+      "es-419": "Salpicante"
     },
     "descriptions": {
       "en": "When the Pokémon takes damage from a move, it burns the attacker.",
@@ -8380,6 +8380,14 @@
     },
     "descriptions": {
       "en": "Boosts the power of the Pokémon's Fire-type moves by 50%."
+    }
+  },
+  "314": {
+    "names": {
+      "en": "Aura Guard"
+    },
+    "descriptions": {
+      "en": "A Pokémon with Aura Guard takes half damage from moves that make contact. Moves affected by Long Reach which make contact will deal regular damage."
     }
   },
   "10001": {

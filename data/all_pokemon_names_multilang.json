@@ -141,7 +141,7 @@
   },
   "11": {
     "ja-hrkt": "トランセル",
-    "ja-roma": "Trancell",
+    "ja-roma": "Transel",
     "ko": "단데기",
     "zh-hant": "鐵甲蛹",
     "fr": "Chrysacier",
@@ -1331,7 +1331,7 @@
   },
   "96": {
     "ja-hrkt": "スリープ",
-    "ja-roma": "Sleep",
+    "ja-roma": "Sleepe",
     "ko": "슬리프",
     "zh-hant": "催眠貘",
     "fr": "Soporifik",
@@ -2436,13 +2436,13 @@
     "es-419": "Igglybuff"
   },
   "175": {
-    "es": "Togepi",
     "ja-hrkt": "トゲピー",
     "ja-roma": "Togepy",
     "ko": "토게피",
     "zh-hant": "波克比",
     "fr": "Togepi",
     "de": "Togepi",
+    "es": "Togepi",
     "it": "Togepi",
     "en": "Togepi",
     "ja": "トゲピー",
@@ -2745,7 +2745,7 @@
   },
   "197": {
     "ja-hrkt": "ブラッキー",
-    "ja-roma": "Blacky",
+    "ja-roma": "Bracky",
     "ko": "블래키",
     "zh-hant": "月亮伊布",
     "fr": "Noctali",
@@ -3417,7 +3417,7 @@
   },
   "245": {
     "ja-hrkt": "スイクン",
-    "ja-roma": "Suikun",
+    "ja-roma": "Suicune",
     "ko": "스이쿤",
     "zh-hant": "水君",
     "fr": "Suicune",
@@ -3655,7 +3655,7 @@
   },
   "262": {
     "ja-hrkt": "グラエナ",
-    "ja-roma": "Guraena",
+    "ja-roma": "Graena",
     "ko": "그라에나",
     "zh-hant": "大狼犬",
     "fr": "Grahyèna",
@@ -3669,7 +3669,7 @@
   },
   "263": {
     "ja-hrkt": "ジグザグマ",
-    "ja-roma": "Ziguzaguma",
+    "ja-roma": "Jiguzaguma",
     "ko": "지그제구리",
     "zh-hant": "蛇紋熊",
     "fr": "Zigzaton",
@@ -4467,7 +4467,7 @@
   },
   "320": {
     "ja-hrkt": "ホエルコ",
-    "ja-roma": "Whalko",
+    "ja-roma": "Hoeruko",
     "ko": "고래왕자",
     "zh-hant": "吼吼鯨",
     "fr": "Wailmer",
@@ -4607,7 +4607,7 @@
   },
   "330": {
     "ja-hrkt": "フライゴン",
-    "ja-roma": "Frygon",
+    "ja-roma": "Flygon",
     "ko": "플라이곤",
     "zh-hant": "沙漠蜻蜓",
     "fr": "Libégon",
@@ -4732,12 +4732,12 @@
     "es-419": "Solrock"
   },
   "339": {
-    "de": "Schmerbe",
     "ja-hrkt": "ドジョッチ",
     "ja-roma": "Dojoach",
     "ko": "미꾸리",
     "zh-hant": "泥泥鰍",
     "fr": "Barloche",
+    "de": "Schmerbe",
     "es": "Barboach",
     "it": "Barboach",
     "en": "Barboach",
@@ -5138,10 +5138,10 @@
     "es-419": "Huntail"
   },
   "368": {
-    "zh-hant": "櫻花魚",
     "ja-hrkt": "サクラビス",
     "ja-roma": "Sakurabyss",
     "ko": "분홍장이",
+    "zh-hant": "櫻花魚",
     "fr": "Rosabyss",
     "de": "Saganabyss",
     "es": "Gorebyss",
@@ -5461,7 +5461,7 @@
   },
   "391": {
     "ja-hrkt": "モウカザル",
-    "ja-roma": "Mōkazaru",
+    "ja-roma": "Moukazaru",
     "ko": "파이숭이",
     "zh-hant": "猛火猴",
     "fr": "Chimpenfeu",
@@ -5475,7 +5475,7 @@
   },
   "392": {
     "ja-hrkt": "ゴウカザル",
-    "ja-roma": "Gōkazaru",
+    "ja-roma": "Goukazaru",
     "ko": "초염몽",
     "zh-hant": "烈焰猴",
     "fr": "Simiabraz",
@@ -5573,7 +5573,7 @@
   },
   "399": {
     "ja-hrkt": "ビッパ",
-    "ja-roma": "Bipper",
+    "ja-roma": "Bippa",
     "ko": "비버니",
     "zh-hant": "大牙狸",
     "fr": "Keunotor",
@@ -5587,7 +5587,7 @@
   },
   "400": {
     "ja-hrkt": "ビーダル",
-    "ja-roma": "Beadull",
+    "ja-roma": "Beadaru",
     "ko": "비버통",
     "zh-hant": "大尾狸",
     "fr": "Castorno",
@@ -5615,7 +5615,7 @@
   },
   "402": {
     "ja-hrkt": "コロトック",
-    "ja-roma": "Korotok",
+    "ja-roma": "Korotock",
     "ko": "귀뚤톡크",
     "zh-hant": "音箱蟀",
     "fr": "Mélokrik",
@@ -5713,7 +5713,7 @@
   },
   "409": {
     "ja-hrkt": "ラムパルド",
-    "ja-roma": "Rampard",
+    "ja-roma": "Rampald",
     "ko": "램펄드",
     "zh-hant": "戰槌龍",
     "fr": "Charkos",
@@ -5741,7 +5741,7 @@
   },
   "411": {
     "ja-hrkt": "トリデプス",
-    "ja-roma": "Trideps",
+    "ja-roma": "Torideps",
     "ko": "바리톱스",
     "zh-hant": "護城龍",
     "fr": "Bastiodon",
@@ -5783,7 +5783,7 @@
   },
   "414": {
     "ja-hrkt": "ガーメイル",
-    "ja-roma": "Garmeil",
+    "ja-roma": "Gamale",
     "ko": "나메일",
     "zh-hant": "紳士蛾",
     "fr": "Papilord",
@@ -5811,7 +5811,7 @@
   },
   "416": {
     "ja-hrkt": "ビークイン",
-    "ja-roma": "Beequeen",
+    "ja-roma": "Beequen",
     "ko": "비퀸",
     "zh-hant": "蜂女王",
     "fr": "Apireine",
@@ -5853,7 +5853,7 @@
   },
   "419": {
     "ja-hrkt": "フローゼル",
-    "ja-roma": "Flowsel",
+    "ja-roma": "Floazel",
     "ko": "플로젤",
     "zh-hant": "浮潛鼬",
     "fr": "Mustéflott",
@@ -5909,7 +5909,7 @@
   },
   "423": {
     "ja-hrkt": "トリトドン",
-    "ja-roma": "Toritodon",
+    "ja-roma": "Tritodon",
     "ko": "트리토돈",
     "zh-hant": "海兔獸",
     "fr": "Tritosor",
@@ -5993,7 +5993,7 @@
   },
   "429": {
     "ja-hrkt": "ムウマージ",
-    "ja-roma": "Mumage",
+    "ja-roma": "Mumargi",
     "ko": "무우마직",
     "zh-hant": "夢妖魔",
     "fr": "Magirêve",
@@ -6007,7 +6007,7 @@
   },
   "430": {
     "ja-hrkt": "ドンカラス",
-    "ja-roma": "Donkarasu",
+    "ja-roma": "Dongkarasu",
     "ko": "돈크로우",
     "zh-hant": "烏鴉頭頭",
     "fr": "Corboss",
@@ -6035,7 +6035,7 @@
   },
   "432": {
     "ja-hrkt": "ブニャット",
-    "ja-roma": "Bunyat",
+    "ja-roma": "Bunyatto",
     "ko": "몬냥이",
     "zh-hant": "東施喵",
     "fr": "Chaffreux",
@@ -6063,7 +6063,7 @@
   },
   "434": {
     "ja-hrkt": "スカンプー",
-    "ja-roma": "Skunpoo",
+    "ja-roma": "Skunpuu",
     "ko": "스컹뿡",
     "zh-hant": "臭鼬噗",
     "fr": "Moufouette",
@@ -6091,7 +6091,7 @@
   },
   "436": {
     "ja-hrkt": "ドーミラー",
-    "ja-roma": "Domirror",
+    "ja-roma": "Dohmirror",
     "ko": "동미러",
     "zh-hant": "銅鏡怪",
     "fr": "Archéomire",
@@ -6105,7 +6105,7 @@
   },
   "437": {
     "ja-hrkt": "ドータクン",
-    "ja-roma": "Dotakun",
+    "ja-roma": "Dohtakun",
     "ko": "동탁군",
     "zh-hant": "青銅鐘",
     "fr": "Archéodong",
@@ -6217,7 +6217,7 @@
   },
   "445": {
     "ja-hrkt": "ガブリアス",
-    "ja-roma": "Gablias",
+    "ja-roma": "Gaburias",
     "ko": "한카리아스",
     "zh-hant": "烈咬陸鯊",
     "fr": "Carchacrok",
@@ -6273,7 +6273,7 @@
   },
   "449": {
     "ja-hrkt": "ヒポポタス",
-    "ja-roma": "Hipopotas",
+    "ja-roma": "Hippopotas",
     "ko": "히포포타스",
     "zh-hant": "沙河馬",
     "fr": "Hippopotas",
@@ -6287,7 +6287,7 @@
   },
   "450": {
     "ja-hrkt": "カバルドン",
-    "ja-roma": "Kabarudon",
+    "ja-roma": "Kabaldon",
     "ko": "하마돈",
     "zh-hant": "河馬獸",
     "fr": "Hippodocus",
@@ -6301,7 +6301,7 @@
   },
   "451": {
     "ja-hrkt": "スコルピ",
-    "ja-roma": "Scorpi",
+    "ja-roma": "Scorupi",
     "ko": "스콜피",
     "zh-hant": "鉗尾蠍",
     "fr": "Rapion",
@@ -6469,7 +6469,7 @@
   },
   "463": {
     "ja-hrkt": "ベロベルト",
-    "ja-roma": "Beroberto",
+    "ja-roma": "Berobelt",
     "ko": "내룸벨트",
     "zh-hant": "大舌舔",
     "fr": "Coudlangue",
@@ -6483,7 +6483,7 @@
   },
   "464": {
     "ja-hrkt": "ドサイドン",
-    "ja-roma": "Dosydon",
+    "ja-roma": "Dosidon",
     "ko": "거대코뿌리",
     "zh-hant": "超甲狂犀",
     "fr": "Rhinastoc",
@@ -6608,7 +6608,6 @@
     "es-419": "Gliscor"
   },
   "473": {
-    "it": "Mamoswine",
     "ja-hrkt": "マンムー",
     "ja-roma": "Mammoo",
     "ko": "맘모꾸리",
@@ -6616,6 +6615,7 @@
     "fr": "Mammochon",
     "de": "Mamutel",
     "es": "Mamoswine",
+    "it": "Mamoswine",
     "en": "Mamoswine",
     "ja": "マンムー",
     "zh-hans": "象牙猪",
@@ -6623,7 +6623,7 @@
   },
   "474": {
     "ja-hrkt": "ポリゴンＺ",
-    "ja-roma": "PorygonZ",
+    "ja-roma": "Porygon-Z",
     "ko": "폴리곤Z",
     "zh-hant": "多邊獸Ｚ",
     "fr": "Porygon-Z",
@@ -6637,7 +6637,7 @@
   },
   "475": {
     "ja-hrkt": "エルレイド",
-    "ja-roma": "Erlade",
+    "ja-roma": "Erureido",
     "ko": "엘레이드",
     "zh-hant": "艾路雷朵",
     "fr": "Gallame",
@@ -6819,7 +6819,7 @@
   },
   "488": {
     "ja-hrkt": "クレセリア",
-    "ja-roma": "Crecelia",
+    "ja-roma": "Cresselia",
     "ko": "크레세리아",
     "zh-hant": "克雷色利亞",
     "fr": "Cresselia",
@@ -8204,10 +8204,10 @@
     "es-419": "Sawsbuck"
   },
   "587": {
-    "zh-hant": "電飛鼠",
     "ja-hrkt": "エモンガ",
-    "ja-roma": "Emonga",
+    "ja-roma": "Emolga",
     "ko": "에몽가",
+    "zh-hant": "電飛鼠",
     "fr": "Emolga",
     "de": "Emolga",
     "es": "Emolga",
@@ -9786,14 +9786,14 @@
     "es-419": "Aurorus"
   },
   "700": {
-    "es": "Sylveon",
-    "it": "Sylveon",
     "ja-hrkt": "ニンフィア",
     "ja-roma": "Nymphia",
     "ko": "님피아",
     "zh-hant": "仙子伊布",
     "fr": "Nymphali",
     "de": "Feelinara",
+    "es": "Sylveon",
+    "it": "Sylveon",
     "en": "Sylveon",
     "ja": "ニンフィア",
     "zh-hans": "仙子伊布",
@@ -10795,7 +10795,7 @@
   },
   "772": {
     "ja-hrkt": "タイプ：ヌル",
-    "ja-roma": "Null",
+    "ja-roma": "Type:Null",
     "ko": "타입:널",
     "zh-hant": "屬性：空",
     "fr": "Type:0",
@@ -10850,8 +10850,8 @@
     "es-419": "Komala"
   },
   "776": {
-    "ja-roma": "Bakugames",
     "ja-hrkt": "バクガメス",
+    "ja-roma": "Bakugames",
     "ko": "폭거북스",
     "zh-hant": "爆焰龜獸",
     "fr": "Boumata",
@@ -10977,7 +10977,7 @@
   },
   "785": {
     "ja-hrkt": "カプ・コケコ",
-    "ja-roma": "Kokeko",
+    "ja-roma": "Kapu-Kokeko",
     "ko": "카푸꼬꼬꼭",
     "zh-hant": "卡璞・鳴鳴",
     "fr": "Tokorico",
@@ -10991,7 +10991,7 @@
   },
   "786": {
     "ja-hrkt": "カプ・テテフ",
-    "ja-roma": "Tetefu",
+    "ja-roma": "Kapu-Tetefu",
     "ko": "카푸나비나",
     "zh-hant": "卡璞・蝶蝶",
     "fr": "Tokopiyon",
@@ -11005,7 +11005,7 @@
   },
   "787": {
     "ja-hrkt": "カプ・ブルル",
-    "ja-roma": "Bulul",
+    "ja-roma": "Kapu-Bulul",
     "ko": "카푸브루루",
     "zh-hant": "卡璞・哞哞",
     "fr": "Tokotoro",
@@ -11019,7 +11019,7 @@
   },
   "788": {
     "ja-hrkt": "カプ・レヒレ",
-    "ja-roma": "Rehire",
+    "ja-roma": "Kapu-Rehire",
     "ko": "카푸느지느",
     "zh-hant": "卡璞・鰭鰭",
     "fr": "Tokopisco",
@@ -11900,10 +11900,10 @@
     "es-419": "Sizzlipede"
   },
   "851": {
-    "zh-hant": "焚焰蚣",
     "ja-hrkt": "マルヤクデ",
     "ja-roma": "Maruyakude",
     "ko": "다태우지네",
+    "zh-hant": "焚焰蚣",
     "fr": "Scolocendre",
     "de": "Infernopod",
     "es": "Centiskorch",
@@ -12629,7 +12629,7 @@
   },
   "903": {
     "ja-hrkt": "オオニューラ",
-    "ja-roma": "Oonyura",
+    "ja-roma": "Ohnyula",
     "ko": "포푸니크",
     "zh-hant": "大狃拉",
     "fr": "Farfurex",
@@ -12643,7 +12643,7 @@
   },
   "904": {
     "ja-hrkt": "ハリーマン",
-    "ja-roma": "Hariman",
+    "ja-roma": "Haryman",
     "ko": "장침바루",
     "zh-hant": "萬針魚",
     "fr": "Qwilpik",
@@ -14141,6 +14141,7 @@
   },
   "1011": {
     "ja-hrkt": "カミッチュ",
+    "ja-roma": "Kamicchu",
     "ko": "과미르",
     "zh-hant": "裹蜜蟲",
     "fr": "Pomdramour",
@@ -14154,6 +14155,7 @@
   },
   "1012": {
     "ja-hrkt": "チャデス",
+    "ja-roma": "Chadeath",
     "ko": "차데스",
     "zh-hant": "斯魔茶",
     "fr": "Poltchageist",
@@ -14167,6 +14169,7 @@
   },
   "1013": {
     "ja-hrkt": "ヤバソチャ",
+    "ja-roma": "Yabasocha",
     "ko": "그우린차",
     "zh-hant": "來悲粗茶",
     "fr": "Théffroyable",
@@ -14180,6 +14183,7 @@
   },
   "1014": {
     "ja-hrkt": "イイネイヌ",
+    "ja-roma": "Iineinu",
     "ko": "조타구",
     "zh-hant": "夠讚狗",
     "fr": "Félicanis",
@@ -14193,6 +14197,7 @@
   },
   "1015": {
     "ja-hrkt": "マシマシラ",
+    "ja-roma": "Mashimashira",
     "ko": "이야후",
     "zh-hant": "願增猿",
     "fr": "Fortusimia",
@@ -14206,6 +14211,7 @@
   },
   "1016": {
     "ja-hrkt": "キチキギス",
+    "ja-roma": "Kichikigisu",
     "ko": "기로치",
     "zh-hant": "吉雉雞",
     "fr": "Favianos",
@@ -14219,6 +14225,7 @@
   },
   "1017": {
     "ja-hrkt": "オーガポン",
+    "ja-roma": "Ogerpon",
     "ko": "오거폰",
     "zh-hant": "厄鬼椪",
     "fr": "Ogerpon",
@@ -14232,6 +14239,7 @@
   },
   "1018": {
     "ja-hrkt": "ブリジュラス",
+    "ja-roma": "Briduras",
     "ko": "브리두라스",
     "zh-hant": "鋁鋼橋龍",
     "fr": "Pondralugon",
@@ -14245,6 +14253,7 @@
   },
   "1019": {
     "ja-hrkt": "カミツオロチ",
+    "ja-roma": "Kamitsuorochi",
     "ko": "과미드라",
     "zh-hant": "蜜集大蛇",
     "fr": "Pomdorochi",
@@ -14258,6 +14267,7 @@
   },
   "1020": {
     "ja-hrkt": "ウガツホムラ",
+    "ja-roma": "Ugatsuhomura",
     "ko": "꿰뚫는화염",
     "zh-hant": "破空焰",
     "fr": "Feu-Perçant",
@@ -14271,6 +14281,7 @@
   },
   "1021": {
     "ja-hrkt": "タケルライコ",
+    "ja-roma": "Takeruraiko",
     "ko": "날뛰는우레",
     "zh-hant": "猛雷鼓",
     "fr": "Ire-Foudre",
@@ -14284,32 +14295,35 @@
   },
   "1022": {
     "ja-hrkt": "テツノイワオ",
+    "ja-roma": "Tetsunoiwao",
     "ko": "무쇠암석",
-    "zh-hant": "铁磐岩",
+    "zh-hant": "鐵磐岩",
     "fr": "Roc-de-Fer",
     "de": "Eisenfels",
     "es": "Ferromole",
     "it": "Massoferreo",
     "en": "Iron Boulder",
     "ja": "テツノイワオ",
-    "zh-hans": "鐵磐岩",
+    "zh-hans": "铁磐岩",
     "es-419": "Ferromole"
   },
   "1023": {
     "ja-hrkt": "テツノカシラ",
+    "ja-roma": "Tetsunokashira",
     "ko": "무쇠감투",
-    "zh-hant": "铁头壳",
+    "zh-hant": "鐵頭殼",
     "fr": "Chef-de-Fer",
     "de": "Eisenhaupt",
     "es": "Ferrotesta",
     "it": "Capoferreo",
     "en": "Iron Crown",
     "ja": "テツノカシラ",
-    "zh-hans": "鐵頭殼",
+    "zh-hans": "铁头壳",
     "es-419": "Ferrotesta"
   },
   "1024": {
     "ja-hrkt": "テラパゴス",
+    "ja-roma": "Terapagos",
     "ko": "테라파고스",
     "zh-hant": "太樂巴戈斯",
     "fr": "Terapagos",
@@ -14323,6 +14337,7 @@
   },
   "1025": {
     "ja-hrkt": "モモワロウ",
+    "ja-roma": "Momowarou",
     "ko": "복숭악동",
     "zh-hant": "桃歹郎",
     "fr": "Pêchaminus",

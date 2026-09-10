@@ -156,6 +156,19 @@
     ]
   },
   {
+    "ndex": "40",
+    "name": "Wigglytuff",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      40
+    ]
+  },
+  {
     "ndex": "45",
     "name": "Vileplume",
     "form": "",
@@ -166,6 +179,32 @@
     "section": "main",
     "pokemon_ids": [
       45
+    ]
+  },
+  {
+    "ndex": "53",
+    "name": "Persian",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      53
+    ]
+  },
+  {
+    "ndex": "53",
+    "name": "Persian",
+    "form": "Alolan Form",
+    "type1": "Dark",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      53
     ]
   },
   {
@@ -260,6 +299,19 @@
     ]
   },
   {
+    "ndex": "83",
+    "name": "Farfetch'd",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      83
+    ]
+  },
+  {
     "ndex": "94",
     "name": "Gengar",
     "form": "",
@@ -296,6 +348,19 @@
     "section": "main",
     "pokemon_ids": [
       121
+    ]
+  },
+  {
+    "ndex": "122",
+    "name": "Mr. Mime",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      122
     ]
   },
   {
@@ -858,6 +923,19 @@
     ]
   },
   {
+    "ndex": "317",
+    "name": "Swalot",
+    "form": "",
+    "type1": "Poison",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      317
+    ]
+  },
+  {
     "ndex": "319",
     "name": "Sharpedo",
     "form": "",
@@ -985,6 +1063,19 @@
     "section": "main",
     "pokemon_ids": [
       362
+    ]
+  },
+  {
+    "ndex": "373",
+    "name": "Salamence",
+    "form": "",
+    "type1": "Dragon",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      373
     ]
   },
   {
@@ -1846,6 +1937,19 @@
     ]
   },
   {
+    "ndex": "673",
+    "name": "Gogoat",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      673
+    ]
+  },
+  {
     "ndex": "675",
     "name": "Pangoro",
     "form": "",
@@ -2340,6 +2444,19 @@
     ]
   },
   {
+    "ndex": "768",
+    "name": "Golisopod",
+    "form": "",
+    "type1": "Bug",
+    "type2": "Water",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      768
+    ]
+  },
+  {
     "ndex": "778",
     "name": "Mimikyu",
     "form": "",
@@ -2379,6 +2496,45 @@
     ]
   },
   {
+    "ndex": "812",
+    "name": "Rillaboom",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      812
+    ]
+  },
+  {
+    "ndex": "815",
+    "name": "Cinderace",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      815
+    ]
+  },
+  {
+    "ndex": "818",
+    "name": "Inteleon",
+    "form": "",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      818
+    ]
+  },
+  {
     "ndex": "823",
     "name": "Corviknight",
     "form": "",
@@ -2389,6 +2545,19 @@
     "section": "main",
     "pokemon_ids": [
       823
+    ]
+  },
+  {
+    "ndex": "828",
+    "name": "Thievul",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      828
     ]
   },
   {
@@ -2431,6 +2600,32 @@
     ]
   },
   {
+    "ndex": "849",
+    "name": "Toxtricity",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      849
+    ]
+  },
+  {
+    "ndex": "853",
+    "name": "Grapploct",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      853
+    ]
+  },
+  {
     "ndex": "855",
     "name": "Polteageist",
     "form": "",
@@ -2467,6 +2662,32 @@
     "section": "main",
     "pokemon_ids": [
       861
+    ]
+  },
+  {
+    "ndex": "863",
+    "name": "Perrserker",
+    "form": "",
+    "type1": "Steel",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      863
+    ]
+  },
+  {
+    "ndex": "865",
+    "name": "Sirfetch'd",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      865
     ]
   },
   {
@@ -2519,6 +2740,32 @@
     "section": "main",
     "pokemon_ids": [
       870
+    ]
+  },
+  {
+    "ndex": "871",
+    "name": "Pincurchin",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      871
+    ]
+  },
+  {
+    "ndex": "876",
+    "name": "Indeedee",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Normal",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      876
     ]
   },
   {
@@ -2652,6 +2899,19 @@
     ]
   },
   {
+    "ndex": "923",
+    "name": "Pawmot",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2 *",
+    "section": "main",
+    "pokemon_ids": [
+      923
+    ]
+  },
+  {
     "ndex": "925",
     "name": "Maushold",
     "form": "",
@@ -2662,6 +2922,32 @@
     "section": "main",
     "pokemon_ids": [
       925
+    ]
+  },
+  {
+    "ndex": "930",
+    "name": "Arboliva",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Grass",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      930
+    ]
+  },
+  {
+    "ndex": "931",
+    "name": "Squawkabilly",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      931
     ]
   },
   {
@@ -2714,6 +3000,19 @@
     "section": "main",
     "pokemon_ids": [
       939
+    ]
+  },
+  {
+    "ndex": "943",
+    "name": "Mabosstiff",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      943
     ]
   },
   {
@@ -2844,6 +3143,19 @@
     "section": "main",
     "pokemon_ids": [
       983
+    ]
+  },
+  {
+    "ndex": "998",
+    "name": "Baxcalibur",
+    "form": "",
+    "type1": "Dragon",
+    "type2": "Ice",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      998
     ]
   },
   {
@@ -3458,6 +3770,19 @@
     ]
   },
   {
+    "ndex": "359",
+    "name": "Absol",
+    "form": "Mega Absol Z",
+    "type1": "Dark",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10307
+    ]
+  },
+  {
     "ndex": "362",
     "name": "Glalie",
     "form": "Mega Glalie",
@@ -3468,6 +3793,19 @@
     "section": "mega",
     "pokemon_ids": [
       10074
+    ]
+  },
+  {
+    "ndex": "373",
+    "name": "Salamence",
+    "form": "Mega Salamence",
+    "type1": "Dragon",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10089
     ]
   },
   {
@@ -3523,6 +3861,19 @@
     ]
   },
   {
+    "ndex": "445",
+    "name": "Garchomp",
+    "form": "Mega Garchomp Z",
+    "type1": "Dragon",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10309
+    ]
+  },
+  {
     "ndex": "448",
     "name": "Lucario",
     "form": "Mega Lucario",
@@ -3533,6 +3884,19 @@
     "section": "mega",
     "pokemon_ids": [
       10059
+    ]
+  },
+  {
+    "ndex": "448",
+    "name": "Lucario",
+    "form": "Mega Lucario Z",
+    "type1": "Fighting",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10310
     ]
   },
   {
@@ -3823,6 +4187,19 @@
     ]
   },
   {
+    "ndex": "768",
+    "name": "Golisopod",
+    "form": "Mega Golisopod",
+    "type1": "Bug",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10316
+    ]
+  },
+  {
     "ndex": "780",
     "name": "Drampa",
     "form": "Mega Drampa",
@@ -3872,6 +4249,19 @@
     "section": "mega",
     "pokemon_ids": [
       10321
+    ]
+  },
+  {
+    "ndex": "998",
+    "name": "Baxcalibur",
+    "form": "Mega Baxcalibur",
+    "type1": "Dragon",
+    "type2": "Ice",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10325
     ]
   },
   {
@@ -4629,29 +5019,29 @@
     ]
   },
   {
-    "ndex": "855",
-    "name": "Polteageist",
-    "form": "Phony Form",
-    "type1": "Ghost",
-    "type2": "Yes",
+    "ndex": "849",
+    "name": "Toxtricity",
+    "form": "Amped Form",
+    "type1": "Electric",
+    "type2": "Poison",
     "normally_available": true,
-    "version_added": "1.0.2",
+    "version_added": "1.2.0",
     "section": "other",
     "pokemon_ids": [
-      855
+      849
     ]
   },
   {
-    "ndex": "855",
-    "name": "Polteageist",
-    "form": "Antique Form",
-    "type1": "Ghost",
-    "type2": "Yes",
+    "ndex": "849",
+    "name": "Toxtricity",
+    "form": "Low Key Form",
+    "type1": "Electric",
+    "type2": "Poison",
     "normally_available": true,
-    "version_added": "1.0.2",
+    "version_added": "1.2.0",
     "section": "other",
     "pokemon_ids": [
-      855
+      10184
     ]
   },
   {
@@ -4772,6 +5162,32 @@
     ]
   },
   {
+    "ndex": "876",
+    "name": "Indeedee",
+    "form": "Male",
+    "type1": "Psychic",
+    "type2": "Normal",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "other",
+    "pokemon_ids": [
+      876
+    ]
+  },
+  {
+    "ndex": "876",
+    "name": "Indeedee",
+    "form": "Female",
+    "type1": "Psychic",
+    "type2": "Normal",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "other",
+    "pokemon_ids": [
+      10186
+    ]
+  },
+  {
     "ndex": "877",
     "name": "Morpeko",
     "form": "Full Belly Mode",
@@ -4847,6 +5263,58 @@
     "section": "other",
     "pokemon_ids": [
       10257
+    ]
+  },
+  {
+    "ndex": "931",
+    "name": "Squawkabilly",
+    "form": "Green Plumage",
+    "type1": "Normal",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "other",
+    "pokemon_ids": [
+      931
+    ]
+  },
+  {
+    "ndex": "931",
+    "name": "Squawkabilly",
+    "form": "Blue Plumage",
+    "type1": "Normal",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "other",
+    "pokemon_ids": [
+      10260
+    ]
+  },
+  {
+    "ndex": "931",
+    "name": "Squawkabilly",
+    "form": "Yellow Plumage",
+    "type1": "Normal",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "other",
+    "pokemon_ids": [
+      10261
+    ]
+  },
+  {
+    "ndex": "931",
+    "name": "Squawkabilly",
+    "form": "White Plumage",
+    "type1": "Normal",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "other",
+    "pokemon_ids": [
+      10262
     ]
   },
   {
