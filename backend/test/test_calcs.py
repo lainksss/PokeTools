@@ -26,7 +26,7 @@ def calculate_stat(base: int, iv: int, ev: int, level: int, nature_mult: float =
         return int(base_stat * nature_mult)
 
 
-def get_pokemon_stats(species: str, level: int, evs: dict, ivs: dict = None, natures: dict = None, item: str = None):
+def get_pokemon_stats(species: str, level: int, evs: dict, ivs: dict = None, natures: dict = None, item: str = None, ability: str = None):
     """Retrieve and calculate Pokemon stats from the JSON file.
     
     Args:
@@ -36,6 +36,7 @@ def get_pokemon_stats(species: str, level: int, evs: dict, ivs: dict = None, nat
         ivs: Dict of IVs by stat (defaults to 31 everywhere)
         natures: Dict of nature multipliers (e.g., {"attack": 1.1, "defense": 0.9})
         item: Held item (optional)
+        ability: Ability name in slug form (e.g., "fluffy", "aerilate")
     
     Returns:
         Dict with calculated stats and Pokemon info
@@ -60,12 +61,13 @@ def get_pokemon_stats(species: str, level: int, evs: dict, ivs: dict = None, nat
         "special_attack": calculate_stat(base_stats["special-attack"], ivs.get("special-attack", 31), evs.get("special-attack", 0), level, natures.get("special-attack", 1.0)),
         "special_defense": calculate_stat(base_stats["special-defense"], ivs.get("special-defense", 31), evs.get("special-defense", 0), level, natures.get("special-defense", 1.0)),
         "speed": calculate_stat(base_stats["speed"], ivs.get("speed", 31), evs.get("speed", 0), level, natures.get("speed", 1.0)),
-        "ability": None,
+        "ability": ability,
         "item": item,
         "is_terastallized": False,
     }
     
     return stats
+
 
 
 def test_case_1():

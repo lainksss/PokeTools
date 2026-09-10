@@ -614,6 +614,18 @@ def calculate_damage(
         random_range = range(85, 101)
     if field is None:
         field = {}
+    
+    # Mega Sol (attacker-side)
+    # ─────────────────────────────────────────────────────────────────────────
+    # A Pokémon with Mega Sol generates harsh sunlight regardless of the current
+    # weather, acting as a permanent Drought effect for damage calculation.
+    # The weather is forced to "sun" by mutating the field dict HERE so that all
+    # downstream weather-dependent logic (compute_weather_mult, Solar Power,
+    # Orichalcum Pulse, Protosynthesis, etc.) automatically picks it up.
+    if attacker.get("ability") == "mega-sol":
+        if field is not None:
+            field["weather"] = "sun"
+
     # tolerate shorthand field values (user may pass a string or a single-value set/list)
     if not isinstance(field, dict):
         if isinstance(field, str):

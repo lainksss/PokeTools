@@ -5,9 +5,11 @@ import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
 import { convertEvsToOld, newEvToOld } from '../utils/evs'
 import { getMandatoryItem } from '../utils/getMandatoryItem'
+import { useChampions } from '../ChampionsContext'
 
 export default function Coverage() {
   const { t, getPokemonName, getMoveName } = useTranslation()
+  const { championsOnly, championIds } = useChampions()
   const [attacker, setAttacker] = useState(null)
   const [koMode, setKoMode] = useState('OHKO') // 'OHKO' or '2HKO'
   const [allResults, setAllResults] = useState([]) // TOUS les résultats (KO + non-KO)
@@ -43,9 +45,9 @@ export default function Coverage() {
       return
     }
 
-      // Allow any of the 4 move slots to be used (slot 1..4)
-      const hasAnyMove = attacker && (attacker.move || attacker.move2 || attacker.move3 || attacker.move4)
-      if (!hasAnyMove) {
+    // Allow any of the 4 move slots to be used (slot 1..4)
+    const hasAnyMove = attacker && (attacker.move || attacker.move2 || attacker.move3 || attacker.move4)
+    if (!hasAnyMove) {
       alert('Veuillez sélectionner au moins une attaque')
       return
     }
@@ -80,7 +82,8 @@ export default function Coverage() {
         is_terastallized: attacker.is_terastallized,
         tera_type: attacker.tera_type,
         stages: attacker.boosts || {},
-        name: attacker.name
+        name: attacker.name,
+        special_form: attacker.special_form || null
       },
       moves: moves,
       ko_mode: koMode,
@@ -107,7 +110,9 @@ export default function Coverage() {
         friend_guard: friendGuard || undefined
       }
       ,
-      fully_evolved_only: fullyEvolvedOnly
+      fully_evolved_only: fullyEvolvedOnly,
+      champions_only: championsOnly,
+      champion_ids: championsOnly ? Array.from(championIds) : []
     }
 
     // Force mandatory item for attacker (mega-gem, primal-gem)
@@ -117,7 +122,7 @@ export default function Coverage() {
     }
 
     try {
-        const response = await fetch(`${API_URL}/api/analyze_coverage_stream`, {
+      const response = await fetch(`${API_URL}/api/analyze_coverage_stream`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -134,7 +139,7 @@ export default function Coverage() {
 
       while (true) {
         const { done, value } = await reader.read()
-        
+
         if (done) break
 
         buffer += decoder.decode(value, { stream: true })
@@ -144,7 +149,7 @@ export default function Coverage() {
         for (const line of lines) {
           if (line.startsWith('data: ')) {
             const data = JSON.parse(line.slice(6))
-            
+
             if (data.type === 'init') {
               setProgress({ processed: 0, total: data.total, coverage_found: 0 })
             } else if (data.type === 'coverage') {
@@ -158,10 +163,10 @@ export default function Coverage() {
                 coverage_found: data.coverage_found
               })
             } else if (data.type === 'complete') {
-              setProgress(prev => ({ 
-                ...prev, 
+              setProgress(prev => ({
+                ...prev,
                 processed: data.total_processed,
-                coverage_found: data.total_coverage 
+                coverage_found: data.total_coverage
               }))
             } else if (data.type === 'error') {
               throw new Error(data.message)
@@ -188,9 +193,9 @@ export default function Coverage() {
       return
     }
 
-      // Allow any of the 4 move slots to be used (slot 1..4)
-      const hasAnyMove = attacker && (attacker.move || attacker.move2 || attacker.move3 || attacker.move4)
-      if (!hasAnyMove) {
+    // Allow any of the 4 move slots to be used (slot 1..4)
+    const hasAnyMove = attacker && (attacker.move || attacker.move2 || attacker.move3 || attacker.move4)
+    if (!hasAnyMove) {
       alert('Veuillez sélectionner au moins une attaque')
       return
     }
@@ -225,7 +230,8 @@ export default function Coverage() {
         is_terastallized: attacker.is_terastallized,
         tera_type: attacker.tera_type,
         stages: attacker.boosts || {},
-        name: attacker.name
+        name: attacker.name,
+        special_form: attacker.special_form || null
       },
       moves: moves,
       ko_mode: koMode,
@@ -242,7 +248,9 @@ export default function Coverage() {
         helping_hand: helpingHand || undefined,
         friend_guard: friendGuard || undefined
       },
-      fully_evolved_only: fullyEvolvedOnly
+      fully_evolved_only: fullyEvolvedOnly,
+      champions_only: championsOnly,
+      champion_ids: championsOnly ? Array.from(championIds) : []
     }
 
     // Force mandatory item for attacker (mega-gem, primal-gem)
@@ -269,7 +277,7 @@ export default function Coverage() {
 
       while (true) {
         const { done, value } = await reader.read()
-        
+
         if (done) break
 
         buffer += decoder.decode(value, { stream: true })
@@ -279,7 +287,7 @@ export default function Coverage() {
         for (const line of lines) {
           if (line.startsWith('data: ')) {
             const data = JSON.parse(line.slice(6))
-            
+
             if (data.type === 'init') {
               setProgress({ processed: 0, total: data.total, coverage_found: 0 })
             } else if (data.type === 'coverage') {
@@ -293,10 +301,10 @@ export default function Coverage() {
                 coverage_found: data.coverage_found
               })
             } else if (data.type === 'complete') {
-              setProgress(prev => ({ 
-                ...prev, 
+              setProgress(prev => ({
+                ...prev,
                 processed: data.total_processed,
-                coverage_found: data.total_coverage 
+                coverage_found: data.total_coverage
               }))
             } else if (data.type === 'error') {
               throw new Error(data.message)
@@ -315,12 +323,12 @@ export default function Coverage() {
   // Filtrer les résultats selon le mode d'affichage
   const coverage = allResults.filter(item => {
     // Gérer les deux structures: analyze_coverage_stream (max_ko_chance) et deep_analyze_coverage_stream (moves[])
-    const maxKoChance = item.max_ko_chance !== undefined 
-      ? item.max_ko_chance 
-      : (item.moves?.some(m => (m.worst_ko_percent || 0) > 0) ? 
-          Math.max(...item.moves.map(m => m.worst_ko_percent || 0)) 
-          : 0)
-    
+    const maxKoChance = item.max_ko_chance !== undefined
+      ? item.max_ko_chance
+      : (item.moves?.some(m => (m.worst_ko_percent || 0) > 0) ?
+        Math.max(...item.moves.map(m => m.worst_ko_percent || 0))
+        : 0)
+
     // Si mode 'alive' : afficher ceux qui NE sont PAS KO dans le pire cas
     if (viewMode === 'alive') {
       return maxKoChance <= 0
@@ -334,8 +342,8 @@ export default function Coverage() {
     // Si on veut voir seulement les KO garantis (seulement en mode 'ko')
     if (viewMode === 'ko' && showOnlyGuaranteed) {
       // Gérer les deux structures
-      const maxKoChance = item.max_ko_chance !== undefined 
-        ? item.max_ko_chance 
+      const maxKoChance = item.max_ko_chance !== undefined
+        ? item.max_ko_chance
         : (item.moves?.length > 0 ? Math.max(...item.moves.map(m => m.worst_ko_percent || 0)) : 0)
       return maxKoChance === 100
     }
@@ -348,10 +356,10 @@ export default function Coverage() {
       <div className="threats-container">
         <div className="threats-left">
           <h3>{t('calculate.attacker')}</h3>
-          <PokemonPanel 
-            side="left" 
-            value={attacker} 
-            onChange={setAttacker} 
+          <PokemonPanel
+            side="left"
+            value={attacker}
+            onChange={setAttacker}
             showMultipleMoves={true}
             showTitle={false}
           />
@@ -359,7 +367,7 @@ export default function Coverage() {
 
         <div className="threats-middle">
           <h3>{t('coverage.analysisSettings')}</h3>
-          
+
           <div className="form-group" aria-label={t('threats.koMode')}>
             <div className="ko-mode-toggle">
               <button
@@ -495,10 +503,10 @@ export default function Coverage() {
             <div className="form-group">
               <label>{t('coverage.customEvs')}</label>
               <div className="ev-input-row">
-                <input 
-                  type="number" 
-                  min="0" 
-                  max="32" 
+                <input
+                  type="number"
+                  min="0"
+                  max="32"
                   step="1"
                   value={customEvs}
                   onChange={e => {
@@ -553,19 +561,19 @@ export default function Coverage() {
             </div>
           )}
 
-          
+
 
           <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
-            <button 
-              onClick={analyzeCoverageStreaming} 
+            <button
+              onClick={analyzeCoverageStreaming}
               disabled={loading || !attacker}
               className="calculate-button"
             >
               {loading ? t('common.loading') : t('coverage.analyze')}
             </button>
 
-            <button 
-              onClick={deepAnalyzeCoverageStreaming} 
+            <button
+              onClick={deepAnalyzeCoverageStreaming}
               disabled={loading || !attacker}
               className="calculate-button"
               title="Teste tous les talents et statuts des adversaires"
@@ -577,8 +585,8 @@ export default function Coverage() {
           {loading && progress.total > 0 && (
             <div className="progress-container">
               <div className="progress-bar">
-                <div 
-                  className="progress-fill" 
+                <div
+                  className="progress-fill"
                   style={{ width: `${progress.total > 0 ? (progress.processed / progress.total * 100) : 0}%` }}
                 />
               </div>
@@ -594,34 +602,34 @@ export default function Coverage() {
         <div className="threats-right">
           <div className="threats-right-header">
             <h3>{t('coverage.results')} ({filteredCoverage.length} / {coverage.length})</h3>
-            
+
             <div className="filters-group">
               <label className="guaranteed-filter">
-                <input 
-                  type="checkbox" 
+                <input
+                  type="checkbox"
                   checked={viewMode === 'alive'}
                   onChange={(e) => setViewMode(e.target.checked ? 'alive' : 'ko')}
                 />
                 <span>{t('coverage.showAlive')}</span>
               </label>
-              
+
               {viewMode === 'ko' && (
                 <>
                   <label className="guaranteed-filter">
-                    <input 
-                      type="checkbox" 
+                    <input
+                      type="checkbox"
                       checked={showOnlyGuaranteed}
                       onChange={(e) => setShowOnlyGuaranteed(e.target.checked)}
                     />
                     <span>{t('threats.guaranteedOnly')}</span>
                   </label>
-                  
+
                   <label className="rolls-filter">
                     <span>{t('threats.minRolls')}:</span>
-                    <input 
-                      type="number" 
-                      min="1" 
-                      max="16" 
+                    <input
+                      type="number"
+                      min="1"
+                      max="16"
                       value={minRolls}
                       onChange={(e) => setMinRolls(Math.max(1, Math.min(16, parseInt(e.target.value) || 1)))}
                     />
@@ -631,9 +639,9 @@ export default function Coverage() {
               )}
             </div>
           </div>
-          
+
           {loading && <p className="loading-text">{t('threats.analyzing')}</p>}
-          
+
           {!loading && (filteredCoverage.length === 0) && (
             <p className="no-threats">{t('coverage.noCoverage')}</p>
           )}
@@ -654,7 +662,7 @@ export default function Coverage() {
 function CoverageItem({ item, koMode, t, getPokemonName, getMoveName }) {
   // Gérer les deux structures: analyze_coverage_stream (max_ko_chance) et deep_analyze_coverage_stream (moves[])
   const isDeepAnalysis = item.moves && item.moves.length > 0
-  
+
   if (isDeepAnalysis) {
     // Structure deep_analyze_coverage_stream
     const maxChance = item.moves.length > 0 ? Math.max(...item.moves.map(m => m.worst_ko_percent || 0)) : 0

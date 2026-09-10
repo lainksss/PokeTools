@@ -5,9 +5,11 @@ import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
 import { convertEvsToOld, newEvToOld } from '../utils/evs'
 import { getMandatoryItem } from '../utils/getMandatoryItem'
+import { useChampions } from '../ChampionsContext'
 
 export default function Threats() {
   const { t, getPokemonName, getMoveName } = useTranslation()
+  const { championsOnly, championIds } = useChampions()
   const [defender, setDefender] = useState(null)
   const [koMode, setKoMode] = useState('OHKO') // 'OHKO' or '2HKO'
   const [threats, setThreats] = useState([])
@@ -86,7 +88,8 @@ export default function Threats() {
         item: defender.item || null,
         is_terastallized: defender.is_terastallized,
         tera_type: defender.tera_type,
-        name: defender.name
+        name: defender.name,
+        special_form: defender.special_form || null
       },
       ko_mode: koMode,
       field: {
@@ -111,7 +114,9 @@ export default function Threats() {
         life_orb: customLifeOrb
       }
       ,
-      fully_evolved_only: fullyEvolvedOnly
+      fully_evolved_only: fullyEvolvedOnly,
+      champions_only: championsOnly,
+      champion_ids: championsOnly ? Array.from(championIds) : []
     }
 
     // Force mandatory item for defender (mega-gem, primal-gem)
@@ -200,7 +205,8 @@ export default function Threats() {
         types: defender.types,
         ability: defender.ability,
         is_terastallized: defender.is_terastallized,
-        tera_type: defender.tera_type
+        tera_type: defender.tera_type,
+        special_form: defender.special_form || null
       },
       ko_mode: koMode,
       field: {
@@ -225,7 +231,9 @@ export default function Threats() {
         life_orb: customLifeOrb
       }
       ,
-      fully_evolved_only: fullyEvolvedOnly
+      fully_evolved_only: fullyEvolvedOnly,
+      champions_only: championsOnly,
+      champion_ids: championsOnly ? Array.from(championIds) : []
     }
 
     try {
@@ -279,7 +287,8 @@ export default function Threats() {
         item: defender.item || null,
         is_terastallized: defender.is_terastallized,
         tera_type: defender.tera_type,
-        name: defender.name
+        name: defender.name,
+        special_form: defender.special_form || null
       },
       field: {
         battle_mode: "double",
@@ -301,7 +310,9 @@ export default function Threats() {
         nature_boost: customNatureBoost,
         item_choice: customItemChoice,
         life_orb: customLifeOrb
-      }
+      },
+      champions_only: championsOnly,
+      champion_ids: championsOnly ? Array.from(championIds) : []
     }
 
     // Force mandatory item for defender (mega-gem, primal-gem)

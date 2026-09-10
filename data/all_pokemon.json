@@ -19666,7 +19666,16 @@
   },
   "meowstic-female-mega": {
     "id": 10326,
-    "types": [],
-    "base_stats": {}
+    "types": [
+      "psychic"
+    ],
+    "base_stats": {
+      "hp": 74,
+      "attack": 48,
+      "defense": 76,
+      "special-attack": 143,
+      "special-defense": 101,
+      "speed": 124
+    }
   }
 }

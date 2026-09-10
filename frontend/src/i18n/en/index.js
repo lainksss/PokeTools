@@ -25,6 +25,7 @@ export const enTranslations = {
   common: headerEn.common,
   types: headerEn.types,
   pokemon: headerEn.pokemon,
+  champions: headerEn.champions,
   doubleEffects: {
     helpingHand: 'Helping Hand',
     friendGuard: 'Friend Guard'

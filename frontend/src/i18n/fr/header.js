@@ -10,6 +10,13 @@ export const headerFr = {
     speedGame: "Trouve la vitesse",
   },
 
+  // Mode Champions
+  champions: {
+    toggle: "Champions",
+    all: "Tous les Pokémon",
+    only: "Champions seulement"
+  },
+
   // Météos
   weather: {
     none: "Aucune météo",

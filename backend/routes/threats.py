@@ -86,6 +86,8 @@ def find_threats():
     life_orb = bool(analysis_options.get("life_orb", False))
 
     fully_evolved_only = bool(data.get('fully_evolved_only', False))
+    champions_only = bool(data.get('champions_only', False))
+    champion_ids = set(data.get('champion_ids', []) or [])
 
     if not defender_payload:
         return jsonify({"error": "missing defender"}), 400
@@ -129,6 +131,10 @@ def find_threats():
         poke_name = poke_slug
         poke_types = poke_data.get("types", [])
         base_stats = poke_data.get("base_stats", {})
+
+        # Filtrer par champions si le mode est actif
+        if champions_only and champion_ids and poke_id not in champion_ids:
+            continue
         
         # Optionally skip non-fully-evolved Pokémon to reduce analysis cost
         try:
@@ -336,6 +342,8 @@ def find_threats_stream():
     life_orb = bool(analysis_options.get("life_orb", False))
 
     fully_evolved_only = bool(data.get('fully_evolved_only', False))
+    champions_only = bool(data.get('champions_only', False))
+    champion_ids = set(data.get('champion_ids', []) or [])
 
     if not defender_payload:
         return jsonify({"error": "missing defender"}), 400
@@ -369,11 +377,22 @@ def find_threats_stream():
                 if attack_boost_nature and sp_attack_boost_nature:
                     break
 
-            # If filtering only fully-evolved, compute filtered total
-            if fully_evolved_only:
-                total_pokemon = sum(1 for k, v in all_pokemon.items() if v and not bool((evo_map.get(k) or {}).get('can_evolve', False)))
-            else:
-                total_pokemon = len(all_pokemon)
+            # Compute filtered total based on active filters
+            def _include_pokemon(slug, data):
+                if not data:
+                    return False
+                poke_id = data.get("id")
+                if champions_only and champion_ids and poke_id not in champion_ids:
+                    return False
+                if fully_evolved_only:
+                    try:
+                        if bool((evo_map.get(slug) or {}).get('can_evolve', False)):
+                            return False
+                    except Exception:
+                        pass
+                return True
+
+            total_pokemon = sum(1 for k, v in all_pokemon.items() if _include_pokemon(k, v))
             processed = 0
             total_threats = 0
             
@@ -388,6 +407,11 @@ def find_threats_stream():
                 poke_id = poke_data.get("id")
                 poke_types = poke_data.get("types", [])
                 base_stats = poke_data.get("base_stats", {})
+
+                # Filtrer par champions si le mode est actif
+                if champions_only and champion_ids and poke_id not in champion_ids:
+                    processed += 1
+                    continue
                 
                 # Optionally skip non-fully-evolved Pokémon
                 try:
@@ -643,6 +667,8 @@ def deep_find_threats_stream():
     defender_payload = data.get("defender")
     field = data.get("field", {})
     fully_evolved_only = bool(data.get('fully_evolved_only', False))
+    champions_only = bool(data.get('champions_only', False))
+    champion_ids = set(data.get('champion_ids', []) or [])
     analysis_options = data.get("analysis_options", {}) or {}
 
     attack_mode = analysis_options.get("attack_mode", "default")
@@ -683,11 +709,22 @@ def deep_find_threats_stream():
                 if attack_boost_nature and sp_attack_boost_nature:
                     break
 
-            # If filtering only fully-evolved, compute filtered total
-            if fully_evolved_only:
-                total_pokemon = sum(1 for k, v in all_pokemon.items() if v and not bool((evo_map.get(k) or {}).get('can_evolve', False)))
-            else:
-                total_pokemon = len(all_pokemon)
+            # Compute filtered total based on active filters
+            def _include_pokemon_deep(slug, data):
+                if not data:
+                    return False
+                pid = data.get("id")
+                if champions_only and champion_ids and pid not in champion_ids:
+                    return False
+                if fully_evolved_only:
+                    try:
+                        if bool((evo_map.get(slug) or {}).get('can_evolve', False)):
+                            return False
+                    except Exception:
+                        pass
+                return True
+
+            total_pokemon = sum(1 for k, v in all_pokemon.items() if _include_pokemon_deep(k, v))
             processed = 0
             total_threats = 0
             
@@ -702,6 +739,11 @@ def deep_find_threats_stream():
                 poke_id = poke_data.get("id")
                 poke_types = poke_data.get("types", [])
                 base_stats = poke_data.get("base_stats", {})
+
+                # Filtrer par champions si le mode est actif
+                if champions_only and champion_ids and poke_id not in champion_ids:
+                    processed += 1
+                    continue
                 
                 # Optionally skip non-fully-evolved Pokémon
                 try:

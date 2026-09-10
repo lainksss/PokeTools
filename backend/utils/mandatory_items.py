@@ -115,22 +115,32 @@ def force_mandatory_item(actor_data):
     # If we've just forced a gem item, we may need to adjust the species name + stats
     item = actor_data.get('item')
     name = actor_data.get('name', '')
+    requested_form = actor_data.get('special_form')
+
+    def _matches_candidate(slug, suffix):
+        return bool(slug and slug.startswith(base + suffix))
+
     if item in ('mega-gem', 'primal-gem') and name:
         # avoid transforming if already in a special suffix
         if '-mega' not in name and '-primal' not in name and 'crowned' not in name:
             base = name.split('-')[0]
             all_pok = load_json("all_pokemon.json") or {}
             suffix = '-mega' if item == 'mega-gem' else '-primal'
-            # gather candidates matching base + suffix
-            candidates = [slug for slug in all_pok if slug.startswith(base + suffix)]
+            candidates = sorted([slug for slug in all_pok if slug.startswith(base + suffix)])
             if candidates:
-                # pick the one with highest base stat total
-                best = max(candidates, key=lambda s: sum(all_pok[s].get('base_stats', {}).values()))
-                # update actor_data with new species info
-                actor_data['name'] = best
-                actor_data['base_stats'] = all_pok[best].get('base_stats')
-                actor_data['types'] = all_pok[best].get('types')
-                actor_data['id'] = all_pok[best].get('id')
+                selected = None
+                if requested_form in candidates:
+                    selected = requested_form
+                elif len(candidates) == 1:
+                    selected = candidates[0]
+                else:
+                    selected = name if name in candidates else candidates[0]
+
+                if selected:
+                    actor_data['name'] = selected
+                    actor_data['base_stats'] = all_pok[selected].get('base_stats')
+                    actor_data['types'] = all_pok[selected].get('types')
+                    actor_data['id'] = all_pok[selected].get('id')
     # Handle item removal: revert mega/primal forms back to base
     if item != 'mega-gem' and '-mega' in name:
         base = name.split('-mega')[0]

@@ -300,7 +300,7 @@
   },
   "24": {
     "ja-hrkt": "にどげり",
-    "ko": "두번치기",
+    "ko": "두번차기",
     "zh-hant": "二連踢",
     "fr": "Double Pied",
     "de": "Doppelkick",
@@ -1678,7 +1678,7 @@
   },
   "130": {
     "ja-hrkt": "ロケットずつき",
-    "ko": "로케트박치기",
+    "ko": "로켓박치기",
     "zh-hant": "火箭頭錘",
     "fr": "Coud’Krâne",
     "de": "Schädelwumme",
@@ -1964,7 +1964,7 @@
   },
   "152": {
     "ja-hrkt": "クラブハンマー",
-    "ko": "찝게햄머",
+    "ko": "집게해머",
     "zh-hant": "蟹鉗錘",
     "fr": "Pince-Masse",
     "de": "Krabbhammer",
@@ -2224,7 +2224,7 @@
   },
   "172": {
     "ja-hrkt": "かえんぐるま",
-    "ko": "화염자동차",
+    "ko": "화염바퀴",
     "zh-hant": "火焰輪",
     "fr": "Roue de Feu",
     "de": "Flammenrad",
@@ -2536,7 +2536,7 @@
   },
   "196": {
     "ja-hrkt": "こごえるかぜ",
-    "ko": "얼다바람",
+    "ko": "얼어붙은바람",
     "zh-hant": "冰凍之風",
     "fr": "Vent Glace",
     "de": "Eissturm",
@@ -2562,7 +2562,7 @@
   },
   "198": {
     "ja-hrkt": "ボーンラッシュ",
-    "ko": "본러쉬",
+    "ko": "본러시",
     "zh-hant": "骨棒亂打",
     "fr": "Charge Os",
     "de": "Knochenhatz",
@@ -2900,7 +2900,7 @@
   },
   "224": {
     "ja-hrkt": "メガホーン",
-    "ko": "메가폰",
+    "ko": "메가혼",
     "zh-hant": "超級角擊",
     "fr": "Mégacorne",
     "de": "Vielender",
@@ -2926,7 +2926,7 @@
   },
   "226": {
     "ja-hrkt": "バトンタッチ",
-    "ko": "바톤터치",
+    "ko": "배턴터치",
     "zh-hant": "接棒",
     "fr": "Relais",
     "de": "Stafette",
@@ -2939,7 +2939,7 @@
   },
   "227": {
     "ja-hrkt": "アンコール",
-    "ko": "앵콜",
+    "ko": "앙코르",
     "zh-hant": "再來一次",
     "fr": "Encore",
     "de": "Zugabe",
@@ -3004,7 +3004,7 @@
   },
   "232": {
     "ja-hrkt": "メタルクロー",
-    "ko": "메탈크로우",
+    "ko": "메탈클로",
     "zh-hant": "金屬爪",
     "fr": "Griffe Acier",
     "de": "Metallklaue",
@@ -3056,7 +3056,7 @@
   },
   "236": {
     "ja-hrkt": "つきのひかり",
-    "ko": "달의불빛",
+    "ko": "달빛",
     "zh-hant": "月光",
     "fr": "Rayon Lune",
     "de": "Mondschein",
@@ -3264,7 +3264,7 @@
   },
   "252": {
     "ja-hrkt": "ねこだまし",
-    "ko": "속이다",
+    "ko": "속이기",
     "zh-hant": "擊掌奇襲",
     "fr": "Bluff",
     "de": "Mogelhieb",
@@ -3628,7 +3628,7 @@
   },
   "280": {
     "ja-hrkt": "かわらわり",
-    "ko": "깨트리다",
+    "ko": "깨뜨리다",
     "zh-hant": "劈瓦",
     "fr": "Casse-Brique",
     "de": "Durchbruch",
@@ -3693,7 +3693,7 @@
   },
   "285": {
     "ja-hrkt": "スキルスワップ",
-    "ko": "스킬스웹",
+    "ko": "스킬스왑",
     "zh-hant": "特性互換",
     "fr": "Échange",
     "de": "Fähigkeitstausch",
@@ -3719,7 +3719,7 @@
   },
   "287": {
     "ja-hrkt": "リフレッシュ",
-    "ko": "리프레쉬",
+    "ko": "리프레시",
     "zh-hant": "煥然一新",
     "fr": "Régénération",
     "de": "Heilung",
@@ -3745,7 +3745,7 @@
   },
   "289": {
     "ja-hrkt": "よこどり",
-    "ko": "가로챔",
+    "ko": "가로채기",
     "zh-hant": "搶奪",
     "fr": "Saisie",
     "de": "Übernahme",
@@ -3823,7 +3823,7 @@
   },
   "295": {
     "ja-hrkt": "ラスターパージ",
-    "ko": "라스트버지",
+    "ko": "러스터퍼지",
     "zh-hant": "潔淨光芒",
     "fr": "Lumi-Éclat",
     "de": "Scheinwerfer",
@@ -3875,7 +3875,7 @@
   },
   "299": {
     "ja-hrkt": "ブレイズキック",
-    "ko": "브레이즈킥",
+    "ko": "블레이즈킥",
     "zh-hant": "火焰踢",
     "fr": "Pied Brûleur",
     "de": "Feuerfeger",
@@ -3927,7 +3927,7 @@
   },
   "303": {
     "ja-hrkt": "なまける",
-    "ko": "태만함",
+    "ko": "게으름피우기",
     "zh-hant": "偷懶",
     "fr": "Paresse",
     "de": "Tagedieb",
@@ -3953,7 +3953,7 @@
   },
   "305": {
     "ja-hrkt": "どくどくのキバ",
-    "ko": "독엄니",
+    "ko": "맹독엄니",
     "zh-hant": "劇毒牙",
     "fr": "Crochet Venin",
     "de": "Giftzahn",
@@ -3966,7 +3966,7 @@
   },
   "306": {
     "ja-hrkt": "ブレイククロー",
-    "ko": "브레이크크루",
+    "ko": "브레이크클로",
     "zh-hant": "撕裂爪",
     "fr": "Éclate Griffe",
     "de": "Zermalmklaue",
@@ -3979,7 +3979,7 @@
   },
   "307": {
     "ja-hrkt": "ブラストバーン",
-    "ko": "블러스트번",
+    "ko": "블라스트번",
     "zh-hant": "爆炸烈焰",
     "fr": "Rafale Feu",
     "de": "Lohekanonade",
@@ -4070,7 +4070,7 @@
   },
   "314": {
     "ja-hrkt": "エアカッター",
-    "ko": "에어컷터",
+    "ko": "에어커터",
     "zh-hant": "空氣利刃",
     "fr": "Tranch’Air",
     "de": "Windschnitt",
@@ -4239,7 +4239,7 @@
   },
   "327": {
     "ja-hrkt": "スカイアッパー",
-    "ko": "스카이업퍼",
+    "ko": "스카이어퍼",
     "zh-hant": "衝天拳",
     "fr": "Stratopercut",
     "de": "Himmelhieb",
@@ -4291,7 +4291,7 @@
   },
   "331": {
     "ja-hrkt": "タネマシンガン",
-    "ko": "기관총",
+    "ko": "씨기관총",
     "zh-hant": "種子機關槍",
     "fr": "Balle Graine",
     "de": "Kugelsaat",
@@ -4356,7 +4356,7 @@
   },
   "336": {
     "ja-hrkt": "とおぼえ",
-    "ko": "멀리짖음",
+    "ko": "멀리짖기",
     "zh-hant": "長嚎",
     "fr": "Grondement",
     "de": "Jauler",
@@ -4369,7 +4369,7 @@
   },
   "337": {
     "ja-hrkt": "ドラゴンクロー",
-    "ko": "드래곤크루",
+    "ko": "드래곤클로",
     "zh-hant": "龍爪",
     "fr": "Draco-Griffe",
     "de": "Drachenklaue",
@@ -4408,7 +4408,7 @@
   },
   "340": {
     "ja-hrkt": "とびはねる",
-    "ko": "뛰어오르다",
+    "ko": "뛰어오르기",
     "zh-hant": "彈跳",
     "fr": "Rebond",
     "de": "Sprungfeder",
@@ -4421,7 +4421,7 @@
   },
   "341": {
     "ja-hrkt": "マッドショット",
-    "ko": "머드숏",
+    "ko": "머드샷",
     "zh-hant": "泥巴射擊",
     "fr": "Tir de Boue",
     "de": "Lehmschuss",
@@ -4473,7 +4473,7 @@
   },
   "345": {
     "ja-hrkt": "マジカルリーフ",
-    "ko": "메지컬리프",
+    "ko": "매지컬리프",
     "zh-hant": "魔法葉",
     "fr": "Feuille Magik",
     "de": "Zauberblatt",
@@ -4538,7 +4538,7 @@
   },
   "350": {
     "ja-hrkt": "ロックブラスト",
-    "ko": "락블레스트",
+    "ko": "록블라스트",
     "zh-hant": "岩石爆擊",
     "fr": "Boule Roc",
     "de": "Felswurf",
@@ -4980,7 +4980,7 @@
   },
   "384": {
     "ja-hrkt": "パワースワップ",
-    "ko": "파워스웹",
+    "ko": "파워스왑",
     "zh-hant": "力量互換",
     "fr": "Permuforce",
     "de": "Krafttausch",
@@ -4993,7 +4993,7 @@
   },
   "385": {
     "ja-hrkt": "ガードスワップ",
-    "ko": "가드스웹",
+    "ko": "가드스왑",
     "zh-hant": "防守互換",
     "fr": "Permugarde",
     "de": "Schutztausch",
@@ -5019,7 +5019,7 @@
   },
   "387": {
     "ja-hrkt": "とっておき",
-    "ko": "뒀다쓰기",
+    "ko": "비장의무기",
     "zh-hant": "珍藏",
     "fr": "Dernier Recours",
     "de": "Zuflucht",
@@ -5071,7 +5071,7 @@
   },
   "391": {
     "ja-hrkt": "ハートスワップ",
-    "ko": "하트스웹",
+    "ko": "하트스왑",
     "zh-hant": "心靈互換",
     "fr": "Permucœur",
     "de": "Statustausch",
@@ -5461,7 +5461,7 @@
   },
   "421": {
     "ja-hrkt": "シャドークロー",
-    "ko": "섀도크루",
+    "ko": "섀도클로",
     "zh-hant": "暗影爪",
     "fr": "Griffe Ombre",
     "de": "Dunkelklaue",
@@ -5565,7 +5565,7 @@
   },
   "429": {
     "ja-hrkt": "ミラーショット",
-    "ko": "미러숏",
+    "ko": "미러샷",
     "zh-hant": "鏡光射擊",
     "fr": "Miroi-Tir",
     "de": "Spiegelsalve",
@@ -5591,7 +5591,7 @@
   },
   "431": {
     "ja-hrkt": "ロッククライム",
-    "ko": "락클라임",
+    "ko": "록클라임",
     "zh-hant": "攀岩",
     "fr": "Escalade",
     "de": "Kraxler",
@@ -5838,7 +5838,7 @@
   },
   "450": {
     "ja-hrkt": "むしくい",
-    "ko": "벌레먹음",
+    "ko": "벌레먹기",
     "zh-hant": "蟲咬",
     "fr": "Piqûre",
     "de": "Käferbiss",
@@ -6501,7 +6501,7 @@
   },
   "501": {
     "ja-hrkt": "ファストガード",
-    "ko": "퍼스트가드",
+    "ko": "패스트가드",
     "zh-hant": "快速防守",
     "fr": "Prévention",
     "de": "Rapidschutz",
@@ -6904,7 +6904,7 @@
   },
   "532": {
     "ja-hrkt": "ウッドホーン",
-    "ko": "우드호른",
+    "ko": "우드혼",
     "zh-hant": "木角",
     "fr": "Encornebois",
     "de": "Holzgeweih",
@@ -7125,7 +7125,7 @@
   },
   "549": {
     "ja-hrkt": "こごえるせかい",
-    "ko": "얼다세계",
+    "ko": "얼어붙은세계",
     "zh-hant": "冰封世界",
     "fr": "Ère Glaciaire",
     "de": "Eiszeit",
@@ -7697,7 +7697,7 @@
   },
   "593": {
     "ja-hrkt": "いじげんホール",
-    "ko": "다른차원홀",
+    "ko": "이차원홀",
     "zh-hant": "異次元洞",
     "fr": "TrouDimensionnel",
     "de": "Dimensionsloch",
@@ -8061,7 +8061,7 @@
   },
   "621": {
     "ja-hrkt": "いじげんラッシュ",
-    "ko": "다른차원러시",
+    "ko": "이차원러시",
     "zh-hant": "異次元猛攻",
     "fr": "Furie Dimension",
     "de": "Dimensionswahn",
@@ -8789,7 +8789,7 @@
   },
   "677": {
     "ja-hrkt": "アンカーショット",
-    "ko": "앵커숏",
+    "ko": "앵커샷",
     "zh-hant": "擲錨",
     "fr": "Ancrage",
     "de": "Ankerschuss",
@@ -8867,7 +8867,7 @@
   },
   "683": {
     "ja-hrkt": "スピードスワップ",
-    "ko": "스피드스웹",
+    "ko": "스피드스왑",
     "zh-hant": "速度互換",
     "fr": "Permuvitesse",
     "de": "Initiativetausch",
@@ -8880,7 +8880,7 @@
   },
   "684": {
     "ja-hrkt": "スマートホーン",
-    "ko": "스마트호른",
+    "ko": "스마트혼",
     "zh-hant": "修長之角",
     "fr": "Estocorne",
     "de": "Schmalhorn",
@@ -9725,7 +9725,7 @@
   },
   "749": {
     "ja-hrkt": "タールショット",
-    "ko": "타르숏",
+    "ko": "타르샷",
     "zh-hant": "瀝青射擊",
     "fr": "Goudronnage",
     "de": "Teerschuss",
@@ -10739,486 +10739,630 @@
   },
   "827": {
     "ja-hrkt": "フェイタルクロー",
-    "zh-hant": "克命爪",
+    "ko": "페이탈클로",
+    "zh-hant": "剋命爪",
     "fr": "Griffes Funestes",
+    "de": "Unheilsklauen",
+    "es": "Garra Nociva",
     "it": "Artigli Fatali",
     "en": "Dire Claw",
     "ja": "フェイタルクロー",
-    "es-419": "Garra Nociva",
-    "es": "Garra Nociva"
+    "zh-hans": "克命爪",
+    "es-419": "Garra Nociva"
   },
   "828": {
     "ja-hrkt": "バリアーラッシュ",
+    "ko": "배리어러시",
     "zh-hant": "屏障猛攻",
     "fr": "Sprint Bouclier",
+    "de": "Barrierenstoß",
+    "es": "Asalto Barrera",
     "it": "Barrierassalto",
     "en": "Psyshield Bash",
     "ja": "バリアーラッシュ",
-    "es-419": "Asalto Barrera",
-    "es": "Asalto Barrera"
+    "zh-hans": "屏障猛攻",
+    "es-419": "Asalto Barrera"
   },
   "829": {
     "ja-hrkt": "パワーシフト",
-    "zh-hant": "力量转换",
+    "ko": "파워시프트",
+    "zh-hant": "力量轉換",
     "fr": "Échange Force",
+    "de": "Kraftwechsel",
+    "es": "Cambiapoder",
     "it": "Scambioforza",
     "en": "Power Shift",
     "ja": "パワーシフト",
-    "es-419": "Cambiapoder",
-    "es": "Cambiapoder"
+    "zh-hans": "力量转换",
+    "es-419": "Cambiapoder"
   },
   "830": {
     "ja-hrkt": "がんせきアックス",
+    "ko": "암석액스",
     "zh-hant": "岩斧",
     "fr": "Hache de Pierre",
+    "de": "Felsaxt",
+    "es": "Hachazo Pétreo",
     "it": "Rocciascure",
     "en": "Stone Axe",
     "ja": "がんせきアックス",
-    "es-419": "Hachazo Pétreo",
-    "es": "Hachazo Pétreo"
+    "zh-hans": "岩斧",
+    "es-419": "Hachazo Pétreo"
   },
   "831": {
     "ja-hrkt": "はるのあらし",
-    "zh-hant": "阳春风暴",
+    "ko": "봄의폭풍",
+    "zh-hant": "陽春風暴",
     "fr": "Typhon Passionné",
+    "de": "Frühlingsorkan",
+    "es": "Ciclón Primavera",
     "it": "Tempesta Zefirea",
     "en": "Springtide Storm",
     "ja": "はるのあらし",
-    "es-419": "Ciclón Primavera",
-    "es": "Ciclón Primavera"
+    "zh-hans": "阳春风暴",
+    "es-419": "Ciclón Primavera"
   },
   "832": {
     "ja-hrkt": "しんぴのちから",
+    "ko": "신비의힘",
     "zh-hant": "神秘之力",
     "fr": "Force Mystique",
+    "de": "Mythenkraft",
+    "es": "Poder Místico",
     "it": "Forza Mistica",
     "en": "Mystical Power",
     "ja": "しんぴのちから",
-    "es-419": "Poder Místico",
-    "es": "Poder Místico"
+    "zh-hans": "神秘之力",
+    "es-419": "Poder Místico"
   },
   "833": {
     "ja-hrkt": "だいふんげき",
-    "zh-hant": "大愤慨",
+    "ko": "대격분",
+    "zh-hant": "大憤慨",
     "fr": "Grand Courroux",
+    "de": "Flammenwut",
+    "es": "Erupción de Ira",
     "it": "Ira Furente",
     "en": "Raging Fury",
     "ja": "だいふんげき",
-    "es-419": "Erupción de Ira",
-    "es": "Erupción de Ira"
+    "zh-hans": "大愤慨",
+    "es-419": "Erupción de Ira"
   },
   "834": {
     "ja-hrkt": "ウェーブタックル",
-    "zh-hant": "波动冲",
+    "ko": "웨이브태클",
+    "zh-hant": "波動衝",
     "fr": "Aquatacle",
+    "de": "Wellentackle",
+    "es": "Envite Acuático",
     "it": "Ondaschianto",
     "en": "Wave Crash",
     "ja": "ウェーブタックル",
-    "es-419": "Acuatacleada",
-    "es": "Envite Acuático"
+    "zh-hans": "波动冲",
+    "es-419": "Acuatacleada"
   },
   "835": {
     "ja-hrkt": "クロロブラスト",
-    "zh-hant": "叶绿爆震",
+    "ko": "클로로블라스트",
+    "zh-hant": "葉綠爆震",
     "fr": "Herblast",
+    "de": "Chlorostrahl",
+    "es": "Clorofiláser",
     "it": "Clorofillaser",
     "en": "Chloroblast",
     "ja": "クロロブラスト",
-    "es-419": "Clorofiláser",
-    "es": "Clorofiláser"
+    "zh-hans": "叶绿爆震",
+    "es-419": "Clorofiláser"
   },
   "836": {
     "ja-hrkt": "ひょうざんおろし",
-    "zh-hant": "冰山风",
+    "ko": "빙산바람",
+    "zh-hant": "冰山風",
     "fr": "Bise Glaciaire",
+    "de": "Frostfallwind",
+    "es": "Viento Carámbano",
     "it": "Soffio d’Iceberg",
     "en": "Mountain Gale",
     "ja": "ひょうざんおろし",
-    "es-419": "Viento Carámbano",
-    "es": "Viento Carámbano"
+    "zh-hans": "冰山风",
+    "es-419": "Viento Carámbano"
   },
   "837": {
     "ja-hrkt": "しょうりのまい",
-    "zh-hant": "胜利之舞",
+    "ko": "승리의춤",
+    "zh-hant": "勝利之舞",
     "fr": "Danse Victoire",
+    "de": "Siegestanz",
+    "es": "Danza Triunfal",
     "it": "Danzavittoria",
     "en": "Victory Dance",
     "ja": "しょうりのまい",
-    "es-419": "Danza Triunfal",
-    "es": "Danza Triunfal"
+    "zh-hans": "胜利之舞",
+    "es-419": "Danza Triunfal"
   },
   "838": {
     "ja-hrkt": "ぶちかまし",
-    "zh-hant": "突飞猛扑",
+    "ko": "들이받기",
+    "zh-hant": "突飛猛撲",
     "fr": "Assaut Frontal",
+    "de": "Schmetterramme",
+    "es": "Arremetida",
     "it": "Scontro Frontale",
     "en": "Headlong Rush",
     "ja": "ぶちかまし",
-    "es-419": "Asalto Frontal",
-    "es": "Arremetida"
+    "zh-hans": "突飞猛扑",
+    "es-419": "Asalto Frontal"
   },
   "839": {
     "ja-hrkt": "どくばりセンボン",
-    "zh-hant": "毒千针",
+    "ko": "독침천발",
+    "zh-hant": "毒千針",
     "fr": "Multitoxik",
+    "de": "Giftstachelregen",
+    "es": "Mil Púas Tóxicas",
     "it": "Mille Fielespine",
     "en": "Barb Barrage",
     "ja": "どくばりセンボン",
-    "es-419": "Mil Púas Tóxicas",
-    "es": "Mil Púas Tóxicas"
+    "zh-hans": "毒千针",
+    "es-419": "Mil Púas Tóxicas"
   },
   "840": {
     "ja-hrkt": "オーラウイング",
-    "zh-hant": "气场之翼",
+    "ko": "오라윙",
+    "zh-hant": "氣場之翼",
     "fr": "Ailes Psycho",
+    "de": "Auraschwingen",
+    "es": "Ala Aural",
     "it": "Ali d’Aura",
     "en": "Esper Wing",
     "ja": "オーラウイング",
-    "es-419": "Ala Aural",
-    "es": "Ala Aural"
+    "zh-hans": "气场之翼",
+    "es-419": "Ala Aural"
   },
   "841": {
     "ja-hrkt": "うらみつらみ",
-    "zh-hant": "冤冤相报",
+    "ko": "천추지한",
+    "zh-hant": "冤冤相報",
     "fr": "Cœur de Rancœur",
+    "de": "Niedertracht",
+    "es": "Rencor Reprimido",
     "it": "Livore",
     "en": "Bitter Malice",
     "ja": "うらみつらみ",
-    "es-419": "Rencor Reprimido",
-    "es": "Rencor Reprimido"
+    "zh-hans": "冤冤相报",
+    "es-419": "Rencor Reprimido"
   },
   "842": {
     "ja-hrkt": "たてこもる",
-    "zh-hant": "闭关",
+    "ko": "농성",
+    "zh-hant": "閉關",
     "fr": "Mur Fumigène",
+    "de": "Refugium",
+    "es": "Retracción",
     "it": "Barricata",
     "en": "Shelter",
     "ja": "たてこもる",
-    "es-419": "Retracción",
-    "es": "Retracción"
+    "zh-hans": "闭关",
+    "es-419": "Retracción"
   },
   "843": {
     "ja-hrkt": "３ぼんのや",
-    "zh-hant": "三连箭",
+    "ko": "3연화살",
+    "zh-hant": "三連箭",
     "fr": "Triple Flèche",
+    "de": "Drillingspfeile",
+    "es": "Triple Flecha",
     "it": "Triplodardo",
     "en": "Triple Arrows",
     "ja": "３ぼんのや",
-    "es-419": "Triple Flecha",
-    "es": "Triple Flecha"
+    "zh-hans": "三连箭",
+    "es-419": "Triple Flecha"
   },
   "844": {
     "ja-hrkt": "ひゃっきやこう",
-    "zh-hant": "群魔乱舞",
+    "ko": "백귀야행",
+    "zh-hant": "群魔亂舞",
     "fr": "Cortège Funèbre",
+    "de": "Phantomparade",
+    "es": "Marcha Espectral",
     "it": "Corteo Spettrale",
     "en": "Infernal Parade",
     "ja": "ひゃっきやこう",
-    "es-419": "Marcha Espectral",
-    "es": "Marcha Espectral"
+    "zh-hans": "群魔乱舞",
+    "es-419": "Marcha Espectral"
   },
   "845": {
     "ja-hrkt": "ひけん・ちえなみ",
-    "zh-hant": "秘剑・千重涛",
+    "ko": "비검천중파",
+    "zh-hant": "秘劍・千重濤",
     "fr": "Vagues à Lames",
+    "de": "Klingenschwall",
+    "es": "Tajo Metralla",
     "it": "Lama Milleflutti",
     "en": "Ceaseless Edge",
     "ja": "ひけん・ちえなみ",
-    "es-419": "Corte Metralla",
-    "es": "Tajo Metralla"
+    "zh-hans": "秘剑・千重涛",
+    "es-419": "Corte Metralla"
   },
   "846": {
     "ja-hrkt": "こがらしあらし",
-    "zh-hant": "枯叶风暴",
+    "ko": "찬바람폭풍",
+    "zh-hant": "枯葉風暴",
     "fr": "Typhon Hivernal",
+    "de": "Polarorkan",
+    "es": "Vendaval Gélido",
     "it": "Tempesta Boreale",
     "en": "Bleakwind Storm",
     "ja": "こがらしあらし",
-    "es-419": "Vendaval Gélido",
-    "es": "Vendaval Gélido"
+    "zh-hans": "枯叶风暴",
+    "es-419": "Vendaval Gélido"
   },
   "847": {
     "ja-hrkt": "かみなりあらし",
-    "zh-hant": "鸣雷风暴",
+    "ko": "번개폭풍",
+    "zh-hant": "鳴雷風暴",
     "fr": "Typhon Fulgurant",
+    "de": "Donnerorkan",
+    "es": "Electormenta",
     "it": "Tempesta Tonante",
     "en": "Wildbolt Storm",
     "ja": "かみなりあらし",
-    "es-419": "Electormenta",
-    "es": "Electormenta"
+    "zh-hans": "鸣雷风暴",
+    "es-419": "Electormenta"
   },
   "848": {
     "ja-hrkt": "ねっさのあらし",
-    "zh-hant": "热沙风暴",
+    "ko": "열사의폭풍",
+    "zh-hant": "熱沙風暴",
     "fr": "Typhon Pyrosable",
+    "de": "Wüstenorkan",
+    "es": "Simún de Arena",
     "it": "Tempesta Ardente",
     "en": "Sandsear Storm",
     "ja": "ねっさのあらし",
-    "es-419": "Tifón de Arena",
-    "es": "Simún de Arena"
+    "zh-hans": "热沙风暴",
+    "es-419": "Tifón de Arena"
   },
   "849": {
     "ja-hrkt": "みかづきのいのり",
-    "zh-hant": "新月祈祷",
+    "ko": "초승달의기도",
+    "zh-hant": "新月祈禱",
     "fr": "Prière Lunaire",
+    "de": "Lunargebet",
+    "es": "Plegaria Lunar",
     "it": "Invocaluna",
     "en": "Lunar Blessing",
     "ja": "みかづきのいのり",
-    "es-419": "Plegaria Lunar",
-    "es": "Plegaria Lunar"
+    "zh-hans": "新月祈祷",
+    "es-419": "Plegaria Lunar"
   },
   "850": {
     "ja-hrkt": "ブレイブチャージ",
-    "zh-hant": "勇气填充",
+    "ko": "브레이브차지",
+    "zh-hant": "勇氣填充",
     "fr": "Extravaillance",
+    "de": "Mutschub",
+    "es": "Bálsamo Osado",
     "it": "Baldimpulso",
     "en": "Take Heart",
     "ja": "ブレイブチャージ",
-    "es-419": "Bálsamo Osado",
-    "es": "Bálsamo Osado"
+    "zh-hans": "勇气填充",
+    "es-419": "Bálsamo Osado"
   },
   "851": {
     "ja-hrkt": "テラバースト",
-    "zh-hant": "太晶爆发",
+    "ko": "테라버스트",
+    "zh-hant": "太晶爆發",
     "fr": "Téra Explosion",
+    "de": "Tera-Ausbruch",
+    "es": "Teraexplosión",
     "it": "Terascoppio",
     "en": "Tera Blast",
     "ja": "テラバースト",
-    "es-419": "Teraexplosión",
-    "es": "Teraexplosión"
+    "zh-hans": "太晶爆发",
+    "es-419": "Teraexplosión"
   },
   "852": {
     "ja-hrkt": "スレッドトラップ",
-    "zh-hant": "线阱",
+    "ko": "스레드트랩",
+    "zh-hant": "線阱",
     "fr": "Piège de Fil",
+    "de": "Fadenfalle",
+    "es": "Telatrampa",
     "it": "Telatrappola",
     "en": "Silk Trap",
     "ja": "スレッドトラップ",
-    "es-419": "Telatrampa",
-    "es": "Telatrampa"
+    "zh-hans": "线阱",
+    "es-419": "Telatrampa"
   },
   "853": {
     "ja-hrkt": "かかとおとし",
-    "zh-hant": "下压踢",
+    "ko": "발꿈치찍기",
+    "zh-hant": "下壓踢",
     "fr": "Talon-Marteau",
+    "de": "Fersenkick",
+    "es": "Patada Hacha",
     "it": "Calcio ad Ascia",
     "en": "Axe Kick",
     "ja": "かかとおとし",
-    "es-419": "Patada Hacha",
-    "es": "Patada Hacha"
+    "zh-hans": "下压踢",
+    "es-419": "Patada Hacha"
   },
   "854": {
     "ja-hrkt": "おはかまいり",
-    "zh-hant": "扫墓",
+    "ko": "성묘",
+    "zh-hant": "掃墓",
     "fr": "Hommage Posthume",
+    "de": "Letzte Ehre",
+    "es": "Homenaje Póstumo",
     "it": "Omaggio ai KO",
     "en": "Last Respects",
     "ja": "おはかまいり",
-    "es-419": "Homenaje Póstumo",
-    "es": "Homenaje Póstumo"
+    "zh-hans": "扫墓",
+    "es-419": "Homenaje Póstumo"
   },
   "855": {
     "ja-hrkt": "ルミナコリジョン",
-    "zh-hant": "琉光冲激",
+    "ko": "루미나콜리전",
+    "zh-hant": "琉光衝激",
     "fr": "Lumino-Impact",
+    "de": "Lichteinschlag",
+    "es": "Fotocolisión",
     "it": "Fotocollisione",
     "en": "Lumina Crash",
     "ja": "ルミナコリジョン",
-    "es-419": "Fotocolisión",
-    "es": "Fotocolisión"
+    "zh-hans": "琉光冲激",
+    "es-419": "Fotocolisión"
   },
   "856": {
     "ja-hrkt": "いっちょうあがり",
+    "ko": "한판내기",
     "zh-hant": "上菜",
     "fr": "Plat du Jour",
+    "de": "Auftischen",
+    "es": "Oído Cocina",
     "it": "Alta Cucina",
     "en": "Order Up",
     "ja": "いっちょうあがり",
-    "es-419": "Emplatar",
-    "es": "Oído Cocina"
+    "zh-hans": "上菜",
+    "es-419": "Emplatar"
   },
   "857": {
     "ja-hrkt": "ジェットパンチ",
-    "zh-hant": "喷射拳",
+    "ko": "제트펀치",
+    "zh-hant": "噴射拳",
     "fr": "Poing Sonique",
+    "de": "Düsenhieb",
+    "es": "Puño Jet",
     "it": "Pugnojet",
     "en": "Jet Punch",
     "ja": "ジェットパンチ",
-    "es-419": "Puño Jet",
-    "es": "Puño Jet"
+    "zh-hans": "喷射拳",
+    "es-419": "Puño Jet"
   },
   "858": {
     "ja-hrkt": "ハバネロエキス",
-    "zh-hant": "辣椒精华",
+    "ko": "하바네로엑기스",
+    "zh-hant": "辣椒精華",
     "fr": "Habanerage",
+    "de": "Chili-Essenz",
+    "es": "Extracto Picante",
     "it": "Essenza Piccante",
     "en": "Spicy Extract",
     "ja": "ハバネロエキス",
-    "es-419": "Extracto Picante",
-    "es": "Extracto Picante"
+    "zh-hans": "辣椒精华",
+    "es-419": "Extracto Picante"
   },
   "859": {
     "ja-hrkt": "ホイールスピン",
-    "zh-hant": "疾速转轮",
+    "ko": "휠스핀",
+    "zh-hant": "疾速轉輪",
     "fr": "Dérapage",
+    "de": "Reifendrehung",
+    "es": "Quemarrueda",
     "it": "Slittaruote",
     "en": "Spin Out",
     "ja": "ホイールスピン",
-    "es-419": "Quemarrueda",
-    "es": "Quemarrueda"
+    "zh-hans": "疾速转轮",
+    "es-419": "Quemarrueda"
   },
   "860": {
     "ja-hrkt": "ネズミざん",
-    "zh-hant": "鼠数儿",
+    "ko": "찍찍베기",
+    "zh-hant": "鼠數兒",
     "fr": "Prolifération",
+    "de": "Mäuseplage",
+    "es": "Proliferación",
     "it": "Infestazione",
     "en": "Population Bomb",
     "ja": "ネズミざん",
-    "es-419": "Proliferación",
-    "es": "Proliferación"
+    "zh-hans": "鼠数儿",
+    "es-419": "Proliferación"
   },
   "861": {
     "ja-hrkt": "アイススピナー",
+    "ko": "아이스스피너",
     "zh-hant": "冰旋",
     "fr": "Cryo-Pirouette",
+    "de": "Eiskreisel",
+    "es": "Pirueta Helada",
     "it": "Vortighiaccio",
     "en": "Ice Spinner",
     "ja": "アイススピナー",
-    "es-419": "Pirueta Helada",
-    "es": "Pirueta Helada"
+    "zh-hans": "冰旋",
+    "es-419": "Pirueta Helada"
   },
   "862": {
     "ja-hrkt": "きょけんとつげき",
-    "zh-hant": "巨剑突击",
+    "ko": "대검돌격",
+    "zh-hant": "巨劍突擊",
     "fr": "Charge Glaive",
+    "de": "Großklingenstoß",
+    "es": "Asalto Espadón",
     "it": "Spadoncarica",
     "en": "Glaive Rush",
     "ja": "きょけんとつげき",
-    "es-419": "Asalto Espadón",
-    "es": "Asalto Espadón"
+    "zh-hans": "巨剑突击",
+    "es-419": "Asalto Espadón"
   },
   "863": {
     "ja-hrkt": "さいきのいのり",
-    "zh-hant": "复生祈祷",
+    "ko": "회생의기도",
+    "zh-hant": "復生祈禱",
     "fr": "Second Souffle",
+    "de": "Vitalsegen",
+    "es": "Plegaria Vital",
     "it": "Preghiera Vitale",
     "en": "Revival Blessing",
     "ja": "さいきのいのり",
-    "es-419": "Plegaria Vital",
-    "es": "Plegaria Vital"
+    "zh-hans": "复生祈祷",
+    "es-419": "Plegaria Vital"
   },
   "864": {
     "ja-hrkt": "しおづけ",
-    "zh-hant": "盐腌",
+    "ko": "소금절이",
+    "zh-hant": "鹽醃",
     "fr": "Salaison",
+    "de": "Pökelsalz",
+    "es": "Salazón",
     "it": "Sotto Sale",
     "en": "Salt Cure",
     "ja": "しおづけ",
-    "es-419": "Salación",
-    "es": "Salazón"
+    "zh-hans": "盐腌",
+    "es-419": "Salación"
   },
   "865": {
     "ja-hrkt": "トリプルダイブ",
-    "zh-hant": "三连钻",
+    "ko": "트리플다이브",
+    "zh-hant": "三連鑽",
     "fr": "Triple Plongeon",
+    "de": "Tauchtriade",
+    "es": "Triple Inmersión",
     "it": "Triplo Tuffo",
     "en": "Triple Dive",
     "ja": "トリプルダイブ",
-    "es-419": "Triple Inmersión",
-    "es": "Triple Inmersión"
+    "zh-hans": "三连钻",
+    "es-419": "Triple Inmersión"
   },
   "866": {
     "ja-hrkt": "キラースピン",
-    "zh-hant": "晶光转转",
+    "ko": "킬러스핀",
+    "zh-hant": "晶光轉轉",
     "fr": "Toupie Éclat",
+    "de": "Letalwirbler",
+    "es": "Giro Mortífero",
     "it": "Glitturbine",
     "en": "Mortal Spin",
     "ja": "キラースピン",
-    "es-419": "Giro Mortífero",
-    "es": "Giro Mortífero"
+    "zh-hans": "晶光转转",
+    "es-419": "Giro Mortífero"
   },
   "867": {
     "ja-hrkt": "うつしえ",
-    "zh-hant": "描绘",
+    "ko": "배껴그리기",
+    "zh-hant": "描繪",
     "fr": "Décalquage",
+    "de": "Abpausen",
+    "es": "Decalcomanía",
     "it": "Ricalco",
     "en": "Doodle",
     "ja": "うつしえ",
-    "es-419": "Plagio",
-    "es": "Decalcomanía"
+    "zh-hans": "描绘",
+    "es-419": "Plagio"
   },
   "868": {
     "ja-hrkt": "みをけずる",
+    "ko": "제살깎기",
     "zh-hant": "甩肉",
     "fr": "Décharnement",
+    "de": "Abspaltung",
+    "es": "Deslome",
     "it": "Alleggerimento",
     "en": "Fillet Away",
     "ja": "みをけずる",
-    "es-419": "Fileteo",
-    "es": "Deslome"
+    "zh-hans": "甩肉",
+    "es-419": "Fileteo"
   },
   "869": {
     "ja-hrkt": "ドゲザン",
-    "zh-hant": "仆刀",
+    "ko": "도각참",
+    "zh-hant": "仆斬",
     "fr": "Génusection",
+    "de": "Kniefallspalter",
+    "es": "Genufendiente",
     "it": "Genufendente",
     "en": "Kowtow Cleave",
     "ja": "ドゲザン",
-    "es-419": "Genufendiente",
-    "es": "Genufendiente"
+    "zh-hans": "仆刀",
+    "es-419": "Genufendiente"
   },
   "870": {
     "ja-hrkt": "トリックフラワー",
-    "zh-hant": "千变万花",
+    "ko": "트릭플라워",
+    "zh-hant": "千變萬花",
     "fr": "Magie Florale",
+    "de": "Blumentrick",
+    "es": "Truco Floral",
     "it": "Prestigiafiore",
     "en": "Flower Trick",
     "ja": "トリックフラワー",
-    "es-419": "Truco Floral",
-    "es": "Truco Floral"
+    "zh-hans": "千变万花",
+    "es-419": "Truco Floral"
   },
   "871": {
     "ja-hrkt": "フレアソング",
-    "zh-hant": "闪焰高歌",
+    "ko": "플레어송",
+    "zh-hant": "閃焰高歌",
     "fr": "Chant Flamboyant",
+    "de": "Loderlied",
+    "es": "Canto Ardiente",
     "it": "Canzone Ardente",
     "en": "Torch Song",
     "ja": "フレアソング",
-    "es-419": "Canto Ígneo",
-    "es": "Canto Ardiente"
+    "zh-hans": "闪焰高歌",
+    "es-419": "Canto Ígneo"
   },
   "872": {
     "ja-hrkt": "アクアステップ",
+    "ko": "아쿠아스텝",
     "zh-hant": "流水旋舞",
     "fr": "Danse Aquatique",
+    "de": "Wogentanz",
+    "es": "Danza Acuática",
     "it": "Idroballetto",
     "en": "Aqua Step",
     "ja": "アクアステップ",
-    "es-419": "Danza Acuática",
-    "es": "Danza Acuática"
+    "zh-hans": "流水旋舞",
+    "es-419": "Danza Acuática"
   },
   "873": {
     "ja-hrkt": "レイジングブル",
+    "ko": "레이징불",
     "zh-hant": "怒牛",
     "fr": "Taurogne",
+    "de": "Rasender Stier",
+    "es": "Furia Taurina",
     "it": "Scatenatoro",
     "en": "Raging Bull",
     "ja": "レイジングブル",
-    "es-419": "Furia Taurina",
-    "es": "Furia Taurina"
+    "zh-hans": "怒牛",
+    "es-419": "Furia Taurina"
   },
   "874": {
     "ja-hrkt": "ゴールドラッシュ",
+    "ko": "골드러시",
     "zh-hant": "淘金潮",
     "fr": "Ruée d'Or",
+    "de": "Goldrausch",
+    "es": "Fiebre Dorada",
     "it": "Corsa all’Oro",
     "en": "Make It Rain",
     "ja": "ゴールドラッシュ",
-    "es-419": "Fiebre Dorada",
-    "es": "Fiebre Dorada"
+    "zh-hans": "淘金潮",
+    "es-419": "Fiebre Dorada"
   },
   "875": {
-    "ja-hrkt": "サイコブレイド ",
+    "ja-hrkt": "サイコブレイド",
     "ko": "사이코블레이드",
     "zh-hant": "精神劍",
     "fr": "Lame Psychique",
@@ -11226,7 +11370,7 @@
     "es": "Psicohojas",
     "it": "Psicolama",
     "en": "Psyblade",
-    "ja": "サイコブレイド ",
+    "ja": "サイコブレイド",
     "zh-hans": "精神剑",
     "es-419": "Psicohojas"
   },
@@ -11245,275 +11389,367 @@
   },
   "877": {
     "ja-hrkt": "カタストロフィ",
-    "zh-hant": "大灾难",
+    "ko": "카타스트로피",
+    "zh-hant": "大災難",
     "fr": "Cataclysme",
+    "de": "Verderben",
+    "es": "Calamidad",
     "it": "Catastrofe",
     "en": "Ruination",
     "ja": "カタストロフィ",
-    "es-419": "Calamidad",
-    "es": "Calamidad"
+    "zh-hans": "大灾难",
+    "es-419": "Calamidad"
   },
   "878": {
     "ja-hrkt": "アクセルブレイク",
-    "zh-hant": "全开猛撞",
+    "ko": "엑셀브레이크",
+    "zh-hant": "全開猛撞",
     "fr": "Nitro Crash",
+    "de": "Kollisionskurs",
+    "es": "Nitrochoque",
     "it": "Turboschianto",
     "en": "Collision Course",
     "ja": "アクセルブレイク",
-    "es-419": "Nitrochoque",
-    "es": "Nitrochoque"
+    "zh-hans": "全开猛撞",
+    "es-419": "Nitrochoque"
   },
   "879": {
     "ja-hrkt": "イナズマドライブ",
-    "zh-hant": "闪电猛冲",
+    "ko": "라이트닝드라이브",
+    "zh-hant": "閃電猛衝",
     "fr": "Turbo Volt",
+    "de": "Blitztour",
+    "es": "Electroderrape",
     "it": "Fulmiscatto",
     "en": "Electro Drift",
     "ja": "イナズマドライブ",
-    "es-419": "Electroderrape",
-    "es": "Electroderrape"
+    "zh-hans": "闪电猛冲",
+    "es-419": "Electroderrape"
   },
   "880": {
     "ja-hrkt": "しっぽきり",
-    "zh-hant": "断尾",
+    "ko": "꼬리자르기",
+    "zh-hant": "斷尾",
     "fr": "Queulonage",
+    "de": "Schwanzabwurf",
+    "es": "Autotomía",
     "it": "Tagliacoda",
     "en": "Shed Tail",
     "ja": "しっぽきり",
-    "es-419": "Autotomía",
-    "es": "Autotomía"
+    "zh-hans": "断尾",
+    "es-419": "Autotomía"
   },
   "881": {
     "ja-hrkt": "さむいギャグ",
-    "zh-hant": "冷笑话",
+    "ko": "썰렁개그",
+    "zh-hant": "冷笑話",
     "fr": "Neigeux de Mots",
+    "de": "Eisige Stimmung",
+    "es": "Fría Acogida",
     "it": "Freddura",
     "en": "Chilly Reception",
     "ja": "さむいギャグ",
-    "es-419": "Respuesta Fría",
-    "es": "Fría Acogida"
+    "zh-hans": "冷笑话",
+    "es-419": "Respuesta Fría"
   },
   "882": {
     "ja-hrkt": "おかたづけ",
-    "zh-hant": "大扫除",
+    "ko": "정리정돈",
+    "zh-hant": "大掃除",
     "fr": "Grand Nettoyage",
+    "de": "Aufräumen",
+    "es": "Limpieza General",
     "it": "Pulizie",
     "en": "Tidy Up",
     "ja": "おかたづけ",
-    "es-419": "Limpieza General",
-    "es": "Limpieza General"
+    "zh-hans": "大扫除",
+    "es-419": "Limpieza General"
   },
   "883": {
     "ja-hrkt": "ゆきげしき",
+    "ko": "설경",
     "zh-hant": "雪景",
     "fr": "Chute de Neige",
+    "de": "Schneelandschaft",
+    "es": "Paisaje Nevado",
     "it": "Vista Innevata",
     "en": "Snowscape",
     "ja": "ゆきげしき",
-    "es-419": "Paisaje Nevado",
-    "es": "Paisaje Nevado"
+    "zh-hans": "雪景",
+    "es-419": "Paisaje Nevado"
   },
   "884": {
     "ja-hrkt": "とびつく",
-    "zh-hant": "虫扑",
+    "ko": "달려들기",
+    "zh-hant": "蟲撲",
     "fr": "Bond",
+    "de": "Anspringen",
+    "es": "Brinco",
     "it": "Balzo",
     "en": "Pounce",
     "ja": "とびつく",
-    "es-419": "Brinco",
-    "es": "Brinco"
+    "zh-hans": "虫扑",
+    "es-419": "Brinco"
   },
   "885": {
     "ja-hrkt": "くさわけ",
+    "ko": "개척하기",
     "zh-hant": "起草",
     "fr": "Désherbaffe",
+    "de": "Wegbereiter",
+    "es": "Abrecaminos",
     "it": "Apripista",
     "en": "Trailblaze",
     "ja": "くさわけ",
-    "es-419": "Abrecaminos",
-    "es": "Abrecaminos"
+    "zh-hans": "起草",
+    "es-419": "Abrecaminos"
   },
   "886": {
     "ja-hrkt": "ひやみず",
-    "zh-hant": "泼冷水",
+    "ko": "찬물끼얹기",
+    "zh-hant": "潑冷水",
     "fr": "Douche Froide",
+    "de": "Kalte Dusche",
+    "es": "Agua Fría",
     "it": "Doccia Fredda",
     "en": "Chilling Water",
     "ja": "ひやみず",
-    "es-419": "Agua Fría",
-    "es": "Agua Fría"
+    "zh-hans": "泼冷水",
+    "es-419": "Agua Fría"
   },
   "887": {
     "ja-hrkt": "ハイパードリル",
-    "zh-hant": "强力钻",
+    "ko": "하이퍼드릴",
+    "zh-hant": "強力鑽",
     "fr": "Hyperceuse",
+    "de": "Hyperbohrer",
+    "es": "Hipertaladro",
     "it": "Ipertrapano",
     "en": "Hyper Drill",
     "ja": "ハイパードリル",
-    "es-419": "Hipertaladro",
-    "es": "Hipertaladro"
+    "zh-hans": "强力钻",
+    "es-419": "Hipertaladro"
   },
   "888": {
     "ja-hrkt": "ツインビーム",
-    "zh-hant": "双光束",
+    "ko": "트윈빔",
+    "zh-hant": "雙光束",
     "fr": "Double Laser",
+    "de": "Doppelstrahl",
+    "es": "Láser Doble",
     "it": "Doppioraggio",
     "en": "Twin Beam",
     "ja": "ツインビーム",
-    "es-419": "Láser Doble",
-    "es": "Láser Doble"
+    "zh-hans": "双光束",
+    "es-419": "Láser Doble"
   },
   "889": {
     "ja-hrkt": "ふんどのこぶし",
-    "zh-hant": "愤怒之拳",
+    "ko": "분노의주먹",
+    "zh-hant": "憤怒之拳",
     "fr": "Poing de Colère",
+    "de": "Zornesfaust",
+    "es": "Puño Furia",
     "it": "Pugno Furibondo",
     "en": "Rage Fist",
     "ja": "ふんどのこぶし",
-    "es-419": "Puño Furia",
-    "es": "Puño Furia"
+    "zh-hans": "愤怒之拳",
+    "es-419": "Puño Furia"
   },
   "890": {
     "ja-hrkt": "アーマーキャノン",
-    "zh-hant": "铠农炮",
+    "ko": "아머캐논",
+    "zh-hant": "鎧農炮",
     "fr": "Canon Blindé",
+    "de": "Rüstungskanone",
+    "es": "Cañón Armadura",
     "it": "Corazza Cannone",
     "en": "Armor Cannon",
     "ja": "アーマーキャノン",
-    "es-419": "Cañón Armadura",
-    "es": "Cañón Armadura"
+    "zh-hans": "铠农炮",
+    "es-419": "Cañón Armadura"
   },
   "891": {
     "ja-hrkt": "むねんのつるぎ",
-    "zh-hant": "悔念剑",
+    "ko": "원념의칼",
+    "zh-hant": "悔念劍",
     "fr": "Lame en Peine",
+    "de": "Reueschwert",
+    "es": "Espada Lamento",
     "it": "Lama del Rimorso",
     "en": "Bitter Blade",
     "ja": "むねんのつるぎ",
-    "es-419": "Espada Lamento",
-    "es": "Espada Lamento"
+    "zh-hans": "悔念剑",
+    "es-419": "Espada Lamento"
   },
   "892": {
     "ja-hrkt": "でんこうそうげき",
-    "zh-hant": "电光双击",
+    "ko": "전광쌍격",
+    "zh-hant": "電光雙擊",
     "fr": "Double Décharge",
+    "de": "Zweifachladung",
+    "es": "Electropalmas",
     "it": "Doppiolampo",
     "en": "Double Shock",
     "ja": "でんこうそうげき",
-    "es-419": "Electropalmas",
-    "es": "Electropalmas"
+    "zh-hans": "电光双击",
+    "es-419": "Electropalmas"
   },
   "893": {
     "ja-hrkt": "デカハンマー",
-    "zh-hant": "巨力锤",
+    "ko": "거대해머",
+    "zh-hant": "巨力錘",
     "fr": "Marteau Mastoc",
+    "de": "Riesenhammer",
+    "es": "Martillo Colosal",
     "it": "Granmartello",
     "en": "Gigaton Hammer",
     "ja": "デカハンマー",
-    "es-419": "Martillo Colosal",
-    "es": "Martillo Colosal"
+    "zh-hans": "巨力锤",
+    "es-419": "Martillo Colosal"
   },
   "894": {
     "ja-hrkt": "ほうふく",
-    "zh-hant": "复仇",
+    "ko": "앙갚음",
+    "zh-hant": "復仇",
     "fr": "Vindicte",
+    "de": "Vendetta",
+    "es": "Resarcimiento",
     "it": "Ritorsione",
     "en": "Comeuppance",
     "ja": "ほうふく",
-    "es-419": "Resarcimiento",
-    "es": "Resarcimiento"
+    "zh-hans": "复仇",
+    "es-419": "Resarcimiento"
   },
   "895": {
     "ja-hrkt": "アクアカッター",
+    "ko": "아쿠아커터",
     "zh-hant": "水波刀",
     "fr": "Tranch'Aqua",
+    "de": "Aquaschnitt",
+    "es": "Tajo Acuático",
     "it": "Idrotaglio",
     "en": "Aqua Cutter",
     "ja": "アクアカッター",
-    "es-419": "Corte Acuático",
-    "es": "Tajo Acuático"
+    "zh-hans": "水波刀",
+    "es-419": "Corte Acuático"
   },
   "896": {
     "ja-hrkt": "バーンアクセル",
-    "zh-hant": "灼热暴冲",
+    "ko": "번액셀",
+    "zh-hant": "灼熱暴衝",
     "fr": "Crash Brûlant",
+    "de": "Hitzeturbo",
+    "es": "Pirochoque",
     "it": "Turboustione",
     "en": "Blazing Torque",
     "ja": "バーンアクセル",
-    "es-419": "Pirochoque",
-    "es": "Pirochoque"
+    "zh-hans": "灼热暴冲",
+    "es-419": "Pirochoque"
   },
   "897": {
     "ja-hrkt": "ダークアクセル",
-    "zh-hant": "黑暗暴冲",
+    "ko": "다크액셀",
+    "zh-hant": "黑暗暴衝",
     "fr": "Crash Obscur",
+    "de": "Finsterturbo",
+    "es": "Ominochoque",
     "it": "Turbotenebra",
     "en": "Wicked Torque",
     "ja": "ダークアクセル",
-    "es-419": "Ominochoque",
-    "es": "Ominochoque"
+    "zh-hans": "黑暗暴冲",
+    "es-419": "Ominochoque"
   },
   "898": {
     "ja-hrkt": "ポイズンアクセル",
-    "zh-hant": "剧毒暴冲",
+    "ko": "포이즌액셀",
+    "zh-hant": "劇毒暴衝",
     "fr": "Crash Toxique",
+    "de": "Toxiturbo",
+    "es": "Ponzochoque",
     "it": "Turbotossina",
     "en": "Noxious Torque",
     "ja": "ポイズンアクセル",
-    "es-419": "Ponzochoque",
-    "es": "Ponzochoque"
+    "zh-hans": "剧毒暴冲",
+    "es-419": "Ponzochoque"
   },
   "899": {
     "ja-hrkt": "ファイトアクセル",
-    "zh-hant": "格斗暴冲",
+    "ko": "파이트액셀",
+    "zh-hant": "格鬥暴衝",
     "fr": "Crash Musclé",
+    "de": "Raufturbo",
+    "es": "Pugnachoque",
     "it": "Turborissa",
     "en": "Combat Torque",
     "ja": "ファイトアクセル",
-    "es-419": "Pugnachoque",
-    "es": "Pugnachoque"
+    "zh-hans": "格斗暴冲",
+    "es-419": "Pugnachoque"
   },
   "900": {
     "ja-hrkt": "マジカルアクセル",
-    "zh-hant": "魔法暴冲",
+    "ko": "매지컬액셀",
+    "zh-hant": "魔法暴衝",
     "fr": "Crash Magique",
+    "de": "Zauberturbo",
+    "es": "Feerichoque",
     "it": "Turboincanto",
     "en": "Magical Torque",
     "ja": "マジカルアクセル",
-    "es-419": "Feerichoque",
-    "es": "Feerichoque"
+    "zh-hans": "魔法暴冲",
+    "es-419": "Feerichoque"
   },
   "901": {
     "ja-hrkt": "ブラッドムーン",
+    "ko": "블러드문",
+    "zh-hant": "血月",
     "fr": "Lune Rouge",
+    "de": "Blutmond",
+    "es": "Luna Roja",
+    "it": "Luna Rossa",
     "en": "Blood Moon",
     "ja": "ブラッドムーン",
-    "es-419": "Luna Roja",
-    "es": "Luna Roja"
+    "zh-hans": "血月",
+    "es-419": "Luna Roja"
   },
   "902": {
     "ja-hrkt": "シャカシャカほう",
+    "ko": "휘적휘적포",
+    "zh-hant": "刷刷茶炮",
     "fr": "Mortier Matcha",
+    "de": "Quirlschuss",
+    "es": "Cañón Batidor",
+    "it": "Spruzzatè",
     "en": "Matcha Gotcha",
     "ja": "シャカシャカほう",
-    "es-419": "Cañón Batidor",
-    "es": "Cañón Batidor"
+    "zh-hans": "刷刷茶炮",
+    "es-419": "Cañón Batidor"
   },
   "903": {
     "ja-hrkt": "みずあめボム",
+    "ko": "시럽봄",
+    "zh-hant": "糖漿炸彈",
     "fr": "Bombe au Sirop",
+    "de": "Sirupbombe",
+    "es": "Bomba Caramelo",
+    "it": "Bomba Sciroppata",
     "en": "Syrup Bomb",
     "ja": "みずあめボム",
-    "es-419": "Bomba Caramelo",
-    "es": "Bomba Caramelo"
+    "zh-hans": "糖浆炸弹",
+    "es-419": "Bomba Caramelo"
   },
   "904": {
     "ja-hrkt": "ツタこんぼう",
+    "ko": "덩굴방망이",
+    "zh-hant": "棘藤棒",
     "fr": "Massue Liane",
+    "de": "Rankenkeule",
+    "es": "Garrote Liana",
+    "it": "Clava di Liane",
     "en": "Ivy Cudgel",
     "ja": "ツタこんぼう",
-    "es-419": "Garrote Liana",
-    "es": "Garrote Liana"
+    "zh-hans": "棘藤棒",
+    "es-419": "Garrote Liana"
   },
   "905": {
     "ja-hrkt": "エレクトロビーム",

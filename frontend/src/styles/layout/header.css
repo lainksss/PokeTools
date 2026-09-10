@@ -157,6 +157,50 @@
   color: var(--accent);
 }
 
+/* Champions Toggle Button */
+.champions-btn {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  width: 32px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  color: var(--text-muted);
+  padding: 0;
+  position: relative;
+}
+
+.champions-btn:hover {
+  border-color: #f59e0b;
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.08);
+}
+
+.champions-btn.active {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.18) 0%, rgba(251, 191, 36, 0.12) 100%);
+  border-color: #f59e0b;
+  color: #f59e0b;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.35), inset 0 0 8px rgba(245, 158, 11, 0.08);
+  animation: champions-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes champions-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(245, 158, 11, 0.35), inset 0 0 8px rgba(245, 158, 11, 0.08); }
+  50% { box-shadow: 0 0 16px rgba(245, 158, 11, 0.55), inset 0 0 12px rgba(245, 158, 11, 0.15); }
+}
+
+/* Banner indicator when Champions mode is active */
+.app-header.champions-mode-on {
+  border-bottom-color: #f59e0b;
+  box-shadow: 0 2px 0 rgba(245, 158, 11, 0.25);
+}
+
+
 /* Hamburger Menu */
 .hamburger {
   display: none;
@@ -240,5 +284,11 @@
     width: 28px;
     height: 26px;
     font-size: 0.9rem;
+  }
+
+  .champions-btn {
+    width: 28px;
+    height: 26px;
+    font-size: 0.88rem;
   }
 }

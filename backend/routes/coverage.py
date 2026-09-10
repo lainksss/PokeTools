@@ -29,6 +29,32 @@ logger = logging.getLogger(__name__)
 bp = Blueprint('coverage', __name__)
 
 
+def _resolve_champion_ids(payload_ids=None):
+    """Return the champion ID set from the payload or, if missing, from local data."""
+    champion_ids = set()
+
+    if payload_ids:
+        for pid in payload_ids:
+            try:
+                champion_ids.add(int(pid))
+            except (ValueError, TypeError):
+                pass
+
+    if champion_ids:
+        return champion_ids
+
+    champions_data = load_json("all_champions_pokemons.json") or []
+    for entry in champions_data:
+        ids = entry.get("pokemon_ids") or []
+        for pid in ids:
+            try:
+                champion_ids.add(int(pid))
+            except (ValueError, TypeError):
+                pass
+
+    return champion_ids
+
+
 @bp.route("/analyze_coverage_stream", methods=["POST"])
 def analyze_coverage_stream():
     """Analyse la couverture offensive d'un attaquant avec plusieurs attaques (streaming)."""
@@ -47,6 +73,8 @@ def analyze_coverage_stream():
     bulk_assault_vest = bool(payload.get("bulk_assault_vest", False))
     bulk_evoluroc = bool(payload.get("bulk_evoluroc", False))
     fully_evolved_only = bool(payload.get("fully_evolved_only", False))
+    champions_only = bool(payload.get("champions_only", False))
+    champion_ids = _resolve_champion_ids(payload.get("champion_ids", []))
 
     if not attacker_data:
         return jsonify({"error": "attacker required"}), 400
@@ -62,10 +90,14 @@ def analyze_coverage_stream():
             all_pokemon_data = load_json("all_pokemon.json") or {}
             evo_map = load_json("pokemon_evolution.json") or {}
 
-            # Build list and optionally filter to fully-evolved only
+            # Build list and optionally filter (fully-evolved and/or champions only)
             all_pokemon = []
             for name, data in all_pokemon_data.items():
                 if not data:
+                    continue
+                poke_id = data.get("id")
+                # Filtrer par champions si le mode est actif
+                if champions_only and champion_ids and poke_id not in champion_ids:
                     continue
                 if fully_evolved_only:
                     try:
@@ -292,6 +324,8 @@ def deep_analyze_coverage_stream():
     ko_mode = payload.get("ko_mode", "OHKO")
     field_data = payload.get("field", {})
     fully_evolved_only = bool(payload.get("fully_evolved_only", False))
+    champions_only = bool(payload.get("champions_only", False))
+    champion_ids = _resolve_champion_ids(payload.get("champion_ids", []))
     include_no_ko = bool(payload.get("include_no_ko", False))
 
     if not attacker_data:
@@ -310,10 +344,13 @@ def deep_analyze_coverage_stream():
             pokemon_abilities_map = load_json("all_pokemon_abilities.json") or {}
             all_moves = load_json("all_moves.json") or {}
 
-            # Build list of defenders and optionally filter to fully-evolved only
+            # Build list of defenders and optionally filter to fully-evolved only / champions only
             all_defenders = []
             for name, data in all_pokemon_data.items():
                 if not data:
+                    continue
+                poke_id = data.get("id")
+                if champions_only and champion_ids and poke_id not in champion_ids:
                     continue
                 if fully_evolved_only:
                     try:
@@ -517,6 +554,8 @@ def analyze_type_coverage():
         return jsonify({"error": "at least one move required"}), 400
 
     fully_evolved_only = bool(payload.get('fully_evolved_only', False))
+    champions_only = bool(payload.get('champions_only', False))
+    champion_ids = _resolve_champion_ids(payload.get('champion_ids', []))
 
     try:
         all_pokemon_data = load_json("all_pokemon.json") or {}
@@ -553,6 +592,10 @@ def analyze_type_coverage():
         not_super_effective = []
         
         for poke_name, poke_data in all_pokemon_data.items():
+            poke_id = poke_data.get("id")
+            # Filtrer par champions si le mode est actif
+            if champions_only and champion_ids and poke_id not in champion_ids:
+                continue
             if fully_evolved_only:
                 try:
                     can_evolve = bool((evo_map.get(poke_name) or {}).get('can_evolve', False))
@@ -560,7 +603,6 @@ def analyze_type_coverage():
                     can_evolve = False
                 if can_evolve:
                     continue
-            poke_id = poke_data.get("id")
             poke_types = poke_data.get("types", [])
             
             best_effectiveness = 0.0

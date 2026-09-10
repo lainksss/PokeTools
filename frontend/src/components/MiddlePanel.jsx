@@ -160,6 +160,12 @@ export default function MiddlePanel({ left, right, setLeft, setRight, setResult 
     }
   }
 
+  function swap() {
+    // Échange attaquant et défenseur en préservant toutes leurs données
+    setLeft(right)
+    setRight(left)
+  }
+
   return (
     <div className="middle-panel">
       <h3>{t('calculate.battleConditions')}</h3>
@@ -338,13 +344,26 @@ export default function MiddlePanel({ left, right, setLeft, setRight, setResult 
         </label>
       </div>
 
-      <button 
-        onClick={calculate} 
-        disabled={loading || !left || !right || !left.move}
-        className="calculate-button"
-      >
-        {loading ? t('common.loading') : t('calculate.calculate')}
-      </button>
+      <div className="swap-calculate-group">
+        <button
+          type="button"
+          onClick={swap}
+          disabled={!left && !right}
+          className="swap-button"
+          title="Inverser attaquant / défenseur"
+          aria-label="Inverser attaquant et défenseur"
+        >
+          ⇄
+        </button>
+
+        <button
+          onClick={calculate}
+          disabled={loading || !left || !right || !left.move}
+          className="calculate-button"
+        >
+          {loading ? t('common.loading') : t('calculate.calculate')}
+        </button>
+      </div>
     </div>
   )
 }

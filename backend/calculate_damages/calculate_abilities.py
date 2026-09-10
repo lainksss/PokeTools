@@ -98,6 +98,13 @@ def apply_ability_effects(
         multipliers[k] = float(multipliers.get(k, 1.0)) * float(v)
 
     # --- Attacker-side abilities ---
+
+    # Long Reach: the attacker's moves never make contact, suppressing contact-based
+    # defender abilities (Fluffy, Aura Guard, Static, etc.).
+    if atk_ability == "long-reach" and move.get("makes_contact"):
+        move["makes_contact"] = False
+        effects["long_reach"] = True
+
     # Huge Power / Pure Power: double Attack (physical) stat
     if atk_ability in ("huge-power", "pure-power") and category == "physical":
         A = float(A) * 2.0
@@ -751,6 +758,32 @@ def apply_ability_effects(
             type_mult = 0.0
             effects["immune"] = "wind-rider"
             effects["wind_rider_activated"] = True  # In battle, this would trigger +1 Attack stage
+
+    # Fluffy: halves damage from contact moves; doubles damage from Fire-type moves.
+    # Fire-type contact moves deal regular damage (×0.5 × ×2.0 = ×1.0).
+    # Long Reach suppresses the contact flag before this check, so Long Reach
+    # contact moves deal regular damage, and Long Reach Fire moves still get ×2.0.
+    if def_ability == "fluffy":
+        is_contact = bool(move.get("makes_contact"))
+        is_fire = str(mv_type or "").lower() == "fire"
+        if is_contact and is_fire:
+            # Fire + contact → multipliers cancel out → regular damage
+            pass
+        elif is_contact:
+            # Contact but not Fire → halve damage
+            mul("other_mult", 0.5)
+            effects["fluffy_contact"] = True
+        elif is_fire:
+            # Fire but not contact (or Long Reach negated contact) → double damage
+            mul("other_mult", 2.0)
+            effects["fluffy_fire"] = True
+
+    # Aura Guard: halves damage from contact moves.
+    # Long Reach suppresses the contact flag before this check.
+    if def_ability == "aura-guard":
+        if move.get("makes_contact"):
+            mul("other_mult", 0.5)
+            effects["aura_guard"] = True
 
     # Wonder Guard: only super-effective moves deal damage (Shedinja's main ability)
     # NOTE: We can't check type_mult here since it's passed as 1.0 and computed later.

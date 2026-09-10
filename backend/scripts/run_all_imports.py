@@ -44,6 +44,7 @@ DEFAULT_ORDER: List[Path] = [
 POST_SCRIPTS: List[Path] = [
 	SCRIPTS_DIR / "import_all_move_flags.py",
 	SCRIPTS_DIR / "validate_mega_moves.py",
+	SCRIPTS_DIR / "validate_champions_pokemons.py",
 ]
 
 # Scripts that need special arguments

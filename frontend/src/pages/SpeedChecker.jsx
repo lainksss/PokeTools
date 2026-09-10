@@ -3,9 +3,11 @@ import { useTranslation } from '../i18n/LanguageContext'
 import { API_URL } from '../apiConfig'
 import { newEvToOld } from '../utils/evs'
 import { getMandatoryItem } from '../utils/getMandatoryItem'
+import { useChampions } from '../ChampionsContext'
 
 export default function SpeedChecker() {
   const { t, language, getPokemonName, matchesPokemonName } = useTranslation()
+  const { championsOnly, championIds } = useChampions()
   const speedPokemonInputRef = useRef(null)
   
   // State for dropdown positioning
@@ -64,6 +66,7 @@ export default function SpeedChecker() {
     }
   }, [])
   const [allPokemon, setAllPokemon] = useState([])
+  const [fullPokemonList, setFullPokemonList] = useState([]) // unfiltered, for re-applying champions filter
   const [allNatures, setAllNatures] = useState([])
   const [allAbilities, setAllAbilities] = useState([])
   const [pokemonAbilitiesMap, setPokemonAbilitiesMap] = useState({}) // Map pokemon_id -> [abilities]
@@ -112,13 +115,27 @@ export default function SpeedChecker() {
       fetch(`${API_URL}/api/pokemon-abilities-all`).then(r => r.json())
     ]).then(([pokemon, natures, abilities, abilitiesMap]) => {
       const pokemonList = pokemon.results || []
-      setAllPokemon(pokemonList)
-      setFilteredPokemon(pokemonList)
+      const filtered = (championsOnly && championIds.size > 0)
+        ? pokemonList.filter(p => championIds.has(p.id))
+        : pokemonList
+      setFullPokemonList(pokemonList)
+      setAllPokemon(filtered)
+      setFilteredPokemon(filtered)
       setAllNatures(natures.natures || [])
       setAllAbilities(abilities.abilities || [])
       setPokemonAbilitiesMap(abilitiesMap.abilities_map || {})
     }).catch(err => console.error('Error loading data:', err))
   }, [])
+
+  // Re-apply champions filter when the toggle changes mid-session
+  useEffect(() => {
+    if (fullPokemonList.length === 0) return
+    const newList = (championsOnly && championIds.size > 0)
+      ? fullPokemonList.filter(p => championIds.has(p.id))
+      : fullPokemonList
+    setAllPokemon(newList)
+    setFilteredPokemon(newList)
+  }, [championsOnly, championIds])
   
   // Filter pokemon based on search
   useEffect(() => {

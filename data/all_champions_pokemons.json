@@ -1,0 +1,5372 @@
+[
+  {
+    "ndex": "3",
+    "name": "Venusaur",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      3
+    ]
+  },
+  {
+    "ndex": "6",
+    "name": "Charizard",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      6
+    ]
+  },
+  {
+    "ndex": "9",
+    "name": "Blastoise",
+    "form": "",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      9
+    ]
+  },
+  {
+    "ndex": "15",
+    "name": "Beedrill",
+    "form": "",
+    "type1": "Bug",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      15
+    ]
+  },
+  {
+    "ndex": "18",
+    "name": "Pidgeot",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      18
+    ]
+  },
+  {
+    "ndex": "24",
+    "name": "Arbok",
+    "form": "",
+    "type1": "Poison",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      24
+    ]
+  },
+  {
+    "ndex": "25",
+    "name": "Pikachu",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Yes (Regular form only)",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      25
+    ]
+  },
+  {
+    "ndex": "26",
+    "name": "Raichu",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      26
+    ]
+  },
+  {
+    "ndex": "26",
+    "name": "Raichu",
+    "form": "Alolan Form",
+    "type1": "Electric",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      26
+    ]
+  },
+  {
+    "ndex": "36",
+    "name": "Clefable",
+    "form": "",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      36
+    ]
+  },
+  {
+    "ndex": "38",
+    "name": "Ninetales",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      38
+    ]
+  },
+  {
+    "ndex": "38",
+    "name": "Ninetales",
+    "form": "Alolan Form",
+    "type1": "Ice",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      38
+    ]
+  },
+  {
+    "ndex": "40",
+    "name": "Wigglytuff",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      40
+    ]
+  },
+  {
+    "ndex": "45",
+    "name": "Vileplume",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main",
+    "pokemon_ids": [
+      45
+    ]
+  },
+  {
+    "ndex": "53",
+    "name": "Persian",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      53
+    ]
+  },
+  {
+    "ndex": "53",
+    "name": "Persian",
+    "form": "Alolan Form",
+    "type1": "Dark",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      53
+    ]
+  },
+  {
+    "ndex": "59",
+    "name": "Arcanine",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      59
+    ]
+  },
+  {
+    "ndex": "59",
+    "name": "Arcanine",
+    "form": "Hisuian Form",
+    "type1": "Fire",
+    "type2": "Rock",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      59
+    ]
+  },
+  {
+    "ndex": "65",
+    "name": "Alakazam",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      65
+    ]
+  },
+  {
+    "ndex": "68",
+    "name": "Machamp",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      68
+    ]
+  },
+  {
+    "ndex": "71",
+    "name": "Victreebel",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      71
+    ]
+  },
+  {
+    "ndex": "80",
+    "name": "Slowbro",
+    "form": "",
+    "type1": "Water",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      80
+    ]
+  },
+  {
+    "ndex": "80",
+    "name": "Slowbro",
+    "form": "Galarian Form",
+    "type1": "Poison",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      80
+    ]
+  },
+  {
+    "ndex": "83",
+    "name": "Farfetch'd",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      83
+    ]
+  },
+  {
+    "ndex": "94",
+    "name": "Gengar",
+    "form": "",
+    "type1": "Ghost",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      94
+    ]
+  },
+  {
+    "ndex": "115",
+    "name": "Kangaskhan",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      115
+    ]
+  },
+  {
+    "ndex": "121",
+    "name": "Starmie",
+    "form": "",
+    "type1": "Water",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      121
+    ]
+  },
+  {
+    "ndex": "122",
+    "name": "Mr. Mime",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      122
+    ]
+  },
+  {
+    "ndex": "127",
+    "name": "Pinsir",
+    "form": "",
+    "type1": "Bug",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      127
+    ]
+  },
+  {
+    "ndex": "128",
+    "name": "Tauros",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      128
+    ]
+  },
+  {
+    "ndex": "128",
+    "name": "Tauros",
+    "form": "Paldean Form(Combat Breed)",
+    "type1": "Fighting",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      128
+    ]
+  },
+  {
+    "ndex": "128",
+    "name": "Tauros",
+    "form": "Paldean Form(Blaze Breed)",
+    "type1": "Fighting",
+    "type2": "Fire",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      128
+    ]
+  },
+  {
+    "ndex": "128",
+    "name": "Tauros",
+    "form": "Paldean Form(Aqua Breed)",
+    "type1": "Fighting",
+    "type2": "Water",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      128
+    ]
+  },
+  {
+    "ndex": "130",
+    "name": "Gyarados",
+    "form": "",
+    "type1": "Water",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      130
+    ]
+  },
+  {
+    "ndex": "132",
+    "name": "Ditto",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      132
+    ]
+  },
+  {
+    "ndex": "134",
+    "name": "Vaporeon",
+    "form": "",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      134
+    ]
+  },
+  {
+    "ndex": "135",
+    "name": "Jolteon",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      135
+    ]
+  },
+  {
+    "ndex": "136",
+    "name": "Flareon",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      136
+    ]
+  },
+  {
+    "ndex": "142",
+    "name": "Aerodactyl",
+    "form": "",
+    "type1": "Rock",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      142
+    ]
+  },
+  {
+    "ndex": "143",
+    "name": "Snorlax",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      143
+    ]
+  },
+  {
+    "ndex": "149",
+    "name": "Dragonite",
+    "form": "",
+    "type1": "Dragon",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      149
+    ]
+  },
+  {
+    "ndex": "154",
+    "name": "Meganium",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      154
+    ]
+  },
+  {
+    "ndex": "157",
+    "name": "Typhlosion",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      157
+    ]
+  },
+  {
+    "ndex": "157",
+    "name": "Typhlosion",
+    "form": "Hisuian Form",
+    "type1": "Fire",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      157
+    ]
+  },
+  {
+    "ndex": "160",
+    "name": "Feraligatr",
+    "form": "",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      160
+    ]
+  },
+  {
+    "ndex": "168",
+    "name": "Ariados",
+    "form": "",
+    "type1": "Bug",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      168
+    ]
+  },
+  {
+    "ndex": "181",
+    "name": "Ampharos",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      181
+    ]
+  },
+  {
+    "ndex": "184",
+    "name": "Azumarill",
+    "form": "",
+    "type1": "Water",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      184
+    ]
+  },
+  {
+    "ndex": "186",
+    "name": "Politoed",
+    "form": "",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      186
+    ]
+  },
+  {
+    "ndex": "196",
+    "name": "Espeon",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      196
+    ]
+  },
+  {
+    "ndex": "197",
+    "name": "Umbreon",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      197
+    ]
+  },
+  {
+    "ndex": "199",
+    "name": "Slowking",
+    "form": "",
+    "type1": "Water",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      199
+    ]
+  },
+  {
+    "ndex": "199",
+    "name": "Slowking",
+    "form": "Galarian Form",
+    "type1": "Poison",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      199
+    ]
+  },
+  {
+    "ndex": "205",
+    "name": "Forretress",
+    "form": "",
+    "type1": "Bug",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      205
+    ]
+  },
+  {
+    "ndex": "208",
+    "name": "Steelix",
+    "form": "",
+    "type1": "Steel",
+    "type2": "Ground",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      208
+    ]
+  },
+  {
+    "ndex": "211",
+    "name": "Qwilfish",
+    "form": "",
+    "type1": "Water",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main",
+    "pokemon_ids": [
+      211
+    ]
+  },
+  {
+    "ndex": "212",
+    "name": "Scizor",
+    "form": "",
+    "type1": "Bug",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      212
+    ]
+  },
+  {
+    "ndex": "214",
+    "name": "Heracross",
+    "form": "",
+    "type1": "Bug",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      214
+    ]
+  },
+  {
+    "ndex": "227",
+    "name": "Skarmory",
+    "form": "",
+    "type1": "Steel",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      227
+    ]
+  },
+  {
+    "ndex": "229",
+    "name": "Houndoom",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Fire",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      229
+    ]
+  },
+  {
+    "ndex": "248",
+    "name": "Tyranitar",
+    "form": "",
+    "type1": "Rock",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      248
+    ]
+  },
+  {
+    "ndex": "254",
+    "name": "Sceptile",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main",
+    "pokemon_ids": [
+      254
+    ]
+  },
+  {
+    "ndex": "257",
+    "name": "Blaziken",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main",
+    "pokemon_ids": [
+      257
+    ]
+  },
+  {
+    "ndex": "260",
+    "name": "Swampert",
+    "form": "",
+    "type1": "Water",
+    "type2": "Ground",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main",
+    "pokemon_ids": [
+      260
+    ]
+  },
+  {
+    "ndex": "279",
+    "name": "Pelipper",
+    "form": "",
+    "type1": "Water",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      279
+    ]
+  },
+  {
+    "ndex": "282",
+    "name": "Gardevoir",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      282
+    ]
+  },
+  {
+    "ndex": "302",
+    "name": "Sableye",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      302
+    ]
+  },
+  {
+    "ndex": "303",
+    "name": "Mawile",
+    "form": "",
+    "type1": "Steel",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main",
+    "pokemon_ids": [
+      303
+    ]
+  },
+  {
+    "ndex": "306",
+    "name": "Aggron",
+    "form": "",
+    "type1": "Steel",
+    "type2": "Rock",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      306
+    ]
+  },
+  {
+    "ndex": "308",
+    "name": "Medicham",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      308
+    ]
+  },
+  {
+    "ndex": "310",
+    "name": "Manectric",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      310
+    ]
+  },
+  {
+    "ndex": "317",
+    "name": "Swalot",
+    "form": "",
+    "type1": "Poison",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      317
+    ]
+  },
+  {
+    "ndex": "319",
+    "name": "Sharpedo",
+    "form": "",
+    "type1": "Water",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      319
+    ]
+  },
+  {
+    "ndex": "323",
+    "name": "Camerupt",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Ground",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      323
+    ]
+  },
+  {
+    "ndex": "324",
+    "name": "Torkoal",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      324
+    ]
+  },
+  {
+    "ndex": "334",
+    "name": "Altaria",
+    "form": "",
+    "type1": "Dragon",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      334
+    ]
+  },
+  {
+    "ndex": "350",
+    "name": "Milotic",
+    "form": "",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      350
+    ]
+  },
+  {
+    "ndex": "351",
+    "name": "Castform",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      351
+    ]
+  },
+  {
+    "ndex": "354",
+    "name": "Banette",
+    "form": "",
+    "type1": "Ghost",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      354
+    ]
+  },
+  {
+    "ndex": "358",
+    "name": "Chimecho",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      358
+    ]
+  },
+  {
+    "ndex": "359",
+    "name": "Absol",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      359
+    ]
+  },
+  {
+    "ndex": "362",
+    "name": "Glalie",
+    "form": "",
+    "type1": "Ice",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      362
+    ]
+  },
+  {
+    "ndex": "373",
+    "name": "Salamence",
+    "form": "",
+    "type1": "Dragon",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      373
+    ]
+  },
+  {
+    "ndex": "376",
+    "name": "Metagross",
+    "form": "",
+    "type1": "Steel",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main",
+    "pokemon_ids": [
+      376
+    ]
+  },
+  {
+    "ndex": "389",
+    "name": "Torterra",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Ground",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      389
+    ]
+  },
+  {
+    "ndex": "392",
+    "name": "Infernape",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      392
+    ]
+  },
+  {
+    "ndex": "395",
+    "name": "Empoleon",
+    "form": "",
+    "type1": "Water",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      395
+    ]
+  },
+  {
+    "ndex": "398",
+    "name": "Staraptor",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main",
+    "pokemon_ids": [
+      398
+    ]
+  },
+  {
+    "ndex": "405",
+    "name": "Luxray",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      405
+    ]
+  },
+  {
+    "ndex": "407",
+    "name": "Roserade",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      407
+    ]
+  },
+  {
+    "ndex": "409",
+    "name": "Rampardos",
+    "form": "",
+    "type1": "Rock",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      409
+    ]
+  },
+  {
+    "ndex": "411",
+    "name": "Bastiodon",
+    "form": "",
+    "type1": "Rock",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      411
+    ]
+  },
+  {
+    "ndex": "428",
+    "name": "Lopunny",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      428
+    ]
+  },
+  {
+    "ndex": "442",
+    "name": "Spiritomb",
+    "form": "",
+    "type1": "Ghost",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      442
+    ]
+  },
+  {
+    "ndex": "445",
+    "name": "Garchomp",
+    "form": "",
+    "type1": "Dragon",
+    "type2": "Ground",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      445
+    ]
+  },
+  {
+    "ndex": "448",
+    "name": "Lucario",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      448
+    ]
+  },
+  {
+    "ndex": "450",
+    "name": "Hippowdon",
+    "form": "",
+    "type1": "Ground",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      450
+    ]
+  },
+  {
+    "ndex": "454",
+    "name": "Toxicroak",
+    "form": "",
+    "type1": "Poison",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      454
+    ]
+  },
+  {
+    "ndex": "460",
+    "name": "Abomasnow",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Ice",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      460
+    ]
+  },
+  {
+    "ndex": "461",
+    "name": "Weavile",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Ice",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      461
+    ]
+  },
+  {
+    "ndex": "464",
+    "name": "Rhyperior",
+    "form": "",
+    "type1": "Ground",
+    "type2": "Rock",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      464
+    ]
+  },
+  {
+    "ndex": "470",
+    "name": "Leafeon",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      470
+    ]
+  },
+  {
+    "ndex": "471",
+    "name": "Glaceon",
+    "form": "",
+    "type1": "Ice",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      471
+    ]
+  },
+  {
+    "ndex": "472",
+    "name": "Gliscor",
+    "form": "",
+    "type1": "Ground",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      472
+    ]
+  },
+  {
+    "ndex": "473",
+    "name": "Mamoswine",
+    "form": "",
+    "type1": "Ice",
+    "type2": "Ground",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      473
+    ]
+  },
+  {
+    "ndex": "475",
+    "name": "Gallade",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      475
+    ]
+  },
+  {
+    "ndex": "478",
+    "name": "Froslass",
+    "form": "",
+    "type1": "Ice",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      478
+    ]
+  },
+  {
+    "ndex": "479",
+    "name": "Rotom",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      479
+    ]
+  },
+  {
+    "ndex": "497",
+    "name": "Serperior",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      497
+    ]
+  },
+  {
+    "ndex": "500",
+    "name": "Emboar",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      500
+    ]
+  },
+  {
+    "ndex": "503",
+    "name": "Samurott",
+    "form": "",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      503
+    ]
+  },
+  {
+    "ndex": "503",
+    "name": "Samurott",
+    "form": "Hisuian Form",
+    "type1": "Water",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      503
+    ]
+  },
+  {
+    "ndex": "505",
+    "name": "Watchog",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      505
+    ]
+  },
+  {
+    "ndex": "510",
+    "name": "Liepard",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      510
+    ]
+  },
+  {
+    "ndex": "512",
+    "name": "Simisage",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      512
+    ]
+  },
+  {
+    "ndex": "514",
+    "name": "Simisear",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      514
+    ]
+  },
+  {
+    "ndex": "516",
+    "name": "Simipour",
+    "form": "",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      516
+    ]
+  },
+  {
+    "ndex": "518",
+    "name": "Musharna",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main",
+    "pokemon_ids": [
+      518
+    ]
+  },
+  {
+    "ndex": "530",
+    "name": "Excadrill",
+    "form": "",
+    "type1": "Ground",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      530
+    ]
+  },
+  {
+    "ndex": "531",
+    "name": "Audino",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      531
+    ]
+  },
+  {
+    "ndex": "534",
+    "name": "Conkeldurr",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      534
+    ]
+  },
+  {
+    "ndex": "545",
+    "name": "Scolipede",
+    "form": "",
+    "type1": "Bug",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main",
+    "pokemon_ids": [
+      545
+    ]
+  },
+  {
+    "ndex": "547",
+    "name": "Whimsicott",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      547
+    ]
+  },
+  {
+    "ndex": "553",
+    "name": "Krookodile",
+    "form": "",
+    "type1": "Ground",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      553
+    ]
+  },
+  {
+    "ndex": "560",
+    "name": "Scrafty",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main",
+    "pokemon_ids": [
+      560
+    ]
+  },
+  {
+    "ndex": "563",
+    "name": "Cofagrigus",
+    "form": "",
+    "type1": "Ghost",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      563
+    ]
+  },
+  {
+    "ndex": "569",
+    "name": "Garbodor",
+    "form": "",
+    "type1": "Poison",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      569
+    ]
+  },
+  {
+    "ndex": "571",
+    "name": "Zoroark",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      571
+    ]
+  },
+  {
+    "ndex": "571",
+    "name": "Zoroark",
+    "form": "Hisuian Form",
+    "type1": "Normal",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      571
+    ]
+  },
+  {
+    "ndex": "579",
+    "name": "Reuniclus",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      579
+    ]
+  },
+  {
+    "ndex": "584",
+    "name": "Vanilluxe",
+    "form": "",
+    "type1": "Ice",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      584
+    ]
+  },
+  {
+    "ndex": "587",
+    "name": "Emolga",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      587
+    ]
+  },
+  {
+    "ndex": "604",
+    "name": "Eelektross",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main",
+    "pokemon_ids": [
+      604
+    ]
+  },
+  {
+    "ndex": "609",
+    "name": "Chandelure",
+    "form": "",
+    "type1": "Ghost",
+    "type2": "Fire",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      609
+    ]
+  },
+  {
+    "ndex": "614",
+    "name": "Beartic",
+    "form": "",
+    "type1": "Ice",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      614
+    ]
+  },
+  {
+    "ndex": "618",
+    "name": "Stunfisk",
+    "form": "",
+    "type1": "Ground",
+    "type2": "Electric",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      618
+    ]
+  },
+  {
+    "ndex": "618",
+    "name": "Stunfisk",
+    "form": "Galarian Form",
+    "type1": "Ground",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      618
+    ]
+  },
+  {
+    "ndex": "623",
+    "name": "Golurk",
+    "form": "",
+    "type1": "Ground",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      623
+    ]
+  },
+  {
+    "ndex": "635",
+    "name": "Hydreigon",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      635
+    ]
+  },
+  {
+    "ndex": "637",
+    "name": "Volcarona",
+    "form": "",
+    "type1": "Bug",
+    "type2": "Fire",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      637
+    ]
+  },
+  {
+    "ndex": "652",
+    "name": "Chesnaught",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      652
+    ]
+  },
+  {
+    "ndex": "655",
+    "name": "Delphox",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      655
+    ]
+  },
+  {
+    "ndex": "658",
+    "name": "Greninja",
+    "form": "",
+    "type1": "Water",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      658
+    ]
+  },
+  {
+    "ndex": "660",
+    "name": "Diggersby",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Ground",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      660
+    ]
+  },
+  {
+    "ndex": "663",
+    "name": "Talonflame",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      663
+    ]
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      666
+    ]
+  },
+  {
+    "ndex": "668",
+    "name": "Pyroar",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Normal",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main",
+    "pokemon_ids": [
+      668
+    ]
+  },
+  {
+    "ndex": "670",
+    "name": "Floette",
+    "form": "Eternal Flower",
+    "type1": "Fairy",
+    "type2": "Transfer only",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      670
+    ]
+  },
+  {
+    "ndex": "671",
+    "name": "Florges",
+    "form": "",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      671
+    ]
+  },
+  {
+    "ndex": "673",
+    "name": "Gogoat",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      673
+    ]
+  },
+  {
+    "ndex": "675",
+    "name": "Pangoro",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      675
+    ]
+  },
+  {
+    "ndex": "676",
+    "name": "Furfrou",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      676
+    ]
+  },
+  {
+    "ndex": "678",
+    "name": "Meowstic",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      678
+    ]
+  },
+  {
+    "ndex": "681",
+    "name": "Aegislash",
+    "form": "",
+    "type1": "Steel",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      681
+    ]
+  },
+  {
+    "ndex": "683",
+    "name": "Aromatisse",
+    "form": "",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      683
+    ]
+  },
+  {
+    "ndex": "685",
+    "name": "Slurpuff",
+    "form": "",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      685
+    ]
+  },
+  {
+    "ndex": "687",
+    "name": "Malamar",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main",
+    "pokemon_ids": [
+      687
+    ]
+  },
+  {
+    "ndex": "689",
+    "name": "Barbaracle",
+    "form": "",
+    "type1": "Rock",
+    "type2": "Water",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main",
+    "pokemon_ids": [
+      689
+    ]
+  },
+  {
+    "ndex": "691",
+    "name": "Dragalge",
+    "form": "",
+    "type1": "Poison",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main",
+    "pokemon_ids": [
+      691
+    ]
+  },
+  {
+    "ndex": "693",
+    "name": "Clawitzer",
+    "form": "",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      693
+    ]
+  },
+  {
+    "ndex": "695",
+    "name": "Heliolisk",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Normal",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      695
+    ]
+  },
+  {
+    "ndex": "697",
+    "name": "Tyrantrum",
+    "form": "",
+    "type1": "Rock",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      697
+    ]
+  },
+  {
+    "ndex": "699",
+    "name": "Aurorus",
+    "form": "",
+    "type1": "Rock",
+    "type2": "Ice",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      699
+    ]
+  },
+  {
+    "ndex": "700",
+    "name": "Sylveon",
+    "form": "",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      700
+    ]
+  },
+  {
+    "ndex": "701",
+    "name": "Hawlucha",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      701
+    ]
+  },
+  {
+    "ndex": "702",
+    "name": "Dedenne",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      702
+    ]
+  },
+  {
+    "ndex": "706",
+    "name": "Goodra",
+    "form": "",
+    "type1": "Dragon",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      706
+    ]
+  },
+  {
+    "ndex": "706",
+    "name": "Goodra",
+    "form": "Hisuian Form",
+    "type1": "Steel",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      706
+    ]
+  },
+  {
+    "ndex": "707",
+    "name": "Klefki",
+    "form": "",
+    "type1": "Steel",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      707
+    ]
+  },
+  {
+    "ndex": "709",
+    "name": "Trevenant",
+    "form": "",
+    "type1": "Ghost",
+    "type2": "Grass",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      709
+    ]
+  },
+  {
+    "ndex": "711",
+    "name": "Gourgeist",
+    "form": "",
+    "type1": "Ghost",
+    "type2": "Grass",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      711
+    ]
+  },
+  {
+    "ndex": "713",
+    "name": "Avalugg",
+    "form": "",
+    "type1": "Ice",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      713
+    ]
+  },
+  {
+    "ndex": "713",
+    "name": "Avalugg",
+    "form": "Hisuian Form",
+    "type1": "Ice",
+    "type2": "Rock",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      713
+    ]
+  },
+  {
+    "ndex": "715",
+    "name": "Noivern",
+    "form": "",
+    "type1": "Flying",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      715
+    ]
+  },
+  {
+    "ndex": "724",
+    "name": "Decidueye",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      724
+    ]
+  },
+  {
+    "ndex": "724",
+    "name": "Decidueye",
+    "form": "Hisuian Form",
+    "type1": "Grass",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      724
+    ]
+  },
+  {
+    "ndex": "727",
+    "name": "Incineroar",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      727
+    ]
+  },
+  {
+    "ndex": "730",
+    "name": "Primarina",
+    "form": "",
+    "type1": "Water",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      730
+    ]
+  },
+  {
+    "ndex": "733",
+    "name": "Toucannon",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      733
+    ]
+  },
+  {
+    "ndex": "740",
+    "name": "Crabominable",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Ice",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      740
+    ]
+  },
+  {
+    "ndex": "745",
+    "name": "Lycanroc",
+    "form": "",
+    "type1": "Rock",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      745
+    ]
+  },
+  {
+    "ndex": "748",
+    "name": "Toxapex",
+    "form": "",
+    "type1": "Poison",
+    "type2": "Water",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      748
+    ]
+  },
+  {
+    "ndex": "750",
+    "name": "Mudsdale",
+    "form": "",
+    "type1": "Ground",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      750
+    ]
+  },
+  {
+    "ndex": "752",
+    "name": "Araquanid",
+    "form": "",
+    "type1": "Water",
+    "type2": "Bug",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      752
+    ]
+  },
+  {
+    "ndex": "758",
+    "name": "Salazzle",
+    "form": "",
+    "type1": "Poison",
+    "type2": "Fire",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      758
+    ]
+  },
+  {
+    "ndex": "763",
+    "name": "Tsareena",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      763
+    ]
+  },
+  {
+    "ndex": "765",
+    "name": "Oranguru",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      765
+    ]
+  },
+  {
+    "ndex": "766",
+    "name": "Passimian",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      766
+    ]
+  },
+  {
+    "ndex": "768",
+    "name": "Golisopod",
+    "form": "",
+    "type1": "Bug",
+    "type2": "Water",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      768
+    ]
+  },
+  {
+    "ndex": "778",
+    "name": "Mimikyu",
+    "form": "",
+    "type1": "Ghost",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      778
+    ]
+  },
+  {
+    "ndex": "780",
+    "name": "Drampa",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      780
+    ]
+  },
+  {
+    "ndex": "784",
+    "name": "Kommo-o",
+    "form": "",
+    "type1": "Dragon",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      784
+    ]
+  },
+  {
+    "ndex": "812",
+    "name": "Rillaboom",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      812
+    ]
+  },
+  {
+    "ndex": "815",
+    "name": "Cinderace",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      815
+    ]
+  },
+  {
+    "ndex": "818",
+    "name": "Inteleon",
+    "form": "",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      818
+    ]
+  },
+  {
+    "ndex": "823",
+    "name": "Corviknight",
+    "form": "",
+    "type1": "Flying",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      823
+    ]
+  },
+  {
+    "ndex": "828",
+    "name": "Thievul",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      828
+    ]
+  },
+  {
+    "ndex": "841",
+    "name": "Flapple",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      841
+    ]
+  },
+  {
+    "ndex": "842",
+    "name": "Appletun",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      842
+    ]
+  },
+  {
+    "ndex": "844",
+    "name": "Sandaconda",
+    "form": "",
+    "type1": "Ground",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      844
+    ]
+  },
+  {
+    "ndex": "849",
+    "name": "Toxtricity",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      849
+    ]
+  },
+  {
+    "ndex": "853",
+    "name": "Grapploct",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      853
+    ]
+  },
+  {
+    "ndex": "855",
+    "name": "Polteageist",
+    "form": "",
+    "type1": "Ghost",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      855
+    ]
+  },
+  {
+    "ndex": "858",
+    "name": "Hatterene",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      858
+    ]
+  },
+  {
+    "ndex": "861",
+    "name": "Grimmsnarl",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main",
+    "pokemon_ids": [
+      861
+    ]
+  },
+  {
+    "ndex": "863",
+    "name": "Perrserker",
+    "form": "",
+    "type1": "Steel",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      863
+    ]
+  },
+  {
+    "ndex": "865",
+    "name": "Sirfetch'd",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      865
+    ]
+  },
+  {
+    "ndex": "866",
+    "name": "Mr. Rime",
+    "form": "",
+    "type1": "Ice",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      866
+    ]
+  },
+  {
+    "ndex": "867",
+    "name": "Runerigus",
+    "form": "",
+    "type1": "Ground",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      867
+    ]
+  },
+  {
+    "ndex": "869",
+    "name": "Alcremie",
+    "form": "",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      869
+    ]
+  },
+  {
+    "ndex": "870",
+    "name": "Falinks",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main",
+    "pokemon_ids": [
+      870
+    ]
+  },
+  {
+    "ndex": "871",
+    "name": "Pincurchin",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      871
+    ]
+  },
+  {
+    "ndex": "876",
+    "name": "Indeedee",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Normal",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      876
+    ]
+  },
+  {
+    "ndex": "877",
+    "name": "Morpeko",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      877
+    ]
+  },
+  {
+    "ndex": "887",
+    "name": "Dragapult",
+    "form": "",
+    "type1": "Dragon",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      887
+    ]
+  },
+  {
+    "ndex": "899",
+    "name": "Wyrdeer",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      899
+    ]
+  },
+  {
+    "ndex": "900",
+    "name": "Kleavor",
+    "form": "",
+    "type1": "Bug",
+    "type2": "Rock",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      900
+    ]
+  },
+  {
+    "ndex": "902",
+    "name": "Basculegion",
+    "form": "",
+    "type1": "Water",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      902
+    ]
+  },
+  {
+    "ndex": "903",
+    "name": "Sneasler",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      903
+    ]
+  },
+  {
+    "ndex": "904",
+    "name": "Overqwil",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main",
+    "pokemon_ids": [
+      904
+    ]
+  },
+  {
+    "ndex": "908",
+    "name": "Meowscarada",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      908
+    ]
+  },
+  {
+    "ndex": "911",
+    "name": "Skeledirge",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      911
+    ]
+  },
+  {
+    "ndex": "914",
+    "name": "Quaquaval",
+    "form": "",
+    "type1": "Water",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      914
+    ]
+  },
+  {
+    "ndex": "923",
+    "name": "Pawmot",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2 *",
+    "section": "main",
+    "pokemon_ids": [
+      923
+    ]
+  },
+  {
+    "ndex": "925",
+    "name": "Maushold",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      925
+    ]
+  },
+  {
+    "ndex": "930",
+    "name": "Arboliva",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Grass",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      930
+    ]
+  },
+  {
+    "ndex": "931",
+    "name": "Squawkabilly",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      931
+    ]
+  },
+  {
+    "ndex": "934",
+    "name": "Garganacl",
+    "form": "",
+    "type1": "Rock",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      934
+    ]
+  },
+  {
+    "ndex": "936",
+    "name": "Armarouge",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      936
+    ]
+  },
+  {
+    "ndex": "937",
+    "name": "Ceruledge",
+    "form": "",
+    "type1": "Fire",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      937
+    ]
+  },
+  {
+    "ndex": "939",
+    "name": "Bellibolt",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      939
+    ]
+  },
+  {
+    "ndex": "943",
+    "name": "Mabosstiff",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      943
+    ]
+  },
+  {
+    "ndex": "952",
+    "name": "Scovillain",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Fire",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      952
+    ]
+  },
+  {
+    "ndex": "956",
+    "name": "Espathra",
+    "form": "",
+    "type1": "Psychic",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      956
+    ]
+  },
+  {
+    "ndex": "959",
+    "name": "Tinkaton",
+    "form": "",
+    "type1": "Fairy",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      959
+    ]
+  },
+  {
+    "ndex": "964",
+    "name": "Palafin",
+    "form": "",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      964
+    ]
+  },
+  {
+    "ndex": "968",
+    "name": "Orthworm",
+    "form": "",
+    "type1": "Steel",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      968
+    ]
+  },
+  {
+    "ndex": "970",
+    "name": "Glimmora",
+    "form": "",
+    "type1": "Rock",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      970
+    ]
+  },
+  {
+    "ndex": "972",
+    "name": "Houndstone",
+    "form": "",
+    "type1": "Ghost",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main",
+    "pokemon_ids": [
+      972
+    ]
+  },
+  {
+    "ndex": "979",
+    "name": "Annihilape",
+    "form": "",
+    "type1": "Fighting",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main",
+    "pokemon_ids": [
+      979
+    ]
+  },
+  {
+    "ndex": "981",
+    "name": "Farigiraf",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      981
+    ]
+  },
+  {
+    "ndex": "983",
+    "name": "Kingambit",
+    "form": "",
+    "type1": "Dark",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      983
+    ]
+  },
+  {
+    "ndex": "998",
+    "name": "Baxcalibur",
+    "form": "",
+    "type1": "Dragon",
+    "type2": "Ice",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "main",
+    "pokemon_ids": [
+      998
+    ]
+  },
+  {
+    "ndex": "1000",
+    "name": "Gholdengo",
+    "form": "",
+    "type1": "Steel",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "main",
+    "pokemon_ids": [
+      1000
+    ]
+  },
+  {
+    "ndex": "1013",
+    "name": "Sinistcha",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      1013
+    ]
+  },
+  {
+    "ndex": "1018",
+    "name": "Archaludon",
+    "form": "",
+    "type1": "Steel",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      1018
+    ]
+  },
+  {
+    "ndex": "1019",
+    "name": "Hydrapple",
+    "form": "",
+    "type1": "Grass",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "main",
+    "pokemon_ids": [
+      1019
+    ]
+  },
+  {
+    "ndex": "3",
+    "name": "Venusaur",
+    "form": "Mega Venusaur",
+    "type1": "Grass",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10033
+    ]
+  },
+  {
+    "ndex": "6",
+    "name": "Charizard",
+    "form": "Mega Charizard X",
+    "type1": "Fire",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10034
+    ]
+  },
+  {
+    "ndex": "6",
+    "name": "Charizard",
+    "form": "Mega Charizard Y",
+    "type1": "Fire",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10035
+    ]
+  },
+  {
+    "ndex": "9",
+    "name": "Blastoise",
+    "form": "Mega Blastoise",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10036
+    ]
+  },
+  {
+    "ndex": "15",
+    "name": "Beedrill",
+    "form": "Mega Beedrill",
+    "type1": "Bug",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10090
+    ]
+  },
+  {
+    "ndex": "18",
+    "name": "Pidgeot",
+    "form": "Mega Pidgeot",
+    "type1": "Normal",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10073
+    ]
+  },
+  {
+    "ndex": "26",
+    "name": "Raichu",
+    "form": "Mega Raichu X",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10304
+    ]
+  },
+  {
+    "ndex": "26",
+    "name": "Raichu",
+    "form": "Mega Raichu Y",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10305
+    ]
+  },
+  {
+    "ndex": "36",
+    "name": "Clefable",
+    "form": "Mega Clefable",
+    "type1": "Fairy",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10278
+    ]
+  },
+  {
+    "ndex": "65",
+    "name": "Alakazam",
+    "form": "Mega Alakazam",
+    "type1": "Psychic",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10037
+    ]
+  },
+  {
+    "ndex": "71",
+    "name": "Victreebel",
+    "form": "Mega Victreebel",
+    "type1": "Grass",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10279
+    ]
+  },
+  {
+    "ndex": "80",
+    "name": "Slowbro",
+    "form": "Mega Slowbro",
+    "type1": "Water",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10071
+    ]
+  },
+  {
+    "ndex": "94",
+    "name": "Gengar",
+    "form": "Mega Gengar",
+    "type1": "Ghost",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10038
+    ]
+  },
+  {
+    "ndex": "115",
+    "name": "Kangaskhan",
+    "form": "Mega Kangaskhan",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10039
+    ]
+  },
+  {
+    "ndex": "121",
+    "name": "Starmie",
+    "form": "Mega Starmie",
+    "type1": "Water",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10280
+    ]
+  },
+  {
+    "ndex": "127",
+    "name": "Pinsir",
+    "form": "Mega Pinsir",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10040
+    ]
+  },
+  {
+    "ndex": "130",
+    "name": "Gyarados",
+    "form": "Mega Gyarados",
+    "type1": "Water",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10041
+    ]
+  },
+  {
+    "ndex": "142",
+    "name": "Aerodactyl",
+    "form": "Mega Aerodactyl",
+    "type1": "Rock",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10042
+    ]
+  },
+  {
+    "ndex": "149",
+    "name": "Dragonite",
+    "form": "Mega Dragonite",
+    "type1": "Dragon",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10281
+    ]
+  },
+  {
+    "ndex": "154",
+    "name": "Meganium",
+    "form": "Mega Meganium",
+    "type1": "Grass",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10282
+    ]
+  },
+  {
+    "ndex": "160",
+    "name": "Feraligatr",
+    "form": "Mega Feraligatr",
+    "type1": "Water",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10283
+    ]
+  },
+  {
+    "ndex": "181",
+    "name": "Ampharos",
+    "form": "Mega Ampharos",
+    "type1": "Electric",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10045
+    ]
+  },
+  {
+    "ndex": "208",
+    "name": "Steelix",
+    "form": "Mega Steelix",
+    "type1": "Steel",
+    "type2": "Ground",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10072
+    ]
+  },
+  {
+    "ndex": "212",
+    "name": "Scizor",
+    "form": "Mega Scizor",
+    "type1": "Bug",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10046
+    ]
+  },
+  {
+    "ndex": "214",
+    "name": "Heracross",
+    "form": "Mega Heracross",
+    "type1": "Bug",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10047
+    ]
+  },
+  {
+    "ndex": "227",
+    "name": "Skarmory",
+    "form": "Mega Skarmory",
+    "type1": "Steel",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10284
+    ]
+  },
+  {
+    "ndex": "229",
+    "name": "Houndoom",
+    "form": "Mega Houndoom",
+    "type1": "Dark",
+    "type2": "Fire",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10048
+    ]
+  },
+  {
+    "ndex": "248",
+    "name": "Tyranitar",
+    "form": "Mega Tyranitar",
+    "type1": "Rock",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10049
+    ]
+  },
+  {
+    "ndex": "254",
+    "name": "Sceptile",
+    "form": "Mega Sceptile",
+    "type1": "Grass",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10065
+    ]
+  },
+  {
+    "ndex": "257",
+    "name": "Blaziken",
+    "form": "Mega Blaziken",
+    "type1": "Fire",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10050
+    ]
+  },
+  {
+    "ndex": "260",
+    "name": "Swampert",
+    "form": "Mega Swampert",
+    "type1": "Water",
+    "type2": "Ground",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10064
+    ]
+  },
+  {
+    "ndex": "282",
+    "name": "Gardevoir",
+    "form": "Mega Gardevoir",
+    "type1": "Psychic",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10051
+    ]
+  },
+  {
+    "ndex": "302",
+    "name": "Sableye",
+    "form": "Mega Sableye",
+    "type1": "Dark",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10066
+    ]
+  },
+  {
+    "ndex": "303",
+    "name": "Mawile",
+    "form": "Mega Mawile",
+    "type1": "Steel",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10052
+    ]
+  },
+  {
+    "ndex": "306",
+    "name": "Aggron",
+    "form": "Mega Aggron",
+    "type1": "Steel",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10053
+    ]
+  },
+  {
+    "ndex": "308",
+    "name": "Medicham",
+    "form": "Mega Medicham",
+    "type1": "Fighting",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10054
+    ]
+  },
+  {
+    "ndex": "310",
+    "name": "Manectric",
+    "form": "Mega Manectric",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10055
+    ]
+  },
+  {
+    "ndex": "319",
+    "name": "Sharpedo",
+    "form": "Mega Sharpedo",
+    "type1": "Water",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10070
+    ]
+  },
+  {
+    "ndex": "323",
+    "name": "Camerupt",
+    "form": "Mega Camerupt",
+    "type1": "Fire",
+    "type2": "Ground",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10087
+    ]
+  },
+  {
+    "ndex": "334",
+    "name": "Altaria",
+    "form": "Mega Altaria",
+    "type1": "Dragon",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10067
+    ]
+  },
+  {
+    "ndex": "354",
+    "name": "Banette",
+    "form": "Mega Banette",
+    "type1": "Ghost",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10056
+    ]
+  },
+  {
+    "ndex": "358",
+    "name": "Chimecho",
+    "form": "Mega Chimecho",
+    "type1": "Psychic",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10306
+    ]
+  },
+  {
+    "ndex": "359",
+    "name": "Absol",
+    "form": "Mega Absol",
+    "type1": "Dark",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10057
+    ]
+  },
+  {
+    "ndex": "359",
+    "name": "Absol",
+    "form": "Mega Absol Z",
+    "type1": "Dark",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10307
+    ]
+  },
+  {
+    "ndex": "362",
+    "name": "Glalie",
+    "form": "Mega Glalie",
+    "type1": "Ice",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10074
+    ]
+  },
+  {
+    "ndex": "373",
+    "name": "Salamence",
+    "form": "Mega Salamence",
+    "type1": "Dragon",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10089
+    ]
+  },
+  {
+    "ndex": "376",
+    "name": "Metagross",
+    "form": "Mega Metagross",
+    "type1": "Steel",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10076
+    ]
+  },
+  {
+    "ndex": "398",
+    "name": "Staraptor",
+    "form": "Mega Staraptor",
+    "type1": "Fighting",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10308
+    ]
+  },
+  {
+    "ndex": "428",
+    "name": "Lopunny",
+    "form": "Mega Lopunny",
+    "type1": "Normal",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10088
+    ]
+  },
+  {
+    "ndex": "445",
+    "name": "Garchomp",
+    "form": "Mega Garchomp",
+    "type1": "Dragon",
+    "type2": "Ground",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10058
+    ]
+  },
+  {
+    "ndex": "445",
+    "name": "Garchomp",
+    "form": "Mega Garchomp Z",
+    "type1": "Dragon",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10309
+    ]
+  },
+  {
+    "ndex": "448",
+    "name": "Lucario",
+    "form": "Mega Lucario",
+    "type1": "Fighting",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10059
+    ]
+  },
+  {
+    "ndex": "448",
+    "name": "Lucario",
+    "form": "Mega Lucario Z",
+    "type1": "Fighting",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10310
+    ]
+  },
+  {
+    "ndex": "460",
+    "name": "Abomasnow",
+    "form": "Mega Abomasnow",
+    "type1": "Grass",
+    "type2": "Ice",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10060
+    ]
+  },
+  {
+    "ndex": "475",
+    "name": "Gallade",
+    "form": "Mega Gallade",
+    "type1": "Psychic",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10068
+    ]
+  },
+  {
+    "ndex": "478",
+    "name": "Froslass",
+    "form": "Mega Froslass",
+    "type1": "Ice",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10285
+    ]
+  },
+  {
+    "ndex": "500",
+    "name": "Emboar",
+    "form": "Mega Emboar",
+    "type1": "Fire",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10286
+    ]
+  },
+  {
+    "ndex": "530",
+    "name": "Excadrill",
+    "form": "Mega Excadrill",
+    "type1": "Ground",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10287
+    ]
+  },
+  {
+    "ndex": "531",
+    "name": "Audino",
+    "form": "Mega Audino",
+    "type1": "Normal",
+    "type2": "Fairy",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10069
+    ]
+  },
+  {
+    "ndex": "545",
+    "name": "Scolipede",
+    "form": "Mega Scolipede",
+    "type1": "Bug",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10288
+    ]
+  },
+  {
+    "ndex": "560",
+    "name": "Scrafty",
+    "form": "Mega Scrafty",
+    "type1": "Dark",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10289
+    ]
+  },
+  {
+    "ndex": "604",
+    "name": "Eelektross",
+    "form": "Mega Eelektross",
+    "type1": "Electric",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10290
+    ]
+  },
+  {
+    "ndex": "609",
+    "name": "Chandelure",
+    "form": "Mega Chandelure",
+    "type1": "Ghost",
+    "type2": "Fire",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10291
+    ]
+  },
+  {
+    "ndex": "623",
+    "name": "Golurk",
+    "form": "Mega Golurk",
+    "type1": "Ground",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10313
+    ]
+  },
+  {
+    "ndex": "652",
+    "name": "Chesnaught",
+    "form": "Mega Chesnaught",
+    "type1": "Grass",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10292
+    ]
+  },
+  {
+    "ndex": "655",
+    "name": "Delphox",
+    "form": "Mega Delphox",
+    "type1": "Fire",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10293
+    ]
+  },
+  {
+    "ndex": "658",
+    "name": "Greninja",
+    "form": "Mega Greninja",
+    "type1": "Water",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10294
+    ]
+  },
+  {
+    "ndex": "668",
+    "name": "Pyroar",
+    "form": "Mega Pyroar",
+    "type1": "Fire",
+    "type2": "Normal",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10295
+    ]
+  },
+  {
+    "ndex": "670",
+    "name": "Floette",
+    "form": "Mega Floette",
+    "type1": "Fairy",
+    "type2": "Event only",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10296
+    ]
+  },
+  {
+    "ndex": "678",
+    "name": "Meowstic",
+    "form": "Mega Meowstic",
+    "type1": "Psychic",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10314,
+      10326
+    ]
+  },
+  {
+    "ndex": "687",
+    "name": "Malamar",
+    "form": "Mega Malamar",
+    "type1": "Dark",
+    "type2": "Psychic",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10297
+    ]
+  },
+  {
+    "ndex": "689",
+    "name": "Barbaracle",
+    "form": "Mega Barbaracle",
+    "type1": "Rock",
+    "type2": "Fighting",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10298
+    ]
+  },
+  {
+    "ndex": "691",
+    "name": "Dragalge",
+    "form": "Mega Dragalge",
+    "type1": "Poison",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10299
+    ]
+  },
+  {
+    "ndex": "701",
+    "name": "Hawlucha",
+    "form": "Mega Hawlucha",
+    "type1": "Fighting",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10300
+    ]
+  },
+  {
+    "ndex": "740",
+    "name": "Crabominable",
+    "form": "Mega Crabominable",
+    "type1": "Fighting",
+    "type2": "Ice",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10315
+    ]
+  },
+  {
+    "ndex": "768",
+    "name": "Golisopod",
+    "form": "Mega Golisopod",
+    "type1": "Bug",
+    "type2": "Steel",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10316
+    ]
+  },
+  {
+    "ndex": "780",
+    "name": "Drampa",
+    "form": "Mega Drampa",
+    "type1": "Normal",
+    "type2": "Dragon",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10302
+    ]
+  },
+  {
+    "ndex": "870",
+    "name": "Falinks",
+    "form": "Mega Falinks",
+    "type1": "Fighting",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10303
+    ]
+  },
+  {
+    "ndex": "952",
+    "name": "Scovillain",
+    "form": "Mega Scovillain",
+    "type1": "Grass",
+    "type2": "Fire",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10320
+    ]
+  },
+  {
+    "ndex": "970",
+    "name": "Glimmora",
+    "form": "Mega Glimmora",
+    "type1": "Rock",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "mega",
+    "pokemon_ids": [
+      10321
+    ]
+  },
+  {
+    "ndex": "998",
+    "name": "Baxcalibur",
+    "form": "Mega Baxcalibur",
+    "type1": "Dragon",
+    "type2": "Ice",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "mega",
+    "pokemon_ids": [
+      10325
+    ]
+  },
+  {
+    "ndex": "351",
+    "name": "Castform",
+    "form": "",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      351
+    ]
+  },
+  {
+    "ndex": "351",
+    "name": "Castform",
+    "form": "Sunny Form",
+    "type1": "Fire",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      10013
+    ]
+  },
+  {
+    "ndex": "351",
+    "name": "Castform",
+    "form": "Rainy Form",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      10014
+    ]
+  },
+  {
+    "ndex": "351",
+    "name": "Castform",
+    "form": "Snowy Form",
+    "type1": "Ice",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      10015
+    ]
+  },
+  {
+    "ndex": "479",
+    "name": "Rotom",
+    "form": "",
+    "type1": "Electric",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      479
+    ]
+  },
+  {
+    "ndex": "479",
+    "name": "Rotom",
+    "form": "Heat Rotom",
+    "type1": "Electric",
+    "type2": "Fire",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      10008
+    ]
+  },
+  {
+    "ndex": "479",
+    "name": "Rotom",
+    "form": "Wash Rotom",
+    "type1": "Electric",
+    "type2": "Water",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      10009
+    ]
+  },
+  {
+    "ndex": "479",
+    "name": "Rotom",
+    "form": "Frost Rotom",
+    "type1": "Electric",
+    "type2": "Ice",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      10010
+    ]
+  },
+  {
+    "ndex": "479",
+    "name": "Rotom",
+    "form": "Fan Rotom",
+    "type1": "Electric",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      10011
+    ]
+  },
+  {
+    "ndex": "479",
+    "name": "Rotom",
+    "form": "Mow Rotom",
+    "type1": "Electric",
+    "type2": "Grass",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      10012
+    ]
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Icy Snow Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      666
+    ]
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Polar Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      666
+    ]
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Tundra Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      666
+    ]
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Continental Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      666
+    ]
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Garden Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      666
+    ]
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Elegant Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      666
+    ]
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Meadow Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      666
+    ]
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Modern Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      666
+    ]
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Marine Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      666
+    ]
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Archipelago Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      666
+    ]
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "High Plains Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      666
+    ]
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Sandstorm Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      666
+    ]
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "River Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      666
+    ]
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Monsoon Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      666
+    ]
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Savanna Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      666
+    ]
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Sun Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      666
+    ]
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Ocean Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      666
+    ]
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Jungle Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      666
+    ]
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Fancy Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      666
+    ]
+  },
+  {
+    "ndex": "666",
+    "name": "Vivillon",
+    "form": "Poké Ball Pattern",
+    "type1": "Bug",
+    "type2": "Flying",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      666
+    ]
+  },
+  {
+    "ndex": "668",
+    "name": "Pyroar",
+    "form": "Male",
+    "type1": "Fire",
+    "type2": "Normal",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "other",
+    "pokemon_ids": [
+      668
+    ]
+  },
+  {
+    "ndex": "668",
+    "name": "Pyroar",
+    "form": "Female",
+    "type1": "Fire",
+    "type2": "Normal",
+    "normally_available": true,
+    "version_added": "1.1.0",
+    "section": "other",
+    "pokemon_ids": [
+      668
+    ]
+  },
+  {
+    "ndex": "671",
+    "name": "Florges",
+    "form": "Red Flower",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      671
+    ]
+  },
+  {
+    "ndex": "671",
+    "name": "Florges",
+    "form": "Yellow Flower",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      671
+    ]
+  },
+  {
+    "ndex": "671",
+    "name": "Florges",
+    "form": "Orange Flower",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      671
+    ]
+  },
+  {
+    "ndex": "671",
+    "name": "Florges",
+    "form": "Blue Flower",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      671
+    ]
+  },
+  {
+    "ndex": "671",
+    "name": "Florges",
+    "form": "White Flower",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      671
+    ]
+  },
+  {
+    "ndex": "676",
+    "name": "Furfrou",
+    "form": "Natural Form",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      676
+    ]
+  },
+  {
+    "ndex": "676",
+    "name": "Furfrou",
+    "form": "Heart Trim",
+    "type1": "Normal",
+    "type2": "Transfer only",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      676
+    ]
+  },
+  {
+    "ndex": "676",
+    "name": "Furfrou",
+    "form": "Star Trim",
+    "type1": "Normal",
+    "type2": "Transfer only",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      676
+    ]
+  },
+  {
+    "ndex": "676",
+    "name": "Furfrou",
+    "form": "Diamond Trim",
+    "type1": "Normal",
+    "type2": "Transfer only",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      676
+    ]
+  },
+  {
+    "ndex": "676",
+    "name": "Furfrou",
+    "form": "Debutante Trim",
+    "type1": "Normal",
+    "type2": "Transfer only",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      676
+    ]
+  },
+  {
+    "ndex": "676",
+    "name": "Furfrou",
+    "form": "Matron Trim",
+    "type1": "Normal",
+    "type2": "Transfer only",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      676
+    ]
+  },
+  {
+    "ndex": "676",
+    "name": "Furfrou",
+    "form": "Dandy Trim",
+    "type1": "Normal",
+    "type2": "Transfer only",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      676
+    ]
+  },
+  {
+    "ndex": "676",
+    "name": "Furfrou",
+    "form": "La Reine Trim",
+    "type1": "Normal",
+    "type2": "Transfer only",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      676
+    ]
+  },
+  {
+    "ndex": "676",
+    "name": "Furfrou",
+    "form": "Kabuki Trim",
+    "type1": "Normal",
+    "type2": "Transfer only",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      676
+    ]
+  },
+  {
+    "ndex": "676",
+    "name": "Furfrou",
+    "form": "Pharaoh Trim",
+    "type1": "Normal",
+    "type2": "Transfer only",
+    "normally_available": false,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      676
+    ]
+  },
+  {
+    "ndex": "678",
+    "name": "Meowstic",
+    "form": "Male",
+    "type1": "Psychic",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      678
+    ]
+  },
+  {
+    "ndex": "678",
+    "name": "Meowstic",
+    "form": "Female",
+    "type1": "Psychic",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      10025
+    ]
+  },
+  {
+    "ndex": "681",
+    "name": "Aegislash",
+    "form": "Shield Forme",
+    "type1": "Steel",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      681
+    ]
+  },
+  {
+    "ndex": "681",
+    "name": "Aegislash",
+    "form": "Blade Forme",
+    "type1": "Steel",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      10026
+    ]
+  },
+  {
+    "ndex": "711",
+    "name": "Gourgeist",
+    "form": "Small Variety",
+    "type1": "Ghost",
+    "type2": "Grass",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      10030
+    ]
+  },
+  {
+    "ndex": "711",
+    "name": "Gourgeist",
+    "form": "Medium Variety",
+    "type1": "Ghost",
+    "type2": "Grass",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      711
+    ]
+  },
+  {
+    "ndex": "711",
+    "name": "Gourgeist",
+    "form": "Large Variety",
+    "type1": "Ghost",
+    "type2": "Grass",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      10031
+    ]
+  },
+  {
+    "ndex": "711",
+    "name": "Gourgeist",
+    "form": "Jumbo Variety",
+    "type1": "Ghost",
+    "type2": "Grass",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      711
+    ]
+  },
+  {
+    "ndex": "745",
+    "name": "Lycanroc",
+    "form": "Midday Form",
+    "type1": "Rock",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      745
+    ]
+  },
+  {
+    "ndex": "745",
+    "name": "Lycanroc",
+    "form": "Midnight Form",
+    "type1": "Rock",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      10126
+    ]
+  },
+  {
+    "ndex": "745",
+    "name": "Lycanroc",
+    "form": "Dusk Form",
+    "type1": "Rock",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      10152
+    ]
+  },
+  {
+    "ndex": "849",
+    "name": "Toxtricity",
+    "form": "Amped Form",
+    "type1": "Electric",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "other",
+    "pokemon_ids": [
+      849
+    ]
+  },
+  {
+    "ndex": "849",
+    "name": "Toxtricity",
+    "form": "Low Key Form",
+    "type1": "Electric",
+    "type2": "Poison",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "other",
+    "pokemon_ids": [
+      10184
+    ]
+  },
+  {
+    "ndex": "869",
+    "name": "Alcremie",
+    "form": "Vanilla Cream",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      869
+    ]
+  },
+  {
+    "ndex": "869",
+    "name": "Alcremie",
+    "form": "Ruby Cream",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      869
+    ]
+  },
+  {
+    "ndex": "869",
+    "name": "Alcremie",
+    "form": "Matcha Cream",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      869
+    ]
+  },
+  {
+    "ndex": "869",
+    "name": "Alcremie",
+    "form": "Mint Cream",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      869
+    ]
+  },
+  {
+    "ndex": "869",
+    "name": "Alcremie",
+    "form": "Lemon Cream",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      869
+    ]
+  },
+  {
+    "ndex": "869",
+    "name": "Alcremie",
+    "form": "Salted Cream",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      869
+    ]
+  },
+  {
+    "ndex": "869",
+    "name": "Alcremie",
+    "form": "Ruby Swirl",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      869
+    ]
+  },
+  {
+    "ndex": "869",
+    "name": "Alcremie",
+    "form": "Caramel Swirl",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      869
+    ]
+  },
+  {
+    "ndex": "869",
+    "name": "Alcremie",
+    "form": "Rainbow Swirl",
+    "type1": "Fairy",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      869
+    ]
+  },
+  {
+    "ndex": "876",
+    "name": "Indeedee",
+    "form": "Male",
+    "type1": "Psychic",
+    "type2": "Normal",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "other",
+    "pokemon_ids": [
+      876
+    ]
+  },
+  {
+    "ndex": "876",
+    "name": "Indeedee",
+    "form": "Female",
+    "type1": "Psychic",
+    "type2": "Normal",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "other",
+    "pokemon_ids": [
+      10186
+    ]
+  },
+  {
+    "ndex": "877",
+    "name": "Morpeko",
+    "form": "Full Belly Mode",
+    "type1": "Electric",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      877
+    ]
+  },
+  {
+    "ndex": "877",
+    "name": "Morpeko",
+    "form": "Hangry Mode",
+    "type1": "Electric",
+    "type2": "Dark",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      10187
+    ]
+  },
+  {
+    "ndex": "902",
+    "name": "Basculegion",
+    "form": "Male",
+    "type1": "Water",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      902
+    ]
+  },
+  {
+    "ndex": "902",
+    "name": "Basculegion",
+    "form": "Female",
+    "type1": "Water",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      10248
+    ]
+  },
+  {
+    "ndex": "925",
+    "name": "Maushold",
+    "form": "Family of Four",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      925
+    ]
+  },
+  {
+    "ndex": "925",
+    "name": "Maushold",
+    "form": "Family of Three",
+    "type1": "Normal",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      10257
+    ]
+  },
+  {
+    "ndex": "931",
+    "name": "Squawkabilly",
+    "form": "Green Plumage",
+    "type1": "Normal",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "other",
+    "pokemon_ids": [
+      931
+    ]
+  },
+  {
+    "ndex": "931",
+    "name": "Squawkabilly",
+    "form": "Blue Plumage",
+    "type1": "Normal",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "other",
+    "pokemon_ids": [
+      10260
+    ]
+  },
+  {
+    "ndex": "931",
+    "name": "Squawkabilly",
+    "form": "Yellow Plumage",
+    "type1": "Normal",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "other",
+    "pokemon_ids": [
+      10261
+    ]
+  },
+  {
+    "ndex": "931",
+    "name": "Squawkabilly",
+    "form": "White Plumage",
+    "type1": "Normal",
+    "type2": "Flying",
+    "normally_available": true,
+    "version_added": "1.2.0",
+    "section": "other",
+    "pokemon_ids": [
+      10262
+    ]
+  },
+  {
+    "ndex": "964",
+    "name": "Palafin",
+    "form": "Zero Form",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      964
+    ]
+  },
+  {
+    "ndex": "964",
+    "name": "Palafin",
+    "form": "Hero Form",
+    "type1": "Water",
+    "type2": "Yes",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      10256
+    ]
+  },
+  {
+    "ndex": "1013",
+    "name": "Sinistcha",
+    "form": "Unremarkable Form",
+    "type1": "Grass",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      1013
+    ]
+  },
+  {
+    "ndex": "1013",
+    "name": "Sinistcha",
+    "form": "Masterpiece Form",
+    "type1": "Grass",
+    "type2": "Ghost",
+    "normally_available": true,
+    "version_added": "1.0.2",
+    "section": "other",
+    "pokemon_ids": [
+      1013
+    ]
+  }
+]
